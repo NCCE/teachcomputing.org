@@ -15,6 +15,11 @@ RSpec.describe BannerComponent, type: :component do
           url: "https://www.example.com",
           text: "Test link",
           class: "govuk-button"
+        },
+        button: {
+          text: "Button text",
+          link: "https://www.example.com",
+          class: "govuk-button"
         }
       ))
     end
@@ -38,6 +43,10 @@ RSpec.describe BannerComponent, type: :component do
     it "should default to two thirds for content" do
       expect(page).to have_css(".banner-component__content-section--two-thirds")
     end
+
+    it "should have button" do
+      expect(page).to have_css(".govuk-button")
+    end
   end
 
   context "with half column" do
@@ -53,8 +62,7 @@ RSpec.describe BannerComponent, type: :component do
         background_color: "purple",
         link: {
           url: "https://www.example.com",
-          text: "Test link",
-          class: "govuk-button"
+          text: "Test link"
         }
       ))
     end
@@ -70,6 +78,10 @@ RSpec.describe BannerComponent, type: :component do
     it "should set content to be one half" do
       expect(page).to have_css(".banner-component__media-section--half")
       expect(page).to have_css(".banner-component__content-section--half")
+    end
+
+    it "should not have a button" do
+      expect(page).not_to have_css(".govuk-button")
     end
   end
 
