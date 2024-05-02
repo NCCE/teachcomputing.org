@@ -20,9 +20,15 @@
       </svg>
     <% end %>
     <button type="button" class="govuk-header__menu-button govuk-js-header-toggle" aria-controls="navigation" aria-label="Show or hide Top Level Navigation">Menu</button>
+      <% if current_user %>
+        <%= render NotificationComponent.new(user: current_user, wrapper_css: 'tablet-notifications govuk-header__link') %>
+      <% end %>
       <div id="navigation" class="govuk-header__navigation ncce-header__navigation" aria-label="Top Level Navigation">
         <% if current_user %>
           <ul class='ncce-header__user'>
+            <li class="govuk-header__navigation-item ncce-header__navigation-item">
+              <%= render NotificationComponent.new(user: current_user, wrapper_css: 'desktop-notifications govuk-header__link') %>
+            </li>
             <li class="govuk-header__navigation-item ncce-header__navigation-item">
               <%= link_to 'Your dashboard', dashboard_path, class: 'govuk-header__link', data: { event_action: 'click', event_category: 'Header: Navigation', event_label: 'Your dashboard' } %>
             </li>

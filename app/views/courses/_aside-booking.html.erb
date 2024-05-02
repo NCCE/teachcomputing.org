@@ -143,18 +143,16 @@
       <p class="govuk-body">
         <%= link_to @booking.unauthenticated_booking_button_title, "#{auth_url}?source_uri=#{CGI.escape(request.original_url)}", method: :post, class: 'govuk-button button--aside', draggable: 'false', data: { event_action: 'click', event_category: 'course details'} %>
       </p>
-      <p class="govuk-body-s ncce-aside__text">
-        Not got a STEM Learning account?
-        <br>
-        <%= link_to 'Create an account', create_account_url,
-          class: 'ncce-link', draggable: 'false',
+      <p class="govuk-body">
+        <%= link_to 'Create STEM Learning account', create_account_url,
+          class: 'govuk-button button--aside--inverted', draggable: 'false',
           data: { event_action: 'click', event_category: 'course details'} %>
       </p>
       <%= render('start-date', date: @start_date) if (@course.online_cpd && !@started) %>
     <% end %>
   <% end %>
 
-  <%= render ProviderLogosComponent.new(dashboard: false)%>
+  <%= render ProviderLogosComponent.new(dashboard: false, no_top_border: current_user.blank? && !(@course.online_cpd && !@started))%>
 
   <% if current_user && user_achievement_state(current_user, @activity) == :enrolled && @course.online_cpd %>
     <p class='govuk-body-s ncce-booking-list__progress'>

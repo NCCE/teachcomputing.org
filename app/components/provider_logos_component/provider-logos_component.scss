@@ -2,6 +2,11 @@
   border-top: solid 1px #CCCCCC;
   padding: 1rem 0;
 
+  &__no-top-border {
+    border-top: unset;
+    padding: 0;
+  }
+
   &__logo-wrapper {
     display: inline-flex;
     flex-wrap: wrap;

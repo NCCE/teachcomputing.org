@@ -3,12 +3,18 @@
 class HeroComponent < ViewComponent::Base
   include ViewComponent::Translatable
 
-  def initialize(title:, color: nil, small_title: false, subtitle: nil, status: nil)
+  def initialize(title:, color: nil, small_title: false, subtitle: nil, status: nil, full_width: false)
     @title = title
     @color = color
     @small_title = small_title
     @subtitle = subtitle
     @status = status
+    @full_width = full_width
+  end
+
+  def column_width_class
+    return "govuk-grid-column-full-width" if @full_width
+    "govuk-grid-column-three-quarters"
   end
 
   def class_list

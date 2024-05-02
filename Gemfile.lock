@@ -115,6 +115,10 @@ GEM
     backport (1.2.0)
     base64 (0.2.0)
     benchmark (0.2.1)
+    better_errors (2.10.1)
+      erubi (>= 1.0.0)
+      rack (>= 0.9.0)
+      rouge (>= 1.0.0)
     better_html (2.0.2)
       actionview (>= 6.0)
       activesupport (>= 6.0)
@@ -123,6 +127,8 @@ GEM
       parser (>= 2.4)
       smart_properties
     bindex (0.8.1)
+    binding_of_caller (1.0.0)
+      debug_inspector (>= 0.0.1)
     bootsnap (1.16.0)
       msgpack (~> 1.2)
     brakeman (6.0.1)
@@ -163,6 +169,7 @@ GEM
     debase (0.2.5.beta2)
       debase-ruby_core_source (>= 0.10.12)
     debase-ruby_core_source (3.2.1)
+    debug_inspector (1.2.0)
     descendants_tracker (0.0.4)
       thread_safe (~> 0.3, >= 0.3.1)
     diff-lcs (1.5.0)
@@ -477,6 +484,7 @@ GEM
     reverse_markdown (2.1.1)
       nokogiri
     rexml (3.2.6)
+    rouge (4.2.0)
     rspec (3.12.0)
       rspec-core (~> 3.12.0)
       rspec-expectations (~> 3.12.0)
@@ -680,6 +688,8 @@ DEPENDENCIES
   awesome_print
   aws-sdk-s3
   axe-matchers (>= 2.5.0)
+  better_errors
+  binding_of_caller
   bootsnap (>= 1.5.1)
   brakeman
   bullet

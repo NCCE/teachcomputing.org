@@ -87,6 +87,7 @@ module Achiever
     def certificates
       @certificates ||= Programme.all.each_with_object({}) do |item, hash|
         next if !FeatureFlagService.new.flags[:alevel_programme_feature] && item.a_level?
+        next unless item.include_in_filter?
 
         hash[item.certificate_name] = item.slug
       end

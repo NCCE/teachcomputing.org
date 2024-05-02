@@ -12,7 +12,7 @@
     tracking_label: 'video'
   }
 ) %>
-<div class="govuk-width-container">
+<div class="govuk-width-container curriculum">
   <div class="govuk-main-wrapper govuk-main-wrapper--xl">
     <div class="govuk-grid-row">
       <div class="govuk-grid-column-two-thirds">
@@ -31,16 +31,30 @@
             '.aside.text.html',
             journey_link: (
               link_to t('.aside.text.journey_link_text'),
-              'https://static.teachcomputing.org/curriculum_journey.pdf',
+              curriculum_file_redirect_path(slug: @journey_progress_pdf.slug),
               class: 'ncce-link',
-              title: t('.aside.title'),
+              title: t('.aside.titles.full'),
               data: tracking_data('journey poster')
+            ),
+            primary_journey_link: (
+              link_to 'Primary',
+              curriculum_file_redirect_path(slug: @primary_journey_progress_pdf.slug),
+              class: 'ncce-link',
+              title: t('.aside.titles.primary'),
+              data: tracking_data('primary journey poster')
+            ),
+            secondary_journey_link: (
+              link_to 'Secondary',
+              curriculum_file_redirect_path(slug: @secondary_journey_progress_pdf.slug),
+              class: 'ncce-link',
+              title: t('.aside.titles.secondary'),
+              data: tracking_data('secondary journey poster')
             ),
           ),
           image: {
-            file: 'media/images/icons/curriculum-journey.png',
-            title: t('.aside.title'),
-            url: 'https://static.teachcomputing.org/curriculum_journey.pdf',
+            file: @journey_progress_icon.file,
+            title: t('.aside.titles.full'),
+            url: curriculum_file_redirect_path(slug: @journey_progress_pdf.slug),
             tracking_label: 'journey poster'
           },
           tracking_category: tracking_category,
@@ -56,7 +70,26 @@
       </div>
     </div>
   </div>
-  <div class="govuk-main-wrapper govuk-main-wrapper--xl govuk-!-padding-top-0">
+
+</div>
+<%= render IsaacCardComponent.new(
+  tracking_category: tracking_category,
+  padding_class: "govuk-!-padding-bottom-1"
+) %>
+
+<%= render BannerComponent.new(
+  title: t(".at_work.heading"),
+  text:  t(".at_work.content"),
+  background_color: "isaac",
+  box_color: "white",
+  video: { url: cs_topic_video_1_url },
+  media_column_size: :half,
+  media_side: :right,
+  wrapper_padding: "top-0"
+) %>
+
+<div class="govuk-width-container">
+  <div class="govuk-main-wrapper govuk-main-wrapper--xl">
     <div class="govuk-grid-row">
       <div class="govuk-grid-column-full">
         <%= render NoticeComponent.new(
@@ -86,4 +119,3 @@
     </div>
   </div>
 </div>
-<%= render IsaacCardComponent.new(tracking_category: tracking_category) %>

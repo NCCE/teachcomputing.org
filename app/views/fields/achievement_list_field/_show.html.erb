@@ -24,7 +24,7 @@
     </div>
   </div>
   <% field.data.includes(activity: [:programmes]).order(updated_at: :desc).each do |achievement| %>
-  
+
    <%= content_tag(:div, class: "achievement", data: {
       programmes: achievement.activity.programmes.map{ _1.slug },
       "achievement-list-field--achievement-list-field-target": "achievement",
@@ -43,7 +43,7 @@
         <% end %>
         </div>
       </div>
-      <% if achievement.current_state == "complete" && achievement.self_verification_info.present? %>
+      <% if achievement.current_state == "complete" && achievement.evidence.any? %>
         <div class="achievement-evidence">
           <div class="evidence_header">
             <h3>Supplied Evidence</h3>
@@ -53,9 +53,15 @@
                   class: "button button--danger",
                   method: :reject_evidence,
                   data: { confirm: t("administrate.actions.confirm") }
-                ) %>             
+                ) %>
             </div>
-          <div class="supplied-evidence"><%= achievement.self_verification_info %></div>
+          <div class="supplied-evidence">
+            <% achievement.evidence.each_with_index do |evidence_line, index| %>
+              <div class="supplied-evidence_block">
+                <%= simple_format(evidence_line) %>
+              </div>
+            <% end %>
+          </div>
         </div>
       <% end %>
     <% end %>

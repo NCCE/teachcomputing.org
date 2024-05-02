@@ -35,3 +35,6 @@ en:
         title: "I Belong in Computer Science journeys"
         description: "Explore interviews and learn from passionate educators within the Isaac community as well as recently-graduated computer scientists who are doing amazing things in a huge range of computing-related fields. Inspire your student into various careers linked to computer science."
         button_text: "Discover Isaac Computer Science"
+      at_work:
+        heading: "Computer science at work"
+        content: "Help students better understand computer science curriculum topics by connecting them to the real world of work with our new video resources. Watch a Computing Ambassador introduce a topic and share what they do in their day-to-day job."

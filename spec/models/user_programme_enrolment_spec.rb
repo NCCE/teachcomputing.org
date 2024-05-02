@@ -64,4 +64,27 @@ RSpec.describe UserProgrammeEnrolment, type: :model do
       subject.transition_to :complete
     end
   end
+
+  describe "#last_enrolled_at" do
+    subject { create(:user_programme_enrolment) }
+
+    context "when there is a last_transition in state_machine.history" do
+      let(:past_date) { 4.months.ago }
+
+      before do
+        subject.transition_to :complete
+        subject.state_machine.last_transition.update(created_at: past_date)
+      end
+
+      it "returns the date of the last transition" do
+        expect(subject.last_enrolled_at).to eq past_date
+      end
+    end
+
+    context "when there is not a last_transition in state_machine.history" do
+      it "returns the current date" do
+        expect(subject.last_enrolled_at).to eq subject.created_at
+      end
+    end
+  end
 end

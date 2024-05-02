@@ -15,6 +15,10 @@
   @include govuk-media-query($from: desktop) {
     grid-template-columns: repeat(var(--cards-per-row, 2), 1fr);
   }
+
+  &.single-card {
+    grid-template-columns: repeat(1, 1fr);
+  }
 }
 
 .bordered-card {
@@ -45,6 +49,50 @@
 
   &--isaac {
     border-top: solid 9px $isaac;
+  }
+
+  &--toolkit {
+    border-top: solid 9px $primary-cert-color;
+    // Added as a temporary fix after discovering issues with font effecting all govuk-heading-m
+    // To be removed, after font fix is in place
+    padding: 11px !important; 
+  }
+
+  &--toolkit--isaac {
+    border-top: solid 9px $isaac;
+  }
+
+  &--i-belong {
+    border-top: solid 9px $orange;
+
+    .bordered-card__clickable-i-belong-flag {
+      width: 75px;
+      img {
+        width: 100%;
+      }
+    }
+
+    .bordered-card__title {
+      width: calc(100% - 105px);
+    }
+
+    .bordered-card__text {
+      width: calc(100% - 105px);
+    }
+
+    @include govuk-media-query($from: tablet) {
+      .bordered-card__title {
+        width: calc(100% - 145px);
+      }
+
+      .bordered-card__text {
+        width: calc(100% - 145px);
+      }
+
+      .bordered-card__clickable-i-belong-flag {
+        width: 115px;
+      }
+    }
   }
 
   @include govuk-media-query($from: tablet) {
@@ -100,6 +148,11 @@
   margin-bottom: 0;
 }
 
+.bordered-card__external-button {
+  background-image: url('../images/icons/external-button.svg');
+  background-repeat: no-repeat;
+  background-position: 95% center;
+}
 
 .secondary-certification-cards {
   gap: 40px;
@@ -112,6 +165,12 @@
   .bordered-card {
     border-top: solid 9px var(--top-color, var(--green));
   }
+}
+
+.bordered-card__clickable-i-belong-flag {
+  position: absolute;
+  top: 0px;
+  right: 15px;
 }
 
 .bordered-cards--logos {
