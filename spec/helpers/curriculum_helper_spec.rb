@@ -35,6 +35,22 @@ describe CurriculumHelper, type: :helper do
     end
   end
 
+  describe("#key_stage_type") do
+    context "when the key stage is primary level" do
+      it "returns primary" do
+        key_stage_level = "1"
+        expect(helper.key_stage_type(key_stage_level)).to eq "primary"
+      end
+    end
+
+    context "when the key stage is secondary level" do
+      it "returns secondary" do
+        key_stage_level = "3"
+        expect(helper.key_stage_type(key_stage_level)).to eq "secondary"
+      end
+    end
+  end
+
   describe("#year_group_title") do
     context "when the year number contains GCSE" do
       it "returns GCSE" do

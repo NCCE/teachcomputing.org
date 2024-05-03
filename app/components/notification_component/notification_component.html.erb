@@ -1,0 +1,13 @@
+<div class="notification-component <%= @wrapper_css %>">
+  <div class="tooltip">
+    <%= image_pack_tag('media/images/icons/alert.svg') %>
+    <div class="tooltiptext">
+      <% @notifiable_programmes.each do |programme| %>
+        <p class="govuk-body-s">
+          <%= t('.text') %>
+        </p>
+        <%= link_to t('.link_text'), programme.notification_link, class: 'govuk-link' %>
+      <% end %>
+    </div>
+  </div>
+</div>

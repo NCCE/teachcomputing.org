@@ -14,9 +14,12 @@ en:
           bullet_5: "All of the content is free for you to use, and in formats that make it easy for you to adapt it to meet the needs of your learners"
         aside:
           text:
-            html: "Get a better understanding of progression through each key stage and year group by %{journey_link}."
-            journey_link_text: "viewing our curriculum journey poster"
-          title: "View our curriculum journey poster"
+            html: "Get a better understanding of progression through each key stage and year group by %{journey_link}. You can also explore our %{primary_journey_link} and %{secondary_journey_link} curriculum maps."
+            journey_link_text: "viewing and progressing through our curriculum journey"
+          titles:
+            full: "View our curriculum journey poster"
+            primary: "View our Primary curriculum journey poster"
+            secondary: "View our Secondary curriculum journey poster"
         key_stage_heading: "Choose resources by key stage"
         notice:
           title: "Need equipment to help you teach?"
@@ -24,3 +27,19 @@ en:
             html: "Your local Hub can help loan you the kit you need to teach the physical computing units from our curriculum. Find out more in our %{kit_link}."
             kit_link_text: "Guide to physical computing kits"
           link_text: "Contact your local hub"
+        at_work:
+          heading: "Computer science at work"
+          content: "Help students better understand computer science curriculum topics by connecting them to the real world of work with our new video resources. Watch a Computing Ambassador introduce a topic and share what they do in their day-to-day job."
+      show:
+        primary:
+          aside:
+            text:
+              html: "Get a better understanding of progression through each key stage and year group by %{journey_link}."
+              journey_link_text: "viewing and progressing through our Primary curriculum journey"
+            title: "View our Primary curriculum journey poster"
+        secondary:
+          aside:
+            text:
+              html: "Get a better understanding of progression through each key stage and year group by %{journey_link}."
+              journey_link_text: "viewing and progressing through our Secondary curriculum journey"
+            title: "View our Secondary curriculum journey poster"

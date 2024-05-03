@@ -29,6 +29,20 @@ RSpec.describe CourseComponent, type: :component do
     expect(page).to have_text("Join anytime")
   end
 
+  context "new/improve course icons" do
+    it "shows a new/improved icon on new courses" do
+      course.last_updated_at = Date.current
+      render_inline(described_class.new(course: course, filter: filter))
+      expect(page).to have_css("p.ncce-courses__new-improved-badge")
+    end
+
+    it "should not show a new/improved icon on old courses" do
+      course.last_updated_at = Date.current - 4.months
+      render_inline(described_class.new(course: course, filter: filter))
+      expect(page).not_to have_css("img.ncce-courses__badge")
+    end
+  end
+
   it "has a title" do
     render_inline(described_class.new(course: course, filter: filter))
     expect(page).to have_text(course.title)

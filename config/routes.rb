@@ -143,6 +143,7 @@ Rails.application.routes.draw do
   get "/courses/:id(/:name)", action: :show, controller: "courses", as: "course"
 
   get "/curriculum", to: "curriculum/key_stages#index", as: :curriculum_key_stages
+  get "/curriculum/files/:slug", to: "curriculum/file_redirect#redirect_to_file", as: :curriculum_file_redirect
   get "/curriculum/:key_stage_slug", to: "curriculum/key_stages#show", as: :curriculum_key_stage_units
   get "/curriculum/:key_stage_slug/:unit_slug", to: "curriculum/units#show", as: :curriculum_key_stage_unit
   get "/curriculum/:key_stage_slug/:unit_slug/:lesson_slug", to: "curriculum/lessons#show",
@@ -205,8 +206,8 @@ Rails.application.routes.draw do
     defaults: {page_slug: "contributing-partners"}
   get "/primary-certificate", to: "pages#static_programme_page", as: :primary,
     defaults: {page_slug: "primary-certificate"}
-  get "/primary-teachers", to: "landing_pages#primary_teachers", as: :primary_teachers,
-    defaults: {slug: "primary-certificate"}
+  get "/primary-teachers", to: "pages#page", as: :primary_teachers,
+    defaults: {page_slug: "primary-toolkit"}
   get "/secondary-certificate",
     to: "pages#static_programme_page",
     as: :secondary,
@@ -218,14 +219,15 @@ Rails.application.routes.draw do
     defaults: {page_slug: "secondary-senior-leaders"}
   get "/primary-senior-leaders", to: "pages#page", as: :primary_senior_leaders,
     defaults: {page_slug: "primary-senior-leaders"}
-  get "/secondary-teachers", to: "landing_pages#secondary_teachers", as: :secondary_teachers
+  get "/secondary-teachers", to: "pages#page", as: :secondary_teachers,
+    defaults: {page_slug: "secondary-toolkit"}
   get "/secondary-certification", to: "pages#secondary-certification", as: :secondary_certification
   get "/signup-confirmation", to: "pages#page", as: :signup_confirmation, defaults: {page_slug: "signup-confirmation"}
   get "/supporting-partners", to: "pages#page", as: :supporting_partners, defaults: {page_slug: "supporting-partners"}
   get "/terms-conditions", to: "pages#page", as: :terms_conditions, defaults: {page_slug: "terms-conditions"}
 
-  get "/primary-enrichment", to: "enrichment#show", defaults: {slug: "primary-certificate"}
-  get "/secondary-enrichment", to: "enrichment#show", defaults: {slug: "secondary-certificate"}
+  get "/primary-enrichment", to: "enrichment#show", defaults: {slug: "primary-certificate"}, as: :primary_enrichment
+  get "/secondary-enrichment", to: "enrichment#show", defaults: {slug: "secondary-certificate"}, as: :secondary_enrichment
 
   resource :search, only: :show
 

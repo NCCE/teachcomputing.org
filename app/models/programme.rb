@@ -45,6 +45,10 @@ class Programme < ApplicationRecord
     raise NotImplementedError
   end
 
+  def include_in_filter?
+    true
+  end
+
   def pending_delay
   end
 
@@ -57,6 +61,10 @@ class Programme < ApplicationRecord
   end
 
   def enough_activities_for_test?(_user)
+    false
+  end
+
+  def show_notification_for_test?(user)
     false
   end
 
@@ -170,5 +178,9 @@ class Programme < ApplicationRecord
 
   def auto_enrollment_ignored_activity_codes
     []
+  end
+
+  def notification_link
+    root_path
   end
 end

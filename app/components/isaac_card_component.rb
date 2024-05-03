@@ -3,8 +3,9 @@
 class IsaacCardComponent < ViewComponent::Base
   include ViewComponent::Translatable
 
-  def initialize(tracking_category: nil)
+  def initialize(tracking_category: nil, padding_class: nil)
     @tracking_category = tracking_category
+    @padding_class = padding_class
   end
 
   def tracking_data(tracking_label)

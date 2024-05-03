@@ -23,6 +23,10 @@ RSpec.describe("curriculum/key_stages/show", type: :view) do
       expect(rendered).to have_css(".hero__heading", text: "Key stage 1 resources")
     end
 
+    it "links to the journey poster" do
+      expect(rendered).to have_link("viewing and progressing through our Primary curriculum journey", href: "/curriculum/files/primary-journey-progress-pdf")
+    end
+
     it "links to feedback form" do
       expect(rendered).to have_link("Provide your feedback", href: "https://survey.alchemer.eu/s3/90535031/National-Centre-for-Computing-Education-Teach-Computing-Curriculum-Feedback")
     end

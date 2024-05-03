@@ -1,0 +1,86 @@
+.courses-grid {
+  display: grid;
+  grid-template-columns: auto;
+
+  @include govuk-media-query($from: tablet) {
+    column-gap: 36px;
+    grid-template-columns: 1fr 1fr;
+  }
+  @include govuk-media-query($from: desktop) {
+    column-gap: 36px;
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
+.courses-grid--intro {
+  margin-bottom: 32px;
+}
+
+.courses-grid--course {
+  margin-bottom: 36px;
+  position: relative;
+
+  &:last-of-type {
+    margin-bottom: 0;
+  }
+}
+
+.courses-grid--image-wrapper {
+  margin-bottom: 12px;
+  max-height: 175px;
+  overflow: hidden;
+  position: relative;
+
+  @include govuk-media-query($from: tablet) {
+    margin-bottom: 8px;
+    max-height: unset;
+  }
+}
+
+.courses-grid--image {
+  width: 100%;
+}
+
+.courses-grid--banner {
+  background: $purple-dark;
+  color: $white;
+  font-weight: bold;
+  font-size: 14px;
+  left: 0;
+  padding: 2px 8px;
+  position: absolute;
+  top: 0;
+}
+
+.courses-grid--details {
+  line-height: 20px;
+  margin-bottom: 3px;
+  padding: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.courses-grid--type,
+.courses-grid--duration {
+  display: inline-block;
+
+  margin-bottom: 0;
+}
+
+.courses-grid--duration {
+  background-size: 16px 16px;
+  @include govuk-media-query($from: tablet) {
+    background-size: 20px 20px;
+  }
+}
+
+.courses-grid--time {
+  background-size: 16px 16px;
+  display: inline-block;
+  margin-bottom: 0;
+  margin-left: 20px;
+  @include govuk-media-query($from: tablet) {
+    background-size: 20px 20px;
+  }
+}

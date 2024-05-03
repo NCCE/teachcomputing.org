@@ -29,6 +29,12 @@ module CurriculumClient
         teacherGuide {
           #{file_fields}
         }
+        journeyProgressIcon {
+          #{file_fields} slug
+        }
+        journeyProgressPdf {
+          #{file_fields} slug
+        }
         years
       GRAPHQL
 

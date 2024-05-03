@@ -17,9 +17,11 @@ export default class extends ApplicationController {
     'filterCount',
     'filterCount2',
     'viewResultsCount',
+    'faceToFaceFilter',
     'distanceFilter',
     'geocodedLocation',
     'geocodingError',
+    'locationSearch',
     'radiusSelect',
     'nationwideCourses',
     'showNationwideCourses',
@@ -37,6 +39,7 @@ export default class extends ApplicationController {
   locationFiltering = false;
   rangeFiltering = false;
   didScroll = false;
+  faceToFaceValue = '';
 
   initialize() {
     this.menuClass = 'ncce-courses__filter-form-toggle';
@@ -45,6 +48,7 @@ export default class extends ApplicationController {
     this.hiddenClass = 'hidden';
     this.openModifier = '--open';
     this.didScroll = false;
+    this.faceToFaceValue = 'face_to_face'
 
     this.openFilterFormOnDesktop();
 
@@ -148,6 +152,21 @@ export default class extends ApplicationController {
       gtmEvent = 'checked';
     }
     this.sendGTMEvent(gtmEvent, currentTarget.value);
+  }
+
+  processValueChanges(ev) {
+    const { currentTarget } = ev;
+    const value = currentTarget.value;
+    const checked = currentTarget.getAttribute('checked');
+    if (checked) {
+      if (value === this.faceToFaceValue) {
+        this.hideFaceToFaceFilter();
+      }
+    } else {
+      if (value === this.faceToFaceValue) {
+        this.showFaceToFaceFilter();
+      }
+    }
   }
 
   addRangeFilter(ev) {
@@ -289,6 +308,24 @@ export default class extends ApplicationController {
     let lastValue = this.radiusSelectTarget.options[this.radiusSelectTarget.options.length - 1].value;
     this.radiusSelectTarget.value = lastValue;
     this.filter();
+  }
+
+  showFaceToFaceFilter() {
+    const classes = this.faceToFaceFilterTarget.classList;
+    if (classes.contains(this.hiddenClass)) {
+      this.faceToFaceFilterTarget.classList.remove(this.hiddenClass);
+    }
+  }
+
+  hideFaceToFaceFilter() {
+    const classes = this.faceToFaceFilterTarget.classList;
+    if (!classes.contains(this.hiddenClass)) {
+      this.faceToFaceFilterTarget.classList.add(this.hiddenClass);
+      this.locationSearchTarget.value = '';
+      this.locationFiltering = false;
+      this.hideDistanceFilter();
+      this.hideGeocodingError();
+    }
   }
 
   showDistanceFilter() {

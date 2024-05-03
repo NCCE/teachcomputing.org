@@ -23,4 +23,12 @@ class AsideComponent < ViewComponent::Base
       event_label: label
     }
   end
+
+  def aside_image_tag(file, *args, **kwargs)
+    if file.start_with?("http://", "https://")
+      image_tag(file, *args, **kwargs)
+    else
+      image_pack_tag(file, *args, **kwargs)
+    end
+  end
 end

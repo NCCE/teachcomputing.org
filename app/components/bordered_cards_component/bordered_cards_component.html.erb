@@ -18,6 +18,12 @@
           } %>
         </p>
       <% end %>
+
+      <% if card[:clickable_i_belong].present? %>
+        <%= link_to card[:clickable_i_belong], class: "bordered-card__clickable-i-belong-flag" do %>
+          <%= image_pack_tag "media/images/logos/i_belong_flag.svg" %>
+        <% end %>
+      <% end %>
     <% end %>
   <% end %>
 <% end %>

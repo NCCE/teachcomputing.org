@@ -61,6 +61,11 @@
     <nav class="ncce-footer__nav-social" aria-label="Footer Contact Navigation">
       <ul class="ncce-footer__list ncce-footer__grid-social">
         <li class="ncce-footer__list-item">
+          <%= link_to 'https://www.linkedin.com/company/national-centre-for-computing-education', class: 'govuk-footer__link ncce-link ncce-link--on-dark', data: { event_action: 'click', event_category: 'Site Navigation: Footer', event_label: 'LinkedIn' } do %>
+            <%= image_pack_tag "media/images/social-media/linkedin_white.svg", alt: 'LinkedIn logo', class: 'ncce-link__icon ncce-link__icon--footer' %>LinkedIn
+          <% end %>
+        </li>
+        <li class="ncce-footer__list-item">
           <%= link_to 'https://facebook.com/WeAreComputing', class: 'govuk-footer__link ncce-link ncce-link--on-dark', data: { event_action: 'click', event_category: 'Site Navigation: Footer', event_label: 'Facebook' } do %>
             <%= image_pack_tag "media/images/social-media/facebook_small.png", alt: 'Facebook logo', class: 'ncce-link__icon ncce-link__icon--footer' %>Facebook
           <% end %>

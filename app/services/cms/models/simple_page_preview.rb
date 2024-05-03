@@ -3,7 +3,7 @@ module Cms
     class SimplePagePreview
       attr_reader :title, :slug, :excerpt
 
-      def initialize(title, slug, excerpt)
+      def initialize(title:, slug:, excerpt:)
         @title = title
         @slug = slug
         @excerpt = excerpt

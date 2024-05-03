@@ -40,7 +40,7 @@
 ], class_name: "benchmark-banner--width-float two-headings")%>
 
 <div class="govuk-width-container">
-  <div class="govuk-main-wrapper">
+  <div class="govuk-main-wrapper govuk-!-padding-bottom-0">
     <div class="govuk-grid-row">
       <div class="govuk-grid-column-full">
         <h2 class="govuk-heading-l"><%= t(".student-resources.heading") %></h2>
@@ -52,6 +52,15 @@
     </div>
   </div>
 </div>
+
+<%= render BannerComponent.new(
+  title: t(".student-resources.topics_to_life.heading"),
+  text:  t(".student-resources.topics_to_life.content.html"),
+  video: { url: cs_topic_video_1_url },
+  media_column_size: :half,
+  media_side: :left,
+  padding: 0
+) %>
 
 <%= render TestimonialsComponent.new(
   testimonials: careers_support_testimonal_data,

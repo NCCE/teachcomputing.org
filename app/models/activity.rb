@@ -23,7 +23,7 @@ class Activity < ApplicationRecord
   }
   validates :future_learn_course_uuid, uniqueness: true, unless: proc { |a| a.future_learn_course_uuid.blank? }
   validates :stem_activity_code, uniqueness: true, unless: proc { |a| a.stem_activity_code.blank? }
-  validates :stem_course_template_no, uniqueness: true, unless: proc { |a| a.stem_course_template_no.blank? }
+  validates :stem_course_template_no, uniqueness: {case_sensitive: false}, unless: proc { |a| a.stem_course_template_no.blank? }
 
   scope :available_for, lambda { |user|
     where("id NOT IN (SELECT activity_id FROM achievements WHERE user_id = ?)", user.id)
@@ -40,7 +40,7 @@ class Activity < ApplicationRecord
   scope :system, -> { where(provider: "system") }
   scope :user_removable, -> { self_certifiable.non_action }
 
-  store_accessor :public_copy, %i[title_url description evidence_brief evidence_bullets], prefix: true
+  store_accessor :public_copy, %i[title_url description evidence], prefix: true
 
   def self.cs_accelerator_diagnostic_tool
     Activity.find_or_create_by(slug: "subject-knowledge-diagnostic-tool") do |activity|
@@ -51,6 +51,11 @@ class Activity < ApplicationRecord
       activity.self_certifiable = false
       activity.provider = "system"
     end
+  end
+
+  def stem_course_template_no=(value)
+    # Ensure that all stem_course_template_no's are stored in downcase format
+    super(value.downcase)
   end
 
   def online?

@@ -1,0 +1,51 @@
+
+.banner-component {
+  display: flex;
+  background-color: $white;
+
+  &.image-left {
+    flex-direction: row;
+  }
+
+  &.image-right {
+    flex-direction: row-reverse;
+  }
+
+  .banner-component_image {
+    flex: 0 0 33%;
+    position: relative;
+
+    &.i-belong {
+      &:before {
+        position: absolute;
+        top: 0;
+        left: 10px;
+        content: "";
+        display: block;
+        background-image: url('../images/logos/i_belong_flag.svg');
+        background-size: 100%;
+        background-repeat: no-repeat;
+        width: 91px;
+        height: 112px;
+      } 
+    }
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  .banner-component_content {
+    padding: 1.25rem;
+
+    h2 {
+      color: $black !important;
+    }
+    p {
+      color: $grey-storm !important;
+    }
+  }
+
+}

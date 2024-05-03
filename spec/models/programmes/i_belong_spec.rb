@@ -9,6 +9,12 @@ RSpec.describe Programmes::IBelong do
     end
   end
 
+  describe "#include_in_filter?" do
+    it "should return false" do
+      expect(programme.include_in_filter?).to be false
+    end
+  end
+
   describe "#pending_delay" do
     it "should return 14 days" do
       expect(programme.pending_delay).to eq 14.days

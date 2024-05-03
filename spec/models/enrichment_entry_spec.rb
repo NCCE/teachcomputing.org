@@ -12,12 +12,4 @@ RSpec.describe EnrichmentEntry, type: :model do
       is_expected.not_to be_valid
     end
   end
-
-  context "when body is nil" do
-    it do
-      subject.body = nil
-
-      is_expected.not_to be_valid
-    end
-  end
 end

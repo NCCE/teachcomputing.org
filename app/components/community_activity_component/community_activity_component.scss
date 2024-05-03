@@ -117,11 +117,62 @@
 }
 
 .community-activity-component--modal {
+  .ncce-modal {
+    .ncce-modal--header {
+      .icon-close {
+        margin-left: 2.5rem;
+      }
+    }
+  }
   > .ncce-modal {
     background-color: rgba($grey-dark-x, 0.8);
 
+    .ncce-modal--header {
+      .progress-component__counter {
+        margin-left: auto;
+        font-size: 1rem;
+      }
+    }
+    
+    .community-activity-component__footer-actions {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+
+      .progress-component__back {
+        grid-column: 1;
+        justify-self: start;
+      }
+
+      .progress-component__continue, :has(.progress-component__submit) {
+        grid-column: 2;
+        justify-self: end;
+      }
+
+      .progress-component__submit{
+        &-button-wrapper {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          align-items: center;
+          grid-gap: 10px;
+
+          .save-draft {
+            grid-column: 1;
+          }
+
+          .ncce-modal--reopen {
+            grid-column: 2;
+          }
+        }
+      }
+
+    }
+
+    > .ncce-modal--body {
+      min-width: min(90%, 75rem);
+    }
+
     .ncce-modal--body {
-      max-width: 895px;
       padding: 20px;
 
       h2 {
@@ -150,6 +201,7 @@
   }
 
   .govuk-textarea {
+    margin-top: 0.5rem;
     padding: 15px;
     border: 2px solid #0b0c0c;
     height: min(290px, 30vh);
@@ -181,7 +233,41 @@
       background-color: rgba($grey-dark-x, 0.8);
 
       .ncce-modal--body {
-        max-width: 432px;
+        padding: 1rem;
+
+        min-width: 45%;
+        @include govuk-media-query($from: tablet) {
+          max-width: 45%;
+        }
+      }
+
+      .confirmation-modal__footer-actions {
+        @include govuk-media-query($from: tablet) {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          align-items: center;
+        }
+
+        @include govuk-media-query($until: tablet) {
+          display: flex;
+          flex-direction: column;
+        }
+
+        gap: 1rem;
+
+        :nth-child(1) {
+          grid-column: 1;
+          justify-self: start;
+          width: 100%;
+          margin-bottom: 0;
+        }
+
+        :nth-child(2) {
+          grid-column: 2;
+          justify-self: end;
+          width: 100%;
+          margin-bottom: 0;
+        }
       }
     }
 

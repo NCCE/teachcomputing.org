@@ -10,13 +10,34 @@
     </div>
   </div>
 </div>
-<div class="govuk-width-container">
+<div class="govuk-width-container curriculum">
   <%= render partial: 'curriculum/breadcrumb', locals: { current: @key_stage.short_title } %>
 	<div class="govuk-main-wrapper resources__wrapper">
 		<div class="govuk-grid-row">
 			<div class="govuk-grid-column-two-thirds">
 				<p class="govuk-body govuk-!-margin-bottom-8"><%= @key_stage.description %></p>
 			</div>
+      <div class="govuk-grid-column-one-third">
+      <%= render AsideComponent.new(
+        text: t(
+          ".#{key_stage_type(@key_stage.level)}.aside.text.html",
+          journey_link: (
+            link_to t(".#{key_stage_type(@key_stage.level)}.aside.text.journey_link_text"),
+                    curriculum_file_redirect_path(slug: @key_stage.journey_progress_pdf.slug),
+                    class: "ncce-link",
+                    title: t(".#{key_stage_type(@key_stage.level)}.aside.title"),
+                    data: tracking_data("#{key_stage_type(@key_stage.level)} journey poster")
+          ),
+          ),
+        image: {
+          file: @key_stage.journey_progress_icon.file,
+          title: t(".#{key_stage_type(@key_stage.level)}.aside.title"),
+          url: curriculum_file_redirect_path(slug: @key_stage.journey_progress_pdf.slug),
+          tracking_label: "#{key_stage_type(@key_stage.level)} journey poster"
+        },
+        tracking_category: tracking_category,
+        ) %>
+      </div>
 		</div>
     <div class="govuk-grid-row">
 	    <div class="govuk-grid-column-full">

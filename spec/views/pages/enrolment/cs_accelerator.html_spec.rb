@@ -49,7 +49,7 @@ RSpec.describe("pages/enrolment/subject_knowledge", type: :view) do
 
   context "useful links and documents" do
     it "has link to csa brochure" do
-      expect(rendered).to have_css(".ncce-link", text: "CSA Handbook")
+      expect(rendered).to have_css(".ncce-link", text: "GCSE and KS3 Handbook")
     end
 
     it "has link to csa course map" do

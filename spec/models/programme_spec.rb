@@ -43,6 +43,12 @@ RSpec.describe Programme, type: :model do
     end
   end
 
+  describe "#include_in_filter?" do
+    it "should return true" do
+      expect(generic_programme.include_in_filter?).to be true
+    end
+  end
+
   describe "#pending_delay" do
     it "should raise NotImplementedError" do
       expect(generic_programme.pending_delay).to be nil

@@ -345,6 +345,12 @@ class GhostToStrapi
         type: "text",
         text: block.text
       }
+    when "u"
+      {
+        type: "text",
+        text: block.text,
+        underline: true
+      }
     end
   end
 

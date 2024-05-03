@@ -31,6 +31,12 @@ class UserProgrammeEnrolment < ApplicationRecord
     last_transition.created_at
   end
 
+  def last_enrolled_at
+    return last_transition.created_at if state_machine.history.any?
+
+    created_at
+  end
+
   def assign_pathway(pathway_slug)
     pathway = Pathway.find_by(programme_id: programme.id, slug: pathway_slug)
     update(pathway_id: pathway.id)

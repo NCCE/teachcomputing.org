@@ -1,7 +1,7 @@
 <div class="aside-component<%= " #{@class_name || ''}" %>">
   <% if @image.present? %>
     <div class="aside-component__image">
-      <%= link_to image_pack_tag(@image[:file], alt: @image[:alt], title: @image[:title]),
+      <%= link_to aside_image_tag(@image[:file], alt: @image[:alt], title: @image[:title]),
         @image[:url],
         class: 'ncce-link',
         role: 'button',

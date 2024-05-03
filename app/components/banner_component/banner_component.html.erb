@@ -1,0 +1,36 @@
+<div class="<%= color_class(@background_color) %> banner-component-wrapper">
+  <div class="govuk-width-container">
+    <div class="govuk-main-wrapper <%= govuk_wrapper_class %>">
+      <div class="banner-component govuk-!-padding-<%= @padding %> <%= color_class(@box_color) %> <%= media_side_class %>">
+
+        <div class="<%= text_column_class %>">
+          <div class="banner-component_title">
+            <h2 class="govuk-heading-m">
+              <%= @title %>
+            </h2>
+          </div>
+          <div class="banner-component_body">
+            <p class="govuk-body">
+              <%= @text %>
+            </p>
+            <% if @link %>
+              <%= link_to @link[:text], @link[:url], class: @link[:class] %>
+            <% end %>
+          </div>
+        </div>
+
+        <div class="<%= media_column_class %>">
+          <% if @image %>
+            <%= image_pack_tag @image[:url], alt: @image[:alt] %>
+          <% end %>
+          <% if @video %>
+            <video controls>
+              <source src="<%= @video[:url] %>">
+            </video>
+          <% end %>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+</div>

@@ -152,7 +152,7 @@ RSpec.describe CmsRichTextBlockComponent, type: :component do
     render_inline(described_class.new(blocks: [
       {
         type: "image",
-        image: Cms::Models::Image.new("/an-image.png", "", "", formats, :medium)
+        image: Cms::Models::Image.new(url: "/an-image.png", alt: "", caption: "", formats: formats, default_size: :medium)
       }
     ]))
 

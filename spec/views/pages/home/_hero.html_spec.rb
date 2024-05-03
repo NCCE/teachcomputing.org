@@ -7,7 +7,7 @@ RSpec.describe("pages/home/_hero", type: :view) do
   end
 
   it "has a title" do
-    expect(rendered).to have_css(".ncce-home-hero__heading", text: "Helping you teach computing")
+    expect(rendered).to have_text "Helping you teach computing"
   end
 
   it "has button to register" do

@@ -1,4 +1,4 @@
-<%= content_tag :div, class: ['govuk-body', 'govuk-!-margin-bottom-0', 'provider-logos-component', { "provider-logos-component--dashboard": @dashboard }, { "#{@class_name}": @class_name.present? }] do %>
+<%= content_tag :div, class: ['govuk-body', 'govuk-!-margin-bottom-0', 'provider-logos-component', { "provider-logos-component--dashboard": @dashboard, "#{@class_name}": @class_name.present?, "provider-logos-component__no-top-border": @no_top_border}] do %>
   <div class='govuk-body-s provider-logos-component__copy'><%= t(".provider_text.#{@provider}") %></div>
   <div class='govuk-body-s provider-logos-component__logo-wrapper'>
     <% @logos.each do | logo | %>

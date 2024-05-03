@@ -14,6 +14,21 @@ module CurriculumHelper
     contents_url
   end
 
+  def key_stage_type(key_stage, upcase_first: false)
+    primary_years = ["1", "2"]
+    secondary_years = ["3", "4"]
+
+    stage = if primary_years.include?(key_stage)
+      "primary"
+    elsif secondary_years.include?(key_stage)
+      "secondary"
+    end
+
+    return stage.upcase_first if upcase_first
+
+    stage
+  end
+
   def year_group_title(year_number)
     return year_number if year_number.include?("GCSE")
 

@@ -18,6 +18,12 @@ RSpec.describe Programmes::ALevel do
     end
   end
 
+  describe "#include_in_filter?" do
+    it "should return false" do
+      expect(subject.include_in_filter?).to be false
+    end
+  end
+
   describe "#enrol_path" do
     it "returns the path for the enrol" do
       expect(subject.enrol_path(user_programme_enrolment: {user_id: "user_id",

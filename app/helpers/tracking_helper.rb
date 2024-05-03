@@ -2,24 +2,35 @@ module TrackingHelper
   include Rails.application.routes.url_helpers
 
   def tracking_categories
-    @tracking_categories ||= {
-      curriculum_key_stages_path => "Curriculum landing",
-      about_path => "About",
-      gender_balance_path => "GBIC",
-      hubs_path => "Hubs",
-      impact_path => "Impact",
-      primary_path => "Primary unenrolled",
-      primary_certificate_path => "Primary enrolled",
-      secondary_path => "Secondary unenrolled",
-      secondary_certificate_path => "Secondary enrolled",
-      i_belong_path => "I Belong enrolled",
-      courses_path => "Courses",
-      cs_accelerator_certificate_path => "CSA enrolled",
-      complete_cs_accelerator_certificate_path => "CSA Complete",
-      primary_early_careers_path => "ECT primary",
-      secondary_early_careers_path => "ECT secondary",
-      pedagogy_path => "Pedagogy"
-    }
+    @tracking_categories ||= begin
+      tracking_categories = {
+        curriculum_key_stages_path => "Curriculum landing",
+        about_path => "About",
+        gender_balance_path => "GBIC",
+        hubs_path => "Hubs",
+        impact_path => "Impact",
+        primary_path => "Primary unenrolled",
+        primary_certificate_path => "Primary enrolled",
+        secondary_path => "Secondary unenrolled",
+        secondary_certificate_path => "Secondary enrolled",
+        i_belong_path => "I Belong enrolled",
+        courses_path => "Courses",
+        cs_accelerator_certificate_path => "CSA enrolled",
+        complete_cs_accelerator_certificate_path => "CSA Complete",
+        primary_early_careers_path => "ECT primary",
+        secondary_early_careers_path => "ECT secondary",
+        pedagogy_path => "Pedagogy"
+      }
+
+      (1..4).each do |key_stage|
+        key_stage_slug = "key-stage-#{key_stage}"
+        path = curriculum_key_stage_units_path(key_stage_slug: key_stage_slug)
+
+        tracking_categories[path] = "Key stage #{key_stage}"
+      end
+
+      tracking_categories
+    end
   end
 
   def tracking_category

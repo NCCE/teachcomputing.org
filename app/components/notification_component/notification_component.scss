@@ -1,0 +1,56 @@
+.notification-component {
+  position: absolute;
+  z-index: 1;
+
+  .govuk-body-s {
+    margin-bottom: 0;
+  }
+
+  .govuk-link {
+    font-weight: normal;
+  }
+
+  .tooltip {
+    z-index: 4;
+
+    .tooltiptext {
+      width: max-content;
+      padding: 0.5rem 1rem;
+    }
+  }
+
+  &.desktop-notifications {
+    top: 4px;
+    left: -25px;
+
+    @include govuk-media-query($until: tablet) {
+      display: none;
+    }
+
+    @include govuk-media-query($from: tablet) {
+      display: block;
+    }
+  }
+
+  &.tablet-notifications {
+    right: 1.7rem;
+    top: 1.7rem;
+
+    .tooltiptext {
+      position: absolute;
+      transform: translateX(-12rem);
+
+      &:before {
+        left: 12rem;
+      }
+    }
+
+    @include govuk-media-query($until: desktop) {
+      display: block;
+    }
+
+    @include govuk-media-query($from: desktop) {
+      display: none;
+    }
+  }
+}

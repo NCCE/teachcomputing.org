@@ -1,4 +1,9 @@
 <div class="ncce-courses__course">
+  <% if @course.new_course? %>
+    <p class="govuk-body ncce-courses__new-improved-badge">
+      <%= "New/improved" %>
+    </p>
+  <% end %>
   <h2 id="<%= @course.title %>" class="govuk-heading-s ncce-courses__heading">
     <%= link_to @course.title, course_path(id: @course.activity_code, name: @course.title.parameterize), class: 'ncce-link' %><span class="ncce-courses__heading-code"><%= @course.activity_code %></span>
   </h2>

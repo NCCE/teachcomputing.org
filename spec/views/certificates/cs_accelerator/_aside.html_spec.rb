@@ -17,7 +17,7 @@ RSpec.describe("certificates/cs_accelerator/_aside", type: :view) do
 
   it "renders a link to the handbook" do
     render
-    expect(rendered).to have_link("Download our Handbook", href: "https://static.teachcomputing.org/CS_Accelerator_handbook.pdf")
+    expect(rendered).to have_link("Download our Handbook", href: "https://static.teachcomputing.org/KS3_and_GCSE_CS_certificate_handbook.pdf")
   end
 
   it "renders a link to the GCSE specification map" do

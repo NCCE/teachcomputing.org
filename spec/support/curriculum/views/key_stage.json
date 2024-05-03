@@ -44,6 +44,22 @@
           "created": "1 Nov 2020"
         }
       ],
+      "journey_progress_pdf": {
+        "name": "Primary journey progress pdf",
+        "file": "media/images/test/example.pdf",
+        "type": "PDF",
+        "size": "1 KB",
+        "created": "2024-04-15 12:23:53 UTC",
+        "slug": "primary-journey-progress-pdf"
+      },
+      "journey_progress_icon": {
+        "name": "Primary journey progress icon",
+        "file": "media/images/test/example.png",
+        "type": "PNG",
+        "size": "1 KB",
+        "created": "2024-04-15 12:24:09 UTC",
+        "slug": "primary-journey-progress-icon"
+      },
       "teacher_guide": {
         "name": "Teacher Guide",
         "file": "https://teachcomputing.org",

@@ -3,7 +3,7 @@ module Cms
     class Image
       attr_accessor :default_size, :url, :alt, :caption, :formats
 
-      def initialize(url, alt, caption, formats, default_size)
+      def initialize(url:, alt:, caption:, formats:, default_size:)
         @default_size = default_size
         @url = url
         @alt = alt
@@ -13,15 +13,15 @@ module Cms
       end
 
       def image_url
-        if @formats&.has_key? @default_size.to_sym
-          @formats[@default_size.to_sym][:url]
+        if formats&.has_key? default_size.to_sym
+          formats[default_size.to_sym][:url]
         else
-          @url
+          url
         end
       end
 
       def render
-        CmsImageComponent.new(self, size: @default_size)
+        CmsImageComponent.new(self, size: default_size)
       end
     end
   end
