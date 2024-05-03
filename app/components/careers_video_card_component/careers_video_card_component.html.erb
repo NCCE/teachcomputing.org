@@ -1,0 +1,17 @@
+<div class="careers-video-card">
+  <%= render YouTubeEmbedComponent.new(video_url: @video_url) %>
+  <div class="careers-video-card--content">
+    <h2 class="govuk-heading-m careers-video-card--title govuk-!-margin-bottom-2"><%= @title %></h2>
+    <div class="careers-video-card--image-container">
+      <%= image_pack_tag("media/images/icons/person-green.svg", class: "careers-video-card--image", role: "presentation") %>
+      <p class="govuk-body-s govuk-!-margin-bottom-0"><%= @name %></p>
+    </div>
+    <div class="careers-video-card--image-container">
+      <%= image_pack_tag("media/images/icons/job-green.svg", class: "careers-video-card--image", role: "presentation") %>
+      <p class="govuk-body-s govuk-!-margin-bottom-0"><%= @job_title %></p>
+    </div>
+    <div>
+      <p class="govuk-body-s govuk-!-margin-bottom-0 govuk-!-margin-top-2"><%= @description %></p>
+    </div>
+  </div>
+</div>
