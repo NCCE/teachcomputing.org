@@ -71,7 +71,7 @@ class CmsRichTextBlockComponent < ViewComponent::Base
       if @blocks[:text] == "---"
         content_tag(:hr)
       elsif @blocks[:code]
-        content_tag(:div, @blocks[:text], class: classes)
+        content_tag(:div, @blocks[:text].html_safe, class: classes)
       else
         content_tag(:span, @blocks[:text], class: classes)
       end
