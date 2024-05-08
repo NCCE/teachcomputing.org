@@ -10,7 +10,7 @@ en:
           title: "Virtual Storage"
           name: "Sabrina Singh"
           job_title: "Cloud DBA at Morgan Stanley"
-          description: "We heavily rely on cloud storage in our day-to-day lives. Watch Sabrina talk about her role of a database administrator, how she helps ‘save the day’ by solving problems like outages, and the importance of communications skills for all jobs including those in tech."
+          description: "We heavily rely on cloud storage in our day-to-day lives. Watch Sabrina talk about her role of a database administrator, how she helps ‘save the day’ by solving problems like outages, and the importance of communication skills for all jobs including those in tech."
         systems_architecture:
           video_url: "https://www.youtube.com/watch?v=l9ZTDi72yGU&list=PLwcV67XMdDdJn_6BFs2h1yBeyZDArab7J&index=1"
           title: "Systems Architecture"
@@ -22,7 +22,7 @@ en:
           title: "Networking Hardware"
           name: "Elizabeth Barr"
           job_title: "Head of the Cisco Networking Academy UK & Ireland"
-          description: "Everything in a connected world is built on computer networks. Helping young people kick-start their career in tech, Elizabeth shares more about her own journey and how we can shape the society’s future through technology."
+          description: "Everything in a connected world is built on computer networks. Helping young people kick-start their career in tech, Elizabeth shares more about her own journey and how we can shape the future society through technology."
         databases:
           video_url: "https://www.youtube.com/watch?v=e7oxJqjGm2k&list=PLwcV67XMdDdJn_6BFs2h1yBeyZDArab7J&index=5"
           title: "Databases (SQL)"
