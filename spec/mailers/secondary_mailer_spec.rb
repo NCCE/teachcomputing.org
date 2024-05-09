@@ -159,7 +159,13 @@ RSpec.describe SecondaryMailer, type: :mailer do
     end
 
     it "contains the certificate dashboard link" do
-      expect(mail.html_part.body).to have_link("Explore your personal dashboard", href: %r{certificate/secondary-certificate})
+      expect(mail.html_part.body).to have_link("Explore your personal dashboard", href: secondary_certificate_url)
+    end
+
+    describe "when text" do
+      it "contains the certificate dashboard link" do
+        expect(mail.text_part.body).to include("Explore your personal dashboard (#{secondary_certificate_url})")
+      end
     end
   end
 
