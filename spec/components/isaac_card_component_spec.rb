@@ -14,13 +14,13 @@ RSpec.describe IsaacCardComponent, type: :component do
   end
 
   it "renders the body text" do
-    expect(page).to have_css(".govuk-body", text: "Isaac Computer Science is our free online digital textbook")
+    expect(page).to have_css(".govuk-body", text: "Isaac Computer Science is our free online textbook")
   end
 
   it "renders an A Level link" do
     expect(page).to have_link("A level", href: "/a-level-computer-science")
   end
   it "renders a GCSE link" do
-    expect(page).to have_link("GCSE computer science", href: "/gcse-revision")
+    expect(page).to have_link("GCSE", href: "/gcse-revision")
   end
 end
