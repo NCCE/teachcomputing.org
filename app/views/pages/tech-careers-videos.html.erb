@@ -1,0 +1,88 @@
+<div class="govuk-width-container">
+  <div class="govuk-main-wrapper">
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-full">
+        <h2 class="govuk-heading-l"><%= t(".intro.title") %></h2>
+        <p class="govuk-body govuk-!-margin-bottom-0"><%= t(".intro.body") %></p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="light-grey-bg">
+  <div class="govuk-width-container">
+    <div class="govuk-main-wrapper">
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-full">
+          <%= render BorderedCardsWrapperComponent.new(cards_per_row: 3) do |compenent| %>
+            <%= compenent.with_card do %>
+              <%= render CareersVideoCardComponent.new(
+                video_url: t(".card.virtual_storage.video_url"),
+                title: t(".card.virtual_storage.title"),
+                name: t(".card.virtual_storage.name"),
+                job_title: t(".card.virtual_storage.job_title"),
+                description: t(".card.virtual_storage.description")
+                ) %>
+            <% end %>
+            <%= compenent.with_card do %>
+              <%= render CareersVideoCardComponent.new(
+                video_url: t(".card.systems_architecture.video_url"),
+                title: t(".card.systems_architecture.title"),
+                name: t(".card.systems_architecture.name"),
+                job_title: t(".card.systems_architecture.job_title"),
+                description: t(".card.systems_architecture.description")
+                ) %>
+            <% end %>
+            <%= compenent.with_card do %>
+              <%= render CareersVideoCardComponent.new(
+                video_url: t(".card.networking_hardware.video_url"),
+                title: t(".card.networking_hardware.title"),
+                name: t(".card.networking_hardware.name"),
+                job_title: t(".card.networking_hardware.job_title"),
+                description: t(".card.networking_hardware.description")
+                ) %>
+            <% end %>
+            <%= compenent.with_card do %>
+              <%= render CareersVideoCardComponent.new(
+                video_url: t(".card.databases.video_url"),
+                title: t(".card.databases.title"),
+                name: t(".card.databases.name"),
+                job_title: t(".card.databases.job_title"),
+                description: t(".card.databases.description")
+                ) %>
+            <% end %>
+            <%= compenent.with_card do %>
+              <%= render CareersVideoCardComponent.new(
+                video_url: t(".card.cybersecurity.video_url"),
+                title: t(".card.cybersecurity.title"),
+                name: t(".card.cybersecurity.name"),
+                job_title: t(".card.cybersecurity.job_title"),
+                description: t(".card.cybersecurity.description")
+                ) %>
+            <% end %>
+            <%= compenent.with_card do %>
+              <%= render CareersVideoCardComponent.new(
+                video_url: t(".card.robotics_arrays.video_url"),
+                title: t(".card.robotics_arrays.title"),
+                name: t(".card.robotics_arrays.name"),
+                job_title: t(".card.robotics_arrays.job_title"),
+                description: t(".card.robotics_arrays.description")
+                ) %>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="govuk-width-container">
+  <div class="govuk-main-wrapper">
+    <div class="govuk-grid-row">
+      <%= render IsaacCardComponent.new(
+        tracking_category: tracking_category,
+        padding_class: "govuk-!-padding-bottom-1"
+      ) %>
+    </div>
+  </div>
+</div>
