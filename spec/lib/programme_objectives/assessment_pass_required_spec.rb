@@ -10,6 +10,16 @@ RSpec.describe ProgrammeObjectives::AssessmentPassRequired do
 
   it_behaves_like "plays programme objective role"
 
+  describe "displayed" do
+    it "should return false for progress_bar" do
+      expect(subject.objective_displayed_in_progress_bar?).to be false
+    end
+
+    it "should return false for body" do
+      expect(subject.objective_displayed_in_body?).to be false
+    end
+  end
+
   describe "#user_complete?" do
     let(:user) { create(:user) }
 

@@ -11,6 +11,8 @@ RSpec.describe KickOffEmailsJob, type: :job do
   let(:secondary_enrolment) { create(:user_programme_enrolment, programme_id: secondary.id) }
   let(:primary_certificate_enrolment) { create(:user_programme_enrolment, programme_id: primary_certificate.id) }
 
+  let(:auto_enrolled) { create(:user_programme_enrolment, programme: primary_certificate, auto_enrolled: true)}
+
   describe "#perform" do
     context "when the programme is cs accelerator" do
       it "sends an email" do
@@ -54,6 +56,23 @@ RSpec.describe KickOffEmailsJob, type: :job do
         expect do
           described_class.perform_now(primary_certificate_enrolment.id)
         end.to have_enqueued_job(ScheduleProgrammeGettingStartedPromptJob).with(primary_certificate_enrolment.id).at(Time.new(2020, 12, 11, 22, 51, 6))
+      end
+    end
+
+    describe "with auto enrolment" do
+      it "should sent auto enrolled email" do
+        expect {
+          described_class.perform_now(auto_enrolled.id)
+        }.to have_enqueued_mail(PrimaryMailer, :auto_enrolled).with(a_hash_including(params: {user: auto_enrolled.user}))
+      end
+
+      it "should scheudle for 9am if in the morning" do
+        now = DateTime.now.change(hour: 1)
+        travel_to(now) do
+          expect {
+            described_class.perform_now(auto_enrolled.id)
+          }.to have_enqueued_mail(PrimaryMailer, :auto_enrolled).with(a_hash_including(params: {user: auto_enrolled.user})).at(now.change(hour: 9))
+        end
       end
     end
   end
