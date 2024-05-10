@@ -11,7 +11,7 @@ RSpec.describe KickOffEmailsJob, type: :job do
   let(:secondary_enrolment) { create(:user_programme_enrolment, programme_id: secondary.id) }
   let(:primary_certificate_enrolment) { create(:user_programme_enrolment, programme_id: primary_certificate.id) }
 
-  let(:auto_enrolled) { create(:user_programme_enrolment, programme: primary_certificate, auto_enrolled: true)}
+  let(:auto_enrolled) { create(:user_programme_enrolment, programme: primary_certificate, auto_enrolled: true) }
 
   describe "#perform" do
     context "when the programme is cs accelerator" do
