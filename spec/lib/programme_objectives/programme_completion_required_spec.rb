@@ -10,6 +10,12 @@ RSpec.describe ProgrammeObjectives::ProgrammeCompletionRequired do
   it_behaves_like "plays programme objective role"
   it_behaves_like "plays programme objective progress bar role"
 
+  describe "displayed" do
+    it "should return false for body" do
+      expect(subject.objective_displayed_in_body?).to be false
+    end
+  end
+
   describe "#user_complete?" do
     let(:user) { create(:user) }
 
