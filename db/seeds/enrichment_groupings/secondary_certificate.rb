@@ -10,14 +10,7 @@ programme.enrichment_groupings.find_or_initialize_by(title: "Autumn term").becom
 
   g.save!
 
-  g.enrichment_entries.find_or_initialize_by(title: "Cyber Centurion").tap do |e|
-    e.title = "Cyber Centurion"
-    e.i_belong = false
-    e.title_url = "https://www.stem.org.uk/secondary/enrichment/competitions/cyber-centurion"
-    e.image_url = "https://static.teachcomputing.org/enrichment/cyber_centurion.png"
-    e.body = "In the Cyber Centurion Competition teams compete in rounds against one another and the clock to secure a range of computer systems."
-    e.order = 1
-  end.save!
+  g.enrichment_entries.find_by(title: "Cyber Centurion")&.destroy
 
   g.enrichment_entries.find_or_initialize_by(title: "Moon Camp").tap do |e|
     e.title = "Moon Camp"
