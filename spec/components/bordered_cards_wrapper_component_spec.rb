@@ -49,5 +49,4 @@ RSpec.describe BorderedCardsWrapperComponent, type: :component do
       expect(page).to_not have_css("h2")
     end
   end
-
 end
