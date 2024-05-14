@@ -9,12 +9,14 @@ class YouTubeEmbedComponent < ViewComponent::Base
     # Users are expected to provide the YouTube video URL which needs converting to the embed URL
     @video_url = video_url
 
-    video_params = begin
-      CGI.parse(URI.parse(@video_url).query)
-    rescue URI::InvalidURIError
-      {}
+    @video_id = begin
+      CGI.parse(URI.parse(@video_url).query)["v"].first
+    rescue URI::InvalidURIError, NoMethodError
+      nil
     end
+  end
 
-    @video_id = video_params["v"].first
+  def render?
+    @video_id.present?
   end
 end
