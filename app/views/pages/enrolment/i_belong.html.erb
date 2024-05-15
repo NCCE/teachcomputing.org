@@ -82,31 +82,49 @@
                 cards_per_row: 3,
                 cards: [
                 {
-                    image_url: 'pages/i-belong/book_icon.png',
-                    title: 'I Belong handbook',
-                    text: 'Our evidence-informed handbook is key to developing your action plan for increasing uptake of computer science by girls in your school.',
+                    image_url: 'pages/i-belong/book_icon.svg',
+                    title: t('.resources.handbook.title'),
+                    text: t('.resources.handbook.body'),
                     link: {
                       link_title: handbook_download_title,
                       link_url: handbook_download_url
                     }
                 },
                 {
-                    image_url: 'pages/i-belong/faces.png',
-                    title: 'I Belong in computer science posters',
-                    text: "Printed 'I Belong in computer science' posters are available on request!​",
+                    image_url: 'pages/i-belong/faces.svg',
+                    title: t('.resources.posters.title'),
+                    text: t('.resources.posters.body'),
                     link: {
-                    link_title: posters_link_title,
-                    link_url: posters_link,
-                    link_method: posters_link_method
+                      link_title: posters_link_title,
+                      link_url: posters_link,
+                      link_method: posters_link_method
                     }
                 },
                 {
-                    image_url: 'pages/i-belong/text_icon.png',
-                    title: 'Gender Balance in computing research',
-                    text: 'Read our reports from the Gender Balance in computing research project.',
+                    image_url: 'pages/i-belong/text_icon.svg',
+                    title: t('.resources.survey.title'),
+                    text: t('.resources.survey.body'),
                     link: {
-                    link_title: 'Explore the research',
-                    link_url: gender_balance_path,
+                      link_title: t('.resources.survey.link'),
+                      link_url: student_survey_url,
+                    }
+                },
+                {
+                    image_url: 'pages/i-belong/i_belong_poster_template.svg',
+                    title: t('.resources.poster_template.title'),
+                    text: t('.resources.poster_template.body'),
+                    link: {
+                      link_title: t('.resources.poster_template.link'),
+                      link_url: cms_post_url('i-belong-poster-template'),
+                    }
+                },
+                {
+                    image_url: 'pages/i-belong/gcse_options.svg',
+                    title: t('.resources.gcse_options.title'),
+                    text: t('.resources.gcse_options.body'),
+                    link: {
+                      link_title: t('.resources.gcse_options.link'),
+                      link_url: cms_post_url('gcse-options-process'),
                     }
                 }
                 ]
