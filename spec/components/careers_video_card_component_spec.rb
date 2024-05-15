@@ -4,7 +4,7 @@ require "rails_helper"
 RSpec.describe CareersVideoCardComponent, type: :component do
   let(:title) { Faker::Lorem.sentence }
   let(:name) { Faker::Name.name }
-  let(:job_title) { Faker::Company.name }
+  let(:job_title) { Faker::Job.title }
   let(:description) { Faker::Lorem.sentence }
 
   before do
