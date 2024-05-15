@@ -1,17 +1,17 @@
 .careers-video-card {
-  &--content {
+  &__content {
     padding: $component-padding;
   }
 
-  &--title {
+  &__title {
     color: $hyper-link-blue;
   }
 
-  &--image {
+  &__image {
     padding-right: 10px;
   }
 
-  &--image-container {
+  &__image-container {
     padding-top: 10px;
     padding-bottom: 10px;
     display: flex;
