@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class BannerComponent < ViewComponent::Base
-  def initialize(text:, padding: 3, title: nil, link: nil, background_color: "white", box_color: nil, media_column_size: :third, image: nil, video: nil, media_side: :left, wrapper_padding: nil, button: nil, title_link: nil)
+  def initialize(title:, text:, padding: 3, link: nil, background_color: "white", box_color: nil, media_column_size: :third, image: nil, video: nil, media_side: :left, wrapper_padding: nil, button: nil, title_link: nil)
     @title = title
     @text = text
     @padding = padding

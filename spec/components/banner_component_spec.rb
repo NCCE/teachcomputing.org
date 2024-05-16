@@ -116,4 +116,28 @@ RSpec.describe BannerComponent, type: :component do
       expect(page).to have_css(".purple-bg")
     end
   end
+
+  context "with link in the header" do
+    before do
+      render_inline(described_class.new(
+        title: "Banner title",
+        title_link: "https://www.google.com",
+        text: "Some random text",
+        media_column_size: :half,
+        image: {
+          url: "media/images/test/image.png",
+          alt: ""
+        },
+        background_color: "purple",
+        link: {
+          url: "https://www.example.com",
+          text: "Test link"
+        }
+      ))
+    end
+
+    it "has a title link" do
+      expect(page).to have_link("Banner title", href: "https://www.google.com")
+    end
+  end
 end
