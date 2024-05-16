@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class BannerComponent < ViewComponent::Base
-  def initialize(title:, text:, padding: 3, link: nil, background_color: "white", box_color: nil, media_column_size: :third, image: nil, video: nil, media_side: :left, wrapper_padding: nil, button: nil)
+  def initialize(text:, padding: 3, title: nil, link: nil, background_color: "white", box_color: nil, media_column_size: :third, image: nil, video: nil, media_side: :left, wrapper_padding: nil, button: nil, title_link: nil)
     @title = title
     @text = text
     @padding = padding
@@ -14,6 +14,7 @@ class BannerComponent < ViewComponent::Base
     @link = link
     @wrapper_padding = wrapper_padding
     @button = button
+    @title_link = title_link
 
     raise ArgumentError, "You must define a video or image resource" unless @image || @video
   end

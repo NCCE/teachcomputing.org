@@ -6,7 +6,11 @@
         <div class="<%= text_column_class %>">
           <div class="banner-component_title">
             <h2 class="govuk-heading-m">
-              <%= @title %>
+              <% if @title_link %>
+                <%= link_to @title, @title_link %>
+              <% else %>
+                <%= @title %>
+              <% end %>
             </h2>
           </div>
           <div class="banner-component_body">
