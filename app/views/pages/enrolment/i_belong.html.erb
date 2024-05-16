@@ -25,9 +25,9 @@
     </div>
   </div>
 </div>
-<div class="light-grey-bg govuk-!-padding-bottom-9">
+<div class="light-grey-bg govuk-!-padding-bottom-3">
   <div class="govuk-width-container">
-    <main class="govuk-main-wrapper govuk-main-wrapper--xl govuk-!-padding-top-6">
+    <main class="govuk-main-wrapper govuk-main-wrapper--xl govuk-!-padding-top-6 govuk-!-padding-bottom-0">
       <div class="govuk-grid-row">
         <div class="lp-support__cards">
           <div class="lp-support__card white-bg lp-support__card--bordered">
@@ -55,21 +55,38 @@
           </div>
         </div>
       </div>
+    </div>
+  </div>
+</div>
+<div class="purple-bg">
+  <div class="govuk-width-container">
+    <main class="govuk-main-wrapper govuk-!-padding-0">
       <div class="govuk-grid-row">
         <section class="ncce-section govuk-grid-column-full">
-          <h2 class="govuk-heading-m">
-            I Belong Champions
-          </h2>
-          <p class="govuk-body">
-            We're looking for teachers who are paving the way for girls in computer science to join our mission by becoming I Belong Champions. Once you've completed our 'Encouraging girls into GCSE computer science' course, you can claim your digital badge to become a champion.
-          </p>
-          <%= link_to 'Learn more about becoming a champion',
-                      i_belong_info_pack_url,
-                      class: 'button govuk-button govuk-!-margin-bottom-0'
-          %>
+          <div class="govuk-grid-column-one-half">
+            <h2 class="govuk-heading-m">
+              I Belong Champions
+            </h2>
+            <p class="govuk-body">
+              We're looking for teachers who are paving the way for girls in computer science to join our mission by becoming I Belong Champions. Once you've completed our 'Encouraging girls into GCSE computer science' course, you can claim your digital badge to become a champion.
+            </p>
+            <%= link_to 'Learn more about becoming a champion',
+                        i_belong_info_pack_url,
+                        class: 'button govuk-button govuk-!-margin-bottom-0'
+            %>
+          </div>
+          <div class="govuk-grid-column-one-half">
+            <%= render TestimonialComponent.new(
+              name: "Pete",
+              text: "“I’ve really appreciated being part of a peer supported network of like minded Champions: it’s been great to read about other people’s success stories and share ideas for how we can promote inclusion and diversity for the benefit of all our students.”",
+              image: "media/images/pages/i-belong/pete.png",
+              bio: "Head of Computing at Fulford School"
+            ) %>
+          </div>
         </section>
       </div>
     </main>
+    </div>
   </div>
   <div class="white-bg">
     <div class=" govuk-main-wrapper">
