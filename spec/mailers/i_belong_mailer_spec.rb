@@ -94,7 +94,7 @@ RSpec.describe IBelongMailer, type: :mailer do
 
       it "includes email address" do
         expect(mail.text_part.body.to_s)
-          .to match(/Get in touch by emailing info@teachcomputing.org./)
+          .to match(/request this by emailing info@teachcomputing.org./)
       end
     end
   end
