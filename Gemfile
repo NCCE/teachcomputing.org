@@ -4,7 +4,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby "3.1.2"
 
 gem "activestorage-validator"
-gem "administrate", "~> 0.18.0"
+gem "administrate", "~> 0.20.1"
 gem "administrate-field-active_storage", "~> 0.3.4"
 gem "administrate-field-jsonb"
 gem "administrate-field-nested_has_many", "~> 1.3.0"
