@@ -144,4 +144,42 @@ RSpec.describe IBelongMailer, type: :mailer do
       end
     end
   end
+
+  describe "student_attitude_surveys" do
+    let(:mail) { IBelongMailer.with(user: user).student_attitude_surveys }
+    let(:mail_subject) do
+      "I Belong: request your student attitude surveys today"
+    end
+
+    it "renders the body" do
+      expect(mail.body.encoded).to match(/Dear Tobias,\s*Thank you for recently signing up to I Belong: encouraging girls/)
+    end
+
+    it "includes the subject in the email" do
+      expect(mail.html_part.body.to_s).to include("<title>#{mail_subject}</title>")
+    end
+
+    it "contains survey link" do
+      expect(mail.html_part.body.to_s).to have_link("student surveys", href: "https://ncce.io/student-survey")
+    end
+
+    it "contains mail_to link" do
+      expect(mail.html_part.body.to_s).to have_link("info@teachcomputing.org", href: "mailto:info@teachcomputing.org")
+    end
+
+    context "when viewing plain text" do
+      it "greets the user" do
+        expect(mail.text_part.body.to_s).to match(/Dear Tobias,/)
+      end
+
+      it "contains survey url" do
+        expect(mail.text_part.body.to_s).to match(/https:\/\/ncce.io\/student-survey/)
+      end
+
+      it "includes email address" do
+        expect(mail.text_part.body.to_s)
+          .to match(/For support, email info@teachcomputing.org./)
+      end
+    end
+  end
 end

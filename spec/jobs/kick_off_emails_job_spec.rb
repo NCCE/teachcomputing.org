@@ -5,11 +5,12 @@ RSpec.describe KickOffEmailsJob, type: :job do
   let(:cs_accelerator) { create(:cs_accelerator) }
   let(:primary) { create(:primary_certificate) }
   let(:secondary) { create(:secondary_certificate) }
-  let(:cs_accelerator_enrolment) { create(:user_programme_enrolment, programme_id: cs_accelerator.id) }
-  let(:i_belong_enrolment) { create(:user_programme_enrolment, programme: create(:i_belong)) }
-  let(:primary_enrolment) { create(:user_programme_enrolment, programme_id: primary.id) }
-  let(:secondary_enrolment) { create(:user_programme_enrolment, programme_id: secondary.id) }
-  let(:primary_certificate_enrolment) { create(:user_programme_enrolment, programme_id: primary_certificate.id) }
+  let(:i_belong) { create(:i_belong) }
+  let(:cs_accelerator_enrolment) { create(:user_programme_enrolment, programme: cs_accelerator) }
+  let(:i_belong_enrolment) { create(:user_programme_enrolment, programme: i_belong) }
+  let(:primary_enrolment) { create(:user_programme_enrolment, programme: primary) }
+  let(:secondary_enrolment) { create(:user_programme_enrolment, programme: secondary) }
+  let(:primary_certificate_enrolment) { create(:user_programme_enrolment, programme: primary_certificate) }
 
   describe "#perform" do
     context "when the programme is cs accelerator" do
@@ -43,8 +44,9 @@ RSpec.describe KickOffEmailsJob, type: :job do
     end
 
     describe "prompt jobs to be delivered a month after enrolment" do
+      let(:now_time) { Time.new(2020, 11, 11, 12, 22) }
       before do
-        allow(Time).to receive(:now).and_return(Time.new(2020, 11, 11, 12, 22))
+        allow(Time).to receive(:now).and_return(now_time)
       end
 
       it "enques jobs to be delivered later" do
@@ -54,6 +56,9 @@ RSpec.describe KickOffEmailsJob, type: :job do
         expect do
           described_class.perform_now(primary_certificate_enrolment.id)
         end.to have_enqueued_job(ScheduleProgrammeGettingStartedPromptJob).with(primary_certificate_enrolment.id).at(Time.new(2020, 12, 11, 22, 51, 6))
+        expect do
+          described_class.perform_now(i_belong_enrolment.id)
+        end.to have_enqueued_job(ScheduleIBelongStudentSurveyPromptJob).with(i_belong_enrolment.user).at(now_time + 1.week)
       end
     end
   end
