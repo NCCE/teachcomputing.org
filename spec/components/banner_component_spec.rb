@@ -44,8 +44,8 @@ RSpec.describe BannerComponent, type: :component do
       expect(page).to have_css(".banner-component__content-section--two-thirds")
     end
 
-    it "should have button" do
-      expect(page).to have_css(".govuk-button")
+    it "should have a button" do
+      expect(page).to have_link("Button text", href: "https://www.example.com", class: "govuk-button")
     end
   end
 
