@@ -87,14 +87,22 @@ RSpec.describe IBelongMailer, type: :mailer do
       expect(mail.html_part.body.to_s).to have_link("info@teachcomputing.org", href: "mailto:info@teachcomputing.org")
     end
 
+    it "contains link to student survey" do
+      expect(mail.html_part.body.to_s).to have_link("student attitude surveys", href: "https://ncce.io/student-survey")
+    end
+
     context "when viewing plain text" do
       it "greets the user" do
         expect(mail.text_part.body.to_s).to match(/Dear Tobias,/)
       end
 
+      it "contains student survey url" do
+        expect(mail.text_part.body.to_s).to match(/https:\/\/ncce.io\/student-survey/)
+      end
+
       it "includes email address" do
         expect(mail.text_part.body.to_s)
-          .to match(/Get in touch by emailing info@teachcomputing.org./)
+          .to match(/request this by emailing info@teachcomputing.org./)
       end
     end
   end
