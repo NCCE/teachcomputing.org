@@ -2589,6 +2589,4 @@ Activity.find_or_initialize_by(stem_course_template_no: "690b99ca-1106-ef11-9f8a
   activity.provider = "stem-learning"
   activity.stem_activity_code = "CY312"
   activity.credit = 140
-
-  activity.programmes = [secondary_certificate]
 end.save!
