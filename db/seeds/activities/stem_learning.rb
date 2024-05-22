@@ -2520,3 +2520,73 @@ Activity.find_or_initialize_by(stem_course_template_no: "836ce491-02e6-ee11-904c
 
   activity.programmes = [primary_certificate]
 end.save!
+
+Activity.find_or_initialize_by(stem_course_template_no: "da3964d0-5709-ef11-9f8a-002248c635a9").tap do |activity|
+  activity.title = "Assembly language in A Level computer science"
+  activity.slug = "assembly-language-in-a-level-computer-science-2024"
+  activity.category = "face-to-face"
+  activity.remote_delivered_cpd = false
+  activity.provider = "stem-learning"
+  activity.stem_activity_code = "CP511"
+  activity.credit = 25
+
+  activity.programmes = [secondary_certificate]
+end.save!
+
+Activity.find_or_initialize_by(stem_course_template_no: "a8c9764a-5b09-ef11-9f8a-002248c635a9").tap do |activity|
+  activity.title = "Boolean logic in A Level computer science"
+  activity.slug = "boolean-logic-in-a-level-computer-science-2024"
+  activity.category = "face-to-face"
+  activity.remote_delivered_cpd = false
+  activity.provider = "stem-learning"
+  activity.stem_activity_code = "CP513"
+  activity.credit = 25
+
+  activity.programmes = [secondary_certificate]
+end.save!
+
+Activity.find_or_initialize_by(stem_course_template_no: "ebfe7a91-5209-ef11-9f8a-002248c635a9").tap do |activity|
+  activity.title = "Data structures in A Level computer science"
+  activity.slug = "data-structures-in-a-level-computer-science-2024"
+  activity.category = "face-to-face"
+  activity.remote_delivered_cpd = false
+  activity.provider = "stem-learning"
+  activity.stem_activity_code = "CP512"
+  activity.credit = 50
+
+  activity.programmes = [secondary_certificate]
+end.save!
+
+Activity.find_or_initialize_by(stem_course_template_no: "0797bcee-700c-ef11-9f8a-002248c635a9").tap do |activity|
+  activity.title = "Systems architecture in A Level computer science"
+  activity.slug = "systems-architecture-in-a-level-computer-science-2024"
+  activity.category = "face-to-face"
+  activity.remote_delivered_cpd = false
+  activity.provider = "stem-learning"
+  activity.stem_activity_code = "CP515"
+  activity.credit = 25
+
+  activity.programmes = [secondary_certificate]
+end.save!
+
+Activity.find_or_initialize_by(stem_course_template_no: "477ce2ea-c20e-ef11-9f8a-002248c635a9").tap do |activity|
+  activity.title = "Object oriented programming (OOP) in A Level computer science"
+  activity.slug = "object-oriented-programming-oop-in-a-level-computer-science-2024"
+  activity.category = "face-to-face"
+  activity.remote_delivered_cpd = false
+  activity.provider = "stem-learning"
+  activity.stem_activity_code = "CP516"
+  activity.credit = 60
+
+  activity.programmes = [secondary_certificate]
+end.save!
+
+Activity.find_or_initialize_by(stem_course_template_no: "690b99ca-1106-ef11-9f8a-002248c635a9").tap do |activity|
+  activity.title = "Build the foundations to have the confidence in offering GCSE Computer Science"
+  activity.slug = "build-the-foundations-to-have-the-confidence-in-offering-gcse-computer-science"
+  activity.category = "face-to-face"
+  activity.remote_delivered_cpd = false
+  activity.provider = "stem-learning"
+  activity.stem_activity_code = "CY312"
+  activity.credit = 140
+end.save!
