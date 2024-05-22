@@ -7,7 +7,8 @@ module Cms
             if model_class == Cms::Models::Seo
               model_class.new(
                 title: strapi_data[:title],
-                description: strapi_data[:description]
+                description: strapi_data[:description],
+                featured_image: strapi_data.dig(:featuredImage, :data) ? to_image(strapi_data[:featuredImage][:data][:attributes]) : nil
               )
             elsif model_class == Cms::Models::FeaturedImage
               to_featured_image(strapi_data[:data][:attributes])
@@ -55,8 +56,8 @@ module Cms
               url: image_data[:url],
               alt: image_data[:alternativeText],
               caption: image_data[:caption],
-              foramts: image_data[:formats],
-              size: :medium
+              formats: image_data[:formats],
+              default_size: :medium
             )
           end
         end
