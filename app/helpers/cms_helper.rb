@@ -1,5 +1,4 @@
 module CmsHelper
-
   def cms_image_url(image)
     image_url = image.image_url
     if Rails.env.development?
