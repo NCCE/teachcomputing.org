@@ -143,7 +143,7 @@ module ExternalLinkHelper
     "https://forms.office.com/e/hxMcDtvkcM"
   end
 
-  def student_survey_url
+  def i_belong_student_survey_url
     "https://ncce.io/student-survey"
   end
 end
