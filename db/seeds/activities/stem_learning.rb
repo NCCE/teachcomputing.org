@@ -2602,3 +2602,15 @@ Activity.find_or_initialize_by(stem_course_template_no: "1f675bc1-6c0c-ef11-9f89
 
   activity.programmes = [secondary_certificate]
 end.save!
+
+Activity.find_by(stem_course_template_no: "690b99ca-1106-ef11-9f8a-002248c635a9")&.destroy
+
+Activity.find_or_initialize_by(stem_course_template_no: "7539f5a4-be19-ef11-840b-002248c6f524").tap do |activity|
+  activity.title = "Build the foundations to have the confidence in offering GCSE Computer Science"
+  activity.slug = "build-the-foundations-to-have-the-confidence-in-offering-gcse-computer-science"
+  activity.category = "face-to-face"
+  activity.remote_delivered_cpd = false
+  activity.provider = "stem-learning"
+  activity.stem_activity_code = "CP267"
+  activity.credit = 140
+end.save!
