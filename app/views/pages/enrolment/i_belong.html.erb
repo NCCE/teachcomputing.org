@@ -25,9 +25,9 @@
     </div>
   </div>
 </div>
-<div class="light-grey-bg govuk-!-padding-bottom-9">
+<div class="light-grey-bg govuk-!-padding-bottom-3">
   <div class="govuk-width-container">
-    <main class="govuk-main-wrapper govuk-main-wrapper--xl govuk-!-padding-top-6">
+    <main class="govuk-main-wrapper govuk-main-wrapper--xl govuk-!-padding-top-6 govuk-!-padding-bottom-0">
       <div class="govuk-grid-row">
         <div class="lp-support__cards">
           <div class="lp-support__card white-bg lp-support__card--bordered">
@@ -55,8 +55,14 @@
           </div>
         </div>
       </div>
+    </div>
+  </div>
+</div>
+<div class="purple-bg">
+  <div class="govuk-width-container">
+    <main class="govuk-main-wrapper">
       <div class="govuk-grid-row">
-        <section class="ncce-section govuk-grid-column-full">
+        <div class="govuk-grid-column-one-half">
           <h2 class="govuk-heading-m">
             I Belong Champions
           </h2>
@@ -65,11 +71,20 @@
           </p>
           <%= link_to 'Learn more about becoming a champion',
                       i_belong_info_pack_url,
-                      class: 'button govuk-button govuk-!-margin-bottom-0'
+                      class: 'button govuk-button govuk-!-margin-bottom-3'
           %>
-        </section>
+        </div>
+        <div class="govuk-grid-column-one-half">
+          <%= render TestimonialComponent.new(
+            name: "Pete",
+            text: "“I’ve really appreciated being part of a peer-supported network of like-minded Champions: it’s been great to read about other people’s success stories and share ideas for how we can promote inclusion and diversity for the benefit of all our students.”",
+            image: "media/images/pages/i-belong/pete.png",
+            bio: "Head of Computing at Fulford School"
+          ) %>
+        </div>
       </div>
     </main>
+    </div>
   </div>
   <div class="white-bg">
     <div class=" govuk-main-wrapper">
@@ -82,31 +97,49 @@
                 cards_per_row: 3,
                 cards: [
                 {
-                    image_url: 'pages/i-belong/book_icon.png',
-                    title: 'I Belong handbook',
-                    text: 'Our evidence-informed handbook is key to developing your action plan for increasing uptake of computer science by girls in your school.',
+                    image_url: 'pages/i-belong/book_icon.svg',
+                    title: t('.resources.handbook.title'),
+                    text: t('.resources.handbook.body'),
                     link: {
                       link_title: handbook_download_title,
                       link_url: handbook_download_url
                     }
                 },
                 {
-                    image_url: 'pages/i-belong/faces.png',
-                    title: 'I Belong in computer science posters',
-                    text: "Printed 'I Belong in computer science' posters are available on request!​",
+                    image_url: 'pages/i-belong/faces.svg',
+                    title: t('.resources.posters.title'),
+                    text: t('.resources.posters.body'),
                     link: {
-                    link_title: posters_link_title,
-                    link_url: posters_link,
-                    link_method: posters_link_method
+                      link_title: posters_link_title,
+                      link_url: posters_link,
+                      link_method: posters_link_method
                     }
                 },
                 {
-                    image_url: 'pages/i-belong/text_icon.png',
-                    title: 'Gender Balance in computing research',
-                    text: 'Read our reports from the Gender Balance in computing research project.',
+                    image_url: 'pages/i-belong/text_icon.svg',
+                    title: t('.resources.survey.title'),
+                    text: t('.resources.survey.body'),
                     link: {
-                    link_title: 'Explore the research',
-                    link_url: gender_balance_path,
+                      link_title: t('.resources.survey.link'),
+                      link_url: i_belong_student_survey_url,
+                    }
+                },
+                {
+                    image_url: 'pages/i-belong/i_belong_poster_template.svg',
+                    title: t('.resources.poster_template.title'),
+                    text: t('.resources.poster_template.body'),
+                    link: {
+                      link_title: t('.resources.poster_template.link'),
+                      link_url: cms_post_url('i-belong-poster-template'),
+                    }
+                },
+                {
+                    image_url: 'pages/i-belong/gcse_options.svg',
+                    title: t('.resources.gcse_options.title'),
+                    text: t('.resources.gcse_options.body'),
+                    link: {
+                      link_title: t('.resources.gcse_options.link'),
+                      link_url: cms_post_url('gcse-options-process'),
                     }
                 }
                 ]
