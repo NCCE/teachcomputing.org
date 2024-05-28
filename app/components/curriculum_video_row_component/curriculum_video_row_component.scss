@@ -1,0 +1,29 @@
+.curriculum-video-component--details {
+  display: flex;
+  flex-direction: row;
+  padding-top: $component-padding;
+  padding-bottom: $component-padding;
+  width: 100%;
+
+  &__name {
+    flex: 1 1 50%;
+  }
+
+  &__job-title {
+    flex: 1 1 50%;
+  }
+
+  &__image {
+    padding-right: 10px;
+  }
+
+  &__button {
+    &:visited {
+      color: $black !important;
+    }
+    &:hover {
+      color: white !important;
+    }
+    color: $black !important;
+  }
+}
