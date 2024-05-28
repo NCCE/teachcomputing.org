@@ -195,7 +195,7 @@ RSpec.describe IBelongMailer, type: :mailer do
       end
     end
   end
-  
+
   describe "inactive_not_completed_any_sections" do
     let(:mail) { IBelongMailer.with(user: user).inactive_not_completed_any_sections }
     let(:mail_subject) do
