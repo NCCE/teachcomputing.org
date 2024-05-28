@@ -6,7 +6,11 @@
         <div class="<%= text_column_class %>">
           <div class="banner-component_title">
             <h2 class="govuk-heading-m">
-              <%= @title %>
+              <% if @title_link %>
+                <%= link_to @title, @title_link %>
+              <% else %>
+                <%= @title %>
+              <% end %>
             </h2>
           </div>
           <div class="banner-component_body">
@@ -15,6 +19,9 @@
             </p>
             <% if @link %>
               <%= link_to @link[:text], @link[:url], class: @link[:class] %>
+            <% end %>
+            <% if @button %>
+              <a class="govuk-button govuk-!-margin-0 <%= @button[:class] %>" href="<%= @button[:link] %>"><%= @button[:text] %></a>
             <% end %>
           </div>
         </div>
@@ -29,7 +36,7 @@
             </video>
           <% end %>
         </div>
-        
+
       </div>
     </div>
   </div>
