@@ -1,55 +1,187 @@
 <% meta_tag :title, 'Get involved - Teach Computing' %>
-<%= render 'components/hero', hero_title: 'Get involved', subtitle: 'Help us inspire the computing experts of the future', colour: 'lime-green', full_width: true %>
-<div class="govuk-width-container">
-  <div class="govuk-main-wrapper govuk-!-padding-bottom-0">
-    <div class="govuk-grid-row">
-      <div class="govuk-grid-column-two-thirds ncce-about__content">
-        <p class="govuk-body-l govuk-!-margin-bottom-0">The National Centre for Computing Education is funded by the Department for Education and supporting partners, and delivered by STEM Learning. We provide resources, training and support for teaching computing in schools and colleges from primary through to A level.</p>
+<div class="get-involved-page">
+  <%= render 'components/hero', hero_title: t(".title"), small_title: true, colour: 'lime-green', full_width: true %>
+
+  <div class="govuk-width-container">
+    <div class="govuk-main-wrapper govuk-!-padding-top-0 govuk-!-padding-bottom-0">
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-three-quarters ncce-about__content ncce-section">
+          <p class="govuk-body-m"><%= t(".intro.body_1") %></p>
+          <p class="govuk-body-s govuk-!-margin-bottom-0"><%= t(".intro.body_2") %></p>
+        </div>
+
+        <div class="govuk-grid-column-one-quarter ncce-enrichment-card govuk-!-padding-4 ncce-section">
+          <h2 class="govuk-heading-s icon-chart"><%= t(".intro.box.heading") %></h2>
+          <p class="govuk-body-s"><%= t(".intro.box.body") %></p>
+        </div>
       </div>
     </div>
   </div>
 
-  <div class="govuk-main-wrapper govuk-main-wrapper--xl">
-    <div class="govuk-grid-row">
-      <div class="govuk-grid-column-two-thirds ncce-about__content">
-        <h2 class="govuk-heading-l">Why you should get involved</h2>
-        <p class="govuk-body">Our vision is for every child in every school in England to
-          have a world-leading computing education. Join our efforts to ensure
-          young people are equipped with the necessary skills for the future.</p>
-        <h2 class="govuk-heading-s">We want to:</h2>
-        <ul class="govuk-list govuk-list--bullet">
-          <li>Ensure every school can benefit, regardless of circumstances</li>
-          <li> Help primary schools and teachers give every child the right grounding in computing</li>
-          <li> Continue to build capacity and demand for computer science at GCSE and beyond</li>
-          <li>Make computing and digital skills engaging, so all pupils can understand their value and see the opportunities available to them</li>
-        </ul>
+  <%= render BannerComponent.new(
+    background_color: "purple",
+    title: t(".ambassador.heading"),
+    title_css: "govuk-heading-m",
+    title_link: nil,
+    text_blocks: [
+      t(".ambassador.body_1", redirect_link: link_to("STEM Ambassador", stem_ambassadors_url)).html_safe,
+      t(".ambassador.body_2")
+    ],
+    text_css: "govuk-body-s",
+    video: { url: ambassador_video_url },
+    video_type: :youtube,
+    media_column_size: :half,
+    media_side: :right,
+    padding: 5,
+    button: { 
+      text: t(".ambassador.link.title"),
+      link: stem_ambassadors_url,
+      class: "govuk-button button get-involved_ambassador-button bordered-card__get-involved-button bordered-card__external-button",
+      event_action: "click",
+      event_category: t(".ambassador.link.event_category"),
+      event_label: t(".ambassador.link.event_label")
+    },
+  ) %>
+
+  <%= render BannerComponent.new(
+    title: t(".governor.heading"),
+    title_css: "govuk-heading-m",
+    title_link: nil,
+    text_blocks: [
+      t(".governor.body_1"),
+      t(".governor.body_2"),
+      t(".governor.body_3")
+    ],
+    text_css: "govuk-body-s",
+    video: { url: governor_video_url },
+    video_type: :youtube,
+    media_column_size: :half,
+    media_side: :right,
+    padding: 5,
+    button: { 
+      text: t(".governor.link.title"),
+      link: governors_and_trustees_url,
+      class: "govuk-button button get-involved_governor-button",
+      event_action: "click",
+      event_category: t(".governor.link.event_category"),
+      event_label: t(".governor.link.event_label")
+    },
+  ) %>
+
+  <div class="light-grey-bg">
+    <div class="govuk-width-container">
+      <div class="govuk-main-wrapper">
+        <div class="govuk-grid-row get-involved-banner">
+          <div class="govuk-grid-column-full light-grey-bg">
+            <h2 class="govuk-heading-m"><%= t(".donate.heading") %></h2>
+
+            <p class="govuk-body-m"><%= t(".donate.body_1") %></p>
+            <p class="govuk-body-s"><%= t(".donate.body_2") %></p>
+          
+            <div class="get-involved_get-in-touch-button-container">
+              <%= link_to t(".donate.link.title"), governors_and_trustees_url, class: "govuk-button button button--inverted get-involved_get-in-touch-button bordered-card__external-button"%>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-    <div class="govuk-grid-row govuk-!-padding-top-7">
-      <div class="govuk-grid-column-two-thirds">
-        <h2 class='govuk-heading-l govuk-!-margin-bottom-7'>Our partnerships</h2>
+  </div>
+
+  <%= render BannerWithBackgroundComponent.new(
+    background_image_css: "get-involved-background_classroom",
+    label: {
+      icon: "icon-star-black",
+      title: t(".impact.heading"),
+      body: t(".impact.body"),
+    }
+  ) %>
+
+  <div class="govuk-width-container">
+    <div class="govuk-main-wrapper">
+      <div class="govuk-grid-row">
+        <div class="get-involved_key-points govuk-grid-column-full ncce-section">
+          <%= render BorderedCardsComponent.new(
+            class_name: 'bordered-cards--tops',
+            cards_per_row: 3,
+            cards: [
+              {text: t(".key_points_1.card_1.text").html_safe},
+              {text: t(".key_points_1.card_2.text").html_safe},
+              {text: t(".key_points_1.card_3.text").html_safe}
+            ]
+          ) %>
+        </div>
       </div>
     </div>
-    <div class="govuk-grid-row">
-      <div class="govuk-grid-column-full govuk-!-margin-top-3">
-        <%= render BorderedCardsComponent.new(**(GetInvolved.partnership_cards)) %>
+  </div>
+
+  <%= render TestimonialsComponent.new(
+    testimonials: [
+      {
+        text: t(".testimonials.elizabeth.text"),
+        image: "media/images/pages/get-involved/elizabeth.png",
+        name: t(".testimonials.elizabeth.name"),
+        bio: t(".testimonials.elizabeth.bio"),
+      },
+      {
+        text: t(".testimonials.amy.text"),
+        image: "media/images/pages/get-involved/amy.png",
+        name: t(".testimonials.amy.name"),
+        bio: t(".testimonials.amy.bio"),
+      }
+    ],
+    event_tracking_category: nil,
+    testimonials_per_row: 2,
+    wrap_text: true,
+    show_all_on_mobile: true
+  ) %>
+
+  <div class="govuk-width-container">
+    <div class="govuk-main-wrapper">
+      <div class="govuk-grid-row">
+        <div class="get-involved-banner_content govuk-grid-column-two-thirds govuk-!-padding-bottom-2">
+          <h2 class="govuk-heading-m"><%= t(".impact_report.heading") %></h2>
+          <p class="govuk-body-s"><%= t(".impact_report.body") %></p>
+          <p class="govuk-body bordered-card__link">
+            <%= link_to "View our latest Impact report", impact_report_url, class: "govuk-button button bordered-card__get-involved-button bordered-card__external-button", target: "_blank" %>
+          </p>
+          <%= link_to "Discover more of our impact", impact_path %>
+        </div>
+
+        <div class="get-involved_impact-report-image govuk-grid-column-one-third">
+          <%= link_to impact_report_url, target: "_blank" do %> 
+            <%= image_pack_tag "media/images/pages/get-involved/impact_report.png", alt: t(".impact_report.alt") %>
+          <% end %>
+        </div>
+      </div>
+
+      <div class="govuk-grid-row">
+        <div class="get-involved_key-points govuk-grid-column-full ncce-section">
+          <%= render BorderedCardsComponent.new(
+            class_name: 'bordered-cards--tops',
+            cards_per_row: 3,
+            cards: [
+              {text: t(".key_points_2.card_1.text").html_safe},
+              {text: t(".key_points_2.card_2.text").html_safe},
+              {text: t(".key_points_2.card_3.text").html_safe}
+            ]
+          ) %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="light-grey-bg">
+    <div class="govuk-width-container">
+      <div class="govuk-main-wrapper">
+        <div class="govuk-grid-row get-involved-banner">
+          <div class="govuk-grid-column-full light-grey-bg">
+            <h2 class="govuk-heading-m"><%= t(".join_us.heading") %></h2>
+
+            <p class="govuk-body-m"><%= t(".join_us.body_1") %></p>
+            <p class="govuk-body-s"><%= t(".join_us.body_2") %></p>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 </div>
-
-<div class='govuk-main-wrapper govuk-main-wrapper--xl light-grey-bg'>
-    <div class="govuk-width-container">
-      <div class="govuk-grid-row">
-        <div class="govuk-grid-column-two-thirds">
-          <h2 class='govuk-heading-l'>Other ways to get involved</h2>
-          <p class='govuk-body govuk-!-margin-bottom-0'>These opportunities are open to anyone who is interested in helping computing education in their local community.</p>
-        </div>
-      </div>
-      <div class="govuk-grid-row">
-        <div class="govuk-grid-column-full govuk-!-margin-top-7">
-          <%= render BorderedListCardsComponent.new(**(GetInvolved.other_ways_to_get_involved_cards)) %>
-        </div>
-      </div>
-    </div>
-  </div>

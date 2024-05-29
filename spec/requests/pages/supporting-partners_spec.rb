@@ -3,11 +3,11 @@ require "rails_helper"
 RSpec.describe PagesController do
   describe "GET #supporting-partners" do
     before do
-      get supporting_partners_path
+      get "/supporting-partners"
     end
 
-    it "shows the page" do
-      expect(response).to render_template("pages/supporting-partners")
+    it "redirects to the get involved page" do
+      expect(response).to redirect_to(get_involved_path)
     end
   end
 end

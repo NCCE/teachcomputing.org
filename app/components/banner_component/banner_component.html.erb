@@ -5,7 +5,7 @@
 
         <div class="<%= text_column_class %>">
           <div class="banner-component_title">
-            <h2 class="govuk-heading-m">
+            <h2 class="<%= @title_css %>">
               <% if @title_link %>
                 <%= link_to @title, @title_link %>
               <% else %>
@@ -14,14 +14,34 @@
             </h2>
           </div>
           <div class="banner-component_body">
-            <p class="govuk-body">
-              <%= @text %>
-            </p>
+            <% if @text.present? %>
+              <p class="<%= @text_css %>">
+                <%= @text %>
+              </p>
+            <% end %>
+            <% @text_blocks.each do |text_block| %>
+              <p class="<%= @text_css %>">
+                <%= text_block %>
+              </p>
+            <% end %>
             <% if @link %>
               <%= link_to @link[:text], @link[:url], class: @link[:class] %>
             <% end %>
             <% if @button %>
-              <a class="govuk-button govuk-!-margin-0 <%= @button[:class] %>" href="<%= @button[:link] %>"><%= @button[:text] %></a>
+              <% event_attributes = [:event_action, :event_category, :event_label] %>
+              <% if event_attributes.all? { |attr| @button[attr].present? } %>
+                <a class="govuk-button govuk-!-margin-0 <%= @button[:class] %>" 
+                  href="<%= @button[:link] %>" 
+                  event_action="<%= @button[:event_action] %>" 
+                  event_category="<%= @button[:event_category] %>" 
+                  event_label="<%= @button[:event_label] %>">
+                  <%= @button[:text] %>
+                </a>
+              <% else %>
+                <a class="govuk-button govuk-!-margin-0 <%= @button[:class] %>" href="<%= @button[:link] %>">
+                  <%= @button[:text] %>
+                </a>
+              <% end %>
             <% end %>
           </div>
         </div>
@@ -31,9 +51,13 @@
             <%= image_pack_tag @image[:url], alt: @image[:alt] %>
           <% end %>
           <% if @video %>
-            <video controls>
-              <source src="<%= @video[:url] %>">
-            </video>
+            <% if @video_type == :youtube %>
+              <%= render YouTubeEmbedComponent.new(video_url: @video[:url]) %>
+            <% else %>
+              <video controls>
+                <source src="<%= @video[:url] %>">
+              </video>
+            <% end %>
           <% end %>
         </div>
 

@@ -1,4 +1,8 @@
 module ExternalLinkHelper
+  def impact_report_url
+    "https://static.teachcomputing.org/NCCE-Impact-report-2022.pdf"
+  end
+
   def i_belong_handbook_url
     "https://static.teachcomputing.org/I+Belong+Handbook.pdf"
   end

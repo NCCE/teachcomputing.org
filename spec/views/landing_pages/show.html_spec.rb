@@ -23,10 +23,6 @@ RSpec.describe("landing_pages/show", type: :view) do
       expect(rendered).to have_css(".govuk-heading-l", text: "Resources")
     end
 
-    it "renders a contributing partners aside" do
-      expect(rendered).to have_link("Meet our contributing partners", href: "/contributing-partners")
-    end
-
     it "renders support section" do
       expect(rendered).to have_css(".govuk-heading-l", text: "We're here to help")
     end
@@ -54,10 +50,6 @@ RSpec.describe("landing_pages/show", type: :view) do
 
     it "renders resources" do
       expect(rendered).to have_css(".govuk-heading-l", text: "Resources")
-    end
-
-    it "renders contributing partners" do
-      expect(rendered).to have_css(".govuk-heading-l", text: "Contributing partners")
     end
 
     it "renders support section" do
