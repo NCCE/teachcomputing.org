@@ -1,7 +1,73 @@
 require "rails_helper"
 
 RSpec.describe BorderedListCardsComponent, type: :component do
-  let(:test_data) { GetInvolved.other_ways_to_get_involved_cards }
+  let(:test_data) do
+    {
+      class_name: "support-cards",
+      cards: [
+        {
+          class_name: "code-club-card",
+          title: "Volunteer at a Code Club",
+          text: "",
+          image_url: "get-involved/codeclub.svg",
+          link: {
+            link_title: "Volunteer at a Code Club",
+            link_url: "https://codeclub.org/en/volunteer",
+            tracking_page: "test_page",
+            tracking_label: "Code Club"
+          }
+        },
+        {
+          class_name: "stem-card",
+          title: "Become an Ambassador",
+          text: "",
+          image_url: "get-involved/stem.svg",
+          link: {
+            link_title: "Become an Ambassador",
+            link_url: "https://www.stem.org.uk/stem-ambassadors/join-stem-ambassador-programme",
+            tracking_page: "test_page",
+            tracking_label: "STEM Ambassador"
+          }
+        },
+        {
+          class_name: "isac-computer-card",
+          title: "Help at a Discovery event",
+          text: "",
+          image_url: "get-involved/isac.svg",
+          link: {
+            link_title: "Help at a Discovery event",
+            link_url: "https://isaaccomputerscience.org/pages/getintouch_events",
+            tracking_page: "test_page",
+            tracking_label: "Isaac Computing"
+          }
+        },
+        {
+          class_name: "cas-card",
+          title: "Join Computing at School",
+          text: "Join Computing at School",
+          image_url: "get-involved/cas.svg",
+          link: {
+            link_title: "Join Computing at School",
+            link_url: "https://www.computingatschool.org.uk/",
+            tracking_page: "test_page",
+            tracking_label: "CAS"
+          }
+        },
+        {
+          class_name: "school-governors-card",
+          title: "Advocate for us",
+          text: "Advocate for us",
+          image_url: "get-involved/school_governors.svg",
+          link: {
+            link_title: "Advocate for us",
+            link_url: "https://teachcomputing.org/governors-and-trustees/",
+            tracking_page: "test_page",
+            tracking_label: "School Governors"
+          }
+        }
+      ]
+    }
+  end
 
   context "other ways to get involved cards" do
     before do

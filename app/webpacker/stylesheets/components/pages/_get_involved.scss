@@ -1,0 +1,110 @@
+.get-involved-page {
+	.hero__heading-wrapper {
+		width: calc(100% - 20px);
+
+		@media (max-width: 768px) {
+			width: auto;
+		}
+	}
+
+	.govuk-grid-row {
+		margin-right: 0;
+
+		@media (max-width: 768px) {
+			margin-right: -15px;
+		}
+	}
+
+	.get-involved-row {
+		display: flex; 
+		align-items: center;
+		flex-wrap: wrap;
+	}
+
+	.get-involved-banner {
+		background-color: $white;
+
+		h3, p {
+			color: $black !important;
+		}
+	}
+
+	.get-involved_ambassador-video-container, .get-involved_governor-video-container {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+	}
+
+	.get-involved_ambassador-video-container {
+		@media (max-width: 768px) {
+			margin-bottom: 2rem;
+		}
+	}
+
+	.get-involved_governor-video-container {
+		@media (max-width: 768px) {
+			margin-top: 1.7rem;
+			margin-bottom: 0.4rem;
+		}
+	}
+
+	.get-involved-background_triangle {
+		background-image: url('../images/pages/get-involved/triangle_background.svg');
+		background-position: bottom right;
+		background-size: 12rem;
+		background-repeat: no-repeat;
+		z-index: -1;
+	}
+		
+	.get-involved-background_classroom {
+		background-image: url('../images/pages/get-involved/impact_background.png');
+	}
+
+	.get-involved_governor-button {
+		width: fit-content;
+	}
+
+	.get-involved_ambassador-button {
+		text-align: left;
+		width: 370px;
+	}
+
+	.get-involved_get-in-touch-button-container {
+		display: flex;
+		justify-content: center;
+
+		.get-involved_get-in-touch-button {
+			text-align: left;
+			width: 175px;
+		}
+	}
+
+  .get-involved_governor-button,
+	.get-involved_ambassador-button,
+	.get-involved_get-in-touch-button-container {
+		@media (max-width: 768px) {
+      width: 100%;
+    }
+  }
+
+	.get-involved_impact-report-image {
+		display: flex;
+    justify-content: end;
+
+    @media (max-width: 768px) {
+      justify-content: center;
+    }
+
+    a {
+      img {
+        width: 100%;
+      }
+    }
+	}
+
+	.banner-component {
+		h2, p {
+			color: $black !important;
+		}
+	}
+}

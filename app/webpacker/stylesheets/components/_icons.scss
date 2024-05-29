@@ -98,12 +98,21 @@
   @include icon('../images/icons/star.svg');
 }
 
+.icon-star-black {
+  @include icon('../images/icons/star-black.svg');
+}
+
 .icon-close {
   @include icon('../images/icons/close.svg');
 
   background-size: 24px 24px;
 }
 
+.icon-chart {
+  @include icon('../images/icons/chart.svg');
+
+  background-size: 22px 22px;
+}
 
 .icon-feedback {
   @include icon('../images/icons/feedback.svg');

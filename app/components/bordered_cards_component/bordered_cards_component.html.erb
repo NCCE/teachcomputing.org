@@ -6,7 +6,9 @@
           <%= image_pack_tag card[:image_url], alt: card[:title], class: 'bordered-card__image' %>
         </div>
       <% end %>
-      <h2 class="govuk-heading-m bordered-card__title"><%= card[:title] %></h2>
+      <% if card[:title].present? %>
+        <h2 class="govuk-heading-m bordered-card__title"><%= card[:title] %></h2>
+      <% end %>
       <p class="govuk-body bordered-card__text">
         <%= card[:text] %>
       </p>
