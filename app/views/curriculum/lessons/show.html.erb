@@ -28,11 +28,12 @@
             key_stage_level: @unit.year_group.key_stage.level
           } %>
         <% end %>
-        <%= render CurriculumVideoRowComponent.new(
+        <%= render CurriculumVideoComponent.new(
           name: @lesson.video&.name,
           job_title: @lesson.video&.job_title,
           description: @lesson.video&.description,
-          video_url: @lesson.video&.video_url
+          video_url: @lesson.video&.video_url,
+          layout: :col
           ) %>
       </div>
 			<div class="govuk-grid-column-one-third govuk-!-padding-left-0">
