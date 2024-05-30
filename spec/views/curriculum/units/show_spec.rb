@@ -26,7 +26,7 @@ RSpec.describe("curriculum/units/show", type: :view) do
     end
 
     it "does not render a video component" do
-      expect(rendered).to_not have_css(".video-component-col")
+      expect(rendered).to_not have_css(".video-component-row")
     end
   end
 
@@ -37,7 +37,7 @@ RSpec.describe("curriculum/units/show", type: :view) do
     end
 
     it "renders the video component" do
-      expect(rendered).to have_css(".video-component-col")
+      expect(rendered).to have_css(".video-component-row")
     end
     it "renders the video embed" do
       expect(rendered).to have_css("iframe")

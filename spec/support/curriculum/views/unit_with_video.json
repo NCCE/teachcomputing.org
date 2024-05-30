@@ -16,7 +16,8 @@
         "name": "John Smith",
         "job_title": "Head Teacher",
         "description": "This is a description of the video content",
-        "video_url": "https://www.youtube.com/watch?v=9Qyd2yO5Zkc"
+        "video_url": "https://www.youtube.com/watch?v=9Qyd2yO5Zkc",
+        "layout": "row"
       },
       "digitalSummativeAssessmentUrl": "https://www.stem.org.uk/resources/elibrary/resource/522344/year-3-computer-systems-and-networks-connecting-computers",
       "summative_assessments": [],
