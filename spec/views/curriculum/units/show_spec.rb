@@ -2,6 +2,7 @@ require "rails_helper"
 
 RSpec.describe("curriculum/units/show", type: :view) do
   let(:unit_json) { File.new("spec/support/curriculum/views/unit.json").read }
+  let(:unit_json_with_video) { File.new("spec/support/curriculum/views/unit_with_video.json").read }
   let(:user) { create(:user) }
   let(:setup_view) do
     json = JSON.parse(unit_json, object_class: OpenStruct).data
@@ -11,6 +12,36 @@ RSpec.describe("curriculum/units/show", type: :view) do
     json = JSON.parse(unit_json, object_class: OpenStruct).data
     json.unit.isaac_url = ""
     assign(:unit, json.unit)
+  end
+  let(:setup_view_with_video) do
+    json = JSON.parse(unit_json_with_video, object_class: OpenStruct).data
+    json.unit.isaac_url = ""
+    assign(:unit, json.unit)
+  end
+
+  context "when a video is not present" do
+    before do
+      setup_view
+      render
+    end
+
+    it "does not render a video component" do
+      expect(rendered).to_not have_css(".video-component-col")
+    end
+  end
+
+  context "when a video is present" do
+    before do
+      setup_view_with_video
+      render
+    end
+
+    it "renders the video component" do
+      expect(rendered).to have_css(".video-component-col")
+    end
+    it "renders the video embed" do
+      expect(rendered).to have_css("iframe")
+    end
   end
 
   context "when a user is not signed in" do

@@ -15,9 +15,9 @@
         <%= image_pack_tag("media/images/icons/job-green.svg", class: "video-component__image", role: "presentation") %>
         <%= @job_title %>
       </div>
-      <div class="video-component-<%= layout_class %>-content--details__description">
-        <p class="govuk-body-s"><%= @description %></p>
-        <%= link_to "See more careers videos", tech_careers_videos_path, class: "video-component__button govuk-button ncce-button--white" %>
+      <div class="video-component-<%= layout_class %>-content--details__description govuk-body-s">
+        <%= @description %>
+        <%= link_to "See more careers videos", tech_careers_videos_path, class: "video-component__button govuk-button ncce-button--white govuk-!-margin-top-5" %>
       </div>
     </div>
   </div>
