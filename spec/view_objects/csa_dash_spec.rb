@@ -71,20 +71,6 @@ RSpec.describe CSADash do
     end
   end
 
-  describe "#supplementary_activities_for_user" do
-    it "calls correct method on users pathway" do
-      allow(csa).to receive(:pathways_excluding)
-      pathway = instance_double(Pathway)
-      allow(pathway).to receive(:supplementary_activities_for_user)
-      allow(user).to receive(:programme_pathway) { pathway }
-
-      dash.supplementary_activities_for_user
-      expect(pathway)
-        .to have_received(:supplementary_activities_for_user)
-        .with(user)
-    end
-  end
-
   describe "#has_enough_activities_for_test" do
     it "calls method on programme" do
       allow(csa).to receive(:enough_activities_for_test?)
