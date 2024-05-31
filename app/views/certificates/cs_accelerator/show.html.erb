@@ -38,15 +38,6 @@
             </div>
           </div>
 
-          <% if @csa_dash.user_programme_pathway.present? %>
-            <div class="govuk-body ncce-activity-list ncce-csa-dash__section">
-              <%= render partial: 'certificates/pathways/supplementary_courses', locals: {
-                pathway: @csa_dash.user_programme_pathway ,
-                supplementary_activities: @csa_dash.supplementary_activities_for_user
-              } %>
-            </div>
-          <% end %>
-
           <% if @csa_dash.has_enough_activities_for_test %>
             <%= render partial: 'certificates/cs_accelerator/csa-test', locals: {
                 user_programme_assessment: @csa_dash.user_programme_assessment
