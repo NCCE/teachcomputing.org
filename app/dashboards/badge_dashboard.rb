@@ -10,6 +10,7 @@ class BadgeDashboard < BaseDashboard
     id: Field::String,
     academic_year: Field::String,
     active: Field::Boolean,
+    activation_date: FORMATTED_DATE,
     credly_badge_template_id: Field::String,
     created_at: FORMATTED_DATE_TIME,
     updated_at: FORMATTED_DATE_TIME
@@ -24,6 +25,7 @@ class BadgeDashboard < BaseDashboard
     programme
     academic_year
     active
+    activation_date
     credly_badge_template_id
   ].freeze
 
@@ -34,6 +36,7 @@ class BadgeDashboard < BaseDashboard
     id
     academic_year
     active
+    activation_date
     credly_badge_template_id
     created_at
     updated_at
@@ -46,6 +49,7 @@ class BadgeDashboard < BaseDashboard
     programme
     academic_year
     active
+    activation_date
     credly_badge_template_id
   ].freeze
 
