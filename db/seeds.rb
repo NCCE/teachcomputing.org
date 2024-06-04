@@ -32,6 +32,8 @@ require_relative "seeds/pathways/secondary_certificate"
 require_relative "seeds/enrichment_groupings/primary_certificate"
 require_relative "seeds/enrichment_groupings/secondary_certificate"
 
+require_relative "seeds/hubs/hubs"
+
 require_relative "seeds/admin/authorisers"
 
 Programme.all.each do |p|
