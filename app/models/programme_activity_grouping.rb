@@ -65,20 +65,17 @@ class ProgrammeActivityGrouping < ApplicationRecord
     programme = Programme.find_by(slug: "i-belong")
     raise "Programme could not be found" if programme.blank?
 
-    potential_groupings = programme.programme_activity_groupings.community
-    raise "There are more than 2 available groupings for the moved activity" unless potential_groupings.size == 2
-
     activity = programme.activities.find_by(title: "Implement selected key stage 3 Teach Computing Curriculum resources")
     raise "Activity could not be found" if activity.blank?
 
-    programme_activity = ProgrammeActivity.find_by(activity_id: activity.id)
+    programme_activity = programme.programme_activities.find_by(activity_id: activity.id)
     raise "Programme activity could not be found" if programme_activity.blank?
 
-    original_grouping = programme_activity.programme_activity_grouping
+    original_grouping = programme.programme_activity_groupings.find_by(sort_key: 3)
     raise "Current grouping could not be found" if original_grouping.blank?
 
-    new_grouping = potential_groupings.where.not(id: original_grouping.id).first
-    raise "New grouping could not be determined" if new_grouping.blank?
+    new_grouping = programme.programme_activity_groupings.find_by(sort_key: 4)
+    raise "New grouping could not be found" if new_grouping.blank?
 
     programme_activity.update!(programme_activity_grouping_id: new_grouping.id)
 
