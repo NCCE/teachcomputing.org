@@ -24,7 +24,7 @@ RSpec.describe Admin::UsersController do
       allow(User).to receive(:find_by_email).and_return(admin_user)
       allow(Support::UserUtilities).to receive(:reset_tests).and_return([])
     end
-    
+
     context "when reset tests result is empty" do
       it "calls the reset service and redirects back with a notice" do
         get admin_user_perform_reset_path(user_id: user.id)
