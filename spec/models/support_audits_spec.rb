@@ -31,7 +31,7 @@ RSpec.describe SupportAudit, type: :model do
     before do
       allow(User).to receive(:find_by_email).and_return(default_user)
     end
-    
+
     context "before_create" do
       it "adds actuating user details" do
         support_audit.save!

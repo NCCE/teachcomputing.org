@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :user_programme_enrolment_transition do
-    association :user_programme_enrolment
+    user_programme_enrolment
     to_state { "enrolled" }
     sort_key { 1 }
     most_recent { false }

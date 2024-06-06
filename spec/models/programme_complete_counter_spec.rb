@@ -30,12 +30,12 @@ RSpec.describe ProgrammeCompleteCounter, type: :model do
       end
 
       it "sets Sentry tags with the programme" do
-        programme_complete_counter.get_next_number rescue nil
+        programme_complete_counter.get_next_number rescue nil # standard:disable Style/RescueModifier
         expect(Sentry).to have_received(:set_tags).with(programme: programme)
       end
 
       it "captures the exception with Sentry" do
-        programme_complete_counter.get_next_number rescue nil
+        programme_complete_counter.get_next_number rescue nil # standard:disable Style/RescueModifier
         expect(Sentry).to have_received(:capture_exception).with(instance_of(ActiveRecord::ActiveRecordError))
       end
     end

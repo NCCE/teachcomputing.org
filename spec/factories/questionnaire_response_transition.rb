@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :questionnaire_response_transition do
-    association :questionnaire_response
+    questionnaire_response
     to_state { "in_progress" }
     sort_key { 1 }
     most_recent { false }

@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :assessment_attempt_transition do
-    association :assessment_attempt
+    assessment_attempt
     to_state { "commenced" }
     sort_key { 1 }
     most_recent { false }
