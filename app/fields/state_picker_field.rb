@@ -12,4 +12,8 @@ class StatePickerField < Administrate::Field::Base
   def to_s
     data.to_s
   end
+
+  def objectives
+    @objectives ||= resource.programme.programme_objectives
+  end
 end

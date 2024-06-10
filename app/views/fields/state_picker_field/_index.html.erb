@@ -1,1 +1,11 @@
 <%= field.to_s %>
+
+<% user = field.resource.user %>
+<div class="administrate_objectives-row">
+  <% field.objectives.each_with_index do |objective, idx| %>
+    <% color = objective&.user_complete?(user) ? 'green' : 'red' %>
+    <% label = strip_tags(objective.progress_bar_title.upcase_first) %>
+
+    <span class="administrate_objective-circle" style="background-color: <%= color %>;" title="<%= label %>"></span>
+  <% end %>
+</div>

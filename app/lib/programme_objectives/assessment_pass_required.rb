@@ -9,6 +9,10 @@ class ProgrammeObjectives::AssessmentPassRequired
     assessment.latest_attempt_for(user:)&.in_state?(:passed) || false
   end
 
+  def progress_bar_title
+    "Programme Assessment"
+  end
+
   def objective_displayed_in_progress_bar?
     false
   end
