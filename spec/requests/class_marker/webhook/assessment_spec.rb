@@ -36,4 +36,47 @@ RSpec.describe ClassMarker::WebhooksController do
       end
     end
   end
+
+  describe "private methods" do
+    let(:controller_instance) { described_class.new }
+    let(:secret) { "test_secret" }
+    let(:signature) { "valid_signature" }
+
+    before do
+      allow(ENV).to receive(:fetch).and_return(secret)
+      allow(controller_instance).to receive(:request).and_return(OpenStruct.new(headers: {"HTTP_X_CLASSMARKER_HMAC_SHA256" => signature}))
+    end
+
+    describe "#calculate_signature" do
+      it "calculates the correct HMAC signature" do
+        expected_signature = Base64.encode64(OpenSSL::HMAC.digest(OpenSSL::Digest.new("sha256"), secret, passing_json_body)).strip
+        calculated_signature = controller_instance.send(:calculate_signature, passing_json_body)
+        expect(calculated_signature).to eq(expected_signature)
+      end
+    end
+
+    describe "#hmac_header_valid?" do
+      context "when the header is present" do
+        it "returns true if the HMAC signature is valid" do
+          allow(controller_instance).to receive(:calculate_signature).and_return(signature)
+          expect(controller_instance.send(:hmac_header_valid?)).to be true
+        end
+
+        it "returns false if the HMAC signature is invalid" do
+          allow(controller_instance).to receive(:calculate_signature).and_return("invalid_signature")
+          expect(controller_instance.send(:hmac_header_valid?)).to be false
+        end
+      end
+
+      context "when the header is absent" do
+        before do
+          allow(controller_instance.request).to receive(:headers).and_return({})
+        end
+
+        it "returns false" do
+          expect(controller_instance.send(:hmac_header_valid?)).to be false
+        end
+      end
+    end
+  end
 end

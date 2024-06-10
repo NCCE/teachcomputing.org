@@ -46,6 +46,7 @@ RSpec.describe Achievement, type: :model do
     it { is_expected.to belong_to(:activity) }
     it { is_expected.to belong_to(:user) }
     it { is_expected.to have_many(:achievement_transitions) }
+    it { is_expected.to have_one_attached(:supporting_evidence) }
   end
 
   describe "validations" do
@@ -149,6 +150,28 @@ RSpec.describe Achievement, type: :model do
 
     it "omits the achievements which don't match the provider" do
       expect(Achievement.with_provider("stem-learning")).not_to include(future_learn_achievement)
+    end
+  end
+
+  describe "#belonging_to_programme?" do
+    context "when programme is nil" do
+      it "returns false" do
+        expect(achievement.belonging_to_programme?(nil)).to be false
+      end
+    end
+
+    context "when programme is provided" do
+      before do
+        programme_activity
+      end
+
+      it "returns true if the activity belongs to the programme" do
+        expect(achievement.belonging_to_programme?(programme)).to be true
+      end
+
+      it "returns false if the activity does not belong to the programme" do
+        expect(achievement2.belonging_to_programme?(programme)).to be false
+      end
     end
   end
 
