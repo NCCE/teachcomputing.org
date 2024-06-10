@@ -59,7 +59,7 @@
     <!-- End Google Tag Manager (noscript) -->
   <% end %>
 
-  <%= link_to 'Skip to main content', '#main-content', class: 'govuk-skip-link' %>
+  <%= link_to "Skip to main content", "#main-content", class: "govuk-skip-link", data: {module: "govuk-skip-link"} %>
 
   <%= yield :content %>
 </body>
