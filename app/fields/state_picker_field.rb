@@ -16,4 +16,22 @@ class StatePickerField < Administrate::Field::Base
   def objectives
     @objectives ||= resource.programme.programme_objectives
   end
+
+  def objective_color(objective)
+    return "red" if user.blank? || objective.blank?
+
+    objective.user_complete?(user) ? "green" : "red"
+  end
+
+  def objective_title(objective)
+    return "" unless objective.present? && objective.progress_bar_title.present?
+
+    objective.progress_bar_title.upcase_first
+  end
+
+  private
+
+  def user
+    @user ||= resource.user
+  end
 end
