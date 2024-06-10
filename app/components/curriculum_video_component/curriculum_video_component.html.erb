@@ -6,16 +6,16 @@
     <div class="video-component-<%= layout_class %>-content__media">
       <%= render YouTubeEmbedComponent.new(video_url: @video_url) %>
     </div>
-    <div class="video-component-<%= layout_class %>-content--details">
-      <div class="video-component-<%= layout_class %>-content--details__name govuk-body-s govuk-!-margin-bottom-0">
+    <div class="video-component-<%= layout_class %>-content-details">
+      <div class="video-component-<%= layout_class %>-content-details__name govuk-body-s govuk-!-margin-bottom-0">
         <%= image_pack_tag("media/images/icons/person-green.svg", class: "video-component__image", role: "presentation") %>
         <%= @name %>
       </div>
-      <div class="video-component-<%= layout_class %>-content--details__job-title govuk-body-s govuk-!-margin-bottom-0">
+      <div class="video-component-<%= layout_class %>-content-details__job-title govuk-body-s govuk-!-margin-bottom-0">
         <%= image_pack_tag("media/images/icons/job-green.svg", class: "video-component__image", role: "presentation") %>
         <%= @job_title %>
       </div>
-      <div class="video-component-<%= layout_class %>-content--details__description govuk-body-s">
+      <div class="video-component-<%= layout_class %>-content-details__description govuk-body-s">
         <%= @description %>
         <%= link_to "See more careers videos", tech_careers_videos_path, class: "video-component__button govuk-button ncce-button--white govuk-!-margin-top-5" %>
       </div>

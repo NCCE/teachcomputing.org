@@ -26,7 +26,7 @@
       flex: 2;
     }
 
-    &--details {
+    &-details {
       flex: 1;
       padding-left: $component-padding;
 
@@ -56,11 +56,10 @@
   padding-top: $component-padding;
 
   &-content {
-    &--details {
+    &-details {
       display: flex;
       flex-wrap: wrap;
       padding-top: $component-padding;
-
 
       &__name {
         flex: 1 1 50%;
