@@ -44,6 +44,13 @@
           %>
           <%= render MixedCardsComponent.new(cards: cards) %>
 
+          <%= render CurriculumVideoComponent.new(
+            name: @unit.video&.name,
+            job_title: @unit.video&.job_title,
+            description: @unit.video&.description,
+            video_url: @unit.video&.video_url,
+            layout: :row
+          ) %>
       </div>
     </div>
     <%= render partial: 'lessons', locals: { key_stage: @unit.year_group.key_stage, unit: @unit, lessons: @unit.lessons } %>

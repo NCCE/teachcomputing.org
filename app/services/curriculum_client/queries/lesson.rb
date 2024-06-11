@@ -36,6 +36,13 @@ module CurriculumClient
             description
           }
         }
+        video {
+          title
+          name
+          jobTitle
+          description
+          videoUrl
+        }
       GRAPHQL
 
       def self.all(fields = FIELDS)
