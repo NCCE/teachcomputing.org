@@ -35,7 +35,7 @@
   <link href="https://fonts.googleapis.com/css?family=Roboto:400,400i,700" rel="stylesheet">
   <%= stylesheet_pack_tag 'application',media: 'all' %>
   <%= javascript_pack_tag 'application' %>
-  <%= javascript_pack_tag 'govuk-frontend' %>
+  <%= javascript_pack_tag 'govuk-frontend', type: 'module' %>
 
   <% if ENV['GOOGLE_TAG_MANAGER_KEY'] %>
     <!-- Google Tag Manager -->
