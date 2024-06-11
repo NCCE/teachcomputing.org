@@ -318,6 +318,7 @@
 .govuk-header__link {
   color: $white;
   font-weight: normal !important;
+  font-family: $govuk-font-family;
 
   &:link,
   &:visited {
