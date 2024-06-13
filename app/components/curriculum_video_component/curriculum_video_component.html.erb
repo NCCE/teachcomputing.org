@@ -8,12 +8,20 @@
     </div>
     <div class="video-component-<%= layout_class %>-content-details">
       <div class="video-component-<%= layout_class %>-content-details__name govuk-body-s govuk-!-margin-bottom-0">
-        <%= image_pack_tag("media/images/icons/person-green.svg", class: "video-component__image", role: "presentation") %>
-        <%= @name %>
+        <div>
+          <%= image_pack_tag("media/images/icons/person-green.svg", class: "video-component__image", role: "presentation") %>
+        </div>
+        <div>
+          <%= @name %>
+        </div>
       </div>
       <div class="video-component-<%= layout_class %>-content-details__job-title govuk-body-s govuk-!-margin-bottom-0">
-        <%= image_pack_tag("media/images/icons/job-green.svg", class: "video-component__image", role: "presentation") %>
-        <%= @job_title %>
+        <div>
+          <%= image_pack_tag("media/images/icons/job-green.svg", class: "video-component__image", role: "presentation") %>
+        </div>
+        <div>
+          <%= @job_title %>
+        </div>
       </div>
       <div class="video-component-<%= layout_class %>-content-details__description govuk-body-s">
         <%= @description %>

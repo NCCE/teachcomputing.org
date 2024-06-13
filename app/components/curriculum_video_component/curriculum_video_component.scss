@@ -36,11 +36,13 @@
       }
 
       &__name {
+        display: flex;
         flex: 1 1 50%;
         padding-bottom: $component-padding;
       }
 
       &__job-title {
+        display: flex;
         flex: 1 1 50%;
         padding-bottom: $component-padding;
       }
@@ -62,11 +64,13 @@
       padding-top: $component-padding;
 
       &__name {
+        display: flex;
         flex: 1 1 50%;
         padding-bottom: $component-padding;
       }
 
       &__job-title {
+        display: flex;
         flex: 1 1 50%;
         padding-bottom: $component-padding;
       }
@@ -77,5 +81,3 @@
     }
   }
 }
-
-
