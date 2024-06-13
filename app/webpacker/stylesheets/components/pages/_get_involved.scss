@@ -87,6 +87,14 @@
     }
   }
 
+	.get-invovled__impact-button {
+		max-width: 318px;
+		padding-left: 0px;
+		@include govuk-media-query($until: tablet) {
+			max-width: 100%;
+		}
+	}
+
 	.get-involved_impact-report-image {
 		display: flex;
     justify-content: end;
