@@ -2,6 +2,8 @@
 @import 'settings/_fonts.scss';
 @import 'settings/_colors.scss';
 
+// Flag to set the typography new scale, optional in v5, but required in v6
+// $govuk-new-typography-scale: true;
 @import 'govuk-frontend/dist/govuk/index';
 
 // import NCCE settings
