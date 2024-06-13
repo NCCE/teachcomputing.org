@@ -91,12 +91,13 @@
 .ncce-courses__filter-form-toggle,
 .ncce-courses__filter-form-toggle--open {
   @extend .govuk-header__menu-button;
-  color: #333448;
+  color: #333448 !important;
   display: block;
   margin: 0;
   position: inherit;
   text-align: right;
   width: 100%;
+  max-width: none;
 
   &:focus, &:active, &:hover {
     outline: none;
