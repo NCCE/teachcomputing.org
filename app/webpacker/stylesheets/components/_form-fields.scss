@@ -83,21 +83,14 @@
 
   .ncce-checkboxes__label {
     line-height: 0.8rem;
-    padding: 8px 0 0 0;
+    // padding: 8px 0 0 0;
 
     &::before {
       background-color: $white;
       border: 2px solid #0B0C0C;
       border-radius: $border-radius;
-      height: 30px;
-      width: 30px;
-    }
-
-    &::after {
-      top: 8px;
-      left: 5px;
-      height: 11px;
-      width: 19px;
+      height: 40px;
+      width: 40px;
     }
 
     &--multiline {
