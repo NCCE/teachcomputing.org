@@ -83,7 +83,6 @@
 
   .ncce-checkboxes__label {
     line-height: 0.8rem;
-    // padding: 8px 0 0 0;
 
     &::before {
       background-color: $white;
@@ -95,7 +94,7 @@
 
     &--multiline {
       line-height: normal;
-      padding: 0;
+      padding: 0 0 0 5px;
       vertical-align: middle;
     }
   }
