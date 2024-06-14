@@ -97,15 +97,6 @@
       line-height: normal;
       padding: 0;
       vertical-align: middle;
-
-      &::before,
-      &::after {
-        top: 0.55rem;
-      }
-
-      &::after {
-        margin-top: 0.45rem;
-      }
     }
   }
 
