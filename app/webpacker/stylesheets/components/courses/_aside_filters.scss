@@ -7,7 +7,7 @@
 
   @include govuk-media-query($until: desktop) {
     box-shadow: 0 1.5px 2px -2px #333448;
-    margin: 0 0 5px 0;
+    margin: 0 0 5px 0 !important;
     padding: 2vh 1.2rem 0;
   }
 
@@ -55,7 +55,7 @@
 }
 
 .ncce-courses__filter {
-  height: 91vh;
+  height: 70vh;
   overflow: scroll;
   overflow-x: hidden;
   padding-bottom: 2vh;
