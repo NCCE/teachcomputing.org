@@ -130,4 +130,35 @@ RSpec.describe PrimaryMailer, type: :mailer do
       end
     end
   end
+
+  describe "auto_enrolled" do
+    let(:user) { create(:user, first_name: "Tobias") }
+    let(:mail) { PrimaryMailer.with(user: user).auto_enrolled }
+    let(:mail_subject) { "Welcome to Teach primary computing" }
+
+    it "renders the headers" do
+      expect(mail.subject).to eq(mail_subject)
+      expect(mail.to).to eq([user.email])
+      expect(mail.from).to eq(["noreply@teachcomputing.org"])
+    end
+
+    it "renders the body" do
+      expect(mail.body.encoded).to match(/Hi Tobias,\s*Did you know that you're already well on your way/)
+    end
+
+    it "includes the subject in the email" do
+      expect(mail.html_part.body.to_s).to include("<title>#{CGI.escape_html(mail_subject)}</title>")
+    end
+
+    it "contains link to dashboard" do
+      expect(mail.html_part.body.to_s).to have_link("Explore your personal dashboard", href: primary_certificate_url)
+    end
+
+    context "when viewing plain text" do
+      it "includes email address" do
+        expect(mail.text_part.body.to_s)
+          .to include("Explore your personal dashboard (#{primary_certificate_url})")
+      end
+    end
+  end
 end

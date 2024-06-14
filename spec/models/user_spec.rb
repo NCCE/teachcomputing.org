@@ -126,6 +126,64 @@ RSpec.describe User do
     end
   end
 
+  describe "#forget!" do
+    context "when the user has not been forgotten" do
+      let(:random_hex) { SecureRandom.hex(8) }
+      let(:current_datetime) { DateTime.now }
+
+      before do
+        allow(SecureRandom).to receive(:hex).and_return(random_hex)
+        allow(DateTime).to receive(:now).and_return(current_datetime)
+        user.achievements << create(:achievement, :with_supporting_evidence)
+        user.forget!
+      end
+
+      it "sets forgotten to true" do
+        expect(user.forgotten).to be true
+      end
+
+      it "sets email to devnull address" do
+        expect(user.email).to eq("#{user.id}@devnull-ncce.slcs.ac.uk")
+      end
+
+      it "sets stem_credentials_expires_at to current datetime" do
+        expect(user.stem_credentials_expires_at).to eq(current_datetime)
+      end
+
+      it "sets future_learn_organisation_memberships to an empty array" do
+        expect(user.future_learn_organisation_memberships).to eq([])
+      end
+
+      it "sets last_sign_in_at to nil" do
+        expect(user.last_sign_in_at).to be_nil
+      end
+
+      it "sets stem_credentials_access_token to a random hex" do
+        expect(user.stem_credentials_access_token).to eq(random_hex)
+      end
+
+      it "sets stem_credentials_refresh_token to a random hex" do
+        expect(user.stem_credentials_refresh_token).to eq(random_hex)
+      end
+
+      it "purges attachments from achievements" do
+        user.achievements.with_attachments.each do |achievement|
+          expect(achievement.supporting_evidence.attachments).to be_empty
+        end
+      end
+    end
+
+    context "when the user has already been forgotten" do
+      before do
+        user.update(forgotten: true)
+      end
+
+      it "does not modify the user" do
+        expect { user.forget! }.not_to change { user.attributes }
+      end
+    end
+  end
+
   describe "#enrolments" do
     it "returns UserProgrammeEnrolments for the given user" do
       enrolment = create(:user_programme_enrolment, user_id: user.id)

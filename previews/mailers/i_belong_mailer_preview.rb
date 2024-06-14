@@ -31,6 +31,10 @@ class IBelongMailerPreview < ActionMailer::Preview
     IBelongMailer.with(user: User.first, preview: true).inactive_everything_but_increase_engagement
   end
 
+  def student_attitude_surveys
+    IBelongMailer.with(user: User.first, preview: true).student_attitude_surveys
+  end
+
   def auto_enrolled
     IBelongMailer.with(user: User.first, preview: true).auto_enrolled
   end

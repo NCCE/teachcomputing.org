@@ -1,0 +1,10 @@
+<% if @title %>
+  <h2 class="govuk-heading-l"><%= @title %></h2>
+<% end %>
+<div class="bordered-cards-wrapper-component-grid" style="<%= custom_properties %>">
+  <% cards.each do |card| %>
+    <div class="bordered-cards-wrapper-component-grid__item">
+      <%= card %>
+    </div>
+  <% end %>
+</div>

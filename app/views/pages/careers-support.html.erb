@@ -55,11 +55,15 @@
 
 <%= render BannerComponent.new(
   title: t(".student-resources.topics_to_life.heading"),
+  title_link: tech_careers_videos_path,
   text:  t(".student-resources.topics_to_life.content.html"),
   video: { url: cs_topic_video_1_url },
   media_column_size: :half,
   media_side: :left,
-  padding: 0
+  padding: 0,
+  button: { text: "Explore careers videos",
+  link: tech_careers_videos_path,
+  class: "ncce-button--white"},
 ) %>
 
 <%= render TestimonialsComponent.new(
@@ -95,7 +99,6 @@
 <div class="light-grey-bg">
   <div class="govuk-width-container">
     <div class="govuk-main-wrapper">
-
       <div class="govuk-grid-row">
         <div class="govuk-grid-column-full">
           <h2 class="govuk-heading-m"><%= t(".resources.heading") %></h2>

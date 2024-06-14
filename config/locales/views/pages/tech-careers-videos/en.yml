@@ -1,0 +1,43 @@
+en:
+  pages:
+    tech-careers-videos:
+      intro:
+        title: "Careers in Computer Science"
+        body: "Bringing computer science to life can be challenging but it is key to motivate students to learn and help them see what they can achieve and the problems that can be solved with technology. With our resources you can help your students understand the real-world applications of different computer science topics they are learning in the classroom. Explore the videos where Computing Ambassadors introduce each computer science topic and share what they do in their day-to-day job, inspiring young people to choose careers in computing, technology and digital."
+      card:
+        virtual_storage:
+          video_url: "https://www.youtube.com/watch?v=t0ojrm0fMoE&list=PLwcV67XMdDdJn_6BFs2h1yBeyZDArab7J&index=3"
+          title: "Virtual Storage"
+          name: "Sabrina Singh"
+          job_title: "Cloud DBA at Morgan Stanley"
+          description: "We heavily rely on cloud storage in our day-to-day lives. Watch Sabrina talk about her role of a database administrator, how she helps ‘save the day’ by solving problems like outages, and the importance of communication skills for all jobs including those in tech."
+        systems_architecture:
+          video_url: "https://www.youtube.com/watch?v=l9ZTDi72yGU&list=PLwcV67XMdDdJn_6BFs2h1yBeyZDArab7J&index=1"
+          title: "Systems Architecture"
+          name: "John Easton"
+          job_title: "Distinguished Engineer at IBM"
+          description: "From building the world’s largest supercomputer at the time to helping design computer systems that run an airport, John is an inspiring role model for young people. Technology changes at a rapid pace and it is exciting to be a part of that change!"
+        networking_hardware:
+          video_url: "https://www.youtube.com/watch?v=IGXHArOSF-g&list=PLwcV67XMdDdJn_6BFs2h1yBeyZDArab7J&index=4"
+          title: "Networking Hardware"
+          name: "Elizabeth Barr"
+          job_title: "Head of the Cisco Networking Academy UK & Ireland"
+          description: "Everything in a connected world is built on computer networks. Helping young people kick-start their career in tech, Elizabeth shares more about her own journey and how we can shape the future society through technology."
+        databases:
+          video_url: "https://www.youtube.com/watch?v=e7oxJqjGm2k&list=PLwcV67XMdDdJn_6BFs2h1yBeyZDArab7J&index=5"
+          title: "Databases (SQL)"
+          name: "Zachary Decent"
+          job_title: "Data Governance & Quality Manager at UK Power Networks "
+          description: "In a data-rich world, being able to filter and use data effectively is key. Motivate students to consider the diverse job opportunities database management presents by watching Zac explain how he helps all types of businesses use their data better."
+        cybersecurity:
+          video_url: "https://www.youtube.com/watch?v=ZF52BMcuovY&list=PLwcV67XMdDdJn_6BFs2h1yBeyZDArab7J&index=2"
+          title: "Cybersecurity"
+          name: "Veno Senthil"
+          job_title: " Technical Support Manager at Cisco"
+          description: "Helping protect our data and keeping us safe online, Veno heads a team of technical support engineers working on the Cisco Umbrella. Find out how you can inspire more young people to choose a career in cybersecurity."
+        robotics_arrays:
+          video_url: "https://www.youtube.com/watch?v=tGigHlIVgbI&list=PLwcV67XMdDdJn_6BFs2h1yBeyZDArab7J&index=6"
+          title: "Robotics & 2D Arrays"
+          name: "Gerard Canal"
+          job_title: "Autonomous Systems Lecturer at King’s College London"
+          description: "As a researcher and lecturer, Gerard helps develop methods to make robots smarter and more useful, making our lives easier. With interest and motivation, all young people have an opportunity to become computer scientists."
