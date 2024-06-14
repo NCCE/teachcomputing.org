@@ -5,7 +5,7 @@ module Cms
         module ParameterFactory
           def self.generate_parameters(model_class)
             if model_class == Cms::Models::Seo
-              {populate: [:title, :description]}
+              {populate: {featuredImage: {populate: [:alternativeText]}}}
             elsif model_class == Cms::Models::FeaturedImage
               {populate: [:alternativeText, :caption]}
             elsif model_class == Cms::Models::SimplePagePreview

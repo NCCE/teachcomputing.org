@@ -4,7 +4,13 @@ class FeaturedBlogPostsComponent < ViewComponent::Base
   def initialize(number_to_display:, show_main_feature: true)
     posts =
       begin
-        response = Cms::Collections::Blog.all(1, number_to_display)
+        response = Cms::Collections::Blog.all(1, number_to_display, params: {
+          filters: {
+            featured: {
+              "$eq": "true"
+            }
+          }
+        })
 
         response.resources
       rescue ActiveRecord::RecordNotFound

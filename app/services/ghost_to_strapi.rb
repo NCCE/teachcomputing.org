@@ -103,6 +103,7 @@ class GhostToStrapi
       slug: post["slug"],
       title: post["title"],
       publishDate: post["published_at"],
+      featured: post["featured"],
       excerpt: post["custom_excerpt"] || post["excerpt"],
       seo: {
         description: post["custom_excerpt"] || post["excerpt"],
@@ -375,7 +376,7 @@ class GhostToStrapi
     params = {
       key: @ghost_api_key,
       limit: post_count,
-      fields: "title,slug,feature_image,custom_excerpt,excerpt,published_at,html,feature_image_alt,feature_image_caption",
+      fields: "title,slug,feature_image,custom_excerpt,excerpt,published_at,html,feature_image_alt,feature_image_caption,featured",
       include: "tags",
       page: 0
     }.compact
