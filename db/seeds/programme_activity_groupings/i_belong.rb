@@ -26,7 +26,7 @@ end.save!
 i_belong.programme_activity_groupings.find_or_initialize_by(sort_key: 3).tap do |group|
   group.title = "<strong>Access</strong> and <strong>complete all</strong> of the following activities"
   group.sort_key = 3
-  group.required_for_completion = 3
+  group.required_for_completion = 2
   group.programme_id = i_belong.id
   group.progress_bar_title = "<strong>Access</strong> resources to support you"
   group.community = true
@@ -35,8 +35,7 @@ i_belong.programme_activity_groupings.find_or_initialize_by(sort_key: 3).tap do 
 
   activities = [
     {slug: "download-and-use-the-i-belong-handbook", legacy: false},
-    {slug: "request-your-i-belong-in-computer-science-posters", legacy: false},
-    {slug: "implement-selected-key-stage-3-teach-computing-curriculum-resources", legacy: false}
+    {slug: "request-your-i-belong-in-computer-science-posters", legacy: false}
   ]
 
   activities.each_with_index do |activity, index|
@@ -60,7 +59,8 @@ i_belong.programme_activity_groupings.find_or_initialize_by(sort_key: 4).tap do 
     {slug: "start-or-deliver-a-computing-related-club", legacy: true},
     {slug: "host-a-computing-stem-ambassador-activity", legacy: false},
     {slug: "participate-in-a-computing-related-competition", legacy: false},
-    {slug: "any-other-activity-which-aligns-with-recommendations-from-the-handbook", legacy: false}
+    {slug: "any-other-activity-which-aligns-with-recommendations-from-the-handbook", legacy: false},
+    {slug: "implement-selected-key-stage-3-teach-computing-curriculum-resources", legacy: false}
   ]
 
   activities.each_with_index do |activity, index|
