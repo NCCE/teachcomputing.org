@@ -2668,7 +2668,7 @@ end.save!
 
 Activity.find_or_initialize_by(stem_course_template_no: "9288db6c-ed27-ef11-840b-002248c6f524").tap do |activity|
   activity.title = "Empowering trainee teachers: Introduction to primary computing"
-  activity.slug = "empowering-trainee-teachers-introduction-to-primary-computing-2"
+  activity.slug = "empowering-trainee-teachers-introduction-to-primary-computing-f2f"
   activity.category = "face-to-face"
   activity.remote_delivered_cpd = false
   activity.provider = "stem-learning"
