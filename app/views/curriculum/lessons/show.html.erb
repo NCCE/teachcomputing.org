@@ -28,8 +28,15 @@
             key_stage_level: @unit.year_group.key_stage.level
           } %>
         <% end %>
-			</div>
-			<div class="govuk-grid-column-one-third govuk-!-padding-left-0">
+        <%= render CurriculumVideoComponent.new(
+          name: @lesson.video&.name,
+          job_title: @lesson.video&.job_title,
+          description: @lesson.video&.description,
+          video_url: @lesson.video&.video_url,
+          layout: :col
+          ) %>
+      </div>
+			<div class="govuk-grid-column-one-third">
 				<div class="ncce-aside">
 					<h2 class="govuk-heading-m ncce-aside__title">Package contents</h2>
 					<ul class="govuk-list">

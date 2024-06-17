@@ -20,5 +20,11 @@ FactoryBot.define do
         enrolment.transition_to :pending
       end
     end
+
+    factory :unenrolled_enrolment do
+      after(:create) do |enrolment|
+        enrolment.transition_to :unenrolled
+      end
+    end
   end
 end

@@ -28,3 +28,22 @@ en:
               <li>Participate in a range of recommended activity</li>
               <li>Claim your school certificate</li>
             link_text: Visit dashboard
+        resources:
+          handbook:
+            title: "I Belong handbook"
+            body: "Our evidence-informed handbook is key to developing your action plan for increasing uptake computer science by girls in your school."
+          posters:
+            title: "I Belong in computer science posters"
+            body: "Printed 'I Belong in computer science' posters are available on request!"
+          survey:
+            title: "Student attitude surveys"
+            body: "Surveys to help you understand your students’ attitudes and aspiration towards computer science."
+            link: "Access student surveys"
+          poster_template:
+            title: "I Belong DIY poster template"
+            body: "Students and alumni can advocate for the subject with this poster template."
+            link: "Download the template"
+          gcse_options:
+            title: "GCSE options resource"
+            body: "Guidance to help you promote computer science during the GCSE options process."
+            link: "View the guidance"

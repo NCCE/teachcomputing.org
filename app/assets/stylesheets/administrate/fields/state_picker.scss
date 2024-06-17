@@ -1,0 +1,32 @@
+.administrate_objectives-row {
+  display: flex;
+  gap: 6px;
+  margin-top: 3px;
+}
+
+.administrate_objective-circle {
+  display: inline-block;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  position: relative;
+  cursor: pointer;
+  border: 1px solid #333;
+}
+
+.administrate_objective-circle:hover::after {
+  content: attr(title);
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #333;
+  color: #fff;
+  padding: 5px;
+  border-radius: 3px;
+  min-width: 200px;
+  max-width: 300px;
+  white-space: normal;
+  word-wrap: break-word;
+  z-index: 1;
+}

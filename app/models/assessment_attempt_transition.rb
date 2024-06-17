@@ -11,6 +11,6 @@ class AssessmentAttemptTransition < ApplicationRecord
     last_transition = assessment_attempt.assessment_attempt_transitions.order(:sort_key).last
     return if last_transition.blank?
 
-    last_transition.update(:most_recent, true)
+    last_transition.update(most_recent: true)
   end
 end

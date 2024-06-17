@@ -22,29 +22,58 @@ RSpec.describe PathwayEnrolComponent, type: :component do
     end
   end
 
-  context "when the user is not enrolled" do
-    let(:user_programme_enrolment) { nil }
+  context "when the user is not enrolled with no enrolment record" do
+    context "with no enrolment record" do
+      let(:user_programme_enrolment) { nil }
 
-    it "should render" do
-      expect(page).to have_selector("body")
+      it "should render" do
+        expect(page).to have_selector("body")
+      end
+
+      it "renders enrol_copy with html_safe" do
+        expect(page).to have_css(".test1", text: "one")
+        expect(page).to have_css(".test2", text: "two")
+      end
+
+      it "renders an Enrol button" do
+        expect(page).to have_css(".govuk-button", text: "Enrol")
+      end
+
+      context "when user doesn't meet enrolment requirements" do
+        it "doesn't render an Enrol button" do
+          allow(programme).to receive(:user_is_eligible?).with(user).and_return(false)
+
+          render_inline(described_class.new(programme:, pathway:, current_user: user))
+
+          expect(page).not_to have_css(".govuk-button", text: "Enrol")
+        end
+      end
     end
 
-    it "renders enrol_copy with html_safe" do
-      expect(page).to have_css(".test1", text: "one")
-      expect(page).to have_css(".test2", text: "two")
-    end
+    context "with enrolment record but status set to unenrolled" do
+      let(:user_programme_enrolment) { create(:unenrolled_enrolment, user:, programme:, pathway:) }
 
-    it "renders an Enrol button" do
-      expect(page).to have_css(".govuk-button", text: "Enrol")
-    end
+      it "should render" do
+        expect(page).to have_selector("body")
+      end
 
-    context "when user doesn't meet enrolment requirements" do
-      it "doesn't render an Enrol button" do
-        allow(programme).to receive(:user_is_eligible?).with(user).and_return(false)
+      it "renders enrol_copy with html_safe" do
+        expect(page).to have_css(".test1", text: "one")
+        expect(page).to have_css(".test2", text: "two")
+      end
 
-        render_inline(described_class.new(programme:, pathway:, current_user: user))
+      it "renders an Enrol button" do
+        expect(page).to have_css(".govuk-button", text: "Enrol")
+      end
 
-        expect(page).not_to have_css(".govuk-button", text: "Enrol")
+      context "when user doesn't meet enrolment requirements" do
+        it "doesn't render an Enrol button" do
+          allow(programme).to receive(:user_is_eligible?).with(user).and_return(false)
+
+          render_inline(described_class.new(programme:, pathway:, current_user: user))
+
+          expect(page).not_to have_css(".govuk-button", text: "Enrol")
+        end
       end
     end
   end

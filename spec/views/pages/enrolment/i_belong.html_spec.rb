@@ -32,7 +32,7 @@ RSpec.describe("pages/enrolment/i_belong", type: :view) do
     expect(rendered).to have_css(".lp-support__card", count: 3)
   end
 
-  it "has 3 resource cards" do
-    expect(rendered).to have_css(".non-bordered-card", count: 3)
+  it "has 5 resource cards" do
+    expect(rendered).to have_css(".non-bordered-card", count: 5)
   end
 end

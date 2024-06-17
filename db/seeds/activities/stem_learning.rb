@@ -2520,3 +2520,112 @@ Activity.find_or_initialize_by(stem_course_template_no: "836ce491-02e6-ee11-904c
 
   activity.programmes = [primary_certificate]
 end.save!
+
+Activity.find_or_initialize_by(stem_course_template_no: "da3964d0-5709-ef11-9f8a-002248c635a9").tap do |activity|
+  activity.title = "Assembly language in A Level computer science"
+  activity.slug = "assembly-language-in-a-level-computer-science-2024"
+  activity.category = "face-to-face"
+  activity.remote_delivered_cpd = false
+  activity.provider = "stem-learning"
+  activity.stem_activity_code = "CP511"
+  activity.credit = 25
+
+  activity.programmes = [secondary_certificate]
+end.save!
+
+Activity.find_or_initialize_by(stem_course_template_no: "a8c9764a-5b09-ef11-9f8a-002248c635a9").tap do |activity|
+  activity.title = "Boolean logic in A Level computer science"
+  activity.slug = "boolean-logic-in-a-level-computer-science-2024"
+  activity.category = "face-to-face"
+  activity.remote_delivered_cpd = false
+  activity.provider = "stem-learning"
+  activity.stem_activity_code = "CP513"
+  activity.credit = 25
+
+  activity.programmes = [secondary_certificate]
+end.save!
+
+Activity.find_or_initialize_by(stem_course_template_no: "ebfe7a91-5209-ef11-9f8a-002248c635a9").tap do |activity|
+  activity.title = "Data structures in A Level computer science"
+  activity.slug = "data-structures-in-a-level-computer-science-2024"
+  activity.category = "face-to-face"
+  activity.remote_delivered_cpd = false
+  activity.provider = "stem-learning"
+  activity.stem_activity_code = "CP512"
+  activity.credit = 50
+
+  activity.programmes = [secondary_certificate]
+end.save!
+
+Activity.find_or_initialize_by(stem_course_template_no: "0797bcee-700c-ef11-9f8a-002248c635a9").tap do |activity|
+  activity.title = "Systems architecture in A Level computer science"
+  activity.slug = "systems-architecture-in-a-level-computer-science-2024"
+  activity.category = "face-to-face"
+  activity.remote_delivered_cpd = false
+  activity.provider = "stem-learning"
+  activity.stem_activity_code = "CP515"
+  activity.credit = 25
+
+  activity.programmes = [secondary_certificate]
+end.save!
+
+Activity.find_or_initialize_by(stem_course_template_no: "477ce2ea-c20e-ef11-9f8a-002248c635a9").tap do |activity|
+  activity.title = "Object oriented programming (OOP) in A Level computer science"
+  activity.slug = "object-oriented-programming-oop-in-a-level-computer-science-2024"
+  activity.category = "face-to-face"
+  activity.remote_delivered_cpd = false
+  activity.provider = "stem-learning"
+  activity.stem_activity_code = "CP516"
+  activity.credit = 60
+
+  activity.programmes = [secondary_certificate]
+end.save!
+
+Activity.find_or_initialize_by(stem_course_template_no: "1f675bc1-6c0c-ef11-9f89-002248c751c6").tap do |activity|
+  activity.title = "Pathfinding algorithms in A Level computer science"
+  activity.slug = "pathfinding-algorithms-in-a-level-computer-science-2024"
+  activity.category = "face-to-face"
+  activity.remote_delivered_cpd = false
+  activity.provider = "stem-learning"
+  activity.stem_activity_code = "CP514"
+  activity.credit = 20
+
+  activity.programmes = [secondary_certificate]
+end.save!
+
+# Removing incorrect course seed CY312 - replaced by CP267
+Activity.find_by(stem_course_template_no: "690b99ca-1106-ef11-9f8a-002248c635a9")&.destroy
+
+Activity.find_or_initialize_by(stem_course_template_no: "7539f5a4-be19-ef11-840b-002248c6f524").tap do |activity|
+  activity.title = "Build the foundations to have the confidence in offering GCSE Computer Science"
+  activity.slug = "build-the-foundations-to-have-the-confidence-in-offering-gcse-computer-science"
+  activity.category = "face-to-face"
+  activity.remote_delivered_cpd = false
+  activity.provider = "stem-learning"
+  activity.stem_activity_code = "CP267"
+  activity.credit = 140
+end.save!
+
+Activity.find_or_initialize_by(stem_course_template_no: "7ada1faa-9dea-ee11-a1fe-002248c635a9").tap do |activity|
+  activity.title = "Leading primary computing - module 3"
+  activity.slug = "leading-primary-computing-module-3"
+  activity.category = "face-to-face"
+  activity.remote_delivered_cpd = false
+  activity.provider = "stem-learning"
+  activity.stem_activity_code = "CP009"
+  activity.credit = 50
+
+  activity.programmes = [primary_certificate]
+end.save!
+
+Activity.find_or_initialize_by(stem_course_template_no: "83b17df6-d819-ef11-9f89-0022481b8356").tap do |activity|
+  activity.title = "Empowering girls in key stage 2 computing"
+  activity.slug = "empowering-girls-in-key-stage-2-computing"
+  activity.category = "face-to-face"
+  activity.remote_delivered_cpd = true
+  activity.provider = "stem-learning"
+  activity.stem_activity_code = "CP409"
+  activity.credit = 15
+
+  activity.programmes = [primary_certificate]
+end.save!

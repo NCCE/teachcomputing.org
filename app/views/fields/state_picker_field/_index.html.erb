@@ -1,1 +1,10 @@
 <%= field.to_s %>
+
+<div class="administrate_objectives-row">
+  <% field.objectives.each_with_index do |objective, idx| %>
+    <% color = field.objective_color(objective) %>
+    <% label = strip_tags(field.objective_title(objective)) %>
+
+    <span class="administrate_objective-circle" style="background-color: <%= color %>;" title="<%= label %>"></span>
+  <% end %>
+</div>

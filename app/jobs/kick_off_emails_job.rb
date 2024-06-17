@@ -12,6 +12,8 @@ class KickOffEmailsJob < ApplicationJob
     end
 
     ScheduleProgrammeGettingStartedPromptJob.set(wait: 1.month).perform_later(enrolment_id)
+
+    ScheduleIBelongStudentSurveyPromptJob.set(wait: 1.week).perform_later(enrolment.user) if programme.i_belong?
   end
 
   def delay

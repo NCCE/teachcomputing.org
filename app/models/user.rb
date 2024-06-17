@@ -72,7 +72,10 @@ class User < ApplicationRecord
   end
 
   def enrolled_on_programme_pathway?(programme:, pathway:)
-    user_programme_enrolments.find_by(programme:, pathway:).present?
+    enrolment = user_programme_enrolments.find_by(programme:, pathway:)
+    return false if enrolment.blank?
+
+    !enrolment.in_state?(:unenrolled)
   end
 
   def programme_enrolment_state(programme_id)

@@ -1,0 +1,39 @@
+.testimonial {
+  margin-bottom: 2rem;
+  @include govuk-media-query($from: desktop) {
+    margin-bottom: 0;
+  }
+
+  &__text {
+    background-color: $white;
+    border-radius: 10px;
+    line-height: 1.4;
+    color: $govuk-text-colour !important;
+    padding: 18px;
+    padding-bottom: 30px;
+  }
+  &__bio {
+    display: grid;
+    grid-column-gap: 5px;
+    grid-template-columns: 52px auto;
+    padding: 0 10px 0 10px;
+    @include govuk-media-query($from: tablet) {
+      padding: 0 18px 0 18px;
+    }
+  }
+  &__bio-cell--span-2 {
+    grid-column-end: span 2;
+    grid-column-start: 1;
+  }
+  &__bio > *:last-child {
+    margin-bottom: 0;
+  }
+
+  &__image {
+    border: 2px solid $orange;
+    border-radius: 24px;
+    height: 48px;
+    width: 48px;
+    object-fit: cover;
+  }
+}

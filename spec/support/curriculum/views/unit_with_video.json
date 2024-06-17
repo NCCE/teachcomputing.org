@@ -1,0 +1,51 @@
+{
+  "data": {
+    "unit": {
+      "id": "c7a0836b-280f-4d00-aa78-6a85461ce902",
+      "title": "Unit 1",
+      "slug": "unit-1",
+      "description": "This is a Unit",
+      "isaac_url": "https://www.raspberrypi.com/",
+      "unit_guide": {
+        "file": "https://teachcomputing.org",
+        "size": "1.1 MB",
+        "created": "15 Oct 1943",
+        "type": "PDF"
+      },
+      "video": {
+        "name": "John Smith",
+        "job_title": "Head Teacher",
+        "description": "This is a description of the video content",
+        "video_url": "https://www.youtube.com/watch?v=9Qyd2yO5Zkc",
+        "layout": "row"
+      },
+      "digitalSummativeAssessmentUrl": "https://www.stem.org.uk/resources/elibrary/resource/522344/year-3-computer-systems-and-networks-connecting-computers",
+      "summative_assessments": [],
+      "summative_answers": [],
+      "learning_graphs": [],
+      "rubrics": [],
+      "year_group": {
+        "year_number": "1",
+        "slug": "y1",
+        "key_stage": {
+          "slug": "key-stage-1",
+          "short_title": "KS1",
+          "level": "1"
+        }
+      },
+      "lessons": [
+        {
+          "id": "308e4ad1-55c6-4f36-83f1-8a74c1b202ae",
+          "slug": "lesson-1",
+          "description": "This is a Lesson",
+          "zipped_contents": {
+            "file": "https://teachcomputing.org",
+            "size": "1.1 MB",
+            "created": "15 Oct 1943"
+          },
+          "title": "Lesson 1"
+        }
+      ]
+    }
+  }
+}

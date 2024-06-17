@@ -142,4 +142,8 @@ module ExternalLinkHelper
   def hubs_local_support_form_url
     "https://forms.office.com/e/hxMcDtvkcM"
   end
+
+  def i_belong_student_survey_url
+    "https://ncce.io/student-survey"
+  end
 end

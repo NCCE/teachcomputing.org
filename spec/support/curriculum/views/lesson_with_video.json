@@ -1,0 +1,56 @@
+{
+  "data": {
+    "lesson": {
+      "id": "12",
+      "title": "Kicking rocks",
+      "slug": "lesson-1",
+      "order": "2",
+      "description": "This is a Lesson",
+      "isaac_url": "https://www.raspberrypi.com/",
+      "zipped_contents": {
+        "file": "https://teachcomputing.org",
+        "size": "1.1 MB",
+        "created": "15 Oct 1943"
+      },
+      "video": {
+        "name": "John Smith",
+        "job_title": "Head Teacher",
+        "description": "This is a description of the video content",
+        "video_url": "https://www.youtube.com/watch?v=9Qyd2yO5Zkc"
+      },
+      "unit": {
+        "slug": "unit-2",
+        "title": "Unit 2",
+        "order": "2",
+        "year_group": {
+          "year_number": "2",
+          "key_stage": {
+            "short_title": "KS1",
+            "slug": "key-stage-1",
+            "level": "1"
+          }
+        }
+      },
+      "learning_objectives": [
+        {
+          "id": "90db7eb4-1a88-44ef-815d-873fca2351cc",
+          "description": "To identify technology",
+          "success_criteria": [
+            {
+              "id": "60eb3fab-dfc1-4290-a47f-64d39ffa7621",
+              "description": "I can explain technology as something that helps us"
+            },
+            {
+              "id": "67c253e7-f4a3-4c13-8171-10059f23b309",
+              "description": "I can locate examples of technology in the classroom"
+            },
+            {
+              "id": "0200cd71-3803-4dcd-a85c-99a81ccea2d9",
+              "description": "I can explain how these technology examples help us"
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

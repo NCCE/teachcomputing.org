@@ -3,6 +3,7 @@ require "rails_helper"
 RSpec.describe("curriculum/lessons/show", type: :view) do
   let(:lesson_json) { File.new("spec/support/curriculum/views/lesson.json").read }
   let(:lesson_json_alt) { File.new("spec/support/curriculum/views/lesson_alt.json").read }
+  let(:lesson_json_with_video) { File.new("spec/support/curriculum/views/lesson_with_video.json").read }
   let(:unit_json) { File.new("spec/support/curriculum/views/unit.json").read }
   let(:user) { create(:user) }
   let(:setup_view) do
@@ -41,6 +42,39 @@ RSpec.describe("curriculum/lessons/show", type: :view) do
     json = JSON.parse(lesson_json, object_class: OpenStruct).data
     json.lesson.zipped_contents = nil
     assign(:lesson, json.lesson)
+  end
+
+  let(:setup_view_with_video) do
+    json = JSON.parse(unit_json, object_class: OpenStruct).data
+    assign(:unit, json.unit)
+    json = JSON.parse(lesson_json_with_video, object_class: OpenStruct).data
+    json.lesson.zipped_contents = nil
+    assign(:lesson, json.lesson)
+  end
+
+  context "when a video is not present" do
+    before do
+      setup_view
+      render
+    end
+
+    it "does not render a video component" do
+      expect(rendered).to_not have_css(".video-component-col")
+    end
+  end
+
+  context "when a video is present" do
+    before do
+      setup_view_with_video
+      render
+    end
+
+    it "renders the video component" do
+      expect(rendered).to have_css(".video-component-col")
+    end
+    it "renders the video embed" do
+      expect(rendered).to have_css("iframe")
+    end
   end
 
   context "when a user is not signed in" do

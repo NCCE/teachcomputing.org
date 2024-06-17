@@ -5,8 +5,12 @@ RSpec.describe IssueBadgeJob, type: :job do
   let!(:programme) { create(:cs_accelerator) }
   let(:badge) { create(:badge, :active, programme_id: programme.id, credly_badge_template_id: "00cd7d3b-baca-442b-bce5-f20666ed591b") }
   let(:user_programme_enrolment) { create(:user_programme_enrolment, user:, programme:) }
-  let!(:achievement) { create(:completed_achievement, user:) }
-  let!(:programme_activity) { create(:programme_activity, activity: achievement.activity, programme:) }
+  let(:f2f_activity) { create(:activity) }
+  let(:community_activity) { create(:activity, :community) }
+  let!(:f2f_programme_activity) { create(:programme_activity, activity: f2f_activity, programme:) }
+  let!(:community_programme_activity) { create(:programme_activity, activity: community_activity, programme:) }
+  let(:f2f_achievement) { create(:completed_achievement, user:, activity: f2f_activity) }
+  let(:community_achievement) { create(:completed_achievement, user:, activity: community_activity) }
 
   describe "#perform" do
     before do
@@ -15,19 +19,27 @@ RSpec.describe IssueBadgeJob, type: :job do
       badge
     end
 
-    it "should skip as user is not enrolled" do
-      described_class.perform_now(achievement:)
-      expect(Credly::Badge).not_to have_received(:issue)
-    end
-
     context "when the user is enrolled" do
       before do
         user_programme_enrolment
       end
 
       it "calls Credly::Badge.issue" do
-        described_class.perform_now(achievement:)
+        described_class.perform_now(achievement: f2f_achievement)
         expect(Credly::Badge).to have_received(:issue)
+      end
+    end
+
+    context "should not assign badge when" do
+      it "user is not enrolled" do
+        described_class.perform_now(achievement: f2f_achievement)
+        expect(Credly::Badge).not_to have_received(:issue)
+      end
+
+      it "when achievement is not F2F" do
+        user_programme_enrolment
+        described_class.perform_now(achievement: community_achievement)
+        expect(Credly::Badge).not_to have_received(:issue)
       end
     end
 

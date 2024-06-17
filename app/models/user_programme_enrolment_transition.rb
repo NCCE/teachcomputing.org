@@ -11,6 +11,6 @@ class UserProgrammeEnrolmentTransition < ApplicationRecord
     last_transition = user_programme_enrolment.user_programme_enrolment_transitions.order(:sort_key).last
     return if last_transition.blank?
 
-    last_transition.update_column(:most_recent, true)
+    last_transition.update(most_recent: true)
   end
 end

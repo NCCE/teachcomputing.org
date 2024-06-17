@@ -139,4 +139,52 @@ RSpec.describe SecondaryMailer, type: :mailer do
       end
     end
   end
+
+  describe "auto_enrolled" do
+    let(:mail) { SecondaryMailer.with(user: user).auto_enrolled }
+    let(:mail_subject) { "Welcome to Teach secondary computing" }
+
+    it "renders the headers" do
+      expect(mail.subject).to eq(mail_subject)
+      expect(mail.to).to eq([user.email])
+      expect(mail.from).to eq(["noreply@teachcomputing.org"])
+    end
+
+    it "renders the body" do
+      expect(mail.body.encoded).to match(/Hi Tobias,\s*Did you know that/)
+    end
+
+    it "includes the subject in the email" do
+      expect(mail.body.encoded).to include("<title>#{mail_subject}</title>")
+    end
+
+    it "contains the certificate dashboard link" do
+      expect(mail.html_part.body).to have_link("Explore your personal dashboard", href: secondary_certificate_url)
+    end
+
+    describe "when text" do
+      it "contains the certificate dashboard link" do
+        expect(mail.text_part.body).to include("Explore your personal dashboard (#{secondary_certificate_url})")
+      end
+    end
+  end
+
+  describe "inactive_prompt" do
+    let(:mail) { SecondaryMailer.with(user: user).inactive_prompt }
+    let(:mail_subject) { "Kick-start your development and achieve a national qualification" }
+
+    it "renders the headers" do
+      expect(mail.subject).to eq(mail_subject)
+      expect(mail.to).to eq([user.email])
+      expect(mail.from).to eq(["noreply@teachcomputing.org"])
+    end
+
+    it "includes the subject in the email" do
+      expect(mail.html_part.body).to include("<title>#{mail_subject}</title>")
+    end
+
+    it "renders the body" do
+      expect(mail.body.encoded).to match(/Hi Tobias,\s*It's been a while since you last engaged/)
+    end
+  end
 end

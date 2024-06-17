@@ -7,9 +7,9 @@ class AssessmentAttemptDashboard < BaseDashboard
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
     user: Field::BelongsTo,
-    # assessment: Field::BelongsTo,
     current_state: Field::String.with_options(searchable: false),
     id: Field::String,
+    assessment: AssessmentDetailsField,
     created_at: FORMATTED_DATE_TIME,
     updated_at: FORMATTED_DATE_TIME
   }.freeze
@@ -21,7 +21,9 @@ class AssessmentAttemptDashboard < BaseDashboard
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = %i[
     id
+    user
     current_state
+    assessment
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
@@ -32,6 +34,7 @@ class AssessmentAttemptDashboard < BaseDashboard
     created_at
     updated_at
     current_state
+    assessment
   ].freeze
 
   # FORM_ATTRIBUTES

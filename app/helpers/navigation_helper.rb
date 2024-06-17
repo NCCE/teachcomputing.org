@@ -5,8 +5,8 @@ module NavigationHelper
        children: [
          {text: "Subject lead toolkit", link: primary_teachers_path, label: "Subject lead toolkit"},
          {text: "Teacher certificate", link: primary_path, label: "Primary teacher certificate"},
-         {text: "Early career and trainee teachers", link: "/primary-early-careers", label: "Primary ECT"},
-         {text: "Senior leaders", link: "/primary-senior-leaders", label: "Primary SLT"},
+         {text: "Early career and trainee teachers", link: primary_early_careers_path, label: "Primary ECT"},
+         {text: "Senior leaders", link: primary_senior_leaders_path, label: "Primary SLT"},
          {text: "Enrichment", link: primary_enrichment_path, label: "Enrichment"}
        ]},
       {text: "Secondary",
@@ -14,18 +14,18 @@ module NavigationHelper
          {text: "Teacher toolkit", link: secondary_teachers_path, label: "Secondary teachers"},
          {text: "Teacher certification", link: secondary_certification_path, label: "Secondary teachers certification"},
          {text: "Enrichment", link: secondary_enrichment_path, label: "Enrichment"},
-         {text: "Early career and trainee teachers", link: "/secondary-early-careers", label: "Secondary ECT"},
-         {text: "Senior leaders", link: "/secondary-senior-leaders", label: "Secondary SLT"}
+         {text: "Early career and trainee teachers", link: secondary_early_careers_path, label: "Secondary ECT"},
+         {text: "Senior leaders", link: secondary_senior_leaders_path, label: "Secondary SLT"}
        ].compact},
       {text: "Training and support",
        children: [
          {text: "Courses", link: courses_path, label: "Courses"},
-         {text: "Funding", link: "/funding", label: "Bursaries"},
-         {text: "Computing Hubs", link: "/hubs", label: "Computing hubs"},
-         {text: "I Belong programme", link: "/i-belong", label: "i-belong"},
-         {text: "GCSE Computer Science support", link: "/gcse-cs-support", label: "GCSE support"},
-         {text: "Computing Clusters", link: "/computing-clusters", label: "Computing clusters"},
-         {text: "School Trusts", link: "/school-trusts", label: "School trusts"}
+         {text: "Funding", link: cms_page_path("funding"), label: "Bursaries"},
+         {text: "Computing Hubs", link: hubs_path, label: "Computing hubs"},
+         {text: "I Belong programme", link: about_i_belong_path, label: "i-belong"},
+         {text: "GCSE Computer Science support", link: non_gcse_path, label: "GCSE support"},
+         {text: "Computing Clusters", link: cms_page_path("computing-clusters"), label: "Computing clusters"},
+         {text: "School Trusts", link: school_trusts_path, label: "School trusts"}
        ]},
       {text: "Teaching resources",
        children: [
