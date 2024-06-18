@@ -54,13 +54,16 @@ i_belong.programme_activity_groupings.find_or_initialize_by(sort_key: 4).tap do 
   group.save!
 
   activities = [
+    {slug: "implement-selected-key-stage-3-teach-computing-curriculum-resources", legacy: false},
     {slug: "participate-in-a-ncce-student-enrichment-activity", legacy: false},
     {slug: "provide-access-to-a-computing-related-extracurricular-club", legacy: false},
-    {slug: "start-or-deliver-a-computing-related-club", legacy: true},
     {slug: "host-a-computing-stem-ambassador-activity", legacy: false},
     {slug: "participate-in-a-computing-related-competition", legacy: false},
     {slug: "any-other-activity-which-aligns-with-recommendations-from-the-handbook", legacy: false},
-    {slug: "implement-selected-key-stage-3-teach-computing-curriculum-resources", legacy: false}
+
+    # Legacy
+
+    {slug: "start-or-deliver-a-computing-related-club", legacy: true}
   ]
 
   activities.each_with_index do |activity, index|
