@@ -61,6 +61,8 @@ i_belong.programme_activity_groupings.find_or_initialize_by(sort_key: 4).tap do 
     {slug: "participate-in-a-computing-related-competition", legacy: false},
     {slug: "any-other-activity-which-aligns-with-recommendations-from-the-handbook", legacy: false},
 
+    # Legacy
+
     {slug: "start-or-deliver-a-computing-related-club", legacy: true}
   ]
 
