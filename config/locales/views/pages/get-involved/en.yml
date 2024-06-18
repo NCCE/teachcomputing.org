@@ -7,7 +7,7 @@ en:
         body_1: We are dedicated to ensuring every child in England receives high-quality computing education, powering up the next digital generation. We equip and empower teachers across England with confidence and expertise, so that they can teach the national computing curriculum in an exciting and engaging way.
         body_2: We are calling on businesses and government to join us in equipping young people with the necessary skills for the future. Through the collaboration between education, government and industry we can connect the knowledge learnt through the curriculum with its real-world application and leading edge technology innovations, enabling students to achieve their full potential in a digital world.
         box:
-          heading: Demand is growing
+          heading: Growing Demand
           body: The demand for computing expertise is growing – with an estimated 1.9 million STEM professionals needed by 2035. More professionals are needed to fill jobs in computing, engineering, environmental sciences industries and more.
 
       key_points_1:
@@ -69,7 +69,7 @@ en:
       join_us:
         heading: We encourage all government departments and public services to join us and support our work
         body_1: Your support and contributions are essential to giving young people equal access to computing education.  The reach and significance of having Government support is invaluable.
-        body_2: You can support us by promoting the NCCE within your networks, get your Digital Data and Technology Professionals to sign up to volunteer as Computing Ambassadors and provide insights into how the NCCE can support your policy objectives.
+        body_2_html: You can support us by promoting the NCCE within your networks, get your Digital Data and Technology Professionals to sign up to volunteer as %{ambassador_link} and provide insights into how the NCCE can support your policy objectives.
 
       impact_report:
         heading: NCCE Impact report 2018 to 2022

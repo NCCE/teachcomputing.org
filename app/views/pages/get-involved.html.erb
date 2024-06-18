@@ -7,7 +7,7 @@
       <div class="govuk-grid-row">
         <div class="govuk-grid-column-three-quarters ncce-about__content ncce-section">
           <p class="govuk-body-m"><%= t(".intro.body_1") %></p>
-          <p class="govuk-body-s govuk-!-margin-bottom-0"><%= t(".intro.body_2") %></p>
+          <p class="govuk-body-m govuk-!-margin-bottom-0"><%= t(".intro.body_2") %></p>
         </div>
 
         <div class="govuk-grid-column-one-quarter ncce-enrichment-card govuk-!-padding-4 ncce-section">
@@ -76,25 +76,16 @@
             <h2 class="govuk-heading-m"><%= t(".donate.heading") %></h2>
 
             <p class="govuk-body-m"><%= t(".donate.body_1") %></p>
-            <p class="govuk-body-s"><%= t(".donate.body_2") %></p>
+            <p class="govuk-body-m"><%= t(".donate.body_2") %></p>
           
             <div class="get-involved_get-in-touch-button-container">
-              <%= link_to t(".donate.link.title"), governors_and_trustees_url, class: "govuk-button button button--inverted get-involved_get-in-touch-button bordered-card__external-button"%>
+              <%= link_to t(".donate.link.title"), "mailto:employers@stem.org.uk", class: "govuk-button button button--inverted get-involved_get-in-touch-button bordered-card__external-button"%>
             </div>
           </div>
         </div>
       </div>
     </div>
   </div>
-
-  <%= render BannerWithBackgroundComponent.new(
-    background_image_css: "get-involved-background_classroom",
-    label: {
-      icon: "icon-star-black",
-      title: t(".impact.heading"),
-      body: t(".impact.body"),
-    }
-  ) %>
 
   <div class="govuk-width-container">
     <div class="govuk-main-wrapper">
@@ -113,6 +104,16 @@
       </div>
     </div>
   </div>
+
+  <%= render BannerWithBackgroundComponent.new(
+    background_image_css: "get-involved-background_classroom",
+    label: {
+      icon: "icon-star-black",
+      title: t(".impact.heading"),
+      body: t(".impact.body"),
+    }
+  ) %>
+
 
   <%= render TestimonialsComponent.new(
     testimonials: [
@@ -178,7 +179,7 @@
             <h2 class="govuk-heading-m"><%= t(".join_us.heading") %></h2>
 
             <p class="govuk-body-m"><%= t(".join_us.body_1") %></p>
-            <p class="govuk-body-s"><%= t(".join_us.body_2") %></p>
+            <p class="govuk-body-m"><%= t(".join_us.body_2_html", ambassador_link: link_to('Computing Ambassadors', stem_ambassadors_url)) %></p>
           </div>
         </div>
       </div>
