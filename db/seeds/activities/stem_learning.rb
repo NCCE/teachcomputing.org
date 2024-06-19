@@ -2677,3 +2677,15 @@ Activity.find_or_initialize_by(stem_course_template_no: "9288db6c-ed27-ef11-840b
 
   activity.programmes = [primary_certificate]
 end.save!
+
+Activity.find_or_initialize_by(stem_course_template_no: "9c1af378-762d-ef11-840a-002248c61821").tap do |activity|
+  activity.title = "Algorithms and programming in key stage 1"
+  activity.slug = "algorithms-and-programming-in-key-stage-1"
+  activity.category = "face-to-face"
+  activity.remote_delivered_cpd = false
+  activity.provider = "stem-learning"
+  activity.stem_activity_code = "CP019"
+  activity.credit = 50
+
+  activity.programmes = [primary_certificate]
+end.save!
