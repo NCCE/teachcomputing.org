@@ -40,7 +40,7 @@
             cards = [
               { type: :file, details: @unit.unit_guide },
             ] + (@unit.learning_graphs + @unit.rubrics + @unit.summative_assessments + @unit.summative_answers).map{ { type: :file, details: _1 } } +
-            [{ type: :external_link, details: { title: 'Digital Summative <br /> Assesment'.html_safe, link: @unit.digital_summative_assessment_url } }]
+            [{ type: :external_link, details: { title: 'Digital Summative <br /> Assessment'.html_safe, link: @unit.digital_summative_assessment_url } }]
           %>
           <%= render MixedCardsComponent.new(cards: cards) %>
 
