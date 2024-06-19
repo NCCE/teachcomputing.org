@@ -7,13 +7,17 @@ module Cms
         end
 
         def all(collection_class, page, page_size, params)
-          params.merge!(generate_populate_params(collection_class.collection_attribute_mappings))
-          params[:pagination] = {
+          strapi_params = {}
+          if params[:query]
+            strapi_params[:filters] = Factories::QueryFactory.generate_parameters(collection_class, params[:query])
+          end
+          strapi_params.merge!(generate_populate_params(collection_class.collection_attribute_mappings))
+          strapi_params[:pagination] = {
             page:,
             pageSize: page_size
           }
           begin
-            response = @connection.get(collection_class.resource_key, params)
+            response = @connection.get(collection_class.resource_key, strapi_params)
           rescue => e
             Sentry.capture_exception(e)
             raise ActiveRecord::RecordNotFound

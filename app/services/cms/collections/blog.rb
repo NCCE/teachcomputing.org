@@ -36,6 +36,10 @@ module Cms
       def self.resource_key
         "blogs"
       end
+
+      def self.query_keys
+        [:tag]
+      end
     end
   end
 end

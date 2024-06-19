@@ -31,10 +31,4 @@ class CmsController < ApplicationController
 
     "#{params[:parent_slug]}-#{params[:page_slug]}"
   end
-
-  private
-
-  def preview_params
-    params.permit(:preview, :preview_key)
-  end
 end
