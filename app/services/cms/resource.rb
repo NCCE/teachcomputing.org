@@ -55,7 +55,7 @@ module Cms
     def self.all(page, page_size, params: {})
       raise Errors::NotACmsCollection unless is_collection
       response = Rails.cache.fetch(
-        "#{resource_key}-#{page}-#{page_size}",
+        cache_key(page, page_size, params),
         expires_in: CACHE_EXPIRY,
         namespace: "cms"
       ) do
@@ -70,6 +70,15 @@ module Cms
         Rails.cache.delete("#{resource_key}-#{key}", namespace: "cms")
       else
         Rails.cache.delete_matched(/#{resource_key}.*/, namespace: "cms")
+      end
+    end
+
+    private_class_method def self.cache_key(page, page_size, params)
+      if params.empty?
+        "#{resource_key}-#{page}-#{page_size}"
+      else
+        param_string = params.map { |k, v| "#{k}_#{v}" }.join("-")
+        "#{resource_key}-#{page}-#{page_size}-#{param_string}"
       end
     end
 

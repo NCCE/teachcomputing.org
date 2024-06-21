@@ -8,7 +8,7 @@ module CmsProcessing
     @collection_wrapper_class = collection_wrapper
     @path = cms_posts_path
     @collection = klass.all(page, page_size, params: {query: params.permit(klass.query_keys)})
-    render :collection
+    render "cms/collection"
   end
 
   def process_resource(klass, resource_id: nil)
@@ -16,7 +16,7 @@ module CmsProcessing
     preview = preview_params[:preview] || false
     preview_key = preview_params[:preview_key] || nil
     @resource = klass.get(resource_id, preview:, preview_key:)
-    render :resource
+    render "cms/resource"
   end
 
   def process_page
