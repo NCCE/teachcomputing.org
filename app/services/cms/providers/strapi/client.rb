@@ -84,7 +84,7 @@ module Cms
           else
             data[:attributes]
           end
-          to_resource(data[:id], attributes, resource_class.resource_attribute_mappings.map { process_model(_1, attributes) })
+          to_resource(data[:id], attributes, resource_class.resource_attribute_mappings.map { process_model(_1, attributes) }, preview: has_preview)
         end
 
         def process_model(mapping, attributes)
@@ -95,13 +95,13 @@ module Cms
           end
         end
 
-        def to_resource(id, attributes, data_models)
+        def to_resource(id, attributes, data_models, preview: false)
           {
             id:,
             data_models:,
             created_at: attributes[:createdAt],
             updated_at: attributes[:updatedAt],
-            published_at: attributes[:publishedAt]
+            published_at: preview ? DateTime.now.to_s : attributes[:publishedAt]
           }
         end
       end
