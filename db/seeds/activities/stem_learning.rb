@@ -2689,3 +2689,15 @@ Activity.find_or_initialize_by(stem_course_template_no: "9c1af378-762d-ef11-840a
 
   activity.programmes = [primary_certificate]
 end.save!
+
+Activity.find_or_initialize_by(stem_course_template_no: "5af6c3df-542a-ef11-8409-6045bd0aeb57").tap do |activity|
+  activity.title = "Maths in primary computing"
+  activity.slug = "maths-in-primary-computing"
+  activity.category = "face-to-face"
+  activity.remote_delivered_cpd = true
+  activity.provider = "stem-learning"
+  activity.stem_activity_code = "CP418"
+  activity.credit = 15
+
+  activity.programmes = [primary_certificate]
+end.save!
