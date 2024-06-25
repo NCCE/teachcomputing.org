@@ -1,5 +1,7 @@
 .govuk-tag {
   padding-bottom: 3px;
+  font-weight: 700;
+  height: fit-content;
 }
 
 .govuk-phase-banner__content__tag {
@@ -15,6 +17,8 @@
   background-color: $white;
   color: $grey-dark-x;
   border: 2px solid $orange;
+  font-size: 1rem;
+  max-width: fit-content;
 }
 
 .ncce-courses__filter-tag {

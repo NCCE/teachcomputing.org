@@ -128,17 +128,20 @@
   padding-left: 16px;
   padding-right: 16px;
   padding-top: 24px;
-  padding-bottom: 24px;
   margin-bottom: 20px;
   text-align: left !important;
+  width: 100%;
+
+  &--padding {
+    padding-bottom: 24px;
+    margin-bottom: 0px;
+  }
+
+  .ncce-checkboxes__item .ncce-checkboxes__label {
+    line-height: 1rem;
+    padding-left: 5px;
+  }
 }
-
-.curriculum__rating-choices--padding {
-  padding-bottom: 24px;
-  margin-bottom: 0px;
-}
-
-
 
 .curriculum__rating--text {
   margin: 0;
