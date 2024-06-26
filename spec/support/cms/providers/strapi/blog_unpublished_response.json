@@ -1,0 +1,272 @@
+{
+  "data": {
+    "id": 3,
+    "attributes": {
+      "title": "Education and industry unite at key event championing gender equity in computer science",
+      "content": [
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "text": "Yesterday (February 6), we were delighted to bring together educationalists, industry, and policymakers to champion a shared commitment to removing barriers to participation for females in computing and tech. ",
+              "type": "text"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "text": "The Tech for Success: gender equity in computer science education event took place at ",
+              "type": "text"
+            },
+            {
+              "url": "https://www.tcs.com/",
+              "type": "link",
+              "children": [
+                {
+                  "text": "Tata Consultancy Services",
+                  "type": "text"
+                }
+              ]
+            },
+            {
+              "text": " (TCS) in London and provided a fitting platform to showcase the inaugural successes of the ",
+              "type": "text"
+            },
+            {
+              "url": "https://teachcomputing.org/i-belong",
+              "type": "link",
+              "children": [
+                {
+                  "text": "I Belong: encouraging girls into computer science programme",
+                  "type": "text"
+                }
+              ]
+            },
+            {
+              "text": ". ",
+              "type": "text"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "text": "A number of pioneering schools that were among the first to complete the programme were awarded with certificates recognising their success, presented by Karen Blake, Co-CEO of Tech Talent Charter and Jenny Oldroyd, Director of Curriculum and General Qualifications at the Department for Education. ",
+              "type": "text"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "text": "Jenny Oldroyd said: \"We really want more girls and students from all kinds of backgrounds to make sure that they consider a career in computing, and to see themselves as feeling in place as part of that cohort that can get the best out of computer science.\"",
+              "type": "text"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "text": "The students and teachers were then given the chance to talk about some of their experiences and the hands-on computing projects they have participated in within the classroom, citing their involvement in exciting enrichment activities such as the Raspberry Pi Competition 2024 and STEM Clubs.",
+              "type": "text"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "text": "Next, a guest panel featuring Susie Smith, Head of Global Service Introduction at TCS, Caitlin Gould, founder of TECgirls, education consultant Beverly Clarke, and Helen Lovekin from the National Cyber Security Centre, discussed the importance of supporting females into STEM subjects and careers. ",
+              "type": "text"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "text": "STEM Learning’s CEO Séverine Trouillet, who chaired the panel, said: “The I Belong campaign is critical to help build an inclusive subject where girls feel they belong and can succeed. If girls feel they belong in tech, everybody benefits.\"",
+              "type": "text"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "text": "Caitlin Gould tells us: \"We need to make sure that if we do want girls to go into this space are we creating workspaces that are good places for them to go into.\"",
+              "type": "text"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "text": "The event took place in TCS’ newly opened, inspirational ",
+              "type": "text"
+            },
+            {
+              "url": "https://www.tcs.com/what-we-do/pace-innovation",
+              "type": "link",
+              "children": [
+                {
+                  "text": "Pace Port™",
+                  "type": "text"
+                }
+              ]
+            },
+            {
+              "text": " innovation space, which provided an impressive backdrop for the day. Amy Shocker, Head of Corporate Social Responsibility at TCS said:",
+              "type": "text"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "text": "\"At TCS, we are passionate about encouraging inclusivity in technology education and are thrilled to be hosting the NCCE I Belong launch event at the TCS office. We have been collaborating with STEM Learning for many years, helping our associates become STEM Ambassadors that inspire the next generation of digital innovators, as well as bringing our flagship STEM programme, goIT, into schools.\"",
+              "type": "text"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "text": "\"We continue our commitment to elevate technology startups, not-for-profits, and organisations striving for positive change in the field. Partnering with NCCE and STEM Learning is an important aspect of this work, building equitable and inclusive pathways for marginalised groups, young people, women and girls underrepresented in the technology space.\"",
+              "type": "text"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "text": "If you haven't joined the I Belong programme yet, ",
+              "type": "text"
+            },
+            {
+              "url": "https://teachcomputing.org/i-belong",
+              "type": "link",
+              "children": [
+                {
+                  "text": "enrol today!",
+                  "type": "text"
+                }
+              ]
+            },
+            {
+              "text": " If you've already enrolled but haven't yet completed the programme, check your dashboard and proceed with the next steps to earn your school certificate and demonstrate your dedication to closing the gender gap in computing.",
+              "type": "text"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "text": "",
+              "type": "text"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "text": " ",
+              "type": "text"
+            }
+          ]
+        }
+      ],
+      "createdAt": "2024-02-15T09:25:09.455Z",
+      "updatedAt": "2024-02-19T12:41:20.567Z",
+      "publishedAt": null,
+      "slug": "tech-for-success",
+      "publishDate": "2024-02-07T12:30:00.000Z",
+      "excerpt": "Yesterday, we were delighted to bring together educationalists, industry and policymakers to champion a shared commitment to removing barriers to participation for females in computing and tech. ",
+      "seo": {
+        "id": 1,
+        "title": "some SEO content",
+        "description": "testing"
+      },
+      "featuredImage": {
+        "data": {
+          "id": 5,
+          "attributes": {
+            "name": "Certificates-I-Belong-event-1-1.jpg",
+            "alternativeText": null,
+            "caption": null,
+            "width": 1324,
+            "height": 985,
+            "formats": {
+              "large": {
+                "ext": ".jpg",
+                "url": "https://strapi.teachcomputing.rpfdev.com/uploads/large_Certificates_I_Belong_event_1_1_7606559feb.jpg",
+                "hash": "large_Certificates_I_Belong_event_1_1_7606559feb",
+                "mime": "image/jpeg",
+                "name": "large_Certificates-I-Belong-event-1-1.jpg",
+                "path": null,
+                "size": 131.68,
+                "width": 1000,
+                "height": 744
+              },
+              "small": {
+                "ext": ".jpg",
+                "url": "https://strapi.teachcomputing.rpfdev.com/uploads/small_Certificates_I_Belong_event_1_1_7606559feb.jpg",
+                "hash": "small_Certificates_I_Belong_event_1_1_7606559feb",
+                "mime": "image/jpeg",
+                "name": "small_Certificates-I-Belong-event-1-1.jpg",
+                "path": null,
+                "size": 40.7,
+                "width": 500,
+                "height": 372
+              },
+              "medium": {
+                "ext": ".jpg",
+                "url": "https://strapi.teachcomputing.rpfdev.com/uploads/medium_Certificates_I_Belong_event_1_1_7606559feb.jpg",
+                "hash": "medium_Certificates_I_Belong_event_1_1_7606559feb",
+                "mime": "image/jpeg",
+                "name": "medium_Certificates-I-Belong-event-1-1.jpg",
+                "path": null,
+                "size": 80.66,
+                "width": 750,
+                "height": 558
+              },
+              "thumbnail": {
+                "ext": ".jpg",
+                "url": "https://strapi.teachcomputing.rpfdev.com/uploads/uploads/thumbnail_Certificates_I_Belong_event_1_1_7606559feb.jpg",
+                "hash": "thumbnail_Certificates_I_Belong_event_1_1_7606559feb",
+                "mime": "image/jpeg",
+                "name": "thumbnail_Certificates-I-Belong-event-1-1.jpg",
+                "path": null,
+                "size": 9.61,
+                "width": 210,
+                "height": 156
+              }
+            },
+            "hash": "Certificates_I_Belong_event_1_1_7606559feb",
+            "ext": ".jpg",
+            "mime": "image/jpeg",
+            "size": 179.98,
+            "url": "https://strapi.teachcomputing.rpfdev.com/uploads/uploads/Certificates_I_Belong_event_1_1_7606559feb.jpg",
+            "previewUrl": null,
+            "provider": "local",
+            "provider_metadata": null,
+            "createdAt": "2024-02-15T09:28:29.546Z",
+            "updatedAt": "2024-02-15T09:28:29.546Z"
+          }
+        }
+      }
+    }
+  },
+  "meta": {}
+}

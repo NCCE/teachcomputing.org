@@ -84,6 +84,9 @@ module Cms
           else
             data[:attributes]
           end
+
+          raise ActiveRecord::RecordNotFound if !has_preview && attributes[:publishedAt].blank?
+
           to_resource(data[:id], attributes, resource_class.resource_attribute_mappings.map { process_model(_1, attributes) }, preview: has_preview)
         end
 
