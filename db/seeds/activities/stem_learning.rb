@@ -2629,3 +2629,75 @@ Activity.find_or_initialize_by(stem_course_template_no: "83b17df6-d819-ef11-9f89
 
   activity.programmes = [primary_certificate]
 end.save!
+
+Activity.find_or_initialize_by(stem_course_template_no: "1bb43af9-d51c-ef11-840b-002248c6f524").tap do |activity|
+  activity.title = "Effective computing transition from KS2-3"
+  activity.slug = "effective-computing-transition-from-ks2-3"
+  activity.category = "face-to-face"
+  activity.remote_delivered_cpd = true
+  activity.provider = "stem-learning"
+  activity.stem_activity_code = "CP415"
+  activity.credit = 15
+
+  activity.programmes = [primary_certificate, secondary_certificate]
+end.save!
+
+Activity.find_or_initialize_by(stem_course_template_no: "6ed806c0-f527-ef11-840b-002248c6f524").tap do |activity|
+  activity.title = "Programming with the micro:bit"
+  activity.slug = "programming-with-the-micro-bit"
+  activity.category = "face-to-face"
+  activity.remote_delivered_cpd = false
+  activity.provider = "stem-learning"
+  activity.stem_activity_code = "CP018"
+  activity.credit = 50
+
+  activity.programmes = [primary_certificate]
+end.save!
+
+Activity.find_or_initialize_by(stem_course_template_no: "2bae0770-f127-ef11-840b-002248c6f524").tap do |activity|
+  activity.title = "Empowering trainee teachers: Introduction to primary computing"
+  activity.slug = "empowering-trainee-teachers-introduction-to-primary-computing"
+  activity.category = "face-to-face"
+  activity.remote_delivered_cpd = true
+  activity.provider = "stem-learning"
+  activity.stem_activity_code = "CP417"
+  activity.credit = 50
+
+  activity.programmes = [primary_certificate]
+end.save!
+
+Activity.find_or_initialize_by(stem_course_template_no: "9288db6c-ed27-ef11-840b-002248c6f524").tap do |activity|
+  activity.title = "Empowering trainee teachers: Introduction to primary computing"
+  activity.slug = "empowering-trainee-teachers-introduction-to-primary-computing-f2f"
+  activity.category = "face-to-face"
+  activity.remote_delivered_cpd = false
+  activity.provider = "stem-learning"
+  activity.stem_activity_code = "CP017"
+  activity.credit = 50
+
+  activity.programmes = [primary_certificate]
+end.save!
+
+Activity.find_or_initialize_by(stem_course_template_no: "9c1af378-762d-ef11-840a-002248c61821").tap do |activity|
+  activity.title = "Algorithms and programming in key stage 1"
+  activity.slug = "algorithms-and-programming-in-key-stage-1"
+  activity.category = "face-to-face"
+  activity.remote_delivered_cpd = false
+  activity.provider = "stem-learning"
+  activity.stem_activity_code = "CP019"
+  activity.credit = 50
+
+  activity.programmes = [primary_certificate]
+end.save!
+
+Activity.find_or_initialize_by(stem_course_template_no: "5af6c3df-542a-ef11-8409-6045bd0aeb57").tap do |activity|
+  activity.title = "Maths in primary computing"
+  activity.slug = "maths-in-primary-computing"
+  activity.category = "face-to-face"
+  activity.remote_delivered_cpd = true
+  activity.provider = "stem-learning"
+  activity.stem_activity_code = "CP418"
+  activity.credit = 15
+
+  activity.programmes = [primary_certificate]
+end.save!
