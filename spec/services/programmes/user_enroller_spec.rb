@@ -69,8 +69,8 @@ RSpec.describe Programmes::UserEnroller do
       let!(:achievement) { create(:completed_achievement, user:) }
       let!(:programme_activity) { create(:programme_activity, activity: achievement.activity, programme:) }
 
-      it "should call IssueBadgeJob" do
-        expect(IssueBadgeJob).to receive(:perform_later)
+      it "should call IssueCpdBadgeJob" do
+        expect(IssueCpdBadgeJob).to receive(:perform_later)
 
         enroller.call
       end
