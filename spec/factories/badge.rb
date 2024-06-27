@@ -3,11 +3,16 @@ FactoryBot.define do
     credly_badge_template_id { SecureRandom.uuid }
     academic_year { "2019-20" }
     active { false }
+    trigger_type { :cpd }
     programme
 
     trait :active do
       academic_year { "2020-21" }
       active { true }
+    end
+
+    trait :completion do
+      trigger_type { :completion }
     end
   end
 end

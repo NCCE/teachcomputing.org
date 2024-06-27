@@ -52,26 +52,4 @@ RSpec.describe Programmes::ALevel do
       expect(subject.programme_objectives[1..]).to match_array(pags)
     end
   end
-
-  describe "#user_qualifies_for_credly_badge" do
-    let(:setup_completed_programme) {
-      create(:programme_activity_grouping, :with_activities, programme: subject, required_for_completion: 0)
-      user_programme_enrolment
-      create(:completed_assessment_attempt, user:, assessment:)
-    }
-
-    it "should be false if not enrolled" do
-      expect(subject.user_qualifies_for_credly_badge?(user)).to be false
-    end
-
-    it "should return false if not meeting completion requirements" do
-      user_programme_enrolment
-      expect(subject.user_qualifies_for_credly_badge?(user)).to be false
-    end
-
-    it "should return true when complete" do
-      setup_completed_programme
-      expect(subject.user_qualifies_for_credly_badge?(user)).to be true
-    end
-  end
 end
