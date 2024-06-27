@@ -506,12 +506,12 @@ RSpec.describe Programmes::CSAccelerator do
   describe "#user_qualifies_for_credly_badge" do
     it "should return false if no face-to-face" do
       setup_one_online_achievement
-      expect(programme.user_qualifies_for_credly_badge?(user)).to be false
+      expect(programme.user_qualifies_for_credly_cpd_badge?(user)).to be false
     end
 
     it "should return true if completed face-to-face course" do
       setup_one_short_f2f_achievement
-      expect(programme.user_qualifies_for_credly_badge?(user)).to be true
+      expect(programme.user_qualifies_for_credly_cpd_badge?(user)).to be true
     end
   end
 

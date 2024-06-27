@@ -28,6 +28,14 @@ module Credly
       Credly::Request.run(BADGES_RESOURCE_PATH + query_strings, {})[:data]
     end
 
+    def self.user_has_programme_completion_badge?(user, programme)
+      by_programme_badge_template_ids(user.id, programme.badges.completion.pluck(:credly_badge_template_id))
+    end
+
+    def self.user_has_programme_cpd_badge?(user, programme)
+      by_programme_badge_template_ids(user.id, programme.badges.cpd.pluck(:credly_badge_template_id))
+    end
+
     def self.by_programme_badge_template_ids(user_id, template_ids)
       issued = Credly::Badge.issued(user_id)
       badges = issued.keep_if { |badge| template_ids.include?(badge[:badge_template][:id]) }
