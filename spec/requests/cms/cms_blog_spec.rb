@@ -30,5 +30,20 @@ RSpec.describe CmsController do
         expect { get "/blog/eggs" }.to raise_error(ActiveRecord::RecordNotFound)
       end
     end
+
+    context "with unpublished page" do
+      before do
+        stub_strapi_get_single_unpublished_blog_post("blogs/unpublished")
+      end
+
+      it "raised an error" do
+        expect { get "/blog/unpublished" }.to raise_error(ActiveRecord::RecordNotFound)
+      end
+
+      it "renders page with preview parameter" do
+        get "/blog/unpublished?preview=true"
+        expect(response).to render_template("resource")
+      end
+    end
   end
 end

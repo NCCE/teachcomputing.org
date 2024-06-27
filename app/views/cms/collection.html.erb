@@ -1,3 +1,4 @@
+<% meta_tag(:title, "#{@title.titlecase} - Teach Computing") %>
 <%= render 'components/hero', hero_title: @title.titlecase, small_title: true %>
 <div class="govuk-width-container">
   <%= render BreadcrumbComponent.new(ancestors: [[root_path, 'Home']], current_page_name: @page_name) %>
@@ -17,14 +18,14 @@
       <div class="govuk-grid-column-full">
         <% if @collection.previous_page %>
           <hr class="ncce-hr">
-          <%= link_to "#{@path}?page=#{@collection.previous_page}", class: 'icon-arrow-right search__paging' do %>
+          <%= link_to "#{@path}?page=#{@collection.previous_page}", class: 'icon-arrow-left search__paging' do %>
             <p class="govuk-heading-s">Previous page</p>
             <p class="govuk-body-s"><%= @collection.previous_page %> of <%= @collection.page_number %></p>
           <% end %>
         <% end %>
         <% if @collection.next_page %>
           <hr class="ncce-hr">
-          <%= link_to "#{@path}?page=#{@collection.next_page}", class: 'icon-arrow-left search__paging' do %>
+          <%= link_to "#{@path}?page=#{@collection.next_page}", class: 'icon-arrow-right search__paging' do %>
             <p class="govuk-heading-s">Next page</p>
             <p class="govuk-body-s"><%= @collection.next_page %> of <%= @collection.page_number %></p>
           <% end %>
