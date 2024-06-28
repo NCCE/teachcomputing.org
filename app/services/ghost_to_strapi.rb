@@ -111,6 +111,7 @@ class GhostToStrapi
       },
       blog_tags: tag_ids
     }
+    byebug
     if post["feature_image"]
       caption_doc = Nokogiri::HTML::DocumentFragment.parse(post["feature_image_caption"])
       caption_text = caption_doc.children.first&.text
@@ -368,7 +369,7 @@ class GhostToStrapi
   end
 
   def get_strapi_tags
-    JSON.parse(RestClient.get("#{@strapi_api}/blog-tags", {Authorization: "Bearer #{@strapi_api_key}"}).body)["data"]
+    JSON.parse(RestClient.get("#{@strapi_api}/blog-tags", {params: {pagination: {pageSize: 200}}, Authorization: "Bearer #{@strapi_api_key}"}).body)["data"]
   end
 
   def get_posts_from_ghost(post_count)
