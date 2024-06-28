@@ -25,6 +25,8 @@ class Activity < ApplicationRecord
   validates :stem_activity_code, uniqueness: true, unless: proc { |a| a.stem_activity_code.blank? }
   validates :stem_course_template_no, uniqueness: {case_sensitive: false}, unless: proc { |a| a.stem_course_template_no.blank? }
 
+  before_save :calculate_credits
+
   scope :available_for, lambda { |user|
     where("id NOT IN (SELECT activity_id FROM achievements WHERE user_id = ?)", user.id)
   }
@@ -68,5 +70,23 @@ class Activity < ApplicationRecord
 
   def active_course?
     stem_activity_code.present? && retired == false
+  end
+
+  private
+
+  # Calculates credits for a course based on the programme and course length in hours
+  def calculate_credits
+    if credit.nil? && duration_in_hours.present?
+      if programmes.include?(Programme.cs_accelerator)
+        if category == "face-to-face" || category == "remote"
+          credits = (duration_in_hours > 8) ? 30 : 10
+        elsif category == "online"
+          credits = 20
+        end
+      else
+        credits = duration_in_hours * 10
+      end
+      self.credit = credits
+    end
   end
 end
