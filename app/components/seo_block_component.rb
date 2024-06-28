@@ -8,7 +8,7 @@ class SeoBlockComponent < ViewComponent::Base
   end
 
   def call
-    meta_tag(:title, @title)
+    meta_tag(:title, "#{@title} - Teach Computing")
     meta_tag(:description, @description)
     meta_tag(:image, cms_image_url(@featured_image)) if @featured_image
   end

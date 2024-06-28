@@ -5,10 +5,8 @@ class FeaturedBlogPostsComponent < ViewComponent::Base
     posts =
       begin
         response = Cms::Collections::Blog.all(1, number_to_display, params: {
-          filters: {
-            featured: {
-              "$eq": "true"
-            }
+          query: {
+            featured: true
           }
         })
 

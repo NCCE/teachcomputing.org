@@ -19,6 +19,11 @@ module StrapiStubs
     stub_request(:get, /^https:\/\/strapi.teachcomputing.org\/api\/#{resource_key}?/).to_return(body: json_response)
   end
 
+  def stub_strapi_get_single_unpublished_blog_post(resource_key)
+    json_response = File.new("spec/support/cms/providers/strapi/blog_unpublished_response.json")
+    stub_request(:get, /^https:\/\/strapi.teachcomputing.org\/api\/#{resource_key}?/).to_return(body: json_response)
+  end
+
   def stub_strapi_get_collection_entity(resource_key)
     json_response = File.new("spec/support/cms/providers/strapi/collection_type_response.json")
     stub_request(:get, /^https:\/\/strapi.teachcomputing.org\/api\/#{resource_key}?/).to_return(body: json_response)
@@ -74,5 +79,10 @@ module StrapiStubs
   def stub_strapi_blog_collection
     json_response = File.new("spec/support/cms/providers/strapi/blogs_collection_response.json")
     stub_request(:get, /^https:\/\/strapi.teachcomputing.org\/api\/blogs/).to_return(body: json_response)
+  end
+
+  def stub_strapi_blog_collection_with_tag(tag)
+    json_response = File.new("spec/support/cms/providers/strapi/blogs_collection_response.json")
+    stub_request(:get, /^https:\/\/strapi.teachcomputing.org\/api\/blogs\?.*(filters\[blog_tags\]\[slug\]\[\$eq\]=#{tag}).*/).to_return(body: json_response)
   end
 end

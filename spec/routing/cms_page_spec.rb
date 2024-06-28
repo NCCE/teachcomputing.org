@@ -10,12 +10,11 @@ describe "CMS Page routes" do
       )
   end
 
-  it "has a route for refreshing nested pages" do
-    expect(get("/qwerty/asdf/refresh"))
+  it "has a route for refreshing blog pages" do
+    expect(get("/blog/asdf/refresh"))
       .to route_to(
         controller: "cms",
-        action: "clear_page_cache",
-        parent_slug: "qwerty",
+        action: "clear_blog_cache",
         page_slug: "asdf"
       )
   end

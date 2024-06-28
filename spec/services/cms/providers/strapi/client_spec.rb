@@ -26,9 +26,6 @@ RSpec.describe Cms::Providers::Strapi::Client do
     described_class.new
   }
 
-  before do
-  end
-
   it "calls one and returns mapped resource" do
     stub_strapi_get_single_entity("test-page")
     response = client.one(page_class)
@@ -36,11 +33,30 @@ RSpec.describe Cms::Providers::Strapi::Client do
     expect(response[:data_models].first).to be_a Cms::Models::SimpleTitle
   end
 
+  it "calls all with query parameter adds filter" do
+    stub_strapi_blog_collection_with_tag("ai")
+    response = client.all(Cms::Collections::Blog, 1, 50, {query: {tag: "ai"}})
+    expect(response[:resources]).to be_an_instance_of(Array)
+  end
+
   it "raises RecordNotFound for missing resource" do
     stub_strapi_not_found("test-page")
     expect do
       client.one(page_class)
     end.to raise_error(ActiveRecord::RecordNotFound)
+  end
+
+  it "raises RecordNotFound for unpublished resource" do
+    stub_strapi_get_single_unpublished_blog_post("test-collection/unpublished")
+    expect do
+      client.one(collection_class, "unpublished")
+    end.to raise_error(ActiveRecord::RecordNotFound)
+  end
+
+  it "doesn't raise RecordNotFound for unpublished resource with preview" do
+    stub_strapi_get_single_unpublished_blog_post("test-collection/unpublished")
+    response = client.one(collection_class, "unpublished", preview: true)
+    expect(response).to be_an_instance_of(Hash)
   end
 
   context "with preview" do

@@ -7,13 +7,17 @@ module Cms
         end
 
         def all(collection_class, page, page_size, params)
-          params.merge!(generate_populate_params(collection_class.collection_attribute_mappings))
-          params[:pagination] = {
+          strapi_params = {}
+          if params[:query]
+            strapi_params[:filters] = Factories::QueryFactory.generate_parameters(collection_class, params[:query])
+          end
+          strapi_params.merge!(generate_populate_params(collection_class.collection_attribute_mappings))
+          strapi_params[:pagination] = {
             page:,
             pageSize: page_size
           }
           begin
-            response = @connection.get(collection_class.resource_key, params)
+            response = @connection.get(collection_class.resource_key, strapi_params)
           rescue => e
             Sentry.capture_exception(e)
             raise ActiveRecord::RecordNotFound
@@ -80,7 +84,10 @@ module Cms
           else
             data[:attributes]
           end
-          to_resource(data[:id], attributes, resource_class.resource_attribute_mappings.map { process_model(_1, attributes) })
+
+          raise ActiveRecord::RecordNotFound if !has_preview && attributes[:publishedAt].blank?
+
+          to_resource(data[:id], attributes, resource_class.resource_attribute_mappings.map { process_model(_1, attributes) }, preview: has_preview)
         end
 
         def process_model(mapping, attributes)
@@ -91,13 +98,13 @@ module Cms
           end
         end
 
-        def to_resource(id, attributes, data_models)
+        def to_resource(id, attributes, data_models, preview: false)
           {
             id:,
             data_models:,
             created_at: attributes[:createdAt],
             updated_at: attributes[:updatedAt],
-            published_at: attributes[:publishedAt]
+            published_at: preview ? DateTime.now.to_s : attributes[:publishedAt]
           }
         end
       end
