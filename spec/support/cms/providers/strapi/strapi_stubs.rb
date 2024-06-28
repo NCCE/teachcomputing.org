@@ -41,7 +41,7 @@ module StrapiStubs
 
   def stub_strapi_blog_tags
     json_response = File.new("spec/support/cms/providers/strapi/blog_tags.json")
-    stub_request(:get, "https://strapi.teachcomputing.org/api/blog-tags").to_return(body: json_response)
+    stub_request(:get, /^https:\/\/strapi.teachcomputing.org\/api\/blog-tags/).to_return(body: json_response)
   end
 
   def stub_strapi_media_upload
