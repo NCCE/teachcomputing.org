@@ -12,7 +12,7 @@ class BadgeAssignmentCheckJob < ApplicationJob
       recent_achievements.includes(:user).find_each do |achievement|
         user = achievement.user
 
-        next unless programme.user_qualifies_for_credly_badge?(user)
+        next unless programme.user_qualifies_for_credly_cpd_badge?(user)
         next if user_has_badge?(user, programme)
 
         missing_badges << [user, programme]
@@ -23,6 +23,6 @@ class BadgeAssignmentCheckJob < ApplicationJob
   private
 
   def user_has_badge?(user, programme)
-    Credly::Badge.by_programme_badge_template_ids(user.id, programme.badges.pluck(:credly_badge_template_id)).present?
+    Credly::Badge.by_programme_badge_template_ids(user.id, programme.badges.cpd.pluck(:credly_badge_template_id)).present?
   end
 end
