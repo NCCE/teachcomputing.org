@@ -111,7 +111,6 @@ class GhostToStrapi
       },
       blog_tags: tag_ids
     }
-    byebug
     if post["feature_image"]
       caption_doc = Nokogiri::HTML::DocumentFragment.parse(post["feature_image_caption"])
       caption_text = caption_doc.children.first&.text
