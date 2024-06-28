@@ -1,46 +1,28 @@
 class CmsController < ApplicationController
+  include CmsProcessing
   layout "full-width"
 
-  def articles
-    page =
-      if params[:page].present?
-        params[:page].to_i
-      else
-        1
-      end
-
-    @articles_data = Ghost.new.get_posts(page:, tag: params[:tag])
-    @style_slug = style_slug
+  def blog
+    title = params[:tag] || "News & Updates"
+    process_collection Cms::Collections::Blog, title:,
+      page_name: "Articles", collection_wrapper: "ncce-news-archive"
   end
 
-  def cms_post
-    @article = Ghost.new.get_single_post(build_slug_from_params)
-    @style_slug = style_slug
-    @article_type = :post
-    render :article
+  def blog_resource
+    process_resource Cms::Collections::Blog, resource_id: params[:page_slug]
   end
 
-  def cms_page
-    @article = Ghost.new.get_single_page(build_slug_from_params)
-    @style_slug = style_slug
-    @article_type = :page
-    render :article
-  end
-
-  def style_slug
-    params[:parent_slug] || params[:page_slug]
+  def page_resource
+    process_resource Cms::Collections::SimplePage, resource_id: params[:page_slug]
   end
 
   def clear_page_cache
-    Ghost.new.clear_page_cache(build_slug_from_params)
+    Cms::Collections::SimplePage.clear_cache(params[:page_slug])
     redirect_to request.fullpath.sub(%r{/refresh$}, "")
   end
 
-  private
-
-  def build_slug_from_params
-    return params[:page_slug] if params[:parent_slug].blank?
-
-    "#{params[:parent_slug]}-#{params[:page_slug]}"
+  def clear_blog_cache
+    Cms::Collections::Blog.clear_cache(params[:page_slug])
+    redirect_to request.fullpath.sub(%r{/refresh$}, "")
   end
 end

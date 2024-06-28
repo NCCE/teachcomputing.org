@@ -1,0 +1,22 @@
+{
+  "pages": [
+    {
+      "title": "Privacy Notice",
+      "slug": "privacy",
+      "custom_excerpt": null,
+      "published_at": "2024-01-11T13:08:06.000+00:00",
+      "html": "<p>Simple HTML content</p>",
+      "excerpt": "We means the National Centre for Computing Education (NCCE), run by Department for Education (DfE) and STEM Learning.\n\nWebsite means the Teach Computing website: teachcomputing.org.\n\nYou and Your is the user connecting to the website using a web browser.\n\nYour IP Address is a numerical identifier assigned by the computer network to allow the website to communicate with your computer.\n\nCookie is a small piece of information sent by the website, stored by your web browser, and returned by your web"
+    }
+  ],
+  "meta": {
+    "pagination": {
+      "page": 1,
+      "limit": 1,
+      "pages": 28,
+      "total": 28,
+      "next": 2,
+      "prev": null
+    }
+  }
+}

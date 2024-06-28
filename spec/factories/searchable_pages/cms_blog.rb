@@ -1,5 +1,5 @@
 FactoryBot.define do
-  factory :searchable_pages_ghost_post, class: "SearchablePages::GhostPost" do
+  factory :searchable_pages_cms_blog, class: "SearchablePages::CmsBlog" do
     slug { Random.uuid }
     title { "I'm a title" }
     excerpt { "I'm a description" }

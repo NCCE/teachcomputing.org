@@ -1,20 +1,6 @@
 require "rails_helper"
 
 describe "CMS Page routes" do
-  it "routes single param to cms controller" do
-    expect(get("/qwerty")).to route_to(controller: "cms", action: "cms_page", page_slug: "qwerty")
-  end
-
-  it "routes nested params to cms controller" do
-    expect(get("/qwerty/asdf"))
-      .to route_to(
-        controller: "cms",
-        action: "cms_page",
-        parent_slug: "qwerty",
-        page_slug: "asdf"
-      )
-  end
-
   it "has a route for refreshing pages" do
     expect(get("/qwerty/refresh"))
       .to route_to(
@@ -24,12 +10,11 @@ describe "CMS Page routes" do
       )
   end
 
-  it "has a route for refreshing nested pages" do
-    expect(get("/qwerty/asdf/refresh"))
+  it "has a route for refreshing blog pages" do
+    expect(get("/blog/asdf/refresh"))
       .to route_to(
         controller: "cms",
-        action: "clear_page_cache",
-        parent_slug: "qwerty",
+        action: "clear_blog_cache",
         page_slug: "asdf"
       )
   end
