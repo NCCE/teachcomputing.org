@@ -29,7 +29,7 @@ RSpec.describe BadgeAssignmentCheckJob, type: :job do
     end
 
     it "should not match user with existing badge" do
-      expect(primary_certificate.user_qualifies_for_credly_badge?(user_with_badge)).to be true
+      expect(primary_certificate.user_qualifies_for_credly_cpd_badge?(user_with_badge)).to be true
       matches = described_class.perform_now([primary_certificate], days_to_check: 10)
       expect(matches.include?([user_with_badge, primary_certificate])).to be false
     end
