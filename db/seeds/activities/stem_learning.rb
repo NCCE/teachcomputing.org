@@ -2701,3 +2701,39 @@ Activity.find_or_initialize_by(stem_course_template_no: "5af6c3df-542a-ef11-8409
 
   activity.programmes = [primary_certificate]
 end.save!
+
+Activity.find_or_initialize_by(stem_course_template_no: "e664d455-c833-ef11-8e4e-002248c61821").tap do |activity|
+  activity.title = "Databases for A-level Computer Science"
+  activity.slug = "databases-for-a-level-computer-science"
+  activity.category = "face-to-face"
+  activity.remote_delivered_cpd = true
+  activity.provider = "stem-learning"
+  activity.stem_activity_code = "CP507"
+  activity.credit = 30
+
+  activity.programmes = [secondary_certificate]
+end.save!
+
+Activity.find_or_initialize_by(stem_course_template_no: "ab3e93bf-cf33-ef11-8e4e-002248c617c9").tap do |activity|
+  activity.title = "Introduction to programming for A Level Computer Science"
+  activity.slug = "introduction-to-programming-for-a-level-computer-science"
+  activity.category = "face-to-face"
+  activity.remote_delivered_cpd = false
+  activity.provider = "stem-learning"
+  activity.stem_activity_code = "CP517"
+  activity.credit = 60
+
+  activity.programmes = [secondary_certificate]
+end.save!
+
+Activity.find_or_initialize_by(stem_course_template_no: "3f69717b-d233-ef11-8e4e-002248c6185e").tap do |activity|
+  activity.title = "Maths for A Level Computer Science"
+  activity.slug = "maths-for-a-level-computer-science"
+  activity.category = "face-to-face"
+  activity.remote_delivered_cpd = false
+  activity.provider = "stem-learning"
+  activity.stem_activity_code = "CP518"
+  activity.credit = 30
+
+  activity.programmes = [secondary_certificate]
+end.save!
