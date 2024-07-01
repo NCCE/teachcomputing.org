@@ -18,8 +18,8 @@ class GovGridRowComponent < ViewComponent::Base
     classes
   end
 
-  def row_classes
-    ["govuk-grid-row"] + govuk_padding_classes(@padding) + govuk_margin_classes(@margin)
+  def main_wrapper_classes
+    ["govuk-main-wrapper"] + govuk_padding_classes(@padding) + govuk_margin_classes(@margin)
   end
 
   class GovGridColumnComponent < ViewComponent::Base
