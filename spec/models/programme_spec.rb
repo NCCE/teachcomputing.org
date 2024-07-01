@@ -11,7 +11,8 @@ RSpec.describe Programme, type: :model do
   let(:a_level) { create(:a_level) }
   let(:non_enrollable_programme) { create(:programme, enrollable: false) }
   let(:user) { create(:user) }
-  let(:badge) { create(:badge, :active, programme_id: programme.id) }
+  let(:cpd_badge) { create(:badge, :active, programme_id: programme.id) }
+  let(:completion_badge) { create(:badge, :completion, :active, programme_id: programme.id) }
 
   let(:user_programme_enrolment) { create(:user_programme_enrolment, user_id: user.id, programme_id: programme.id) }
   let(:exam_activity) { create(:activity, :cs_accelerator_exam) }
@@ -141,26 +142,50 @@ RSpec.describe Programme, type: :model do
     end
   end
 
-  describe "#badgeable?" do
+  describe "#cpd_badge" do
     before do
       programme
     end
 
     context "with a programme but without a badge" do
       it "returns false" do
-        expect(programme.badgeable?).to be false
+        expect(programme.cpd_badge).to be nil
       end
     end
 
     context "with a programme that has a badge" do
       it "returns true when active" do
-        badge
-        expect(programme.badgeable?).to be true
+        cpd_badge
+        expect(programme.cpd_badge).to eq cpd_badge
       end
 
       it "returns false when active is false" do
-        badge.update(active: false)
-        expect(programme.badgeable?).to be false
+        cpd_badge.update(active: false)
+        expect(programme.cpd_badge).to be nil
+      end
+    end
+  end
+
+  describe "#completion_badge" do
+    before do
+      programme
+    end
+
+    context "with a programme but without a badge" do
+      it "returns false" do
+        expect(programme.completion_badge).to be nil
+      end
+    end
+
+    context "with a programme that has a badge" do
+      it "returns true when active" do
+        completion_badge
+        expect(programme.completion_badge).to eq completion_badge
+      end
+
+      it "returns false when active is false" do
+        completion_badge.update(active: false)
+        expect(programme.completion_badge).to be nil
       end
     end
   end
@@ -255,6 +280,22 @@ RSpec.describe Programme, type: :model do
       it "returns false" do
         programme = build(:programme, slug: "another-programme")
         expect(programme.i_belong?).to be(false)
+      end
+    end
+  end
+
+  describe "#a_level?" do
+    context "when programme is an a level certificate" do
+      it "returns true" do
+        programme = build(:a_level)
+        expect(programme.a_level?).to be(true)
+      end
+    end
+
+    context "when programme is not an a level certificate" do
+      it "returns false" do
+        programme = build(:programme, slug: "another-programme")
+        expect(programme.a_level?).to be(false)
       end
     end
   end
