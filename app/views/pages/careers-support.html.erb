@@ -14,24 +14,20 @@
   </div>
 </div>
 
-<div class="govuk-width-container">
-  <div class="govuk-main-wrapper">
-    <div class="govuk-grid-row">
-      <div class="govuk-grid-column-full">
-        <p class="govuk-body-s">
-          <%= t(".intro.paragraph_1_html",
-                digital_skills_link: link_to("digital skills are critical to the future of most jobs", "https://www.gov.uk/government/publications/labour-market-and-skills-demand-horizon-scanning-and-scenarios"),
-                job_stats_link: link_to("82% of all jobs posted online", "https://assets.publishing.service.gov.uk/media/5cfe713fed915d097daca4b5/No_Longer_Optional_Employer_Demand_for_Digital_Skills.pdf")) %>
-        </p>
-        <p class="govuk-body-s">
-          <%= t(".intro.paragraph_2_html",
-                gatsby_link: link_to("Gatsby Benchmarks", "https://www.goodcareerguidance.org.uk/benchmarks-and-background")) %>
-        </p>
-        <hr class="govuk-section-break govuk-section-break--s govuk-section-break--visible">
-      </div>
-    </div>
-  </div>
-</div>
+<%= render GovGridRowComponent.new(padding: {bottom: 0}) do |row| %>
+  <%= row.with_column("full") do %>
+    <p class="govuk-body-s">
+      <%= t(".intro.paragraph_1_html",
+            digital_skills_link: link_to("digital skills are critical to the future of most jobs", "https://www.gov.uk/government/publications/labour-market-and-skills-demand-horizon-scanning-and-scenarios"),
+            job_stats_link: link_to("82% of all jobs posted online", "https://assets.publishing.service.gov.uk/media/5cfe713fed915d097daca4b5/No_Longer_Optional_Employer_Demand_for_Digital_Skills.pdf")) %>
+    </p>
+    <p class="govuk-body-s">
+      <%= t(".intro.paragraph_2_html",
+            gatsby_link: link_to("Gatsby Benchmarks", "https://www.goodcareerguidance.org.uk/benchmarks-and-background")) %>
+    </p>
+    <hr class="govuk-section-break govuk-section-break--s govuk-section-break--visible">
+  <% end %>
+<% end %>
 
 <%= render BenchmarkBannerComponent.new(icons: [
   "media/images/pages/careers-support/benchmark_4.svg",
@@ -39,19 +35,15 @@
   "media/images/pages/careers-support/benchmark_7.svg",
 ], class_name: "benchmark-banner--width-float two-headings")%>
 
-<div class="govuk-width-container">
-  <div class="govuk-main-wrapper govuk-!-padding-bottom-0">
-    <div class="govuk-grid-row">
-      <div class="govuk-grid-column-full">
-        <h2 class="govuk-heading-l"><%= t(".student-resources.heading") %></h2>
-        <h3 class="govuk-heading-m">
-          <a href="https://isaaccomputerscience.org/pages/computer_science_journeys_gallery"><%= t(".student-resources.subheading") %></a>
-        </h3>
-        <p class="govuk-body-m"><%= t(".student-resources.content") %></p>
-      </div>
-    </div>
-  </div>
-</div>
+<%= render GovGridRowComponent.new(padding: {bottom: 0}) do |row| %>
+  <%= row.with_column("full") do %>
+    <h2 class="govuk-heading-l"><%= t(".student-resources.heading") %></h2>
+    <h3 class="govuk-heading-m">
+      <a href="https://isaaccomputerscience.org/pages/computer_science_journeys_gallery"><%= t(".student-resources.subheading") %></a>
+    </h3>
+    <p class="govuk-body-m"><%= t(".student-resources.content") %></p>
+  <% end %>
+<% end %>
 
 <%= render BannerComponent.new(
   title: t(".student-resources.topics_to_life.heading"),
@@ -78,68 +70,54 @@
   "media/images/pages/careers-support/benchmark_7.svg",
 ], class_name: "benchmark-banner--width-float")%>
 
-<div class="govuk-width-container">
-  <div class="govuk-main-wrapper">
-    <div class="govuk-grid-row">
-      <div class="govuk-grid-column-two-thirds">
-        <p class="govuk-body-l">
-          <%= link_to t(".isaac.events-link"), "https://isaaccomputerscience.org/events" %>
-        </p>
-        <p class="govuk-body-m"><%= t(".isaac.content") %></p>
-      </div>
-      <div class="govuk-grid-column-one-third">
-        <div class="govuk-!-margin-top-9">
-          <%= image_pack_tag "media/images/logos/isaac-logo.svg" %>
-          </div>
-      </div>
+<%= render GovGridRowComponent.new do |row| %>
+  <%= row.with_column("two-thirds") do %>
+    <p class="govuk-body-l">
+      <%= link_to t(".isaac.events-link"), "https://isaaccomputerscience.org/events" %>
+    </p>
+    <p class="govuk-body-m"><%= t(".isaac.content") %></p>
+  <% end %>
+  <%= row.with_column("one-third") do %>
+    <div class="govuk-!-margin-top-9">
+      <%= image_pack_tag "media/images/logos/isaac-logo.svg" %>
     </div>
-  </div>
-</div>
+  <% end %>
+<% end %>
 
-<div class="light-grey-bg">
-  <div class="govuk-width-container">
-    <div class="govuk-main-wrapper">
-      <div class="govuk-grid-row">
-        <div class="govuk-grid-column-full">
-          <h2 class="govuk-heading-m"><%= t(".resources.heading") %></h2>
-          <%= render BenchmarkBorderedCardsComponent.new(
-            cards: careers_support_resource_cards,
-            class_name: 'bordered-card--careers-support',
-            cards_per_row: 3
-          ) %>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
+<%= render GovGridRowComponent.new(background_color: "light-grey") do |row| %>
+  <%= row.with_column("full") do %>
+    <h2 class="govuk-heading-m"><%= t(".resources.heading") %></h2>
+    <%= render BenchmarkBorderedCardsComponent.new(
+      cards: careers_support_resource_cards,
+      class_name: 'bordered-card--careers-support',
+      cards_per_row: 3
+    ) %>
+  <% end %>
+<% end %>
 
 <%= render BenchmarkBannerComponent.new(icons: [
   "media/images/pages/careers-support/benchmark_2.svg",
   "media/images/pages/careers-support/benchmark_3.svg",
 ], class_name: "benchmark-banner--width-float")%>
 
-<div class="govuk-width-container">
-  <div class="govuk-main-wrapper">
-    <div class="govuk-grid-row">
-      <div class="govuk-grid-column-full">
-        <h2 class="govuk-heading-m"><%= t(".careers-website.heading") %></h2>
-        <p class="govuk-body-m">
-          <%= t(".careers-website.content.description") %>
-        </p>
-        <ul class="govuk-list govuk-list--bullet govuk-body-s">
-          <li><%= t(".careers-website.content.point_1_html",
-            link: link_to("computing, technology and digital", "https://nationalcareers.service.gov.uk/job-categories/computing-technology-and-digital")) %></li>
-          <li><%= t(".careers-website.content.point_2_html",
-            link: link_to("career guidance", "https://www.ucas.com/careers-advice")) %></li>
-          <li><%= t(".careers-website.content.point_3_html",
-            link: link_to("Kudos", "https://www.cascaid.co.uk/kudos/")) %></li>
-          <li><%= t(".careers-website.content.point_4_html",
-            link: link_to("Tech Jobs Quiz", "https://www.bcs.org/it-careers/tech-job-quiz/in-demand-tech-jobs/")) %></li>
-          <li><%= t(".careers-website.content.point_5_html",
-            nscs_link: link_to("NCSC", "https://www.ncsc.gov.uk/section/education-skills/schools"),
-            comp_link: link_to("Cyber First Girls competition", "https://www.ncsc.gov.uk/cyberfirst/girls-competition")) %></li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</div>
+<%= render GovGridRowComponent.new do |row| %>
+  <%= row.with_column("full") do %>
+    <h2 class="govuk-heading-m"><%= t(".careers-website.heading") %></h2>
+    <p class="govuk-body-m">
+      <%= t(".careers-website.content.description") %>
+    </p>
+    <ul class="govuk-list govuk-list--bullet govuk-body-s">
+      <li><%= t(".careers-website.content.point_1_html",
+        link: link_to("computing, technology and digital", "https://nationalcareers.service.gov.uk/job-categories/computing-technology-and-digital")) %></li>
+      <li><%= t(".careers-website.content.point_2_html",
+        link: link_to("career guidance", "https://www.ucas.com/careers-advice")) %></li>
+      <li><%= t(".careers-website.content.point_3_html",
+        link: link_to("Kudos", "https://www.cascaid.co.uk/kudos/")) %></li>
+      <li><%= t(".careers-website.content.point_4_html",
+        link: link_to("Tech Jobs Quiz", "https://www.bcs.org/it-careers/tech-job-quiz/in-demand-tech-jobs/")) %></li>
+      <li><%= t(".careers-website.content.point_5_html",
+        nscs_link: link_to("NCSC", "https://www.ncsc.gov.uk/section/education-skills/schools"),
+        comp_link: link_to("Cyber First Girls competition", "https://www.ncsc.gov.uk/cyberfirst/girls-competition")) %></li>
+    </ul>
+  <% end %>
+<% end %>
