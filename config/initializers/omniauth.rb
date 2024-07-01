@@ -32,7 +32,7 @@ module OmniAuth::Strategies
     end
 
     def callback_url
-      return super if ActiveRecord::Type::Boolean.new.cast(ENV["BYPASS_OAUTH"])
+      return super if ENV.fetch("BYPASS_OAUTH", false) == "true"
 
       full_host + script_name + callback_path
     end
@@ -58,7 +58,7 @@ end
 
 OmniAuth.config.logger = Rails.logger if Rails.env.development?
 
-if ActiveModel::Type::Boolean.new.cast(ENV.fetch("BYPASS_OAUTH", false))
+if ENV.fetch("BYPASS_OAUTH", false) == "true"
   puts "Bypassing OAuth login"
   OmniAuth.config.test_mode = true
   OmniAuth.config.mock_auth[:stem] = OmniAuth::AuthHash.new(
