@@ -52,10 +52,6 @@ class Programme < ApplicationRecord
   def pending_delay
   end
 
-  def badgeable?
-    badges.active.exists?
-  end
-
   def cpd_badge
     badges.cpd.active.first
   end
