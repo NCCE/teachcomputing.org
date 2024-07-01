@@ -12,7 +12,7 @@ class BadgeDashboard < BaseDashboard
     active: Field::Boolean,
     activation_date: FORMATTED_DATE,
     credly_badge_template_id: Field::String,
-    trigger_type: Field::Select.with_options(collection: Badge.trigger_types),
+    trigger_type: Field::Select.with_options(searchable: false, collection: ->(field) { field.resource.class.send(field.attribute.to_s.pluralize).keys }),
     created_at: FORMATTED_DATE_TIME,
     updated_at: FORMATTED_DATE_TIME
   }.freeze

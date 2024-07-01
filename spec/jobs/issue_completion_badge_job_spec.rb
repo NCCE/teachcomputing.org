@@ -7,6 +7,7 @@ RSpec.describe IssueCompletionBadgeJob, type: :job do
   let(:user_programme_enrolment) { create(:user_programme_enrolment, programme:, user:) }
   let(:programme_no_badge) { create(:primary_certificate) }
   let(:user_programme_enrolment_primary) { create(:user_programme_enrolment, programme: programme_no_badge, user:) }
+  let(:inactive_primary_badge) { create(:badge, :completion, programme: programme_no_badge) }
 
   before do
     allow(Credly::Badge).to receive(:issue).and_return(true)
@@ -30,6 +31,12 @@ RSpec.describe IssueCompletionBadgeJob, type: :job do
       end
 
       it "should not issue badge if no badges exist" do
+        described_class.perform_now(user_programme_enrolment_primary)
+        expect(Credly::Badge).not_to have_received(:issue)
+      end
+
+      it "should not issue badge if no badges is inactive" do
+        inactive_primary_badge
         described_class.perform_now(user_programme_enrolment_primary)
         expect(Credly::Badge).not_to have_received(:issue)
       end

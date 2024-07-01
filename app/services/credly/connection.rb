@@ -1,7 +1,7 @@
 module Credly
   class Connection
     API_TOKEN = ENV["CREDLY_AUTH_TOKEN"]
-    URL = "https://api.credly.com/v1/".freeze
+    URL = ENV["CREDLY_URL"]
 
     def self.connect
       Faraday.new(url: URL) do |conn|
