@@ -1,4 +1,6 @@
 class GovGridRowComponentPreview < ViewComponent::Preview
+  layout "full-width"
+
   def two_thirds_one_third
     component = GovGridRowComponent.new.tap do |c|
       c.with_column("two-thirds") do
