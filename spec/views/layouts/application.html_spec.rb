@@ -13,10 +13,6 @@ RSpec.describe("layouts/application", type: :view) do
     expect(rendered).to have_css('meta[charset="utf-8"]', visible: false)
   end
 
-  it "has correct user-agent support" do
-    expect(rendered).to have_css('meta[http-equiv="X-UA-Compatible"][content="IE=Edge,chrome=1"]', visible: false)
-  end
-
   # Possible scope for making these more specific with something like:
   # https://github.com/spree/spree/blob/master/core/lib/spree/testing_support/capybara_ext.rb#L151-L164
   it "has correct number of Open Graph meta tags" do

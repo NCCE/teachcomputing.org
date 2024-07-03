@@ -5551,10 +5551,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"govuk-frontend@npm:^3.12.0":
-  version: 3.14.0
-  resolution: "govuk-frontend@npm:3.14.0"
-  checksum: 14db4c8fad243c09a89178a2ea932e04a79a6e36ea1a10d3499f783a4d024cab1ecb6879ad6cb5ebdadda8cd3e2b16b1508a7873414be7cdcddc311cf6814bdf
+"govuk-frontend@npm:5.4.0":
+  version: 5.4.0
+  resolution: "govuk-frontend@npm:5.4.0"
+  checksum: e0643f1ead727dd96b9524fad040476bd59e2670ca4e1ce8592a145628167150b16a46971ec77bdb8035819ab916f2a1a31b6a2d1ff7a374578dd785dd94f89d
   languageName: node
   linkType: hard
 
@@ -7624,7 +7624,7 @@ __metadata:
     eslint-config-prettier: ^8.3.0
     eslint-plugin-prettier: ^3.4
     flatpickr: ^4.6.9
-    govuk-frontend: ^3.12.0
+    govuk-frontend: 5.4.0
     install: ^0.13.0
     is-svg: 4.3.1
     lint-staged: ^10.5.4

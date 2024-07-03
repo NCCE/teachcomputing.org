@@ -4,7 +4,6 @@
   <meta charset="utf-8" />
   <title> <%= yield_meta_tag(:title, 'Teach Computing') %> </title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
 
   <% default_description = 'Providing resources, training and support for teaching Computing in primary and secondary schools and colleges from Key Stage 1 through to A Level' %>
   <% default_social_image = asset_pack_path 'media/images/social-media/social-image.jpg' %>
@@ -42,7 +41,7 @@
 
   <%= stylesheet_pack_tag 'application', media: 'all' %>
   <%= javascript_pack_tag 'application' %>
-  <%= javascript_pack_tag 'govuk-frontend' %>
+  <%= javascript_pack_tag 'govuk-frontend', type: 'module' %>
 
   <% if ENV['GOOGLE_TAG_MANAGER_KEY'] %>
     <!-- Google Tag Manager -->
