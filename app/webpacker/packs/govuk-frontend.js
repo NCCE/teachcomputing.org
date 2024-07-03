@@ -1,4 +1,6 @@
-import GOVUKFrontend from 'govuk-frontend/govuk/all'
+import { initAll } from 'govuk-frontend'
 import { onPageLoad } from '../javascript/utilities/loaders'
 
-onPageLoad(() => GOVUKFrontend.initAll())
+onPageLoad(() => {
+  initAll()
+})
