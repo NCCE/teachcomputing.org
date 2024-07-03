@@ -22,6 +22,9 @@
           <p class="govuk-body-s"><%= page.excerpt %></p>
         <% end %>
 
+        <hr class="ncce-hr">
+        <%= render PaginationComponent.new(url: search_url, current_page: 1, page_count: @pagy.pages, params:) %>
+
         <% if @pagy.prev %>
           <hr class="ncce-hr">
           <%= link_to pagy_url_for(@pagy, @pagy.prev), class: 'icon-arrow-right search__paging' do %>
