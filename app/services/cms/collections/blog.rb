@@ -1,8 +1,6 @@
 module Cms
   module Collections
     class Blog < Resource
-      CACHE_EXPIRY = 30.minutes
-
       def to_search_record(index_time)
         blog_data_model = data_models.first
         {
@@ -31,6 +29,10 @@ module Cms
           {model: Cms::Models::ContentBlock, key: :content},
           {model: Cms::Models::Seo, key: :seo}
         ]
+      end
+
+      def self.cache_expiry
+        15.minutes
       end
 
       def self.resource_key

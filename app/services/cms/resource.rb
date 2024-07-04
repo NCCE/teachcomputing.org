@@ -1,7 +1,5 @@
 module Cms
   class Resource
-    CACHE_EXPIRY = 4.hours
-
     attr_accessor :id, :created_at, :updated_at, :published_at, :data_models
 
     def initialize(id:, data_models:, created_at:, updated_at:, published_at:)
@@ -38,13 +36,17 @@ module Cms
         end
         Rails.cache.fetch(
           key,
-          expires_in: CACHE_EXPIRY,
+          expires_in: cache_expiry,
           namespace: "cms"
         ) do
           client.one(self, resource_id)
         end
       end
       new(**data)
+    end
+
+    def self.cache_expiry
+      4.hours
     end
 
     def self.collection_attribute_mappings
@@ -56,7 +58,7 @@ module Cms
       raise Errors::NotACmsCollection unless is_collection
       response = Rails.cache.fetch(
         cache_key(page, page_size, params),
-        expires_in: CACHE_EXPIRY,
+        expires_in: cache_expiry,
         namespace: "cms"
       ) do
         client.all(self, page, page_size, params)
@@ -77,9 +79,18 @@ module Cms
       if params.empty?
         "#{resource_key}-#{page}-#{page_size}"
       else
-        param_string = params.map { |k, v| "#{k}_#{v}" }.join("-")
-        "#{resource_key}-#{page}-#{page_size}-#{param_string}"
+        "#{resource_key}-#{page}-#{page_size}-#{flatten_params(params)}"
       end
+    end
+
+    private_class_method def self.flatten_params(hsh)
+      hsh.map do |k, v|
+        if v.is_a?(Hash)
+          "#{k}_#{flatten_params(v)}"
+        else
+          "#{k}_#{v}"
+        end
+      end.join("-")
     end
 
     private_class_method def self.client

@@ -7,7 +7,7 @@ module CmsProcessing
     @page_name = page_name
     @collection_wrapper_class = collection_wrapper
     @path = cms_posts_path
-    @collection = klass.all(page, page_size, params: {query: params.permit(klass.query_keys)})
+    @collection = klass.all(page, page_size, params: {query: params.permit(klass.query_keys).to_h})
     render "cms/collection"
   end
 
