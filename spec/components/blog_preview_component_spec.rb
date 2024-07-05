@@ -5,7 +5,7 @@ RSpec.describe BlogPreviewComponent, type: :component do
     render_inline(described_class.new(
       title: "Blog Preview",
       excerpt: "You will not believe what we discuss in this blog post",
-      publish_date: "2024-03-18",
+      publish_date: DateTime.new(2024, 3, 18),
       featured_image: Cms::Models::FeaturedImage.new(
         url: "http://media.teachcomputing.org/an-image.png",
         alt: "",
