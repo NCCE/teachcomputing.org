@@ -14,7 +14,7 @@
       <p class="govuk-body"><%= @excerpt %></p>
     </div>
     <div class="ncce-news-archive__item-date">
-      <p class="govuk-body-s govuk-!-font-size-14"><%= DateTime.iso8601(@publish_date).strftime('%d %^B %Y') %></p>
+      <p class="govuk-body-s govuk-!-font-size-14"><%= @publish_date.strftime('%d %^B %Y') %></p>
     </div>
   </div>
 </div>

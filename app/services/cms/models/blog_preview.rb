@@ -6,7 +6,7 @@ module Cms
       def initialize(title:, excerpt:, publish_date:, featured_image:, slug:)
         @title = title
         @excerpt = excerpt
-        @publish_date = publish_date
+        @publish_date = Time.parse(publish_date).in_time_zone("Europe/London").to_datetime
         @featured_image = featured_image
         @slug = slug
       end
