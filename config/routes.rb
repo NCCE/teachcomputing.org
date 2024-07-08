@@ -203,8 +203,7 @@ Rails.application.routes.draw do
   get "/login", to: "pages#login", as: :login
   get "/logout", to: "auth#logout", as: :logout
   get "/maintenance", to: "pages#page", as: :maintenance, defaults: {page_slug: "maintenance"}
-  get "/contributing-partners", to: "pages#page", as: :contributing_partners,
-    defaults: {page_slug: "contributing-partners"}
+  get "/contributing-partners", to: redirect("/get-involved")
   get "/primary-certificate", to: "pages#static_programme_page", as: :primary,
     defaults: {page_slug: "primary-certificate"}
   get "/primary-teachers", to: "pages#page", as: :primary_teachers,
@@ -224,7 +223,7 @@ Rails.application.routes.draw do
     defaults: {page_slug: "secondary-toolkit"}
   get "/secondary-certification", to: "pages#secondary-certification", as: :secondary_certification
   get "/signup-confirmation", to: "pages#page", as: :signup_confirmation, defaults: {page_slug: "signup-confirmation"}
-  get "/supporting-partners", to: "pages#page", as: :supporting_partners, defaults: {page_slug: "supporting-partners"}
+  get "/supporting-partners", to: redirect("/get-involved")
   get "/terms-conditions", to: "pages#page", as: :terms_conditions, defaults: {page_slug: "terms-conditions"}
 
   get "/primary-enrichment", to: "enrichment#show", defaults: {slug: "primary-certificate"}, as: :primary_enrichment

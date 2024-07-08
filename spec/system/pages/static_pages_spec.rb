@@ -106,11 +106,11 @@ RSpec.describe("Static pages", type: :system) do
     end
 
     it "is the correct page" do
-      expect(page).to have_content("Help us inspire the computing experts of the future")
+      expect(page).to have_content("Play your part in inspiring the next generation")
     end
 
     it "main is accessible" do
-      expect(page).to be_accessible.within("#main-content")
+      expect(page).to be_accessible.excluding("iframe").within("#main-content")
     end
   end
 

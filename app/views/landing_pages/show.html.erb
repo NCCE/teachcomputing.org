@@ -18,5 +18,4 @@
 <%= render partial: 'landing_pages/courses' %>
 <%= render partial: 'landing_pages/resources' %>
 <%= render IsaacCardComponent.new(tracking_category: @landing_page.event_tracking_category) if @landing_page.secondary? %>
-<%= render partial: 'landing_pages/contributing-partners-slice' if @landing_page.primary? %>
 <%= render partial: 'landing_pages/support' %>
