@@ -4,34 +4,23 @@ RSpec.describe SendInactivityEmailsJob, type: :job do
   let(:programme) { create(:i_belong) }
   let(:activity_understanding) { create(:activity) }
   let(:programme_activity_grouping_understanding) { create(:programme_activity_grouping, programme:, required_for_completion: 1, sort_key: 2) }
-  let(:programme_activity_understanding) { create(:programme_activity, programme:, activity: activity_understanding, programme_activity_grouping: programme_activity_grouping_understanding) }
+  let!(:programme_activity_understanding) { create(:programme_activity, programme:, activity: activity_understanding, programme_activity_grouping: programme_activity_grouping_understanding) }
   let(:activity_resources1) { create(:activity) }
   let(:activity_resources2) { create(:activity) }
   let(:activity_resources3) { create(:activity) }
   let(:programme_activity_grouping_resources) { create(:programme_activity_grouping, programme:, required_for_completion: 3, sort_key: 3) }
-  let(:programme_activity_resources1) { create(:programme_activity, programme:, activity: activity_resources1, programme_activity_grouping: programme_activity_grouping_resources) }
-  let(:programme_activity_resources2) { create(:programme_activity, programme:, activity: activity_resources2, programme_activity_grouping: programme_activity_grouping_resources) }
-  let(:programme_activity_resources3) { create(:programme_activity, programme:, activity: activity_resources3, programme_activity_grouping: programme_activity_grouping_resources) }
+  let!(:programme_activity_resources1) { create(:programme_activity, programme:, activity: activity_resources1, programme_activity_grouping: programme_activity_grouping_resources) }
+  let!(:programme_activity_resources2) { create(:programme_activity, programme:, activity: activity_resources2, programme_activity_grouping: programme_activity_grouping_resources) }
+  let!(:programme_activity_resources3) { create(:programme_activity, programme:, activity: activity_resources3, programme_activity_grouping: programme_activity_grouping_resources) }
   let(:activity_engagement) { create(:activity) }
   let(:programme_activity_grouping_engagement) { create(:programme_activity_grouping, programme:, required_for_completion: 1, sort_key: 4) }
-  let(:programme_activity_engagement) { create(:programme_activity, programme:, activity: activity_engagement, programme_activity_grouping: programme_activity_grouping_engagement) }
-
-  before do
-    programme_activity_understanding
-    programme_activity_resources1
-    programme_activity_resources2
-    programme_activity_resources3
-    programme_activity_engagement
-  end
+  let!(:programme_activity_engagement) { create(:programme_activity, programme:, activity: activity_engagement, programme_activity_grouping: programme_activity_grouping_engagement) }
 
   describe "#perform" do
     describe "users with no activities" do
       let(:user_no_activities) { create(:user) }
-      let(:user_no_activities_upe) { create(:user_programme_enrolment, user: user_no_activities, programme:, created_at: 2.months.ago) }
+      let!(:user_no_activities_upe) { create(:user_programme_enrolment, user: user_no_activities, programme:, created_at: 2.months.ago) }
 
-      before do
-        user_no_activities_upe
-      end
       it "should send emails for no activity users" do
         expect {
           described_class.perform_now

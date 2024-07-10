@@ -77,7 +77,7 @@ RSpec.describe KickOffEmailsJob, type: :job do
     end
 
     describe "with auto enrolment" do
-      it "should sent auto enrolled email" do
+      it "should send auto enrolled email" do
         expect {
           described_class.perform_now(auto_enrolled.id)
         }.to have_enqueued_mail(PrimaryMailer, :auto_enrolled).with(a_hash_including(params: {user: auto_enrolled.user}))

@@ -2,7 +2,7 @@ require "rails_helper"
 
 RSpec.describe CSAccelerator::CheckNextStepsJob, type: :job do
   let(:user) { create(:user) }
-  let(:cs_accelerator) { create(:cs_accelerator) }
+  let!(:cs_accelerator) { create(:cs_accelerator) }
   let(:other_programme) { create(:programme) }
   let(:enrolment) { create(:user_programme_enrolment, user:, programme_id: cs_accelerator.id) }
   let(:activity) { create(:activity) }
@@ -14,10 +14,6 @@ RSpec.describe CSAccelerator::CheckNextStepsJob, type: :job do
   let(:achievement) { create(:achievement, user:, activity:) }
   let(:achievement_2) { create(:achievement, user:, activity: activity_2) }
   let(:non_csa_achievement) { create(:achievement, user:, activity: non_csa_activity) }
-
-  before do
-    cs_accelerator
-  end
 
   describe "#perform" do
     context "when the user is enrolled on CSA" do

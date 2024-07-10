@@ -2,11 +2,7 @@ require "rails_helper"
 
 RSpec.describe "rake schedule_eligible_pending_enrolments", type: :task do
   let(:programme) { create(:secondary_certificate) }
-  let(:enrolment) { create(:user_programme_enrolment, programme:) }
-
-  before do
-    enrolment
-  end
+  let!(:enrolment) { create(:user_programme_enrolment, programme:) }
 
   describe "can complete" do
     before do
