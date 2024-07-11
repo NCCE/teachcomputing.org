@@ -25,7 +25,8 @@ Rails.application.routes.draw do
         get :generate_certificate
       end
     end
-    resources :achievements, only: %i[index show] do
+    achievement_actions = Rails.env.production? ? %i[index show] : %i[index show create new destroy update]
+    resources :achievements, only: achievement_actions do
       member do
         post :reject_evidence
       end

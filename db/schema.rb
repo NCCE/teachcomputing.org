@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2024_03_07_111123) do
+ActiveRecord::Schema.define(version: 2024_06_26_160358) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -184,6 +184,8 @@ ActiveRecord::Schema.define(version: 2024_03_07_111123) do
     t.uuid "credly_badge_template_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.date "activation_date"
+    t.integer "trigger_type", default: 0
     t.index ["programme_id"], name: "index_badges_on_programme_id"
   end
 
