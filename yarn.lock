@@ -7641,7 +7641,7 @@ __metadata:
     stylelint-order: ^6.0.4
     stylelint-prettier: ^3.0.0
     stylelint-scss: ^6.1
-    trix: ^1.3
+    trix: ^2.1
     turbolinks: ^5.2.0
     webpack: ^4.46.0
     webpack-cli: ^3.3.12
@@ -11342,10 +11342,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"trix@npm:^1.3":
-  version: 1.3.1
-  resolution: "trix@npm:1.3.1"
-  checksum: b4c6426d6fa78b09d6007cd627c10fe4f21a4f02abcd0266f6c34d16b030a328f1526ba5928c7ee315a48de54e9deb317ada31c3f8eccc0629a1ed67896f8692
+"trix@npm:^2.1":
+  version: 2.1.2
+  resolution: "trix@npm:2.1.2"
+  checksum: a6c7671cd1a4d9e62de8843ade41a5b6a6ef0ddbe498bfd4cc0c858203cf6c7bd074df0f07cf33a77f2e381ffe0e29a400223465e37e028731b53119054db484
   languageName: node
   linkType: hard
 
