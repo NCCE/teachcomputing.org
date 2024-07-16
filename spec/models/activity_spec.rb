@@ -232,10 +232,15 @@ RSpec.describe Activity, type: :model do
     end
   end
 
-  describe "#calculate_credit" do
-    it "should use initial credit value and not use calculator value" do
-      activity = build(:activity, credit: 1000)
-      expect(activity.credit).to eq(1000)
+  describe "#calculate_credits" do
+    it "should use initial credit value" do
+      activity = create(:activity, credit: 50)
+      expect(activity.credit).to eq(50)
+    end
+
+    it "calculates the correct credits from duration in hours" do
+      activity = create(:activity, credit: nil, duration_in_hours: 2.5)
+      expect(activity.credit).to eq(25)
     end
   end
 end
