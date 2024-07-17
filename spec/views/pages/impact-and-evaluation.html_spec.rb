@@ -32,6 +32,8 @@ RSpec.describe("pages/impact-and-evaluation", type: :view) do
     it "has the expected links" do
       expect(rendered).to have_link("View NCCE Impact Report", href: "https://static.teachcomputing.org/NCCE-Impact-report-2022.pdf")
       expect(rendered).to have_link("Computer Science Accelerator Graduates Evaluation (cohort 1)", href: "https://static.teachcomputing.org/Computer_Science_Accelerator_Cohort.pdf")
+      expect(rendered).to have_link("NCCE Impact Report 2020", href: "https://static.teachcomputing.org/NCCE_Impact_Report_Final.pdf")
+      expect(rendered).to have_link("Computer Science Accelerator Graduates Evaluation (cohort 1)", href: "https://static.teachcomputing.org/Computer_Science_Accelerator_Cohort.pdf")
     end
   end
 
@@ -46,6 +48,7 @@ RSpec.describe("pages/impact-and-evaluation", type: :view) do
       expect(rendered).to have_link("Digital Literacy Report", href: "https://static.teachcomputing.org/Digital-Literacy-Within-the-Computing-Curriculum.pdf")
       expect(rendered).to have_link("International Computing Textbook Review", href: "https://static.teachcomputing.org/International_Textbook_Review.pdf")
       expect(rendered).to have_link("Practical Programming White Paper", href: "https://static.teachcomputing.org/Practical+Work+in+Computing+Apr+22.pdf")
+      expect(rendered).to have_link("Gender Insights in Computing Education", href: "https://static.teachcomputing.org/Gender_Insights_in_Computing_Education_Foundational_Evidence_Review.pdf")
     end
   end
 
