@@ -13,7 +13,7 @@ class Achievement < ApplicationRecord
   validates :supporting_evidence, blob: {content_type: :image}
   validates :user_id, uniqueness: {scope: [:activity_id]}
 
-  after_save :queue_auto_enrolment
+  after_commit :queue_auto_enrolment
 
   has_many :achievement_transitions, autosave: false, dependent: :destroy
 
