@@ -51,4 +51,18 @@ module ApplicationHelper
     end
     nil
   end
+
+  def govuk_padding_classes(padding)
+    govuk_spacing_processing(padding, "padding")
+  end
+
+  def govuk_margin_classes(margin)
+    govuk_spacing_processing(margin, "margin")
+  end
+
+  def govuk_spacing_processing(options, type)
+    classes = options.except(:all).map { |k, v| "govuk-!-#{type}-#{k}-#{v}" }
+    classes << "govuk-!-#{type}-#{options[:all]}" unless options[:all].nil?
+    classes
+  end
 end
