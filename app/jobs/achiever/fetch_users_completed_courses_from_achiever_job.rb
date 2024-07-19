@@ -18,14 +18,14 @@ module Achiever
             achievement.complete!
             any_marked_as_attended = true
           rescue Statesman::TransitionConflictError => e
-            Sentry.set_tags(achievement_id: achievement.id, user_id: user_id)
+            Sentry.set_tags(achievement_id: achievement.id, user_id: user.id)
             Sentry.capture_exception(e)
           end
         when "cancelled"
           begin
             achievement.drop!
           rescue Statesman::TransitionConflictError => e
-            Sentry.set_tags(achievement_id: achievement.id, user_id: user_id)
+            Sentry.set_tags(achievement_id: achievement.id, user_id: user.id)
             Sentry.capture_exception(e)
           end
         end
