@@ -50,13 +50,13 @@
   }
 
   /* Move the title inside the filter box on mobile */
-  &__title-desktop {
+  &-title--desktop {
     @include govuk-media-query($until: desktop) {
       display: none;
     }
   }
 
-  &__title-mobile {
+  &-title--mobile {
     @include govuk-media-query($from: desktop) {
       display: none;
     }
