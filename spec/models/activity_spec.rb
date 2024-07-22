@@ -242,5 +242,14 @@ RSpec.describe Activity, type: :model do
       activity = create(:activity, credit: nil, duration_in_hours: 2.5)
       expect(activity.credit).to eq(25)
     end
+
+    context "is a cs_accelerator programme activity" do
+      it "creates a valid programme_activity" do
+        programme = FactoryBot.create(:cs_accelerator)
+        activity = FactoryBot.create(:activity)
+        programme_activity = FactoryBot.create(:programme_activity, programme: programme, activity: activity)
+        expect(programme_activity.activity.credit).to eq(2000)
+      end
+    end
   end
 end

@@ -129,4 +129,8 @@ FactoryBot.define do
   trait :online do
     category { "online" }
   end
+
+  trait :activity_no_credits do
+    credit { 0 }
+  end
 end
