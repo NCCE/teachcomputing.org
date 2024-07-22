@@ -127,7 +127,7 @@ module ExternalLinkHelper
     "https://impact.stem.org.uk/"
   end
 
-  def stem_ambassadors_url
+  def computing_ambassadors_url
     "https://www.stem.org.uk/stem-ambassadors/computing-ambassadors"
   end
 
@@ -149,5 +149,9 @@ module ExternalLinkHelper
 
   def i_belong_student_survey_url
     "https://ncce.io/student-survey"
+  end
+
+  def stem_ambassadors_url
+    "https://www.stem.org.uk/stem-ambassadors"
   end
 end
