@@ -34,6 +34,7 @@ RSpec.describe ExternalLinkHelper do
     gcse_and_ks3_handbook_url
     i_belong_action_plan_url
     stem_ambassadors_url
+    computing_ambassadors_url
     computing_quality_framework_url
     sme_support_form_url
     school_trusts_form_url
