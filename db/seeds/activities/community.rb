@@ -373,7 +373,7 @@ Activity.find_or_initialize_by(slug: "run-an-enrichment-activity-in-your-classro
   activity.category = "community"
   activity.provider = "stem-learning"
   activity.self_certifiable = true
-  activity.description = "Enrich the curriculum by running a computing <a href='#{primary_enrichment_url}'>enrichment activity</a> in your school, such as a computing-themed club, a computing day or week at your school etc."
+  activity.description = "Enrich the curriculum by running a computing <a href='https://teachcomputing.org/primary-enrichment'>enrichment activity</a> in your school, such as a computing-themed club, a computing day or week at your school etc."
   activity.public_copy_description = "Enrich the curriculum with fun and engaging activities, bringing computing learning to life for your pupils."
   activity.public_copy_title_url = "https://teachcomputing.org/primary-enrichment"
   activity.self_verification_info = "Add the date(s) and any other details of the enrichment activity that you have ran with pupils in your classroom.<br>What was the activity? What was the age range of pupils involved?<br>What did they learn? What was the impact of the activity? If possible, include feedback from the pupils, and any links to websites, news articles etc."
