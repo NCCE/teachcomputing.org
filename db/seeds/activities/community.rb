@@ -250,16 +250,16 @@ Activity.find_or_create_by(slug: "complete-a-cs-accelerator-course") do |activit
 end
 
 Activity.find_or_initialize_by(slug: "raise-aspirations-with-a-stem-ambassador-visit").tap do |activity|
-  activity.title = "Raise aspirations with a STEM Ambassador visit"
+  activity.title = "Raise aspirations with a Computing Ambassador visit"
   activity.credit = 10
   activity.slug = "raise-aspirations-with-a-stem-ambassador-visit"
   activity.category = "community"
   activity.provider = "stem-learning"
   activity.self_certifiable = true
-  activity.description = '<a href="https://www.stem.org.uk/stem-ambassadors">Arrange a visit</a> for your school to help pupils understand real-world applications of computing and raise their career aspirations through engaging activities.'
+  activity.description = "<a href='#{stem_ambassadors_url}'>Arrange an in-person or online visit</a> for your classroom to help pupils understand real-world applications of computing and raise their career aspirations."
   activity.public_copy_description = "Arrange a visit for your school to help pupils understand real-world applications of computing and raise their career aspirations through engaging activities."
   activity.public_copy_title_url = "https://www.stem.org.uk/stem-ambassadors"
-  activity.self_verification_info = "Please provide us with the date and location of the visit"
+  activity.self_verification_info = "Add the date(s) and who the visit was aimed at. What was the activity? How many Computing Ambassadors attended, what their names were and which companies/universities etc. were they from? What topics were covered? What was the impact of the visit on your students? Share an example of student voice/comment if possible."
 end.save!
 
 Activity.find_or_initialize_by(slug: "participate-fully-in-an-ncce-curriculum-enrichment-oppertunity").tap do |activity|
@@ -276,33 +276,33 @@ Activity.find_or_initialize_by(slug: "participate-fully-in-an-ncce-curriculum-en
 end.save!
 
 Activity.find_or_initialize_by(slug: "participate-fully-in-an-ncce-curriculum-enrichment-oppertunity-primary").tap do |activity|
-  activity.title = "Participate fully in an NCCE curriculum enrichment opportunity"
+  activity.title = "Explore the NCCE and partner enrichment opportunities and resources and plan to run an enrichment activity in your school"
   activity.credit = 10
   activity.slug = "participate-fully-in-an-ncce-curriculum-enrichment-oppertunity-primary"
   activity.category = "community"
   activity.provider = "stem-learning"
   activity.self_certifiable = true
-  activity.description = "Participate in a webinar or explore our partner enrichment resources to enable you to run an enrichment activity in your classroom."
+  activity.description = "Explore NCCE and partner enrichment resources to enable you to plan an enrichment activity in your classroom."
   activity.public_copy_description = "Participate in a webinar or explore our partner enrichment resources to enable you to run an enrichment activity in your classroom."
   activity.public_copy_title_url = "http://www.teachcomputing.org/primary-enrichment"
-  activity.self_verification_info = "Please provide us with evidence of delivery"
+  activity.self_verification_info = "What enrichment activity are you going to run in your classroom? When are you planning it for? Explain how this activity will enrich pupils' experience of the computing curriculum."
 end.save!
 
 Activity.find_or_initialize_by(slug: "implement-your-professional-development-in-the-classroom-and-evaluate-via-the-impact-toolkit").tap do |activity|
-  activity.title = "Implement your professional development in the classroom and evaluate via the Impact Toolkit"
+  activity.title = "Implement your professional development in the classroom and evaluate through our Impact Toolkit"
   activity.credit = 10
   activity.slug = "implement-your-professional-development-in-the-classroom-and-evaluate-via-the-impact-toolkit"
   activity.category = "community"
   activity.provider = "stem-learning"
   activity.self_certifiable = true
-  activity.description = 'Think about not only your actions but also <a href="https://www.stem.org.uk/about-us/impact-and-evaluation/impact-toolkit">collecting evidence</a> of how the changes you make impact you, your colleagues, and your students.'
+  activity.description = "Think about not only your actions but also <a href='#{impact_toolkit_url}'>collecting evidence</a> of how the changes you make impact you, your colleagues, and your students."
   activity.public_copy_description = "Think about not only your actions but also collecting evidence of how the changes you make impact you, your colleagues, and your students."
   activity.public_copy_title_url = "https://www.stem.org.uk/about-us/impact-and-evaluation/impact-toolkit"
-  activity.self_verification_info = "Please provide us with evidence of delivery"
+  activity.self_verification_info = "Add information on how you’ve implemented what you learnt from CPD into your classroom and how you used the Impact Toolkit to evaluate your learning."
 end.save!
 
 Activity.find_or_initialize_by(slug: "download-and-use-the-ncce-teaching-and-assessment-resources-in-your-classroom").tap do |activity|
-  activity.title = "Download and use the NCCE teaching and assessment resources in your classroom"
+  activity.title = "Reflect on the use of a NCCE teaching and assessment resource(s) in your classroom"
   activity.credit = 10
   activity.slug = "download-and-use-the-ncce-teaching-and-assessment-resources-in-your-classroom"
   activity.category = "community"
@@ -311,7 +311,7 @@ Activity.find_or_initialize_by(slug: "download-and-use-the-ncce-teaching-and-ass
   activity.description = 'Download and use a <a href="https://teachcomputing.org/curriculum">Teach Computing Curriculum resource</a>, then reflect on how you used and adapted it in the classroom.'
   activity.public_copy_description = "Download and use a Teach Computing Curriculum resource, then reflect on how you used and adapted it in the classroom."
   activity.public_copy_title_url = "https://teachcomputing.org/curriculum"
-  activity.self_verification_info = "Please provide us with evidence of delivery"
+  activity.self_verification_info = "Include the unit and lesson name of the recourse(s) that you have used. Include a link to the resource(s) on the Teach Computing website if possible."
 end.save!
 
 Activity.find_or_initialize_by(slug: "share-tips-on-using-an-ncce-resource-in-your-classroom-with-colleagues-on-stem-community").tap do |activity|
