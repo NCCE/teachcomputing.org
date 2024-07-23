@@ -159,6 +159,10 @@ module ExternalLinkHelper
     "https://www.stem.org.uk/stem-ambassadors"
   end
 
+  def impact_toolkit_url
+    "https://www.stem.org.uk/about-us/impact-and-evaluation/impact-toolkit"
+  end
+
   def social_media_card_templates_url
     "https://www.canva.com/design/DAGH7H5evKc/2l2uqE0otmkLBifYz4i4Gg/view?utm_content=DAGH7H5evKc&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink&mode=preview"
   end
