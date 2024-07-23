@@ -175,10 +175,6 @@ module ExternalLinkHelper
     "https://www.stem.org.uk/secondary/cpd/leading-professional-development"
   end
 
-  def primary_enrichment_url
-    "https://teachcomputing.org/primary-enrichment"
-  end
-
   def cas_communities_url
     "https://www.computingatschool.org.uk/cas-communities"
   end
