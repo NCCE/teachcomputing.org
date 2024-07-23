@@ -154,4 +154,8 @@ module ExternalLinkHelper
   def stem_ambassadors_url
     "https://www.stem.org.uk/stem-ambassadors"
   end
+
+  def impact_toolkit_url
+    "https://www.stem.org.uk/about-us/impact-and-evaluation/impact-toolkit"
+  end
 end
