@@ -82,7 +82,7 @@
                   <div class="icon-close" data-action="click->modal#maybeToggle"></div>
                 <% end %>
                 <% component.with_body do %>
-                    <h3 class="govuk-heading-s"><%= @activity.title %></h3>
+                    <h3 class="govuk-heading-s"><%= @activity.title.html_safe %></h3>
 
                     <% evidences = @activity.public_copy_evidence.presence || [{ "brief" => @activity.self_verification_info.presence || t(".evidence")}] %>
                     <% evidences.each_with_index do |evidence, index| %>

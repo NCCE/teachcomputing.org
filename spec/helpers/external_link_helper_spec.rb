@@ -39,6 +39,11 @@ RSpec.describe ExternalLinkHelper do
     school_trusts_form_url
     hubs_local_support_form_url
     i_belong_student_survey_url
+    primary_evidence_stem_community_url
+    computing_quality_mark_url
+    impact_toolkit_url
+    leading_professional_development_url
+    cas_communities_url
   ].each do |external_link_method|
     describe "##{external_link_method}" do
       it "should return a string" do
@@ -46,6 +51,7 @@ RSpec.describe ExternalLinkHelper do
       end
 
       it "should start with https" do
+        puts "Link: #{helper.public_send(external_link_method)}"
         expect(helper.public_send(external_link_method)).to start_with "https"
       end
     end
