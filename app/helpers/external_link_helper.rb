@@ -63,6 +63,10 @@ module ExternalLinkHelper
     "https://community.stem.org.uk/communities/community-home?CommunityKey=f5098030-41d2-43f9-8f5d-67b536b18b97"
   end
 
+  def primary_evidence_stem_community_url
+    "https://community.stem.org.uk/discussion/completing-your-primary-certificate-evidence-thread#bma5b58f93-b6b8-4787-9791-cf22c53e3427"
+  end
+
   def stem_community_url
     "https://community.stem.org.uk/home"
   end
@@ -131,12 +135,20 @@ module ExternalLinkHelper
     "https://impact.stem.org.uk/"
   end
 
+  def stem_ambassadors_url
+    "https://www.stem.org.uk/stem-ambassadors"
+  end
+
   def computing_ambassadors_url
     "https://www.stem.org.uk/stem-ambassadors/computing-ambassadors"
   end
 
   def computing_quality_framework_url
     "https://computingqualityframework.org"
+  end
+
+  def computing_quality_mark_url
+    "https://computingqualityframework.org/accreditation/ncce-computing-quality-mark/"
   end
 
   def sme_support_form_url
@@ -155,12 +167,20 @@ module ExternalLinkHelper
     "https://ncce.io/student-survey"
   end
 
-  def stem_ambassadors_url
-    "https://www.stem.org.uk/stem-ambassadors"
-  end
-
   def impact_toolkit_url
     "https://www.stem.org.uk/about-us/impact-and-evaluation/impact-toolkit"
+  end
+
+  def leading_professional_development_url
+    "https://www.stem.org.uk/secondary/cpd/leading-professional-development"
+  end
+
+  def primary_enrichment_url
+    "https://teachcomputing.org/primary-enrichment"
+  end
+
+  def cas_communities_url
+    "https://www.computingatschool.org.uk/cas-communities"
   end
 
   def social_media_card_templates_url
