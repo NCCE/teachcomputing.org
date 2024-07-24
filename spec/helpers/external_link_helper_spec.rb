@@ -56,7 +56,6 @@ RSpec.describe ExternalLinkHelper do
       end
 
       it "should start with https" do
-        puts "Link: #{helper.public_send(external_link_method)}"
         expect(helper.public_send(external_link_method)).to start_with "https"
       end
     end
