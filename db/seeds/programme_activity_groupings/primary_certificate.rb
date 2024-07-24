@@ -39,6 +39,7 @@ primary_certificate.programme_activity_groupings.find_or_initialize_by(title: "D
     {slug: "participate-fully-in-an-ncce-curriculum-enrichment-oppertunity-primary", legacy: false},
     {slug: "implement-your-professional-development-in-the-classroom-and-evaluate-via-the-impact-toolkit", legacy: false},
     {slug: "download-and-use-the-ncce-teaching-and-assessment-resources-in-your-classroom", legacy: false},
+    {slug: "complete-the-i-belong-programme-as-a-school", legacy: false},
 
     # Legacy activities
     {slug: "review-a-resource-on-cas", legacy: true},
@@ -72,7 +73,7 @@ primary_certificate.programme_activity_groupings.find_or_initialize_by(title: "D
     {slug: "undertake-the-initial-assessment-of-your-school-using-computing-quality-framework", legacy: false},
     {slug: "work-with-your-local-computing-hub-to-develop-a-school-level-action-plan-for-professional-development", legacy: false},
     {slug: "lead-your-school-into-a-computing-cluster-and-develop-an-action-plan-with-a-cluster-advisor", legacy: false},
-    {slug: "join-and-present-at-your-local-computing-at-school-community", legacy: true},
+    {slug: "become-an-i-belong-champion", legacy: false},
 
     # Legacy activities
     {slug: "run-an-after-school-code-club", legacy: true},
@@ -94,7 +95,8 @@ primary_certificate.programme_activity_groupings.find_or_initialize_by(title: "D
     {slug: "answer-5-questions-on-isaac-computer-science", legacy: true},
     {slug: "engage-with-stem-ambassadors", legacy: true},
     {slug: "run-a-code-club-or-coder-dojo", legacy: true},
-    {slug: "answer-5-questions-on-isaac-computer-science", legacy: true}
+    {slug: "answer-5-questions-on-isaac-computer-science", legacy: true},
+    {slug: "join-and-present-at-your-local-computing-at-school-community", legacy: true}
   ]
 
   activities.each_with_index do |activity, index|
