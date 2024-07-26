@@ -72,7 +72,15 @@ SitemapGenerator::Sitemap.create do
   CurriculumClient::Queries::KeyStage.all.key_stages.each do |key_stage|
     add curriculum_key_stage_units_path(key_stage.slug)
     key_stage.year_groups.each do |year_group|
-      add curriculum_key_stage_units_path(key_stage.slug, anchor: year_group_anchor(year_group.year_number))
+      add curriculum_key_stage_units_path(key_stage.slug, anchor: year_group_anchor(year_group.year_number)), changefreq: "monthly"
+    end
+
+    CurriculumClient::Queries::Unit.all.units.each do |unit|
+      add curriculum_key_stage_unit_path(key_stage.slug, unit.slug), changefreq: "monthly"
+
+      unit.lessons.each do |lesson|
+        add curriculum_key_stage_unit_lesson_path(key_stage.slug, unit.slug, lesson.slug), changefreq: "monthly"
+      end
     end
   end
 end
