@@ -2749,3 +2749,15 @@ Activity.find_or_initialize_by(stem_course_template_no: "d43e7cdf-3048-ef11-a316
 
   activity.programmes = [secondary_certificate]
 end.save!
+
+Activity.find_or_initialize_by(stem_course_template_no: "28196db1-804d-ef11-a316-000d3a0d2486").tap do |activity|
+  activity.title = "Foundations for Effective Computing in Key Stage 1"
+  activity.slug = "foundations-for-effective-computing-in-key-stage-1"
+  activity.category = "face-to-face"
+  activity.remote_delivered_cpd = true
+  activity.provider = "stem-learning"
+  activity.stem_activity_code = "CP410"
+  activity.credit = 55
+
+  activity.programmes = [primary_certificate]
+end.save!
