@@ -20,7 +20,7 @@
 
     <span class="community-activity-component__objective">
       <span class="community-activity-component__objective-text">
-        <span><%= @activity.title.html_safe %></span>
+        <span><%= sanitize @activity.title %></span>
       </span>
       <% if achievement_complete? %>
         <span class="community_activity_component__completed_badge_container" >
@@ -88,7 +88,7 @@
                     <% evidences.each_with_index do |evidence, index| %>
                       <%= progress.with_step do %>
                         <p class="govuk-body-s">
-                          <%= evidence["brief"].html_safe %>
+                          <%= sanitize evidence["brief"] %>
                           <% if evidence["bullets"].present? %>
                             <ul class="govuk-list govuk-list--bullet">
                               <% evidence["bullets"].each do |bullet| %>
