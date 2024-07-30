@@ -1,6 +1,6 @@
 desc "Update badges to the current academic year"
 task badge_update_to_current_academic_year: :environment do
-  badges_to_update = Badge.where(activation_date: Date.today)
+  badges_to_update = Badge.where(activation_date: Time.zone.today)
 
   begin
     Badge.transaction do
