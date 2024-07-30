@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2024_06_27_121020) do
+ActiveRecord::Schema.define(version: 2024_07_30_075411) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -317,6 +317,7 @@ ActiveRecord::Schema.define(version: 2024_06_27_121020) do
     t.jsonb "web_copy"
     t.jsonb "metadata"
     t.string "type"
+    t.string "completion_instruction"
     t.index ["programme_id"], name: "index_programme_activity_groupings_on_programme_id"
   end
 

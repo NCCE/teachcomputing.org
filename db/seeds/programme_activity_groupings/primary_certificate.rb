@@ -30,6 +30,7 @@ primary_certificate.programme_activity_groupings.find_or_initialize_by(title: "D
   group.community = true
   group.progress_bar_title = "Develop your teaching practice"
   group.web_copy_course_requirements = "Choose at least one activity"
+  group.completion_instruction = "Enable you to develop your teaching expertise and make a positive impact on young people in computing"
   group.web_copy_aside_slug = "primary-dashboard-step-2-section"
   group.web_copy_subtitle = "Step two: Putting it into practice"
 
