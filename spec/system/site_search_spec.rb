@@ -31,13 +31,13 @@ RSpec.describe("Site search", type: :system, js: true) do
   end
 
   def given_there_are_results_similar_to(term)
-    create(:searchable_pages_ghost_post, title: term, excerpt: "")
-    create(:searchable_pages_ghost_post, title: "asdf", excerpt: term)
-    create(:searchable_pages_ghost_post, title: "unrelated", excerpt: "unrelated")
+    create(:searchable_pages_cms_blog, title: term, excerpt: "")
+    create(:searchable_pages_cms_blog, title: "asdf", excerpt: term)
+    create(:searchable_pages_cms_blog, title: "unrelated", excerpt: "unrelated")
   end
 
   def given_there_are_many_results_for_the_term(term)
-    create_list(:searchable_pages_ghost_post, 56, title: term, excerpt: "asdfasdf")
+    create_list(:searchable_pages_cms_blog, 56, title: term, excerpt: "asdfasdf")
   end
 
   def when_i_visit_the_home_page

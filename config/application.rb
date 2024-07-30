@@ -28,6 +28,13 @@ module TeachComputing
 
     config.mylearning_dashboard_url = ENV["MYLEARNING_DASHBOARD_URL"]
 
+    config.cms_provider = ENV["CMS_PROVIDER"]
+    config.strapi_api_key = ENV["STRAPI_API_KEY"]
+    config.strapi_api_url = ENV["STRAPI_API_URL"]
+    config.strapi_write_api_key = ENV["STRAPI_WRITE_API_KEY"]
+    config.ghost_endpoint = ENV["GHOST_API_ENDPOINT"]
+    config.ghost_api_key = ENV["GHOST_CONTENT_API_KEY"]
+
     # default is true
     config.secure_cookies = ENV["SECURE_COOKIES"] != "off"
   end

@@ -14,8 +14,6 @@ class PagesController < ApplicationController
   end
 
   def home
-    posts = Ghost.new.get_featured_posts(5)
-    @main_feature, *@featured_posts = posts
     render template: "pages/home/index"
   end
 

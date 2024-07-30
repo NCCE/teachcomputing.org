@@ -1,0 +1,5 @@
+<% meta_tag :url, request.original_url %>
+
+<% @resource.data_models.each do |content| %>
+  <%= render content.render %>
+<% end %>

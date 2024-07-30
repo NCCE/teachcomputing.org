@@ -3,42 +3,21 @@ class SearchablePageIndexingJob < ApplicationJob
   include CoursesHelper # Depends on TextHelper
 
   def perform
-    ghost = Ghost.new
-
     now = DateTime.now
-
-    ghost_posts = ghost.get_posts
-    ghost_post_documents = ghost_posts["posts"].map do |post|
-      {
-        type: SearchablePages::GhostPost.name,
-        title: post["title"],
-        excerpt: post["custom_excerpt"] || post["excerpt"],
-        metadata: {slug: post["slug"]},
-        published_at: post["published_at"],
-        created_at: now,
-        updated_at: now
-      }
-    end
-
     SearchablePages::GhostPost.delete_all
-    SearchablePages::GhostPost.insert_all(ghost_post_documents) unless ghost_post_documents.empty?
+    SearchablePages::GhostPage.delete_all
 
-    ghost_pages = ghost.get_pages
-
-    ghost_page_documents = ghost_pages["pages"].map do |post|
-      {
-        type: SearchablePages::GhostPage.name,
-        title: post["title"],
-        excerpt: post["custom_excerpt"] || post["excerpt"],
-        metadata: {slug: post["slug"]},
-        published_at: post["published_at"],
-        created_at: now,
-        updated_at: now
-      }
+    SearchablePages::CmsBlog.delete_all
+    blog_search_records = Cms::Collections::Blog.all(1, 1000)
+    if blog_search_records.resources.any?
+      SearchablePages::CmsBlog.insert_all(blog_search_records.resources.map { |blog| blog.to_search_record(now) })
     end
 
-    SearchablePages::GhostPage.delete_all
-    SearchablePages::GhostPage.insert_all(ghost_page_documents) unless ghost_page_documents.empty?
+    SearchablePages::CmsSimplePage.delete_all
+    page_search_records = Cms::Collections::SimplePage.all(1, 100)
+    if page_search_records.resources.any?
+      SearchablePages::CmsSimplePage.insert_all(page_search_records.resources.map { |page| page.to_search_record(now) })
+    end
 
     courses = Achiever::Course::Template.all
 

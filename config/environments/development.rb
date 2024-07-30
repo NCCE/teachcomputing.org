@@ -110,4 +110,6 @@ Rails.application.configure do
   end
 
   config.active_job.queue_adapter = :sidekiq
+
+  config.strapi_image_url = ENV["STRAPI_IMAGE_URL"]
 end

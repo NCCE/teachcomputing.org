@@ -237,14 +237,13 @@ Rails.application.routes.draw do
   # CMS ROUTES
   get "/home-teaching-resources" => redirect("/home-teaching")
   get "/home-teaching/:page_slug" => redirect("/home-teaching")
-  get "/:parent_slug/:page_slug/refresh", to: "cms#clear_page_cache"
+  get "/blog/:page_slug/refresh", to: "cms#clear_blog_cache"
   get "/:page_slug/refresh", to: "cms#clear_page_cache"
 
   constraints ->(req) { req.format == :html } do
-    get "/blog", to: "cms#articles", as: :cms_posts
+    get "/blog", to: "cms#blog", as: :cms_posts
     get "/blog/articles", to: redirect(path: "/blog")
-    get "/blog/:page_slug", to: "cms#cms_post", as: :cms_post
-    get "/:parent_slug/:page_slug", to: "cms#cms_page", as: :nested_cms_page
-    get "/:page_slug", to: "cms#cms_page", as: :cms_page
+    get "/blog/:page_slug", to: "cms#blog_resource", as: :cms_post
+    get "/:page_slug", to: "cms#page_resource", as: :cms_page
   end
 end
