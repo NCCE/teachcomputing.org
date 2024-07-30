@@ -92,7 +92,7 @@
                           <% if evidence["bullets"].present? %>
                             <ul class="govuk-list govuk-list--bullet">
                               <% evidence["bullets"].each do |bullet| %>
-                                <li class="govuk-body-s"><%= bullet %></li>
+                                <li class="govuk-body-s"><%= sanitize bullet %></li>
                               <% end %>
                             </ul>
                           <% end %>
