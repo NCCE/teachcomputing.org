@@ -376,7 +376,15 @@ Activity.find_or_initialize_by(slug: "run-an-enrichment-activity-in-your-classro
   activity.description = "Enrich the curriculum by running a computing <a href='https://teachcomputing.org/primary-enrichment'>enrichment activity</a> in your school, such as a computing-themed club, a computing day or week at your school etc."
   activity.public_copy_description = "Enrich the curriculum with fun and engaging activities, bringing computing learning to life for your pupils."
   activity.public_copy_title_url = "https://teachcomputing.org/primary-enrichment"
-  activity.self_verification_info = "Add the date(s) and any other details of the enrichment activity that you have ran with pupils in your classroom.<br>What was the activity? What was the age range of pupils involved?<br>What did they learn? What was the impact of the activity? If possible, include feedback from the pupils, and any links to websites, news articles etc."
+  activity.public_copy_evidence = [
+    {
+      bullets: [
+        "Add the date(s) and any other details of the enrichment activity that you have ran with pupils in your classroom.",
+        "What was the activity? What was the age range of pupils involved?",
+        "What did they learn? What was the impact of the activity? If possible, include feedback from the pupils, and any links to websites, news articles etc."
+      ]
+    }
+  ]
 end.save!
 
 Activity.find_or_initialize_by(slug: "download-and-use-the-i-belong-handbook").tap do |activity|
@@ -654,7 +662,14 @@ Activity.find_or_initialize_by(slug: "undertake-the-initial-assessment-of-your-s
   activity.description = "Review your <a href='#{computing_quality_framework_url}'>school’s progress</a> in developing an exemplary computing curriculum and work towards achieving the <a href='#{computing_quality_mark_url}'>Computing Quality Mark</a>."
   activity.public_copy_description = "Review your school’s progress in developing an exemplary computing curriculum and work towards achieving the Computing Quality Mark."
   activity.public_copy_title_url = "https://computingqualityframework.org/"
-  activity.self_verification_info = "How were you involved in the initial assessment?<br>Include your average level across all dimensions of the CQF or a link to a sharing folder with a screenshot of your school’s initial assessment graph. Make sure the viewing permissions are open to anyone with the link."
+  activity.public_copy_evidence = [
+    {
+      bullets: [
+        "How were you involved in the initial assessment?",
+        "Include your average level across all dimensions of the CQF or a link to a sharing folder with a screenshot of your school’s initial assessment graph. Make sure the viewing permissions are open to anyone with the link."
+      ]
+    }
+  ]
 end.save!
 
 Activity.find_or_initialize_by(slug: "work-with-your-local-computing-hub-to-develop-a-school-level-action-plan-for-professional-development").tap do |activity|
@@ -667,7 +682,14 @@ Activity.find_or_initialize_by(slug: "work-with-your-local-computing-hub-to-deve
   activity.description = '<a href="https://forms.office.com/pages/responsepage.aspx?id=8MSlGfdLSE2oGxZmua5L9VL53rMMyRtKnHXwxiNRaSRUMDcwVElaTFBFWlY0QkI2M1lZVzNBQktYUCQlQCN0PWcu">Computing Hubs support</a> school’s in the area with their journey in developing the computing curriculum.'
   activity.public_copy_description = "Computing Hubs support school’s in the area with their journey in developing the computing curriculum."
   activity.public_copy_title_url = "https://forms.office.com/pages/responsepage.aspx?id=8MSlGfdLSE2oGxZmua5L9VL53rMMyRtKnHXwxiNRaSRUMDcwVElaTFBFWlY0QkI2M1lZVzNBQktYUCQlQCN0PWcu"
-  activity.self_verification_info = "Review your <a href='#{computing_quality_framework_url}'>school’s progress</a> in developing an exemplary computing provision and work towards achieving the <a href='#{computing_quality_mark_url}'>Computing Quality Mark</a>.<br>What is your current average level across all dimensions of the CQF? Outline the improvement actions required to achieve the next level in your action plan."
+  activity.public_copy_evidence = [
+    {
+      bullets: [
+        "Review your <a href='#{computing_quality_framework_url}'>school’s progress</a> in developing an exemplary computing provision and work towards achieving the <a href='#{computing_quality_mark_url}'>Computing Quality Mark</a>.",
+        "What is your current average level across all dimensions of the CQF? Outline the improvement actions required to achieve the next level in your action plan."
+      ]
+    }
+  ]
 end.save!
 
 Activity.find_or_initialize_by(slug: "lead-your-school-into-a-computing-cluster-and-develop-an-action-plan-with-a-cluster-advisor").tap do |activity|
