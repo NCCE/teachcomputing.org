@@ -1,0 +1,11 @@
+<%= content_tag :div, class: wrapper_classes do %>
+  <%= content_tag :div, class: "govuk-width-container" do %>
+    <%= content_tag :div, class: main_wrapper_classes do %>
+      <%= content_tag :div, class: "govuk-grid-row" do %>
+        <% columns.each do |col| %>
+          <%= col %>
+        <% end %>
+      <% end %>
+    <% end %>
+  <% end %>
+<% end %>

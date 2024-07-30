@@ -77,4 +77,42 @@ describe ApplicationHelper do
       expect(helper.yield_meta_tag(:title, default)).to eq(custom)
     end
   end
+
+  describe "#govuk_padding_classes" do
+    it "should set padding classes correctly" do
+      padding_classes = helper.govuk_padding_classes({
+        left: 1,
+        right: 2,
+        top: 3,
+        bottom: 4
+      })
+      expect(padding_classes).to include("govuk-!-padding-left-1")
+      expect(padding_classes).to include("govuk-!-padding-right-2")
+      expect(padding_classes).to include("govuk-!-padding-top-3")
+      expect(padding_classes).to include("govuk-!-padding-bottom-4")
+    end
+
+    it "should convert all correctly" do
+      expect(helper.govuk_padding_classes({all: 5})).to eq(["govuk-!-padding-5"])
+    end
+  end
+
+  describe "#govuk_margin_classes" do
+    it "should set margin classes correctly" do
+      margin_classes = helper.govuk_margin_classes({
+        left: 1,
+        right: 2,
+        top: 3,
+        bottom: 4
+      })
+      expect(margin_classes).to include("govuk-!-margin-left-1")
+      expect(margin_classes).to include("govuk-!-margin-right-2")
+      expect(margin_classes).to include("govuk-!-margin-top-3")
+      expect(margin_classes).to include("govuk-!-margin-bottom-4")
+    end
+
+    it "should convert all correctly" do
+      expect(helper.govuk_margin_classes({all: 5})).to eq(["govuk-!-margin-5"])
+    end
+  end
 end

@@ -46,6 +46,10 @@ en:
         item_3:
           html: "Through practice, learners can become familiar with a range of common programming patterns, recalling them and applying to new and varied contexts."
         button_title: "View Programming and Algorithms Report"
+      gender_insights_card:
+        title: "Gender Insights in Computing Education"
+        date: "Published April 2023"
+        text: "This foundational evidence review was undertaken to inform the design of the NCCE's I Belong programme."
       textbook_card:
         title: "International Computing Textbook Review"
         date: "Published December 2020"

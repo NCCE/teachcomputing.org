@@ -22,20 +22,8 @@
           <p class="govuk-body-s"><%= page.excerpt %></p>
         <% end %>
 
-        <% if @pagy.prev %>
-          <hr class="ncce-hr">
-          <%= link_to pagy_url_for(@pagy, @pagy.prev), class: 'icon-arrow-right search__paging' do %>
-            <p class="govuk-heading-s">Previous page</p>
-            <p class="govuk-body-s"><%= @pagy.prev%> of <%= @pagy.pages %></p>
-          <% end %>
-        <% end %>
-        <% if @pagy.next %>
-          <hr class="ncce-hr">
-          <%= link_to pagy_url_for(@pagy, @pagy.next), class: 'icon-arrow-left search__paging' do %>
-            <p class="govuk-heading-s">Next page</p>
-            <p class="govuk-body-s"><%= @pagy.next %> of <%= @pagy.pages %></p>
-          <% end %>
-        <% end %>
+        <hr class="ncce-hr">
+        <%= render PaginationComponent.new(current_page: @pagy.page, page_count: @pagy.pages) %>
       </div>
     </div>
 </div>

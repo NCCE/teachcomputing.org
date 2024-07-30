@@ -1,0 +1,37 @@
+.banner-with-background-component-wrapper {
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  aspect-ratio: 7/2;
+  margin: 0;
+
+  @media (max-width: 768px) {
+    aspect-ratio: 3/2;
+  }
+
+  .govuk-grid-row {
+    position: relative;
+
+    .banner-with-background-component_label-container {
+      display: flex;
+      justify-content: end;
+      position: relative;
+
+      @media (max-width: 768px) {
+        justify-content: center;
+      }
+
+      .banner-with-background-component_label {
+        width: 235px;
+        padding: 15px;
+        top: 0;
+        margin: 0;
+        position: absolute;
+
+        p {
+          margin-bottom: 0;
+        }
+      }
+    }
+  }
+}
