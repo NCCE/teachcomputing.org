@@ -1,6 +1,6 @@
 module Credly
   class Badge
-    ORG_ID = ENV["CREDLY_ORGANISATION_ID"].freeze
+    ORG_ID = Rails.application.config.org_id.freeze
     BADGES_RESOURCE_PATH = "organizations/#{ORG_ID}/badges".freeze
     TEMPLATES_RESOURCE_PATH = "organizations/#{ORG_ID}/badge_templates".freeze
 

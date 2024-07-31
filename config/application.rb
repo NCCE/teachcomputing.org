@@ -34,6 +34,9 @@ module TeachComputing
     config.strapi_write_api_key = ENV["STRAPI_WRITE_API_KEY"]
     config.ghost_endpoint = ENV["GHOST_API_ENDPOINT"]
     config.ghost_api_key = ENV["GHOST_CONTENT_API_KEY"]
+    config.credly_url = ENV["CREDLY_URL"]
+    config.credly_auth_token = ENV["CREDLY_AUTH_TOKEN"]
+    config.credly_org_id = ENV["CREDLY_ORGANISATION_ID"]
 
     # default is true
     config.secure_cookies = ENV["SECURE_COOKIES"] != "off"
