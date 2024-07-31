@@ -185,6 +185,8 @@ ActiveRecord::Schema.define(version: 2024_07_30_075411) do
     t.uuid "credly_badge_template_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.date "activation_date"
+    t.integer "trigger_type", default: 0
     t.index ["programme_id"], name: "index_badges_on_programme_id"
   end
 

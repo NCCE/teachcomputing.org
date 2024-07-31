@@ -1,0 +1,860 @@
+{
+  "data": {
+    "id": 2,
+    "attributes": {
+      "title": "Privacy Notice v2",
+      "content": [
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "bold": true,
+              "text": "Some other text",
+              "type": "text"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "bold": true,
+              "text": "",
+              "type": "text"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "bold": true,
+              "text": "We",
+              "type": "text"
+            },
+            {
+              "text": " means the National Centre for Computing Education (NCCE), run by Department for Education (DfE) and STEM Learning.",
+              "type": "text"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "bold": true,
+              "text": "Website",
+              "type": "text"
+            },
+            {
+              "text": " means the Teach Computing website: teachcomputing.org.",
+              "type": "text"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "bold": true,
+              "text": "You",
+              "type": "text"
+            },
+            {
+              "text": " and ",
+              "type": "text"
+            },
+            {
+              "bold": true,
+              "text": "Your",
+              "type": "text"
+            },
+            {
+              "text": " is the user connecting to the website using a web browser.",
+              "type": "text"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "bold": true,
+              "text": "Your IP Address",
+              "type": "text"
+            },
+            {
+              "text": " is a numerical identifier assigned by the computer network to allow the website to communicate with your computer.",
+              "type": "text"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "bold": true,
+              "text": "Cookie",
+              "type": "text"
+            },
+            {
+              "text": " is a small piece of information sent by the website, stored by your web browser, and returned by your web browser to the website whenever your use our website.",
+              "type": "text"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "text": "The Teach Computing website, part of the NCCE, is a Government run programme to support computer science teachers and students in England. It is delivered by STEM Learning on behalf of the Department of Education",
+              "type": "text"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "text": "The overall aim of the NCCE, is to raise the quality of Computing related teaching. This is achieved by providing quality CPD, support, Teacher certification, enrichment and industry outreach programmes to teachers in England. NCCE also engage at school level, promoting planning, consultancy and collaboration (school engagement).",
+              "type": "text"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "text": "We take the care of your personal data seriously. This privacy notice is here to explain how the personal data you supply to us is collected and used in accordance with data protection law, including the General Data Protection Regulation (GDPR).",
+              "type": "text"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "text": "We ensure that we use your information in accordance with all applicable laws concerning the protection of personal information. In this document we will explain:",
+              "type": "text"
+            }
+          ]
+        },
+        {
+          "type": "list",
+          "format": "unordered",
+          "children": [
+            {
+              "type": "list-item",
+              "children": [
+                {
+                  "text": "Who we are",
+                  "type": "text"
+                }
+              ]
+            },
+            {
+              "type": "list-item",
+              "children": [
+                {
+                  "text": "What information we collect about you",
+                  "type": "text"
+                }
+              ]
+            },
+            {
+              "type": "list-item",
+              "children": [
+                {
+                  "text": "Why we collect that information",
+                  "type": "text"
+                }
+              ]
+            },
+            {
+              "type": "list-item",
+              "children": [
+                {
+                  "text": "How we collect and store that information",
+                  "type": "text"
+                }
+              ]
+            },
+            {
+              "type": "list-item",
+              "children": [
+                {
+                  "text": "What we use your information for",
+                  "type": "text"
+                }
+              ]
+            },
+            {
+              "type": "list-item",
+              "children": [
+                {
+                  "text": "On what legal basis we use your information",
+                  "type": "text"
+                }
+              ]
+            },
+            {
+              "type": "list-item",
+              "children": [
+                {
+                  "text": "Who we share your information with",
+                  "type": "text"
+                }
+              ]
+            },
+            {
+              "type": "list-item",
+              "children": [
+                {
+                  "text": "How long we keep your information for",
+                  "type": "text"
+                }
+              ]
+            },
+            {
+              "type": "list-item",
+              "children": [
+                {
+                  "text": "Your rights",
+                  "type": "text"
+                }
+              ]
+            },
+            {
+              "type": "list-item",
+              "children": [
+                {
+                  "text": "Information about cookies",
+                  "type": "text"
+                }
+              ]
+            },
+            {
+              "type": "list-item",
+              "children": [
+                {
+                  "text": "About changes to our privacy policy",
+                  "type": "text"
+                }
+              ]
+            },
+            {
+              "type": "list-item",
+              "children": [
+                {
+                  "text": "How to contact us about your data",
+                  "type": "text"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "text": "[table:privacy_cookie_table]",
+              "type": "text"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "text": "",
+              "type": "text"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "text": "Adding some more text",
+              "type": "text"
+            }
+          ]
+        }
+      ],
+      "createdAt": "2024-02-23T10:47:14.637Z",
+      "updatedAt": "2024-02-23T16:23:00.068Z",
+      "publishedAt": "2024-02-23T16:23:00.047Z",
+      "vuid": "79767cc8-e31f-4ade-9a81-fdd90117d32d",
+      "versionNumber": 2,
+      "versionComment": null,
+      "isVisibleInListView": true,
+      "versions": {
+        "data": [
+          {
+            "id": 1,
+            "attributes": {
+              "title": "Privacy Notice v1",
+              "content": [
+                {
+                  "type": "paragraph",
+                  "children": [
+                    {
+                      "bold": true,
+                      "text": "We",
+                      "type": "text"
+                    },
+                    {
+                      "text": " means the National Centre for Computing Education (NCCE), run by Department for Education (DfE) and STEM Learning.",
+                      "type": "text"
+                    }
+                  ]
+                },
+                {
+                  "type": "paragraph",
+                  "children": [
+                    {
+                      "bold": true,
+                      "text": "Website",
+                      "type": "text"
+                    },
+                    {
+                      "text": " means the Teach Computing website: teachcomputing.org.",
+                      "type": "text"
+                    }
+                  ]
+                },
+                {
+                  "type": "paragraph",
+                  "children": [
+                    {
+                      "bold": true,
+                      "text": "You",
+                      "type": "text"
+                    },
+                    {
+                      "text": " and ",
+                      "type": "text"
+                    },
+                    {
+                      "bold": true,
+                      "text": "Your",
+                      "type": "text"
+                    },
+                    {
+                      "text": " is the user connecting to the website using a web browser.",
+                      "type": "text"
+                    }
+                  ]
+                },
+                {
+                  "type": "paragraph",
+                  "children": [
+                    {
+                      "bold": true,
+                      "text": "Your IP Address",
+                      "type": "text"
+                    },
+                    {
+                      "text": " is a numerical identifier assigned by the computer network to allow the website to communicate with your computer.",
+                      "type": "text"
+                    }
+                  ]
+                },
+                {
+                  "type": "paragraph",
+                  "children": [
+                    {
+                      "bold": true,
+                      "text": "Cookie",
+                      "type": "text"
+                    },
+                    {
+                      "text": " is a small piece of information sent by the website, stored by your web browser, and returned by your web browser to the website whenever your use our website.",
+                      "type": "text"
+                    }
+                  ]
+                },
+                {
+                  "type": "paragraph",
+                  "children": [
+                    {
+                      "text": "The Teach Computing website, part of the NCCE, is a Government run programme to support computer science teachers and students in England. It is delivered by STEM Learning on behalf of the Department of Education",
+                      "type": "text"
+                    }
+                  ]
+                },
+                {
+                  "type": "paragraph",
+                  "children": [
+                    {
+                      "text": "The overall aim of the NCCE, is to raise the quality of Computing related teaching. This is achieved by providing quality CPD, support, Teacher certification, enrichment and industry outreach programmes to teachers in England. NCCE also engage at school level, promoting planning, consultancy and collaboration (school engagement).",
+                      "type": "text"
+                    }
+                  ]
+                },
+                {
+                  "type": "paragraph",
+                  "children": [
+                    {
+                      "text": "We take the care of your personal data seriously. This privacy notice is here to explain how the personal data you supply to us is collected and used in accordance with data protection law, including the General Data Protection Regulation (GDPR).",
+                      "type": "text"
+                    }
+                  ]
+                },
+                {
+                  "type": "paragraph",
+                  "children": [
+                    {
+                      "text": "We ensure that we use your information in accordance with all applicable laws concerning the protection of personal information. In this document we will explain:",
+                      "type": "text"
+                    }
+                  ]
+                },
+                {
+                  "type": "list",
+                  "format": "unordered",
+                  "children": [
+                    {
+                      "type": "list-item",
+                      "children": [
+                        {
+                          "text": "Who we are",
+                          "type": "text"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "list-item",
+                      "children": [
+                        {
+                          "text": "What information we collect about you",
+                          "type": "text"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "list-item",
+                      "children": [
+                        {
+                          "text": "Why we collect that information",
+                          "type": "text"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "list-item",
+                      "children": [
+                        {
+                          "text": "How we collect and store that information",
+                          "type": "text"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "list-item",
+                      "children": [
+                        {
+                          "text": "What we use your information for",
+                          "type": "text"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "list-item",
+                      "children": [
+                        {
+                          "text": "On what legal basis we use your information",
+                          "type": "text"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "list-item",
+                      "children": [
+                        {
+                          "text": "Who we share your information with",
+                          "type": "text"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "list-item",
+                      "children": [
+                        {
+                          "text": "How long we keep your information for",
+                          "type": "text"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "list-item",
+                      "children": [
+                        {
+                          "text": "Your rights",
+                          "type": "text"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "list-item",
+                      "children": [
+                        {
+                          "text": "Information about cookies",
+                          "type": "text"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "list-item",
+                      "children": [
+                        {
+                          "text": "About changes to our privacy policy",
+                          "type": "text"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "list-item",
+                      "children": [
+                        {
+                          "text": "How to contact us about your data",
+                          "type": "text"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "paragraph",
+                  "children": [
+                    {
+                      "text": "[table:privacy_cookie_table]",
+                      "type": "text"
+                    }
+                  ]
+                },
+                {
+                  "type": "paragraph",
+                  "children": [
+                    {
+                      "text": "",
+                      "type": "text"
+                    }
+                  ]
+                },
+                {
+                  "type": "paragraph",
+                  "children": [
+                    {
+                      "text": "Adding some more text",
+                      "type": "text"
+                    }
+                  ]
+                }
+              ],
+              "createdAt": "2024-02-12T13:55:29.783Z",
+              "updatedAt": "2024-02-23T10:50:10.289Z",
+              "publishedAt": null,
+              "vuid": "79767cc8-e31f-4ade-9a81-fdd90117d32d",
+              "versionNumber": 1,
+              "versionComment": null,
+              "isVisibleInListView": false
+            }
+          },
+          {
+            "id": 3,
+            "attributes": {
+              "title": "Privacy Notice v3",
+              "content": [
+                {
+                  "type": "paragraph",
+                  "children": [
+                    {
+                      "bold": true,
+                      "text": "Some other text next version",
+                      "type": "text"
+                    }
+                  ]
+                },
+                {
+                  "type": "paragraph",
+                  "children": [
+                    {
+                      "bold": true,
+                      "text": "",
+                      "type": "text"
+                    }
+                  ]
+                },
+                {
+                  "type": "paragraph",
+                  "children": [
+                    {
+                      "bold": true,
+                      "text": "We",
+                      "type": "text"
+                    },
+                    {
+                      "text": " means the National Centre for Computing Education (NCCE), run by Department for Education (DfE) and STEM Learning.",
+                      "type": "text"
+                    }
+                  ]
+                },
+                {
+                  "type": "paragraph",
+                  "children": [
+                    {
+                      "bold": true,
+                      "text": "Website",
+                      "type": "text"
+                    },
+                    {
+                      "text": " means the Teach Computing website: teachcomputing.org.",
+                      "type": "text"
+                    }
+                  ]
+                },
+                {
+                  "type": "paragraph",
+                  "children": [
+                    {
+                      "bold": true,
+                      "text": "You",
+                      "type": "text"
+                    },
+                    {
+                      "text": " and ",
+                      "type": "text"
+                    },
+                    {
+                      "bold": true,
+                      "text": "Your",
+                      "type": "text"
+                    },
+                    {
+                      "text": " is the user connecting to the website using a web browser.",
+                      "type": "text"
+                    }
+                  ]
+                },
+                {
+                  "type": "paragraph",
+                  "children": [
+                    {
+                      "bold": true,
+                      "text": "Your IP Address",
+                      "type": "text"
+                    },
+                    {
+                      "text": " is a numerical identifier assigned by the computer network to allow the website to communicate with your computer.",
+                      "type": "text"
+                    }
+                  ]
+                },
+                {
+                  "type": "paragraph",
+                  "children": [
+                    {
+                      "bold": true,
+                      "text": "Cookie",
+                      "type": "text"
+                    },
+                    {
+                      "text": " is a small piece of information sent by the website, stored by your web browser, and returned by your web browser to the website whenever your use our website.",
+                      "type": "text"
+                    }
+                  ]
+                },
+                {
+                  "type": "paragraph",
+                  "children": [
+                    {
+                      "text": "The Teach Computing website, part of the NCCE, is a Government run programme to support computer science teachers and students in England. It is delivered by STEM Learning on behalf of the Department of Education",
+                      "type": "text"
+                    }
+                  ]
+                },
+                {
+                  "type": "paragraph",
+                  "children": [
+                    {
+                      "text": "The overall aim of the NCCE, is to raise the quality of Computing related teaching. This is achieved by providing quality CPD, support, Teacher certification, enrichment and industry outreach programmes to teachers in England. NCCE also engage at school level, promoting planning, consultancy and collaboration (school engagement).",
+                      "type": "text"
+                    }
+                  ]
+                },
+                {
+                  "type": "paragraph",
+                  "children": [
+                    {
+                      "text": "We take the care of your personal data seriously. This privacy notice is here to explain how the personal data you supply to us is collected and used in accordance with data protection law, including the General Data Protection Regulation (GDPR).",
+                      "type": "text"
+                    }
+                  ]
+                },
+                {
+                  "type": "paragraph",
+                  "children": [
+                    {
+                      "text": "We ensure that we use your information in accordance with all applicable laws concerning the protection of personal information. In this document we will explain:",
+                      "type": "text"
+                    }
+                  ]
+                },
+                {
+                  "type": "list",
+                  "format": "unordered",
+                  "children": [
+                    {
+                      "type": "list-item",
+                      "children": [
+                        {
+                          "text": "Who we are",
+                          "type": "text"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "list-item",
+                      "children": [
+                        {
+                          "text": "What information we collect about you",
+                          "type": "text"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "list-item",
+                      "children": [
+                        {
+                          "text": "Why we collect that information",
+                          "type": "text"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "list-item",
+                      "children": [
+                        {
+                          "text": "How we collect and store that information",
+                          "type": "text"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "list-item",
+                      "children": [
+                        {
+                          "text": "What we use your information for",
+                          "type": "text"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "list-item",
+                      "children": [
+                        {
+                          "text": "On what legal basis we use your information",
+                          "type": "text"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "list-item",
+                      "children": [
+                        {
+                          "text": "Who we share your information with",
+                          "type": "text"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "list-item",
+                      "children": [
+                        {
+                          "text": "How long we keep your information for",
+                          "type": "text"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "list-item",
+                      "children": [
+                        {
+                          "text": "Your rights",
+                          "type": "text"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "list-item",
+                      "children": [
+                        {
+                          "text": "Information about cookies",
+                          "type": "text"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "list-item",
+                      "children": [
+                        {
+                          "text": "About changes to our privacy policy",
+                          "type": "text"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "list-item",
+                      "children": [
+                        {
+                          "text": "How to contact us about your data",
+                          "type": "text"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "paragraph",
+                  "children": [
+                    {
+                      "text": "[table:privacy_cookie_table]",
+                      "type": "text"
+                    }
+                  ]
+                },
+                {
+                  "type": "paragraph",
+                  "children": [
+                    {
+                      "text": "",
+                      "type": "text"
+                    }
+                  ]
+                },
+                {
+                  "type": "paragraph",
+                  "children": [
+                    {
+                      "text": "Adding some more text",
+                      "type": "text"
+                    }
+                  ]
+                }
+              ],
+              "createdAt": "2024-02-23T16:26:27.471Z",
+              "updatedAt": "2024-02-23T16:26:27.471Z",
+              "publishedAt": null,
+              "vuid": "79767cc8-e31f-4ade-9a81-fdd90117d32d",
+              "versionNumber": 3,
+              "versionComment": null,
+              "isVisibleInListView": false
+            }
+          }
+        ]
+      }
+    }
+  },
+  "meta": {}
+}

@@ -166,7 +166,7 @@ class Achiever::Course::Template
   end
 
   def new_course?
-    return false unless last_updated_at.present?
+    return false if last_updated_at.blank?
 
     last_updated_at > 3.months.ago
   end

@@ -6,12 +6,10 @@ class AchievementDashboard < BaseDashboard
   # which determines how the attribute is displayed
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
-    activity: Field::BelongsTo,
+    activity: GroupedActivityListField,
     user: Field::BelongsTo,
-    supporting_evidence_attachment: Field::HasOne,
-    supporting_evidence_blob: Field::HasOne,
     self_verification_info: Field::String,
-    current_state: Field::String.with_options(searchable: false),
+    current_state: ValidStatePickerField,
     id: Field::String,
     created_at: FORMATTED_DATE_TIME,
     updated_at: FORMATTED_DATE_TIME,
@@ -35,8 +33,6 @@ class AchievementDashboard < BaseDashboard
   SHOW_PAGE_ATTRIBUTES = %i[
     user
     activity
-    supporting_evidence_attachment
-    supporting_evidence_blob
     self_verification_info
     id
     created_at
@@ -51,9 +47,7 @@ class AchievementDashboard < BaseDashboard
   FORM_ATTRIBUTES = %i[
     activity
     user
-    supporting_evidence_attachment
-    supporting_evidence_blob
-    progress
+    current_state
   ].freeze
 
   # COLLECTION_FILTERS

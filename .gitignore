@@ -47,7 +47,6 @@ public/sitemap.xml.gz
 
 .vscode
 .devcontainer
-.standard.yml
 .idea
 .history
 *.code-workspace
