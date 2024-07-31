@@ -1,14 +1,16 @@
-<dt class="attribute-label actions" id="actions"><%= t(".title") %></dt>
-<dd class="attribute-data attribute-data--sync actions">
-  <%= link_to(
-    t(".sync.label"),
-    admin_user_perform_sync_path(user_id: resource.id),
-    class: "button"
-  ) if accessible_action?(resource, :perform_sync) %>
-  <br/><br/>
-  <%= link_to(
-    t(".reset.label"),
-    admin_user_perform_reset_path(user_id: resource.id),
-    class: "button"
-  ) if accessible_action?(resource, :perform_reset_tests) %>
-</dd>
+<fieldset>
+  <dt class="attribute-label actions" id="actions"><%= t(".title") %></dt>
+  <dd class="attribute-data attribute-data--sync actions">
+    <%= link_to(
+      t(".sync.label"),
+      admin_user_perform_sync_path(user_id: resource.id),
+      class: "button"
+    ) if accessible_action?(resource, :perform_sync) %>
+    <br/><br/>
+    <%= link_to(
+      t(".reset.label"),
+      admin_user_perform_reset_path(user_id: resource.id),
+      class: "button"
+    ) if accessible_action?(resource, :perform_reset_tests) %>
+  </dd>
+</fieldset>
