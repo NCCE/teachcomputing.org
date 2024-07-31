@@ -110,7 +110,7 @@ class Achievement < ApplicationRecord
 
   private_class_method :initial_state, :transition_class
 
-  delegate :allowed_transitions, :can_transition_to?, :current_state, :transition_to, :last_transition, :in_state?, to: :state_machine
+  delegate :can_transition_to?, :current_state, :transition_to, :last_transition, :in_state?, to: :state_machine
   delegate :provider, :title, :stem_activity_code, :slug, :active_course?, to: :activity
 
   def belonging_to_programme?(programme)

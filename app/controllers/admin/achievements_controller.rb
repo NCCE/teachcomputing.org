@@ -3,30 +3,10 @@ module Admin
     # Overwrite any of the RESTful controller actions to implement custom behavior
     # For example, you may want to send an email after a foo is updated.
     #
-    def create
-      super do |resource|
-        update_state(resource)
-      end
-    end
-
-    def update
-      achievement = Achievement.find(params[:id])
-      if achievement.update(resource_params)
-        update_state(achievement)
-      end
-    end
-
-    def update_state(achievement)
-      if params[:achievement][:current_state]
-        achievement.transition_to(params[:achievement][:current_state])
-      end
-      completed_job_processing(achievement) if achievement.in_state?(:complete)
-    end
-
-    def completed_job_processing(achievement)
-      AssessmentEligibilityJob.perform_later(achievement.user.id)
-      CertificatePendingTransitionJob.perform_later(achievement.user)
-    end
+    # def update
+    #   super
+    #   send_foo_updated_email(requested_resource)
+    # end
 
     def after_resource_destroyed_path(achievement)
       {action: :show, controller: :users, id: achievement.user.id}
