@@ -317,7 +317,6 @@ ActiveRecord::Schema.define(version: 2024_07_30_075411) do
     t.jsonb "web_copy"
     t.jsonb "metadata"
     t.string "type"
-    t.string "completion_instruction"
     t.index ["programme_id"], name: "index_programme_activity_groupings_on_programme_id"
   end
 
