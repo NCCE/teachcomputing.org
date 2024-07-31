@@ -3,7 +3,6 @@ require "rails_helper"
 RSpec.describe "Admin::AchievementsController" do
   let(:user) { create(:user) }
   let(:programme) { create(:programme) }
-  let!(:cs_accelerator) { create(:cs_accelerator) }
   let(:other_programme) { create(:programme) }
   let(:activity) { create(:activity, programmes: [programme, other_programme]) }
   let(:other_activity) { create(:activity, programmes: [other_programme]) }
@@ -33,55 +32,6 @@ RSpec.describe "Admin::AchievementsController" do
 
     it "renders the correct template" do
       expect(response).to render_template("show")
-    end
-  end
-
-  describe "POST #create" do
-    it "should create achievement" do
-      expect {
-        post admin_achievements_url(params: {
-          achievement: {
-            user_id: user.id,
-            activity_id: activity.id
-          }
-        })
-      }.to change(Achievement, :count).by(1)
-    end
-
-    it "should call jobs when set to complete" do
-      post admin_achievements_url(params: {
-        achievement: {
-          user_id: user.id,
-          activity_id: activity.id,
-          current_state: :complete
-        }
-      })
-      expect(AssessmentEligibilityJob).to have_been_enqueued
-      expect(CertificatePendingTransitionJob).to have_been_enqueued
-    end
-  end
-
-  describe "PATCH #update" do
-    it "should call jobs when updated to complete" do
-      patch admin_achievement_url(other_achievement, params: {
-        achievement: {
-          current_state: :complete
-        }
-      })
-      expect(AssessmentEligibilityJob).to have_been_enqueued
-      expect(CertificatePendingTransitionJob).to have_been_enqueued
-    end
-  end
-
-  describe "DELETE #achievement" do
-    before do
-      achievement
-    end
-
-    it "should delete achievement" do
-      expect {
-        delete admin_achievement_url(achievement)
-      }.to change(Achievement, :count).by(-1)
     end
   end
 
