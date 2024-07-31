@@ -96,7 +96,6 @@ ActiveRecord::Schema.define(version: 2024_03_07_111123) do
     t.boolean "retired", default: false
     t.boolean "coming_soon", default: false
     t.jsonb "public_copy"
-    t.float "duration_in_hours"
     t.index ["category"], name: "index_activities_on_category"
     t.index ["future_learn_course_uuid"], name: "index_activities_on_future_learn_course_uuid", unique: true
     t.index ["self_certifiable"], name: "index_activities_on_self_certifiable"
