@@ -2,8 +2,13 @@ require "administrate/field/base"
 
 class GroupedActivityListField < Administrate::Field::Base
   def grouped_by_category
-    Activity.all.group_by(&:category).each_with_object([]) do |(cat, acts), arr|
-      arr << [cat, acts.map { [_1.title, _1.id] }]
+    Activity.includes([:programmes]).all.group_by(&:category).each_with_object([]) do |(cat, acts), arr|
+      arr << [cat, acts.sort_by(&:title).map {
+                     [
+                       "#{_1.title} #{_1.remote_delivered_cpd ? "(remote)" : ""} -- (#{_1.programmes.collect(&:slug).join(", ")})",
+                       _1.id
+                     ]
+                   }]
     end
   end
 
