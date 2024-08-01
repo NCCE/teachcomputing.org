@@ -1,12 +1,31 @@
-<% field.data.each do |activity| %>
-  <div class="pathway-activity-list">
-    <% if activity.supplementary %>
-      <div class="pathway-activity-supplementary">
-        Supplementary
+<div class="pathway-activity-list">
+  <% field.data.each do |activity| %>
+    <div class="pathway-activity">
+      <div class="pathway-activity-header">
+        <h1><%= activity.title.to_s %></h1>
       </div>
-      <% end %>
-      <div class="pathway-activity">
-        <%= activity.title.to_s %>
+      <div class="pathway-activity-subheader">
+        <div class="tag-list">
+          <% if activity.supplementary %>
+            <div class="supplementary">
+              Supplementary
+            </div>
+          <% end %>
+          <% if activity.stem_activity_code %>
+            <div class="tag">
+              <%= activity.stem_activity_code %>
+            </div>
+          <% end %>
+          <div class="tag">
+            <%= activity.category %>
+          </div>
+          <% if activity.remote_delivered_cpd? %>
+            <div class="tag">
+              Remote Delivered
+            </div>
+          <% end %>
+        </div>
       </div>
-  </div>
-<% end %>
+    </div>
+    <% end %>
+</div>
