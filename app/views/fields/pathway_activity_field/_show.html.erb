@@ -1,0 +1,12 @@
+<% field.data.each do |activity| %>
+  <div class="pathway-activity-list">
+    <% if activity.supplementary %>
+      <div class="pathway-activity-supplementary">
+        Supplementary
+      </div>
+      <% end %>
+      <div class="pathway-activity">
+        <%= activity.title.to_s %>
+      </div>
+  </div>
+<% end %>

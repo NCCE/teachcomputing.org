@@ -1,0 +1,15 @@
+div.pathway-activity-list {
+  border: 1px solid gray;
+  margin-bottom: 5px;
+  padding: 5px;
+  display: flex;
+  align-items: center;
+
+  div.pathway-activity-supplementary {
+    background-color: lightseagreen;
+    padding: 2px 4px;
+    border: 1px solid gray;
+    border-radius: 5px;
+    margin-right: 10px;
+  }
+}

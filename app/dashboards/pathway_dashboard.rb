@@ -6,7 +6,7 @@ class PathwayDashboard < BaseDashboard
   # which determines how the attribute is displayed
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
-    pathway_activities: Field::HasMany,
+    pathway_activities: PathwayActivityField,
     programme: Field::BelongsTo,
     id: Field::String.with_options(searchable: false),
     range: Field::Select.with_options(searchable: false, collection: {"1..10": "[1, 10)", "11..20": "[11, 20)"}),
