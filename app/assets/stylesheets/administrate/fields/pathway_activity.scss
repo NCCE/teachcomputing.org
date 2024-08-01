@@ -1,15 +1,37 @@
-div.pathway-activity-list {
+div.pathway-activity {
   border: 1px solid gray;
-  margin-bottom: 5px;
+  margin-bottom: 10px;
   padding: 5px;
-  display: flex;
-  align-items: center;
 
-  div.pathway-activity-supplementary {
-    background-color: lightseagreen;
-    padding: 2px 4px;
-    border: 1px solid gray;
-    border-radius: 5px;
-    margin-right: 10px;
+  div.pathway-activity-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  div.pathway-activity-subheader {
+    display: flex;
+    flex-direction: column;
+
+    div.tag-list {
+      display: flex;
+      flex-direction: row;
+      gap: 3px;
+      margin-top: 5px;
+
+      div {
+        padding: 2px 4px;
+        border: 1px solid gray;
+        border-radius: 5px;
+
+        &.tag {
+          background-color: lightyellow;
+        }
+
+        &.supplementary {
+          background-color: lightseagreen;
+        }
+      }
+    }
   }
 }
