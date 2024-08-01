@@ -12,5 +12,12 @@
       admin_user_perform_reset_path(user_id: resource.id),
       class: "button"
     ) if accessible_action?(resource, :perform_reset_tests) %>
+    <br/><br/>
+    <%= link_to(
+      'Generate Assessment Attempt',
+      admin_user_generate_assessment_attempt_path(user_id: resource.id),
+      class: "button"
+    ) unless Rails.env.production? %>
+    
   </dd>
 </fieldset>
