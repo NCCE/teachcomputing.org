@@ -58,7 +58,7 @@
           <hr class="ncce-pathway__hr">
           <div class="ncce-pathway__course-list">
             <% @community_groups.each do |group| %>
-              <h3 class="govuk-heading-s"><%= group.title %></h3>
+              <h3 class="govuk-heading-s"><%= sanitize group.title %></h3>
               <div data-controller='expander' data-expander-expand-value="Show" data-expander-collapse-value="Hide">
                 <p class="govuk-!-margin-top-0">
                     <button data-action="expander#toggleAll"
@@ -81,7 +81,7 @@
                         <%= link_to programme_activity.activity.title, programme_activity.activity.public_copy_title_url, class: 'ncce-link govuk-heading-s' %>
                       </p>
                       <p class="govuk-body-s">
-                        <%= programme_activity.activity.public_copy_description %>
+                        <%= sanitize programme_activity.activity.description %>
                       </p>
                     </div>
                   <% end %>
