@@ -23,7 +23,7 @@
                 {
                   class_name: 'bordered-card--toolkit',
                   title: t('.intro.cards.knowledge.title'),
-                  text: t('.intro.cards.knowledge.text.html', 
+                  text: t('.intro.cards.knowledge.text.html',
                     subject_knowledge_link: link_to('subject knowledge', cs_accelerator_path),
                     a_level_link: link_to('A level certificate', a_level_path)),
                 },
@@ -41,7 +41,7 @@
                     cluster_link: link_to("Computing Cluster", cms_page_path("computing-clusters"))),
                 }
               ]
-            ) %> 
+            ) %>
           </div>
         </div>
       </div>
@@ -54,7 +54,7 @@
     course_link: link_to("Encouraging girls into GCSE computer science short course", "/courses/CP440/encouraging-girls-into-gcse-computer-science-remote-short-course")),
   background_color: 'orange-bg',
   image_side: :right,
-  image: { 
+  image: {
     url: "media/images/pages/secondary-toolkit/i_belong_students.jpeg",
     alt: "i belong",
     class: "i-belong"
@@ -187,7 +187,7 @@
               {
                 class_name: 'bordered-card--toolkit',
                 title: t('.resources.cards.question_banks.title'),
-                text: t('.resources.cards.question_banks.text.html', 
+                text: t('.resources.cards.question_banks.text.html',
                   teaching_link: link_to('Teaching secondary computing certificate', secondary_certificate_url)),
                 link: {
                   link_title: t('.resources.cards.question_banks.link.title'),
@@ -199,7 +199,7 @@
             ]
           ) %>
         </div>
-      </div> 
+      </div>
       <div class="govuk-grid-row">
         <div class="govuk-grid-column-full govuk-!-margin-top-3">
             <%= render BorderedCardsComponent.new(
@@ -262,7 +262,7 @@
             <%= component.with_body do %>
               <p class="govuk-body-s">
                 <%= t(".further_learning.aside.text.html",
-                    visit_link: link_to('visit your school', stem_ambassadors_url)) %>
+                    visit_link: link_to('visit your school', computing_ambassadors_url)) %>
               </p>
             <% end %>
           <% end %>
@@ -275,7 +275,7 @@
 <%= render FullImageBannerComponent.new(title: t(".career_banner.title"),
   text: t('.career_banner.content'),
   background_color: 'purple-bg',
-  image: { 
+  image: {
     url: "media/images/pages/secondary-toolkit/secondary_careers.jpeg",
     alt: "teach computing secondary careers"
   },
@@ -287,9 +287,9 @@
         <div class="govuk-grid-column-full">
           <h2 class="govuk-heading-l"><%= t(".support.title") %></h2>
           <p class="govuk-body"><%= t(".support.para_1_html",
-            hubs_link: link_to('Computing Hubs', hubs_path)) %></p> 
+            hubs_link: link_to('Computing Hubs', hubs_path)) %></p>
           <p class="govuk-body"><%= t(".support.para_2_html",
-            stem_community_link: link_to('STEM Community', stem_community_url)) %></p> 
+            stem_community_link: link_to('STEM Community', stem_community_url)) %></p>
         </div>
       </div>
     </div>
