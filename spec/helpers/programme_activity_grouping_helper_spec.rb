@@ -3,8 +3,8 @@ require "rails_helper"
 RSpec.describe ProgrammeActivityGroupingHelper do
   describe "#primary_completion_instruction" do
     context "when web_copy_completion_instruction is present" do
-      let(:group) { create(:programme_activity_grouping, web_copy_completion_instruction:) }
       let(:web_copy_completion_instruction) { "enable you to develop your teaching expertise" }
+      let(:group) { create(:programme_activity_grouping, web_copy_completion_instruction:) }
 
       it "should return the correct instruction string" do
         expect(helper.primary_completion_instruction(group)).to eq(
@@ -14,8 +14,8 @@ RSpec.describe ProgrammeActivityGroupingHelper do
     end
 
     context "when only title is present" do
-      let(:group) { create(:programme_activity_grouping, title:) }
       let(:title) { "Develop your teaching practice" }
+      let(:group) { create(:programme_activity_grouping, title:) }
 
       it "should return the correct instruction string" do
         expect(helper.primary_completion_instruction(group)).to eq(
@@ -26,10 +26,10 @@ RSpec.describe ProgrammeActivityGroupingHelper do
   end
 
   describe "#i_belong_completion_instruction" do
-    let(:group) { create(:programme_activity_grouping, required_for_completion:, title:) }
     let(:required_for_completion) { 1 }
-    let!(:programme_activities) { create_list(:programme_activity, 3, programme_activity_grouping: group) }
     let(:title) { "Encourage girls into computer science" }
+    let(:group) { create(:programme_activity_grouping, required_for_completion:, title:) }
+    let!(:programme_activities) { create_list(:programme_activity, 3, programme_activity_grouping: group) }
 
     context "when the count for required for completion is not equal to the quantity of activities" do
       context "when the count required for completion is one" do
