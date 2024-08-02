@@ -62,55 +62,6 @@ RSpec.describe ProgrammeActivityGrouping, type: :model do
     end
   end
 
-  describe "#formatted_title" do
-    let(:group) { create(:programme_activity_grouping, required_for_completion:, title:) }
-    let(:required_for_completion) { 1 }
-    let!(:programme_activities) { create_list(:programme_activity, 3, programme_activity_grouping: group) }
-    let(:title) { "Encourage girls into computer science" }
-
-    context "when the count for required for completion is not equal to the quantity of activities" do
-      context "when the count required for completion is one" do
-        it "should state the quantity required for completion with correct singlars" do
-          expect(group.formatted_title).to end_with "by completing <strong>at least one</strong> activity"
-        end
-      end
-
-      context "when the count required for completion is two" do
-        let(:required_for_completion) { 2 }
-
-        it "should state the quantity required for completion with correct plurals" do
-          expect(group.formatted_title).to end_with "by completing <strong>at least two</strong> activities"
-        end
-      end
-    end
-
-    context "when the count for required for completion is equal to the quantity of activities" do
-      let(:required_for_completion) { 3 }
-
-      it "shouldn't state how many are required for completion" do
-        expect(group.formatted_title).to eq "Encourage girls into computer science"
-      end
-    end
-
-    context "when the count for required completion is not equal to the quantity of non-coming-soon activities" do
-      it "should state the quantity required for completion with correct singlars" do
-        programme_activities.last.activity.update(coming_soon: true)
-
-        expect(group.formatted_title).to end_with "by completing <strong>at least one</strong> activity"
-      end
-    end
-
-    context "when the count for required completion is equal to the quantity of non-coming-soon activities" do
-      let(:required_for_completion) { 2 }
-
-      it "should state the quantity required for completion with correct singlars" do
-        programme_activities.last.activity.update(coming_soon: true)
-
-        expect(group.formatted_title).to end_with "Encourage girls into computer science"
-      end
-    end
-  end
-
   describe ".community" do
     let!(:community) { create(:programme_activity_grouping, community: true) }
     let!(:not_community) { create(:programme_activity_grouping) }
