@@ -14,6 +14,8 @@ RSpec.describe Activity, type: :model do
   let(:user_achievement) { create(:achievement, user_id: user.id, activity_id: online_activity.id) }
   let(:diagnostic_tool_activity) { create(:activity, :cs_accelerator_diagnostic_tool) }
   let(:removable_activity) { create(:activity, :user_removable) }
+  let(:secondary_certificate_programme) { create(:secondary_certificate) }
+  let(:secondary_certificate_activity) { create(:activity, programmes: [secondary_certificate_programme]) }
 
   describe "associations" do
     it "has_one assessment" do
@@ -239,16 +241,35 @@ RSpec.describe Activity, type: :model do
     end
 
     it "calculates the correct credits from duration in hours" do
-      activity = create(:activity, credit: nil, duration_in_hours: 2.5)
+      activity = create(:activity, :activity_no_credits, duration_in_hours: 2.5)
       expect(activity.credit).to eq(25)
     end
 
     context "is a cs_accelerator programme activity" do
-      it "creates a valid programme_activity" do
-        programme = FactoryBot.create(:cs_accelerator)
-        activity = FactoryBot.create(:activity)
-        programme_activity = FactoryBot.create(:programme_activity, programme: programme, activity: activity)
-        expect(programme_activity.activity.credit).to eq(2000)
+      let(:cs_accelerator_programme) { create(:cs_accelerator) }
+      it "is a face-to-face course and less than 8 hours" do
+        activity = create(:activity, :activity_no_credits, programmes: [cs_accelerator_programme])
+        expect(activity.credit).to eq(10)
+      end
+
+      it "is a face to face course and more than 8 hours" do
+        activity = create(:activity, :activity_no_credits, programmes: [cs_accelerator_programme], duration_in_hours: 10)
+        expect(activity.credit).to eq(30)
+      end
+
+      it "is a remote course and less than 8 hours" do
+        activity = create(:activity, :activity_no_credits, :remote, programmes: [cs_accelerator_programme])
+        expect(activity.credit).to eq(10)
+      end
+
+      it "is a remote course and more than 8 hours" do
+        activity = create(:activity, :activity_no_credits, :remote, programmes: [cs_accelerator_programme], duration_in_hours: 10)
+        expect(activity.credit).to eq(30)
+      end
+
+      it "is an online course" do
+        activity = create(:activity, :activity_no_credits, :online, programmes: [cs_accelerator_programme])
+        expect(activity.credit).to eq(20)
       end
     end
   end

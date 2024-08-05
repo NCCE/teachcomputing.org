@@ -12,6 +12,7 @@ FactoryBot.define do
     retired { false }
     self_verification_info { nil }
     duration_in_hours { 2.5 }
+    programmes { [] }
   end
 
   trait :cs_accelerator_diagnostic_tool do
@@ -131,6 +132,6 @@ FactoryBot.define do
   end
 
   trait :activity_no_credits do
-    credit { 0 }
+    credit { nil }
   end
 end
