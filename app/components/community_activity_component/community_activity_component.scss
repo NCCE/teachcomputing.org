@@ -65,8 +65,8 @@
 }
 
 .community-activity-component__objective-button-container {
-  display: grid;
-  justify-content: flex-end;
+  display: flex;
+  flex-direction: column;
 }
 
 .community-activity-component__objective-text {

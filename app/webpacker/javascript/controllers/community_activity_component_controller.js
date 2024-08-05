@@ -96,7 +96,14 @@ export default class extends ApplicationController {
     })
   }
 
-  submit() {
+  submit(event) {
+    const achievement = {
+      evidence: this.textareaTargets.map(element => element.value),
+      activity_id: this.activityIdValue,
+    }
+    if(event.params.slug) {
+      achievement['submission_option'] = event.params.slug
+    }
     fetch(this.achievementsSubmitPathValue, {
       method: 'POST',
       headers: {
@@ -104,13 +111,13 @@ export default class extends ApplicationController {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-        achievement: {
-          evidence: this.textareaTargets.map(element => element.value),
-          activity_id: this.activityIdValue
-        }
+        achievement: achievement
       })
     }).then((response) => {
-      location.reload()
+      if(event.params.redirect) {
+        window.open(event.params.redirect, "_blank").focus();
+      }
+      location.reload();
     })
   }
 }

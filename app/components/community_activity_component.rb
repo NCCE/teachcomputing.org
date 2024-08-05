@@ -13,7 +13,7 @@ class CommunityActivityComponent < ViewComponent::Base
   def achievement_complete?
     return unless @achievement
 
-    @achievement.in_state? :complete
+    @achievement.in_state?(:complete) && @achievement.submission_option.blank?
   end
 
   def achievement_rejected?

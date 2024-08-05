@@ -38,9 +38,30 @@
           class: 'govuk-button button community-activity-component__objective-button',
           data: tracking_data('Book a course')
         %>
-      <% elsif @activity.self_verification_info.blank? %>
+      <% elsif @activity.evidence_not_required? %>
         <div class="community-activity-component__objective-button-container">
-          <button class="govuk-button button" data-action="click->community-activity-component#submit">Mark complete</button>
+          <% if @activity.public_copy_submission_options.present? %>
+            <% @activity.public_copy_submission_options.each do |option| %>
+              <% if @achievement&.submission_option == option["slug"] %>
+                <span class="community_activity_component__completed_badge_container" >
+                  <span class='community-activity-component__completed-badge'><%= t('.complete') %></span>
+                </span>
+                <% if option["redownload"] %>
+                  <a href="<%= option["redirect"]%>" target="_blank">Redownload <%= option["title"] %></a>
+                <% end %>
+              <% else %>
+                <button class="govuk-button button" 
+                  data-action="click->community-activity-component#submit"
+                  data-community-activity-component-slug-param="<%= option["slug"] %>"
+                  data-community-activity-component-redirect-param="<%= option["redirect"] %>"
+                  >
+                    <%= option["title"] %>
+                </button>
+              <% end %>
+            <% end %>
+          <% else %>
+            <button class="govuk-button button" data-action="click->community-activity-component#submit">Mark complete</button>
+          <% end %>
         </div>
       <% else %>
           <div class="community-activity-component__objective-button-container">
