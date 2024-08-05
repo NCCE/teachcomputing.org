@@ -11,6 +11,7 @@ class AchievementDashboard < BaseDashboard
     self_verification_info: Field::String,
     current_state: ValidStatePickerField,
     id: Field::String,
+    submission_option: Field::String,
     created_at: FORMATTED_DATE_TIME,
     updated_at: FORMATTED_DATE_TIME,
     progress: Field::Number
@@ -34,6 +35,7 @@ class AchievementDashboard < BaseDashboard
     user
     activity
     self_verification_info
+    submission_option
     id
     created_at
     updated_at
