@@ -46,7 +46,7 @@
                   <span class='community-activity-component__completed-badge'><%= t('.complete') %></span>
                 </span>
                 <% if option["redownload"] %>
-                  <a href="<%= option["redirect"]%>" target="_blank">Redownload <%= option["title"] %></a>
+                  <a href="<%= option["redirect"] %>" rel="noopener" target="_blank">Redownload <%= option["title"] %></a>
                 <% end %>
               <% else %>
                 <button class="govuk-button button" 
