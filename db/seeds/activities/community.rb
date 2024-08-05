@@ -388,6 +388,20 @@ Activity.find_or_initialize_by(slug: "download-and-use-the-i-belong-handbook").t
   activity.self_certifiable = true
   activity.description = nil
   activity.coming_soon = false
+  activity.public_copy_submission_options = [
+    {
+      slug: "primary-handbook",
+      title: "Primary Handbook",
+      redirect: i_belong_handbook_url,
+      redownload: true
+    },
+    {
+      slug: "secondary-handbook",
+      title: "Secondary Handbook",
+      redirect: i_belong_handbook_url,
+      redownload: true
+    }
+  ]
 end.save!
 
 Activity.find_or_initialize_by(slug: "request-your-i-belong-in-computer-science-posters").tap do |activity|
@@ -398,6 +412,14 @@ Activity.find_or_initialize_by(slug: "request-your-i-belong-in-computer-science-
   activity.provider = "ncce"
   activity.self_certifiable = true
   activity.description = nil
+  activity.public_copy_submission_options = [
+    {
+      slug: "i-belong-certificate-request",
+      title: "Request",
+      redirect: i_belong_poster_request_url,
+      redownload: false
+    }
+  ]
 end.save!
 
 Activity.find_or_initialize_by(slug: "implement-selected-key-stage-3-teach-computing-curriculum-resources").tap do |activity|
