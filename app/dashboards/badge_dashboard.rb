@@ -10,7 +10,9 @@ class BadgeDashboard < BaseDashboard
     id: Field::String,
     academic_year: Field::String,
     active: Field::Boolean,
+    activation_date: FORMATTED_DATE,
     credly_badge_template_id: Field::String,
+    trigger_type: Field::Select.with_options(searchable: false, collection: ->(field) { field.resource.class.send(field.attribute.to_s.pluralize).keys }),
     created_at: FORMATTED_DATE_TIME,
     updated_at: FORMATTED_DATE_TIME
   }.freeze
@@ -23,7 +25,9 @@ class BadgeDashboard < BaseDashboard
   COLLECTION_ATTRIBUTES = %i[
     programme
     academic_year
+    trigger_type
     active
+    activation_date
     credly_badge_template_id
   ].freeze
 
@@ -33,7 +37,9 @@ class BadgeDashboard < BaseDashboard
     programme
     id
     academic_year
+    trigger_type
     active
+    activation_date
     credly_badge_template_id
     created_at
     updated_at
@@ -45,7 +51,9 @@ class BadgeDashboard < BaseDashboard
   FORM_ATTRIBUTES = %i[
     programme
     academic_year
+    trigger_type
     active
+    activation_date
     credly_badge_template_id
   ].freeze
 

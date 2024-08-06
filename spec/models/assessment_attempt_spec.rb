@@ -46,14 +46,6 @@ RSpec.describe AssessmentAttempt do
     it { is_expected.to delegate_method(:in_state?).to(:state_machine).as(:in_state?) }
   end
 
-  describe "after transition callbacks" do
-    it "enqueues IssueBadgeJob after transitioning to passed" do
-      expect {
-        assessment_attempt.state_machine.transition_to(:passed)
-      }.to have_enqueued_job(IssueBadgeJob).with(assessment_attempt: assessment_attempt)
-    end
-  end
-
   describe "#for_user" do
     it "when user has attempted the assessment" do
       user

@@ -52,8 +52,12 @@ class Programme < ApplicationRecord
   def pending_delay
   end
 
-  def badgeable?
-    badges.active.exists?
+  def cpd_badge
+    badges.cpd.active.first
+  end
+
+  def completion_badge
+    badges.completion.active.first
   end
 
   def mailer
@@ -168,8 +172,8 @@ class Programme < ApplicationRecord
     enrolment.save!
   end
 
-  def user_qualifies_for_credly_badge?(user)
-    user_enrolled?(user) && (user_has_f2f_achievement?(user) || user_meets_completion_requirement?(user))
+  def user_qualifies_for_credly_cpd_badge?(user)
+    user_enrolled?(user) && user_has_f2f_achievement?(user)
   end
 
   def auto_enrollable?

@@ -34,9 +34,5 @@ module Programmes
         *programme_activity_groupings.includes(:programme_activities).order(:sort_key)
       ]
     end
-
-    def user_qualifies_for_credly_badge?(user)
-      user_enrolled?(user) && user_meets_completion_requirement?(user)
-    end
   end
 end
