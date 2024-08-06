@@ -11,8 +11,10 @@ class ProgrammeActivity < ApplicationRecord
   scope :not_legacy, -> { where(legacy: false) }
 
   def update_activity_credits
-    activity.credit = nil
-    activity.update_credits
-    activity.save
+    if activity.duration_in_hours.present?
+      activity.credit = nil
+      activity.update_credits
+      activity.save
+    end
   end
 end
