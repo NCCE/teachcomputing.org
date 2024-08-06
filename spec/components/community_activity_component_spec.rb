@@ -41,8 +41,7 @@ RSpec.describe CommunityActivityComponent, type: :component do
           described_class.new(
             achievement: incomplete_achievement,
             activity:,
-            class_name: "custom_css_class",
-            tracking_category: "some category"
+            class_name: "custom_css_class"
           )
         )
       end
@@ -76,7 +75,7 @@ RSpec.describe CommunityActivityComponent, type: :component do
       end
 
       context "with an activity with no self verification info" do
-        let(:activity) { create(:activity, :community, self_verification_info: nil) }
+        let(:activity) { create(:activity, :community, self_verification_info: nil, public_copy_evidence: nil) }
 
         it "does not render the complete class" do
           expect(page).not_to have_css(".community-activity-component__objective-text--complete")
@@ -110,8 +109,7 @@ RSpec.describe CommunityActivityComponent, type: :component do
           described_class.new(
             achievement: incomplete_achievement,
             activity: bookable_community_activity,
-            class_name: "custom_css_class",
-            tracking_category: "some category"
+            class_name: "custom_css_class"
           )
         )
       end
@@ -127,8 +125,7 @@ RSpec.describe CommunityActivityComponent, type: :component do
           described_class.new(
             achievement: completed_achievement,
             activity: activity,
-            class_name: "custom_css_class",
-            tracking_category: "some category"
+            class_name: "custom_css_class"
           )
         )
       end
@@ -180,7 +177,7 @@ RSpec.describe CommunityActivityComponent, type: :component do
         end
 
         it "should have redownload link" do
-          expect(page).to have_link("Redownload Option 2", href: "https://teachcomputing.org/option2")
+          expect(page).to have_link("Re-download option 2", href: "https://teachcomputing.org/option2")
         end
       end
     end
