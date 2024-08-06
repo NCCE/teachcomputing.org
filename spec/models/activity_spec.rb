@@ -14,8 +14,6 @@ RSpec.describe Activity, type: :model do
   let(:user_achievement) { create(:achievement, user_id: user.id, activity_id: online_activity.id) }
   let(:diagnostic_tool_activity) { create(:activity, :cs_accelerator_diagnostic_tool) }
   let(:removable_activity) { create(:activity, :user_removable) }
-  let(:secondary_certificate_programme) { create(:secondary_certificate) }
-  let(:secondary_certificate_activity) { create(:activity, programmes: [secondary_certificate_programme]) }
 
   describe "associations" do
     it "has_one assessment" do
@@ -269,6 +267,20 @@ RSpec.describe Activity, type: :model do
 
       it "is an online course" do
         activity = create(:activity, :activity_no_credits, :online, programmes: [cs_accelerator_programme])
+        expect(activity.credit).to eq(20)
+      end
+    end
+
+    context "the programme on an activity is updated" do
+      let(:primary_certificate_programme) { create(:primary_certificate) }
+      let(:cs_accelerator_programme) { create(:cs_accelerator) }
+
+      it "changes from primary certificate to cs_accelerator" do
+        activity = create(:activity, :activity_no_credits, :online, programmes: [primary_certificate_programme])
+        activity.programmes << cs_accelerator_programme
+        activity.save
+        activity.reload
+
         expect(activity.credit).to eq(20)
       end
     end

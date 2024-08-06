@@ -72,13 +72,13 @@ class Activity < ApplicationRecord
     stem_activity_code.present? && retired == false
   end
 
-  private
-
   def update_credits
     if credit.nil? && duration_in_hours.present?
       self.credit = calculate_credits
     end
   end
+
+  private
 
   # Calculates credits for a course based on the programme and course length in hours
   def calculate_credits
