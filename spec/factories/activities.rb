@@ -103,7 +103,8 @@ FactoryBot.define do
     provider { "cas" }
     description { "this is a community activity" }
     credit { 10 }
-    self_verification_info { "Please provide a link to your contribution" }
+    self_verification_info { nil }
+    public_copy_evidence { nil }
   end
 
   trait :community_5 do
