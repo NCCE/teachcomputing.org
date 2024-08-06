@@ -23,9 +23,9 @@
         <span><%= @activity.title %></span>
       </span>
       <% if achievement_complete? %>
-        <span class="community_activity_component__completed_badge_container" >
-          <span class='community-activity-component__completed-badge'><%= t('.complete') %></span>
-        </span>
+        <div class="community_activity_component__completed_badge_container" >
+          <div class='community-activity-component__completed-badge'><%= t('.complete') %></div>
+        </div>
       <% elsif @activity.coming_soon? %>
         <%= button_to t('.coming_soon'),
           '#',
@@ -42,20 +42,26 @@
           <% if @activity.public_copy_submission_options.present? %>
             <% @activity.public_copy_submission_options.each do |option| %>
               <% if @achievement&.submission_option == option["slug"] %>
-                <span class="community_activity_component__completed_badge_container" >
-                  <span class='community-activity-component__completed-badge'><%= t('.complete') %></span>
-                </span>
+                <div class="community_activity_component__completed_badge_container">
+                  <div class='community-activity-component__completed-badge'><%= t('.complete') %></div>
+                </div>
                 <% if option["redownload"] %>
-                  <a href="<%= option["redirect"] %>" rel="noopener" target="_blank">Redownload <%= option["title"] %></a>
+                  <a href="<%= option["redirect"] %>" rel="noopener" 
+                    class="govuk-body-s" target="_blank">Re-download <%= option["title"].downcase %></a>
                 <% end %>
               <% else %>
-                <button class="govuk-button button" 
-                  data-action="click->community-activity-component#submit"
-                  data-community-activity-component-slug-param="<%= option["slug"] %>"
-                  data-community-activity-component-redirect-param="<%= option["redirect"] %>"
-                  >
-                    <%= option["title"] %>
-                </button>
+                <% if @achievement.complete? %>
+                  <a href="<%= option["redirect"] %>" rel="noopener" 
+                    class="govuk-button button <%= @button_class %>" target="_blank"><%= option["title"] %></a>
+                <% else %>
+                  <button class="govuk-button button <%= @button_class %>" 
+                    data-action="click->community-activity-component#submit"
+                    data-community-activity-component-slug-param="<%= option["slug"] %>"
+                    data-community-activity-component-redirect-param="<%= option["redirect"] %>"
+                    >
+                      <%= option["title"] %>
+                  </button>
+                <% end %>
               <% end %>
             <% end %>
           <% else %>
@@ -164,7 +170,7 @@
       <% end %>
     </span>
     <% if @activity.description.present? %>
-      <div class="community-activity-component__description light-blue-bg"><%= @activity.description.html_safe %></div>
+      <div class="community-activity-component__description"><%= @activity.description.html_safe %></div>
     <% end %>
   </div>
 
