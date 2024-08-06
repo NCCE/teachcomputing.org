@@ -380,24 +380,24 @@ Activity.find_or_initialize_by(slug: "run-an-enrichment-activity-in-your-classro
 end.save!
 
 Activity.find_or_initialize_by(slug: "download-and-use-the-i-belong-handbook").tap do |activity|
-  activity.title = "Download and use the I Belong handbook"
+  activity.title = "Download and use an I Belong handbook"
   activity.credit = 10
   activity.slug = "download-and-use-the-i-belong-handbook"
   activity.category = "community"
   activity.provider = "ncce"
   activity.self_certifiable = true
-  activity.description = "<a href=\"#{i_belong_handbook_url}\">Download</a> and use the handbook to support your action planning by helping you access a range of recommended resources and initiatives."
+  activity.description = nil
   activity.coming_soon = false
   activity.public_copy_submission_options = [
     {
       slug: "primary-handbook",
-      title: "Primary Handbook",
+      title: "Primary handbook",
       redirect: i_belong_handbook_url,
       redownload: true
     },
     {
       slug: "secondary-handbook",
-      title: "Secondary Handbook",
+      title: "Secondary handbook",
       redirect: i_belong_handbook_url,
       redownload: true
     }
@@ -411,7 +411,7 @@ Activity.find_or_initialize_by(slug: "request-your-i-belong-in-computer-science-
   activity.category = "community"
   activity.provider = "ncce"
   activity.self_certifiable = true
-  activity.description = "<a href=\"#{i_belong_poster_request_url}\">Request</a> and display your set of ‘I Belong in Computer Science’ posters to create an inclusive classroom environment. Consider using with the <a href=\"#{isaac_posters_brochure_url}\">interview series</a> to stimulate discussion about computer science related pathways."
+  activity.description = nil
   activity.public_copy_submission_options = [
     {
       slug: "i-belong-certificate-request",

@@ -67,6 +67,7 @@
 .community-activity-component__objective-button-container {
   display: flex;
   flex-direction: column;
+  align-items: flex-end;
 }
 
 .community-activity-component__objective-text {
@@ -88,7 +89,6 @@
 
 .community-activity-component__completed-badge {
   border: solid 2px #E6A614;
-  padding: 2px 0;
   font-weight: bold;
   font-size: 0.9em;
   text-align: center;
@@ -108,6 +108,7 @@
   font-size: 1rem;
   grid-column: 1;
   padding: 0.7rem;
+  background-color: $foam;
 
   @include govuk-media-query($from: tablet) {
     grid-column-end: 3;
@@ -117,6 +118,9 @@
 }
 
 .community-activity-component--modal {
+  display: flex;
+  justify-content: flex-end;
+
   .ncce-modal {
     .ncce-modal--header {
       .icon-close {
@@ -187,17 +191,9 @@
   }
 
   > .ncce-modal--reopen {
-    background-image: url('../images/icons/submit_evidence_chevron.svg');
-    background-position: right 0.6rem center;
-    background-repeat: no-repeat;
-    background-size: 0.55rem;
     padding-right: 1.7rem;
     padding-left: 0.6rem;
     white-space: nowrap;
-
-    &.green-chevron {
-      background-image: url('../images/icons/submit_evidence_chevron_green.svg');
-    }
   }
 
   .govuk-textarea {
@@ -308,4 +304,41 @@
   }
 
   margin-bottom: 0.5rem;
+}
+
+.i-belong-dashboard {
+  .community-activity-component__objective {
+    grid-template-columns: auto 15rem;
+
+    @include govuk-media-query($until: tablet) {
+      grid-template-columns: auto;
+      grid-template-rows: auto;
+    }
+  }
+
+  .community-activity-component__objective-text {
+    align-self: start;
+
+    @include govuk-media-query($from: tablet) {
+      margin-right: 0;
+    }
+  }
+
+  .community-activity-component__description {
+    background-color: $white;
+    padding: 0;
+    margin-top: 0;
+  }
+
+  .community-activity-component__completed-badge {
+    padding: 10px 0;
+    display: inline-block;
+    margin-bottom: 1rem;
+    width: 196px;
+  }
+
+  .govuk-button {
+    width: 200px;
+    padding: 10px 0;
+  }
 }
