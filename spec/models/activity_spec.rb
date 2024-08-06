@@ -231,4 +231,58 @@ RSpec.describe Activity, type: :model do
       expect(activity.active_course?).to eq(false)
     end
   end
+
+  describe "#calculate_credits" do
+    it "should use initial credit value" do
+      activity = create(:activity, credit: 50)
+      expect(activity.credit).to eq(50)
+    end
+
+    it "calculates the correct credits from duration in hours" do
+      activity = create(:activity, :activity_no_credits, duration_in_hours: 2.5)
+      expect(activity.credit).to eq(25)
+    end
+
+    context "is a cs_accelerator programme activity" do
+      let(:cs_accelerator_programme) { create(:cs_accelerator) }
+      it "is a face-to-face course and less than 8 hours" do
+        activity = create(:activity, :activity_no_credits, programmes: [cs_accelerator_programme])
+        expect(activity.credit).to eq(10)
+      end
+
+      it "is a face to face course and more than 8 hours" do
+        activity = create(:activity, :activity_no_credits, programmes: [cs_accelerator_programme], duration_in_hours: 10)
+        expect(activity.credit).to eq(30)
+      end
+
+      it "is a remote course and less than 8 hours" do
+        activity = create(:activity, :activity_no_credits, :remote, programmes: [cs_accelerator_programme])
+        expect(activity.credit).to eq(10)
+      end
+
+      it "is a remote course and more than 8 hours" do
+        activity = create(:activity, :activity_no_credits, :remote, programmes: [cs_accelerator_programme], duration_in_hours: 10)
+        expect(activity.credit).to eq(30)
+      end
+
+      it "is an online course" do
+        activity = create(:activity, :activity_no_credits, :online, programmes: [cs_accelerator_programme])
+        expect(activity.credit).to eq(20)
+      end
+    end
+
+    context "the programme on an activity is updated" do
+      let(:primary_certificate_programme) { create(:primary_certificate) }
+      let(:cs_accelerator_programme) { create(:cs_accelerator) }
+
+      it "changes from primary certificate to cs_accelerator" do
+        activity = create(:activity, :activity_no_credits, :online, programmes: [primary_certificate_programme])
+        activity.programmes << cs_accelerator_programme
+        activity.save
+        activity.reload
+
+        expect(activity.credit).to eq(20)
+      end
+    end
+  end
 end
