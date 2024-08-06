@@ -1,10 +1,11 @@
 class CommunityActivityListComponent < ViewComponent::Base
   attr_reader :first_activities, :second_activities, :tracking_category
 
-  def initialize(programme_activity_grouping:, community_achievements:, number_to_show: 4, button_class: nil, class_name: nil)
+  def initialize(programme_activity_grouping:, community_achievements:, number_to_show: 4, class_name: nil, button_class: nil)
     @number_to_show = number_to_show
-    @button_class = button_class
     @class_name = class_name
+    @button_class = button_class
+
     activities_with_achievements = programme_activity_grouping.programme_activities.not_legacy.map do |programme_activity|
       {
         programme_activity:,

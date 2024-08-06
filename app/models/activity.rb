@@ -71,6 +71,7 @@ class Activity < ApplicationRecord
   end
 
   def evidence_not_required?
-    self_verification_info.blank? || public_copy_evidence.blank?
+    # TODO test me!
+    self_verification_info.blank? && public_copy_evidence.blank?
   end
 end

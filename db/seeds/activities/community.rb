@@ -380,7 +380,7 @@ Activity.find_or_initialize_by(slug: "run-an-enrichment-activity-in-your-classro
 end.save!
 
 Activity.find_or_initialize_by(slug: "download-and-use-the-i-belong-handbook").tap do |activity|
-  activity.title = "Download and use the I Belong handbook"
+  activity.title = "Download and use an I Belong handbook"
   activity.credit = 10
   activity.slug = "download-and-use-the-i-belong-handbook"
   activity.category = "community"
@@ -391,13 +391,13 @@ Activity.find_or_initialize_by(slug: "download-and-use-the-i-belong-handbook").t
   activity.public_copy_submission_options = [
     {
       slug: "primary-handbook",
-      title: "Primary Handbook",
+      title: "Primary handbook",
       redirect: i_belong_handbook_url,
       redownload: true
     },
     {
       slug: "secondary-handbook",
-      title: "Secondary Handbook",
+      title: "Secondary handbook",
       redirect: i_belong_handbook_url,
       redownload: true
     }
