@@ -34,16 +34,6 @@
     margin-top: 8px;
   }
 
-
-  .button {
-    align-self: right;
-    grid-row: 3;
-
-    @include govuk-media-query($from: tablet) {
-      grid-row: 1;
-    }
-  }
-
   &--with-gap {
     grid-row-gap: 10px;
   }

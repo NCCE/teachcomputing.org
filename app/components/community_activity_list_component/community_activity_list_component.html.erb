@@ -4,7 +4,8 @@
       <%= render CommunityActivityComponent.new(
         activity: activity[:programme_activity].activity,
         achievement: activity[:achievement],
-        tracking_category: tracking_category
+        class_name: @class_name,
+        button_class: @button_class
       ) %>
     </li>
   <% end %>
@@ -19,7 +20,8 @@
           <%= render CommunityActivityComponent.new(
             activity: activity[:programme_activity].activity,
             achievement: activity[:achievement],
-            tracking_category: tracking_category
+            class_name: @class_name,
+            button_class: @button_class
           ) %>
         </li>
       <% end %>

@@ -86,7 +86,7 @@ class Achievement < ApplicationRecord
   end
 
   def adequate_evidence_provided?
-    activity.public_copy.blank? ||
+    activity.public_copy_evidence.blank? ||
       evidence.present? ||
       supporting_evidence.present?
   end

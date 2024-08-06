@@ -96,6 +96,16 @@ FactoryBot.define do
     }
   end
 
+  trait :community_no_evidence do
+    title { "Community Activity" }
+    slug { "community-activity" }
+    category { "community" }
+    provider { "cas" }
+    description { "this is a community activity" }
+    credit { 10 }
+    self_verification_info { "Please provide a link to your contribution" }
+  end
+
   trait :community_5 do
     title { "Community Activity" }
     slug { "community-activity-5" }

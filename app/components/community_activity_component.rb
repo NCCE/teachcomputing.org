@@ -3,17 +3,17 @@
 class CommunityActivityComponent < ViewComponent::Base
   include ViewComponent::Translatable
 
-  def initialize(activity:, achievement: nil, class_name: nil, tracking_category: nil)
+  def initialize(activity:, achievement: nil, class_name: nil, button_class: nil)
     @activity = activity
     @achievement = achievement
     @class_name = class_name
-    @tracking_category = tracking_category
+    @button_class = button_class
   end
 
   def achievement_complete?
     return unless @achievement
 
-    @achievement.in_state? :complete
+    @achievement.in_state?(:complete) && @achievement.submission_option.blank?
   end
 
   def achievement_rejected?

@@ -32,7 +32,8 @@
   <%= render CommunityActivityListComponent.new(
     programme_activity_grouping: group,
     community_achievements: @community_achievements,
-    tracking_category:,
-    number_to_show: 6
+    number_to_show: 6,
+    class_name: "i-belong-dashboard",
+    button_class: "ncce-button--white"
   ) %>
 <% end %>
