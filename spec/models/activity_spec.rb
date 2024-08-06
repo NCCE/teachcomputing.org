@@ -277,8 +277,15 @@ RSpec.describe Activity, type: :model do
 
       it "changes from primary certificate to cs_accelerator" do
         activity = create(:activity, :activity_no_credits, :online, programmes: [primary_certificate_programme])
+        activity.programmes = [cs_accelerator_programme]
+        activity.reload
+
+        expect(activity.credit).to eq(20)
+      end
+
+      it "adding cs_accelerator as a secondary programme" do
+        activity = create(:activity, :activity_no_credits, :online, programmes: [primary_certificate_programme])
         activity.programmes << cs_accelerator_programme
-        activity.save
         activity.reload
 
         expect(activity.credit).to eq(20)
