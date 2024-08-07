@@ -6,6 +6,10 @@ class UpdateUserAssessmentAttemptFromClassMarkerJob < ApplicationJob
     assessment = Assessment.find_by!(class_marker_test_id: test_id)
     latest_attempt = assessment.latest_attempt_for(user:)
 
+    if percentage.nil?
+      latest_attempt.transition_to(:timed_out, percentage: percentage.to_f)
+    end
+
     if percentage.to_f < assessment.required_pass_percentage
       latest_attempt.transition_to(:failed, percentage: percentage.to_f)
 

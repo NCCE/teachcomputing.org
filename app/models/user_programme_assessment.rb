@@ -19,7 +19,7 @@ class UserProgrammeAssessment
   end
 
   def num_attempts
-    return 0 if @attempts.nil?
+    return 0 if @attempts.nil? || @attempts&.last&.current_state == StateMachines::AssessmentAttemptStateMachine::STATE_TIMEDOUT.to_s
 
     @attempts.count
   end
