@@ -11,6 +11,7 @@ FactoryBot.define do
     always_on { false }
     retired { false }
     self_verification_info { nil }
+    duration_in_hours { 2.5 }
   end
 
   trait :cs_accelerator_diagnostic_tool do
@@ -127,5 +128,9 @@ FactoryBot.define do
 
   trait :online do
     category { "online" }
+  end
+
+  trait :activity_no_credits do
+    credit { nil }
   end
 end
