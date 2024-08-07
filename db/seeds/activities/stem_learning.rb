@@ -2768,7 +2768,7 @@ Activity.find_or_initialize_by(stem_course_template_no: "599883f3-f453-ef11-bfe3
   activity.category = "face-to-face"
   activity.remote_delivered_cpd = true
   activity.provider = "stem-learning"
-  activity.credit = 15
+  activity.credit = 10
   activity.stem_activity_code = "CP427"
 
   activity.programmes = [cs_accelerator]
