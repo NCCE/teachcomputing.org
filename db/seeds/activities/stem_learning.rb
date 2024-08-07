@@ -2761,3 +2761,15 @@ Activity.find_or_initialize_by(stem_course_template_no: "28196db1-804d-ef11-a316
 
   activity.programmes = [primary_certificate]
 end.save!
+
+Activity.find_or_initialize_by(stem_course_template_no: "599883f3-f453-ef11-bfe3-000d3a872bb3").tap do |activity|
+  activity.title = "AI and Ethics in GCSE computer science"
+  activity.slug = "ai-and-ethics-in-gcse-computer-science"
+  activity.category = "face-to-face"
+  activity.remote_delivered_cpd = true
+  activity.provider = "stem-learning"
+  activity.credit = 15
+  activity.stem_activity_code = "CP427"
+
+  activity.programmes = [cs_accelerator]
+end.save!
