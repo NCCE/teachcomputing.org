@@ -52,6 +52,24 @@ RSpec.describe UserProgrammeAssessment do
     create(:assessment_attempt, user_id: user.id, assessment_id: assessment.id)
   end
 
+  let(:one_timed_out_test_attempt) do
+    setup_achievements_for_taking_test
+    create(:timed_out_assessment_attempt, user_id: user.id, assessment_id: assessment.id)
+  end
+
+  let(:two_timed_out_test_attempts) do
+    setup_achievements_for_taking_test
+    create_list(:timed_out_assessment_attempt, 2, user_id: user.id, assessment_id: assessment.id)
+  end
+
+  let(:one_failed_one_timed_out_test_attempt) do
+    setup_achievements_for_taking_test
+    [
+      create(:failed_assessment_attempt, user_id: user.id, assessment_id: assessment.id),
+      create(:timed_out_assessment_attempt, user_id: user.id, assessment_id: assessment.id)
+    ]
+  end
+
   let(:one_failed_test_attempt) do
     setup_achievements_for_taking_test
     create(:failed_assessment_attempt, user_id: user.id, assessment_id: assessment.id)
@@ -139,6 +157,72 @@ RSpec.describe UserProgrammeAssessment do
 
       it "assigns the number of attempts at test correctly" do
         expect(user_programme_asessment.num_attempts).to eq(1)
+      end
+    end
+
+    context "when the user has timed out on one test attempt" do
+      before do
+        one_timed_out_test_attempt
+      end
+
+      it "assigns the test gate correctly" do
+        expect(user_programme_asessment.enough_credits_for_test?).to be(true)
+      end
+
+      it "assigns the time until user can take the test" do
+        expect(user_programme_asessment.can_take_test_at).to eq(0)
+      end
+
+      it "assigns whether user is currently doing a test" do
+        expect(user_programme_asessment.currently_taking_test?).to be(false)
+      end
+
+      it "assigns the number of attempts at test correctly" do
+        expect(user_programme_asessment.num_attempts).to eq(0)
+      end
+    end
+
+    context "when the user has timed out on two test attempts" do
+      before do
+        two_timed_out_test_attempts
+      end
+
+      it "assigns the test gate correctly" do
+        expect(user_programme_asessment.enough_credits_for_test?).to be(true)
+      end
+
+      it "assigns the time until user can take the test" do
+        expect(user_programme_asessment.can_take_test_at).to eq(0)
+      end
+
+      it "assigns whether user is currently doing a test" do
+        expect(user_programme_asessment.currently_taking_test?).to be(false)
+      end
+
+      it "assigns the number of attempts at test correctly" do
+        expect(user_programme_asessment.num_attempts).to eq(0)
+      end
+    end
+
+    context "when the user has failed the first attempt and timed out on the second attempt" do
+      before do
+        one_failed_one_timed_out_test_attempt
+      end
+
+      it "assigns the test gate correctly" do
+        expect(user_programme_asessment.enough_credits_for_test?).to be(true)
+      end
+
+      it "assigns the time until user can take the test" do
+        expect(user_programme_asessment.can_take_test_at).to eq(0)
+      end
+
+      it "assigns whether user is currently doing a test" do
+        expect(user_programme_asessment.currently_taking_test?).to be(false)
+      end
+
+      it "assigns the number of attempts at test correctly" do
+        expect(user_programme_asessment.num_attempts).to eq(0)
       end
     end
 

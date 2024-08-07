@@ -20,6 +20,12 @@ FactoryBot.define do
       end
     end
 
+    factory :timed_out_assessment_attempt do
+      after(:create) do |assessment_attempt|
+        assessment_attempt.transition_to(:timed_out)
+      end
+    end
+
     factory :failed_assessment_attempt_from_before do
       after(:create) do |assessment_attempt|
         assessment_attempt.transition_to(:failed)

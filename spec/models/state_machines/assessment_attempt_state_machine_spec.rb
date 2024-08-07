@@ -9,6 +9,11 @@ RSpec.describe StateMachines::AssessmentAttemptStateMachine do
         .not_to raise_error
     end
 
+    it "can transition from state commenced to state timed out" do
+      expect { assessment_attempt.state_machine.transition_to!(:timed_out) }
+        .not_to raise_error
+    end
+
     it "can transition from state commenced to state failed" do
       expect { assessment_attempt.state_machine.transition_to!(:failed) }
         .not_to raise_error
@@ -17,6 +22,18 @@ RSpec.describe StateMachines::AssessmentAttemptStateMachine do
     it "cannot transition from state passed to state failed" do
       assessment_attempt.state_machine.transition_to!(:passed)
       expect { assessment_attempt.state_machine.transition_to!(:failed) }
+        .to raise_error(Statesman::TransitionFailedError)
+    end
+
+    it "cannot transition from state passed to state timed out" do
+      assessment_attempt.state_machine.transition_to!(:passed)
+      expect { assessment_attempt.state_machine.transition_to!(:timed_out) }
+        .to raise_error(Statesman::TransitionFailedError)
+    end
+
+    it "cannot transition from state failed to state timed out" do
+      assessment_attempt.state_machine.transition_to!(:failed)
+      expect { assessment_attempt.state_machine.transition_to!(:timed_out) }
         .to raise_error(Statesman::TransitionFailedError)
     end
 
