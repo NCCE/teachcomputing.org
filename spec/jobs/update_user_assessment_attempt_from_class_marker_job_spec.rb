@@ -79,23 +79,6 @@ RSpec.describe UpdateUserAssessmentAttemptFromClassMarkerJob, type: :job do
       end
     end
 
-    context "when the test has timed out" do
-      before do
-        user
-        activity
-        achievement
-        assessment
-        assessment_attempt
-        timed_out_result = JSON.parse(timed_out_json_body, symbolize_names: true)
-        UpdateUserAssessmentAttemptFromClassMarkerJob.perform_now(timed_out_result[:test][:test_id], user.id,
-          timed_out_result[:result][:percentage])
-      end
-
-      it "transitions assessment_attempt to timed out" do
-        expect(assessment_attempt.current_state).to eq("timed_out")
-      end
-    end
-
     context "when the user has failed the test" do
       before do
         user

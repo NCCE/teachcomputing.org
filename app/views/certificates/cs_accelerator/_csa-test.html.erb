@@ -16,7 +16,7 @@
     </p>
   <% elsif user_programme_assessment.can_take_test_at != 0 %>
     <p class="govuk-body">
-      Your <%= to_word_ordinal(user_programme_assessment.num_attempts + 1) %> attempt at the test can be done <strong>after<%= "#{(Time.zone.now + user_programme_assessment.can_take_test_at).in_time_zone('London').strftime('%l%P on %A')}" %></strong>.
+      Your <%= to_word_ordinal(user_programme_assessment.failed_num_attempts + 1) %> attempt at the test can be done <strong>after<%= "#{(Time.zone.now + user_programme_assessment.can_take_test_at).in_time_zone('London').strftime('%l%P on %A')}" %></strong>.
     </p>
     <p class="govuk-body govuk-!-margin-0">
       You may want to consider completing additional courses before your next attempt. You can find full details of areas for improvement on your results email, and course recommendations in the <%= link_to 'CSA Handbook', 'https://ncce.io/csa-handbook', class: 'ncce-link', data: tracking_data('CSA Handbook') %>.
