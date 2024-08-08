@@ -150,4 +150,8 @@ module ExternalLinkHelper
   def i_belong_student_survey_url
     "https://ncce.io/student-survey"
   end
+
+  def ncce_student_events_url
+    "https://www.eventbrite.co.uk/cc/ncce-student-events-3315729"
+  end
 end
