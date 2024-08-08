@@ -7,7 +7,7 @@ RSpec.describe ExpireAssessmentAttemptJob, type: :job do
     context "when the attempt is in a state of commenced" do
       it "transitions to failed" do
         ExpireAssessmentAttemptJob.perform_now(assessment_attempt)
-        expect(assessment_attempt.current_state).to eq "failed"
+        expect(assessment_attempt.current_state).to eq "timed_out"
       end
     end
 

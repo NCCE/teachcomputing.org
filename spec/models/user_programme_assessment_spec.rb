@@ -105,7 +105,7 @@ RSpec.describe UserProgrammeAssessment do
     end
 
     it "assigns the number of attempts at test correctly" do
-      expect(user_programme_asessment.num_attempts).to eq(0)
+      expect(user_programme_asessment.total_num_attempts).to eq(0)
     end
 
     it "assigns the new test gate correctly" do
@@ -130,7 +130,7 @@ RSpec.describe UserProgrammeAssessment do
       end
 
       it "assigns the number of attempts at test correctly" do
-        expect(user_programme_asessment.num_attempts).to eq(0)
+        expect(user_programme_asessment.total_num_attempts).to eq(0)
       end
 
       it "assigns the new test gate correctly" do
@@ -156,7 +156,7 @@ RSpec.describe UserProgrammeAssessment do
       end
 
       it "assigns the number of attempts at test correctly" do
-        expect(user_programme_asessment.num_attempts).to eq(1)
+        expect(user_programme_asessment.total_num_attempts).to eq(1)
       end
     end
 
@@ -177,8 +177,12 @@ RSpec.describe UserProgrammeAssessment do
         expect(user_programme_asessment.currently_taking_test?).to be(false)
       end
 
-      it "assigns the number of attempts at test correctly" do
-        expect(user_programme_asessment.num_attempts).to eq(0)
+      it "assigns the number of failed attempts test correctly" do
+        expect(user_programme_asessment.failed_num_attempts).to eq(0)
+      end
+
+      it "assigns the number of total test attempts correctly" do
+        expect(user_programme_asessment.total_num_attempts).to eq(1)
       end
     end
 
@@ -199,8 +203,12 @@ RSpec.describe UserProgrammeAssessment do
         expect(user_programme_asessment.currently_taking_test?).to be(false)
       end
 
-      it "assigns the number of attempts at test correctly" do
-        expect(user_programme_asessment.num_attempts).to eq(0)
+      it "assigns the number of failed attempts correctly" do
+        expect(user_programme_asessment.failed_num_attempts).to eq(0)
+      end
+
+      it "assigns the total number of test attempts correctly" do
+        expect(user_programme_asessment.total_num_attempts).to eq(2)
       end
     end
 
@@ -221,8 +229,12 @@ RSpec.describe UserProgrammeAssessment do
         expect(user_programme_asessment.currently_taking_test?).to be(false)
       end
 
-      it "assigns the number of attempts at test correctly" do
-        expect(user_programme_asessment.num_attempts).to eq(0)
+      it "assigns the number of failed attempts correctly" do
+        expect(user_programme_asessment.failed_num_attempts).to eq(1)
+      end
+
+      it "assigns the total number of attempts correctly" do
+        expect(user_programme_asessment.total_num_attempts).to eq(2)
       end
     end
 
@@ -244,7 +256,11 @@ RSpec.describe UserProgrammeAssessment do
       end
 
       it "assigns the number of attempts at test correctly" do
-        expect(user_programme_asessment.num_attempts).to eq(1)
+        expect(user_programme_asessment.failed_num_attempts).to eq(1)
+      end
+
+      it "assigns the total number of attempts correctly" do
+        expect(user_programme_asessment.total_num_attempts).to eq(1)
       end
     end
 
@@ -262,7 +278,11 @@ RSpec.describe UserProgrammeAssessment do
       end
 
       it "assigns the number of attempts at test correctly" do
-        expect(user_programme_asessment.num_attempts).to eq(2)
+        expect(user_programme_asessment.failed_num_attempts).to eq(2)
+      end
+
+      it "assigns the total number of attempts correctly" do
+        expect(user_programme_asessment.total_num_attempts).to eq(2)
       end
     end
 
@@ -276,7 +296,11 @@ RSpec.describe UserProgrammeAssessment do
       end
 
       it "assigns the number of attempts at test correctly" do
-        expect(user_programme_asessment.num_attempts).to eq(2)
+        expect(user_programme_asessment.failed_num_attempts).to eq(2)
+      end
+
+      it "assigns the total number of attempts correctly" do
+        expect(user_programme_asessment.total_num_attempts).to eq(2)
       end
     end
 
