@@ -1,0 +1,36 @@
+
+
+.dashboard-programme-activity-group-section {
+  background-color: $white;
+  padding: 1rem;
+
+  &__title {
+    border-bottom: 2px solid #7e7680;
+    @include govuk-responsive-margin(2, "bottom");
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+  }
+
+  &__completed-badge {
+    border: solid 2px #E6A614;
+    font-weight: bold;
+    font-size: 0.9em;
+    text-align: center;
+    padding: 2px 8px;
+    margin-right: 10px;
+  }
+
+  &__content {
+    ul.i-belong-activity-list {
+      margin-bottom: 0;
+
+      li:last-child {
+        div.i-belong {
+          border-bottom: none;
+        }
+      }
+    }
+  }
+
+}

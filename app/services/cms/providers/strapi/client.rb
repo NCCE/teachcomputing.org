@@ -11,7 +11,7 @@ module Cms
           if params[:query]
             strapi_params[:filters] = Factories::QueryFactory.generate_parameters(collection_class, params[:query])
           end
-          strapi_params.merge!(generate_populate_params(collection_class.collection_attribute_mappings))
+          strapi_params.deep_merge!(generate_populate_params(collection_class.collection_attribute_mappings))
           strapi_params[:pagination] = {
             page:,
             pageSize: page_size
@@ -64,7 +64,11 @@ module Cms
         def generate_populate_params(mappings, preview: false)
           populate_params = mappings.each_with_object({}) do |component, populate|
             if (params = Factories::ParameterFactory.generate_parameters(component[:model]))
-              populate[component[:key]] = params
+              if component[:key]
+                populate[component[:key]] = params
+              else
+                populate.merge!(params)
+              end
             end
           end
           # convert preview param into strapi compliant version

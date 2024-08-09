@@ -12,6 +12,11 @@ class AsideComponent < ViewComponent::Base
     @use_button = options[:use_button]
     @tracking_category = options[:tracking_category]
     @class_name = options[:class_name]
+    @cms_blocks = options[:cms_blocks]
+    @cms_files = options[:cms_files]
+  end
+
+  def collect_cms_data
   end
 
   def tracking_data(label = nil)

@@ -4,11 +4,10 @@ RSpec.describe CommunityActivityListComponent, type: :component do
   let(:programme_activities) { [] }
   let(:programme_activity_grouping) { create(:programme_activity_grouping) }
   let(:community_achievements) { [] }
-  let(:tracking_category) { "foo" }
 
   before do
     programme_activities
-    render_inline(described_class.new(programme_activity_grouping:, community_achievements:, tracking_category:))
+    render_inline(described_class.new(programme_activity_grouping:, community_achievements:))
   end
 
   it "should not have expander" do
