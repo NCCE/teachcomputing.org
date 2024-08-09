@@ -208,3 +208,18 @@
 .button-constrained {
   max-width: 350px;
 }
+
+.ncce-button-chevron {
+  background-image: url('../images/icons/submit_evidence_chevron_black.svg');
+  background-position: right 0.6rem center;
+  background-repeat: no-repeat;
+  background-size: 0.55rem;
+
+  &--green {
+    background-image: url('../images/icons/submit_evidence_chevron_green.svg');
+  }
+
+  &--white {
+    background-image: url('../images/icons/submit_evidence_chevron.svg');
+  }
+}

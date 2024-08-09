@@ -4,11 +4,13 @@ RSpec.describe Certificates::IBelongController do
   let(:user) { create(:user) }
   let(:certificate) { create(:i_belong) }
   let(:enrolment) { create(:user_programme_enrolment, user: user, programme: certificate) }
+  let!(:programme_activity_grouping) { create(:programme_activity_grouping, programme: certificate) }
 
   describe "#show" do
     before do
       stub_attendance_sets
       stub_delegate
+      stub_strapi_aside_section
     end
 
     describe "while unenrolled" do
@@ -117,6 +119,7 @@ RSpec.describe Certificates::IBelongController do
     describe "while enrolled" do
       before do
         enrolment
+        allow_any_instance_of(Programmes::IBelong).to receive(:user_completed?).and_return(true)
         enrolment.transition_to :complete
         allow_any_instance_of(AuthenticationHelper).to receive(:current_user).and_return(user)
         get "/certificate/i-belong/complete"

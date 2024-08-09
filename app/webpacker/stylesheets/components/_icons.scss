@@ -25,6 +25,10 @@
   }
 }
 
+.icon-person {
+  @include icon('../images/icons/person.svg');
+}
+
 .icon-online {
   @include icon('../images/icons/laptop.svg');
 }

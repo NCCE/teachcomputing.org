@@ -16,6 +16,12 @@ module Cms
               to_content_block(strapi_data)
             elsif model_class == Cms::Models::SimpleTitle
               model_class.new(title: strapi_data)
+            elsif model_class == Models::Aside
+              model_class.new(
+                title: strapi_data[:title],
+                content: strapi_data[:content],
+                files: strapi_data.dig(:files, :data) ? strapi_data[:files][:data]&.map { to_file(_1[:attributes]) } : nil
+              )
             elsif model_class == Cms::Models::BlogPreview
               model_class.new(
                 title: strapi_data[:title],
@@ -31,6 +37,15 @@ module Cms
                 excerpt: strapi_data[:seo][:description]
               )
             end
+          end
+
+          def self.to_file(data)
+            Models::File.new(
+              url: data[:url],
+              filename: data[:name],
+              size: data[:size],
+              updated_at: DateTime.parse(data[:updatedAt])
+            )
           end
 
           def self.to_content_block(data)

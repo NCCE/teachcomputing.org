@@ -1,0 +1,36 @@
+<div class="cpd-course-item">
+
+  <div class="cpd-course-item__details">
+    <div class="cpd-course-item__title">
+      <p class="govuk-body govuk-!-margin-bottom-1"><%= @activity.title %></p>
+    </div>
+
+    <div class="cpd-course-item__icons">
+      <% @activity.public_copy_additional_icons&.each do |icon| %>
+        <p class="icon-person">
+          <%= icon %>
+        </p>
+      <% end %>
+      <p class="<%= activity_icon_class(@activity) %>">
+        <%= activity_type(@activity) %>
+      </p>
+      <% if @course&.duration_present? %>
+        <p class="icon-clock">
+          <%=  @course.formatted_duration %>
+        </p>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="cpd-course-item__links">
+
+    <%= link_to "Book now", course_path(id: @activity.stem_activity_code, name: @activity.slug),
+      class: "govuk-button button" %>
+
+    <% if @achievement %>
+      <strong class="govuk-tag ncce-pathway-courses__status ncce-courses__tag">
+        <%= @achievement.complete? ? 'Completed' : 'In progress' %>
+      </strong>
+    <% end %>
+  </div>
+</div>

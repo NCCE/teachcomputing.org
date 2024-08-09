@@ -1,0 +1,14 @@
+<div class="cpd-course-list">
+  <% @courses.each_with_index do |course, index| %>
+    <div class="cpd-course-list__course">
+      <%= render CpdCourseItemComponent.new(current_user: @current_user, activity: course.activity) %>
+    </div>
+    <% if @show_seperator %>
+      <% if index != @courses.length - 1 %>
+        <div class="cpd-course-list__seperator">
+          <span class="govuk-body-s">OR</span>
+        </div>
+      <% end %>
+    <% end %>
+  <% end %>
+</div>

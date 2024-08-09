@@ -386,7 +386,7 @@ Activity.find_or_initialize_by(slug: "download-and-use-the-i-belong-handbook").t
   activity.category = "community"
   activity.provider = "ncce"
   activity.self_certifiable = true
-  activity.description = "<a href=\"#{i_belong_handbook_url}\">Download</a> and use the handbook to support your action planning by helping you access a range of recommended resources and initiatives."
+  activity.description = nil
   activity.coming_soon = false
 end.save!
 
@@ -397,7 +397,7 @@ Activity.find_or_initialize_by(slug: "request-your-i-belong-in-computer-science-
   activity.category = "community"
   activity.provider = "ncce"
   activity.self_certifiable = true
-  activity.description = "<a href=\"#{i_belong_poster_request_url}\">Request</a> and display your set of ‘I Belong in Computer Science’ posters to create an inclusive classroom environment. Consider using with the <a href=\"#{isaac_posters_brochure_url}\">interview series</a> to stimulate discussion about computer science related pathways."
+  activity.description = nil
 end.save!
 
 Activity.find_or_initialize_by(slug: "implement-selected-key-stage-3-teach-computing-curriculum-resources").tap do |activity|

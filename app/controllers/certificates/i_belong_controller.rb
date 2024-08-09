@@ -96,7 +96,7 @@ module Certificates
 
       @cpd_courses =
         if completed_courses.empty?
-          not_completed_courses.first(1)
+          not_completed_courses.first(2)
         else
           completed_courses
         end

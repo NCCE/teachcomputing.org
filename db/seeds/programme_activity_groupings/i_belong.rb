@@ -9,7 +9,7 @@ i_belong.programme_activity_groupings.find_or_initialize_by(title: "all courses"
   group.sort_key = 2
   group.required_for_completion = 1
   group.programme_id = i_belong.id
-  group.progress_bar_title = "<strong>Understand</strong> factors affecting girl's participation"
+  group.progress_bar_title = "<strong>Complete</strong> a recommended course"
 
   group.save!
 
@@ -24,7 +24,7 @@ i_belong.programme_activity_groupings.find_or_initialize_by(title: "all courses"
 end.save!
 
 i_belong.programme_activity_groupings.find_or_initialize_by(sort_key: 3).tap do |group|
-  group.title = "<strong>Access</strong> and <strong>complete all</strong> of the following activities"
+  group.title = "Access these resources to support you"
   group.sort_key = 3
   group.required_for_completion = 2
   group.programme_id = i_belong.id
@@ -44,12 +44,14 @@ i_belong.programme_activity_groupings.find_or_initialize_by(sort_key: 3).tap do 
 end.save!
 
 i_belong.programme_activity_groupings.find_or_initialize_by(sort_key: 4).tap do |group|
-  group.title = "<strong>Increase</strong> girls' engagement"
+  group.title = "Increase girls' engagement by completing activities"
+  group.web_copy_subtitle = "Complete at least one"
   group.sort_key = 4
   group.required_for_completion = 1
   group.programme_id = i_belong.id
-  group.progress_bar_title = "<strong>Increase</strong> girls’ engagement by completing at least one activity"
+  group.progress_bar_title = "<strong>Increase</strong> girls’ engagement by completing activities"
   group.community = true
+  group.web_copy_aside_slug = "i-belong-dashboard-increase-engagement"
 
   group.save!
 

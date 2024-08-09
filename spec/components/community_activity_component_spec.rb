@@ -12,8 +12,7 @@ RSpec.describe CommunityActivityComponent, type: :component do
         described_class.new(
           achievement: incomplete_achievement,
           activity:,
-          class_name: "custom_css_class",
-          tracking_category: "some category"
+          class_name: "custom_css_class"
         )
       )
     end
@@ -81,8 +80,7 @@ RSpec.describe CommunityActivityComponent, type: :component do
         described_class.new(
           achievement: incomplete_achievement,
           activity: bookable_community_activity,
-          class_name: "custom_css_class",
-          tracking_category: "some category"
+          class_name: "custom_css_class"
         )
       )
     end
@@ -98,8 +96,7 @@ RSpec.describe CommunityActivityComponent, type: :component do
         described_class.new(
           achievement: completed_achievement,
           activity: activity,
-          class_name: "custom_css_class",
-          tracking_category: "some category"
+          class_name: "custom_css_class"
         )
       )
     end
