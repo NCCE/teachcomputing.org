@@ -1,10 +1,11 @@
-<ul class="govuk-list ncce-activity-list ncce-activity-list--programme" role="list" data-controller="community-activity-list">
+<ul class="govuk-list ncce-activity-list ncce-activity-list--programme <%= @class_name %>-activity-list" role="list" data-controller="community-activity-list">
   <% first_activities.each do |activity| %>
     <li class="ncce-activity-list__item">
       <%= render CommunityActivityComponent.new(
         activity: activity[:programme_activity].activity,
         achievement: activity[:achievement],
-        tracking_category: tracking_category
+        button_class: @button_class,
+        class_name: @class_name
       ) %>
     </li>
   <% end %>
@@ -19,7 +20,8 @@
           <%= render CommunityActivityComponent.new(
             activity: activity[:programme_activity].activity,
             achievement: activity[:achievement],
-            tracking_category: tracking_category
+            button_class: @button_class,
+            class_name: @class_name
           ) %>
         </li>
       <% end %>

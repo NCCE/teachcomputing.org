@@ -1,0 +1,50 @@
+{
+  "data": {
+      "id": 2,
+      "attributes": {
+          "slug": "i-belong-dashboard-increase-engagement",
+          "title": "Something Something",
+          "content": [
+              {
+                  "type": "paragraph",
+                  "children": [
+                      {
+                          "text": "I am another section, but I am linked to the PAG",
+                          "type": "text"
+                      }
+                  ]
+              }
+          ],
+          "createdAt": "2024-08-07T14:20:58.212Z",
+          "updatedAt": "2024-08-08T12:05:56.582Z",
+          "publishedAt": "2024-08-07T14:20:59.866Z",
+          "files": {
+              "data": [
+                  {
+                      "id": 1234,
+                      "attributes": {
+                          "name": "Structure you evidence",
+                          "alternativeText": null,
+                          "caption": null,
+                          "width": null,
+                          "height": null,
+                          "formats": null,
+                          "hash": "erd_8e72e7db2f",
+                          "ext": ".pdf",
+                          "mime": "application/pdf",
+                          "size": 49.72,
+                          "url": "/uploads/erd_8e72e7db2f.pdf",
+                          "previewUrl": null,
+                          "provider": "local",
+                          "provider_metadata": null,
+                          "createdAt": "2024-08-08T11:11:02.867Z",
+                          "updatedAt": "2024-08-08T11:13:08.520Z"
+                      }
+                  }
+              ]
+          }
+      }
+  },
+  "meta": {
+  }
+}

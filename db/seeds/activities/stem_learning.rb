@@ -1085,6 +1085,7 @@ Activity.find_or_initialize_by(stem_course_template_no: "22ee67ba-4f8d-eb11-b1ac
   activity.provider = "stem-learning"
   activity.stem_activity_code = "CP440"
   activity.remote_delivered_cpd = true
+  activity.public_copy_additional_icons = ["Primary"]
 
   activity.programmes = [i_belong, secondary_certificate]
 end.save!

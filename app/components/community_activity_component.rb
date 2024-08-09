@@ -3,11 +3,11 @@
 class CommunityActivityComponent < ViewComponent::Base
   include ViewComponent::Translatable
 
-  def initialize(activity:, achievement: nil, class_name: nil, tracking_category: nil)
+  def initialize(activity:, achievement: nil, class_name: nil, button_class: nil)
     @activity = activity
     @achievement = achievement
     @class_name = class_name
-    @tracking_category = tracking_category
+    @button_class = button_class
   end
 
   def achievement_complete?
@@ -25,15 +25,5 @@ class CommunityActivityComponent < ViewComponent::Base
   def reopen_button_text
     return "Add more evidence" if achievement_rejected?
     @achievement&.evidence.present? ? "Continue editing" : "Submit evidence"
-  end
-
-  def tracking_data(label)
-    return nil unless @tracking_category.present? && label.present?
-
-    {
-      event_action: "click",
-      event_category: @tracking_category,
-      event_label: label
-    }
   end
 end

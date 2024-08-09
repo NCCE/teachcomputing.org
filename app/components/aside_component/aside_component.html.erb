@@ -23,6 +23,11 @@
     <%= content_tag :p, class: ['govuk-body-s', 'aside-component__text', { 'govuk-!-margin-top-3': @title.blank? }] do %>
       <%= @text %>
     <% end %>
+  <% elsif @cms_blocks %>
+    <%= render CmsRichTextBlockComponent.new(blocks: @cms_blocks, with_wrapper: false, paragraph_class: "govuk-body-s") %>
+    <% @cms_files&.each do |file| %>
+      <%= render file.render %>
+    <% end %>
   <% elsif body? %>
     <%= body %>
   <% end %>
