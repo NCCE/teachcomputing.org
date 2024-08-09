@@ -1,6 +1,10 @@
 require "rails_helper"
 
 RSpec.describe IBelongMailer, type: :mailer do
+  include ApplicationHelper
+  include ExternalLinkHelper
+  include NavigationHelper
+
   let(:user) { create(:user, first_name: "Tobias", last_name: "Doe") }
   let(:programme) { create(:i_belong) }
 
@@ -26,13 +30,49 @@ RSpec.describe IBelongMailer, type: :mailer do
       expect(mail.body.encoded).to include("<title>#{mail_subject}</title>")
     end
 
+    it "contains the primary course link" do
+      expect(mail.body.encoded).to have_link("primary", href: course_url("CP409"))
+    end
+
+    it "contains the secondary course link" do
+      expect(mail.body.encoded).to have_link("secondary", href: course_url("CP440"))
+    end
+
     it "contains the certificate dashboard link" do
-      expect(mail.body.encoded).to have_link("personal dashboard", href: %r{/certificate/i-belong})
+      expect(mail.body.encoded).to have_link("personal dashboard", href: i_belong_url)
+    end
+
+    it "contains the computing hub link" do
+      expect(mail.body.encoded).to have_link("your local Computing Hub", href: hubs_url)
+    end
+
+    it "contains mail_to link" do
+      expect(mail.html_part.body.to_s).to have_link("info@teachcomputing.org", href: "mailto:info@teachcomputing.org")
     end
 
     context "when viewing plain text" do
       it "greets the user" do
         expect(mail.text_part.body.to_s).to match(/Dear Tobias\s*Thank you for signing up/)
+      end
+
+      it "contains the primary course link" do
+        expect(mail.text_part.body.to_s).to include("primary (#{course_url("CP409")})")
+      end
+
+      it "contains the secondary course link" do
+        expect(mail.text_part.body.to_s).to include("secondary (#{course_url("CP440")})")
+      end
+
+      it "contains the certificate dashboard link" do
+        expect(mail.text_part.body.to_s).to include("personal dashboard (#{i_belong_url})")
+      end
+
+      it "contains the computing hub link" do
+        expect(mail.text_part.body.to_s).to include("your local Computing Hub (#{hubs_url})")
+      end
+
+      it "contains teachcomputing email address" do
+        expect(mail.text_part.body.to_s).to include("info@teachcomputing.org")
       end
     end
   end
@@ -55,17 +95,77 @@ RSpec.describe IBelongMailer, type: :mailer do
       expect(mail.body.encoded).to include("<title>#{mail_subject}</title>")
     end
 
-    it "contains the certificate dashboard link" do
-      expect(mail.body.encoded).to have_link("Explore activities in your dashboard", href: %r{/certificate/i-belong})
+    it "contains the i belong link" do
+      expect(mail.html_part.body.to_s).to have_link("I Belong: encouraging girls into computer science", href: about_i_belong_url)
+    end
+
+    it "contains the website link" do
+      expect(mail.html_part.body.to_s).to have_link("on our website", href: about_i_belong_url)
     end
 
     it "contains the unenroll link" do
-      expect(mail.body.encoded).to have_link("Unenrol me from the programme", href: %r{/i_belong/auto_enrolment/unenroll})
+      expect(mail.html_part.body.to_s).to have_link("Unenrol me from the programme", href: unenroll__i_belong_auto_enrolment_url)
+    end
+
+    it "contains the certificate dashboard link" do
+      expect(mail.html_part.body.to_s).to have_link("Explore activities in your dashboard", href: i_belong_url)
+    end
+
+    it "contains link to structuring evidence document" do
+      expect(mail.html_part.body.to_s).to have_link("evidence",
+        href: static_asset_url("Structuring+your+evidence+for+I+Belong.docx"))
+    end
+
+    it "contains link to key stage 3 clear messaging" do
+      expect(mail.html_part.body.to_s).to have_link("Clear messaging in digital media, Developing for the Web",
+        href: "https://teachcomputing.org/curriculum/key-stage-3/clear-messaging-in-digital-media")
+    end
+
+    it "contains link to key stage 3 media animations" do
+      expect(mail.html_part.body.to_s).to have_link("Media - Animations",
+        href: "https://teachcomputing.org/curriculum/key-stage-3/media-animations")
+    end
+
+    it "contains link to programme handbook" do
+      expect(mail.html_part.body.to_s).to have_link("programme handbook",
+        href: static_asset_url("I+Belong+Handbook.pdf"))
     end
 
     context "when viewing plain text" do
       it "greets the user" do
         expect(mail.text_part.body.to_s).to match(/Hi Tobias,\s*We can see you've been working/)
+      end
+
+      it "contains the i belong link" do
+        expect(mail.text_part.body.to_s).to include("I Belong: encouraging girls into computer science (#{about_i_belong_url})")
+      end
+
+      it "contains the website link" do
+        expect(mail.text_part.body.to_s).to include("on our website (#{about_i_belong_url})")
+      end
+
+      it "contains the unenroll link" do
+        expect(mail.text_part.body.to_s).to include("Unenrol me from the programme (#{unenroll__i_belong_auto_enrolment_url})")
+      end
+
+      it "contains the certificate dashboard link" do
+        expect(mail.text_part.body.to_s).to include("Explore activities in your dashboard (#{i_belong_url})")
+      end
+
+      it "contains link to structuring evidence document" do
+        expect(mail.text_part.body.to_s).to include("evidence (#{static_asset_url("Structuring+your+evidence+for+I+Belong.docx")})")
+      end
+
+      it "contains link to key stage 3 clear messaging" do
+        expect(mail.text_part.body.to_s).to include("Developing for the Web, (https://teachcomputing.org/curriculum/key-stage-3/clear-messaging-in-digital-media)")
+      end
+
+      it "contains link to key stage 3 media animations" do
+        expect(mail.text_part.body.to_s).to include("Media - Animations (https://teachcomputing.org/curriculum/key-stage-3/media-animations)")
+      end
+
+      it "contains link to programme handbook" do
+        expect(mail.text_part.body.to_s).to include("programme handbook (#{static_asset_url("I+Belong+Handbook.pdf")})")
       end
     end
   end
@@ -93,7 +193,7 @@ RSpec.describe IBelongMailer, type: :mailer do
     end
 
     it "contains link to student survey" do
-      expect(mail.html_part.body.to_s).to have_link("student attitude surveys", href: "https://ncce.io/student-survey")
+      expect(mail.html_part.body.to_s).to have_link("student attitude surveys", href: i_belong_student_survey_url)
     end
 
     context "when viewing plain text" do
@@ -102,12 +202,11 @@ RSpec.describe IBelongMailer, type: :mailer do
       end
 
       it "contains student survey url" do
-        expect(mail.text_part.body.to_s).to match(/https:\/\/ncce.io\/student-survey/)
+        expect(mail.text_part.body.to_s).to include("(https://ncce.io/student-survey)")
       end
 
       it "includes email address" do
-        expect(mail.text_part.body.to_s)
-          .to match(/request this by emailing info@teachcomputing.org./)
+        expect(mail.text_part.body.to_s).to include("info@teachcomputing.org")
       end
     end
   end
@@ -137,8 +236,7 @@ RSpec.describe IBelongMailer, type: :mailer do
     end
 
     it "includes link to press pack" do
-      expect(mail.html_part.body.to_s).to have_link("Access the pack here",
-        href: "https://static.teachcomputing.org/I_Belong_PR_Pack-Editorial_and_Social_Media.pdf")
+      expect(mail.html_part.body.to_s).to have_link("Access the pack here", href: static_asset_url("I_Belong_PR_Pack-Editorial_and_Social_Media.pdf"))
     end
 
     context "when viewing plain text" do
@@ -147,13 +245,11 @@ RSpec.describe IBelongMailer, type: :mailer do
       end
 
       it "includes email address" do
-        expect(mail.text_part.body.to_s)
-          .to match(/Any questions\?\s*Please contact info@teachcomputing.org/)
+        expect(mail.text_part.body.to_s).to include("info@teachcomputing.org")
       end
 
       it "includes url to press pack" do
-        expect(mail.text_part.body.to_s)
-          .to match(/https:\/\/static.teachcomputing.org\/I_Belong_PR_Pack-Editorial_and_Social_Media.pdf/)
+        expect(mail.text_part.body.to_s).to include("Access the pack here (https://static.teachcomputing.org/I_Belong_PR_Pack-Editorial_and_Social_Media.pdf)")
       end
     end
   end
@@ -186,12 +282,11 @@ RSpec.describe IBelongMailer, type: :mailer do
       end
 
       it "contains survey url" do
-        expect(mail.text_part.body.to_s).to match(/https:\/\/ncce.io\/student-survey/)
+        expect(mail.text_part.body.to_s).to include("student surveys (https://ncce.io/student-survey)")
       end
 
       it "includes email address" do
-        expect(mail.text_part.body.to_s)
-          .to match(/For support, email info@teachcomputing.org./)
+        expect(mail.text_part.body.to_s).to include("For support, email info@teachcomputing.org.")
       end
     end
   end
@@ -213,6 +308,26 @@ RSpec.describe IBelongMailer, type: :mailer do
     end
 
     describe "when html" do
+      it "should render in your dashboard link" do
+        expect(mail.html_part.body).to have_link("in your dashboard", href: i_belong_url)
+      end
+
+      it "contains link to primary course" do
+        expect(mail.html_part.body).to have_link("primary", href: course_url("CP409"))
+      end
+
+      it "contains link to secondary course" do
+        expect(mail.html_part.body).to have_link("secondary", href: course_url("CP440"))
+      end
+
+      it "contains link to secondary course" do
+        expect(mail.html_part.body).to have_link("secondary", href: course_url("CP440"))
+      end
+
+      it "should render a link to the i belong handbook" do
+        expect(mail.html_part.body).to have_link("secondary", href: static_asset_url("I+Belong+Handbook.pdf"))
+      end
+
       it "should render dashboard link" do
         expect(mail.html_part.body).to have_link("dashboard", href: i_belong_url)
       end
@@ -221,6 +336,22 @@ RSpec.describe IBelongMailer, type: :mailer do
     describe "when text" do
       it "should render dashboard link" do
         expect(mail.text_part.body).to include("dashboard (#{i_belong_url})")
+      end
+
+      it "contains link to primary course" do
+        expect(mail.text_part.body.to_s).to include("primary (#{course_url("CP409")})")
+      end
+
+      it "contains link to secondary course" do
+        expect(mail.text_part.body.to_s).to include("secondary (#{course_url("CP440")})")
+      end
+
+      it "should render a link to the i belong handbook" do
+        expect(mail.text_part.body.to_s).to include("secondary (#{static_asset_url("I+Belong+Handbook.pdf")}")
+      end
+
+      it "should render dashboard link" do
+        expect(mail.text_part.body.to_s).to include("dashboard (#{i_belong_url})")
       end
     end
   end
@@ -245,11 +376,29 @@ RSpec.describe IBelongMailer, type: :mailer do
       it "should render dashboard link" do
         expect(mail.html_part.body).to have_link("dashboard", href: i_belong_url)
       end
+
+      # TODO UPDATE ONCE WE HAVE THE I BELONG PRIMARY URL
+      # it "should render a link to the primary belong handbook" do
+      #   expect(mail.html_part.body).to have_link("primary", href: static_asset_url("I+Belong+Handbook.pdf"))
+      # end
+
+      it "should render a link to the secondary belong handbook" do
+        expect(mail.html_part.body).to have_link("secondary", href: static_asset_url("I+Belong+Handbook.pdf"))
+      end
     end
 
     describe "when text" do
       it "should render dashboard link" do
         expect(mail.text_part.body).to include("dashboard (#{i_belong_url})")
+      end
+
+      # TODO UPDATE ONCE WE HAVE THE I BELONG PRIMARY URL
+      # it "should render a link to the primary belong handbook" do
+      #  expect(mail.text_part.body).to include("primary (#{static_asset_url("I+Belong+Handbook.pdf")})")
+      # end
+
+      it "should render a link to the secondary i belong handbook" do
+        expect(mail.text_part.body).to include("secondary (#{static_asset_url("I+Belong+Handbook.pdf")})")
       end
     end
   end
@@ -274,11 +423,43 @@ RSpec.describe IBelongMailer, type: :mailer do
       it "should render dashboard link" do
         expect(mail.html_part.body).to have_link("dashboard", href: i_belong_url)
       end
+
+      it "contains the primary course link" do
+        expect(mail.html_part.body).to have_link("primary", href: course_url("CP409"))
+      end
+
+      it "contains the secondary course link" do
+        expect(mail.html_part.body).to have_link("secondary", href: course_url("CP440"))
+      end
+
+      it "contains the primary course button link" do
+        expect(mail.html_part.body).to have_link("Book primary course", href: course_url("CP409"))
+      end
+
+      it "contains the secondary course button link" do
+        expect(mail.html_part.body).to have_link("Book secondary course", href: course_url("CP440"))
+      end
     end
 
     describe "when text" do
       it "should render dashboard link" do
         expect(mail.text_part.body).to include("dashboard (#{i_belong_url})")
+      end
+
+      it "contains the primary course link" do
+        expect(mail.text_part.body).to include("primary (#{course_url("CP409")}")
+      end
+
+      it "contains the secondary course link" do
+        expect(mail.text_part.body).to include("secondary (#{course_url("CP440")}")
+      end
+
+      it "contains the book primary course link" do
+        expect(mail.text_part.body).to include("Book primary course (#{course_url("CP409")}")
+      end
+
+      it "contains the book secondary course link" do
+        expect(mail.text_part.body).to include("Book secondary course (#{course_url("CP440")}")
       end
     end
   end
@@ -303,11 +484,35 @@ RSpec.describe IBelongMailer, type: :mailer do
       it "should render dashboard link" do
         expect(mail.html_part.body).to have_link("dashboard", href: i_belong_url)
       end
+
+      it "should render DIY posters link" do
+        expect(mail.html_part.body).to have_link("DIY posters", href: "https://teachcomputing.org/blog/i-belong-poster-template")
+      end
+
+      it "should render student surveys link" do
+        expect(mail.html_part.body).to have_link("student surveys", href: "https://teachcomputing.org/student-surveys-attitudes-to-computing/")
+      end
+
+      it "should render evidence document link" do
+        expect(mail.html_part.body).to have_link("evidence", href: static_asset_url("Completing.your.I.Belong.evidence.Feb.2024.pdf"))
+      end
     end
 
     describe "when text" do
+      it "should render DIY posters link" do
+        expect(mail.text_part.body).to include("DIY posters (https://teachcomputing.org/blog/i-belong-poster-template)")
+      end
+
+      it "should render student surveys link" do
+        expect(mail.text_part.body).to include("student surveys (https://teachcomputing.org/student-surveys-attitudes-to-computing/)")
+      end
+
       it "should render dashboard link" do
         expect(mail.text_part.body).to include("dashboard (#{i_belong_url})")
+      end
+
+      it "should render evidence document link" do
+        expect(mail.text_part.body).to include("evidence (#{static_asset_url("Completing.your.I.Belong.evidence.Feb.2024.pdf")})")
       end
     end
   end
@@ -329,14 +534,70 @@ RSpec.describe IBelongMailer, type: :mailer do
     end
 
     describe "when html" do
-      it "should render handbook link" do
-        expect(mail.html_part.body).to have_link("View recommended activities in your handbook", href: "https://media.teachcomputing.org/i_belong_secondary_handbook_2f4dfccf30.pdf")
+      it "should render action plan link" do
+        expect(mail.html_part.body).to have_link("action plan", href: i_belong_action_plan_url)
+      end
+
+      it "should render student events link" do
+        expect(mail.html_part.body).to have_link("student events", href: ncce_student_events_url)
+      end
+
+      it "should render computing ambassador link" do
+        expect(mail.html_part.body).to have_link("Computing Ambassador", href: stem_ambassadors_url)
+      end
+
+      it "should render the key stage 2 link" do
+        expect(mail.html_part.body).to have_link("key stage 2", href: "https://teachcomputing.org/curriculum/key-stage-2")
+      end
+
+      it "should render the key stage 3 link" do
+        expect(mail.html_part.body).to have_link("key stage 3", href: "https://teachcomputing.org/curriculum/key-stage-3")
+      end
+
+      it "should render the primary handbook link" do
+        expect(mail.html_part.body).to have_link("View recommended primary activities", href: i_belong_primary_handbook_url)
+      end
+
+      it "should render the secondary handbook link" do
+        expect(mail.html_part.body).to have_link("View recommended secondary activities", href: i_belong_secondary_handbook_url)
+      end
+
+      it "should render the i belong evidence link" do
+        expect(mail.html_part.body).to have_link("evidence", href: structuring_your_i_belong_evidence_url)
       end
     end
 
     describe "when text" do
-      it "should render action plan link" do
-        expect(mail.text_part.body).to include("View recommended activities in you handbook (https://media.teachcomputing.org/i_belong_secondary_handbook_2f4dfccf30.pdf)")
+      it "should render action plan events link" do
+        expect(mail.text_part.body).to include("action plan (#{i_belong_action_plan_url})")
+      end
+
+      it "should render student events link" do
+        expect(mail.text_part.body).to include("student events (#{ncce_student_events_url})")
+      end
+
+      it "should render computing ambassador link" do
+        expect(mail.text_part.body).to include("Computing Ambassador (#{stem_ambassadors_url})")
+      end
+
+      it "should render the key stage 2 link" do
+        expect(mail.text_part.body).to include("key stage 2 (https://teachcomputing.org/curriculum/key-stage-2)")
+      end
+
+      it "should render the key stage 3 link" do
+        expect(mail.text_part.body).to include("key stage 3 (https://teachcomputing.org/curriculum/key-stage-3)")
+      end
+
+      it "should render the primary handbook link" do
+        expect(mail.text_part.body).to include("View recommended primary activities (#{i_belong_primary_handbook_url})")
+      end
+
+      it "should render the secondary handbook link" do
+        expect(mail.text_part.body).to include("View recommended secondary activities (#{i_belong_secondary_handbook_url})")
+      end
+
+      it "should render the i belong evidence link" do
+        expect(mail.text_part.body).to include("evidence (#{structuring_your_i_belong_evidence_url})")
       end
     end
   end
