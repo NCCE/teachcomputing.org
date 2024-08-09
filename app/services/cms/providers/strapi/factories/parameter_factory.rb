@@ -6,6 +6,8 @@ module Cms
           def self.generate_parameters(model_class)
             if model_class == Cms::Models::Seo
               {populate: {featuredImage: {populate: [:alternativeText]}}}
+            elsif model_class == Cms::Models::Aside
+              {files: {populate: [:fileName]}}
             elsif model_class == Cms::Models::FeaturedImage
               {populate: [:alternativeText, :caption]}
             elsif model_class == Cms::Models::SimplePagePreview

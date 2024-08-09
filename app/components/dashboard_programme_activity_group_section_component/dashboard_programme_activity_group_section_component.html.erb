@@ -1,0 +1,31 @@
+<%= render GovGridRowComponent.new() do |row_component| %>
+  <%= row_component.with_column("two-thirds") do %>
+    <div class="dashboard-programme-activity-group-section">
+      <div class="dashboard-programme-activity-group-section__title">
+        <% if @completed %>
+          <div class="dashboard-programme-activity-group-section__completed-badge">
+            <span class="govuk-body-m">Completed</span>
+          </div>
+        <% end %>
+        <h1 class="govuk-heading-m"><%= @title %></h1>
+      </div>
+
+      <div class="dashboard-programme-activity-group-section__content">
+        <% if @subtitle %>
+          <h3 class="govuk-heading-s"><%= @subtitle %></h3>
+        <% end %>
+        <%= content %>
+      </div>
+    </div>
+  <% end %>
+
+  <% if @aside_slug %>
+    <% if @aside_model %>
+      <%= row_component.with_column("one-third") do %>
+        <%= render @aside_model.render %>
+      <% end %>
+    <% else %>
+      <!-- Missing aside <%= @aside_slug %> -->
+    <% end %>
+  <% end %>
+<% end %>

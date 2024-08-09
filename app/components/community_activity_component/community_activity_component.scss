@@ -187,10 +187,6 @@
   }
 
   > .ncce-modal--reopen {
-    background-image: url('../images/icons/submit_evidence_chevron.svg');
-    background-position: right 0.6rem center;
-    background-repeat: no-repeat;
-    background-size: 0.55rem;
     padding-right: 1.7rem;
     padding-left: 0.6rem;
     white-space: nowrap;
@@ -308,4 +304,22 @@
   }
 
   margin-bottom: 0.5rem;
+}
+
+.i-belong {
+  border-bottom: 2px solid $ncce-grey;
+
+  .community-activity-component__objective-text {
+    align-self: baseline;
+  }
+
+  .community-activity-component__content {
+    padding: 1.25rem 0;
+  }
+
+  .community-activity-component__description {
+    background-color: white;
+    padding: 0;
+    margin: 0;
+  }
 }
