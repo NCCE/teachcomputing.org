@@ -2,11 +2,12 @@
   <p class='govuk-body'>Hi <%= @user.first_name %>,</p>
   <p class='govuk-body'>
     We can see you've been working on your professional development by engaging in our Encouraging girls into GCSE computer science course.
-    We're assuming from your interest in this course that you would be interested in our <%= link_to 'I Belong: encouraging girls into computer science', '/i-belong' %> programme.
+    We're assuming from your interest in this course that you would be interested in our <%= link_to 'I Belong: encouraging girls into computer science', about_i_belong_url %> programme.
   </p>
   <p class='govuk-body'>
     As such, we've enrolled you on the programme, giving you access to a wider range of resources designed to help your school achieve your goals.
-    If you don't want to continue the programme at this time, let us know, and we will update our records. You can still re-enrol yourself in the future <%= link_to 'on our website', '/i-belong' %>.
+    If you don't want to continue the programme at this time, let us know, and we will update our records. You can still re-enrol yourself in the future
+    <%= link_to 'on our website', about_i_belong_url %>.
   </p>
   <p class='govuk-body'>
     <%= link_to 'Unenrol me from the programme', unenroll__i_belong_auto_enrolment_url, class: 'govuk-button button' %>
@@ -26,7 +27,8 @@
   </p>
 
   <p class='govuk-body'>
-    Has your school already completed some of the activities required to achieve the certificate? Tick them off by submitting <%= link_to 'evidence', static_asset_url('Structuring+your+evidence+for+I+Belong.docx') %> in your dashboard.
+    Has your school already completed some of the activities required to achieve the certificate? Tick them off by submitting
+    <%= link_to 'evidence', static_asset_url('Structuring+your+evidence+for+I+Belong.docx') %> in your dashboard.
   </p>
 
   <p class='govuk-body'>
