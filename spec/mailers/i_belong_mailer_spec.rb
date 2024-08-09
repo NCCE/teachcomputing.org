@@ -324,8 +324,12 @@ RSpec.describe IBelongMailer, type: :mailer do
         expect(mail.html_part.body).to have_link("secondary", href: course_url("CP440"))
       end
 
-      it "should render a link to the i belong handbook" do
-        expect(mail.html_part.body).to have_link("secondary", href: static_asset_url("I+Belong+Handbook.pdf"))
+      it "should render a link to the primary i belong handbook" do
+        expect(mail.html_part.body).to have_link("primary", href: primary_i_belong_handbook_url)
+      end
+
+      it "should render a link to the secondary i belong handbook" do
+        expect(mail.html_part.body).to have_link("secondary", href: i_belong_handbook_url)
       end
 
       it "should render dashboard link" do
@@ -346,8 +350,12 @@ RSpec.describe IBelongMailer, type: :mailer do
         expect(mail.text_part.body.to_s).to include("secondary (#{course_url("CP440")})")
       end
 
-      it "should render a link to the i belong handbook" do
-        expect(mail.text_part.body.to_s).to include("secondary (#{static_asset_url("I+Belong+Handbook.pdf")}")
+      it "should render a link to the primary i belong handbook" do
+        expect(mail.text_part.body.to_s).to include("primary (#{primary_i_belong_handbook_url})")
+      end
+
+      it "should render a link to the secondary i belong handbook" do
+        expect(mail.text_part.body.to_s).to include("secondary (#{i_belong_handbook_url})")
       end
 
       it "should render dashboard link" do
@@ -377,13 +385,12 @@ RSpec.describe IBelongMailer, type: :mailer do
         expect(mail.html_part.body).to have_link("dashboard", href: i_belong_url)
       end
 
-      # TODO UPDATE ONCE WE HAVE THE I BELONG PRIMARY URL
-      # it "should render a link to the primary belong handbook" do
-      #   expect(mail.html_part.body).to have_link("primary", href: static_asset_url("I+Belong+Handbook.pdf"))
-      # end
+      it "should render a link to the primary belong handbook" do
+        expect(mail.html_part.body).to have_link("primary", href: primary_i_belong_handbook_url)
+      end
 
       it "should render a link to the secondary belong handbook" do
-        expect(mail.html_part.body).to have_link("secondary", href: static_asset_url("I+Belong+Handbook.pdf"))
+        expect(mail.html_part.body).to have_link("secondary", href: i_belong_handbook_url)
       end
     end
 
@@ -392,13 +399,12 @@ RSpec.describe IBelongMailer, type: :mailer do
         expect(mail.text_part.body).to include("dashboard (#{i_belong_url})")
       end
 
-      # TODO UPDATE ONCE WE HAVE THE I BELONG PRIMARY URL
-      # it "should render a link to the primary belong handbook" do
-      #  expect(mail.text_part.body).to include("primary (#{static_asset_url("I+Belong+Handbook.pdf")})")
-      # end
+      it "should render a link to the primary belong handbook" do
+        expect(mail.text_part.body).to include("primary (#{primary_i_belong_handbook_url})")
+      end
 
       it "should render a link to the secondary i belong handbook" do
-        expect(mail.text_part.body).to include("secondary (#{static_asset_url("I+Belong+Handbook.pdf")})")
+        expect(mail.text_part.body).to include("secondary (#{i_belong_handbook_url})")
       end
     end
   end
