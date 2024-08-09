@@ -1,4 +1,4 @@
-<ul class="govuk-list ncce-activity-list ncce-activity-list--programme" role="list" data-controller="community-activity-list">
+<ul class="govuk-list ncce-activity-list ncce-activity-list--programme <%= @class_name %>-activity-list" role="list" data-controller="community-activity-list">
   <% first_activities.each do |activity| %>
     <li class="ncce-activity-list__item">
       <%= render CommunityActivityComponent.new(

@@ -26,14 +26,4 @@ class CommunityActivityComponent < ViewComponent::Base
     return "Add more evidence" if achievement_rejected?
     @achievement&.evidence.present? ? "Continue editing" : "Submit evidence"
   end
-
-  def tracking_data(label)
-    return nil unless @tracking_category.present? && label.present?
-
-    {
-      event_action: "click",
-      event_category: @tracking_category,
-      event_label: label
-    }
-  end
 end

@@ -85,4 +85,14 @@ module StrapiStubs
     json_response = File.new("spec/support/cms/providers/strapi/blogs_collection_response.json")
     stub_request(:get, /^https:\/\/strapi.teachcomputing.org\/api\/blogs\?.*(filters\[blog_tags\]\[slug\]\[\$eq\]=#{tag}).*/).to_return(body: json_response)
   end
+
+  def stub_strapi_aside_section
+    json_response = File.new("spec/support/cms/providers/strapi/aside_section_response.json")
+    stub_request(:get, /^https:\/\/strapi.teachcomputing.org\/api\/aside-sections/).to_return(body: json_response)
+  end
+
+  def stub_strapi_aside_section_missing(key)
+    json_response = File.new("spec/support/cms/providers/strapi/aside_section_response.json")
+    stub_request(:get, /^https:\/\/strapi.teachcomputing.org\/api\/aside-sections\/#{key}/).to_return(body: json_response, status: 404)
+  end
 end
