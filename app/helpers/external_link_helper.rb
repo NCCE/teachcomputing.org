@@ -3,6 +3,10 @@ module ExternalLinkHelper
     "https://static.teachcomputing.org/NCCE-Impact-report-2022.pdf"
   end
 
+  def primary_i_belong_handbook_url
+    "https://static.teachcomputing.org/PLACEHOLDER.pdf"
+  end
+
   def i_belong_handbook_url
     "https://static.teachcomputing.org/I+Belong+Handbook.pdf"
   end
