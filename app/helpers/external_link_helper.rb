@@ -3,6 +3,10 @@ module ExternalLinkHelper
     "https://static.teachcomputing.org/NCCE-Impact-report-2022.pdf"
   end
 
+  def primary_i_belong_handbook_url
+    "https://static.teachcomputing.org/PLACEHOLDER.pdf"
+  end
+
   def i_belong_handbook_url
     "https://static.teachcomputing.org/I+Belong+Handbook.pdf"
   end
@@ -149,5 +153,9 @@ module ExternalLinkHelper
 
   def i_belong_student_survey_url
     "https://ncce.io/student-survey"
+  end
+
+  def ncce_student_events_url
+    "https://www.eventbrite.co.uk/cc/ncce-student-events-3315729"
   end
 end
