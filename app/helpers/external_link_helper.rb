@@ -158,4 +158,12 @@ module ExternalLinkHelper
   def social_media_card_templates_url
     "https://www.canva.com/design/DAGH7H5evKc/2l2uqE0otmkLBifYz4i4Gg/view?utm_content=DAGH7H5evKc&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink&mode=preview"
   end
+
+  def gender_insights_in_computing_url
+    "https://static.teachcomputing.org/Gender_Insights_in_Computing_Education_Foundational_Evidence_Review.pdf"
+  end
+
+  def ncce_student_events_url
+    "https://www.eventbrite.co.uk/cc/ncce-student-events-3315729"
+  end
 end

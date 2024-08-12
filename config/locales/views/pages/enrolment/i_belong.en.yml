@@ -9,8 +9,8 @@ en:
             body_html: >-
               <li>Enrol on the programme</li>
               <li>Obtain your free handbook and posters</li>
-              <li>Explore the programme</li>
-            link_text: Log into your account
+              <li>Explore the CPD and activities</li>
+            link_text: Login to enrol
         unenrolled:
           where_to_start_card:
             heading: Where to start?
@@ -24,20 +24,23 @@ en:
           where_to_start_card:
             heading: Completing the programme
             body_html: >-
-              <li>Complete our ‘Encouraging Girls into GCSE Computer Science’ short course</li>
+              <li>Complete the I Belong short course for your key stage</li>
               <li>Participate in a range of recommended activity</li>
               <li>Claim your school certificate</li>
             link_text: Visit dashboard
         resources:
-          handbook:
-            title: "I Belong handbook"
-            body: "Our evidence-informed handbook is key to developing your action plan for increasing uptake computer science by girls in your school."
+          primary_handbook:
+            title: "I Belong primary handbook"
+            body: "Our evidence-informed primary handbook is key to developing your action plan for increasing uptake computer science by girls in your school. Download your handbook"
+          secondary_handbook:
+            title: "I Belong secondary handbook"
+            body: "Our evidence-informed secondary handbook is key to developing your action plan for increasing uptake computer science by girls in your school. Download your handbook"
           posters:
             title: "I Belong in computer science posters"
             body: "Printed 'I Belong in computer science' posters are available on request!"
           survey:
             title: "Student attitude surveys"
-            body: "Surveys to help you understand your students’ attitudes and aspiration towards computer science."
+            body: "Key stage 3 surveys to help you understand your students’ attitudes and aspiration towards computer science."
             link: "Access student surveys"
           poster_template:
             title: "I Belong DIY poster template"
@@ -47,3 +50,7 @@ en:
             title: "GCSE options resource"
             body: "Guidance to help you promote computer science during the GCSE options process."
             link: "View the guidance"
+          student_events:
+            title: "Student events"
+            body: "Events for key stage 2 and 3 students to inspire and engage them in computing and computer science."
+            link: "NCCE Student Events"
