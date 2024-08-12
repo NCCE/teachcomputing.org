@@ -17,10 +17,17 @@
     <div class="govuk-grid-row">
       <div class="govuk-grid-column-full-width video-with-text">
         <section class='ncce-section govuk-!-margin-top-0 govuk-!-margin-bottom-0'>
-          <p class="govuk-body">Computer science is the fastest-growing STEM subject, and yet, despite its popularity, girls are consistently outnumbered by boys. In 2023, only one in five GCSE Computer Science and 15% of all A level Computer Science entries were from female students in England.</p>
-          <p class="govuk-body">Our evidence-informed programme aims to help teachers and leaders understand the barriers to girls’ participation in computer science and make a plan to overcome them. We offer curated resources, training and implementation support to empower you with the tools to support more girls into computer science qualifications and careers.</p>
+          <p class="govuk-body">Computer science is the fastest-growing STEM subject, and yet, despite its popularity, girls are consistently outnumbered by boys. The gender gap in computing can be traced back to gender stereotypes developed in the primary years. To improve the diversity both in and beyond the classroom, we need to show girls from a young age that they belong in computer science.</p>
+          <p class="govuk-body">Our <%= link_to "evidence-informed", gender_insights_in_computing_url %> programme aims to help teachers and leaders understand the barriers to girls’ participation in computer science and make a plan to overcome them. We offer curated resources, training and implementation support to empower you with the tools to help develop positive attitudes towards computing among female students, resulting in more girls choosing computer science qualifications and careers.</p>
         </section>
-        <%= video_tag("https://static.teachcomputing.org/How_important_is_the_I_Belong_programme.mp4", controls: true) %>
+        <div>
+          <%= video_tag("https://static.teachcomputing.org/How_important_is_the_I_Belong_programme.mp4", controls: true) %>
+          <ul class="govuk-body govuk-!-padding-left-4 govuk-!-margin-top-4">
+            <li>Girls intent to study computing drops off between ages 8-11 and 12-13</li>
+            <li>One in five GCSE Computer Science entries were from girls in 2023</li>
+            <li>Girls made up 15% of A level Computer Science entries in 2023</li>
+          </ul>
+        </div>
       </div>
     </div>
   </div>
@@ -35,8 +42,7 @@
               Who is it for?
             </h2>
             <ul class="govuk-body">
-              <li>Educators aspiring to narrow the gender gap in computing education.</li>
-              <li>Our resources are currently focused on key stage 3 but teachers of other key stages are welcome to access and use the materials.</li>
+              <li>Key stage 2 and 3 educators aspiring to narrow the gender gap in computing education.</li>
             </ul>
           </div>
           <div class="lp-support__card white-bg lp-support__card--bordered">
@@ -45,7 +51,7 @@
             </h2>
             <ul class="govuk-body">
               <li>Develop an understanding of the factors affecting girls’ participation in computer science.</li>
-              <li>Work with colleagues to produce an action plan with strategies to make computer science in your school more inclusive.</li>
+              <li>Work with colleagues to implement high-impact strategies to have a more inclusive computing curriculum.</li>
             </ul>
           </div>
           <div class="lp-support__card white-bg lp-support__card--bordered">
@@ -97,9 +103,18 @@
                 cards_per_row: 3,
                 cards: [
                 {
-                    image_url: 'pages/i-belong/book_icon.svg',
-                    title: t('.resources.handbook.title'),
-                    text: t('.resources.handbook.body'),
+                  image_url: 'pages/i-belong/book_icon.svg',
+                  title: t('.resources.primary_handbook.title'),
+                  text: t('.resources.primary_handbook.body'),
+                  link: {
+                    link_title: handbook_download_title,
+                    link_url: handbook_download_url
+                  }
+                },
+                {
+                    image_url: 'pages/i-belong/secondary_handbook.png',
+                    title: t('.resources.secondary_handbook.title'),
+                    text: t('.resources.secondary_handbook.body'),
                     link: {
                       link_title: handbook_download_title,
                       link_url: handbook_download_url
@@ -140,6 +155,15 @@
                     link: {
                       link_title: t('.resources.gcse_options.link'),
                       link_url: cms_post_url('gcse-options-process'),
+                    }
+                },
+                {
+                    image_url: 'pages/i-belong/student_events.png',
+                    title: t('.resources.student_events.title'),
+                    text: t('.resources.student_events.body'),
+                    link: {
+                      link_title: t('.resources.student_events.link'),
+                      link_url: ncce_student_events_url,
                     }
                 }
                 ]
