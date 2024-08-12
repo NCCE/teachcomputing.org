@@ -3,6 +3,16 @@
   programme_activity_group: @professional_development_groups.first, 
   current_user: current_user) do %>
 
+  <% if @issued_badge.present? %>
+    <div class="i-belong-dashboard__badge-section">
+      <%= render DashBadgeComponent.new(
+        badge: @issued_badge,
+        tracking_event_category: @badge_tracking_event_category,
+        tracking_event_label: @badge_tracking_event_label
+      ) %>
+    </div>
+  <% end %>
+
   <%= render CpdCourseListComponent.new(current_user: current_user, courses: @cpd_courses, show_seperator: true) %>
 <% end %>
 
