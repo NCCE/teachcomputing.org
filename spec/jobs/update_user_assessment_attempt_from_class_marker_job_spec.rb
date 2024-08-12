@@ -12,7 +12,6 @@ RSpec.describe UpdateUserAssessmentAttemptFromClassMarkerJob, type: :job do
   let(:assessment_attempt) { create(:assessment_attempt, user_id: user.id, assessment_id: assessment.id) }
   let(:programme_complete_counter) { create(:programme_complete_counter, programme_id: programme.id) }
   let(:passing_json_body) { File.read("spec/support/class_marker/passing_webhook.json") }
-  let(:timed_out_json_body) { File.read("spec/support/class_marker/timed_out_webhook.json") }
   let(:failed_json_body) { File.read("spec/support/class_marker/failed_webhook.json") }
   let(:passing_result) { JSON.parse(passing_json_body, symbolize_names: true) }
 
