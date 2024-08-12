@@ -58,8 +58,8 @@ RSpec.describe("Static pages", type: :system) do
       it "has guest content" do
         visit "/i-belong"
         expect(page).to have_css("h1", text: "I Belong: encouraging girls into computer science")
-        expect(page).to have_css("li", text: "Explore the programme")
-        expect(page).to have_link("Log into your account")
+        expect(page).to have_css("li", text: "Enrol on the programme")
+        expect(page).to have_link("Log in to enrol")
         expect(page).to have_link("Log in to request")
       end
 
@@ -93,7 +93,7 @@ RSpec.describe("Static pages", type: :system) do
         visit "/i-belong"
         expect(page).to have_link("Visit dashboard")
         expect(page).to have_link("Request your posters")
-        expect(page).to have_css("li", text: "Complete our ‘Encouraging Girls into GCSE Computer Science’ short course")
+        expect(page).to have_css("li", text: "Complete the I Belong short course for your key stage")
         expect(page).to have_css("li", text: "Participate in a range of recommended activity")
         expect(page).to have_css("li", text: "Claim your school certificate")
       end
