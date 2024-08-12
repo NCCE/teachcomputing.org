@@ -10,7 +10,7 @@ en:
               <li>Enrol on the programme</li>
               <li>Obtain your free handbook and posters</li>
               <li>Explore the CPD and activities</li>
-            link_text: Login to enrol
+            link_text: Log in to enrol
         unenrolled:
           where_to_start_card:
             heading: Where to start?

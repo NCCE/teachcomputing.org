@@ -39,6 +39,8 @@ RSpec.describe ExternalLinkHelper do
     hubs_local_support_form_url
     i_belong_student_survey_url
     social_media_card_templates_url
+    gender_insights_in_computing_url
+    ncce_student_events_url
   ].each do |external_link_method|
     describe "##{external_link_method}" do
       it "should return a string" do
