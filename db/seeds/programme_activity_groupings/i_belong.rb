@@ -14,12 +14,14 @@ i_belong.programme_activity_groupings.find_or_initialize_by(title: "all courses"
   group.save!
 
   activities = [
-    "encouraging-girls-into-gcse-computer-science-remote-short-course",
-    "supporting-the-i-belong-programme"
+    {slug: "empowering-girls-in-key-stage-2-computing", legacy: false},
+    {slug: "encouraging-girls-into-gcse-computer-science-remote-short-course", legacy: false},
+    # LEGACY
+    {slug: "supporting-the-i-belong-programme", legacy: true}
   ]
 
   activities.each_with_index do |activity, index|
-    maybe_attach_activity_to_grouping(group, activity, index + 1)
+    maybe_attach_activity_to_grouping(group, activity[:slug], index + 1, legacy: activity[:legacy])
   end
 end.save!
 
@@ -30,6 +32,7 @@ i_belong.programme_activity_groupings.find_or_initialize_by(sort_key: 3).tap do 
   group.programme_id = i_belong.id
   group.progress_bar_title = "<strong>Access</strong> resources to support you"
   group.community = true
+  group.web_copy_aside_slug = "i-belong-dashboard-resources"
 
   group.save!
 

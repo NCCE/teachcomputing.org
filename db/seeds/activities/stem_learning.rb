@@ -1085,7 +1085,7 @@ Activity.find_or_initialize_by(stem_course_template_no: "22ee67ba-4f8d-eb11-b1ac
   activity.provider = "stem-learning"
   activity.stem_activity_code = "CP440"
   activity.remote_delivered_cpd = true
-  activity.public_copy_additional_icons = ["Primary"]
+  activity.public_copy_additional_icons = ["Secondary"]
 
   activity.programmes = [i_belong, secondary_certificate]
 end.save!
@@ -2627,8 +2627,9 @@ Activity.find_or_initialize_by(stem_course_template_no: "83b17df6-d819-ef11-9f89
   activity.provider = "stem-learning"
   activity.stem_activity_code = "CP409"
   activity.credit = 15
+  activity.public_copy_additional_icons = ["Primary"]
 
-  activity.programmes = [primary_certificate]
+  activity.programmes = [primary_certificate, i_belong]
 end.save!
 
 Activity.find_or_initialize_by(stem_course_template_no: "1bb43af9-d51c-ef11-840b-002248c6f524").tap do |activity|

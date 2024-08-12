@@ -5,8 +5,7 @@
         @image[:url],
         class: 'ncce-link',
         role: 'button',
-        draggable: 'false',
-        data: tracking_data(@image[:tracking_label])
+        draggable: 'false'
       %>
     </div>
   <% end %>
@@ -37,8 +36,7 @@
         @link[:url],
         class: @link[:class] || (@use_button ? 'govuk-button button button--aside' : 'ncce-link'),
         role: 'button',
-        draggable: 'false',
-        data: tracking_data(@link[:tracking_label])
+        draggable: 'false'
       %>
     </p>
   <% end %>
