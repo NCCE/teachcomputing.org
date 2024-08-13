@@ -8,7 +8,7 @@ module Cms
       end
 
       def render
-        CmsRichTextBlockComponent.new(blocks:)
+        CmsRichTextBlockComponent.new(blocks:, with_wrapper: false)
       end
     end
   end

@@ -11,8 +11,7 @@ class AsideComponent < ViewComponent::Base
     @image = options[:image]
     @use_button = options[:use_button]
     @class_name = options[:class_name]
-    @cms_blocks = options[:cms_blocks]
-    @cms_files = options[:cms_files]
+    @cms_content = options[:cms_content]
   end
 
   def aside_image_tag(file, *args, **kwargs)
