@@ -88,7 +88,7 @@ en:
       i_belong_banner:
         title: "I Belong: encouraging girls into computer science"
         content:
-          html: "Why do boys choose computing and girls don't? With I Belong we aim to support more girls into computer science qualifications and careers by providing teachers with the tools to guide and inspire them.<br /><br />Beginning with our %{course_link}, understand the barrier to girls’ participation and make a plan to overcome them."
+          html: "How can we support more girls to achieve their computer science potential? With our I Belong programme, we aim to support more girls into computer science qualifications and careers by providing teachers with the tools to guide and inspire them.<br /><br />Beginning with our %{course_link}, understand the barrier to girls’ participation and make a plan to overcome them."
       support:
         title: "Additional support"
         para_1_html: "We operate a network of local %{hubs_link} led by schools and colleges across England with excellence in teaching computing. Your local hub will work with you to identify your computing needs and provide a targeted programme of support."
