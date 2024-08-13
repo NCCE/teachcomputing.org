@@ -150,4 +150,8 @@ module ExternalLinkHelper
   def i_belong_student_survey_url
     "https://ncce.io/student-survey"
   end
+
+  def social_media_card_templates_url
+    "https://www.canva.com/design/DAGH7H5evKc/2l2uqE0otmkLBifYz4i4Gg/view?utm_content=DAGH7H5evKc&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink&mode=preview"
+  end
 end
