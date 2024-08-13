@@ -20,7 +20,8 @@ module Cms
               model_class.new(
                 title: strapi_data[:title],
                 content: strapi_data[:content],
-                files: strapi_data.dig(:files, :data) ? strapi_data[:files][:data]&.map { to_file(_1[:attributes]) } : nil
+                files: strapi_data.dig(:files, :data) ? strapi_data[:files][:data]&.map { to_file(_1[:attributes]) } : nil,
+                dynamic_content: Models::DynamicZone.new(strapi_data[:content].map { ComponentFactory.process_component(_1) }.compact)
               )
             elsif model_class == Cms::Models::BlogPreview
               model_class.new(
