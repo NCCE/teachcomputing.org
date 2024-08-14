@@ -23,7 +23,9 @@
       <%= @text %>
     <% end %>
   <% elsif @cms_content %>
-    <%= render @cms_content.render %>
+    <div class="aside-component__cms-content">
+      <%= render @cms_content.render %>
+    </div>
   <% elsif body? %>
     <%= body %>
   <% end %>
