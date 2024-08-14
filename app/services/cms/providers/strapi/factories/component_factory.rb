@@ -11,10 +11,7 @@ module Cms
             when "content-blocks.file-link"
               file_data = strapi_data.dig(:file, :data) ? strapi_data[:file][:data][:attributes] : nil
               ModelFactory.to_file(file_data) if file_data
-            else
-              nil
             end
-
           end
         end
       end
