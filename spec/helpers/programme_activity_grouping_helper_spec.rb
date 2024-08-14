@@ -8,7 +8,7 @@ RSpec.describe ProgrammeActivityGroupingHelper do
 
       it "should return the correct instruction string" do
         expect(helper.primary_completion_instruction(group)).to eq(
-          "<strong>Choose at least one activity</strong> to enable you to develop your teaching expertise"
+          "<strong>Complete at least one activity</strong> to enable you to develop your teaching expertise"
         )
       end
     end
@@ -19,7 +19,7 @@ RSpec.describe ProgrammeActivityGroupingHelper do
 
       it "should return the correct instruction string" do
         expect(helper.primary_completion_instruction(group)).to eq(
-          "<strong>Choose at least one activity</strong> to develop your teaching practice"
+          "<strong>Complete at least one activity</strong> to develop your teaching practice"
         )
       end
     end
