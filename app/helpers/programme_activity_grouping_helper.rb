@@ -1,6 +1,6 @@
 module ProgrammeActivityGroupingHelper
   def primary_completion_instruction(group)
-    output = content_tag(:strong, "Choose at least #{group.required_for_completion.humanize} activity")
+    output = content_tag(:strong, "Complete at least #{group.required_for_completion.humanize} activity")
     output << " to "
     output << if group.web_copy_completion_instruction.present?
       group.web_copy_completion_instruction.downcase
