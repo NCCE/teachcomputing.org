@@ -29,7 +29,7 @@ primary_certificate.programme_activity_groupings.find_or_initialize_by(title: "D
   group.programme_id = primary_certificate.id
   group.community = true
   group.progress_bar_title = "Develop your teaching practice"
-  group.web_copy_course_requirements = "Choose at least one activity"
+  group.web_copy_course_requirements = "Complete at least one activity"
   group.web_copy_completion_instruction = "Enable you to develop your teaching expertise and make a positive impact on young people in computing"
   group.web_copy_aside_slug = "primary-dashboard-step-2-section"
   group.web_copy_subtitle = "Step two: Putting it into practice"
@@ -78,6 +78,7 @@ primary_certificate.programme_activity_groupings.find_or_initialize_by(title: "D
     {slug: "work-with-your-local-computing-hub-to-develop-a-school-level-action-plan-for-professional-development", legacy: false},
     {slug: "lead-your-school-into-a-computing-cluster-and-develop-an-action-plan-with-a-cluster-advisor", legacy: false},
     {slug: "become-an-i-belong-champion-primary", legacy: false},
+    {slug: "join-and-present-at-your-local-computing-at-school-community", legacy: false},
 
     # Legacy activities
     {slug: "run-an-after-school-code-club", legacy: true},
@@ -99,8 +100,7 @@ primary_certificate.programme_activity_groupings.find_or_initialize_by(title: "D
     {slug: "answer-5-questions-on-isaac-computer-science", legacy: true},
     {slug: "engage-with-stem-ambassadors", legacy: true},
     {slug: "run-a-code-club-or-coder-dojo", legacy: true},
-    {slug: "answer-5-questions-on-isaac-computer-science", legacy: true},
-    {slug: "join-and-present-at-your-local-computing-at-school-community", legacy: true}
+    {slug: "answer-5-questions-on-isaac-computer-science", legacy: true}
   ]
 
   activities.each_with_index do |activity, index|
