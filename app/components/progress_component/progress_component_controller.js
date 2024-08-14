@@ -27,21 +27,30 @@ export default class ProgressComponentController extends ApplicationController {
     })
   }
 
+  updateSection() {
+    this.updateCounter()
+    this.updateButtonVisibility()
+    this.updateStepsVisibility()
+  }
+
   back() {
     if (this.currentStep == 0) return
 
     this.currentStep -= 1
-    this.updateCounter()
-    this.updateButtonVisibility()
-    this.updateStepsVisibility()
+    this.updateSection()
   }
 
   continue() {
     if (this.currentStep == this.stepTargets.length - 1) return
 
     this.currentStep += 1
-    this.updateCounter()
-    this.updateButtonVisibility()
-    this.updateStepsVisibility()
+    this.updateSection()
+  }
+
+  jumpToSection(event) {
+    const targetStep = event.params.targetStep
+
+    this.currentStep = targetStep
+    this.updateSection()
   }
 }
