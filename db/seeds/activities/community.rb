@@ -282,7 +282,7 @@ Activity.find_or_initialize_by(slug: "participate-fully-in-an-ncce-curriculum-en
   activity.category = "community"
   activity.provider = "stem-learning"
   activity.self_certifiable = true
-  activity.description = "Explore NCCE and partner enrichment resources to enable you to plan an enrichment activity in your classroom."
+  activity.description = "Explore NCCE and partner <a href='https://teachcomputing.org/primary-enrichment'>enrichment resources</a> to enable you to plan an enrichment activity in your classroom."
   activity.public_copy_description = "Participate in a webinar or explore our partner enrichment resources to enable you to run an enrichment activity in your classroom."
   activity.public_copy_title_url = "http://www.teachcomputing.org/primary-enrichment"
   activity.self_verification_info = "What enrichment activity are you going to run in your classroom? When are you planning it for? Explain how this activity will enrich pupils' experience of the computing curriculum."
@@ -650,6 +650,9 @@ Activity.find_or_initialize_by(slug: "gain-accreditation-as-a-professional-devel
   activity.public_copy_description = "Explore what makes CPD effective and how its impact can be evaluated as well as the strategies and tools you’ll need when leading learning with adults."
   activity.public_copy_title_url = "https://www.stem.org.uk/professional-development-leaders"
   activity.self_verification_info = "Include the title of the specific accreditation that you have gained."
+  activity.public_copy_evidence = [
+    brief: "Reflect on what makes CPD effective and how its impact can be evaluated as well as the strategies and tools you’ll need when <a href='#{leading_professional_development_url}'>leading learning</a> with teachers. Include the title of the specific accreditation that you have gained."
+  ]
 end.save!
 
 Activity.find_or_initialize_by(slug: "undertake-the-initial-assessment-of-your-school-using-computing-quality-framework").tap do |activity|
@@ -662,6 +665,7 @@ Activity.find_or_initialize_by(slug: "undertake-the-initial-assessment-of-your-s
   activity.description = "Review your <a href='#{computing_quality_framework_url}'>school’s progress</a> in developing an exemplary computing curriculum and work towards achieving the <a href='#{computing_quality_mark_url}'>Computing Quality Mark</a>."
   activity.public_copy_description = "Review your school’s progress in developing an exemplary computing curriculum and work towards achieving the Computing Quality Mark."
   activity.public_copy_title_url = "https://computingqualityframework.org/"
+  activity.self_verification_info = "How were you involved in the initial assessment?<br/>Include your average level across all dimensions of the CQF or a link to a sharing folder with a screenshot of your school’s initial assessment graph. Make sure the viewing permissions are open to anyone with the link."
   activity.public_copy_evidence = [
     {
       bullets: [
@@ -682,6 +686,7 @@ Activity.find_or_initialize_by(slug: "work-with-your-local-computing-hub-to-deve
   activity.description = '<a href="https://forms.office.com/pages/responsepage.aspx?id=8MSlGfdLSE2oGxZmua5L9VL53rMMyRtKnHXwxiNRaSRUMDcwVElaTFBFWlY0QkI2M1lZVzNBQktYUCQlQCN0PWcu">Computing Hubs support</a> school’s in the area with their journey in developing the computing curriculum.'
   activity.public_copy_description = "Computing Hubs support school’s in the area with their journey in developing the computing curriculum."
   activity.public_copy_title_url = "https://forms.office.com/pages/responsepage.aspx?id=8MSlGfdLSE2oGxZmua5L9VL53rMMyRtKnHXwxiNRaSRUMDcwVElaTFBFWlY0QkI2M1lZVzNBQktYUCQlQCN0PWcu"
+  activity.self_verification_info = "Review your <a href='#{computing_quality_framework_url}'>school’s progress</a> in developing an exemplary computing provision and work towards achieving the <a href='#{computing_quality_mark_url}'>Computing Quality Mark</a>.<br/>What is your current average level across all dimensions of the CQF? Outline the improvement actions required to achieve the next level in your action plan."
   activity.public_copy_evidence = [
     {
       bullets: [
