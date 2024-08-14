@@ -6,6 +6,7 @@
   data-community-activity-component-achievements-submit-path-value="<%= submit_achievements_path %>"
   data-community-activity-component-achievement-id-value="<%= @achievement&.id %>"
   data-community-activity-component-activity-id-value="<%= @activity.id %>"
+  data-community-activity-component-minimum-evidence-length-value="50"
 >
   <% if achievement_rejected? %>
     <div class="community-activity-component__rejected">
@@ -129,10 +130,10 @@
 
                     <div class="community-activity-component__footer-actions">
                       <%= progress.with_back do %>
-                        Back
+                        Previous section
                       <% end %>
                       <%= progress.with_continue do %>
-                        Continue
+                        Next section
                       <% end %>
                       <%= render ModalComponent.new(
                         title: "Are you sure you want to submit this evidence?",
@@ -142,6 +143,7 @@
                       ) do |modal| %>
                         <%= modal.with_reopen_button do %>
                           <%= progress.with_submit do %>
+                            <span data-community-activity-component-target="completionWarningMessage"></span>
                             <div class="progress-component__submit-button-wrapper">
                               <button class="govuk-button button save-draft button--inverted govuk-!-margin-bottom-0" data-action="click->community-activity-component#saveAsDraft" data-community-activity-component-target="saveDraftButton">Save as draft</button>
                               <button class="govuk-button button ncce-modal--reopen govuk-!-margin-bottom-0" data-community-activity-component-target="submitButton" data-action="modal#toggle">Submit</button>

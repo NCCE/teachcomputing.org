@@ -7,8 +7,9 @@ export default class extends ApplicationController {
     achievementsSubmitPath: String,
     achievementId: String,
     activityId: String,
+    minimumEvidenceLength: { type: Number, default: 0 }
   }
-  static targets = ["textarea", "submitButton", "saveDraftButton"]
+  static targets = ["textarea", "submitButton", "saveDraftButton", "completionWarningMessage"]
 
   trackUnsavedChanges() {
     this.initialValues = new Map()
@@ -20,7 +21,7 @@ export default class extends ApplicationController {
       parentModal.setAttribute("data-modal-confirm-value", !allValuesAreInitial)
     }
 
-    
+
     this.textareaTargets.forEach(input => {
       this.initialValues.set(input, input.value)
       input.addEventListener("input", this.toggleConfirmationEnabled)
@@ -36,22 +37,37 @@ export default class extends ApplicationController {
 
   checkForEvidence() {
     this.hasEvidence = () => {
-      const hasAnyValue = this.textareaTargets.some(element => element.value !== "")
+      const missingValues = []
+      this.textareaTargets.forEach((element, index) => {
+        if(element.value.length < this.minimumEvidenceLengthValue){
+          missingValues.push(index)
+        }
+      })
       if(this.hasSubmitButtonTarget) {
-        if(hasAnyValue){
+        if(missingValues.length == 0){
           this.submitButtonTarget.removeAttribute('disabled')
         } else {
           this.submitButtonTarget.setAttribute('disabled', '')
         }
       }
       if(this.hasSaveDraftButtonTarget) {
-        if(hasAnyValue){
+        if(missingValues.length == 0){
           this.saveDraftButtonTarget.removeAttribute('disabled')
         } else {
           this.saveDraftButtonTarget.setAttribute('disabled', '')
         }
       }
-    } 
+      if(this.hasCompletionWarningMessageTarget) {
+        if(missingValues.length > 0) {
+          this.completionWarningMessageTarget.innerHTML = 'You are missing some evidence in ' + missingValues.map(index => {
+            const sectionNumber = index + 1
+            return `<button data-action='progress-component#jumpToSection' data-progress-component-target-step-param='${index}'> ${sectionNumber} </button>`
+          }).join(', ')
+        } else {
+          this.completionWarningMessageTarget.innerHTML = ''
+        }
+      }
+    }
 
     this.textareaTargets.forEach(input => {
       input.addEventListener("input", this.hasEvidence)
@@ -61,7 +77,7 @@ export default class extends ApplicationController {
   }
 
   disconnect() {
-    this.textareaTargets.forEach(element => { 
+    this.textareaTargets.forEach(element => {
       element.removeEventListener("input", this.toggleConfirmationEnabled)
       element.removeEventListener("input", this.hasEvidence)
     })
