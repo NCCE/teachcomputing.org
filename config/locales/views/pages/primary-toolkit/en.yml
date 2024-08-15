@@ -27,7 +27,7 @@ en:
       i_belong_banner:
         title: "I Belong: encouraging girls into computer science"
         content:
-          html: "How can we support more girls to achieve their computer science potential? With our I Belong programme, we aim to support more girls into computer science qualifications and careers by providing teachers with the tools to guide and inspire them.<br /><br />Beginning with our %{course_link}, understand the barrier to girls’ participation and make a plan to overcome them."
+          html: "Why do boys choose computing and girls don't? With I Belong we aim to support more girls into computer science qualifications and careers by providing teachers with the tools to guide and inspire them.<br/><br/>Beginning with our ‘Empowering girls in key stage 2 computing’ short course, understand how to retain girls’ interest in the subject, encouraging them to continue studying it at secondary and beyond, and overcome barriers to their participation."
       resources:
         title: "Resources to help you teach primary computing"
         safety:
