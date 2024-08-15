@@ -1,6 +1,28 @@
 require "rails_helper"
 
 RSpec.describe CmsRichTextBlockComponent, type: :component do
+  it "renders wrapper by default" do
+    render_inline(described_class.new(blocks: [
+      type: "paragraph",
+      children: [
+        {type: "text", text: "Hello world!"}
+      ]
+    ]))
+
+    expect(page).to have_css(".govuk-width-container")
+  end
+
+  it "doesnt render wrapper by turned off" do
+    render_inline(described_class.new(blocks: [
+      type: "paragraph",
+      children: [
+        {type: "text", text: "Hello world!"}
+      ]
+    ], with_wrapper: false))
+
+    expect(page).not_to have_css(".govuk-width-container")
+  end
+
   it "renders a paragraph" do
     render_inline(described_class.new(blocks: [
       type: "paragraph",
