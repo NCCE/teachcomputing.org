@@ -140,6 +140,18 @@
   ]
 ) %>
 
+<%= render FullImageBannerComponent.new(title: t(".i_belong_banner.title"),
+  text: t('.i_belong_banner.content.html',
+    course_link: link_to("Encouraging girls into GCSE computer science short course", "/courses/CP440/encouraging-girls-into-gcse-computer-science-remote-short-course")),
+  background_color: 'orange-bg',
+  image_side: :right,
+  image: {
+    url: "media/images/pages/secondary-toolkit/i_belong_students.jpeg",
+    alt: "i belong",
+    class: "i-belong"
+  },
+  link: link_to("Get involved in I Belong", about_i_belong_path, class: "govuk-button button")) %>
+
 <div class="light-grey-bg">
   <div class="govuk-width-container">
     <div class="govuk-main-wrapper">
@@ -185,7 +197,7 @@
                 }]
               }
             ]
-          ) %> 
+          ) %>
         </div>
       </div>
       <div class="govuk-grid-row">
@@ -225,7 +237,7 @@
         </div>
         <div class="govuk-grid-column-one-third">
           <%= render AsideComponent.new(image: {
-              file: "media/images/pages/primary-toolkit/primary-enrichment.jpeg", 
+              file: "media/images/pages/primary-toolkit/primary-enrichment.jpeg",
               alt: "Teach Computing - Primary Encrichment",
               url: primary_enrichment_path
             }) %>
@@ -273,7 +285,7 @@
     </div>
   </div>
 </div>
-    
+
 
 <div class="govuk-width-container">
   <div class="govuk-main-wrapper">
@@ -281,11 +293,11 @@
         <div class="govuk-grid-column-full">
           <h2 class="govuk-heading-l"><%= t(".support.title") %></h2>
           <p class="govuk-body"><%= t(".support.para_1_html",
-            pedagogy_link: link_to('pedagogy', pedagogy_path)) %></p> 
+            pedagogy_link: link_to('pedagogy', pedagogy_path)) %></p>
           <p class="govuk-body"><%= t(".support.para_2_html",
-            hubs_link: link_to('Computing Hubs', hubs_path)) %></p> 
+            hubs_link: link_to('Computing Hubs', hubs_path)) %></p>
           <p class="govuk-body"><%= t(".support.para_3_html",
-            stem_community_link: link_to('STEM Community', stem_community_url)) %></p> 
+            stem_community_link: link_to('STEM Community', stem_community_url)) %></p>
         </div>
       </div>
     </div>
