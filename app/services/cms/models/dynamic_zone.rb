@@ -1,12 +1,12 @@
 module Cms
   module Models
     class DynamicZone
-      def initialize(components)
-        @components = components
+      def initialize(cms_models)
+        @cms_models = cms_models
       end
 
       def render
-        CmsDynamicZoneComponent.new(@components)
+        CmsDynamicZoneComponent.new(@cms_models)
       end
     end
   end
