@@ -3,7 +3,7 @@
 <% meta_tag :url, request.original_url %>
 
 <%# Hero: Support for primary senior leaders %>
-<%= render 'components/hero', 
+<%= render 'components/hero',
   hero_title: t('.hero.title'),
   subtitle: t('.hero.subtitle'),
   colour: 'lime-green-bg', full_width: true %>
@@ -44,7 +44,7 @@
         <div class="govuk-grid-column-two-thirds senior-leaders">
 
           <%= render partial: 'pages/computing_quality_framework' %>
-         
+
         </div>
         <div class="govuk-grid-column-one-third">
           <%= render AsideComponent.new(
@@ -92,7 +92,17 @@
   </div>
 </div>
 
-<%= render partial: "pages/inspire_with_computing_ambassador" %>
+<%= render FullImageBannerComponent.new(title: t(".i_belong_banner.title"),
+  text: t('.i_belong_banner.content.html',
+    course_link: link_to("Encouraging girls into GCSE computer science short course", "/courses/CP440/encouraging-girls-into-gcse-computer-science-remote-short-course")),
+  background_color: 'orange-bg',
+  image_side: :right,
+  image: {
+    url: "media/images/pages/secondary-toolkit/i_belong_students.jpeg",
+    alt: "i belong",
+    class: "i-belong"
+  },
+  link: link_to("Get involved in I Belong", about_i_belong_path, class: "govuk-button button")) %>
 
 <div class="light-grey-bg">
   <div class="govuk-width-container">
@@ -148,3 +158,5 @@
     </div>
   </div>
 </div>
+
+<%= render partial: "pages/inspire_with_computing_ambassador" %>
