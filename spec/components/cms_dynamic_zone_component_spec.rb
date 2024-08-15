@@ -3,13 +3,30 @@
 require "rails_helper"
 
 RSpec.describe CmsDynamicZoneComponent, type: :component do
-  pending "add some examples to (or delete) #{__FILE__}"
+  before do
+    render_inline(described_class.new(
+      [
+        Cms::Models::ContentBlock.new(blocks: [
+          type: "paragraph",
+          children: [
+            {type: "text", text: "Hello world!"}
+          ]
+        ]),
+        Cms::Models::ContentBlock.new(blocks: [
+          type: "paragraph",
+          children: [
+            {type: "text", text: "Hello world! Number 2"}
+          ]
+        ])
+      ]
+    ))
+  end
 
-  # it "renders something useful" do
-  #   expect(
-  #     render_inline(described_class.new(attr: "value")) { "Hello, components!" }.css("p").to_html
-  #   ).to include(
-  #     "Hello, components!"
-  #   )
-  # end
+  it "should render wrapper" do
+    expect(page).to have_css(".cms-dynamic-zone")
+  end
+
+  it "should render content blocks" do
+    expect(page).to have_css(".cms-rich-text-block-component", count: 2)
+  end
 end
