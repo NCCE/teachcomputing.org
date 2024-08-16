@@ -18,10 +18,10 @@
 
   <div class="community-activity-component__content">
 
-    <span class="community-activity-component__objective">
-      <span class="community-activity-component__objective-text">
+    <div class="community-activity-component__objective">
+      <div class="community-activity-component__objective-text">
         <span><%= @activity.title %></span>
-      </span>
+      </div>
       <% if achievement_complete? %>
         <div class="community_activity_component__completed_badge_container" >
           <div class='community-activity-component__completed-badge'><%= t('.complete') %></div>
@@ -168,7 +168,7 @@
             <% end %>
           </div>
       <% end %>
-    </span>
+    </div>
     <% if @activity.description.present? %>
       <div class="community-activity-component__description"><%= @activity.description.html_safe %></div>
     <% end %>

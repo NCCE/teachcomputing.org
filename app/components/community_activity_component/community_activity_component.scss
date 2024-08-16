@@ -1,27 +1,32 @@
-.community-activity-component__content{
-  padding: 1.25rem 1.125rem;
-}
+.community-activity-component {
 
-.community-activity-component__rejected {
-  background-color: $red;
-  padding: 1.25rem 1.125rem;
-
-  .community-activity-component__rejected-text {
-    color: $white !important;
+  .community-activity-component__content{
+    padding: 1.25rem 1.125rem;
+    display: flex;
+    flex-direction: column;
   }
 
+  .community-activity-component__rejected {
+    background-color: $red;
+    padding: 1.25rem 1.125rem;
+
+    .community-activity-component__rejected-text {
+      color: $white !important;
+    }
+
+  }
 }
+
+
 
 .community-activity-component__objective {
   align-items: flex-start;
   background-color: $white;
-  display: grid;
-  grid-template-rows: auto auto;
-  grid-template-columns: auto 13rem;
+  display: flex;
+  flex-direction: row;
 
   @include govuk-media-query($until: tablet) {
-    grid-template-columns: auto;
-    grid-template-rows: auto;
+    flex-direction: column;
   }
 
   .ihavedonethis {
@@ -35,9 +40,7 @@
       text-align: center;
 
       @include govuk-media-query($from: tablet) {
-        width: auto;
-        grid-row: 1;
-        margin-bottom: 0;
+        width: 100%;
       }
     }
   }
@@ -69,13 +72,22 @@
   display: flex;
   flex-direction: column;
   align-items: flex-end;
+  width: 100%;
+
+  
+  @include govuk-media-query($from: tablet) {
+    flex: 0 1 250px;
+  }
+
+  .progress-component {
+    width: 100%;
+  }
 }
 
 .community-activity-component__objective-text {
-  align-self: center;
-  grid-column: 1;
   background: none;
   padding-left: 0;
+  flex: 1 1 auto;
 
   @include govuk-media-query($until: tablet) {
     margin-bottom: 0.5rem;
@@ -312,11 +324,7 @@
   border-bottom: 2px solid $ncce-grey;
 
   .community-activity-component__objective {
-    grid-template-columns: auto 15rem;
-
-    @include govuk-media-query($until: tablet) {
-      grid-template-rows: auto;
-    }
+    margin-bottom: 10px;
   }
 
   .community-activity-component__objective-text {
@@ -337,7 +345,7 @@
     padding: 10px 0;
     display: inline-block;
     margin-bottom: 1rem;
-    width: 196px;
+    min-width: 196px;
   }
 
   .community-activity-component__content {
@@ -345,7 +353,12 @@
   }
 
   .govuk-button {
-    width: 200px;
     padding: 10px 0;
+    margin-bottom: 10px;
+
+    @include govuk-media-query($from: tablet) {
+      width: 200px;
+      margin-bottom: 0;
+    }
   }
 }
