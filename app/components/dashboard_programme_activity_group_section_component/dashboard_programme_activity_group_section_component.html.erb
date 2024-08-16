@@ -1,14 +1,16 @@
 <%= render GovGridRowComponent.new do |row_component| %>
   <%= row_component.with_column("two-thirds") do %>
     <div class="dashboard-programme-activity-group-section">
-      <div class="dashboard-programme-activity-group-section__title">
-        <% if @completed %>
-          <div class="dashboard-programme-activity-group-section__completed-badge">
-            <span class="govuk-body-m">Completed</span>
-          </div>
-        <% end %>
-        <h1 class="govuk-heading-m"><%= @title %></h1>
-      </div>
+      <% if @title %>
+        <div class="dashboard-programme-activity-group-section__title">
+          <% if @completed %>
+            <div class="dashboard-programme-activity-group-section__completed-badge">
+              <span class="govuk-body-m">Completed</span>
+            </div>
+          <% end %>
+          <h1 class="govuk-heading-m"><%= @title %></h1>
+        </div>
+      <% end %>
 
       <div class="dashboard-programme-activity-group-section__content">
         <% if @subtitle %>

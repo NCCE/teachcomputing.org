@@ -1,27 +1,60 @@
-<%= render DashboardProgrammeActivityGroupSectionComponent.new(title: t('.development.title.html'), 
+<%= render DashboardProgrammeActivityGroupSectionComponent.new(
+  title: @cpd_group.title,
   aside_slug: "i-belong-dashboard-help-section",
-  programme_activity_group: @professional_development_groups.first, 
-  current_user: current_user) do %>
+  completed: @cpd_completed) do %>
 
   <% if @issued_badge.present? %>
     <div class="i-belong-dashboard__badge-section">
-      <%= render DashBadgeComponent.new(
-        badge: @issued_badge,
-        tracking_event_category: @badge_tracking_event_category,
-        tracking_event_label: @badge_tracking_event_label
-      ) %>
+      <%= render DashBadgeComponent.new(badge: @issued_badge) %>
     </div>
   <% end %>
 
-  <%= render CpdCourseListComponent.new(current_user: current_user, courses: @cpd_courses, show_seperator: true) %>
+  <% unless @cpd_completed %>
+    <%= render CpdCourseListComponent.new(current_user: current_user, courses: @cpd_courses, show_seperator: true) %>
+  <% end %>
 <% end %>
 
-<% @community_groups.each do |group| %>
+<% @incomplete_comm_groups.each do |group| %>
   <%= render DashboardProgrammeActivityGroupSectionComponent.new(title: group.title,
     subtitle: group.web_copy_subtitle,
     aside_slug: group.web_copy_aside_slug,
-    programme_activity_group: group, 
-    current_user: current_user) do %>
+    completed: group.user_complete?(current_user)) do %>
+
+    <%= render CommunityActivityListComponent.new(
+      programme_activity_grouping: group,
+      community_achievements: @community_achievements,
+      number_to_show: 6,
+      button_class: "ncce-button--white",
+      class_name: "i-belong"
+    ) %>
+
+  <% end %>
+<% end %>
+
+<% if @completed_comm_groups.any? || @cpd_completed %>
+  <%= render GovGridRowComponent.new(
+      margin: {all: 0},
+      padding: {all: 0}
+    ) do |row| %>
+    <%= row.with_column("two-thirds") do %>
+      <h2 class="govuk-heading-m">Well done, you've completed these sections</h2>
+    <% end %>
+  <% end %>
+<% end %>
+
+<% if @cpd_completed %>
+  <%= render DashboardProgrammeActivityGroupSectionComponent.new(
+    title: @cpd_group.title,
+    completed: @cpd_completed) do %>
+    <%= render CpdCourseListComponent.new(current_user: current_user, courses: @cpd_courses, show_seperator: true) %>
+  <% end %>
+<% end %>
+
+<% @completed_comm_groups.each do |group| %>
+  <%= render DashboardProgrammeActivityGroupSectionComponent.new(title: group.title,
+    subtitle: group.web_copy_subtitle,
+    aside_slug: group.web_copy_aside_slug,
+    completed: group.user_complete?(current_user)) do %>
 
     <%= render CommunityActivityListComponent.new(
       programme_activity_grouping: group,
