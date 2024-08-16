@@ -55,8 +55,9 @@
 }
 
 .community_activity_component__completed_badge_container {
-  display: block;
+  display: flex;
   width: 100%;
+  justify-content: flex-end;
 
   @include govuk-media-query($from: tablet) {
     text-align: right;
@@ -307,11 +308,13 @@
 }
 
 .i-belong-dashboard {
+
+  border-bottom: 2px solid $ncce-grey;
+
   .community-activity-component__objective {
     grid-template-columns: auto 15rem;
 
     @include govuk-media-query($until: tablet) {
-      grid-template-columns: auto;
       grid-template-rows: auto;
     }
   }
@@ -335,6 +338,10 @@
     display: inline-block;
     margin-bottom: 1rem;
     width: 196px;
+  }
+
+  .community-activity-component__content {
+    padding: 1.25rem 0rem;
   }
 
   .govuk-button {
