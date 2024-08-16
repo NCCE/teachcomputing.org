@@ -10,6 +10,6 @@ class CmsDynamicZoneComponent < ViewComponent::Base
       <% @cms_models.each do |model| %>
         <%= render model.render %>
       <% end %>
-    <div>
+    </div>
   ERB
 end

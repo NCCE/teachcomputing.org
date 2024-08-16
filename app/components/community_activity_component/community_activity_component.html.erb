@@ -50,7 +50,7 @@
                     class="govuk-body-s" target="_blank">Re-download <%= option["title"].downcase %></a>
                 <% end %>
               <% else %>
-                <% if @achievement.complete? %>
+                <% if @achievement&.complete? %>
                   <a href="<%= option["redirect"] %>" rel="noopener" 
                     class="govuk-button button <%= @button_class %>" target="_blank"><%= option["title"] %></a>
                 <% else %>
