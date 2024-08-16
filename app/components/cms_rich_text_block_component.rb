@@ -116,6 +116,7 @@ class CmsRichTextBlockComponent < ViewComponent::Base
     def classes
       classes = ["govuk-list"]
       classes << "govuk-list--bullet" if tag == :ul
+      classes << "govuk-list--number" if tag == :ol
       classes.join(" ")
     end
   end

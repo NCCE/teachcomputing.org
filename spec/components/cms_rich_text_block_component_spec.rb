@@ -122,6 +122,7 @@ RSpec.describe CmsRichTextBlockComponent, type: :component do
       }
     ]))
 
+    expect(page).to have_css("ol.govuk-list--number")
     expect(page).to have_css("ol", count: 1)
     expect(page).to have_css("ol li", text: "Item 1")
     expect(page).to have_css("ol li", text: "Item 2")
