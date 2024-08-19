@@ -2,7 +2,8 @@ require "rails_helper"
 
 RSpec.describe ExternalLinkHelper do
   %i[
-    i_belong_handbook_url
+    i_belong_primary_handbook_url
+    i_belong_secondary_handbook_url
     i_belong_info_pack_url
     primary_mooncamp_webinar_url
     secondary_mooncamp_webinar_url

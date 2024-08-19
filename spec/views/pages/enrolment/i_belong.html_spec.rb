@@ -11,7 +11,9 @@ RSpec.describe("pages/enrolment/i_belong", type: :view) do
          posters_link_title: "Request posters",
          posters_link: "https://forms.office.com/e/x1FMMzjxhg",
          posters_link_method: :get,
-         handbook_download_url: "https://static.teachcomputing.org/I+Belong+Handbook.pdf",
+         primary_handbook_download_url: "https://media.teachcomputing.org/i_belong_primary_handbook_cd22a59080.pdf",
+         secondary_handbook_download_url: "https://media.teachcomputing.org/i_belong_secondary_handbook_2f4dfccf30.pdf",
+         handbook_download_url: "https://media.teachcomputing.org/i_belong_secondary_handbook_2f4dfccf30.pdf",
          handbook_download_title: "Download your handbook"}
     )
   end
