@@ -3,12 +3,12 @@ module ExternalLinkHelper
     "https://static.teachcomputing.org/NCCE-Impact-report-2022.pdf"
   end
 
-  def i_belong_handbook_url
-    "https://media.teachcomputing.org/i_belong_secondary_handbook_2f4dfccf30.pdf"
-  end
-
   def i_belong_primary_handbook_url
     "https://media.teachcomputing.org/i_belong_primary_handbook_cd22a59080.pdf"
+  end
+
+  def i_belong_secondary_handbook_url
+    "https://media.teachcomputing.org/i_belong_secondary_handbook_2f4dfccf30.pdf"
   end
 
   def i_belong_info_pack_url

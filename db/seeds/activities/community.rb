@@ -432,7 +432,7 @@ Activity.find_or_initialize_by(slug: "implement-selected-key-stage-3-teach-compu
   activity.category = "community"
   activity.provider = "ncce"
   activity.self_certifiable = true
-  activity.description = "Download and plan the use of two or more resources aligned to evidence-based approaches supporting girls' engagement (see <a href=\"#{i_belong_handbook_url}\">handbook</a> for guidance).<br><br>Provide names of your chosen resources and showcase their implementation by, for example, linking to this year’s curriculum page on your school’s website, student reflections etc. "
+  activity.description = "Download and plan the use of two or more resources aligned to evidence-based approaches supporting girls' engagement (see <a href=\"#{i_belong_secondary_handbook_url}\">handbook</a> for guidance).<br><br>Provide names of your chosen resources and showcase their implementation by, for example, linking to this year’s curriculum page on your school’s website, student reflections etc. "
   activity.self_verification_info = "Please provide us with evidence of delivery of at least one of these"
   activity.public_copy_evidence = [
     {
@@ -492,7 +492,7 @@ Activity.find_or_initialize_by(slug: "provide-access-to-a-computing-related-extr
   activity.category = "community"
   activity.provider = "ncce"
   activity.self_certifiable = true
-  activity.description = %(Provide access to a computing related STEM lunchtime or after school club. Consider involving older female students to support. Resources to help you get started are available via the <a href="#{i_belong_handbook_url}">handbook</a>.)
+  activity.description = %(Provide access to a computing related STEM lunchtime or after school club. Consider involving older female students to support. Resources to help you get started are available via the <a href="#{i_belong_secondary_handbook_url}">handbook</a>.)
   activity.self_verification_info = "Please provide us with evidence of delivery"
   activity.public_copy_evidence = [{
     brief: "Tell us what you did and when. Describe your computing club in school and include timescales, particularly if you’ve run the club for longer than a year. Include the age range of students involved, and the proportion of female and male students. How do you promote a higher proportion of girls participating? Finally, reflect and tell us why you chose this activity."
@@ -584,7 +584,7 @@ Activity.find_or_initialize_by(slug: "any-other-activity-which-aligns-with-recom
   activity.category = "community"
   activity.provider = "ncce"
   activity.self_certifiable = true
-  activity.description = %(Complete any other student activity which aligns with recommendations from the <a href="#{i_belong_handbook_url}">handbook</a>. Let us know what you’ve done using the evidence button.)
+  activity.description = %(Complete any other student activity which aligns with recommendations from the <a href="#{i_belong_secondary_handbook_url}">handbook</a>. Let us know what you’ve done using the evidence button.)
   activity.self_verification_info = "Please provide us with evidence of delivery"
   activity.public_copy_evidence = [
     {
@@ -616,7 +616,7 @@ Activity.find_or_initialize_by(slug: "start-or-deliver-a-computing-related-club"
   activity.category = "community"
   activity.provider = "ncce"
   activity.self_certifiable = true
-  activity.description = "Deliver a computing related STEM lunchtime or after school club. Consider involving older female students to support. Resources to help you get started are available via the <a href=\"#{i_belong_handbook_url}\">handbook</a>. Evidence must showcase club activities hosted from April 2023 onwards."
+  activity.description = "Deliver a computing related STEM lunchtime or after school club. Consider involving older female students to support. Resources to help you get started are available via the <a href=\"#{i_belong_secondary_handbook_url}\">handbook</a>. Evidence must showcase club activities hosted from April 2023 onwards."
   activity.self_verification_info = "Please provide us with evidence of delivery"
 end.save!
 
