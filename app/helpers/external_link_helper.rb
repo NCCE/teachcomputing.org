@@ -116,7 +116,7 @@ module ExternalLinkHelper
   end
 
   def structuring_your_i_belong_evidence_url
-    "https://static.teachcomputing.org/Completing.your.I.Belong.evidence.Feb.2024.pdf"
+    "https://media.teachcomputing.org/Structuring_your_I_Belong_evidence_7f7a83c21e.pdf"
   end
 
   def gcse_and_ks3_handbook_url
