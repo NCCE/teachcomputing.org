@@ -31,7 +31,6 @@ RSpec.describe("certificates/i_belong/show", type: :view) do
   end
 
   context "All incomplete" do
-
     it "has the hero" do
       expect(rendered).to have_css(".hero__heading", text: i_belong.title)
     end
