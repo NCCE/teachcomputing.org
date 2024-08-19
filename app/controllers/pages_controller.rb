@@ -53,7 +53,6 @@ class PagesController < ApplicationController
       cta_link_method = :post
       primary_handbook_download_url = dashboard_path
       secondary_handbook_download_url = dashboard_path
-      handbook_download_url = dashboard_path
       handbook_download_title = "Enrol to download"
     else
       posters_link_title = "Log in to request"
@@ -61,9 +60,8 @@ class PagesController < ApplicationController
       posters_link_method = :post
       cta_link_path = helpers.auth_url
       cta_link_method = :post
-      primary_handbook_download_url = dashboard_path
-      secondary_handbook_download_url = dashboard_path
-      handbook_download_url = login_path
+      primary_handbook_download_url = login_path
+      secondary_handbook_download_url = login_path
       handbook_download_title = "Log in to download"
     end
 
@@ -75,7 +73,6 @@ class PagesController < ApplicationController
                posters_link_title:,
                posters_link:,
                posters_link_method:,
-               handbook_download_url:,
                primary_handbook_download_url:,
                secondary_handbook_download_url:,
                handbook_download_title:}

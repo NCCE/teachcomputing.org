@@ -13,7 +13,6 @@ RSpec.describe("pages/enrolment/i_belong", type: :view) do
          posters_link_method: :get,
          primary_handbook_download_url: "https://media.teachcomputing.org/i_belong_primary_handbook_cd22a59080.pdf",
          secondary_handbook_download_url: "https://media.teachcomputing.org/i_belong_secondary_handbook_2f4dfccf30.pdf",
-         handbook_download_url: "https://media.teachcomputing.org/i_belong_secondary_handbook_2f4dfccf30.pdf",
          handbook_download_title: "Download your handbook"}
     )
   end
