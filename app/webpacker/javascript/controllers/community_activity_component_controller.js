@@ -9,7 +9,7 @@ export default class extends ApplicationController {
     activityId: String,
     minimumEvidenceLength: { type: Number, default: 0 }
   }
-  static targets = ["textarea", "submitButton", "saveDraftButton", "completionWarningMessage"]
+  static targets = ["textarea", "submitButton", "saveDraftButton", "completionWarningMessage", "characterCountMessage"]
 
   trackUnsavedChanges() {
     this.initialValues = new Map()
@@ -33,6 +33,28 @@ export default class extends ApplicationController {
   connect() {
     this.trackUnsavedChanges()
     this.checkForEvidence();
+    this.trackCharacterCount()
+  }
+
+  trackCharacterCount() {
+    this.updateCharacterCount = (element, index) => {
+      const remainingCharacters = this.minimumEvidenceLengthValue - element.value.length
+
+      if(element.value.length > 0 && element.value.length < this.minimumEvidenceLengthValue) {
+        this.characterCountMessageTargets[index].innerHTML = `Provide at least ${remainingCharacters} more characters`
+      } else {
+        this.characterCountMessageTargets[index].innerHTML = ""
+      }
+
+    };
+
+    this.textareaTargets.forEach((input, index) => {
+      input.addEventListener("input", () => this.updateCharacterCount(input, index))
+    });
+
+    this.textareaTargets.forEach((input, index) => {
+      this.updateCharacterCount(input, index)
+    });
   }
 
   checkForEvidence() {
