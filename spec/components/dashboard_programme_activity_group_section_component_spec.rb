@@ -3,17 +3,13 @@
 require "rails_helper"
 
 RSpec.describe DashboardProgrammeActivityGroupSectionComponent, type: :component do
-  let(:programme_activity_group) { create(:programme_activity_grouping) }
-  let(:current_user) { create(:user) }
-
   context "with aside slug" do
     context "when cms returns aside" do
       before do
         stub_strapi_aside_section
         render_inline(described_class.new(
           title: "With Aside",
-          programme_activity_group:,
-          current_user:,
+          completed: false,
           aside_slug: "testing-with-aside"
         )) { "Some content" }
       end
@@ -44,8 +40,7 @@ RSpec.describe DashboardProgrammeActivityGroupSectionComponent, type: :component
         stub_strapi_aside_section_missing("testing-with-aside-missing")
         render_inline(described_class.new(
           title: "With Aside but missing",
-          programme_activity_group:,
-          current_user:,
+          completed: false,
           aside_slug: "testing-with-aside-missing"
         )) { "Some content" }
       end
@@ -64,8 +59,7 @@ RSpec.describe DashboardProgrammeActivityGroupSectionComponent, type: :component
     before do
       render_inline(described_class.new(
         title: "Without Aside",
-        programme_activity_group:,
-        current_user:
+        completed: false
       )) { "Some content" }
     end
 
@@ -88,11 +82,9 @@ RSpec.describe DashboardProgrammeActivityGroupSectionComponent, type: :component
 
   context "when programme_activity_group has been completed" do
     before do
-      allow(programme_activity_group).to receive(:user_complete?).and_return(true)
       render_inline(described_class.new(
         title: "Without Aside",
-        programme_activity_group:,
-        current_user:
+        completed: true
       )) { "Some content" }
     end
 
@@ -103,11 +95,9 @@ RSpec.describe DashboardProgrammeActivityGroupSectionComponent, type: :component
 
   context "when programme_activity_group has not been completed" do
     before do
-      allow(programme_activity_group).to receive(:user_complete?).and_return(false)
       render_inline(described_class.new(
         title: "Without Aside",
-        programme_activity_group:,
-        current_user:
+        completed: false
       )) { "Some content" }
     end
 
