@@ -392,7 +392,7 @@ Activity.find_or_initialize_by(slug: "download-and-use-the-i-belong-handbook").t
     {
       slug: "primary-handbook",
       title: "Primary handbook",
-      redirect: i_belong_handbook_url,
+      redirect: i_belong_primary_handbook_url,
       redownload: true
     },
     {

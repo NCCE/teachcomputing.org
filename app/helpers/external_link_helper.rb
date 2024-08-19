@@ -4,7 +4,11 @@ module ExternalLinkHelper
   end
 
   def i_belong_handbook_url
-    "https://static.teachcomputing.org/I+Belong+Handbook.pdf"
+    "https://media.teachcomputing.org/i_belong_secondary_handbook_2f4dfccf30.pdf"
+  end
+
+  def i_belong_primary_handbook_url
+    "https://media.teachcomputing.org/i_belong_primary_handbook_cd22a59080.pdf"
   end
 
   def i_belong_info_pack_url
