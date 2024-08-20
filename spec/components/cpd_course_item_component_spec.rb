@@ -44,7 +44,11 @@ RSpec.describe CpdCourseItemComponent, type: :component do
     end
 
     it "should show completed flag" do
-      expect(page).to have_css(".govuk-tag", text: "Completed")
+      expect(page).to have_css(".status-tag", text: "Completed")
+    end
+
+    it "should not show book button" do
+      expect(page).not_to have_link("Book now", href: "/courses/#{activity.stem_activity_code}/#{activity.slug}")
     end
   end
 
@@ -56,7 +60,11 @@ RSpec.describe CpdCourseItemComponent, type: :component do
     end
 
     it "should show completed flag" do
-      expect(page).to have_css(".govuk-tag", text: "In progress")
+      expect(page).to have_css(".status-tag", text: "In progress")
+    end
+
+    it "should not show book button" do
+      expect(page).not_to have_link("Book now", href: "/courses/#{activity.stem_activity_code}/#{activity.slug}")
     end
   end
 end
