@@ -105,4 +105,16 @@ RSpec.describe DashboardProgrammeActivityGroupSectionComponent, type: :component
       expect(page).not_to have_css(".dashboard-programme-activity-group-section__completed-badge")
     end
   end
+
+  context "without title" do
+    before do
+      render_inline(described_class.new(
+        completed: false
+      )) { "Some content" }
+    end
+
+    it "should not render complete flag" do
+      expect(page).not_to have_css(".dashboard-programme-activity-group-section__title")
+    end
+  end
 end

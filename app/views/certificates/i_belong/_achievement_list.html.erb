@@ -1,12 +1,10 @@
 <%= render DashboardProgrammeActivityGroupSectionComponent.new(
-  title: @cpd_group.title,
+  title: @cpd_completed ? nil : @cpd_group.title,
   aside_slug: "i-belong-dashboard-help-section",
   completed: @cpd_completed) do %>
 
   <% if @issued_badge.present? %>
-    <div class="i-belong-dashboard__badge-section">
-      <%= render DashBadgeComponent.new(badge: @issued_badge) %>
-    </div>
+    <%= render DashBadgeComponent.new(badge: @issued_badge, class_name: 'i-belong') %>
   <% end %>
 
   <% unless @cpd_completed %>
