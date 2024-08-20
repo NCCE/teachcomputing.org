@@ -166,4 +166,8 @@ module ExternalLinkHelper
   def ncce_student_events_url
     "https://www.eventbrite.co.uk/cc/ncce-student-events-3315729"
   end
+
+  def i_belong_press_release_pack_url
+    "https://static.teachcomputing.org/I_Belong_PR_Pack-Editorial_and_Social_Media.pdf"
+  end
 end
