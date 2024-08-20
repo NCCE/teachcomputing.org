@@ -113,22 +113,22 @@ RSpec.describe IBelongMailer, type: :mailer do
 
     it "contains link to structuring evidence document" do
       expect(mail.html_part.body.to_s).to have_link("evidence",
-        href: static_asset_url("Structuring+your+evidence+for+I+Belong.docx"))
+        href: structuring_your_i_belong_evidence_url)
     end
 
     it "contains link to key stage 3 clear messaging" do
       expect(mail.html_part.body.to_s).to have_link("Clear messaging in digital media, Developing for the Web",
-        href: "https://teachcomputing.org/curriculum/key-stage-3/clear-messaging-in-digital-media")
+        href: curriculum_key_stage_unit_url(key_stage_slug: "key-stage-3", unit_slug: "clear-messaging-in-digital-media"))
     end
 
     it "contains link to key stage 3 media animations" do
       expect(mail.html_part.body.to_s).to have_link("Media - Animations",
-        href: "https://teachcomputing.org/curriculum/key-stage-3/media-animations")
+        href: curriculum_key_stage_unit_url(key_stage_slug: "key-stage-3", unit_slug: "media-animations"))
     end
 
     it "contains link to programme handbook" do
       expect(mail.html_part.body.to_s).to have_link("programme handbook",
-        href: static_asset_url("I+Belong+Handbook.pdf"))
+        href: i_belong_secondary_handbook_url)
     end
 
     context "when viewing plain text" do
@@ -153,19 +153,19 @@ RSpec.describe IBelongMailer, type: :mailer do
       end
 
       it "contains link to structuring evidence document" do
-        expect(mail.text_part.body.to_s).to include("evidence (#{static_asset_url("Structuring+your+evidence+for+I+Belong.docx")})")
+        expect(mail.text_part.body.to_s).to include("evidence (#{structuring_your_i_belong_evidence_url})")
       end
 
       it "contains link to key stage 3 clear messaging" do
-        expect(mail.text_part.body.to_s).to include("Developing for the Web, (https://teachcomputing.org/curriculum/key-stage-3/clear-messaging-in-digital-media)")
+        expect(mail.text_part.body.to_s).to include("Developing for the Web, (#{curriculum_key_stage_unit_url(key_stage_slug: "key-stage-3", unit_slug: "clear-messaging-in-digital-media")})")
       end
 
       it "contains link to key stage 3 media animations" do
-        expect(mail.text_part.body.to_s).to include("Media - Animations (https://teachcomputing.org/curriculum/key-stage-3/media-animations)")
+        expect(mail.text_part.body.to_s).to include("Media - Animations (#{curriculum_key_stage_unit_url(key_stage_slug: "key-stage-3", unit_slug: "media-animations")})")
       end
 
       it "contains link to programme handbook" do
-        expect(mail.text_part.body.to_s).to include("programme handbook (#{static_asset_url("I+Belong+Handbook.pdf")})")
+        expect(mail.text_part.body.to_s).to include("programme handbook (#{i_belong_secondary_handbook_url})")
       end
     end
   end
@@ -325,11 +325,11 @@ RSpec.describe IBelongMailer, type: :mailer do
       end
 
       it "should render a link to the primary i belong handbook" do
-        expect(mail.html_part.body).to have_link("primary", href: primary_i_belong_handbook_url)
+        expect(mail.html_part.body).to have_link("primary", href: i_belong_primary_handbook_url)
       end
 
       it "should render a link to the secondary i belong handbook" do
-        expect(mail.html_part.body).to have_link("secondary", href: i_belong_handbook_url)
+        expect(mail.html_part.body).to have_link("secondary", href: i_belong_secondary_handbook_url)
       end
 
       it "should render dashboard link" do
@@ -351,11 +351,11 @@ RSpec.describe IBelongMailer, type: :mailer do
       end
 
       it "should render a link to the primary i belong handbook" do
-        expect(mail.text_part.body.to_s).to include("primary (#{primary_i_belong_handbook_url})")
+        expect(mail.text_part.body.to_s).to include("primary (#{i_belong_primary_handbook_url})")
       end
 
       it "should render a link to the secondary i belong handbook" do
-        expect(mail.text_part.body.to_s).to include("secondary (#{i_belong_handbook_url})")
+        expect(mail.text_part.body.to_s).to include("secondary (#{i_belong_secondary_handbook_url})")
       end
 
       it "should render dashboard link" do
@@ -386,11 +386,11 @@ RSpec.describe IBelongMailer, type: :mailer do
       end
 
       it "should render a link to the primary belong handbook" do
-        expect(mail.html_part.body).to have_link("primary", href: primary_i_belong_handbook_url)
+        expect(mail.html_part.body).to have_link("primary", href: i_belong_primary_handbook_url)
       end
 
       it "should render a link to the secondary belong handbook" do
-        expect(mail.html_part.body).to have_link("secondary", href: i_belong_handbook_url)
+        expect(mail.html_part.body).to have_link("secondary", href: i_belong_secondary_handbook_url)
       end
     end
 
@@ -400,11 +400,11 @@ RSpec.describe IBelongMailer, type: :mailer do
       end
 
       it "should render a link to the primary belong handbook" do
-        expect(mail.text_part.body).to include("primary (#{primary_i_belong_handbook_url})")
+        expect(mail.text_part.body).to include("primary (#{i_belong_primary_handbook_url})")
       end
 
       it "should render a link to the secondary i belong handbook" do
-        expect(mail.text_part.body).to include("secondary (#{i_belong_handbook_url})")
+        expect(mail.text_part.body).to include("secondary (#{i_belong_secondary_handbook_url})")
       end
     end
   end
@@ -492,25 +492,25 @@ RSpec.describe IBelongMailer, type: :mailer do
       end
 
       it "should render DIY posters link" do
-        expect(mail.html_part.body).to have_link("DIY posters", href: "https://teachcomputing.org/blog/i-belong-poster-template")
+        expect(mail.html_part.body).to have_link("DIY posters", href: cms_post_url(page_slug: "i-belong-poster-template"))
       end
 
       it "should render student surveys link" do
-        expect(mail.html_part.body).to have_link("student surveys", href: "https://teachcomputing.org/student-surveys-attitudes-to-computing/")
+        expect(mail.html_part.body).to have_link("student surveys", href: cms_page_url(page_slug: "student-surveys-attitudes-to-computing"))
       end
 
       it "should render evidence document link" do
-        expect(mail.html_part.body).to have_link("evidence", href: static_asset_url("Completing.your.I.Belong.evidence.Feb.2024.pdf"))
+        expect(mail.html_part.body).to have_link("evidence", href: structuring_your_i_belong_evidence_url)
       end
     end
 
     describe "when text" do
       it "should render DIY posters link" do
-        expect(mail.text_part.body).to include("DIY posters (https://teachcomputing.org/blog/i-belong-poster-template)")
+        expect(mail.text_part.body).to include("DIY posters (#{cms_post_url(page_slug: "i-belong-poster-template")})")
       end
 
       it "should render student surveys link" do
-        expect(mail.text_part.body).to include("student surveys (https://teachcomputing.org/student-surveys-attitudes-to-computing/)")
+        expect(mail.text_part.body).to include("student surveys (#{cms_page_url(page_slug: "student-surveys-attitudes-to-computing")})")
       end
 
       it "should render dashboard link" do
@@ -518,7 +518,7 @@ RSpec.describe IBelongMailer, type: :mailer do
       end
 
       it "should render evidence document link" do
-        expect(mail.text_part.body).to include("evidence (#{static_asset_url("Completing.your.I.Belong.evidence.Feb.2024.pdf")})")
+        expect(mail.text_part.body).to include("evidence (#{structuring_your_i_belong_evidence_url})")
       end
     end
   end
@@ -553,11 +553,11 @@ RSpec.describe IBelongMailer, type: :mailer do
       end
 
       it "should render the key stage 2 link" do
-        expect(mail.html_part.body).to have_link("key stage 2", href: "https://teachcomputing.org/curriculum/key-stage-2")
+        expect(mail.html_part.body).to have_link("key stage 2", href: curriculum_key_stage_units_url(key_stage_slug: "key-stage-2"))
       end
 
       it "should render the key stage 3 link" do
-        expect(mail.html_part.body).to have_link("key stage 3", href: "https://teachcomputing.org/curriculum/key-stage-3")
+        expect(mail.html_part.body).to have_link("key stage 3", href: curriculum_key_stage_units_url(key_stage_slug: "key-stage-3"))
       end
 
       it "should render the primary handbook link" do
@@ -587,11 +587,11 @@ RSpec.describe IBelongMailer, type: :mailer do
       end
 
       it "should render the key stage 2 link" do
-        expect(mail.text_part.body).to include("key stage 2 (https://teachcomputing.org/curriculum/key-stage-2)")
+        expect(mail.text_part.body).to include("key stage 2 (#{curriculum_key_stage_units_url(key_stage_slug: "key-stage-2")})")
       end
 
       it "should render the key stage 3 link" do
-        expect(mail.text_part.body).to include("key stage 3 (https://teachcomputing.org/curriculum/key-stage-3)")
+        expect(mail.text_part.body).to include("key stage 3 (#{curriculum_key_stage_units_url(key_stage_slug: "key-stage-3")})")
       end
 
       it "should render the primary handbook link" do
