@@ -3,6 +3,7 @@ require "rails_helper"
 RSpec.describe Certificates::PrimaryCertificateController do
   let(:user) { create(:user) }
   let(:programme) { create(:primary_certificate) }
+  let(:badge) { create(:badge, programme:)}
   let(:user_programme_enrolment) do
     create(:user_programme_enrolment, user_id: user.id, programme_id: programme.id)
   end
@@ -37,6 +38,36 @@ RSpec.describe Certificates::PrimaryCertificateController do
           get primary_certificate_path
           expect(response.headers["cache-control"]).to eq("no-store")
         end
+      end
+    end
+
+    describe "enrolled with badge" do
+      before do
+        badge
+        user_programme_enrolment
+        stub_issued_badges(user.id)
+        allow_any_instance_of(AuthenticationHelper)
+          .to receive(:current_user).and_return(user)
+        get primary_certificate_path
+      end
+
+      it "renders the correct template" do
+        expect(response).to render_template("show")
+      end
+    end
+
+    describe "enrolled with badge but credly errors" do
+      before do
+        badge
+        user_programme_enrolment
+        stub_issued_badges_failure(user.id)
+        allow_any_instance_of(AuthenticationHelper)
+          .to receive(:current_user).and_return(user)
+        get primary_certificate_path
+      end
+
+      it "renders the correct template" do
+        expect(response).to render_template("show")
       end
     end
 
