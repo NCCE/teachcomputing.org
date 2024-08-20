@@ -24,13 +24,14 @@
 
   <div class="cpd-course-item__links">
 
-    <%= link_to "Book now", course_path(id: @activity.stem_activity_code, name: @activity.slug),
-      class: "govuk-button button" %>
 
     <% if @achievement %>
-      <strong class="govuk-tag ncce-pathway-courses__status ncce-courses__tag">
+      <div class="status-tag">
         <%= @achievement.complete? ? 'Completed' : 'In progress' %>
-      </strong>
+      </div>
+    <% else %>
+      <%= link_to "Book now", course_path(id: @activity.stem_activity_code, name: @activity.slug),
+        class: "govuk-button button" %>
     <% end %>
   </div>
 </div>

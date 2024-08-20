@@ -4,6 +4,7 @@ RSpec.describe Certificates::SecondaryCertificateController do
   let(:user) { create(:user) }
   let!(:cs_accelerator) { create(:cs_accelerator) }
   let(:secondary_certificate) { create(:secondary_certificate) }
+  let(:badge) { create(:badge, programme: secondary_certificate) }
   let(:secondary_certificate_groupings) { create_list(:programme_activity_grouping, 3, programme_id: secondary_certificate.id) }
   let(:secondary_enrolment) { create(:user_programme_enrolment, programme_id: secondary_certificate.id, user_id: user.id) }
 
@@ -40,6 +41,32 @@ RSpec.describe Certificates::SecondaryCertificateController do
         it "redirects if not enrolled" do
           get secondary_certificate_path
           expect(response).to redirect_to(secondary_path)
+        end
+      end
+
+      describe "enrolled with badge" do
+        before do
+          badge
+          secondary_enrolment
+          stub_issued_badges(user.id)
+          get secondary_certificate_path
+        end
+
+        it "renders the correct template" do
+          expect(response).to render_template("show")
+        end
+      end
+
+      describe "enrolled with badge but credly errors" do
+        before do
+          badge
+          secondary_enrolment
+          stub_issued_badges_failure(user.id)
+          get secondary_certificate_path
+        end
+
+        it "renders the correct template" do
+          expect(response).to render_template("show")
         end
       end
     end
