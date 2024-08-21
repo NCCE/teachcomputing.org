@@ -6,7 +6,7 @@
   data-community-activity-component-achievements-submit-path-value="<%= submit_achievements_path %>"
   data-community-activity-component-achievement-id-value="<%= @achievement&.id %>"
   data-community-activity-component-activity-id-value="<%= @activity.id %>"
-  data-community-activity-component-minimum-evidence-length-value="50"
+  data-community-activity-component-minimum-evidence-length-value="<%= minimum_character_requirement %>"
 >
   <% if achievement_rejected? %>
     <div class="community-activity-component__rejected">
@@ -130,10 +130,13 @@
                         </div>
                       <% end %>
                     <% end %>
-                    <%= progress.with_warning_step do %>
-                      <div>
-                        <span class="govuk-body-m" data-community-activity-component-target="completionWarningMessage"></span>
-                      </div>
+
+                    <% if minimum_character_requirement != 0 %>
+                      <%= progress.with_warning_step do %>
+                        <div>
+                          <span class="govuk-body-m" data-community-activity-component-target="completionWarningMessage"></span>
+                        </div>
+                      <% end %>
                     <% end %>
 
                     <div class="community-activity-component__footer-actions">
