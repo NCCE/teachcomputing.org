@@ -32,6 +32,9 @@ class CommunityActivityComponent < ViewComponent::Base
     return false unless @achievement
 
     return @achievement.submission_option == slug unless @achievement.submission_option.blank?
-    @activity.public_copy_submission_options.find { _1["default"] }["slug"] == slug
+    default_option = @activity.public_copy_submission_options.find { _1["default"] }
+
+    return default_option["slug"] == slug if default_option
+    false
   end
 end
