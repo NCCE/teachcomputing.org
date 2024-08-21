@@ -150,11 +150,12 @@
         font-size: 1rem;
       }
     }
-    
+
     .community-activity-component__footer-actions {
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: 0.25fr 1fr;
       align-items: center;
+      margin-top: 10px;
 
       .progress-component__back {
         grid-column: 1;
@@ -169,9 +170,9 @@
       .progress-component__submit{
         &-button-wrapper {
           display: grid;
-          grid-template-columns: 1fr 1fr;
+          grid-template-columns: 1.25fr 1fr;
           align-items: center;
-          grid-gap: 10px;
+          grid-gap: 0 10px;
 
           .save-draft {
             grid-column: 1;
@@ -182,7 +183,15 @@
           }
         }
       }
+    }
 
+    .community-activity-component__section-link {
+    color: $hyper-link-blue;
+
+      &:hover {
+        color: $grey-dark-x;
+        cursor: pointer;
+      }
     }
 
     > .ncce-modal--body {

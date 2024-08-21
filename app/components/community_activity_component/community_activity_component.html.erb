@@ -124,19 +124,24 @@
                             </ul>
                           <% end %>
                         </p>
-                        <textarea class="govuk-textarea govuk-!-margin-bottom-1" placeholder="Please provide us with evidence of the activity you delivered." data-community-activity-component-target="textarea"><%= @achievement&.evidence&.[](index) %></textarea>
-                        <div class="community-activity-component__completion-count">
+                        <textarea class="govuk-textarea govuk-!-margin-bottom-2" placeholder="Please provide us with evidence of the activity you delivered." data-community-activity-component-target="textarea"><%= @achievement&.evidence&.[](index) %></textarea>
+                        <div class="community-activity-component__completion-count govuk-!-margin-bottom-1">
                           <span class="govuk-body-s" data-community-activity-component-target="characterCountMessage"></span>
                         </div>
                       <% end %>
                     <% end %>
+                    <%= progress.with_warning_step do %>
+                      <div>
+                        <span class="govuk-body-m" data-community-activity-component-target="completionWarningMessage"></span>
+                      </div>
+                    <% end %>
 
                     <div class="community-activity-component__footer-actions">
                       <%= progress.with_back do %>
-                        Previous section
+                        Previous
                       <% end %>
                       <%= progress.with_continue do %>
-                        Next section
+                        Next
                       <% end %>
                       <%= render ModalComponent.new(
                         title: "Are you sure you want to submit this evidence?",
@@ -146,11 +151,8 @@
                       ) do |modal| %>
                         <%= modal.with_reopen_button do %>
                           <%= progress.with_submit do %>
-                            <div class="community-activity-component__completion-steps">
-                              <span class="govuk-body-s" data-community-activity-component-target="completionWarningMessage"></span>
-                            </div>
                             <div class="progress-component__submit-button-wrapper">
-                              <button class="govuk-button button save-draft button--inverted govuk-!-margin-bottom-0" data-action="click->community-activity-component#saveAsDraft" data-community-activity-component-target="saveDraftButton">Save as draft</button>
+                              <button class="govuk-button button save-draft button--inverted govuk-!-margin-bottom-0" data-action="click->community-activity-component#saveAsDraft" data-community-activity-component-target="saveDraftButton">Save draft</button>
                               <button class="govuk-button button ncce-modal--reopen govuk-!-margin-bottom-0" data-community-activity-component-target="submitButton" data-action="modal#toggle">Submit</button>
                             </div>
                           <% end %>

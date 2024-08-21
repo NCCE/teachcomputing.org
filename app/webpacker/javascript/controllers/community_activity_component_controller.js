@@ -41,9 +41,9 @@ export default class extends ApplicationController {
       const remainingCharacters = this.minimumEvidenceLengthValue - element.value.length
 
       if(element.value.length > 0 && element.value.length < this.minimumEvidenceLengthValue) {
-        this.characterCountMessageTargets[index].innerHTML = `Provide at least ${remainingCharacters} more characters`
+        this.characterCountMessageTargets[index].textContent = `Provide at least ${remainingCharacters} more characters`
       } else {
-        this.characterCountMessageTargets[index].innerHTML = ""
+        this.characterCountMessageTargets[index].textContent = ""
       }
 
     };
@@ -81,9 +81,9 @@ export default class extends ApplicationController {
       }
       if(this.hasCompletionWarningMessageTarget) {
         if(missingValues.length > 0) {
-          this.completionWarningMessageTarget.innerHTML = 'You are missing some evidence in ' + missingValues.map(index => {
+          this.completionWarningMessageTarget.innerHTML = 'You are missing some evidence in section ' + missingValues.map(index => {
             const sectionNumber = index + 1
-            return `<button data-action='progress-component#jumpToSection' data-progress-component-target-step-param='${index}'> ${sectionNumber} </button>`
+            return `<a class='community-activity-component__section-link' data-action='progress-component#jumpToSection' data-progress-component-target-step-param='${index}'> ${sectionNumber}</a>`
           }).join(', ')
         } else {
           this.completionWarningMessageTarget.innerHTML = ''
