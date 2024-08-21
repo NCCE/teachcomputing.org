@@ -8,9 +8,11 @@
     span {
       margin: 0;
       z-index: 1;
+      background-color: $white;
+      padding-right: 2px;
     }
     
-    &::before {
+    &::after {
       content: '';
       position: absolute;
       top: 50%;

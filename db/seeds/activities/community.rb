@@ -393,13 +393,15 @@ Activity.find_or_initialize_by(slug: "download-and-use-the-i-belong-handbook").t
       slug: "primary-handbook",
       title: "Primary handbook",
       redirect: i_belong_primary_handbook_url,
-      redownload: true
+      redownload: true,
+      default: false
     },
     {
       slug: "secondary-handbook",
       title: "Secondary handbook",
       redirect: i_belong_handbook_url,
-      redownload: true
+      redownload: true,
+      default: true
     }
   ]
 end.save!
@@ -417,7 +419,8 @@ Activity.find_or_initialize_by(slug: "request-your-i-belong-in-computer-science-
       slug: "i-belong-certificate-request",
       title: "Request",
       redirect: i_belong_poster_request_url,
-      redownload: false
+      redownload: false,
+      default: true
     }
   ]
 end.save!

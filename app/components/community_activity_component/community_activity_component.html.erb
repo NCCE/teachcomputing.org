@@ -41,7 +41,7 @@
         <div class="community-activity-component__objective-button-container">
           <% if @activity.public_copy_submission_options.present? %>
             <% @activity.public_copy_submission_options.each do |option| %>
-              <% if @achievement&.submission_option == option["slug"] %>
+              <% if check_submission_option(option["slug"]) %>
                 <div class="community_activity_component__completed_badge_container">
                   <div class='community-activity-component__completed-badge'><%= t('.complete') %></div>
                 </div>
