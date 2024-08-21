@@ -187,4 +187,8 @@ class Programme < ApplicationRecord
   def notification_link
     root_path
   end
+
+  def minimum_character_required_community_evidence
+    0
+  end
 end

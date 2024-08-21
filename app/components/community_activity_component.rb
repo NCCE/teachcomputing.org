@@ -37,4 +37,8 @@ class CommunityActivityComponent < ViewComponent::Base
     return default_option["slug"] == slug if default_option
     false
   end
+
+  def minimum_character_requirement
+    @activity.programmes.map(&:minimum_character_required_community_evidence).max
+  end
 end
