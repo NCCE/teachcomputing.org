@@ -13,6 +13,15 @@ module Cms
                 populate: {seo: {populate: [:description]}},
                 fields: [:title, :slug, :publishedAt, :createdAt, :updatedAt]
               }
+            elsif model_class == Cms::Models::EnrichmentList
+              {
+                populate: {
+                  partner_icon: {populate: [:alternativeText]},
+                  terms: {populate: [:name]},
+                  age_groups: {populate: [:name]},
+                  type: {populate: [:name]}
+                }
+              }
             elsif model_class == Cms::Models::BlogPreview
               {
                 populate: {featuredImage: {populate: [:alternativeText]}},

@@ -1,12 +1,22 @@
 
 .enrichment {
+  background-color: $white;
   box-shadow: 0px 0px 8px 0px #00000040;
   padding: 15px;
   border-radius: 4px;
-  
-  width: 284px;
-
+  width: 254px;
   @include govuk-font($size: 16);
+
+  &__type {
+    margin-bottom: 5px;
+  }
+
+  &__title {
+    span {
+      font-size: 20px;
+      font-weight: 500;
+    }
+  }
 
   &__type-label {
     @include govuk-font($size: 14, $weight: bold);

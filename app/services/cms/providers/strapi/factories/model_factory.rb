@@ -3,7 +3,15 @@ module Cms
     module Strapi
       module Factories
         module ModelFactory
-          def self.process_model(model_class, strapi_data)
+          def self.process_model(mapping, all_data)
+            model_class = mapping[:model]
+            key = mapping[:key].presence
+            strapi_data = if key
+              all_data[key]
+            else
+              all_data
+            end
+
             if model_class == Cms::Models::Seo
               model_class.new(
                 title: strapi_data[:title],
@@ -36,6 +44,12 @@ module Cms
                 featured_image: strapi_data[:featuredImage][:data].nil? ? nil : to_featured_image(strapi_data[:featuredImage][:data][:attributes], :small),
                 slug: strapi_data[:slug]
               )
+            elsif model_class == Cms::Models::EnrichmentList
+              model_class.new(
+                enrichments: strapi_data[:data].map { to_enrichment(_1[:attributes]) },
+                featured_title: all_data[:featuredSectionTitle],
+                all_title: all_data[:allSectionTitle]
+              )
             elsif model_class == Cms::Models::SimplePagePreview
               model_class.new(
                 title: strapi_data[:title],
@@ -51,6 +65,20 @@ module Cms
               filename: data[:name],
               size: data[:size],
               updated_at: DateTime.parse(data[:updatedAt])
+            )
+          end
+
+          def self.to_enrichment(strapi_data)
+            Models::Enrichment.new(
+              title: strapi_data[:rich_title],
+              details: strapi_data[:rich_details],
+              link: strapi_data[:link],
+              featured: strapi_data[:featured],
+              i_belong: strapi_data[:i_belong],
+              terms: strapi_data.dig(:terms, :data).map { _1[:attributes][:name] },
+              type: strapi_data[:type][:data][:attributes][:name],
+              age_groups: strapi_data.dig(:age_groups, :data).map { _1[:attributes][:name] },
+              partner_icon: strapi_data[:partner_icon]
             )
           end
 

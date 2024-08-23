@@ -1,11 +1,12 @@
 module Cms
   module Models
     class Enrichment
-      attr_accessor :title, :details, :link, :i_belong, :terms, :type, :age_groups, :partner_icon
+      attr_accessor :title, :details, :link, :featured, :i_belong, :terms, :type, :age_groups, :partner_icon
 
-      def initialize(title:, details:, link:, i_belong:, terms:, type:, age_groups:, partner_icon: nil)
+      def initialize(title:, details:, link:, featured:, i_belong:, terms:, type:, age_groups:, partner_icon: nil)
         @title = title
         @details = details
+        @featured = featured
         @i_belong = i_belong
         @terms = terms
         @type = type

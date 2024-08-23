@@ -1,6 +1,6 @@
 module Cms
   module Collections
-    class Enrichment < Resource
+    class EnrichmentPage < Resource
       def to_search_record(index_time)
       end
 
@@ -11,7 +11,10 @@ module Cms
       end
 
       def self.resource_attribute_mappings
-        []
+        [
+          {model: Cms::Models::Seo, key: :seo},
+          {model: Cms::Models::EnrichmentList, key: :enrichments}
+        ]
       end
 
       def self.cache_expiry
@@ -19,11 +22,7 @@ module Cms
       end
 
       def self.resource_key
-        "enrichments"
-      end
-
-      def self.query_keys
-        [:page]
+        "enrichment-pages"
       end
     end
   end

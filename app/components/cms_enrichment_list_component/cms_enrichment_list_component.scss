@@ -1,0 +1,31 @@
+
+.featured-enrichments-wrapper {
+  background: #8BFF9640;
+  background-image: url('../images/pages/enrichment/featured-banner.svg');
+  background-repeat: no-repeat;
+  background-position: bottom left;
+  background-size: 782px 294px;
+}
+
+.enrichment-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 54px;
+}
+
+.enrichment-filters {
+
+  &__selects {
+    display: flex;
+
+    @include govuk-media-query($from: tablet) {
+      flex-direction: row;
+      justify-content: space-between;
+
+      select {
+        width: 295px;
+      }
+    }
+  }
+}

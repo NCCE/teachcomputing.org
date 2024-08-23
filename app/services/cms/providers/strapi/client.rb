@@ -95,11 +95,7 @@ module Cms
         end
 
         def process_model(mapping, attributes)
-          if mapping[:key]
-            Factories::ModelFactory.process_model(mapping[:model], attributes[mapping[:key]])
-          else
-            Factories::ModelFactory.process_model(mapping[:model], attributes)
-          end
+          Factories::ModelFactory.process_model(mapping, attributes)
         end
 
         def to_resource(id, attributes, data_models, preview: false)
