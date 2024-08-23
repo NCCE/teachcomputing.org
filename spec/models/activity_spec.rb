@@ -234,17 +234,17 @@ RSpec.describe Activity, type: :model do
 
   describe "#calculate_credits" do
     it "should use initial credit value" do
-      activity = create(:activity, credit: 50, duration_in_hours: 2.5)
+      activity = create(:activity, :with_duration, credit: 50)
       expect(activity.credit).to eq(50)
     end
 
     it "calculates the correct credits from duration in hours" do
-      activity = create(:activity, :activity_no_credits, duration_in_hours: 2.5)
+      activity = create(:activity, :with_duration, :activity_no_credits)
       expect(activity.credit).to eq(25)
     end
 
     it "should not change credit amount if no duration in hours" do
-      activity = create(:activity, credit: 50, duration_in_hours: nil)
+      activity = create(:activity, credit: 50)
       expect(activity.credit).to eq(50)
     end
 
