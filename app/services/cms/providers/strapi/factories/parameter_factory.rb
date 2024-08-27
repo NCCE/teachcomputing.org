@@ -22,6 +22,10 @@ module Cms
                   publishDate: {"$lt": DateTime.now.strftime}
                 }
               }
+            elsif model_class == Models::PageTitle
+              {
+                populate: [:title]
+              }
             end
           end
         end

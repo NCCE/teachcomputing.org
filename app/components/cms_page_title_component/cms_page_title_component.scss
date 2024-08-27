@@ -1,0 +1,16 @@
+.page-title {
+  &__wrapper {
+    background-color: $white;
+    padding: 10px;
+  }
+
+  &__title-text {
+    margin-bottom: 0;
+  }
+
+  &__intro-text {
+    color: $grey-dark-x;
+    margin-top: 10px;
+    margin-bottom: 0;
+  }
+}
