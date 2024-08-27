@@ -6,10 +6,7 @@ export default class ProgressComponentController extends ApplicationController {
   connect() {
     if (this.stepTargets.length == 0) throw new Error("Must have at least one step")
     this.currentStep = 0
-    this.updateCounter()
-    this.updateButtonVisibility()
-    this.updateStepsVisibility()
-    this.updateWarningStepVisibility()
+    this.updateSection()
   }
 
   updateCounter() {
