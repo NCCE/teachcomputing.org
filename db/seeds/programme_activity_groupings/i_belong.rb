@@ -5,12 +5,12 @@ puts "Creating Programme Activity Groupings"
 ## The numbering of the groupings starts at 2 for historical reasons: group_one with sort_key 1 existed when users were required
 ## to complete 2 courses, one from each of groups 1 and 2.
 
-i_belong.programme_activity_groupings.find_or_initialize_by(title: "all courses").tap do |group|
+i_belong.programme_activity_groupings.find_or_initialize_by(sort_key: 2).tap do |group|
   group.sort_key = 2
   group.required_for_completion = 1
   group.programme_id = i_belong.id
   group.progress_bar_title = "<strong>Complete</strong> a recommended course"
-
+  group.title = "Complete a course to understand the factors of girls’ participation in computer science"
   group.save!
 
   activities = [

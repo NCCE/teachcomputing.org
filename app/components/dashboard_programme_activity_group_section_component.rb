@@ -1,14 +1,11 @@
 # frozen_string_literal: true
 
 class DashboardProgrammeActivityGroupSectionComponent < ViewComponent::Base
-  def initialize(title:, programme_activity_group:, current_user:, aside_slug: nil, subtitle: nil)
+  def initialize(title: nil, completed: false, aside_slug: nil, subtitle: nil)
     @title = title
-    @programme_activity_group = programme_activity_group
-    @current_user = current_user
     @aside_slug = aside_slug
     @subtitle = subtitle
-
-    @completed = @programme_activity_group.user_complete?(@current_user)
+    @completed = completed
 
     @aside_model = if @aside_slug
       begin

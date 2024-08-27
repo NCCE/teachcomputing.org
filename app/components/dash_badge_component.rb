@@ -1,9 +1,10 @@
 # frozen_string_literal: true
 
 class DashBadgeComponent < ViewComponent::Base
-  def initialize(badge:, fixed_width: false, tracking_event_category: nil, tracking_event_label: nil)
+  def initialize(badge:, fixed_width: false, class_name: nil, tracking_event_category: nil, tracking_event_label: nil)
     @badge = badge
     @fixed_width = fixed_width
+    @class_name = class_name
     @tracking_event_category = tracking_event_category
     @tracking_event_label = tracking_event_label
   end

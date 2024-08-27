@@ -13,7 +13,8 @@ class CommunityActivityComponent < ViewComponent::Base
   def achievement_complete?
     return unless @achievement
 
-    @achievement.in_state?(:complete) && @achievement.submission_option.blank?
+    return false if @activity.public_copy_submission_options
+    @achievement.in_state?(:complete)
   end
 
   def achievement_rejected?
@@ -25,5 +26,15 @@ class CommunityActivityComponent < ViewComponent::Base
   def reopen_button_text
     return "Add more evidence" if achievement_rejected?
     @achievement&.evidence.present? ? "Continue editing" : "Submit evidence"
+  end
+
+  def check_submission_option slug
+    return false unless @achievement
+
+    return @achievement.submission_option == slug unless @achievement.submission_option.blank?
+    default_option = @activity.public_copy_submission_options.find { _1["default"] }
+
+    return default_option["slug"] == slug if default_option
+    false
   end
 end
