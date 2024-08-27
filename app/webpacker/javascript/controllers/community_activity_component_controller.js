@@ -59,6 +59,7 @@ export default class extends ApplicationController {
 
   checkForEvidence() {
     this.hasEvidence = () => {
+      const hasAnyValue = this.textareaTargets.some(element => element.value !== "")
       const missingValues = []
       this.textareaTargets.forEach((element, index) => {
         if(element.value.length < this.minimumEvidenceLengthValue){
@@ -73,7 +74,7 @@ export default class extends ApplicationController {
         }
       }
       if(this.hasSaveDraftButtonTarget) {
-        if(missingValues.length == 0){
+        if(hasAnyValue){
           this.saveDraftButtonTarget.removeAttribute('disabled')
         } else {
           this.saveDraftButtonTarget.setAttribute('disabled', '')
