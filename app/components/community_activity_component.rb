@@ -39,6 +39,6 @@ class CommunityActivityComponent < ViewComponent::Base
   end
 
   def minimum_character_requirement
-    @activity.programmes.map(&:minimum_character_required_community_evidence).max
+    @activity.programmes.collect(&:minimum_character_required_community_evidence).max
   end
 end

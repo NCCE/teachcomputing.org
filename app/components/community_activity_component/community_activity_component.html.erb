@@ -131,12 +131,10 @@
                       <% end %>
                     <% end %>
 
-                    <% if minimum_character_requirement != 0 %>
-                      <%= progress.with_warning_step do %>
-                        <div class="comminity-activity-component__warning-text">
-                          <span class="govuk-body-m" data-community-activity-component-target="completionWarningMessage"></span>
-                        </div>
-                      <% end %>
+                    <%= progress.with_warning_step do %>
+                      <div class="comminity-activity-component__warning-text">
+                        <span class="govuk-body-m" data-community-activity-component-target="completionWarningMessage"></span>
+                      </div>
                     <% end %>
 
                     <div class="community-activity-component__footer-actions">

@@ -103,6 +103,7 @@ export default class extends ApplicationController {
     this.textareaTargets.forEach(element => {
       element.removeEventListener("input", this.toggleConfirmationEnabled)
       element.removeEventListener("input", this.hasEvidence)
+      element.removeEventListener("input", this.updateCharacterCount)
     })
   }
 
