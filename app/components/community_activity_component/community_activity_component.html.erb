@@ -47,15 +47,15 @@
                   <div class='community-activity-component__completed-badge'><%= t('.complete') %></div>
                 </div>
                 <% if option["redownload"] %>
-                  <a href="<%= option["redirect"] %>" rel="noopener" 
+                  <a href="<%= option["redirect"] %>" rel="noopener"
                     class="govuk-body-s" target="_blank">Re-download <%= option["title"].downcase %></a>
                 <% end %>
               <% else %>
                 <% if @achievement&.complete? %>
-                  <a href="<%= option["redirect"] %>" rel="noopener" 
+                  <a href="<%= option["redirect"] %>" rel="noopener"
                     class="govuk-button button <%= @button_class %>" target="_blank"><%= option["title"] %></a>
                 <% else %>
-                  <button class="govuk-button button <%= @button_class %>" 
+                  <button class="govuk-button button <%= @button_class %>"
                     data-action="click->community-activity-component#submit"
                     data-community-activity-component-slug-param="<%= option["slug"] %>"
                     data-community-activity-component-redirect-param="<%= option["redirect"] %>"
@@ -133,7 +133,7 @@
 
                     <% if minimum_character_requirement != 0 %>
                       <%= progress.with_warning_step do %>
-                        <div>
+                        <div class="comminity-activity-component__warning-text">
                           <span class="govuk-body-m" data-community-activity-component-target="completionWarningMessage"></span>
                         </div>
                       <% end %>
