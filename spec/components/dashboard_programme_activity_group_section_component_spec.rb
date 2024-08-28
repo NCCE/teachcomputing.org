@@ -8,6 +8,7 @@ RSpec.describe DashboardProgrammeActivityGroupSectionComponent, type: :component
       before do
         stub_strapi_aside_section
         render_inline(described_class.new(
+          anchor_id: "test-id",
           title: "With Aside",
           completed: false,
           aside_slug: "testing-with-aside"
@@ -39,6 +40,7 @@ RSpec.describe DashboardProgrammeActivityGroupSectionComponent, type: :component
       before do
         stub_strapi_aside_section_missing("testing-with-aside-missing")
         render_inline(described_class.new(
+          anchor_id: "test-id",
           title: "With Aside but missing",
           completed: false,
           aside_slug: "testing-with-aside-missing"
@@ -58,6 +60,7 @@ RSpec.describe DashboardProgrammeActivityGroupSectionComponent, type: :component
   context "without aside" do
     before do
       render_inline(described_class.new(
+        anchor_id: "test-id",
         title: "Without Aside",
         completed: false
       )) { "Some content" }
@@ -83,6 +86,7 @@ RSpec.describe DashboardProgrammeActivityGroupSectionComponent, type: :component
   context "when programme_activity_group has been completed" do
     before do
       render_inline(described_class.new(
+        anchor_id: "test-id",
         title: "Without Aside",
         completed: true
       )) { "Some content" }
@@ -96,6 +100,7 @@ RSpec.describe DashboardProgrammeActivityGroupSectionComponent, type: :component
   context "when programme_activity_group has not been completed" do
     before do
       render_inline(described_class.new(
+        anchor_id: "test-id",
         title: "Without Aside",
         completed: false
       )) { "Some content" }
@@ -109,6 +114,7 @@ RSpec.describe DashboardProgrammeActivityGroupSectionComponent, type: :component
   context "without title" do
     before do
       render_inline(described_class.new(
+        anchor_id: "test-id",
         completed: false
       )) { "Some content" }
     end
