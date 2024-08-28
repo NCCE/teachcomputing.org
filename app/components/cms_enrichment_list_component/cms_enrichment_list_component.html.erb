@@ -18,9 +18,15 @@
       <div class="enrichment-filters">
         <h2 class="govuk-heading-m"><%= @all_title %></h2>
         <div class="enrichment-filters__selects">
-          <%= select_tag :term, options_for_select(@terms), prompt: "All terms (all)", class: "govuk-select" %>
-          <%= select_tag :age_group, options_for_select(@age_groups), prompt: "Year Group (all)", class: "govuk-select" %>
-          <%= select_tag :type, options_for_select(@types), prompt: "Enrichment Type (all)", class: "govuk-select" %>
+          <%= select_tag :term, options_for_select(@terms), prompt: "All terms (all)", class: "govuk-select", data: {
+            cms_enrichment_list_component_target: "termSelect"
+          } %>
+          <%= select_tag :age_group, options_for_select(@age_groups), prompt: "Year Group (all)", class: "govuk-select", data: {
+            cms_enrichment_list_component_target: "ageGroupSelect"
+          } %>
+          <%= select_tag :type, options_for_select(@types), prompt: "Enrichment Type (all)", class: "govuk-select", data: {
+            cms_enrichment_list_component_target: "typeSelect"
+          } %>
         </div>
       </div>
     <% end %>

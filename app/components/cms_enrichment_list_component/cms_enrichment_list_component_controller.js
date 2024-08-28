@@ -2,4 +2,10 @@ import ApplicationController from "../../webpacker/javascript/controllers/applic
 
 export default class CmsEnrichmentListComponentController extends ApplicationController {
 
+  static targets = ["termSelect", "ageGroupSelect", "typeSelect"];
+
+  connect(){
+  }
+
+  
 }

@@ -78,7 +78,7 @@ module Cms
               terms: strapi_data.dig(:terms, :data).map { _1[:attributes][:name] },
               type: strapi_data[:type][:data][:attributes][:name],
               age_groups: strapi_data.dig(:age_groups, :data).map { _1[:attributes][:name] },
-              partner_icon: strapi_data[:partner_icon]
+              partner_icon: strapi_data[:partner_icon][:data].nil? ? nil : to_image(strapi_data[:partner_icon][:data][:attributes])
             )
           end
 
@@ -100,13 +100,13 @@ module Cms
             )
           end
 
-          def self.to_image(image_data)
+          def self.to_image(image_data, default_size: :medium)
             Cms::Models::Image.new(
               url: image_data[:url],
               alt: image_data[:alternativeText],
               caption: image_data[:caption],
               formats: image_data[:formats],
-              default_size: :medium
+              default_size:
             )
           end
         end

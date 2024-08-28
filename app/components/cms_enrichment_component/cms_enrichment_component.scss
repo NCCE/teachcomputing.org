@@ -5,7 +5,13 @@
   padding: 15px;
   border-radius: 4px;
   width: 254px;
+  display: flex;
+  flex-direction: column;
   @include govuk-font($size: 16);
+
+  &__content {
+    flex: 0 0 132px;
+  }
 
   &__type {
     margin-bottom: 5px;
@@ -25,5 +31,15 @@
 
   &__term-details {
     font-style: italic; 
+  }
+
+  &__partner-logo {
+    @include govuk-responsive-margin(2, "top");
+
+    img {
+      height: 50px;
+      width: auto;
+      max-width: 100%;
+    }
   }
 }

@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class CmsEnrichmentComponent < ViewComponent::Base
+  delegate :cms_image, to: :helpers
+
   def initialize(title:, details:, link:, i_belong:, terms:, type:, age_groups:, partner_icon: nil)
     @title = title
     @details = details

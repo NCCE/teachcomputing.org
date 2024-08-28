@@ -18,13 +18,15 @@
 
   &__selects {
     display: flex;
+    flex-direction: column;
 
     @include govuk-media-query($from: tablet) {
       flex-direction: row;
-      justify-content: space-between;
+      flex: 0 1 295px;
+      gap: 54px;
 
       select {
-        width: 295px;
+        width: 100%;
       }
     }
   }

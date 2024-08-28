@@ -14,7 +14,7 @@
   </div>
 
   <div class="enrichment__content">
-    <%= render CmsRichTextBlockComponent.new(blocks: @details, with_wrapper: false) %>
+    <%= render CmsRichTextBlockComponent.new(blocks: @details, paragraph_class: "govuk-body-s", with_wrapper: false) %>
   </div>
 
   <div class="enrichment__term-details">
@@ -23,7 +23,9 @@
     <%= @age_groups.join(", ") %>
   </div>
 
-  <div class="enrichment__parnter-logo">
-
+  <div class="enrichment__partner-logo">
+    <% if @partner_icon %>
+      <%= cms_image(@partner_icon) %>
+    <% end %>
   </div>
 </div>
