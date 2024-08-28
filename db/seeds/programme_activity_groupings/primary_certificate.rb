@@ -39,7 +39,7 @@ primary_certificate.programme_activity_groupings.find_or_initialize_by(title: "D
     {slug: "participate-fully-in-an-ncce-curriculum-enrichment-oppertunity-primary", legacy: false},
     {slug: "implement-your-professional-development-in-the-classroom-and-evaluate-via-the-impact-toolkit", legacy: false},
     {slug: "download-and-use-the-ncce-teaching-and-assessment-resources-in-your-classroom", legacy: false},
-    {slug: "complete-the-i-belong-programme-as-a-school", legacy: false},
+    {slug: "complete-the-i-belong-programme-as-a-school-primary", legacy: false},
 
     # Legacy activities
     {slug: "review-a-resource-on-cas", legacy: true},
@@ -73,7 +73,7 @@ primary_certificate.programme_activity_groupings.find_or_initialize_by(title: "D
     {slug: "undertake-the-initial-assessment-of-your-school-using-computing-quality-framework", legacy: false},
     {slug: "work-with-your-local-computing-hub-to-develop-a-school-level-action-plan-for-professional-development", legacy: false},
     {slug: "lead-your-school-into-a-computing-cluster-and-develop-an-action-plan-with-a-cluster-advisor", legacy: false},
-    {slug: "become-an-i-belong-champion", legacy: false},
+    {slug: "become-an-i-belong-champion-primary", legacy: false},
 
     # Legacy activities
     {slug: "run-an-after-school-code-club", legacy: true},
