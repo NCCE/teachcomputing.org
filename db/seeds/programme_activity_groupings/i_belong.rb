@@ -48,7 +48,7 @@ end.save!
 
 i_belong.programme_activity_groupings.find_or_initialize_by(sort_key: 4).tap do |group|
   group.title = "Increase girls' engagement by completing activities"
-  group.web_copy_subtitle = "Complete at least one"
+  group.web_copy_subtitle = "Complete at least one activity. Refer to your handbook for more detailed guidance and resources."
   group.sort_key = 4
   group.required_for_completion = 1
   group.programme_id = i_belong.id
