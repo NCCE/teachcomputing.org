@@ -7,8 +7,9 @@ export default class extends ApplicationController {
     achievementsSubmitPath: String,
     achievementId: String,
     activityId: String,
+    minimumEvidenceLength: { type: Number, default: 0 }
   }
-  static targets = ["textarea", "submitButton", "saveDraftButton"]
+  static targets = ["textarea", "submitButton", "saveDraftButton", "completionWarningMessage", "characterCountMessage"]
 
   trackUnsavedChanges() {
     this.initialValues = new Map()
@@ -20,7 +21,7 @@ export default class extends ApplicationController {
       parentModal.setAttribute("data-modal-confirm-value", !allValuesAreInitial)
     }
 
-    
+
     this.textareaTargets.forEach(input => {
       this.initialValues.set(input, input.value)
       input.addEventListener("input", this.toggleConfirmationEnabled)
@@ -32,13 +33,41 @@ export default class extends ApplicationController {
   connect() {
     this.trackUnsavedChanges()
     this.checkForEvidence();
+    this.trackCharacterCount()
+  }
+
+  trackCharacterCount() {
+    this.updateCharacterCount = (element, index) => {
+      const remainingCharacters = this.minimumEvidenceLengthValue - element.value.length
+
+      if(element.value.length > 0 && element.value.length < this.minimumEvidenceLengthValue) {
+        this.characterCountMessageTargets[index].textContent = `Provide at least ${remainingCharacters} more characters`
+      } else {
+        this.characterCountMessageTargets[index].textContent = ""
+      }
+
+    };
+
+    this.textareaTargets.forEach((input, index) => {
+      input.addEventListener("input", () => this.updateCharacterCount(input, index))
+    });
+
+    this.textareaTargets.forEach((input, index) => {
+      this.updateCharacterCount(input, index)
+    });
   }
 
   checkForEvidence() {
     this.hasEvidence = () => {
       const hasAnyValue = this.textareaTargets.some(element => element.value !== "")
+      const missingValues = []
+      this.textareaTargets.forEach((element, index) => {
+        if(element.value.length < this.minimumEvidenceLengthValue){
+          missingValues.push(index)
+        }
+      })
       if(this.hasSubmitButtonTarget) {
-        if(hasAnyValue){
+        if(missingValues.length == 0){
           this.submitButtonTarget.removeAttribute('disabled')
         } else {
           this.submitButtonTarget.setAttribute('disabled', '')
@@ -51,7 +80,17 @@ export default class extends ApplicationController {
           this.saveDraftButtonTarget.setAttribute('disabled', '')
         }
       }
-    } 
+      if(this.hasCompletionWarningMessageTarget) {
+        if(missingValues.length > 0) {
+          this.completionWarningMessageTarget.innerHTML = 'You are missing some evidence in section ' + missingValues.map(index => {
+            const sectionNumber = index + 1
+            return `<a class='community-activity-component__section-link' data-action='progress-component#jumpToSection' data-progress-component-target-step-param='${index}'> ${sectionNumber}</a>`
+          }).join(', ')
+        } else {
+          this.completionWarningMessageTarget.innerHTML = ''
+        }
+      }
+    }
 
     this.textareaTargets.forEach(input => {
       input.addEventListener("input", this.hasEvidence)
@@ -61,9 +100,10 @@ export default class extends ApplicationController {
   }
 
   disconnect() {
-    this.textareaTargets.forEach(element => { 
+    this.textareaTargets.forEach(element => {
       element.removeEventListener("input", this.toggleConfirmationEnabled)
       element.removeEventListener("input", this.hasEvidence)
+      element.removeEventListener("input", this.updateCharacterCount)
     })
   }
 
@@ -96,7 +136,14 @@ export default class extends ApplicationController {
     })
   }
 
-  submit() {
+  submit(event) {
+    const achievement = {
+      evidence: this.textareaTargets.map(element => element.value),
+      activity_id: this.activityIdValue,
+    }
+    if(event.params.slug) {
+      achievement['submission_option'] = event.params.slug
+    }
     fetch(this.achievementsSubmitPathValue, {
       method: 'POST',
       headers: {
@@ -104,13 +151,13 @@ export default class extends ApplicationController {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-        achievement: {
-          evidence: this.textareaTargets.map(element => element.value),
-          activity_id: this.activityIdValue
-        }
+        achievement: achievement
       })
     }).then((response) => {
-      location.reload()
+      if(event.params.redirect) {
+        window.open(event.params.redirect, "_blank").focus();
+      }
+      location.reload();
     })
   }
 }

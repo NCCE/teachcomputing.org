@@ -330,13 +330,13 @@ RSpec.describe IBelongMailer, type: :mailer do
 
     describe "when html" do
       it "should render handbook link" do
-        expect(mail.html_part.body).to have_link("View recommended activities in your handbook", href: "https://static.teachcomputing.org/I+Belong+Handbook.pdf")
+        expect(mail.html_part.body).to have_link("View recommended activities in your handbook", href: "https://media.teachcomputing.org/i_belong_secondary_handbook_2f4dfccf30.pdf")
       end
     end
 
     describe "when text" do
       it "should render action plan link" do
-        expect(mail.text_part.body).to include("View recommended activities in you handbook (https://static.teachcomputing.org/I+Belong+Handbook.pdf)")
+        expect(mail.text_part.body).to include("View recommended activities in you handbook (https://media.teachcomputing.org/i_belong_secondary_handbook_2f4dfccf30.pdf)")
       end
     end
   end

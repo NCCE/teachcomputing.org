@@ -75,6 +75,7 @@ class AchievementsController < ApplicationController
   end
 
   def achievement_params
-    params.require(:achievement).permit(:activity_id, :supporting_evidence, evidence: [])
+    params.require(:achievement).permit(:activity_id, :supporting_evidence,
+      :submission_option, evidence: [])
   end
 end

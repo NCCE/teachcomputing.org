@@ -1,14 +1,15 @@
 module Cms
   module Models
     class ContentBlock
-      attr_accessor :blocks
+      attr_accessor :blocks, :with_wrapper
 
-      def initialize(blocks:)
+      def initialize(blocks:, with_wrapper: false)
         @blocks = blocks
+        @with_wrapper = with_wrapper
       end
 
       def render
-        CmsRichTextBlockComponent.new(blocks:)
+        CmsRichTextBlockComponent.new(blocks:, with_wrapper:)
       end
     end
   end

@@ -13,9 +13,11 @@ module Certificates
       assign_achievements
       @professional_development_groups = @programme.programme_activity_groupings.not_community.includes(programme_activities: :activity).order(:sort_key)
       set_cpd_courses
+      @cpd_group = @professional_development_groups.first
+      @cpd_completed = @professional_development_groups.first.user_complete?(current_user)
       @community_groups = @programme.programme_activity_groupings.community.order(:sort_key).includes(programme_activities: :activity)
-      @badge_tracking_event_category = "I belong enrolled"
-      @badge_tracking_event_label = "I belong badge"
+
+      @completed_comm_groups, @incomplete_comm_groups = @community_groups.partition { _1.user_complete?(current_user) }
       assign_issued_badge_data
 
       render :show
@@ -45,7 +47,11 @@ module Certificates
     def assign_issued_badge_data
       return unless @programme.badges.any?
 
-      @issued_badge = Credly::Badge.by_programme_badge_template_ids(current_user.id, @programme.badges.pluck(:credly_badge_template_id))
+      begin
+        @issued_badge = Credly::Badge.by_programme_badge_template_ids(current_user.id, @programme.badges.pluck(:credly_badge_template_id))
+      rescue Credly::Error
+        @issued_badge = nil
+      end
     end
 
     def enrolment
@@ -96,7 +102,7 @@ module Certificates
 
       @cpd_courses =
         if completed_courses.empty?
-          not_completed_courses.first(1)
+          not_completed_courses.first(2)
         else
           completed_courses
         end

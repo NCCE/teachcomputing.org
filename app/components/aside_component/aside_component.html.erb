@@ -5,8 +5,7 @@
         @image[:url],
         class: 'ncce-link',
         role: 'button',
-        draggable: 'false',
-        data: tracking_data(@image[:tracking_label])
+        draggable: 'false'
       %>
     </div>
   <% end %>
@@ -23,6 +22,10 @@
     <%= content_tag :p, class: ['govuk-body-s', 'aside-component__text', { 'govuk-!-margin-top-3': @title.blank? }] do %>
       <%= @text %>
     <% end %>
+  <% elsif @cms_content %>
+    <div class="aside-component__cms-content">
+      <%= render @cms_content.render %>
+    </div>
   <% elsif body? %>
     <%= body %>
   <% end %>
@@ -32,8 +35,7 @@
         @link[:url],
         class: @link[:class] || (@use_button ? 'govuk-button button button--aside' : 'ncce-link'),
         role: 'button',
-        draggable: 'false',
-        data: tracking_data(@link[:tracking_label])
+        draggable: 'false'
       %>
     </p>
   <% end %>

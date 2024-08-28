@@ -425,4 +425,12 @@ RSpec.describe Programme, type: :model do
       expect(programme.auto_enrollment_ignored_activity_codes).to eq []
     end
   end
+
+  describe "#minimum_character_required_community_evidence" do
+    it "should default to zero" do
+      programme = create(:programme)
+
+      expect(programme.minimum_character_required_community_evidence).to eq(0)
+    end
+  end
 end

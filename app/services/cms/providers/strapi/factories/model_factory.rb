@@ -16,6 +16,13 @@ module Cms
               to_content_block(strapi_data)
             elsif model_class == Cms::Models::SimpleTitle
               model_class.new(title: strapi_data)
+            elsif model_class == Models::Aside
+              model_class.new(
+                title: strapi_data[:title],
+                content: strapi_data[:content],
+                files: strapi_data.dig(:files, :data) ? strapi_data[:files][:data]&.map { to_file(_1[:attributes]) } : nil,
+                dynamic_content: Models::DynamicZone.new(strapi_data[:content].map { ComponentFactory.process_component(_1) }.compact)
+              )
             elsif model_class == Cms::Models::BlogPreview
               model_class.new(
                 title: strapi_data[:title],
@@ -33,12 +40,21 @@ module Cms
             end
           end
 
+          def self.to_file(data)
+            Models::File.new(
+              url: data[:url],
+              filename: data[:name],
+              size: data[:size],
+              updated_at: DateTime.parse(data[:updatedAt])
+            )
+          end
+
           def self.to_content_block(data)
             data.map! do |block|
               block[:image] = to_image(block[:image]) if block[:type] == "image"
               block
             end
-            Cms::Models::ContentBlock.new(blocks: data)
+            Cms::Models::ContentBlock.new(blocks: data, with_wrapper: true)
           end
 
           def self.to_featured_image(image_data, size = :large)

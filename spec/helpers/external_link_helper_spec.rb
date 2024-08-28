@@ -2,7 +2,8 @@ require "rails_helper"
 
 RSpec.describe ExternalLinkHelper do
   %i[
-    i_belong_handbook_url
+    i_belong_primary_handbook_url
+    i_belong_secondary_handbook_url
     i_belong_info_pack_url
     primary_mooncamp_webinar_url
     secondary_mooncamp_webinar_url
@@ -38,6 +39,9 @@ RSpec.describe ExternalLinkHelper do
     school_trusts_form_url
     hubs_local_support_form_url
     i_belong_student_survey_url
+    social_media_card_templates_url
+    gender_insights_in_computing_url
+    ncce_student_events_url
   ].each do |external_link_method|
     describe "##{external_link_method}" do
       it "should return a string" do

@@ -40,7 +40,7 @@ class Activity < ApplicationRecord
   scope :system, -> { where(provider: "system") }
   scope :user_removable, -> { self_certifiable.non_action }
 
-  store_accessor :public_copy, %i[title_url description evidence], prefix: true
+  store_accessor :public_copy, %i[title_url description evidence additional_icons submission_options], prefix: true
 
   def self.cs_accelerator_diagnostic_tool
     Activity.find_or_create_by(slug: "subject-knowledge-diagnostic-tool") do |activity|
@@ -68,5 +68,9 @@ class Activity < ApplicationRecord
 
   def active_course?
     stem_activity_code.present? && retired == false
+  end
+
+  def evidence_not_required?
+    self_verification_info.blank? && public_copy_evidence.blank?
   end
 end

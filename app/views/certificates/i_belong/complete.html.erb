@@ -20,7 +20,7 @@
     <div class="govuk-grid-row">
       <div class="govuk-grid-column-two-thirds">
         <p class="govuk-body-l">Your certificate is ready!</p>
-        <p class="govuk-body">Thank you for participating in the I Belong programme. You’ve reached an important milestone in improving girls’ uptake of computer science.</p>
+        <p class="govuk-body">Thank you for participating in the I Belong programme! You’ve reached an important milestone in inspiring more girls to choose computer science studies and qualifications.</p>
         <% if current_user.user_programme_enrolments.find_by(programme: Programme.i_belong).certificate_name.present? %>
           <p class="govuk-body">
             <%= link_to 'Download your certificate', certificate_i_belong_path, class: 'govuk-button button', role: 'button', draggable: 'false', data: { turbolinks: false } %>
@@ -48,10 +48,16 @@
 
         <p class="govuk-body-l">Next steps for you</p>
         <p class="govuk-body">
-          This is just the start of your journey! Now you’ve started implementing strategies to support girls into computer science at key stage 4 and beyond, it’s important to continue doing so, embedding and evaluating as you go along. Evidence your great work through the
-          <%= link_to 'Computing Quality Framework.', 'https://computingqualityframework.org/' %>
+          This is just the start of your journey!
         </p>
-        <p class="govuk-body">Help to widen impact through your network by sharing your knowledge and practice. If you haven’t already, don’t forget to claim your I Belong champion digital badge and check the <%= link_to 'information pack', 'https://static.teachcomputing.org/IBelong_InfoPack.pdf' %> for ideas and support on how you can do this.</p>
+        <p class="govuk-body">
+          Now you’ve started implementing strategies to support girls into computer science from primary, during the transition, in secondary and beyond, it’s important to continue doing so, embedding and evaluation as you go along. Evidence your great work through the
+          <%= link_to 'Computing Quality Framework.', computing_quality_framework_url %>
+        </p>
+        <p class="govuk-body">
+          Help to widen impact through your network by sharing your knowledge and practice – you can check out the I Belong Champion <%= link_to 'information pack', i_belong_info_pack_url %> for ideas and support on how you can do this.
+          If you haven’t already, remember to claim your I Belong Champion digital badge and use <%= link_to "our social media card templates", social_media_card_templates_url %> to showcase your great work!
+        </p>
         <p class="govuk-body">You can continue to access programme resources and opportunities. Keep an eye on our website and social media for future updates.</p>
       </div>
       <div class="govuk-grid-column-one-third">
@@ -61,15 +67,15 @@
           <p class="govuk-body ncce-aside__text">Follow us on
             <a href="https://twitter.com/WeAreComputing?ref_src=twsrc%5Etfw"
               class="ncce-link" data-related="WeAreComputing" data-lang="en"
-              data-show-count="false" data-dnt="true" target="_blank">Twitter</a>, <a href="https://www.facebook.com/WeAreComputing/"
+              data-show-count="false" data-dnt="true" target="_blank">X</a>, <a href="https://www.facebook.com/WeAreComputing/"
               class="ncce-link" data-related="WeAreComputing" data-lang="en"
-              data-dnt="true" target="_blank">Facebook</a> or <a href="https://www.linkedin.com/company/national-centre-for-computing-education"
-              class="ncce-link" data-related="WeAreComputing" data-lang="en" data-dnt="true" target="_blank">LinkedIn</a>
+              data-dnt="true" target="_blank" rel="noopener">Facebook</a> or <a href="https://www.linkedin.com/company/national-centre-for-computing-education"
+              class="ncce-link" data-related="WeAreComputing" data-lang="en" data-dnt="true" target="_blank" rel="noopener">LinkedIn</a>
            and tag us when sharing your achievement</p>
            <p class="govuk-body govuk-!-margin-bottom-2">
             <a href="https://twitter.com/intent/tweet?text=<%=CGI.escape "I have completed the I Belong programme from @WeAreComputing. Find out more #{about_i_belong_url}"%>"
               class="govuk-link ncce-link complete__social complete__social--twitter" data-size="large"
-              data-related="WeAreComputing" data-lang="en" data-dnt="true">Share on Twitter</a>
+              data-related="WeAreComputing" data-lang="en" data-dnt="true">Share on X</a>
             <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
           </p>
 					<p class="govuk-body govuk-!-margin-bottom-2"><a href="https://www.facebook.com/sharer/sharer.php?u=<%=CGI.escape about_i_belong_url %>" target="_blank" class="govuk-link ncce-link complete__social complete__social--facebook">Share on Facebook</a></p>

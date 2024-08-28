@@ -6,6 +6,7 @@
   data-community-activity-component-achievements-submit-path-value="<%= submit_achievements_path %>"
   data-community-activity-component-achievement-id-value="<%= @achievement&.id %>"
   data-community-activity-component-activity-id-value="<%= @activity.id %>"
+  data-community-activity-component-minimum-evidence-length-value="<%= minimum_character_requirement %>"
 >
   <% if achievement_rejected? %>
     <div class="community-activity-component__rejected">
@@ -18,14 +19,14 @@
 
   <div class="community-activity-component__content">
 
-    <span class="community-activity-component__objective">
-      <span class="community-activity-component__objective-text">
+    <div class="community-activity-component__objective">
+      <div class="community-activity-component__objective-text">
         <span><%= @activity.title %></span>
-      </span>
+      </div>
       <% if achievement_complete? %>
-        <span class="community_activity_component__completed_badge_container" >
-          <span class='community-activity-component__completed-badge'><%= t('.complete') %></span>
-        </span>
+        <div class="community_activity_component__completed_badge_container" >
+          <div class='community-activity-component__completed-badge'><%= t('.complete') %></div>
+        </div>
       <% elsif @activity.coming_soon? %>
         <%= button_to t('.coming_soon'),
           '#',
@@ -35,12 +36,38 @@
       <% elsif @activity.booking_programme_slug.present? %>
         <%= link_to t('.book_button_text'),
           courses_path(certificate: @activity.booking_programme_slug),
-          class: 'govuk-button button community-activity-component__objective-button',
-          data: tracking_data('Book a course')
+          class: 'govuk-button button community-activity-component__objective-button'
         %>
-      <% elsif @activity.self_verification_info.blank? %>
+      <% elsif @activity.evidence_not_required? %>
         <div class="community-activity-component__objective-button-container">
-          <button class="govuk-button button" data-action="click->community-activity-component#submit">Mark complete</button>
+          <% if @activity.public_copy_submission_options.present? %>
+            <% @activity.public_copy_submission_options.each do |option| %>
+              <% if check_submission_option(option["slug"]) %>
+                <div class="community_activity_component__completed_badge_container">
+                  <div class='community-activity-component__completed-badge'><%= t('.complete') %></div>
+                </div>
+                <% if option["redownload"] %>
+                  <a href="<%= option["redirect"] %>" rel="noopener"
+                    class="govuk-body-s" target="_blank">Re-download <%= option["title"].downcase %></a>
+                <% end %>
+              <% else %>
+                <% if @achievement&.complete? %>
+                  <a href="<%= option["redirect"] %>" rel="noopener"
+                    class="govuk-button button <%= @button_class %>" target="_blank"><%= option["title"] %></a>
+                <% else %>
+                  <button class="govuk-button button <%= @button_class %>"
+                    data-action="click->community-activity-component#submit"
+                    data-community-activity-component-slug-param="<%= option["slug"] %>"
+                    data-community-activity-component-redirect-param="<%= option["redirect"] %>"
+                    >
+                      <%= option["title"] %>
+                  </button>
+                <% end %>
+              <% end %>
+            <% end %>
+          <% else %>
+            <button class="govuk-button button" data-action="click->community-activity-component#submit">Mark complete</button>
+          <% end %>
         </div>
       <% else %>
           <div class="community-activity-component__objective-button-container">
@@ -50,7 +77,7 @@
                 reopen_button_text: reopen_button_text,
                 show_corner_decoration: false,
                 class_name: 'community-activity-component--modal',
-                reopen_button_class: achievement_rejected? ? 'ncce-button--white_black_border green-chevron' : nil
+                reopen_button_class: achievement_rejected? ? 'ncce-button--white_black_border green-chevron' : "#{@button_class} ncce-button-chevron"
               ) do |component| %>
                 <%= component.with_confirmation do %>
                   <%= render ModalComponent.new(
@@ -96,17 +123,26 @@
                               <% end %>
                             </ul>
                           <% end %>
-                          <textarea class="govuk-textarea" placeholder="Please provide us with evidence of the activity you delivered." data-community-activity-component-target="textarea"><%= @achievement&.evidence&.[](index) %></textarea>
                         </p>
+                        <textarea class="govuk-textarea govuk-!-margin-bottom-2" placeholder="Please provide us with evidence of the activity you delivered." data-community-activity-component-target="textarea"><%= @achievement&.evidence&.[](index) %></textarea>
+                        <div class="community-activity-component__completion-count govuk-!-margin-bottom-1">
+                          <span class="govuk-body-s" data-community-activity-component-target="characterCountMessage"></span>
+                        </div>
                       <% end %>
+                    <% end %>
+
+                    <%= progress.with_warning_step do %>
+                      <div class="comminity-activity-component__warning-text">
+                        <span class="govuk-body-m" data-community-activity-component-target="completionWarningMessage"></span>
+                      </div>
                     <% end %>
 
                     <div class="community-activity-component__footer-actions">
                       <%= progress.with_back do %>
-                        Back
+                        Previous
                       <% end %>
                       <%= progress.with_continue do %>
-                        Continue
+                        Next
                       <% end %>
                       <%= render ModalComponent.new(
                         title: "Are you sure you want to submit this evidence?",
@@ -117,7 +153,7 @@
                         <%= modal.with_reopen_button do %>
                           <%= progress.with_submit do %>
                             <div class="progress-component__submit-button-wrapper">
-                              <button class="govuk-button button save-draft button--inverted govuk-!-margin-bottom-0" data-action="click->community-activity-component#saveAsDraft" data-community-activity-component-target="saveDraftButton">Save as draft</button>
+                              <button class="govuk-button button save-draft button--inverted govuk-!-margin-bottom-0" data-action="click->community-activity-component#saveAsDraft" data-community-activity-component-target="saveDraftButton">Save draft</button>
                               <button class="govuk-button button ncce-modal--reopen govuk-!-margin-bottom-0" data-community-activity-component-target="submitButton" data-action="modal#toggle">Submit</button>
                             </div>
                           <% end %>
@@ -142,9 +178,9 @@
             <% end %>
           </div>
       <% end %>
-    </span>
+    </div>
     <% if @activity.description.present? %>
-      <div class="community-activity-component__description light-blue-bg"><%= @activity.description.html_safe %></div>
+      <div class="community-activity-component__description"><%= @activity.description.html_safe %></div>
     <% end %>
   </div>
 

@@ -5,40 +5,6 @@
 <div class="ncce-programmes-activity">
   <%= render ProgressBarComponent.new(current_user, @programme, title: t('.progress.title'), body: t('.progress.body'), steps_to_accreditation: false) %>
   <div class="govuk-width-container">
-    <div class="govuk-main-wrapper">
-      <div class="govuk-grid-row">
-        <div class="govuk-grid-column-full ncce-section govuk-!-margin-top-0">
-          <p class="govuk-body-m">
-            <%= t('.introduction.html', get_in_touch: link_to('get in touch', 'mailto:info@teachcomputing.org'), handbook: link_to('handbook', i_belong_handbook_url)) %>
-          </p>
-        </div>
-        <div class="govuk-grid-column-two-thirds">
-          <%= render 'achievement_list' %>
-        </div>
-        <div class="govuk-grid-column-one-third">
-          <%= render AsideComponent.new(
-            title: 'Support on submitting evidence'
-          ) do |component| %>
-            <% component.with_body do %>
-              <p class="govuk-body-s icon-resources">
-                <%= link_to 'Structuring your I Belong evidence', structuring_your_i_belong_evidence_url, class: 'govuk-link ncce-link' %>
-                (PDF, 85KB) Updated: 14 Feb 2024
-              </p>
-            <% end %>
-          <% end %>
-          <%= render AsideComponent.new(
-            title: t('.support_aside.title'),
-            class_name: 'help-aside',
-            text: t('.support_aside.text.html',
-              hub_link: link_to(t('.support_aside.hub_link_text'), '/hubs', class: 'ncce-link', data: tracking_data('Contact Hub')),
-              email_link: mail_to('info@teachcomputing.org', 'info@teachcomputing.org', class: 'ncce-link', data: tracking_data('Email'))
-            ))
-          %>
-          <div class="ncce-aside--borderless">
-            <%= render FeedbackComponent.new(heading: t('.feedback_text'), area: :secondary_certificate) %>
-          </div>
-        </div>
-      </div>
-    </div>
+      <%= render 'achievement_list' %>
   </div>
 </div>

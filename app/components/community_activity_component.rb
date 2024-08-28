@@ -3,17 +3,18 @@
 class CommunityActivityComponent < ViewComponent::Base
   include ViewComponent::Translatable
 
-  def initialize(activity:, achievement: nil, class_name: nil, tracking_category: nil)
+  def initialize(activity:, achievement: nil, class_name: nil, button_class: nil)
     @activity = activity
     @achievement = achievement
     @class_name = class_name
-    @tracking_category = tracking_category
+    @button_class = button_class
   end
 
   def achievement_complete?
     return unless @achievement
 
-    @achievement.in_state? :complete
+    return false if @activity.public_copy_submission_options
+    @achievement.in_state?(:complete)
   end
 
   def achievement_rejected?
@@ -27,13 +28,17 @@ class CommunityActivityComponent < ViewComponent::Base
     @achievement&.evidence.present? ? "Continue editing" : "Submit evidence"
   end
 
-  def tracking_data(label)
-    return nil unless @tracking_category.present? && label.present?
+  def check_submission_option slug
+    return false unless @achievement
 
-    {
-      event_action: "click",
-      event_category: @tracking_category,
-      event_label: label
-    }
+    return @achievement.submission_option == slug unless @achievement.submission_option.blank?
+    default_option = @activity.public_copy_submission_options.find { _1["default"] }
+
+    return default_option["slug"] == slug if default_option
+    false
+  end
+
+  def minimum_character_requirement
+    @activity.programmes.collect(&:minimum_character_required_community_evidence).max
   end
 end

@@ -3,8 +3,12 @@ module ExternalLinkHelper
     "https://static.teachcomputing.org/NCCE-Impact-report-2022.pdf"
   end
 
-  def i_belong_handbook_url
-    "https://static.teachcomputing.org/I+Belong+Handbook.pdf"
+  def i_belong_primary_handbook_url
+    "https://media.teachcomputing.org/i_belong_primary_handbook_cd22a59080.pdf"
+  end
+
+  def i_belong_secondary_handbook_url
+    "https://media.teachcomputing.org/i_belong_secondary_handbook_2f4dfccf30.pdf"
   end
 
   def i_belong_info_pack_url
@@ -116,7 +120,7 @@ module ExternalLinkHelper
   end
 
   def structuring_your_i_belong_evidence_url
-    "https://static.teachcomputing.org/Completing.your.I.Belong.evidence.Feb.2024.pdf"
+    "https://media.teachcomputing.org/Structuring_your_I_Belong_evidence_7f7a83c21e.pdf"
   end
 
   def gcse_and_ks3_handbook_url
@@ -149,5 +153,17 @@ module ExternalLinkHelper
 
   def i_belong_student_survey_url
     "https://ncce.io/student-survey"
+  end
+
+  def social_media_card_templates_url
+    "https://www.canva.com/design/DAGH7H5evKc/2l2uqE0otmkLBifYz4i4Gg/view?utm_content=DAGH7H5evKc&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink&mode=preview"
+  end
+
+  def gender_insights_in_computing_url
+    "https://static.teachcomputing.org/Gender_Insights_in_Computing_Education_Foundational_Evidence_Review.pdf"
+  end
+
+  def ncce_student_events_url
+    "https://www.eventbrite.co.uk/cc/ncce-student-events-3315729"
   end
 end

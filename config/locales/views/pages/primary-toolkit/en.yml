@@ -11,19 +11,23 @@ en:
           lead:
             title: "Lead computing with confidence"
             description: "Build your own confidence and subject knowledge with the Teach primary computing certificate. Our nationally recognised certificate will support you in demonstrating your commitment to developing your own practice and supporting colleagues to teach computing effectively."
-            button: 
+            button:
               title: "Teacher certificate"
               event-label: "teacher certificate"
           improve:
             title: "Improve your school’s computing provision"
             description: "Self-evaluation is the first step to improvement. The Computing Quality Framework helps you identify strengths and weaknesses in your computing curriculum and set actionable goals towards achieving our accredited Computing Quality Mark."
-            button: 
+            button:
               title: "Computing Quality Framework"
               event-label: "CQF"
       courses:
         title: "Courses to advance your knowledge and skills"
         intro:
           html: "Start your journey as a computing leader by building your own subject knowledge, then progressing to support your staff and leading change across your school. Our courses will help you to better understand the needs of SEND pupils, improve your pedagogy and support you in teaching programming at primary.<br /><br />Eligible state-funded primary schools in England can also %{subsidies_link} to help with supply cover."
+      i_belong_banner:
+        title: "I Belong: encouraging girls into computer science"
+        content:
+          html: "Why do boys choose computing and girls don't? With I Belong we aim to support more girls into computer science qualifications and careers by providing teachers with the tools to guide and inspire them.<br/><br/>Beginning with our ‘Empowering girls in key stage 2 computing’ short course, understand how to retain girls’ interest in the subject, encouraging them to continue studying it at secondary and beyond, and overcome barriers to their participation."
       resources:
         title: "Resources to help you teach primary computing"
         safety:

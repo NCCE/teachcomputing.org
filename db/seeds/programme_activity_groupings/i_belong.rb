@@ -5,31 +5,34 @@ puts "Creating Programme Activity Groupings"
 ## The numbering of the groupings starts at 2 for historical reasons: group_one with sort_key 1 existed when users were required
 ## to complete 2 courses, one from each of groups 1 and 2.
 
-i_belong.programme_activity_groupings.find_or_initialize_by(title: "all courses").tap do |group|
+i_belong.programme_activity_groupings.find_or_initialize_by(sort_key: 2).tap do |group|
   group.sort_key = 2
   group.required_for_completion = 1
   group.programme_id = i_belong.id
-  group.progress_bar_title = "<strong>Understand</strong> factors affecting girl's participation"
-
+  group.progress_bar_title = "<strong>Complete</strong> a recommended course"
+  group.title = "Complete a course to understand the factors of girls’ participation in computer science"
   group.save!
 
   activities = [
-    "encouraging-girls-into-gcse-computer-science-remote-short-course",
-    "supporting-the-i-belong-programme"
+    {slug: "empowering-girls-in-key-stage-2-computing", legacy: false},
+    {slug: "encouraging-girls-into-gcse-computer-science-remote-short-course", legacy: false},
+    # LEGACY
+    {slug: "supporting-the-i-belong-programme", legacy: true}
   ]
 
   activities.each_with_index do |activity, index|
-    maybe_attach_activity_to_grouping(group, activity, index + 1)
+    maybe_attach_activity_to_grouping(group, activity[:slug], index + 1, legacy: activity[:legacy])
   end
 end.save!
 
 i_belong.programme_activity_groupings.find_or_initialize_by(sort_key: 3).tap do |group|
-  group.title = "<strong>Access</strong> and <strong>complete all</strong> of the following activities"
+  group.title = "Access these resources to support you"
   group.sort_key = 3
   group.required_for_completion = 2
   group.programme_id = i_belong.id
   group.progress_bar_title = "<strong>Access</strong> resources to support you"
   group.community = true
+  group.web_copy_aside_slug = "i-belong-dashboard-resources"
 
   group.save!
 
@@ -44,12 +47,14 @@ i_belong.programme_activity_groupings.find_or_initialize_by(sort_key: 3).tap do 
 end.save!
 
 i_belong.programme_activity_groupings.find_or_initialize_by(sort_key: 4).tap do |group|
-  group.title = "<strong>Increase</strong> girls' engagement"
+  group.title = "Increase girls' engagement by completing activities"
+  group.web_copy_subtitle = "Complete at least one"
   group.sort_key = 4
   group.required_for_completion = 1
   group.programme_id = i_belong.id
-  group.progress_bar_title = "<strong>Increase</strong> girls’ engagement by completing at least one activity"
+  group.progress_bar_title = "<strong>Increase</strong> girls’ engagement by completing activities"
   group.community = true
+  group.web_copy_aside_slug = "i-belong-dashboard-increase-engagement"
 
   group.save!
 

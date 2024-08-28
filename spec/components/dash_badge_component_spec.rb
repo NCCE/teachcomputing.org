@@ -4,7 +4,7 @@ RSpec.describe DashBadgeComponent, type: :component do
   let(:user) { create(:user, email: "web@teachcomputing.org") }
   let(:badge) { create(:badge, :active, credly_badge_template_id: "00cd7d3b-baca-442b-bce5-f20666ed591b") }
   let(:awarded_badge) { Credly::Badge.by_programme_badge_template_ids(user.id, badge.programme.badges.pluck(:credly_badge_template_id)) }
-  let(:dash_badge_component) { described_class.new(badge: awarded_badge, tracking_event_category: "category", tracking_event_label: "label") }
+  let(:dash_badge_component) { described_class.new(badge: awarded_badge, tracking_event_category: "category", tracking_event_label: "label", class_name: "test-class") }
   let(:fixed_width_dash_badge_component) { described_class.new(badge: awarded_badge, fixed_width: true, tracking_event_category: "category", tracking_event_label: "label") }
 
   before do
@@ -29,6 +29,10 @@ RSpec.describe DashBadgeComponent, type: :component do
 
     it "the badges image" do
       expect(page).to have_css(".dash-badge-component__badge")
+    end
+
+    it "adds custom class" do
+      expect(page).to have_css(".test-class")
     end
 
     it "a link to the badge" do

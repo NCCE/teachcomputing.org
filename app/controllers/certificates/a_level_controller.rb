@@ -37,7 +37,11 @@ module Certificates
     def assign_issued_badge_data
       return unless @programme.badges.any?
 
-      @issued_badge = Credly::Badge.by_programme_badge_template_ids(current_user.id, @programme.badges.pluck(:credly_badge_template_id))
+      begin
+        @issued_badge = Credly::Badge.by_programme_badge_template_ids(current_user.id, @programme.badges.pluck(:credly_badge_template_id))
+      rescue Credly::Error
+        @issued_badge = nil
+      end
     end
 
     def enrolment
