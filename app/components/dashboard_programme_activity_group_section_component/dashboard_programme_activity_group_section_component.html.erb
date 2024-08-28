@@ -1,6 +1,6 @@
 <%= render GovGridRowComponent.new do |row_component| %>
   <%= row_component.with_column("two-thirds") do %>
-    <div class="dashboard-programme-activity-group-section">
+    <div class="dashboard-programme-activity-group-section" id="<%= @anchor_id %>">
       <% if @title %>
         <div class="dashboard-programme-activity-group-section__title">
           <% if @completed %>

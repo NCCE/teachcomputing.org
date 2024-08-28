@@ -44,7 +44,7 @@ module Programmes
     end
 
     def auto_enrollment_ignored_activity_codes
-      ["FD022"]
+      ["FD022", "CP409"]
     end
 
     def minimum_character_required_community_evidence
