@@ -755,10 +755,23 @@ Activity.find_or_initialize_by(slug: "become-an-i-belong-champion").tap do |acti
   activity.category = "community"
   activity.provider = "stem-learning"
   activity.self_certifiable = true
-  activity.description = "Lead your school, and others, in creating the right conditions for more girls to succeed in Computer Science. Complete the <a href='https://teachcomputing.org/courses/CP440/encouraging-girls-into-gcse-computer-science-remote-short-course'>Empowering girls in key stage 2 computing</a> course, learn about the whole programme and claim your digital badge to become a Champion... then encourage more people to join the mission!"
+  activity.description = "Lead your school, and others, in creating the right conditions for more girls to succeed in Computer Science. Complete the <a href='https://teachcomputing.org/courses/CP440/encouraging-girls-into-gcse-computer-science-remote-short-course'>‘Encouraging girls into GCSE computer science’</a> course, learn about the whole programme and claim your digital badge to become a Champion... then encourage more people to join the mission!"
   activity.public_copy_description = "Lead your school, and others, in creating the right conditions for more girls to succeed in Computer Science. Complete the ‘Encouraging girls into GCSE computer science’ course, learn about the whole programme and claim your digital badge to become a Champion... then encourage more people to join the mission!"
   activity.public_copy_title_url = "https://teachcomputing.org/i-belong"
-  activity.self_verification_info = " Tell us how you have supported colleagues in your school to become aware of the I Belong programme for KS2."
+  activity.self_verification_info = "Please provide us with evidence of completion"
+end.save!
+
+Activity.find_or_initialize_by(slug: "become-an-i-belong-champion-primary").tap do |activity|
+  activity.title = "Become an I Belong Champion"
+  activity.credit = 10
+  activity.slug = "become-an-i-belong-champion-primary"
+  activity.category = "community"
+  activity.provider = "stem-learning"
+  activity.self_certifiable = true
+  activity.description = "Lead your school, and others, in creating the right conditions for more girls to succeed in computing. Complete the <a href='https://teachcomputing.org/courses/CP409/empowering-girls-in-key-stage-2-computing'>Empowering girls in key stage 2 computing</a> course, learn about the whole programme and claim your digital badge to become a Champion... then encourage more people to join the mission!"
+  activity.public_copy_description = "Lead your school, and others, in creating the right conditions for more girls to succeed in computing. Complete the <a href='https://teachcomputing.org/courses/CP409/empowering-girls-in-key-stage-2-computing'>Empowering girls in key stage 2 computing</a> course, learn about the whole programme and claim your digital badge to become a Champion... then encourage more people to join the mission!"
+  activity.public_copy_title_url = "https://teachcomputing.org/i-belong"
+  activity.self_verification_info = "Tell us how you have supported colleagues in your school to become aware of the I Belong programme for KS2."
 end.save!
 
 Activity.find_or_initialize_by(slug: "complete-the-i-belong-programme-as-a-school").tap do |activity|
@@ -768,8 +781,21 @@ Activity.find_or_initialize_by(slug: "complete-the-i-belong-programme-as-a-schoo
   activity.category = "community"
   activity.provider = "stem-learning"
   activity.self_certifiable = true
-  activity.description = "Once you’ve completed the short, remote course <a href='https://teachcomputing.org/courses/CP440/encouraging-girls-into-gcse-computer-science-remote-short-course'>‘Encouraging girls into GCSE computer science’</a> you’ll be ready to bring enrichment activities, role models and inclusive teaching practices to your school. The I Belong <a href='#{i_belong_handbook_url}'>handbook</a> contains everything you need to know to reach this goal."
+  activity.description = "Once you’ve completed the short, remote courses <a href='https://teachcomputing.org/courses/CP440/encouraging-girls-into-gcse-computer-science-remote-short-course'>‘Encouraging girls into GCSE computer science’</a> you’ll be ready to bring enrichment activities, role models and inclusive teaching practices to your school. The I Belong handbook contains everything you need to know to reach this goal."
   activity.public_copy_description = "Once you’ve completed the short, remote courses ‘Encouraging girls into GCSE computer science’ you’ll be ready to bring enrichment activities, role models and inclusive teaching practices to your school. The I Belong handbook contains everything you need to know to reach this goal."
   activity.public_copy_title_url = "https://teachcomputing.org/i-belong"
-  activity.self_verification_info = "Add information about positive impacts that you have observed since completing the programme, such as an increased interest in GCSE Computer Science, positive interactions with parents, or a wider diversity in club attendance."
+  activity.self_verification_info = "Please provide us with evidence of completion"
+end.save!
+
+Activity.find_or_initialize_by(slug: "complete-the-i-belong-programme-as-a-school-primary").tap do |activity|
+  activity.title = "Complete the I Belong Programme as a school"
+  activity.credit = 10
+  activity.slug = "complete-the-i-belong-programme-as-a-school-primary"
+  activity.category = "community"
+  activity.provider = "stem-learning"
+  activity.self_certifiable = true
+  activity.description = "Once you’ve completed the short, remote course <a href='https://teachcomputing.org/courses/CP409/encouraging-girls-into-gcse-computer-science-remote-short-course'>‘Empowering girls in key stage 2 computing’</a> you’ll be ready to bring enrichment activities, role models and inclusive teaching practices to your school. The I Belong <a href='https://media.teachcomputing.org/i_belong_primary_handbook_cd22a59080.pdf'>handbook</a> contains everything you need to know to reach this goal."
+  activity.public_copy_description = "Once you’ve completed the short, remote course <a href='https://teachcomputing.org/courses/CP409/encouraging-girls-into-gcse-computer-science-remote-short-course'>‘Empowering girls in key stage 2 computing’</a> you’ll be ready to bring enrichment activities, role models and inclusive teaching practices to your school. The I Belong <a href='https://media.teachcomputing.org/i_belong_primary_handbook_cd22a59080.pdf'>handbook</a> contains everything you need to know to reach this goal."
+  activity.public_copy_title_url = "https://teachcomputing.org/i-belong"
+  activity.self_verification_info = "Add information about positive impacts that you have observed since completing the programme, such as an increased interest in computing activities, positive interactions with parents, or a wider diversity in club attendance."
 end.save!
