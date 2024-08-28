@@ -76,7 +76,7 @@ programme.enrichment_groupings.find_or_initialize_by(title: "Spring term").becom
     e.title_url = "https://www.appsforgood.org/showcase"
     e.image_url = "https://static.teachcomputing.org/enrichment/apps_for_good.png"
     e.body = "Design and code an app to solve a real world problem. Your students’ idea can then be submitted to a diverse range of industry experts to celebrate UK’s young people's tech innovation skills."
-    e.order = 1
+    e.order = 4
   end.save!
 end.save!
 
@@ -103,7 +103,7 @@ programme.enrichment_groupings.find_or_initialize_by(title: "Summer term").becom
     e.title_url = "https://education.theiet.org/first-lego-league-programmes/"
     e.image_url = "https://static.teachcomputing.org/enrichment/first_lego_league_iet.png"
     e.body = "Learn more about a global challenge for teams of young people to work together to explore a given topic and to design, build and program an autonomous LEGO® robot to solve a series of missions."
-    e.order = 3
+    e.order = 2
   end.save!
 end.save!
 
@@ -145,6 +145,6 @@ programme.enrichment_groupings.find_or_initialize_by(title: "Activities througho
     e.title_url = "https://education.theiet.org/first-lego-league-programmes/"
     e.image_url = "https://static.teachcomputing.org/enrichment/first_lego_leauge.png"
     e.body = "This is a global STEM programme where young people work together to explore a given topic and to design, build and program an autonomous LEGO® robot to solve a series of missions."
-    e.order = 3
+    e.order = 4
   end.save!
 end.save!
