@@ -8,6 +8,7 @@ RSpec.describe CpdCourseListComponent, type: :component do
 
   before do
     stub_course_templates
+    stub_duration_units
   end
 
   context "without seperator" do
