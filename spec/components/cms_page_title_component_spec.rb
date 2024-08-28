@@ -3,13 +3,15 @@
 require "rails_helper"
 
 RSpec.describe CmsPageTitleComponent, type: :component do
-  pending "add some examples to (or delete) #{__FILE__}"
+  before do
+    render_inline(described_class.new(title: "Page title", intro_text: "Intro text for the page"))
+  end
 
-  # it "renders something useful" do
-  #   expect(
-  #     render_inline(described_class.new(attr: "value")) { "Hello, components!" }.css("p").to_html
-  #   ).to include(
-  #     "Hello, components!"
-  #   )
-  # end
+  it "renders the title" do
+    expect(page).to have_text("Page title")
+  end
+
+  it "renders the intro text" do
+    expect(page).to have_text("Intro text for the page")
+  end
 end
