@@ -237,7 +237,9 @@ Rails.application.routes.draw do
 
   # CMS ROUTES
   get "/primary-enrichment", to: "cms#enrichment", defaults: {page_slug: "primary-enrichment"}, as: :primary_enrichment
+  get "/primary-enrichment/refresh", to: "cms#enrichment_refresh", defaults: {page_slug: "primary-enrichment"}, as: :primary_enrichment_reload
   get "/secondary-enrichment", to: "cms#enrichment", defaults: {page_slug: "secondary-certificate"}, as: :secondary_enrichment
+  get "/secondary-enrichment/refresh", to: "cms#enrichment_refresh", defaults: {page_slug: "secondary-enrichment"}, as: :secondary_enrichment_reload
 
   get "/home-teaching-resources" => redirect("/home-teaching")
   get "/home-teaching/:page_slug" => redirect("/home-teaching")
