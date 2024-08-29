@@ -69,6 +69,7 @@ module Cms
           end
 
           def self.to_enrichment(strapi_data)
+            type_data = strapi_data[:type][:data][:attributes]
             Models::Enrichment.new(
               title: strapi_data[:rich_title],
               details: strapi_data[:rich_details],
@@ -76,9 +77,12 @@ module Cms
               featured: strapi_data[:featured],
               i_belong: strapi_data[:i_belong],
               terms: strapi_data.dig(:terms, :data).map { _1[:attributes][:name] },
-              type: strapi_data[:type][:data][:attributes][:name],
               age_groups: strapi_data.dig(:age_groups, :data).map { _1[:attributes][:name] },
-              partner_icon: strapi_data[:partner_icon][:data].nil? ? nil : to_image(strapi_data[:partner_icon][:data][:attributes])
+              partner_icon: strapi_data[:partner_icon][:data].nil? ? nil : to_image(strapi_data[:partner_icon][:data][:attributes]),
+              type: Models::EnrichmentType.new(
+                name: type_data[:name],
+                icon: type_data[:icon][:data].nil? ? nil : to_image(type_data[:icon][:data][:attributes])
+              )
             )
           end
 

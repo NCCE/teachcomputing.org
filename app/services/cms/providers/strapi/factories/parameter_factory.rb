@@ -19,7 +19,7 @@ module Cms
                   partner_icon: {populate: [:alternativeText]},
                   terms: {populate: [:name]},
                   age_groups: {populate: [:name]},
-                  type: {populate: [:name]}
+                  type: {populate: {icon: {populate: [:alternativeText]}}}
                 }
               }
             elsif model_class == Cms::Models::BlogPreview

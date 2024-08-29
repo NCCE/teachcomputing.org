@@ -23,7 +23,8 @@ module Cms
           terms:,
           type:,
           age_groups:,
-          partner_icon:
+          partner_icon:,
+          featured:
         )
       end
     end

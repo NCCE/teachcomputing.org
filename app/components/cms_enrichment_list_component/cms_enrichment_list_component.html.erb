@@ -19,13 +19,16 @@
         <h2 class="govuk-heading-m"><%= @all_title %></h2>
         <div class="enrichment-filters__selects">
           <%= select_tag :term, options_for_select(@terms), prompt: "All terms (all)", class: "govuk-select", data: {
-            cms_enrichment_list_component_target: "termSelect"
+            cms_enrichment_list_component_target: "termSelect",
+            action: "cms-enrichment-list-component#filterChanged"
           } %>
           <%= select_tag :age_group, options_for_select(@age_groups), prompt: "Year Group (all)", class: "govuk-select", data: {
-            cms_enrichment_list_component_target: "ageGroupSelect"
+            cms_enrichment_list_component_target: "ageGroupSelect",
+            action: "cms-enrichment-list-component#filterChanged"
           } %>
           <%= select_tag :type, options_for_select(@types), prompt: "Enrichment Type (all)", class: "govuk-select", data: {
-            cms_enrichment_list_component_target: "typeSelect"
+            cms_enrichment_list_component_target: "typeSelect",
+            action: "cms-enrichment-list-component#filterChanged"
           } %>
         </div>
       </div>

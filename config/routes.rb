@@ -230,7 +230,6 @@ Rails.application.routes.draw do
   get "/supporting-partners", to: redirect("/get-involved")
   get "/terms-conditions", to: "pages#page", as: :terms_conditions, defaults: {page_slug: "terms-conditions"}
 
-
   resource :search, only: :show
 
   get "/certificate/cs-accelerator", to: redirect("/certificate/subject-knowledge")
@@ -244,7 +243,6 @@ Rails.application.routes.draw do
   get "/home-teaching/:page_slug" => redirect("/home-teaching")
   get "/blog/:page_slug/refresh", to: "cms#clear_blog_cache"
   get "/:page_slug/refresh", to: "cms#clear_page_cache"
-
 
   constraints ->(req) { req.format == :html } do
     get "/blog", to: "cms#blog", as: :cms_posts
