@@ -8,6 +8,7 @@ module Cms
         @details = details
         @featured = featured
         @i_belong = i_belong
+        @link = link
         @terms = terms
         @type = type
         @age_groups = age_groups
