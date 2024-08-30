@@ -1,10 +1,13 @@
 # frozen_string_literal: true
 
 class CmsEnrichmentListComponent < ViewComponent::Base
-  def initialize(enrichments:, featured_title:, all_title:)
+  def initialize(enrichments:, featured_title:, all_title:, type_filter_placeholder:, age_group_filter_placeholder:, term_filter_placeholder:)
     @enrichments = enrichments
     @featured_title = featured_title
     @all_title = all_title
+    @type_filter_placeholder = type_filter_placeholder
+    @age_group_filter_placeholder = age_group_filter_placeholder
+    @term_filter_placeholder = term_filter_placeholder
 
     @featured = enrichments.filter(&:featured)
     @age_groups = enrichments.collect(&:age_groups).flatten.uniq

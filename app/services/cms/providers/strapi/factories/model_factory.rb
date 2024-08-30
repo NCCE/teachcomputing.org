@@ -46,9 +46,12 @@ module Cms
               )
             elsif model_class == Cms::Models::EnrichmentList
               model_class.new(
-                enrichments: strapi_data[:data].map { to_enrichment(_1[:attributes]) },
+                enrichments: strapi_data[:data].map { to_enrichment(_1[:attributes]) }.compact,
                 featured_title: all_data[:featuredSectionTitle],
-                all_title: all_data[:allSectionTitle]
+                all_title: all_data[:allSectionTitle],
+                type_filter_placeholder: all_data[:typeFilterPlaceholder],
+                age_group_filter_placeholder: all_data[:ageGroupFilterPlaceholder],
+                term_filter_placeholder: all_data[:termFilterPlaceholder]
               )
             elsif model_class == Cms::Models::SimplePagePreview
               model_class.new(
@@ -69,6 +72,7 @@ module Cms
           end
 
           def self.to_enrichment(strapi_data)
+            return nil if strapi_data[:publishedAt].nil? && Rails.env.production?
             type_data = strapi_data[:type][:data][:attributes]
             Models::Enrichment.new(
               title: strapi_data[:rich_title],

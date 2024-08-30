@@ -1,6 +1,5 @@
-<a href="<%= @link %>" target="_blank" rel="nofollow" class="enrichment-link">
-  <%= content_tag :div, class: wrapper_classes, data: do %>
-
+<%= link_to @link, target: "_blank", rel: "nofollow", class: wrapper_classes, data: do %>
+  <div>
     <div class="enrichment__type">
       <div class="enrichment__type-label">
         <%= @type.name %>
@@ -29,5 +28,5 @@
         <%= cms_image(@partner_icon) %>
       <% end %>
     </div>
-  <% end %>
-</a>
+  </div>
+<% end %>

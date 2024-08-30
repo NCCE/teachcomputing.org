@@ -1,9 +1,4 @@
 
-.enrichment-link {
-  text-decoration: none;
-  color: inherit;
-}
-
 .enrichment {
   background-color: $white;
   box-shadow: 0px 0px 8px 0px #00000040;
@@ -12,6 +7,9 @@
   width: 254px;
   display: none;
   flex-direction: column;
+  margin-bottom: 30px;
+  text-decoration: none;
+  color: inherit;
   @include govuk-font($size: 16);
 
   &.show {
