@@ -4,7 +4,7 @@
   box-shadow: 0px 0px 8px 0px #00000040;
   padding: 15px;
   border-radius: 4px;
-  width: 254px;
+  width: 100%;
   display: none;
   flex-direction: column;
   margin-bottom: 30px;
@@ -12,12 +12,19 @@
   color: inherit;
   @include govuk-font($size: 16);
 
+  @include govuk-media-query($from: tablet) {
+    width: 254px;
+  }
+
+
   &.show {
     display: flex;
   }
 
   &__content {
-    flex: 0 0 132px;
+    @include govuk-media-query($from: tablet) {
+      flex: 1 0 132px;
+    }
   }
 
   &__type {
@@ -48,10 +55,13 @@
   }
 
   &__term-details {
-    font-style: italic; 
+    span {
+      font-style: italic; 
+    }
   }
 
   &__partner-logo {
+    flex: 0 0 55px;
     @include govuk-responsive-margin(2, "top");
 
     img {

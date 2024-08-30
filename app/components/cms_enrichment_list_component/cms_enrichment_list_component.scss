@@ -20,6 +20,10 @@
     display: flex;
     flex-direction: column;
 
+    select {
+      margin-bottom: 10px;
+    }
+
     @include govuk-media-query($from: tablet) {
       flex-direction: row;
       flex: 0 1 295px;
@@ -29,5 +33,20 @@
         width: 100%;
       }
     }
+  }
+}
+
+.filter-counter {
+  @include govuk-font($size: 19);
+  @include govuk-responsive-margin(2, "top");
+
+  &.hide {
+    display: none;
+  }
+
+  &__clear {
+    margin-left: 16px;
+    color: $hyper-link-blue;
+    cursor: pointer;
   }
 }

@@ -12,7 +12,7 @@
 <% end %>
 
 <div data-controller="cms-enrichment-list-component">
-  <%= render GovGridRowComponent.new(margin: {bottom: 3}) do |row| %>
+  <%= render GovGridRowComponent.new do |row| %>
     <%= row.with_column(:full) do %>
 
       <div class="enrichment-filters">
@@ -32,14 +32,14 @@
           } %>
         </div>
 
-        <p class="filter-counter">
-
-        <p>
+        <div data-cms-enrichment-list-component-target="filterWrapper" class="filter-counter hide">
+          <span data-cms-enrichment-list-component-target="filterCount"></span><a class="filter-counter__clear" data-action="click->cms-enrichment-list-component#clearFilter">Clear filters</a>
+        </div>
       </div>
     <% end %>
   <% end %>
 
-  <%= render GovGridRowComponent.new do |row| %>
+  <%= render GovGridRowComponent.new(padding: {top: 0}) do |row| %>
     <%= row.with_column(:full) do %>
 
       <div class="all-enrichments enrichment-container">
