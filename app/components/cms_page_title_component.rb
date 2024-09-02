@@ -5,5 +5,4 @@ class CmsPageTitleComponent < ViewComponent::Base
     @title = title
     @intro_text = intro_text
   end
-
 end
