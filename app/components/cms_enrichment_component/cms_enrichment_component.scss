@@ -12,13 +12,21 @@
   color: inherit;
   @include govuk-font($size: 16);
 
-  @include govuk-media-query($from: tablet) {
-    width: 254px;
-  }
-
-
   &.show {
     display: flex;
+    flex: 0 0 254px;
+  }
+
+  &.i-belong {
+    background-image: url("../images/logos/i_belong_flag.svg");
+    background-repeat: no-repeat;
+    background-position: top right 10px;
+    background-size: 32px auto;
+
+    .enrichment__type-icon {
+      margin-right: 35px;
+    }
+
   }
 
   &__content {

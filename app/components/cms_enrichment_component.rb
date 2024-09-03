@@ -16,7 +16,7 @@ class CmsEnrichmentComponent < ViewComponent::Base
 
   def wrapper_classes
     classes = ["enrichment", "show"]
-    classes << "i_belong" if @i_belong
+    classes << "i-belong" if @i_belong
     classes
   end
 
