@@ -1,0 +1,6 @@
+<%= render GovGridRowComponent.new() do |row| %>
+  <%= row.with_column("full") do %>
+    <%= @title %>
+    <%= render CmsRichTextBlockComponent.new(blocks: @body_blocks, with_wrapper: false) %>
+  <% end %>
+<% end %>
