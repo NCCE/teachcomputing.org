@@ -8,7 +8,7 @@ class CmsEnrichmentComponent < ViewComponent::Base
     @details = details
     @link = link
     @i_belong = i_belong
-    @terms = terms
+    @terms = terms.sort
     @type = type
     @age_groups = age_groups
     @partner_icon = partner_icon

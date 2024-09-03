@@ -11,7 +11,7 @@ class CmsEnrichmentListComponent < ViewComponent::Base
 
     @featured = @enrichments.filter(&:featured)
     @age_groups = enrichments.collect(&:age_groups).flatten.uniq
-    @terms = enrichments.collect(&:terms).flatten.uniq
+    @terms = enrichments.collect(&:terms).flatten.uniq.sort
     @types = enrichments.collect { _1.type.name }.uniq
   end
 end
