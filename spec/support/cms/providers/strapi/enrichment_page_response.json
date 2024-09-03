@@ -1,0 +1,552 @@
+{
+  "data": {
+      "id": 1,
+      "attributes": {
+          "name": "Primary",
+          "createdAt": "2024-08-19T14:16:00.141Z",
+          "updatedAt": "2024-08-30T14:05:50.822Z",
+          "slug": "primary-enrichment",
+          "featuredSectionTitle": "Computing enrichment for this term",
+          "allSectionTitle": "Search for an activity",
+          "publishedAt": "2024-08-19T14:16:00.141Z",
+          "typeFilterPlaceholder": "Enrichment type (all)",
+          "termFilterPlaceholder": "Term (all)",
+          "ageGroupFilterPlaceholder": "Key stage (all)",
+          "enrichments": {
+              "data": [
+                  {
+                      "id": 4,
+                      "attributes": {
+                          "i_belong": true,
+                          "link": "https://www.google.com",
+                          "featured": true,
+                          "createdAt": "2024-08-19T14:42:50.613Z",
+                          "updatedAt": "2024-09-03T12:27:16.118Z",
+                          "publishedAt": "2024-08-23T14:31:06.342Z",
+                          "rich_title": [
+                              {
+                                  "type": "paragraph",
+                                  "children": [
+                                      {
+                                          "text": "Do your: bit",
+                                          "type": "text"
+                                      }
+                                  ]
+                              }
+                          ],
+                          "rich_details": [
+                              {
+                                  "type": "paragraph",
+                                  "children": [
+                                      {
+                                          "text": "Bring together the micro:bit and the UN’s Global Goals to provide inspiring activities for your classroom or club and an exciting digital challenge for you to run.",
+                                          "type": "text"
+                                      }
+                                  ]
+                              }
+                          ],
+                          "terms": {
+                              "data": [
+                                  {
+                                      "id": 2,
+                                      "attributes": {
+                                          "name": "Spring",
+                                          "createdAt": "2024-08-19T14:16:16.031Z",
+                                          "updatedAt": "2024-08-19T14:16:16.031Z"
+                                      }
+                                  },
+                                  {
+                                      "id": 3,
+                                      "attributes": {
+                                          "name": "Autumn",
+                                          "createdAt": "2024-09-03T12:27:10.473Z",
+                                          "updatedAt": "2024-09-03T12:27:10.473Z"
+                                      }
+                                  }
+                              ]
+                          },
+                          "age_groups": {
+                              "data": [
+                                  {
+                                      "id": 1,
+                                      "attributes": {
+                                          "name": "Young",
+                                          "createdAt": "2024-08-19T14:15:49.419Z",
+                                          "updatedAt": "2024-08-19T14:15:49.419Z"
+                                      }
+                                  }
+                              ]
+                          },
+                          "type": {
+                              "data": {
+                                  "id": 1,
+                                  "attributes": {
+                                      "name": "Unplugged",
+                                      "createdAt": "2024-08-19T14:16:27.303Z",
+                                      "updatedAt": "2024-08-28T15:52:26.014Z",
+                                      "icon": {
+                                          "data": {
+                                              "id": 1237,
+                                              "attributes": {
+                                                  "name": "unplugged_icon.svg",
+                                                  "alternativeText": null,
+                                                  "caption": null,
+                                                  "width": 20,
+                                                  "height": 20,
+                                                  "formats": null,
+                                                  "hash": "unplugged_icon_1edef08207",
+                                                  "ext": ".svg",
+                                                  "mime": "image/svg+xml",
+                                                  "size": 1.69,
+                                                  "url": "/uploads/unplugged_icon_1edef08207.svg",
+                                                  "previewUrl": null,
+                                                  "provider": "local",
+                                                  "provider_metadata": null,
+                                                  "createdAt": "2024-08-28T15:52:22.263Z",
+                                                  "updatedAt": "2024-08-28T15:52:22.263Z"
+                                              }
+                                          }
+                                      }
+                                  }
+                              }
+                          },
+                          "partner_icon": {
+                              "data": {
+                                  "id": 1236,
+                                  "attributes": {
+                                      "name": "8c7b048e22eafa9b048ba494d3c80f42.png",
+                                      "alternativeText": null,
+                                      "caption": null,
+                                      "width": 653,
+                                      "height": 247,
+                                      "formats": {
+                                          "small": {
+                                              "ext": ".png",
+                                              "url": "/uploads/small_8c7b048e22eafa9b048ba494d3c80f42_62a39dd973.png",
+                                              "hash": "small_8c7b048e22eafa9b048ba494d3c80f42_62a39dd973",
+                                              "mime": "image/png",
+                                              "name": "small_8c7b048e22eafa9b048ba494d3c80f42.png",
+                                              "path": null,
+                                              "size": 45.02,
+                                              "width": 500,
+                                              "height": 189,
+                                              "sizeInBytes": 45016
+                                          },
+                                          "thumbnail": {
+                                              "ext": ".png",
+                                              "url": "/uploads/thumbnail_8c7b048e22eafa9b048ba494d3c80f42_62a39dd973.png",
+                                              "hash": "thumbnail_8c7b048e22eafa9b048ba494d3c80f42_62a39dd973",
+                                              "mime": "image/png",
+                                              "name": "thumbnail_8c7b048e22eafa9b048ba494d3c80f42.png",
+                                              "path": null,
+                                              "size": 15.76,
+                                              "width": 245,
+                                              "height": 93,
+                                              "sizeInBytes": 15755
+                                          }
+                                      },
+                                      "hash": "8c7b048e22eafa9b048ba494d3c80f42_62a39dd973",
+                                      "ext": ".png",
+                                      "mime": "image/png",
+                                      "size": 17.47,
+                                      "url": "/uploads/8c7b048e22eafa9b048ba494d3c80f42_62a39dd973.png",
+                                      "previewUrl": null,
+                                      "provider": "local",
+                                      "provider_metadata": null,
+                                      "createdAt": "2024-08-27T15:34:20.677Z",
+                                      "updatedAt": "2024-08-27T15:34:20.677Z"
+                                  }
+                              }
+                          }
+                      }
+                  },
+                  {
+                      "id": 5,
+                      "attributes": {
+                          "i_belong": false,
+                          "link": "sdgsdg",
+                          "featured": true,
+                          "createdAt": "2024-08-23T15:43:40.677Z",
+                          "updatedAt": "2024-08-30T15:33:10.923Z",
+                          "publishedAt": "2024-08-23T15:43:44.589Z",
+                          "rich_title": [
+                              {
+                                  "type": "paragraph",
+                                  "children": [
+                                      {
+                                          "text": "Set up a STEM Club",
+                                          "type": "text"
+                                      }
+                                  ]
+                              }
+                          ],
+                          "rich_details": [
+                              {
+                                  "type": "paragraph",
+                                  "children": [
+                                      {
+                                          "text": "Out-of-timetable sessions that enrich and broaden the curriculum, giving young people the chance to explore subjects like science, technology, engineering and maths in less formal settings.",
+                                          "type": "text"
+                                      }
+                                  ]
+                              },
+                              {
+                                  "type": "paragraph",
+                                  "children": [
+                                      {
+                                          "text": "Proin sapien ipsum, porta a, auctor quis, euismod ut, mi. Aliquam eu nunc.",
+                                          "type": "text"
+                                      }
+                                  ]
+                              },
+                              {
+                                  "type": "paragraph",
+                                  "children": [
+                                      {
+                                          "text": "Morbi vestibulum volutpat enim. Phasellus gravida semper nisi.",
+                                          "type": "text"
+                                      }
+                                  ]
+                              },
+                              {
+                                  "type": "paragraph",
+                                  "children": [
+                                      {
+                                          "text": "Donec sodales sagittis magna. Pellentesque ut neque.",
+                                          "type": "text"
+                                      }
+                                  ]
+                              },
+                              {
+                                  "type": "paragraph",
+                                  "children": [
+                                      {
+                                          "text": "Donec orci lectus, aliquam ut, faucibus non, euismod id, nulla. Fusce ac felis sit amet ligula pharetra condimentum.",
+                                          "type": "text"
+                                      }
+                                  ]
+                              }
+                          ],
+                          "terms": {
+                              "data": [
+                                  {
+                                      "id": 2,
+                                      "attributes": {
+                                          "name": "Spring",
+                                          "createdAt": "2024-08-19T14:16:16.031Z",
+                                          "updatedAt": "2024-08-19T14:16:16.031Z"
+                                      }
+                                  }
+                              ]
+                          },
+                          "age_groups": {
+                              "data": [
+                                  {
+                                      "id": 1,
+                                      "attributes": {
+                                          "name": "Young",
+                                          "createdAt": "2024-08-19T14:15:49.419Z",
+                                          "updatedAt": "2024-08-19T14:15:49.419Z"
+                                      }
+                                  }
+                              ]
+                          },
+                          "type": {
+                              "data": {
+                                  "id": 1,
+                                  "attributes": {
+                                      "name": "Unplugged",
+                                      "createdAt": "2024-08-19T14:16:27.303Z",
+                                      "updatedAt": "2024-08-28T15:52:26.014Z",
+                                      "icon": {
+                                          "data": {
+                                              "id": 1237,
+                                              "attributes": {
+                                                  "name": "unplugged_icon.svg",
+                                                  "alternativeText": null,
+                                                  "caption": null,
+                                                  "width": 20,
+                                                  "height": 20,
+                                                  "formats": null,
+                                                  "hash": "unplugged_icon_1edef08207",
+                                                  "ext": ".svg",
+                                                  "mime": "image/svg+xml",
+                                                  "size": 1.69,
+                                                  "url": "/uploads/unplugged_icon_1edef08207.svg",
+                                                  "previewUrl": null,
+                                                  "provider": "local",
+                                                  "provider_metadata": null,
+                                                  "createdAt": "2024-08-28T15:52:22.263Z",
+                                                  "updatedAt": "2024-08-28T15:52:22.263Z"
+                                              }
+                                          }
+                                      }
+                                  }
+                              }
+                          },
+                          "partner_icon": {
+                              "data": null
+                          }
+                      }
+                  },
+                  {
+                      "id": 6,
+                      "attributes": {
+                          "i_belong": false,
+                          "link": "sdgsdg",
+                          "featured": true,
+                          "createdAt": "2024-08-23T15:45:45.611Z",
+                          "updatedAt": "2024-08-23T15:45:47.248Z",
+                          "publishedAt": "2024-08-23T15:45:47.246Z",
+                          "rich_title": [
+                              {
+                                  "type": "paragraph",
+                                  "children": [
+                                      {
+                                          "text": "Bebras Challenge",
+                                          "type": "text"
+                                      }
+                                  ]
+                              }
+                          ],
+                          "rich_details": [
+                              {
+                                  "type": "paragraph",
+                                  "children": [
+                                      {
+                                          "text": "A computational thinking challenge that aims to enthuse students in all things computer science and promote computational thinking.",
+                                          "type": "text"
+                                      }
+                                  ]
+                              }
+                          ],
+                          "terms": {
+                              "data": [
+                                  {
+                                      "id": 1,
+                                      "attributes": {
+                                          "name": "Summer",
+                                          "createdAt": "2024-08-19T14:16:12.495Z",
+                                          "updatedAt": "2024-08-19T14:16:12.495Z"
+                                      }
+                                  }
+                              ]
+                          },
+                          "age_groups": {
+                              "data": [
+                                  {
+                                      "id": 2,
+                                      "attributes": {
+                                          "name": "Old",
+                                          "createdAt": "2024-08-19T14:15:54.067Z",
+                                          "updatedAt": "2024-08-19T14:15:54.067Z"
+                                      }
+                                  }
+                              ]
+                          },
+                          "type": {
+                              "data": {
+                                  "id": 1,
+                                  "attributes": {
+                                      "name": "Unplugged",
+                                      "createdAt": "2024-08-19T14:16:27.303Z",
+                                      "updatedAt": "2024-08-28T15:52:26.014Z",
+                                      "icon": {
+                                          "data": {
+                                              "id": 1237,
+                                              "attributes": {
+                                                  "name": "unplugged_icon.svg",
+                                                  "alternativeText": null,
+                                                  "caption": null,
+                                                  "width": 20,
+                                                  "height": 20,
+                                                  "formats": null,
+                                                  "hash": "unplugged_icon_1edef08207",
+                                                  "ext": ".svg",
+                                                  "mime": "image/svg+xml",
+                                                  "size": 1.69,
+                                                  "url": "/uploads/unplugged_icon_1edef08207.svg",
+                                                  "previewUrl": null,
+                                                  "provider": "local",
+                                                  "provider_metadata": null,
+                                                  "createdAt": "2024-08-28T15:52:22.263Z",
+                                                  "updatedAt": "2024-08-28T15:52:22.263Z"
+                                              }
+                                          }
+                                      }
+                                  }
+                              }
+                          },
+                          "partner_icon": {
+                              "data": null
+                          }
+                      }
+                  },
+                  {
+                      "id": 7,
+                      "attributes": {
+                          "i_belong": false,
+                          "link": "www.test.com",
+                          "featured": false,
+                          "createdAt": "2024-08-28T16:07:33.373Z",
+                          "updatedAt": "2024-08-28T16:08:12.519Z",
+                          "publishedAt": "2024-08-28T16:07:35.180Z",
+                          "rich_title": [
+                              {
+                                  "type": "paragraph",
+                                  "children": [
+                                      {
+                                          "text": "Some ",
+                                          "type": "text"
+                                      },
+                                      {
+                                          "text": "enrichment",
+                                          "type": "text",
+                                          "italic": true
+                                      },
+                                      {
+                                          "text": " title&trade;",
+                                          "type": "text"
+                                      }
+                                  ]
+                              }
+                          ],
+                          "rich_details": [
+                              {
+                                  "type": "paragraph",
+                                  "children": [
+                                      {
+                                          "text": "Ut id nisl quis enim dignissim sagittis. Fusce neque.",
+                                          "type": "text"
+                                      }
+                                  ]
+                              },
+                              {
+                                  "type": "paragraph",
+                                  "children": [
+                                      {
+                                          "text": "Donec mi odio, faucibus at, scelerisque quis, convallis in, nisi. Vestibulum dapibus nunc ac augue.",
+                                          "type": "text"
+                                      }
+                                  ]
+                              }
+                          ],
+                          "terms": {
+                              "data": [
+                                  {
+                                      "id": 2,
+                                      "attributes": {
+                                          "name": "Spring",
+                                          "createdAt": "2024-08-19T14:16:16.031Z",
+                                          "updatedAt": "2024-08-19T14:16:16.031Z"
+                                      }
+                                  }
+                              ]
+                          },
+                          "age_groups": {
+                              "data": [
+                                  {
+                                      "id": 1,
+                                      "attributes": {
+                                          "name": "Young",
+                                          "createdAt": "2024-08-19T14:15:49.419Z",
+                                          "updatedAt": "2024-08-19T14:15:49.419Z"
+                                      }
+                                  }
+                              ]
+                          },
+                          "type": {
+                              "data": {
+                                  "id": 1,
+                                  "attributes": {
+                                      "name": "Unplugged",
+                                      "createdAt": "2024-08-19T14:16:27.303Z",
+                                      "updatedAt": "2024-08-28T15:52:26.014Z",
+                                      "icon": {
+                                          "data": {
+                                              "id": 1237,
+                                              "attributes": {
+                                                  "name": "unplugged_icon.svg",
+                                                  "alternativeText": null,
+                                                  "caption": null,
+                                                  "width": 20,
+                                                  "height": 20,
+                                                  "formats": null,
+                                                  "hash": "unplugged_icon_1edef08207",
+                                                  "ext": ".svg",
+                                                  "mime": "image/svg+xml",
+                                                  "size": 1.69,
+                                                  "url": "/uploads/unplugged_icon_1edef08207.svg",
+                                                  "previewUrl": null,
+                                                  "provider": "local",
+                                                  "provider_metadata": null,
+                                                  "createdAt": "2024-08-28T15:52:22.263Z",
+                                                  "updatedAt": "2024-08-28T15:52:22.263Z"
+                                              }
+                                          }
+                                      }
+                                  }
+                              }
+                          },
+                          "partner_icon": {
+                              "data": {
+                                  "id": 1236,
+                                  "attributes": {
+                                      "name": "8c7b048e22eafa9b048ba494d3c80f42.png",
+                                      "alternativeText": null,
+                                      "caption": null,
+                                      "width": 653,
+                                      "height": 247,
+                                      "formats": {
+                                          "small": {
+                                              "ext": ".png",
+                                              "url": "/uploads/small_8c7b048e22eafa9b048ba494d3c80f42_62a39dd973.png",
+                                              "hash": "small_8c7b048e22eafa9b048ba494d3c80f42_62a39dd973",
+                                              "mime": "image/png",
+                                              "name": "small_8c7b048e22eafa9b048ba494d3c80f42.png",
+                                              "path": null,
+                                              "size": 45.02,
+                                              "width": 500,
+                                              "height": 189,
+                                              "sizeInBytes": 45016
+                                          },
+                                          "thumbnail": {
+                                              "ext": ".png",
+                                              "url": "/uploads/thumbnail_8c7b048e22eafa9b048ba494d3c80f42_62a39dd973.png",
+                                              "hash": "thumbnail_8c7b048e22eafa9b048ba494d3c80f42_62a39dd973",
+                                              "mime": "image/png",
+                                              "name": "thumbnail_8c7b048e22eafa9b048ba494d3c80f42.png",
+                                              "path": null,
+                                              "size": 15.76,
+                                              "width": 245,
+                                              "height": 93,
+                                              "sizeInBytes": 15755
+                                          }
+                                      },
+                                      "hash": "8c7b048e22eafa9b048ba494d3c80f42_62a39dd973",
+                                      "ext": ".png",
+                                      "mime": "image/png",
+                                      "size": 17.47,
+                                      "url": "/uploads/8c7b048e22eafa9b048ba494d3c80f42_62a39dd973.png",
+                                      "previewUrl": null,
+                                      "provider": "local",
+                                      "provider_metadata": null,
+                                      "createdAt": "2024-08-27T15:34:20.677Z",
+                                      "updatedAt": "2024-08-27T15:34:20.677Z"
+                                  }
+                              }
+                          }
+                      }
+                  }
+              ]
+          },
+          "seo": {
+              "id": 17498,
+              "title": "test",
+              "description": "sdgseghseh"
+          }
+      }
+  },
+  "meta": {
+  }
+}
