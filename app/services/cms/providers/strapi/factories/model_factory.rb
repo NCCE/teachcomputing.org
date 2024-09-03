@@ -38,6 +38,11 @@ module Cms
                 title: strapi_data[:title],
                 sub_text: strapi_data[:subText]
               )
+            elsif model_class == Models::HorizontalCard
+              model_class.new(
+                title: strapi_data[:title],
+                body_text: strapi_data[:bodyText]
+              )
             elsif model_class == Models::BlogPreview
               model_class.new(
                 title: strapi_data[:title],
@@ -62,6 +67,10 @@ module Cms
                 title: strapi_data[:title],
                 slug: strapi_data[:slug],
                 excerpt: strapi_data[:seo][:description]
+              )
+            elsif model_class == Models::DynamicZone
+              model_class.new(
+                strapi_data.map { ComponentFactory.process_component(_1) }.compact
               )
             end
           end
