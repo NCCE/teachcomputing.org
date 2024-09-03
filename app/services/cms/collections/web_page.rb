@@ -11,7 +11,8 @@ module Cms
       def self.resource_attribute_mappings
         [
           {model: Cms::Models::PageTitle, key: :pageTitle},
-          {model: Cms::Models::Seo, key: :seo}
+          {model: Cms::Models::Seo, key: :seo},
+          {model: Cms::Models::DynamicZone, key: :pageContent}
         ]
       end
 

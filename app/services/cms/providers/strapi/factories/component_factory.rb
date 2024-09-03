@@ -18,6 +18,8 @@ module Cms
                 []
               end
               DynamicComponents::TextWithAsides.new(blocks: strapi_data[:textContent], asides:)
+            when "blocks.horizontal-card"
+              Models::HorizontalCard.new(title: strapi_data[:title], body_blocks: strapi_data[:bodyText])
             end
           end
         end
