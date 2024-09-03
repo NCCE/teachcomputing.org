@@ -12,16 +12,18 @@ module Cms
               all_data
             end
 
-            if model_class == Cms::Models::Seo
+            if model_class == Models::Seo
               model_class.new(
                 title: strapi_data[:title],
                 description: strapi_data[:description],
                 featured_image: strapi_data.dig(:featuredImage, :data) ? to_image(strapi_data[:featuredImage][:data][:attributes]) : nil
               )
-            elsif model_class == Cms::Models::FeaturedImage
+            elsif model_class == Models::FeaturedImage
               to_featured_image(strapi_data[:data][:attributes])
-            elsif model_class == Cms::Models::ContentBlock
+            elsif model_class == Models::ContentBlock
               to_content_block(strapi_data)
+            elsif model_class == Models::RichHeader
+              model_class.new(blocks: strapi_data)
             elsif model_class == Cms::Models::SimpleTitle
               model_class.new(title: strapi_data)
             elsif model_class == Models::Aside
@@ -36,7 +38,7 @@ module Cms
                 title: strapi_data[:title],
                 intro_text: strapi_data[:introText]
               )
-            elsif model_class == Cms::Models::BlogPreview
+            elsif model_class == Models::BlogPreview
               model_class.new(
                 title: strapi_data[:title],
                 excerpt: strapi_data[:excerpt],
@@ -44,7 +46,7 @@ module Cms
                 featured_image: strapi_data[:featuredImage][:data].nil? ? nil : to_featured_image(strapi_data[:featuredImage][:data][:attributes], :small),
                 slug: strapi_data[:slug]
               )
-            elsif model_class == Cms::Models::EnrichmentList
+            elsif model_class == Models::EnrichmentList
               model_class.new(
                 enrichments: strapi_data[:data].map { to_enrichment(_1[:attributes]) }.compact,
                 featured_title: all_data[:featuredSectionTitle],
@@ -53,7 +55,7 @@ module Cms
                 age_group_filter_placeholder: all_data[:ageGroupFilterPlaceholder],
                 term_filter_placeholder: all_data[:termFilterPlaceholder]
               )
-            elsif model_class == Cms::Models::SimplePagePreview
+            elsif model_class == Models::SimplePagePreview
               model_class.new(
                 title: strapi_data[:title],
                 slug: strapi_data[:slug],
@@ -75,7 +77,7 @@ module Cms
             return nil if strapi_data[:publishedAt].nil? && Rails.env.production?
             type_data = strapi_data[:type][:data][:attributes]
             Models::Enrichment.new(
-              title: strapi_data[:rich_title],
+              title: Models::RichHeader.new(blocks: strapi_data[:rich_title]),
               details: strapi_data[:rich_details],
               link: strapi_data[:link],
               featured: strapi_data[:featured],
@@ -95,11 +97,11 @@ module Cms
               block[:image] = to_image(block[:image]) if block[:type] == "image"
               block
             end
-            Cms::Models::ContentBlock.new(blocks: data, with_wrapper: true)
+            Models::ContentBlock.new(blocks: data, with_wrapper: true)
           end
 
           def self.to_featured_image(image_data, size = :large)
-            Cms::Models::FeaturedImage.new(
+            Models::FeaturedImage.new(
               url: image_data[:url],
               alt: image_data[:alternativeText],
               caption: image_data[:caption],
@@ -109,7 +111,7 @@ module Cms
           end
 
           def self.to_image(image_data, default_size: :medium)
-            Cms::Models::Image.new(
+            Models::Image.new(
               url: image_data[:url],
               alt: image_data[:alternativeText],
               caption: image_data[:caption],

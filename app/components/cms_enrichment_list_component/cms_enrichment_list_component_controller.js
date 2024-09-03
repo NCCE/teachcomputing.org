@@ -8,39 +8,55 @@ export default class CmsEnrichmentListComponentController extends ApplicationCon
   }
 
   filterChanged(){
-    const termFilter = this.termSelectTarget.value;
-    const ageGroupFilter = this.ageGroupSelectTarget.value;
-    const typeFilter = this.typeSelectTarget.value;
-    console.log(termFilter == "")
-    let count = 0;
+    const filters = {
+      term: this.termSelectTarget.value,
+      ageGroup: this.ageGroupSelectTarget.value,
+      type: this.typeSelectTarget.value
+    };
+    this.applyFilters(filters);
+  }
+
+  applyFilters({term, ageGroup, type}){
+    let matchingCount = 0;
+
     this.enrichmentTargets.forEach(enrichment => {
-      const termMatch = termFilter != "" ? JSON.parse(enrichment.dataset.enrichmentTerms).includes(termFilter) : true;
-      const ageGroupMatch = ageGroupFilter != "" ? JSON.parse(enrichment.dataset.enrichmentAgeGroups).includes(ageGroupFilter) : true;
-      const typeMatch = typeFilter != "" ? enrichment.dataset.enrichmentType === typeFilter : true;
+      const termMatch = this.matchesFilter(enrichment.dataset.enrichmentTerms, term) 
+      const ageGroupMatch = this.matchesFilter(enrichment.dataset.enrichmentAgeGroups, ageGroup) 
+      const typeMatch = type === "" || enrichment.dataset.enrichmentType === type;
       if(termMatch && ageGroupMatch && typeMatch) {
-        console.log("showing")
         enrichment.classList.add("show")
-        count++;
+        matchingCount++;
       } else {
         enrichment.classList.remove("show")
       }
     });
-    let message; 
-    if (count == 1){
-      message = "1 activity found";
-    } else {
-      message = `${count} activities found`;
+    this.updateFilterMessage(term, ageGroup, type, matchingCount);
+  }
+
+  matchesFilter(dataSet, filterValue) {
+    return filterValue === "" || JSON.parse(dataSet).includes(filterValue);
+  }
+
+  updateFilterMessage(term, ageGroup, type, count) {
+    if (term === "" && ageGroup === "" && type === "") {
+      this.clearFilterMessage();
+      return;
     }
+
+    const message = count === 1 ? "1 activity found" : `${count} activities found`;
     this.filterCountTarget.innerText = message;
     this.filterWrapperTarget.classList.remove("hide");
+  }
+
+  clearFilterMessage(){
+    this.filterWrapperTarget.classList.add("hide");
   }
 
   clearFilter() {
     this.termSelectTarget.selectedIndex = 0;
     this.ageGroupSelectTarget.selectedIndex = 0;
     this.typeSelectTarget.selectedIndex = 0;
-    this.filterChanged();
-    this.filterWrapperTarget.classList.add("hide");
+    this.applyFilters({ term: "", ageGroup: "", type: ""});
   }
   
 }

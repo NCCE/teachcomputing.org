@@ -9,7 +9,7 @@
   </div>
 
   <div class="enrichment__title">
-    <%= render CmsRichTextBlockComponent.new(blocks: @title, with_wrapper: false) %>
+    <%= render @title.render %>
   </div>
 
   <div class="enrichment__content">
