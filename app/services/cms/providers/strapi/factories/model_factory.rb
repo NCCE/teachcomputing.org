@@ -38,11 +38,6 @@ module Cms
                 title: strapi_data[:title],
                 sub_text: strapi_data[:subText]
               )
-            elsif model_class == Models::HorizontalCard
-              model_class.new(
-                title: strapi_data[:title],
-                body_text: strapi_data[:bodyText]
-              )
             elsif model_class == Models::BlogPreview
               model_class.new(
                 title: strapi_data[:title],
