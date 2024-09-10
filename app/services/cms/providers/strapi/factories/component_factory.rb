@@ -19,7 +19,10 @@ module Cms
               end
               DynamicComponents::TextWithAsides.new(blocks: strapi_data[:textContent], asides:)
             when "blocks.horizontal-card"
-              Models::HorizontalCard.new(title: strapi_data[:title], body_blocks: strapi_data[:bodyText])
+              Models::HorizontalCard.new(title: strapi_data[:title], body_blocks: strapi_data[:bodyText],
+                image: strapi_data.dig(:image, :data) ? ModelFactory.to_image(strapi_data[:image][:data][:attributes]) : nil,
+                image_link: strapi_data[:imageLink],
+                ribbon_colour: strapi_data.dig(:ribbonColour, :data) ? strapi_data[:ribbonColour][:data][:attributes][:name] : nil)
             end
           end
         end
