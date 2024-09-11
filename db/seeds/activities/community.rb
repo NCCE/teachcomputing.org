@@ -432,7 +432,7 @@ Activity.find_or_initialize_by(slug: "implement-selected-key-stage-3-teach-compu
   activity.category = "community"
   activity.provider = "ncce"
   activity.self_certifiable = true
-  activity.description = "Download and plan the use of two or more resources aligned to evidence-based approaches supporting girls' engagement (see handbook for guidance).<br><br>Provide names of your chosen resources and showcase their implementation by, for example, linking to this year’s curriculum page on your school’s website, student reflections etc. "
+  activity.description = "Download and plan two or more resources aligned to evidence-based approaches supporting girls' engagement, see your primary and secondary handbook for guidance."
   activity.self_verification_info = "Please provide us with evidence of delivery of at least one of these"
   activity.public_copy_evidence = [
     {
@@ -465,7 +465,7 @@ Activity.find_or_initialize_by(slug: "participate-in-a-ncce-student-enrichment-a
   activity.category = "community"
   activity.provider = "ncce"
   activity.self_certifiable = true
-  activity.description = 'Record evidence of any I Belong student events your key stage 3 students have attended. Find out about the upcoming events and activities in your area from your local <a href="https://teachcomputing.org/hubs">Computing Hub</a> by ensuring you enable marketing communications in your account settings on our website.'
+  activity.description = "Find out about the upcoming events from your local <a href='/hubs'>Computing Hub</a> or by visiting our <a href='#{ncce_student_events_url}'>Eventbrite</a>."
   activity.self_verification_info = "Please provide us with evidence of participation"
   activity.public_copy_evidence = [
     {
@@ -498,7 +498,7 @@ Activity.find_or_initialize_by(slug: "provide-access-to-a-computing-related-extr
   activity.category = "community"
   activity.provider = "ncce"
   activity.self_certifiable = true
-  activity.description = %(Provide access to a computing related STEM lunchtime or after school club. Consider involving older female students to support. Resources to help you get started are available via the handbook.)
+  activity.description = "Provide access to a computing related STEM lunchtime or after school club. Consider involving older female students to support."
   activity.self_verification_info = "Please provide us with evidence of delivery"
   activity.public_copy_evidence = [{
     brief: "Tell us what you did and when. Describe your computing club in school and include timescales, particularly if you’ve run the club for longer than a year. Include the age range of pupils involved, and the proportion of female and male pupils. How do you promote a higher proportion of girls participating? Finally, reflect and tell us why you chose this activity."
@@ -530,7 +530,7 @@ Activity.find_or_initialize_by(slug: "host-a-computing-stem-ambassador-activity"
   activity.category = "community"
   activity.provider = "stem-learning"
   activity.self_certifiable = true
-  activity.description = "Host a Computing Ambassador in your school to support raising gender and career aspirations and to help students understand the real-world applications of their learning. Evidence must showcase the <a href=\"#{stem_request_ambassador_url}\">Computing Ambassador</a> visit to your school from April 2023 onwards."
+  activity.description = "Host a <a href='#{stem_request_ambassador_url}'>Computing Ambassador</a> in your school. Raising gender and career aspirations and help students understand the real-world applications of learning."
   activity.self_verification_info = "Please provide us with evidence of delivery"
   activity.public_copy_evidence = [{
     brief: "Tell us what you did and when. Was it a one-off visit from a computing ambassador or part of a series of events you’ve organised in school? Include the age range of students involved, and the proportion of female and male pupils. How did you promote a higher proportion of girls participating?"
@@ -560,7 +560,7 @@ Activity.find_or_initialize_by(slug: "participate-in-a-computing-related-competi
   activity.category = "community"
   activity.provider = "ncce"
   activity.self_certifiable = true
-  activity.description = "Participate in a competition this academic year to develop girls’ enthusiasm and self-belief in computing. Consider targeting whole or weighted key stage 3 female student groups."
+  activity.description = "Participate in a competition this academic year to develop girls’ enthusiasm and self-belief in computing."
   activity.self_verification_info = "Please provide us with evidence of delivery"
   activity.public_copy_evidence = [
     {
