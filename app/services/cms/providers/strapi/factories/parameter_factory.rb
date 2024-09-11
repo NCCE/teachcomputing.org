@@ -35,6 +35,12 @@ module Cms
               {
                 populate: [:title]
               }
+            elsif model_class == Models::DynamicZone
+              {
+                on: {
+                  "blocks.text-with-asides": ComponentParameterFactory.text_with_asides_paramters
+                }
+              }
             end
           end
         end

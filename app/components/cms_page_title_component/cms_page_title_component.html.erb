@@ -1,7 +1,7 @@
 <%= render GovGridRowComponent.new(background_color: "lime-green", padding: {top: 7, bottom: 7}) do |row| %>
   <%= row.with_column("full") do %>
     <div class="page-title__wrapper">
-      <h1 class="govuk-heading-xl page-title__title-text">
+      <h1 class="govuk-heading-l page-title__title-text">
         <%= @title %>
       </h1>
       <% if @intro_text %>

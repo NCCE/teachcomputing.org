@@ -2,8 +2,6 @@ module Cms
   module Collections
     class EnrichmentPage < Resource
       def to_search_record(index_time)
-        seo_block = data_models.first
-        # TODO Complete me
       end
 
       def self.is_collection = true
@@ -16,8 +14,10 @@ module Cms
 
       def self.resource_attribute_mappings
         [
-          {model: Cms::Models::Seo, key: :seo},
-          {model: Cms::Models::EnrichmentList, key: :enrichments}
+          {model: Models::Seo, key: :seo},
+          {model: Models::PageTitle, key: :pageTitle},
+          {model: Models::DynamicZone, key: :content},
+          {model: Models::EnrichmentList, key: :enrichments}
         ]
       end
 

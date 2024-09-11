@@ -24,7 +24,7 @@ module Cms
               to_content_block(strapi_data)
             elsif model_class == Models::RichHeader
               model_class.new(blocks: strapi_data)
-            elsif model_class == Cms::Models::SimpleTitle
+            elsif model_class == Models::SimpleTitle
               model_class.new(title: strapi_data)
             elsif model_class == Models::Aside
               model_class.new(
@@ -46,6 +46,8 @@ module Cms
                 featured_image: strapi_data[:featuredImage][:data].nil? ? nil : to_featured_image(strapi_data[:featuredImage][:data][:attributes], :small),
                 slug: strapi_data[:slug]
               )
+            elsif model_class == Models::DynamicZone
+              model_class.new(strapi_data.map { ComponentFactory.process_component(_1) }.compact)
             elsif model_class == Models::EnrichmentList
               model_class.new(
                 enrichments: strapi_data[:data].map { to_enrichment(_1[:attributes]) }.compact,
