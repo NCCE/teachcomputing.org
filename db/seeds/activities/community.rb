@@ -560,7 +560,7 @@ Activity.find_or_initialize_by(slug: "participate-in-a-computing-related-competi
   activity.category = "community"
   activity.provider = "ncce"
   activity.self_certifiable = true
-  activity.description = "Participate in a competition this academic year to develop girls’ enthusiasm and self-belief in computing."
+  activity.description = "Participate in a competition this academic year to develop girls’ enthusiasm and self-belief in computing. Visit the <a href='/primary-enrichment'>primary</a> or <a href='/secondary-enrichment'>secondary</a> enrichment pages for more information."
   activity.self_verification_info = "Please provide us with evidence of delivery"
   activity.public_copy_evidence = [
     {
