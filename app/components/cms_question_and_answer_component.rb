@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
-class CmsQuestionAndAnswerComponent < ViewComponent::Base
-  def initialize(question:, answer:)
+class CmsQuestionAndAnswerComponent < CmsWithAsidesComponent
+  def initialize(question:, answer:, aside_sections:)
+    super(aside_sections:)
     @question = question
     @answer = answer
-    @aside_models = []
   end
 end

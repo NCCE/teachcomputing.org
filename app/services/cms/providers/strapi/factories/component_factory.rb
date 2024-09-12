@@ -27,6 +27,8 @@ module Cms
                 colour_theme: strapi_data.dig(:colourTheme, :data) ? strapi_data[:colourTheme][:data][:attributes][:name] : nil,
                 icon_block: icon_block(strapi_data[:iconBlock])
               )
+            when "buttons.ncce-button"
+              DynamicComponents::NcceButton.new(title: strapi_data[:title], link: strapi_data[:link])
             end
           end
 
