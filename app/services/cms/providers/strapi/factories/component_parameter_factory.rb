@@ -11,6 +11,22 @@ module Cms
               }
             }
           end
+
+          def self.horizontal_card_parameters
+            {
+              populate: {
+                iconBlock: {populate: {iconImage: "alternativeText"}},
+                ribbonColour: {populate: {fields: "name"}},
+                image: {populate: [:alternativeText]}
+              }
+            }
+          end
+
+          def self.text_block_parameters
+            {
+              populate: {fields: "content"}
+            }
+          end
         end
       end
     end
