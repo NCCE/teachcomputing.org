@@ -38,7 +38,9 @@ module Cms
             elsif model_class == Models::DynamicZone
               {
                 on: {
-                  "blocks.text-with-asides": ComponentParameterFactory.text_with_asides_paramters
+                  "blocks.text-with-asides": ComponentParameterFactory.text_with_asides_paramters,
+                  "blocks.horizontal-card": ComponentParameterFactory.horizontal_card_parameters,
+                  "content-blocks.text-block": ComponentParameterFactory.text_block_parameters
                 }
               }
             end

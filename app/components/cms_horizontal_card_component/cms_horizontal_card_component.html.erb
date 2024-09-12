@@ -4,12 +4,26 @@
       <div class="horizontal-card-component__content">
         <h1 class="govuk-heading-m"><%= @title %></h1>
         <%= render CmsRichTextBlockComponent.new(blocks: @body_blocks, with_wrapper: false) %>
-      </div>
-      <div class="horizontal-card-component__image">
-        <% if @image %>
-          <%= @image_link&.then { |link| link_to(link) { render CmsImageComponent.new(@image) } } || render(CmsImageComponent.new(@image)) %>
+        <% if @icon_block.present? %>
+          <div class="horizontal-card-component__icon-wrapper">
+            <% @icon_block.each do |icon| %>
+              <div class="horizontal-card-component__icon-block">
+                <div class="horizontal-card-component__icon-image">
+                  <%= render CmsImageComponent.new(icon[:image]) %>
+                </div>
+                <div class="horizontal-card-component__icon-text">
+                  <p class="govuk-body-s govuk-!-margin-bottom-0"><%= icon[:text] %></p>
+                </div>
+              </div>
+            <% end %>
+          </div>
         <% end %>
       </div>
+      <% if @image.present? %>
+        <div class="horizontal-card-component__image">
+            <%= @image_link&.then { |link| link_to(link) { render CmsImageComponent.new(@image) } } || render(CmsImageComponent.new(@image)) %>
+        </div>
+      <% end %>
     <% end %>
   <% end %>
 <% end %>

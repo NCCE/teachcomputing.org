@@ -41,4 +41,37 @@
       padding-left: 0px;
     }
   }
+
+  &__icon-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    @include govuk-media-query($until: desktop) {
+      margin-bottom: 15px;
+      justify-content: space-evenly;
+    }
+  }
+
+  &__icon-block {
+    display: flex;
+    align-items: center;
+    flex: 1;
+
+    @include govuk-media-query($until: desktop) {
+      flex: auto;
+    }
+  }
+
+  &__icon-image .img {
+    align-items: center;
+  }
+
+  &__icon-text {
+    margin-left: 10px;
+
+    @include govuk-media-query($until: desktop) {
+      margin-left: 5px;
+    }
+  }
 }
