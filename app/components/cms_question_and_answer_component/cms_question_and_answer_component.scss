@@ -1,3 +1,7 @@
+
+$avatar_space: 55px;
+$avatar_size: 32px;
+
 .question-answer {
 
   &__question {
@@ -5,16 +9,27 @@
     display: flex;
     flex-direction: row;
     position: relative;
+    width: calc(100% - $avatar_space);
+
+    @include govuk-media-query($until: tablet) {
+      margin-top: 40px;
+      width: 100%;
+    }
 
     &:after {
       content: '';
-      background-image: url("../images/icons/question_person.svg");
+      background-image: url("../images/icons/question_avatar.svg");
       background-size: 100%;
       position: absolute;
-      height: 32px;
-      width: 32px;
-      left: -55px;
-      bottom: 0px;
+      height: $avatar_size;
+      width: $avatar_size;
+      left: -$avatar_space;
+      bottom: 4px;
+
+      @include govuk-media-query($until: tablet) {
+        top: -50px;
+        left: 4px;
+      }
     }
 
     &-content {
@@ -23,6 +38,7 @@
       box-shadow: 0px 0px 8px 0px #0000004D;
       border-radius: 5px;
       position: relative;
+      flex: 1 1 auto;
 
       &:after {
         content: "";
@@ -30,27 +46,88 @@
         width: 0;
         height: 0;
         height: 0;
-        bottom: 18px;
-        left: 0px;
+        bottom: 12px;
+        left: -7px;
         box-sizing: border-box;
         
-        border: 13px solid black;
+        border: 8px solid black;
         border-color: transparent transparent white white;
         
-        transform-origin: 0 0;
+        transform-origin: center;
         transform: rotate(45deg);
         //box-shadow: -8px 8px 8px 0px #0000004D;
-        box-shadow: -4px 4px 6px -1px #0000004D;
+        box-shadow: -4px 4px 6px -3px #0000004D;
+
+
+        @include govuk-media-query($until: tablet) {
+          top: -7px;
+          left: 12px;
+          transform: rotate(135deg);
+        }
       }
     }
   }
 
   &__answer {
+    width: calc(100% - $avatar_space);
+    display: flex;
+    flex-direction: row;
+    position: relative;
+
+    @include govuk-media-query($until: tablet) {
+      margin-bottom: 60px;
+      width: 100%;
+    }
+
+    &:after {
+      content: '';
+      background-image: url("../images/icons/question_answer_avatar.svg");
+      background-size: 100%;
+      position: absolute;
+      height: $avatar_size;
+      width: $avatar_size;
+      right: -$avatar_space;
+      bottom: 4px;
+
+      @include govuk-media-query($until: tablet) {
+        bottom: -50px;
+        right: 4px;
+      }
+
+    }
 
     &-content {
       padding: 20px 25px;
       box-shadow: 0px 0px 8px 0px #0000004D;
       border-radius: 5px;
+      position: relative;
+      flex: 0 1 100%;
+
+      &:after {
+        content: "";
+        position: absolute;
+        width: 0;
+        height: 0;
+        height: 0;
+        bottom: 12px;
+        right: -7px;
+        box-sizing: border-box;
+        
+        border: 8px solid black;
+        border-color: transparent transparent white white;
+        
+        transform-origin: center;
+        transform: rotate(-135deg);
+        box-shadow: -4px 4px 6px -3px #0000004D;
+
+
+        @include govuk-media-query($until: tablet) {
+          bottom: -7px;
+          right: 12px;
+          transform: rotate(-45deg);
+        }
+      }
+
     }
   }
 }

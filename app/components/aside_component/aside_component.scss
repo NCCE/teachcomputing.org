@@ -39,6 +39,10 @@
   p {
     @include govuk-font($size: 16);
   }
+
+  .button {
+    width: 250px;
+  }
 }
 
 .aside-component__text {
