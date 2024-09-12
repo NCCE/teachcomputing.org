@@ -12,6 +12,12 @@
   flex-direction: row;
   flex-wrap: wrap;
   column-gap: 54px;
+
+  @include govuk-media-query($until: desktop) {
+    justify-content: center;
+  }
+
+  
 }
 
 .enrichment-filters {
@@ -24,9 +30,9 @@
       margin-bottom: 10px;
     }
 
-    @include govuk-media-query($from: tablet) {
+    @include govuk-media-query($from: desktop) {
       flex-direction: row;
-      flex: 0 1 295px;
+      flex: 0 0 295px;
       gap: 54px;
 
       select {
