@@ -1,0 +1,27 @@
+<%= render GovGridRowComponent.new do |row| %>
+  <%= row.with_column("two-thirds") do %>
+
+    <div class="question-answer__question">
+      <div class="question-answer__question-content">
+        <%= @question %>
+      </div>
+    </div>
+
+    <div class="question-answer__answer">
+      <div class="question-answer__answer-content">
+        <%= render CmsRichTextBlockComponent.new(blocks: @answer, with_wrapper: false) %>
+      </div>
+    </div>
+
+
+  <% end %>
+  <%= row.with_column("one-third") do %>
+    <% @aside_models.each do |aside| %>
+      <% if aside[:model] %>
+        <%= render aside[:model].render %>
+      <% else %>
+        <!-- missing aside <%= aside[:slug] %> -->
+      <% end %>
+    <% end %>
+  <% end %>
+<% end %>
