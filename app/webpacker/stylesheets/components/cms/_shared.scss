@@ -12,3 +12,24 @@
   width: 100%;
   height: auto;
 }
+
+.cms-ribbon {
+  $colors: (
+    'lime-green': $lime-green,
+    'pink': $pink,
+    'orange': $orange,
+    'yellow': $brand-yellow
+  );
+
+  $sides: ('left', 'right', 'top', 'bottom');
+
+  &__border {
+    @each $name, $color in $colors {
+      @each $side in $sides {
+        &--#{$name}-#{$side} {
+          border-#{$side}: solid 9px $color;
+        }
+      }
+    }
+  }
+}
