@@ -3,13 +3,28 @@
 require "rails_helper"
 
 RSpec.describe CmsQuestionAndAnswerComponent, type: :component do
-  pending "add some examples to (or delete) #{__FILE__}"
+  before do
+    stub_strapi_aside_section
+    render_inline(described_class.new(
+      question: "Do you want to know more?",
+      answer: [{
+        type: "paragraph",
+        children: [
+          {
+            text: Faker::Lorem.paragraph,
+            type: "text"
+          }
+        ]
+      }],
+      aside_sections: [{slug: "test-aside"}]
+    ))
+  end
 
-  # it "renders something useful" do
-  #   expect(
-  #     render_inline(described_class.new(attr: "value")) { "Hello, components!" }.css("p").to_html
-  #   ).to include(
-  #     "Hello, components!"
-  #   )
-  # end
+  it "should render question box" do
+    expect(page).to have_css(".question-answer__question-content", text: "Do you want to know more?")
+  end
+
+  it "should render answer box with rich text block" do
+    expect(page).to have_css(".question-answer__answer-content .cms-rich-text-block-component")
+  end
 end
