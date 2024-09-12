@@ -8,8 +8,6 @@
     <% @aside_models.each do |aside| %>
       <% if aside[:model] %>
         <%= render aside[:model].render %>
-      <% else %>
-        <!-- missing aside <%= aside[:slug] %> -->
       <% end %>
     <% end %>
 
