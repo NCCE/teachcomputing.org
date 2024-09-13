@@ -2,6 +2,12 @@
 $avatar_space: 55px;
 $avatar_size: 32px;
 
+.question-answer-row {
+  .govuk-main-wrapper {
+    border-bottom: 2px solid $ncce-grey;
+  }
+}
+
 .question-answer {
 
   &__question {

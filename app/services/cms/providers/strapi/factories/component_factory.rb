@@ -7,7 +7,7 @@ module Cms
             component_name = strapi_data[:__component]
             case component_name
             when "content-blocks.text-block"
-              Models::ContentBlock.new(blocks: strapi_data[:content], with_wrapper: false)
+              ModelFactory.to_content_block(strapi_data[:content], with_wrapper: false)
             when "content-blocks.file-link"
               file_data = strapi_data.dig(:file, :data) ? strapi_data[:file][:data][:attributes] : nil
               ModelFactory.to_file(file_data) if file_data
@@ -29,6 +29,17 @@ module Cms
               )
             when "buttons.ncce-button"
               DynamicComponents::NcceButton.new(title: strapi_data[:title], link: strapi_data[:link])
+            when "blocks.question-and-answer"
+              DynamicComponents::QuestionAndAnswer.new(question: strapi_data[:question], answer: strapi_data[:answer],
+                aside_sections: extract_aside_sections(strapi_data))
+            end
+          end
+
+          def self.extract_aside_sections(strapi_data)
+            if strapi_data.dig(:asideSections, :data)
+              strapi_data[:asideSections][:data].collect { _1[:attributes] }
+            else
+              []
             end
           end
 
