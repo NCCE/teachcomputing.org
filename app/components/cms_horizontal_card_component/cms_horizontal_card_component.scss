@@ -6,21 +6,6 @@
     background-color: white;
     box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
 
-    &--ribbon {
-      &-lime-green {
-        border-left: solid 9px $lime-green;
-      }
-      &-pink {
-        border-left: solid 9px $pink;
-      }
-      &-orange {
-        border-left: solid 9px $orange;
-      }
-      &-yellow {
-        border-left: solid 9px $brand-yellow;
-      }
-    }
-
     @include govuk-media-query($until: desktop) {
       flex-direction: column;
     }
@@ -65,9 +50,10 @@
 
   &__icon-text {
     margin-left: 10px;
-
-    @include govuk-media-query($until: desktop) {
-      margin-left: 5px;
-    }
   }
+}
+
+.horizontal-card-component__icon-wrapper .cms-image {
+  display: flex;
+  align-items: center;
 }
