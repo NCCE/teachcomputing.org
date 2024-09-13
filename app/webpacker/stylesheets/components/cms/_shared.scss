@@ -13,12 +13,11 @@
   height: auto;
 }
 
-.cms-ribbon {
+.cms-colour-theme {
   $colors: (
-    'lime-green': $lime-green,
-    'pink': $pink,
-    'orange': $orange,
-    'yellow': $brand-yellow
+    'standard': $lime-green,
+    'i-belong': $orange,
+    'isaac': $brand-yellow
   );
 
   $sides: ('left', 'right', 'top', 'bottom');
