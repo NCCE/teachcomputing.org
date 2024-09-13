@@ -7,9 +7,14 @@
     @include bottom-margined;
   }
 
-  border-top-color: $orange;
-  border-top-style: solid;
-  border-top-width: 3px;
+  &.with-heading-line {
+    border-top-color: $orange;
+    border-top-style: solid;
+    border-top-width: 3px;
+  }
+}
+
+.aside-component__heading {
   padding-top: 1rem;
 }
 
@@ -42,6 +47,13 @@
 
   .button {
     width: 250px;
+  }
+
+  img {
+    width: 100%; 
+    height: auto;
+    margin-bottom: 5px;
+    box-shadow: 0px 0px 4px 0px #00000040;
   }
 }
 
