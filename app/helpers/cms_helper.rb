@@ -15,7 +15,7 @@ module CmsHelper
     image_tag(cms_image_url(image), alt: image.alt, class:)
   end
 
-  def cms_ribbon(colour, side)
-    "cms-ribbon__border--#{colour}-#{side}"
+  def cms_colour_theme(colour, side)
+    "cms-colour-theme__border--#{colour}-#{side}"
   end
 end

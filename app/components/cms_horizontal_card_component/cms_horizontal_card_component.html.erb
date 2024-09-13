@@ -1,6 +1,6 @@
 <%= render GovGridRowComponent.new(padding: {top: 6, bottom: 0}) do |row|  %>
   <%= row.with_column("full") do %>
-    <%= content_tag :div, class: ["horizontal-card-component__wrapper", helpers.cms_ribbon(@ribbon_colour, "left")] do %>
+    <%= content_tag :div, class: ["horizontal-card-component__wrapper", helpers.cms_colour_theme(@colour_theme, "left")] do %>
       <div class="horizontal-card-component__content">
         <h1 class="govuk-heading-m"><%= @title %></h1>
         <%= render CmsRichTextBlockComponent.new(blocks: @body_blocks, with_wrapper: false) %>
