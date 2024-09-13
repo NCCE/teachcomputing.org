@@ -16,7 +16,7 @@ module Cms
             {
               populate: {
                 iconBlock: {populate: {iconImage: "alternativeText"}},
-                ribbonColour: {populate: {fields: "name"}},
+                colourTheme: {populate: {fields: "name"}},
                 image: {populate: [:alternativeText]}
               }
             }
