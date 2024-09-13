@@ -5,17 +5,20 @@ class CmsWithAsidesComponent < ViewComponent::Base
 
   def initialize(aside_sections:)
     @aside_sections = aside_sections
+    @aside_models = []
 
-    @aside_models = @aside_sections.map do |aside|
-      slug = aside[:slug]
-      begin
-        {
-          id: slug,
-          model: Cms::Collections::AsideSection.get(slug)
-        }
-      rescue ActiveRecord::RecordNotFound => e
-        raise(e) if Rails.env.development?
-        {id: aside[:slug], model: nil}
+    if @aside_sections
+      @aside_models = @aside_sections.map do |aside|
+        slug = aside[:slug]
+        begin
+          {
+            id: slug,
+            model: Cms::Collections::AsideSection.get(slug)
+          }
+        rescue ActiveRecord::RecordNotFound => e
+          raise(e) if Rails.env.development?
+          {id: aside[:slug], model: nil}
+        end
       end
     end
   end

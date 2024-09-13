@@ -29,6 +29,17 @@ module Cms
               )
             when "buttons.ncce-button"
               DynamicComponents::NcceButton.new(title: strapi_data[:title], link: strapi_data[:link])
+            when "blocks.question-and-answer"
+              DynamicComponents::QuestionAndAnswer.new(question: strapi_data[:question], answer: strapi_data[:answer],
+                aside_sections: extract_aside_sections(strapi_data))
+            end
+          end
+
+          def self.extract_aside_sections(strapi_data)
+            if strapi_data.dig(:asideSections, :data)
+              strapi_data[:asideSections][:data].collect { _1[:attributes] }
+            else
+              []
             end
           end
 

@@ -12,6 +12,18 @@ class AsideComponent < ViewComponent::Base
     @use_button = options[:use_button]
     @class_name = options[:class_name]
     @cms_content = options[:cms_content]
+    @show_heading_line = if options[:show_heading_line].nil?
+      true
+    else
+      @show_heading_line = options[:show_heading_line]
+    end
+  end
+
+  def aside_classes
+    classes = ["aside-component"]
+    classes << "with-heading-line" if @show_heading_line
+    classes << @class_name if @class_name
+    classes.join(" ")
   end
 
   def aside_image_tag(file, *args, **kwargs)
