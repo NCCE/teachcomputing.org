@@ -25,14 +25,20 @@ module Cms
                 image: strapi_data.dig(:image, :data) ? ModelFactory.to_image(strapi_data[:image][:data][:attributes]) : nil,
                 image_link: strapi_data[:imageLink],
                 colour_theme: strapi_data.dig(:colourTheme, :data) ? strapi_data[:colourTheme][:data][:attributes][:name] : nil,
-                icon_block: strapi_data[:iconBlock].map do |block|
-                  {
-                    text: block[:iconText],
-                    image: ModelFactory.to_image(block[:iconImage][:data][:attributes])
-                  }
-                end
+                icon_block: icon_block(strapi_data[:iconBlock])
               )
             end
+          end
+
+          def self.icon_block(strapi_data)
+            DynamicComponents::IconBlock.new(
+              icons: strapi_data.map do |icon_data|
+                DynamicComponents::Icon.new(
+                  text: icon_data[:iconText],
+                  image: ModelFactory.to_image(icon_data[:iconImage][:data][:attributes])
+                )
+              end
+            )
           end
         end
       end

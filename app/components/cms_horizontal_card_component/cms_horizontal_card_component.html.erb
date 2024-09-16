@@ -1,25 +1,16 @@
 <%= render GovGridRowComponent.new(padding: {top: 6, bottom: 0}) do |row|  %>
   <%= row.with_column("full") do %>
-    <%= content_tag :div, class: ["horizontal-card-component__wrapper", helpers.cms_colour_theme(@colour_theme, "left")] do %>
+    <%= content_tag :div, class: [
+      "horizontal-card-component__wrapper",
+      @colour_theme ? cms_colour_theme(@colour_theme, "left") : nil].compact do %>
       <div class="horizontal-card-component__content">
         <h1 class="govuk-heading-m"><%= @title %></h1>
         <%= render CmsRichTextBlockComponent.new(blocks: @body_blocks, with_wrapper: false) %>
-        <% if @icon_block.present? %>
-          <div class="horizontal-card-component__icon-wrapper">
-            <% @icon_block.each do |icon| %>
-              <div class="horizontal-card-component__icon-block">
-                <div class="horizontal-card-component__icon-image">
-                  <%= render CmsImageComponent.new(icon[:image]) %>
-                </div>
-                <div class="horizontal-card-component__icon-text">
-                  <p class="govuk-body-s govuk-!-margin-bottom-0"><%= icon[:text] %></p>
-                </div>
-              </div>
-            <% end %>
-          </div>
+        <% if @icon_block %>
+          <%= render @icon_block.render %>
         <% end %>
       </div>
-      <% if @image.present? %>
+      <% if @image %>
         <div class="horizontal-card-component__image">
             <%= @image_link&.then { |link| link_to(link) { render CmsImageComponent.new(@image) } } || render(CmsImageComponent.new(@image)) %>
         </div>
