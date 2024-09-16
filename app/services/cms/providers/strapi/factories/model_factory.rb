@@ -63,10 +63,6 @@ module Cms
                 slug: strapi_data[:slug],
                 excerpt: strapi_data[:seo][:description]
               )
-            elsif model_class == Models::DynamicZone
-              model_class.new(
-                strapi_data.map { ComponentFactory.process_component(_1) }.compact
-              )
             end
           end
 
