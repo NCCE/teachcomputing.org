@@ -7,16 +7,7 @@ RSpec.describe CmsHorizontalCardComponent, type: :component do
     before do
       render_inline(described_class.new(
         title: "Page title",
-        body_blocks: [
-          type: "paragraph",
-          children: [
-            {type: "text", text: "Hello world!"}
-          ]
-        ],
-        image: nil,
-        image_link: nil,
-        colour_theme: nil,
-        icon_block: nil
+        body_blocks: generate_strapi_content_block
       ))
     end
 
@@ -45,17 +36,16 @@ RSpec.describe CmsHorizontalCardComponent, type: :component do
     before do
       render_inline(described_class.new(
         title: "Page title",
-        body_blocks: [
-          type: "paragraph",
-          children: [
-            {type: "text", text: "Hello world!"}
-          ]
-        ],
-        image: nil,
+        body_blocks: generate_strapi_content_block,
+        image: Cms::Providers::Strapi::Factories::ModelFactory.to_image(generate_strapi_image_attributes),
         image_link: nil,
         colour_theme: nil,
         icon_block: nil
       ))
+    end
+
+    it "has an image" do
+      expect(page).to have_css("img")
     end
   end
 
