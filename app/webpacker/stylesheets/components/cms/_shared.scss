@@ -15,12 +15,12 @@
 
 .cms-colour-theme {
   $colors: (
-    'standard': $lime-green,
-    'i-belong': $orange,
-    'isaac': $brand-yellow
+    "standard": $lime-green,
+    "i-belong": $orange,
+    "isaac": $brand-yellow
   );
 
-  $sides: ('left', 'right', 'top', 'bottom');
+  $sides: ("left", "right", "top", "bottom");
 
   &__border {
     @each $name, $color in $colors {
