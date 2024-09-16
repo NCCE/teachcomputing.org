@@ -98,7 +98,7 @@ module Cms
               block[:image] = to_image(block[:image]) if block[:type] == "image"
               block
             end
-            Models::ContentBlock.new(blocks: data, with_wrapper: true)
+            Models::ContentBlock.new(blocks: data, with_wrapper:)
           end
 
           def self.to_featured_image(image_data, size = :large)
