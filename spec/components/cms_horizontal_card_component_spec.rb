@@ -121,15 +121,22 @@ RSpec.describe CmsHorizontalCardComponent, type: :component do
         image: nil,
         image_link: nil,
         colour_theme: nil,
-        icon_block: [{
-          iconText: "Face to face",
-          iconImage: Cms::Providers::Strapi::Factories::ModelFactory.to_image(generate_strapi_image_attributes)
-        }]
+        icon_block: Cms::DynamicComponents::IconBlock.new(icons:
+          [
+            Cms::DynamicComponents::Icon.new(
+              text: "Face to face",
+              image: Cms::Providers::Strapi::Factories::ModelFactory.to_image(generate_strapi_image_attributes)
+            )
+          ])
       ))
     end
 
-    it "has a the icon text" do
+    it "has the icon text" do
       expect(page).to have_text("Face to face")
+    end
+
+    it "has the icon image" do
+      expect(page).to have_css("img[src*='http://strapi.teachcomputing.test/medium_i_belong_camp_0_99e3e4622a.png']")
     end
   end
 end

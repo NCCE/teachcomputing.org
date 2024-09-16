@@ -3,12 +3,11 @@
     <%= content_tag :div, class: [
       "horizontal-card-component__wrapper",
       @colour_theme ? cms_colour_theme(@colour_theme, "left") : nil].compact do %>
+
       <div class="horizontal-card-component__content">
         <h1 class="govuk-heading-m"><%= @title %></h1>
         <%= render CmsRichTextBlockComponent.new(blocks: @body_blocks, with_wrapper: false) %>
-        <% if @icon_block %>
-          <%= render @icon_block.render %>
-        <% end %>
+        <%= render @icon_block.render if @icon_block%>
       </div>
       <% if @image %>
         <div class="horizontal-card-component__image">
