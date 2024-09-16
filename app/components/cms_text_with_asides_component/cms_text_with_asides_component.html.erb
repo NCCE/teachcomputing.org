@@ -1,0 +1,15 @@
+<%= render GovGridRowComponent.new do |row| %>
+  <%= row.with_column("two-thirds") do %>
+    <%= render CmsRichTextBlockComponent.new(blocks: @blocks, with_wrapper: false) %>
+  <% end %>
+
+  <%= row.with_column("one-third") do %>
+
+    <% @aside_models.each do |aside| %>
+      <% if aside[:model] %>
+        <%= render aside[:model].render %>
+      <% end %>
+    <% end %>
+
+  <% end %>
+<% end %>

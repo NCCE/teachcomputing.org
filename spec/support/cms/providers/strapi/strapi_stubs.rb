@@ -100,4 +100,9 @@ module StrapiStubs
     json_response = File.new("spec/support/cms/providers/strapi/aside_section_response.json")
     stub_request(:get, /^https:\/\/strapi.teachcomputing.org\/api\/aside-sections\/#{key}/).to_return(body: json_response, status: 404)
   end
+
+  def stub_strapi_enrichment_page(key)
+    json_response = File.new("spec/support/cms/providers/strapi/enrichment_page_response.json")
+    stub_request(:get, /^https:\/\/strapi.teachcomputing.org\/api\/enrichment-pages\/#{key}/).to_return(body: json_response)
+  end
 end

@@ -230,15 +230,17 @@ Rails.application.routes.draw do
   get "/supporting-partners", to: redirect("/get-involved")
   get "/terms-conditions", to: "pages#page", as: :terms_conditions, defaults: {page_slug: "terms-conditions"}
 
-  get "/primary-enrichment", to: "enrichment#show", defaults: {slug: "primary-certificate"}, as: :primary_enrichment
-  get "/secondary-enrichment", to: "enrichment#show", defaults: {slug: "secondary-certificate"}, as: :secondary_enrichment
-
   resource :search, only: :show
 
   get "/certificate/cs-accelerator", to: redirect("/certificate/subject-knowledge")
   get "/cs-accelerator", to: redirect("/subject-knowledge")
 
   # CMS ROUTES
+  get "/primary-enrichment", to: "cms#enrichment", defaults: {page_slug: "primary-enrichment"}, as: :primary_enrichment
+  get "/primary-enrichment/refresh", to: "cms#enrichment_refresh", defaults: {page_slug: "primary-enrichment"}, as: :primary_enrichment_reload
+  get "/secondary-enrichment", to: "cms#enrichment", defaults: {page_slug: "secondary-enrichment"}, as: :secondary_enrichment
+  get "/secondary-enrichment/refresh", to: "cms#enrichment_refresh", defaults: {page_slug: "secondary-enrichment"}, as: :secondary_enrichment_reload
+
   get "/home-teaching-resources" => redirect("/home-teaching")
   get "/home-teaching/:page_slug" => redirect("/home-teaching")
   get "/blog/:page_slug/refresh", to: "cms#clear_blog_cache"

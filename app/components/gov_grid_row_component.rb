@@ -6,15 +6,17 @@ class GovGridRowComponent < ViewComponent::Base
 
   renders_many :columns, "GovGridColumnComponent"
 
-  def initialize(background_color: nil, padding: {}, margin: {})
+  def initialize(background_color: nil, padding: {}, margin: {}, additional_classes: nil)
     @background_color = background_color
     @padding = padding
     @margin = margin
+    @additional_classes = additional_classes
   end
 
   def wrapper_classes
     classes = ["tc-gov-grid-wrapper"]
     classes << "#{@background_color}-bg" if @background_color
+    classes += Array.wrap(@additional_classes)
     classes
   end
 

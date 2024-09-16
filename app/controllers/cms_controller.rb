@@ -25,4 +25,13 @@ class CmsController < ApplicationController
     Cms::Collections::Blog.clear_cache(params[:page_slug])
     redirect_to request.fullpath.sub(%r{/refresh$}, "")
   end
+
+  def enrichment
+    process_resource Cms::Collections::EnrichmentPage, resource_id: params[:page_slug]
+  end
+
+  def enrichment_refresh
+    Cms::Collections::EnrichmentPage.clear_cache(params[:page_slug])
+    redirect_to request.fullpath.sub(%r{/refresh$}, "")
+  end
 end

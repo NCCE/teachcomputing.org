@@ -65,6 +65,7 @@ RSpec.configure do |config|
   config.include CurriculumStubs
   config.include GhostStubs
   config.include StrapiStubs
+  config.include StrapiGenerators
   config.include CachingHelpers
   config.include ResponsiveHelpers
   config.include ActiveSupport::Testing::TimeHelpers
