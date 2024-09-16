@@ -1,8 +1,3 @@
-.icon-wrapper .cms-image {
-  display: flex;
-  align-items: center;
-}
-
 .icon-wrapper {
   display: flex;
   justify-content: space-between;
@@ -21,6 +16,11 @@
     @include govuk-media-query($until: desktop) {
       flex: auto;
     }
+  }
+
+  .cms-image {
+    display: flex;
+    align-items: center;
   }
 
   &__text {
