@@ -1,0 +1,17 @@
+<%= render GovGridRowComponent.new(additional_classes: banner_classes) do |row| %>
+  <%= row.with_column("full") do %>
+
+    <div class="cms-full-width-banner">
+    
+      <% if @image %>
+        <div class="cms-full-width-banner__media">
+          <%= cms_image(@image) %>
+        </div>
+      <% end %>
+
+      <div class="cms-full-width-banner__content">
+        <%= render CmsRichTextBlockComponent.new(blocks: @text_content, with_wrapper: false) %>
+      </div>
+    </div>
+  <% end %>
+<% end %>
