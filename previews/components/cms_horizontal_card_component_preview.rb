@@ -4,15 +4,7 @@ class CmsHorizontalCardComponentPreview < ViewComponent::Preview
   def default
     render(CmsHorizontalCardComponent.new(
       title: "Page title",
-      body_blocks: [{
-        type: "paragraph",
-        children: [
-          {
-            text: Faker::Lorem.paragraph,
-            type: "text"
-          }
-        ]
-      }],
+      body_blocks: Cms::Mocks::RichBlocks.generate,
       image: nil,
       image_link: nil,
       colour_theme: nil,
@@ -23,17 +15,9 @@ class CmsHorizontalCardComponentPreview < ViewComponent::Preview
   def with_image_and_image_link
     render(CmsHorizontalCardComponent.new(
       title: "Page title",
-      body_blocks: [{
-        type: "paragraph",
-        children: [
-          {
-            text: Faker::Lorem.paragraph,
-            type: "text"
-          }
-        ]
-      }],
-      image: nil,
-      image_link: nil,
+      body_blocks: Cms::Mocks::RichBlocks.generate,
+      image: Cms::Mocks::Image.as_model,
+      image_link: Faker::Internet.url,
       colour_theme: nil,
       icon_block: nil
     ))
@@ -42,15 +26,7 @@ class CmsHorizontalCardComponentPreview < ViewComponent::Preview
   def with_colour_theme
     render(CmsHorizontalCardComponent.new(
       title: "Page title",
-      body_blocks: [{
-        type: "paragraph",
-        children: [
-          {
-            text: Faker::Lorem.paragraph,
-            type: "text"
-          }
-        ]
-      }],
+      body_blocks: Cms::Mocks::RichBlocks.generate,
       image: nil,
       image_link: nil,
       colour_theme: "standard",
@@ -61,25 +37,11 @@ class CmsHorizontalCardComponentPreview < ViewComponent::Preview
   def with_icon_block
     render(CmsHorizontalCardComponent.new(
       title: "Page title",
-      body_blocks: [{
-        type: "paragraph",
-        children: [
-          {
-            text: Faker::Lorem.paragraph,
-            type: "text"
-          }
-        ]
-      }],
+      body_blocks: Cms::Mocks::RichBlocks.generate,
       image: nil,
       image_link: nil,
       colour_theme: "standard",
-      icon_block: Cms::DynamicComponents::IconBlock.new(icons:
-        [
-          Cms::DynamicComponents::Icon.new(
-            text: "Face to face",
-            image: Cms::Providers::Strapi::Factories::ModelFactory.to_image(generate_strapi_image_attributes)
-          )
-        ])
+      icon_block: Cms::Mocks::IconBlocks.generate_data(3)
     ))
   end
 end

@@ -11,6 +11,13 @@
   .cms-image {
     display: flex;
     align-items: center;
+
+    img {
+      width: 23px;
+      height: 23px;
+      object-fit: contain;
+      object-position: center;
+    }
   }
 
   &__block {
