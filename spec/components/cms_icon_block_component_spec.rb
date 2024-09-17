@@ -8,7 +8,7 @@ RSpec.describe CmsIconBlockComponent, type: :component do
       icons: [
         Cms::DynamicComponents::Icon.new(
           text: "Face to face",
-          image: Cms::Providers::Strapi::Factories::ModelFactory.to_image(generate_strapi_image_attributes)
+          image: Cms::Mocks::Image.as_model
         )
       ]
     )
@@ -19,11 +19,11 @@ RSpec.describe CmsIconBlockComponent, type: :component do
       icons: [
         Cms::DynamicComponents::Icon.new(
           text: "Face to face",
-          image: Cms::Providers::Strapi::Factories::ModelFactory.to_image(generate_strapi_image_attributes)
+          image: Cms::Mocks::Image.as_model
         ),
         Cms::DynamicComponents::Icon.new(
           text: "Online course",
-          image: Cms::Providers::Strapi::Factories::ModelFactory.to_image(generate_strapi_image_attributes)
+          image: Cms::Mocks::Image.as_model
         )
       ]
     )
