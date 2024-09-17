@@ -40,7 +40,7 @@ module Cms
               )
             when "blocks.full-width-banner"
               DynamicComponents::FullWidthBanner.new(
-                textContent: ModelFactory.to_content_block(strapi_data[:textContent])
+                text_content: ModelFactory.to_content_block(strapi_data[:textContent])
               )
             end
           end
