@@ -114,6 +114,7 @@ RSpec.describe CmsHorizontalCardComponent, type: :component do
   end
 
   context "has an icon block" do
+    let(:icon_block) { Cms::Mocks::IconBlocks.generate }
     before do
       render_inline(described_class.new(
         title: "Page title",
@@ -121,18 +122,12 @@ RSpec.describe CmsHorizontalCardComponent, type: :component do
         image: nil,
         image_link: nil,
         colour_theme: nil,
-        icon_block: Cms::DynamicComponents::IconBlock.new(icons:
-          [
-            Cms::DynamicComponents::Icon.new(
-              text: "Face to face",
-              image: Cms::Mocks::Image.as_model
-            )
-          ])
+        icon_block: icon_block
       ))
     end
 
     it "has the icon text" do
-      expect(page).to have_text("Face to face")
+      expect(page).to have_text(icon_block.icons.first.text)
     end
 
     it "has the icon image" do
