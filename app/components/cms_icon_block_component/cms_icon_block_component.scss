@@ -8,6 +8,11 @@
     justify-content: space-evenly;
   }
 
+  .cms-image {
+    display: flex;
+    align-items: center;
+  }
+
   &__block {
     display: flex;
     align-items: center;
@@ -16,11 +21,6 @@
     @include govuk-media-query($until: desktop) {
       flex: auto;
     }
-  }
-
-  .cms-image {
-    display: flex;
-    align-items: center;
   }
 
   &__text {
