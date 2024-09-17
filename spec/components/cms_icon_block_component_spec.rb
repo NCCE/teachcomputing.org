@@ -3,31 +3,9 @@
 require "rails_helper"
 
 RSpec.describe CmsIconBlockComponent, type: :component do
-  let(:icon_block_one_icon) do
-    Cms::DynamicComponents::IconBlock.new(
-      icons: [
-        Cms::DynamicComponents::Icon.new(
-          text: "Face to face",
-          image: Cms::Mocks::Image.as_model
-        )
-      ]
-    )
-  end
+  let(:icon_block_one_icon) { Cms::Mocks::IconBlocks.generate }
 
-  let(:icon_block_two_icons) do
-    Cms::DynamicComponents::IconBlock.new(
-      icons: [
-        Cms::DynamicComponents::Icon.new(
-          text: "Face to face",
-          image: Cms::Mocks::Image.as_model
-        ),
-        Cms::DynamicComponents::Icon.new(
-          text: "Online course",
-          image: Cms::Mocks::Image.as_model
-        )
-      ]
-    )
-  end
+  let(:icon_block_two_icons) { Cms::Mocks::IconBlocks.generate(2) }
 
   context "with one icon" do
     before do
@@ -35,7 +13,7 @@ RSpec.describe CmsIconBlockComponent, type: :component do
     end
 
     it "renders the icon text" do
-      expect(page).to have_text("Face to face")
+      expect(page).to have_text(icon_block_one_icon.icons.first.text)
     end
 
     it "renders the intro text" do

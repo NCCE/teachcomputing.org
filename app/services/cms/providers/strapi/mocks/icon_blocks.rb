@@ -3,7 +3,7 @@ module Cms
     module Strapi
       module Mocks
         class IconBlocks
-          def self.generate_data(icon_count = 1)
+          def self.generate(icon_count = 1)
             Cms::DynamicComponents::IconBlock.new(
               icons: Array.new(icon_count) do
                 Cms::DynamicComponents::Icon.new(
