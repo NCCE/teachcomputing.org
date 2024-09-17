@@ -22,7 +22,7 @@ module Cms
               DynamicComponents::HorizontalCard.new(
                 title: strapi_data[:title],
                 body_blocks: strapi_data[:bodyText],
-                image: strapi_data.dig(:image, :data) ? ModelFactory.to_image(strapi_data[:image][:data][:attributes]) : nil,
+                image: strapi_data.dig(:image, :data) ? ModelFactory.to_image(strapi_data[:image][:data][:attributes], default_size: :small) : nil,
                 image_link: strapi_data[:imageLink],
                 colour_theme: strapi_data.dig(:colourTheme, :data) ? strapi_data[:colourTheme][:data][:attributes][:name] : nil,
                 icon_block: icon_block(strapi_data[:iconBlock])

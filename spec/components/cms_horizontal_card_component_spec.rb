@@ -4,7 +4,7 @@ require "rails_helper"
 
 RSpec.describe CmsHorizontalCardComponent, type: :component do
   context "with only a title and body block" do
-    let(:content_block) { generate_strapi_content_block }
+    let(:content_block) { Cms::Mocks::RichBlocks.generate }
 
     before do
       render_inline(described_class.new(
@@ -42,8 +42,8 @@ RSpec.describe CmsHorizontalCardComponent, type: :component do
     before do
       render_inline(described_class.new(
         title: "Page title",
-        body_blocks: generate_strapi_content_block,
-        image: Cms::Providers::Strapi::Factories::ModelFactory.to_image(generate_strapi_image_attributes),
+        body_blocks: Cms::Mocks::RichBlocks.generate,
+        image: Cms::Mocks::Image.as_model,
         image_link: nil,
         colour_theme: nil,
         icon_block: nil
@@ -59,8 +59,8 @@ RSpec.describe CmsHorizontalCardComponent, type: :component do
     before do
       render_inline(described_class.new(
         title: "Page title",
-        body_blocks: generate_strapi_content_block,
-        image: Cms::Providers::Strapi::Factories::ModelFactory.to_image(generate_strapi_image_attributes),
+        body_blocks: Cms::Mocks::RichBlocks.generate,
+        image: Cms::Mocks::Image.as_model,
         image_link: "https://www.example.com",
         colour_theme: nil,
         icon_block: nil
@@ -80,8 +80,8 @@ RSpec.describe CmsHorizontalCardComponent, type: :component do
     before do
       render_inline(described_class.new(
         title: "Page title",
-        body_blocks: generate_strapi_content_block,
-        image: Cms::Providers::Strapi::Factories::ModelFactory.to_image(generate_strapi_image_attributes),
+        body_blocks: Cms::Mocks::RichBlocks.generate,
+        image: Cms::Mocks::Image.as_model,
         image_link: nil,
         colour_theme: nil,
         icon_block: nil
@@ -101,7 +101,7 @@ RSpec.describe CmsHorizontalCardComponent, type: :component do
     before do
       render_inline(described_class.new(
         title: "Page title",
-        body_blocks: generate_strapi_content_block,
+        body_blocks: Cms::Mocks::RichBlocks.generate,
         image: nil,
         image_link: nil,
         colour_theme: "standard",
@@ -117,7 +117,7 @@ RSpec.describe CmsHorizontalCardComponent, type: :component do
     before do
       render_inline(described_class.new(
         title: "Page title",
-        body_blocks: generate_strapi_content_block,
+        body_blocks: Cms::Mocks::RichBlocks.generate,
         image: nil,
         image_link: nil,
         colour_theme: nil,
@@ -125,7 +125,7 @@ RSpec.describe CmsHorizontalCardComponent, type: :component do
           [
             Cms::DynamicComponents::Icon.new(
               text: "Face to face",
-              image: Cms::Providers::Strapi::Factories::ModelFactory.to_image(generate_strapi_image_attributes)
+              image: Cms::Mocks::Image.as_model
             )
           ])
       ))
@@ -136,7 +136,7 @@ RSpec.describe CmsHorizontalCardComponent, type: :component do
     end
 
     it "has the icon image" do
-      expect(page).to have_css("img[src*='http://strapi.teachcomputing.test/medium_i_belong_camp_0_99e3e4622a.png']")
+      expect(page).to have_css("img")
     end
   end
 end

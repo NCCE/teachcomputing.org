@@ -21,7 +21,7 @@ module Cms
             {
               name: filename,
               alternativeText: Faker::Lorem.sentence,
-              caption: Faker::Lorem.sentence,
+              caption: "",
               width: 1000,
               height: 800,
               formats: {
