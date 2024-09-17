@@ -1,0 +1,65 @@
+# frozen_string_literal: true
+
+require "rails_helper"
+
+RSpec.describe CmsIconBlockComponent, type: :component do
+  let(:icon_block_one_icon) do
+    Cms::DynamicComponents::IconBlock.new(
+      icons: [
+        Cms::DynamicComponents::Icon.new(
+          text: "Face to face",
+          image: Cms::Providers::Strapi::Factories::ModelFactory.to_image(generate_strapi_image_attributes)
+        )
+      ]
+    )
+  end
+
+  let(:icon_block_two_icons) do
+    Cms::DynamicComponents::IconBlock.new(
+      icons: [
+        Cms::DynamicComponents::Icon.new(
+          text: "Face to face",
+          image: Cms::Providers::Strapi::Factories::ModelFactory.to_image(generate_strapi_image_attributes)
+        ),
+        Cms::DynamicComponents::Icon.new(
+          text: "Online course",
+          image: Cms::Providers::Strapi::Factories::ModelFactory.to_image(generate_strapi_image_attributes)
+        )
+      ]
+    )
+  end
+
+  context "with one icon" do
+    before do
+      render_inline(described_class.new(icons: icon_block_one_icon.icons))
+    end
+
+    it "renders the icon text" do
+      expect(page).to have_text("Face to face")
+    end
+
+    it "renders the intro text" do
+      expect(page).to have_css("img")
+    end
+  end
+
+  context "with two icons" do
+    before do
+      render_inline(described_class.new(icons: icon_block_two_icons.icons))
+    end
+
+    it "renders two icons" do
+      expect(page).to have_css(".icon-wrapper__block", count: 2)
+    end
+  end
+
+  context "with no icons" do
+    before do
+      render_inline(described_class.new(icons: []))
+    end
+
+    it "does not render if no icons present" do
+      expect(page).to_not have_css(".icon-wrapper__block")
+    end
+  end
+end
