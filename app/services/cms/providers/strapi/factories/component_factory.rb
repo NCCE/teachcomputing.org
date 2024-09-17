@@ -38,6 +38,10 @@ module Cms
                 cards_per_row: strapi_data[:cardsPerRow],
                 background_color: strapi_data.dig(:backgroundColour, :data) ? strapi_data[:backgroundColour][:data][:attributes][:name] : nil
               )
+            when "blocks.full-width-banner"
+              DynamicComponents::FullWidthBanner.new(
+                textContent: ModelFactory.to_content_block(strapi_data[:textContent])
+              )
             end
           end
 
