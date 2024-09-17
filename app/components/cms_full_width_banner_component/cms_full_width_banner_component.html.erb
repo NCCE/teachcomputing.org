@@ -11,6 +11,14 @@
 
       <div class="cms-full-width-banner__content">
         <%= render CmsRichTextBlockComponent.new(blocks: @text_content, with_wrapper: false) %>
+
+        <% if @buttons %>
+          <div class="cms-full-width-banner__content-buttons">
+            <% @buttons.each do |button| %>
+              <%= render button.render %>
+            <% end %>
+          </div>
+        <% end %>
       </div>
     </div>
   <% end %>
