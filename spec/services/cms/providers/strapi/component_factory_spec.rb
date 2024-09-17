@@ -16,4 +16,12 @@ RSpec.describe Cms::Providers::Strapi::Factories::ComponentFactory do
       expect(model).to be_a Cms::DynamicComponents::NcceButton
     end
   end
+
+  context "FullWidthBanner" do
+    it "should be created" do
+      strapi_data = Cms::Providers::Strapi::Mocks::FullWidthBanner.generate_raw_data
+      model = described_class.process_component(strapi_data)
+      expect(model).to be_a Cms::DynamicComponents::FullWidthBanner
+    end
+  end
 end
