@@ -2775,3 +2775,18 @@ Activity.find_or_initialize_by(stem_course_template_no: "599883f3-f453-ef11-bfe3
 
   activity.programmes = [cs_accelerator]
 end.save!
+
+# CP442 has been moved from the mylearning seed file as it was incorrectly defined as a online course
+Activity.find_or_initialize_by(stem_course_template_no: "2e99cea4-2e53-ef11-bfe3-002248c6f6fa").tap do |activity|
+  activity.title = "Artificial intelligence (AI) in Key Stage 3 computing"
+  activity.credit = 30
+  activity.slug = "artificial-intelligence-ai-in-key-stage-3-computing"
+  activity.category = "face-to-face"
+  activity.remote_delivered_cpd = true
+  activity.self_certifiable = false
+  activity.provider = "stem-learning"
+  activity.stem_activity_code = "CP442"
+  activity.always_on = false
+
+  activity.programmes = [secondary_certificate]
+end.save!
