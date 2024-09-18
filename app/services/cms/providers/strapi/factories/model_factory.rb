@@ -65,15 +65,6 @@ module Cms
             end
           end
 
-          def self.to_file(data)
-            Models::File.new(
-              url: data[:url],
-              filename: data[:name],
-              size: data[:size],
-              updated_at: DateTime.parse(data[:updatedAt])
-            )
-          end
-
           def self.to_enrichment(strapi_data)
             return nil if strapi_data[:publishedAt].nil? && Rails.env.production?
             type_data = strapi_data[:type][:data][:attributes]

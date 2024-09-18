@@ -7,10 +7,16 @@ module Cms
             Factories::ComponentFactory.process_component(generate_data)
           end
 
-          def self.generate_data(aside_sections: [])
+          def self.generate_data
             {
               textContent: RichBlocks.generate,
-              image: nil
+              image: Mocks::Image.generate_data,
+              imageLink: Faker::Internet.url,
+              backgroundColor: {
+                name: "white"
+              },
+              imageSide: "right",
+              buttons: nil
             }
           end
 
