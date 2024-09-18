@@ -1,9 +1,6 @@
 <%= render GovGridRowComponent.new(padding: {top: 6, bottom: 0}) do |row|  %>
   <%= row.with_column("full") do %>
-    <%= content_tag :div, class: [
-      "horizontal-card-component__wrapper",
-      @colour_theme ? cms_colour_theme(@colour_theme, "left") : nil].compact do %>
-
+    <%= content_tag :div, class: wrapper_classes do %>
       <div class="horizontal-card-component__content">
         <h1 class="govuk-heading-m"><%= @title %></h1>
         <%= render CmsRichTextBlockComponent.new(blocks: @body_blocks, with_wrapper: false) %>
@@ -11,7 +8,7 @@
       </div>
       <% if @image %>
         <div class="horizontal-card-component__image">
-            <%= @image_link&.then { |link| link_to(link) { render CmsImageComponent.new(@image) } } || render(CmsImageComponent.new(@image)) %>
+          <%= render CmsImageComponent.new(@image, link: @image_link) %>
         </div>
       <% end %>
     <% end %>
