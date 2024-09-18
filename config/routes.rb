@@ -243,9 +243,13 @@ Rails.application.routes.draw do
 
   # TEMPORARY ROUTES UNTIL CONVERSION OF SIMPLE
   get "/primary-early-careers", to: "cms#web_page_resource", defaults: {page_slug: "primary-early-careers"}
+  get "/primary-early-careers/refresh", to: "cms#web_page_refresh", defaults: {page_slug: "primary-early-careers"}
   get "/primary-trainees", to: "cms#web_page_resource", defaults: {page_slug: "primary-trainees"}
+  get "/primary-trainees/refresh", to: "cms#web_page_refresh", defaults: {page_slug: "primary-trainees"}
   get "/secondary-early-careers", to: "cms#web_page_resource", defaults: {page_slug: "secondary-early-careers"}
+  get "/secondary-early-careers/refresh", to: "cms#web_page_refresh", defaults: {page_slug: "secondary-early-careers"}
   get "/secondary-trainees", to: "cms#web_page_resource", defaults: {page_slug: "secondary-trainees"}
+  get "/secondary-trainees/refresh", to: "cms#web_page_refresh", defaults: {page_slug: "secondary-trainees"}
 
   get "/home-teaching-resources" => redirect("/home-teaching")
   get "/home-teaching/:page_slug" => redirect("/home-teaching")
