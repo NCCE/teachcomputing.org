@@ -20,6 +20,11 @@ class CmsController < ApplicationController
     process_resource Cms::Collections::WebPage, resource_id: params[:page_slug]
   end
 
+  def web_page_refresh
+    Cms::Collections::WebPage.clear_cache(params[:page_slug])
+    redirect_to request.fullpath.sub(%r{/refresh$}, "")
+  end
+
   def clear_page_cache
     Cms::Collections::SimplePage.clear_cache(params[:page_slug])
     redirect_to request.fullpath.sub(%r{/refresh$}, "")
