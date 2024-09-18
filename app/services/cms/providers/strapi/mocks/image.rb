@@ -13,7 +13,7 @@ module Cms
             Factories::ModelFactory.to_image(generate_data)
           end
 
-          def self.generate_data
+          def self.generate_data(caption: nil)
             name = Faker::Lorem.word
             filename = "#{name}.png"
             hash = Faker::Alphanumeric.alphanumeric(number: 10)
@@ -21,7 +21,7 @@ module Cms
             {
               name: filename,
               alternativeText: Faker::Lorem.sentence,
-              caption: "",
+              caption: caption,
               width: 1000,
               height: 800,
               formats: {

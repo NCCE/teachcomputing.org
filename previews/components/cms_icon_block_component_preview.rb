@@ -1,5 +1,5 @@
 class CmsIconBlockComponentPreview < ViewComponent::Preview
   def default
-    # TODO ADD COMPONENT PREVIEW
+    render(CmsIconBlockComponent.new(icons: Cms::Mocks::IconBlocks.generate(3).icons))
   end
 end
