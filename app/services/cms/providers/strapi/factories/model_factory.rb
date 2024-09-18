@@ -19,7 +19,7 @@ module Cms
                 featured_image: strapi_data.dig(:featuredImage, :data) ? to_image(strapi_data[:featuredImage][:data][:attributes]) : nil
               )
             elsif model_class == Models::FeaturedImage
-              to_featured_image(strapi_data[:data][:attributes])
+              to_featured_image(strapi_data[:data][:attributes]) if strapi_data[:data]
             elsif model_class == Models::ContentBlock
               to_content_block(strapi_data)
             elsif model_class == Models::RichHeader
