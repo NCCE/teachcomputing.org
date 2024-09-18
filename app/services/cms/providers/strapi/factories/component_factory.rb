@@ -10,7 +10,7 @@ module Cms
               Models::ContentBlock.new(blocks: strapi_data[:textContent], with_wrapper: false)
             when "content-blocks.file-link"
               file_data = strapi_data.dig(:file, :data) ? strapi_data[:file][:data][:attributes] : nil
-              ModelFactory.to_file(file_data) if file_data
+              to_file(file_data) if file_data
             when "blocks.text-with-asides"
               asides = if strapi_data.dig(:asideSections, :data)
                 strapi_data[:asideSections][:data].collect { _1[:attributes] }
@@ -40,7 +40,12 @@ module Cms
               )
             when "blocks.full-width-banner"
               DynamicComponents::FullWidthBanner.new(
-                text_content: ModelFactory.to_content_block(strapi_data[:textContent])
+                text_content: ModelFactory.to_content_block(strapi_data[:textContent]),
+                background_color: strapi_data[:backgroundColor][:name],
+                image: ModelFactory.to_image(strapi_data[:image]),
+                image_side: strapi_data[:image_side],
+                image_link: strapi_data[:imageLink],
+                buttons: [] # TODO pull from Q&A branch,
               )
             end
           end
@@ -85,6 +90,15 @@ module Cms
             DynamicComponents::Icon.new(
               text: icon_data[:iconText],
               image: ModelFactory.to_image(icon_data[:iconImage][:data][:attributes])
+            )
+          end
+
+          def self.to_file(data)
+            Models::File.new(
+              url: data[:url],
+              filename: data[:name],
+              size: data[:size],
+              updated_at: DateTime.parse(data[:updatedAt])
             )
           end
         end
