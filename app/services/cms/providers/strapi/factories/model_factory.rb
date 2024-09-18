@@ -19,7 +19,7 @@ module Cms
                 featured_image: to_image(strapi_data, :featuredImage)
               )
             elsif model_class == Models::FeaturedImage
-              to_featured_image(strapi_data[:data][:attributes])
+              to_featured_image(strapi_data[:data][:attributes]) if strapi_data[:data]
             elsif model_class == Models::ContentBlock
               to_content_block(strapi_data)
             elsif model_class == Models::SimpleTitle

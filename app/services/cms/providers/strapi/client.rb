@@ -101,7 +101,7 @@ module Cms
         def to_resource(id, attributes, data_models, preview: false)
           {
             id:,
-            data_models:,
+            data_models: data_models.compact, # remove any nil data models
             created_at: attributes[:createdAt],
             updated_at: attributes[:updatedAt],
             published_at: preview ? DateTime.now.to_s : attributes[:publishedAt]
