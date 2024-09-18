@@ -241,6 +241,12 @@ Rails.application.routes.draw do
   get "/secondary-enrichment", to: "cms#enrichment", defaults: {page_slug: "secondary-enrichment"}, as: :secondary_enrichment
   get "/secondary-enrichment/refresh", to: "cms#enrichment_refresh", defaults: {page_slug: "secondary-enrichment"}, as: :secondary_enrichment_reload
 
+  # TEMPORARY ROUTES UNTIL CONVERSION OF SIMPLE
+  get "/primary-early-careers", to: "cms#web_page_resource", defaults: {page_slug: "primary-early-careers"}
+  get "/primary-trainees", to: "cms#web_page_resource", defaults: {page_slug: "primary-trainees"}
+  get "/secondary-early-careers", to: "cms#web_page_resource", defaults: {page_slug: "secondary-early-careers"}
+  get "/secondary-trainees", to: "cms#web_page_resource", defaults: {page_slug: "secondary-trainees"}
+
   get "/home-teaching-resources" => redirect("/home-teaching")
   get "/home-teaching/:page_slug" => redirect("/home-teaching")
   get "/blog/:page_slug/refresh", to: "cms#clear_blog_cache"
