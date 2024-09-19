@@ -25,7 +25,7 @@ class OnlineBookingPresenter
   end
 
   def booking_button_title
-    "Book"
+    "Join"
   end
 
   def enrolled_title
@@ -86,6 +86,17 @@ class OnlineBookingPresenter
   end
 
   def show_stem_occurrence_list
-    false
+    true
+  end
+
+  def activity_date(start_date)
+    return if start_date.blank?
+
+    date = Time.zone.parse(start_date)
+    date.strftime("#{date.day.ordinalize} %B %Y").to_s
+  end
+
+  def address(occurrence)
+    "Online Course"
   end
 end

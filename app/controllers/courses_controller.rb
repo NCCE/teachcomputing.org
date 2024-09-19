@@ -92,7 +92,7 @@ class CoursesController < ApplicationController
       @started = (@start_date <= Time.zone.today)
     else # This shouldn't happen but some test data has no occurrences
       Sentry.capture_message("Attempted to determine start date of a course with no occurrences", extra: {course_template_no: @course&.course_template_no})
-      @start_date = Date.new(3001, 1, 1)
+      @start_date = false
       @started = false
     end
   end
