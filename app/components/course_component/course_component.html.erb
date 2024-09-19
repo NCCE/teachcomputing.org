@@ -8,6 +8,7 @@
     <%= link_to @course.title, course_path(id: @course.activity_code, name: @course.title.parameterize), class: 'ncce-link' %><span class="ncce-courses__heading-code"><%= @course.activity_code %></span>
   </h2>
   <p class="govuk-body"><%= stripped_summary(@course.meta_description) %></p>
+  <%= @course.always_on %>
   <% if @course.always_on %>
     <div class="govuk-body-s govuk-!-font-weight-bold ncce-courses__locations--always-open">
       <span class='ncce-courses__locations-type <%= course_meta_icon_class(@course) %>'>Free online course</span>
