@@ -13,24 +13,7 @@
         <% end %>
       </div>
     </div>
-
-    <div class="govuk-grid-row">
-      <div class="govuk-grid-column-full">
-        <% if @collection.previous_page %>
-          <hr class="ncce-hr">
-          <%= link_to "#{@path}?page=#{@collection.previous_page}", class: 'icon-arrow-left search__paging' do %>
-            <p class="govuk-heading-s">Previous page</p>
-            <p class="govuk-body-s"><%= @collection.previous_page %> of <%= @collection.page_number %></p>
-          <% end %>
-        <% end %>
-        <% if @collection.next_page %>
-          <hr class="ncce-hr">
-          <%= link_to "#{@path}?page=#{@collection.next_page}", class: 'icon-arrow-right search__paging' do %>
-            <p class="govuk-heading-s">Next page</p>
-            <p class="govuk-body-s"><%= @collection.next_page %> of <%= @collection.page_number %></p>
-          <% end %>
-        <% end %>
-      </div>
-    </div>
   </div>
+
+  <%= render PaginationComponent.new(current_page: @collection.page, page_count: @collection.page_number) %>
 </div>

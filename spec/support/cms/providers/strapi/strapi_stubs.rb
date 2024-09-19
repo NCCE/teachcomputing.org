@@ -9,6 +9,11 @@ module StrapiStubs
     stub_request(:get, /^https:\/\/strapi.teachcomputing.org\/api\/#{resource_key}?/).to_return(body: json_response)
   end
 
+  def stub_strapi_get_single_web_page(resource_key)
+    json_response = File.new("spec/support/cms/providers/strapi/web_page_response.json")
+    stub_request(:get, /^https:\/\/strapi.teachcomputing.org\/api\/#{resource_key}?/).to_return(body: json_response)
+  end
+
   def stub_strapi_get_single_entity_with_preview(resource_key)
     json_response = File.new("spec/support/cms/providers/strapi/single_type_response_with_preview.json")
     stub_request(:get, /^https:\/\/strapi.teachcomputing.org\/api\/#{resource_key}?/).to_return(body: json_response)
@@ -84,5 +89,20 @@ module StrapiStubs
   def stub_strapi_blog_collection_with_tag(tag)
     json_response = File.new("spec/support/cms/providers/strapi/blogs_collection_response.json")
     stub_request(:get, /^https:\/\/strapi.teachcomputing.org\/api\/blogs\?.*(filters\[blog_tags\]\[slug\]\[\$eq\]=#{tag}).*/).to_return(body: json_response)
+  end
+
+  def stub_strapi_aside_section
+    json_response = File.new("spec/support/cms/providers/strapi/aside_section_response.json")
+    stub_request(:get, /^https:\/\/strapi.teachcomputing.org\/api\/aside-sections/).to_return(body: json_response)
+  end
+
+  def stub_strapi_aside_section_missing(key)
+    json_response = File.new("spec/support/cms/providers/strapi/aside_section_response.json")
+    stub_request(:get, /^https:\/\/strapi.teachcomputing.org\/api\/aside-sections\/#{key}/).to_return(body: json_response, status: 404)
+  end
+
+  def stub_strapi_enrichment_page(key)
+    json_response = File.new("spec/support/cms/providers/strapi/enrichment_page_response.json")
+    stub_request(:get, /^https:\/\/strapi.teachcomputing.org\/api\/enrichment-pages\/#{key}/).to_return(body: json_response)
   end
 end

@@ -55,7 +55,7 @@ RSpec.describe("Site search", type: :system, js: true) do
   end
 
   def when_i_paginate_to_the_next_page
-    page.find(:css, ".icon-arrow-left.search__paging")
+    page.find(:css, ".govuk-pagination__next")
       .click
   end
 
@@ -68,10 +68,10 @@ RSpec.describe("Site search", type: :system, js: true) do
   end
 
   def then_i_should_be_able_to_paginate_to_the_next_page
-    expect(page).to have_css(".icon-arrow-left.search__paging")
+    expect(page).to have_css(".govuk-pagination__next")
   end
 
   def then_i_should_be_able_to_paginate_to_the_previous_page
-    expect(page).to have_css(".icon-arrow-right.search__paging")
+    expect(page).to have_css(".govuk-pagination__prev")
   end
 end

@@ -99,6 +99,7 @@ Rails.application.configure do
 
   config.view_component.preview_paths << "#{Rails.root}/previews/components"
   config.view_component.preview_route = "/rails/components"
+  config.view_component.generate.sidecar = true
 
   config.lograge.enabled = true
   config.lograge.ignore_actions = [Healthcheck::CONTROLLER_ACTION]

@@ -14,11 +14,20 @@ module Achiever
 
         case course.attendance_status
         when "attended"
-          any_marked_as_attended = true
-
-          achievement.complete!
+          begin
+            achievement.complete!
+            any_marked_as_attended = true
+          rescue Statesman::TransitionConflictError => e
+            Sentry.set_tags(achievement_id: achievement.id, user_id: user.id)
+            Sentry.capture_exception(e)
+          end
         when "cancelled"
-          achievement.drop!
+          begin
+            achievement.drop!
+          rescue Statesman::TransitionConflictError => e
+            Sentry.set_tags(achievement_id: achievement.id, user_id: user.id)
+            Sentry.capture_exception(e)
+          end
         end
       end
 

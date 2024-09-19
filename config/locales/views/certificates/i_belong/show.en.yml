@@ -9,11 +9,3 @@ en:
         introduction:
           html: "Our CPD and activities are selected based on research and evidence around what can contribute to increasing girls’ uptake of computer science. Some elements of this programme are compulsory, while others have different options, enabling you to choose those that best suit your school. Refer to the %{handbook} for additional guidance and recommended initiatives.<br><br>To progress through this programme, when prompted submit evidence by providing external links to showcase your activities, such as a student or teacher reflections, social media posts, press releases or blog/news items. Consider the impact on girls that have taken part. Please %{get_in_touch} if you have any questions."
         feedback_text: "What can we do better?"
-        support_aside:
-          hub_link_text: "Contact your local Computing Hub"
-          title: "Need some help?"
-          text:
-            html: "For support with this programme:
-              <br>%{hub_link}<br><br>
-              Technical issue?
-              %{email_link}"

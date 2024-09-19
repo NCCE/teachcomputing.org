@@ -91,12 +91,12 @@ RSpec.describe Programmes::PrimaryCertificate do
   describe "#user_qualifies_for_credly_badge" do
     it "should return false if no face-to-face" do
       setup_achievements_for_no_face_to_face
-      expect(programme.user_qualifies_for_credly_badge?(user)).to be false
+      expect(programme.user_qualifies_for_credly_cpd_badge?(user)).to be false
     end
 
     it "should return true with face-to-face" do
       setup_achievements_for_partial_completion
-      expect(programme.user_qualifies_for_credly_badge?(user)).to be true
+      expect(programme.user_qualifies_for_credly_cpd_badge?(user)).to be true
     end
   end
 end

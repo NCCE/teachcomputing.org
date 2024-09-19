@@ -13,6 +13,15 @@ module Cms
                 populate: {seo: {populate: [:description]}},
                 fields: [:title, :slug, :publishedAt, :createdAt, :updatedAt]
               }
+            elsif model_class == Cms::Models::EnrichmentList
+              {
+                populate: {
+                  partner_icon: {populate: [:alternativeText]},
+                  terms: {populate: [:name]},
+                  age_groups: {populate: [:name]},
+                  type: {populate: {icon: {populate: [:alternativeText]}}}
+                }
+              }
             elsif model_class == Cms::Models::BlogPreview
               {
                 populate: {featuredImage: {populate: [:alternativeText]}},
@@ -20,6 +29,16 @@ module Cms
                 sort: ["publishDate:desc"],
                 filters: {
                   publishDate: {"$lt": DateTime.now.strftime}
+                }
+              }
+            elsif model_class == Models::PageTitle
+              {
+                populate: [:title]
+              }
+            elsif model_class == Models::DynamicZone
+              {
+                on: {
+                  "blocks.text-with-asides": ComponentParameterFactory.text_with_asides_paramters
                 }
               }
             end

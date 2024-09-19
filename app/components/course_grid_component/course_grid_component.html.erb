@@ -1,7 +1,7 @@
 <div class="govuk-width-container">
   <div class="govuk-main-wrapper">
     <div class="govuk-grid-row">
-      <div class="govuk-grid-column-full"> 
+      <div class="govuk-grid-column-full">
         <h2 class="govuk-heading-l"><%= @title %></h2>
         <p class="govuk-body"><%=  @intro %></p>
       </div>
@@ -49,7 +49,7 @@
           </div>
       </div>
     </div>
-    <p class="govuk-body govuk-!-text-align-centre">
+    <p class="govuk-body govuk-!-text-align-centre govuk-!-margin-bottom-0">
       <%= link_to "Browse our courses", @course_link, class: 'govuk-button button button--inverted', data: { event_action: 'click',
                                                                             event_category: @event_category,
                                                                             event_label: 'All courses btn'} %>

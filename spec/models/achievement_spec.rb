@@ -39,7 +39,7 @@ RSpec.describe Achievement, type: :model do
   end
 
   describe "callbacks" do
-    it { is_expected.to callback(:queue_auto_enrolment).after(:save) }
+    it { is_expected.to callback(:queue_auto_enrolment).after(:commit) }
   end
 
   describe "associations" do

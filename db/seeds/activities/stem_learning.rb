@@ -1085,6 +1085,7 @@ Activity.find_or_initialize_by(stem_course_template_no: "22ee67ba-4f8d-eb11-b1ac
   activity.provider = "stem-learning"
   activity.stem_activity_code = "CP440"
   activity.remote_delivered_cpd = true
+  activity.public_copy_additional_icons = ["Secondary"]
 
   activity.programmes = [i_belong, secondary_certificate]
 end.save!
@@ -2626,8 +2627,9 @@ Activity.find_or_initialize_by(stem_course_template_no: "83b17df6-d819-ef11-9f89
   activity.provider = "stem-learning"
   activity.stem_activity_code = "CP409"
   activity.credit = 15
+  activity.public_copy_additional_icons = ["Primary"]
 
-  activity.programmes = [primary_certificate]
+  activity.programmes = [primary_certificate, i_belong]
 end.save!
 
 Activity.find_or_initialize_by(stem_course_template_no: "1bb43af9-d51c-ef11-840b-002248c6f524").tap do |activity|
@@ -2700,4 +2702,91 @@ Activity.find_or_initialize_by(stem_course_template_no: "5af6c3df-542a-ef11-8409
   activity.credit = 15
 
   activity.programmes = [primary_certificate]
+end.save!
+
+Activity.find_or_initialize_by(stem_course_template_no: "e664d455-c833-ef11-8e4e-002248c61821").tap do |activity|
+  activity.title = "Databases for A-level Computer Science"
+  activity.slug = "databases-for-a-level-computer-science"
+  activity.category = "face-to-face"
+  activity.remote_delivered_cpd = true
+  activity.provider = "stem-learning"
+  activity.stem_activity_code = "CP507"
+  activity.credit = 30
+
+  activity.programmes = [secondary_certificate]
+end.save!
+
+Activity.find_or_initialize_by(stem_course_template_no: "ab3e93bf-cf33-ef11-8e4e-002248c617c9").tap do |activity|
+  activity.title = "Introduction to programming for A Level Computer Science"
+  activity.slug = "introduction-to-programming-for-a-level-computer-science"
+  activity.category = "face-to-face"
+  activity.remote_delivered_cpd = false
+  activity.provider = "stem-learning"
+  activity.stem_activity_code = "CP517"
+  activity.credit = 60
+
+  activity.programmes = [secondary_certificate]
+end.save!
+
+Activity.find_or_initialize_by(stem_course_template_no: "3f69717b-d233-ef11-8e4e-002248c6185e").tap do |activity|
+  activity.title = "Maths for A Level Computer Science"
+  activity.slug = "maths-for-a-level-computer-science"
+  activity.category = "face-to-face"
+  activity.remote_delivered_cpd = false
+  activity.provider = "stem-learning"
+  activity.stem_activity_code = "CP518"
+  activity.credit = 30
+
+  activity.programmes = [secondary_certificate]
+end.save!
+
+Activity.find_or_initialize_by(stem_course_template_no: "d43e7cdf-3048-ef11-a316-002248c617c9").tap do |activity|
+  activity.title = "Functional Programming Crash Course"
+  activity.slug = "functional-programming-crash-course"
+  activity.category = "face-to-face"
+  activity.remote_delivered_cpd = true
+  activity.provider = "stem-learning"
+  activity.stem_activity_code = "CP508"
+  activity.credit = 60
+
+  activity.programmes = [secondary_certificate]
+end.save!
+
+Activity.find_or_initialize_by(stem_course_template_no: "28196db1-804d-ef11-a316-000d3a0d2486").tap do |activity|
+  activity.title = "Foundations for Effective Computing in Key Stage 1"
+  activity.slug = "foundations-for-effective-computing-in-key-stage-1"
+  activity.category = "face-to-face"
+  activity.remote_delivered_cpd = true
+  activity.provider = "stem-learning"
+  activity.stem_activity_code = "CP410"
+  activity.credit = 55
+
+  activity.programmes = [primary_certificate]
+end.save!
+
+Activity.find_or_initialize_by(stem_course_template_no: "599883f3-f453-ef11-bfe3-000d3a872bb3").tap do |activity|
+  activity.title = "AI and Ethics in GCSE computer science"
+  activity.slug = "ai-and-ethics-in-gcse-computer-science"
+  activity.category = "face-to-face"
+  activity.remote_delivered_cpd = true
+  activity.provider = "stem-learning"
+  activity.credit = 10
+  activity.stem_activity_code = "CP427"
+
+  activity.programmes = [cs_accelerator]
+end.save!
+
+# CP442 has been moved from the mylearning seed file as it was incorrectly defined as a online course
+Activity.find_or_initialize_by(stem_course_template_no: "2e99cea4-2e53-ef11-bfe3-002248c6f6fa").tap do |activity|
+  activity.title = "Artificial intelligence (AI) in Key Stage 3 computing"
+  activity.credit = 30
+  activity.slug = "artificial-intelligence-ai-in-key-stage-3-computing"
+  activity.category = "face-to-face"
+  activity.remote_delivered_cpd = true
+  activity.self_certifiable = false
+  activity.provider = "stem-learning"
+  activity.stem_activity_code = "CP442"
+  activity.always_on = false
+
+  activity.programmes = [secondary_certificate]
 end.save!

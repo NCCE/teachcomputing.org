@@ -46,7 +46,19 @@
 
   @include govuk-media-query($until: desktop) {
     padding: 0;
-    position: sticky;
     top: 0;
+  }
+
+  /* Move the title inside the filter box on mobile */
+  &-title--desktop {
+    @include govuk-media-query($until: desktop) {
+      display: none;
+    }
+  }
+
+  &-title--mobile {
+    @include govuk-media-query($from: desktop) {
+      display: none;
+    }
   }
 }

@@ -16,16 +16,20 @@ Rails.application.routes.draw do
     resources :hubs
     resources :hub_regions
     resources :support_audits, only: %i[index show update edit]
+
     resources :users, only: %i[index create show edit perform_sync perform_reset update] do
       get "/perform_sync/:user_id", to: "users#perform_sync", as: :perform_sync
       get "/perform_reset/:user_id", to: "users#perform_reset_tests", as: :perform_reset
+      get "/generate_assessment_attempt", to: "users#generate_assessment_attempt", as: :generate_assessment_attempt unless Rails.env.production?
+      post "/process_assessment_attempt", to: "users#process_assessment_attempt", as: :process_assessment_attempt unless Rails.env.production?
     end
     resources :user_programme_enrolments, only: %i[index show edit update] do
       member do
         get :generate_certificate
       end
     end
-    resources :achievements, only: %i[index show] do
+    achievement_actions = Rails.env.production? ? %i[index show] : %i[index show create new destroy update]
+    resources :achievements, only: achievement_actions do
       member do
         post :reject_evidence
       end
@@ -203,8 +207,7 @@ Rails.application.routes.draw do
   get "/login", to: "pages#login", as: :login
   get "/logout", to: "auth#logout", as: :logout
   get "/maintenance", to: "pages#page", as: :maintenance, defaults: {page_slug: "maintenance"}
-  get "/contributing-partners", to: "pages#page", as: :contributing_partners,
-    defaults: {page_slug: "contributing-partners"}
+  get "/contributing-partners", to: redirect("/get-involved")
   get "/primary-certificate", to: "pages#static_programme_page", as: :primary,
     defaults: {page_slug: "primary-certificate"}
   get "/primary-teachers", to: "pages#page", as: :primary_teachers,
@@ -224,11 +227,8 @@ Rails.application.routes.draw do
     defaults: {page_slug: "secondary-toolkit"}
   get "/secondary-certification", to: "pages#secondary-certification", as: :secondary_certification
   get "/signup-confirmation", to: "pages#page", as: :signup_confirmation, defaults: {page_slug: "signup-confirmation"}
-  get "/supporting-partners", to: "pages#page", as: :supporting_partners, defaults: {page_slug: "supporting-partners"}
+  get "/supporting-partners", to: redirect("/get-involved")
   get "/terms-conditions", to: "pages#page", as: :terms_conditions, defaults: {page_slug: "terms-conditions"}
-
-  get "/primary-enrichment", to: "enrichment#show", defaults: {slug: "primary-certificate"}, as: :primary_enrichment
-  get "/secondary-enrichment", to: "enrichment#show", defaults: {slug: "secondary-certificate"}, as: :secondary_enrichment
 
   resource :search, only: :show
 
@@ -236,6 +236,11 @@ Rails.application.routes.draw do
   get "/cs-accelerator", to: redirect("/subject-knowledge")
 
   # CMS ROUTES
+  get "/primary-enrichment", to: "cms#enrichment", defaults: {page_slug: "primary-enrichment"}, as: :primary_enrichment
+  get "/primary-enrichment/refresh", to: "cms#enrichment_refresh", defaults: {page_slug: "primary-enrichment"}, as: :primary_enrichment_reload
+  get "/secondary-enrichment", to: "cms#enrichment", defaults: {page_slug: "secondary-enrichment"}, as: :secondary_enrichment
+  get "/secondary-enrichment/refresh", to: "cms#enrichment_refresh", defaults: {page_slug: "secondary-enrichment"}, as: :secondary_enrichment_reload
+
   get "/home-teaching-resources" => redirect("/home-teaching")
   get "/home-teaching/:page_slug" => redirect("/home-teaching")
   get "/blog/:page_slug/refresh", to: "cms#clear_blog_cache"

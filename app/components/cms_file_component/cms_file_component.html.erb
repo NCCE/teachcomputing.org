@@ -1,0 +1,11 @@
+<div class="cms-file">
+  <div class="cms-file__content">
+    <div>
+      <%= link_to(@file.filename, cms_url(@file.url)) %>
+    </div>
+    <div>
+      <span class="cms-file__details"><%= "(#{@file.extension}, #{@file.file_size})" %></span>
+      <span class="cms-file__updated">Updated: <%= @file.updated_at.strftime("%d %b %Y") %></span>
+    </div>
+  </div>
+</div>

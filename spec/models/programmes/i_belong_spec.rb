@@ -48,8 +48,14 @@ RSpec.describe Programmes::IBelong do
   end
 
   describe "#auto_enrollment_ignored_activity_codes" do
-    it "should return [\"FD022\"]" do
-      expect(programme.auto_enrollment_ignored_activity_codes).to eq ["FD022"]
+    it "should return [\"FD022\", \"CP409\"]" do
+      expect(programme.auto_enrollment_ignored_activity_codes).to eq ["FD022", "CP409"]
+    end
+  end
+
+  describe "#minimum_character_required_community_evidence" do
+    it "should return 50" do
+      expect(programme.minimum_character_required_community_evidence).to eq(50)
     end
   end
 end

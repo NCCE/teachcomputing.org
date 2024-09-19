@@ -12,7 +12,7 @@ module InactivityQueries
   end
 
   def self.i_belong_all_but_access_resources_type
-    "i-belong-inactivity-all-but-understanding-factors"
+    "i-belong-inactivity-all-but-access-resources"
   end
 
   def self.i_belong_all_but_increase_engagement_type
@@ -80,7 +80,7 @@ module InactivityQueries
         activity: objective_1 + objective_2 + objective_3
       )
       .group(:user_id)
-      .having("every(achievements.updated_at < :old_age and achievements.id not in (:objective_1)) and sum((achievements.id in (:objective_2))::int) >= 3 and sum((achievements.id in (:objective_3))::int) >= 1", objective_1:, objective_2:, objective_3:, old_age: 1.month.ago)
+      .having("every(achievements.updated_at < :old_age and achievements.activity_id not in (:objective_1)) and sum((achievements.activity_id in (:objective_2))::int) >= 3 and sum((achievements.activity_id in (:objective_3))::int) >= 1", objective_1:, objective_2:, objective_3:, old_age: 1.month.ago)
       .count
 
     User.where(id: user_achievements.keys)
@@ -103,7 +103,7 @@ module InactivityQueries
         activity: objective_1 + objective_2 + objective_3
       )
       .group(:user_id)
-      .having("every(achievements.updated_at < :old_age and achievements.id not in (:objective_2)) and sum((achievements.id in (:objective_1))::int) >= 1 and sum((achievements.id in (:objective_3))::int) >= 1", objective_1:, objective_2:, objective_3:, old_age: 1.month.ago)
+      .having("every(achievements.updated_at < :old_age and achievements.activity_id not in (:objective_2)) and sum((achievements.activity_id in (:objective_1))::int) >= 1 and sum((achievements.activity_id in (:objective_3))::int) >= 1", objective_1:, objective_2:, objective_3:, old_age: 1.month.ago)
       .count
 
     User.where(id: user_achievements.keys)
@@ -126,7 +126,7 @@ module InactivityQueries
         activity: objective_1 + objective_2 + objective_3
       )
       .group(:user_id)
-      .having("every(achievements.updated_at < :old_age and achievements.id not in (:objective_3)) and sum((achievements.id in (:objective_1))::int) >= 1 and sum((achievements.id in (:objective_2))::int) >= 3", objective_1:, objective_2:, objective_3:, old_age: 1.month.ago)
+      .having("every(achievements.updated_at < :old_age and achievements.activity_id not in (:objective_3)) and sum((achievements.activity_id in (:objective_1))::int) >= 1 and sum((achievements.activity_id in (:objective_2))::int) >= 3", objective_1:, objective_2:, objective_3:, old_age: 1.month.ago)
       .count
 
     User.where(id: user_achievements.keys)

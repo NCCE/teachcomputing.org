@@ -1,0 +1,71 @@
+{
+  "data": {
+      "id": 2,
+      "attributes": {
+          "slug": "test-web-page",
+          "createdAt": "2024-08-28T10:05:10.697Z",
+          "updatedAt": "2024-08-28T10:05:10.697Z",
+          "publishedAt": "2024-08-28T10:23:19.011Z",
+          "pageContent": [
+          ],
+          "seo": {
+              "id": 8,
+              "title": "Test web page",
+              "description": "This is the description.",
+              "featuredImage": {
+                  "data": {
+                      "id": 3,
+                      "attributes": {
+                          "name": "I Belong.png",
+                          "alternativeText": null,
+                          "caption": null,
+                          "width": 588,
+                          "height": 358,
+                          "formats": {
+                              "small": {
+                                  "ext": ".png",
+                                  "url": "/uploads/small_I_Belong_bf63545d07.png",
+                                  "hash": "small_I_Belong_bf63545d07",
+                                  "mime": "image/png",
+                                  "name": "small_I Belong.png",
+                                  "path": null,
+                                  "size": 104.73,
+                                  "width": 500,
+                                  "height": 304
+                              },
+                              "thumbnail": {
+                                  "ext": ".png",
+                                  "url": "/uploads/thumbnail_I_Belong_bf63545d07.png",
+                                  "hash": "thumbnail_I_Belong_bf63545d07",
+                                  "mime": "image/png",
+                                  "name": "thumbnail_I Belong.png",
+                                  "path": null,
+                                  "size": 29.8,
+                                  "width": 245,
+                                  "height": 149
+                              }
+                          },
+                          "hash": "I_Belong_bf63545d07",
+                          "ext": ".png",
+                          "mime": "image/png",
+                          "size": 41.08,
+                          "url": "/uploads/I_Belong_bf63545d07.png",
+                          "previewUrl": null,
+                          "provider": "local",
+                          "provider_metadata": null,
+                          "createdAt": "2024-08-28T10:04:53.388Z",
+                          "updatedAt": "2024-08-28T10:04:53.388Z"
+                      }
+                  }
+              }
+          },
+          "pageTitle": {
+              "id": 2,
+              "title": "Test web page",
+              "introText": "Welcome to the test web page."
+          }
+      }
+  },
+  "meta": {
+  }
+}

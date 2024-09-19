@@ -27,6 +27,16 @@ RSpec.describe "Admin::BadgesController" do
     end
   end
 
+  describe "GET #edit" do
+    before do
+      get edit_admin_badge_path(badge)
+    end
+
+    it "should render correct template" do
+      expect(response).to render_template("edit")
+    end
+  end
+
   describe "PUT #update" do
     before do
       put admin_badge_path(badge, params: {

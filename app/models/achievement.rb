@@ -13,7 +13,7 @@ class Achievement < ApplicationRecord
   validates :supporting_evidence, blob: {content_type: :image}
   validates :user_id, uniqueness: {scope: [:activity_id]}
 
-  after_save :queue_auto_enrolment
+  after_commit :queue_auto_enrolment
 
   has_many :achievement_transitions, autosave: false, dependent: :destroy
 
@@ -86,7 +86,7 @@ class Achievement < ApplicationRecord
   end
 
   def adequate_evidence_provided?
-    activity.public_copy.blank? ||
+    activity.public_copy_evidence.blank? ||
       evidence.present? ||
       supporting_evidence.present?
   end
@@ -110,7 +110,7 @@ class Achievement < ApplicationRecord
 
   private_class_method :initial_state, :transition_class
 
-  delegate :can_transition_to?, :current_state, :transition_to, :last_transition, :in_state?, to: :state_machine
+  delegate :allowed_transitions, :can_transition_to?, :current_state, :transition_to, :last_transition, :in_state?, to: :state_machine
   delegate :provider, :title, :stem_activity_code, :slug, :active_course?, to: :activity
 
   def belonging_to_programme?(programme)

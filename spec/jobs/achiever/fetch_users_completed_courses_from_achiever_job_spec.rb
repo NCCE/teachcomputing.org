@@ -28,6 +28,11 @@ RSpec.describe Achiever::FetchUsersCompletedCoursesFromAchieverJob, type: :job d
         expect(CertificatePendingTransitionJob).to have_been_enqueued.exactly(:once)
       end
 
+      it "queues AutoEnrolJob" do
+        perform_job
+        expect(AutoEnrolJob).to have_been_enqueued.exactly(:once)
+      end
+
       it "creates an achievement that belongs to the right activity" do
         perform_job
         expect(Achievement.where(activity_id: activity_one.id).exists?).to eq true

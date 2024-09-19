@@ -7,6 +7,10 @@
   @include govuk-media-query($from: tablet) {
     flex-direction: row;
   }
+
+  &.i-belong {
+    border: none;
+  }
 }
 
 .dash-badge-component-fixed-width {
@@ -31,3 +35,4 @@
     margin: 0 22px;
   }
 }
+

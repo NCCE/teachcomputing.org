@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe("cms/collection", type: :view) do
+RSpec.describe("cms/blog", type: :view) do
   before do
     stub_strapi_blog_collection
     assign(:collection, Cms::Collections::Blog.all(1, 50))

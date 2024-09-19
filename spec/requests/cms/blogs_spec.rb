@@ -28,4 +28,22 @@ RSpec.describe CmsController do
       end
     end
   end
+
+  describe "GET #clear_page_cache" do
+    before do
+      allow(Cms::Collections::Blog).to receive(:clear_cache).and_return(nil)
+    end
+
+    context "with a blog page" do
+      it "redirects to page" do
+        get "/blog/page-slug/refresh"
+        expect(response).to redirect_to("/blog/page-slug")
+      end
+
+      it "calls cache clear method" do
+        get "/blog/page-slug/refresh"
+        expect(Cms::Collections::Blog).to have_received(:clear_cache).with("page-slug")
+      end
+    end
+  end
 end

@@ -1,6 +1,11 @@
 <% unless @course_filter.nil? %>
-<h2 class="govuk-heading-s">Filter courses</h2>
+<div class="ncce-courses__filters-wrapper-title--desktop">
+  <h2 class="govuk-heading-s">Filter courses</h2>
+</div>
 <div class="ncce-aside ncce-aside--filters govuk-!-margin-top-2">
+  <div class="ncce-courses__filters-wrapper-title--mobile govuk-!-margin-top-1">
+    <h2 class="govuk-heading-s">Filter courses</h2>
+  </div>
   <%= label_tag :date_range, 'Have a specific date?', class: 'govuk-body-m ncce-label--s' %>
   <%= render DatepickerComponent.new(
       "date_range",
@@ -8,7 +13,7 @@
       flatpickr: { mode: "range" },
       options: { data: { action: "changeRange->course-filter#filter changeRange->course-filter#addRangeFilter changeRange->course-filter#dateRangeSearched"} },
       input_options: { placeholder: "Select a date or date range" }
-    ) 
+    )
   %>
 </div>
 
@@ -16,7 +21,7 @@
   <div class="ncce-aside--filters-header">
     <button type="button" class="ncce-courses__filter-form-toggle" data-course-filter-target="filterFormToggle" data-action="click->course-filter#toggleFilterForm">
       <span class="ncce-courses__filter-form-toggle-applied <%= filter_count(@course_filter) == 0 ? 'hidden' : '' %>" data-course-filter-target="filterCount"><%= applied_filters_string(@course_filter) %></span>
-      Filter courses
+      More filters
     </button>
   </div>
   <div class="ncce-courses__filter hidden" id="course-filter" data-course-filter-target="filterForm">
@@ -54,7 +59,7 @@
     <div class="govuk-checkboxes govuk-!-margin-bottom-2">
       <% @course_filter.course_formats.each_with_index do |course_format, index| %>
         <div class='govuk-checkboxes__item ncce-checkboxes__item'>
-          <%= check_box_tag 'course_format[]', course_format[:value], @course_filter&.current_format&.include?(course_format[:value]), class: 'govuk-checkboxes__input ncce-checkboxes__input', 
+          <%= check_box_tag 'course_format[]', course_format[:value], @course_filter&.current_format&.include?(course_format[:value]), class: 'govuk-checkboxes__input ncce-checkboxes__input',
             data: { action: 'change->course-filter#processValueChanges change->course-filter#filter change->course-filter#toggleActiveCheckbox', 'aria-label': 'Filter by format' }, id: "course_format_#{index}" %>
           <%= label_tag "course_format_#{index}", course_format[:label], class: 'govuk-label govuk-checkboxes__label ncce-label ncce-checkboxes__label' %>
         </div>

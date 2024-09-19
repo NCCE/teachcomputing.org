@@ -1,0 +1,16 @@
+<div class="banner-with-background-component-wrapper <%= @background_image_css %>">
+  <div class="govuk-width-container">
+    <div class="banner-with-background-component">
+      <div class="govuk-grid-row">
+        <% if @label.present? %>
+          <div class="banner-with-background-component_label-container">
+            <div class="banner-with-background-component_label ncce-enrichment-card ncce-section">
+              <h2 class="govuk-heading-s <%= @label[:icon] %>"><%= @label[:title] %></h2>
+              <p class="govuk-body-s"><%= @label[:body] %></p>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

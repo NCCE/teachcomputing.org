@@ -45,9 +45,7 @@ RSpec.describe("pages/about", type: :view) do
   end
 
   it "has the expected links in the support section" do
-    expect(rendered).to have_link("Support us", href: "/supporting-partners")
     expect(rendered).to have_link("How you can help", href: "/get-involved")
-    expect(rendered).to have_link("Meet our partners", href: "/contributing-partners")
     expect(rendered).to have_link("Advocate for us", href: "/governors-and-trustees/")
   end
 end

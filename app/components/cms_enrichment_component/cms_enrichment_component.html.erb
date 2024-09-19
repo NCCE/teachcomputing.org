@@ -1,0 +1,30 @@
+<%= link_to @link, target: "_blank", rel: "nofollow", class: wrapper_classes, data: do %>
+  <div class="enrichment__type">
+    <div class="enrichment__type-label">
+      <%= @type.name %>
+    </div>
+    <div class="enrichment__type-icon">
+      <%= cms_image(@type.icon) if @type.icon %>
+    </div>
+  </div>
+
+  <div class="enrichment__title">
+    <%= render @title.render %>
+  </div>
+
+  <div class="enrichment__content">
+    <%= render CmsRichTextBlockComponent.new(blocks: @details, paragraph_class: "govuk-body-s", with_wrapper: false) %>
+  </div>
+
+  <div class="enrichment__term-details">
+    <span><%= @terms.join(", ") %></span>
+    |
+    <span><%= @age_groups.join(", ") %></span>
+  </div>
+
+  <div class="enrichment__partner-logo">
+    <% if @partner_icon %>
+      <%= cms_image(@partner_icon) %>
+    <% end %>
+  </div>
+<% end %>

@@ -25,6 +25,22 @@ module Admin
       end
     end
 
+    def generate_assessment_attempt
+      @user = User.find(params[:user_id])
+    end
+
+    def process_assessment_attempt
+      @user = User.find(params[:user_id])
+      assessment = Assessment.find(params[:assessment_id])
+      if assessment.activity
+        achievement = assessment.activity.achievements.find_or_initialize_by(user_id: @user.id)
+        achievement.save
+      end
+      AssessmentAttempt.create(assessment:, user: @user, accepted_conditions: true)
+      UpdateUserAssessmentAttemptFromClassMarkerJob.perform_now(assessment.class_marker_test_id, @user.id, params[:score].to_f)
+      redirect_to admin_user_path(@user.id)
+    end
+
     # redirect to the audit to add an authoriser after it's created
     def after_resource_updated_path(requested_resource)
       edit_admin_support_audit_path(id: requested_resource.support_audits.last.id)

@@ -2,7 +2,7 @@
 # SubClasses should not include any indentation and should make use of
 # `-` at the end of ERB tags
 class CmsRichTextBlockComponent < ViewComponent::Base
-  def build(blocks)
+  def build(blocks, **options)
     klass =
       case blocks
       in { type: "paragraph" } then Paragraph
@@ -15,35 +15,50 @@ class CmsRichTextBlockComponent < ViewComponent::Base
       in { type: "quote"} then Quote
       end
 
-    klass.new(blocks: blocks)
+    klass.new(blocks: blocks, **options)
   end
 
   erb_template <<~ERB
-    <div class="govuk-width-container cms-rich-text-block-component">
-      <div class="govuk-main-wrapper">
-        <div class="govuk-grid-row">
-          <div class="govuk-grid-column-two-thirds">
-            <% @blocks.each do |child| -%>
-              <%= render build(child) -%>
-            <% end -%>
+    <% if @with_wrapper %>
+      <div class="govuk-width-container cms-rich-text-block-component">
+        <div class="govuk-main-wrapper">
+          <div class="govuk-grid-row">
+            <div class="govuk-grid-column-two-thirds">
+              <% @blocks.each do |child| -%>
+                <%= render build(child) -%>
+              <% end -%>
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    <% else %>
+      <div class="cms-rich-text-block-component">
+        <% @blocks.each do |child| -%>
+          <%= render build(child, **@options) -%>
+        <% end -%>
+      </div>
+    <% end %>
   ERB
 
-  def initialize(blocks:)
+  def initialize(blocks:, with_wrapper: true, **options)
     @blocks = blocks
+    @with_wrapper = with_wrapper
+    @options = options
   end
 
   class Paragraph < CmsRichTextBlockComponent
     erb_template <<~ERB
-      <p class="govuk-body-m">
+      <p class="<%= paragraph_class %>">
       <% @blocks[:children].each do |child| -%>
       <%= render build(child) -%>
       <% end -%>
       </p>
     ERB
+
+    def paragraph_class
+      return @options[:paragraph_class] if @options[:paragraph_class]
+      "govuk-body-m"
+    end
   end
 
   class Heading < CmsRichTextBlockComponent
@@ -73,7 +88,7 @@ class CmsRichTextBlockComponent < ViewComponent::Base
       elsif @blocks[:code]
         content_tag(:div, @blocks[:text].html_safe, class: classes)
       else
-        content_tag(:span, @blocks[:text], class: classes)
+        content_tag(:span, sanitize(@blocks[:text]), class: classes)
       end
     end
 
@@ -116,6 +131,7 @@ class CmsRichTextBlockComponent < ViewComponent::Base
     def classes
       classes = ["govuk-list"]
       classes << "govuk-list--bullet" if tag == :ul
+      classes << "govuk-list--number" if tag == :ol
       classes.join(" ")
     end
   end

@@ -62,7 +62,7 @@ module CareersHelper
       {
         title: "I Belong: encouraging girls into computer science",
         title_link: about_i_belong_path,
-        text: "Girls are consistently outnumbered by boys in computer science, making up just one in five entries at GCSE. The I Belong programme supports schools to understand the barriers to girls’ participation in computer science and make a plan to overcome them.",
+        text: "Girls are consistently outnumbered by boys in computer science, starting with the drop-out at transition from primary to secondary. The I Belong programme supports schools to understand the barriers to girls’ participation, ways to overcome them, and helps educators sustain pupils' enthusiasm for the subject.",
         benchmark_icons: [
           "media/images/pages/careers-support/benchmark_3.svg"
         ],

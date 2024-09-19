@@ -1,0 +1,77 @@
+en:
+  pages:
+    get-involved:
+      title: Play your part in inspiring the next generation
+
+      intro:
+        body_1: We are dedicated to ensuring every child in England receives high-quality computing education, powering up the next digital generation. We equip and empower teachers across England with confidence and expertise, so that they can teach the national computing curriculum in an exciting and engaging way.
+        body_2: We are calling on businesses and government to join us in equipping young people with the necessary skills for the future. Through the collaboration between education, government and industry we can connect the knowledge learnt through the curriculum with its real-world application and leading edge technology innovations, enabling students to achieve their full potential in a digital world.
+        box:
+          heading: Growing Demand
+          body: The demand for computing expertise is growing – with an estimated 1.9 million STEM professionals needed by 2035. More professionals are needed to fill jobs in computing, engineering, environmental sciences industries and more.
+
+      key_points_1:
+        card_1:
+          text: Each teacher we work with reaches <strong>100 children</strong> every year and teachers are cited as the second most influential person on their career choices.
+        card_2:
+          text: STEM Ambassador volunteers are more productive in their jobs and <strong>90%</strong> say volunteering has increased their job satisfaction.
+        card_3:
+          text: <strong>90%</strong> of young people said engaging with employers increased their understanding of why STEM subjects are important in the workplace.
+      
+      key_points_2:
+        card_1:
+          text: Our support reaches <strong>over 280,000 students</strong> across England.
+        card_2:
+          text: We have trained <strong>over 1,900 teachers</strong> in their subject knowledge.
+        card_3:
+          text: <strong>Over 1,000 schools</strong> have signed up to our I Belong programme.
+      
+      donate:
+        heading: Deliver social value through investing in improving young people’s life outcomes
+        body_1: Donate money to our programme to provide more young people with access to educational opportunities and to learn from great teachers and develop vital skills needed for careers in tech and STEM industries.
+        body_2: By helping create universal access to computing education for all young people and investing in improving teaching practices, you can deliver significant social value and contribute to your organisation’s CSR and ESG strategies.
+        link:
+         title: Get in touch
+
+      ambassador:
+        heading: Become a volunteer and then shout about it!
+        body_1: By volunteering as a %{redirect_link}, you can not only inspire the next generation but also improve your own confidence, motivation and happiness at work. 
+        body_2: Computing Ambassadors help bridge the gap between curriculum and the rapidly evolving world of technology. They support young people in becoming work ready by helping them develop transferable skills like teamwork, problem-solving, communication and many more.
+        link:
+          title: Become a Computing Ambassador
+          event_category: Get involved
+          event_label: STEM Ambassador
+
+      governor:
+        heading: Be an advocate for education
+        body_1: Speak for the importance and value of computing education for every child and help school leaders understand why their school should offer computer science to their students.
+        body_2: Support teachers’ understanding of how aspects of the curriculum are used in the real world and in your organisation.
+        body_3: Help teachers and students understand current tech and future developments, and advocate for the NCCE and the importance of computing education in schools and across your community.
+        link:
+          title: Think about becoming a governor
+          event_category: Get involved
+          event_label: School governors
+
+      testimonials:
+        elizabeth:
+          text: "“With the ever-growing demand for digital skills, it is important that students are equipped with industry-aligned skills that will set them up for success in the workplace as well as gaining insight into different career paths. The NCCE help us bridge the gap between industry and education, inspiring more young people into tech careers.”"
+          name: "Elizabeth Barr"
+          bio: "Head of the Cisco Networking Academy UK & Ireland"
+        amy:
+          text: "“At TCS, we believe we are all born with equal potential, but not with equal opportunity. TCS empowers people and communities by connecting them to opportunities in the digital economy. Partnering with NCCE and STEM Learning is an important aspect of this work, building equitable and inclusive educational pathways for marginalised groups, young people, women and girls underrepresented in the technology space.”"
+          name: "Amy Shocker"
+          bio: "Head of CSR, UK & Ireland, TCS"
+
+      impact:
+        heading: Making an impact today
+        body: Investing 100% of our income in improving STEM education
+      
+      join_us:
+        heading: We encourage all government departments and public services to join us and support our work
+        body_1: Your support and contributions are essential to giving young people equal access to computing education.  The reach and significance of having Government support is invaluable.
+        body_2_html: You can support us by promoting the NCCE within your networks, get your Digital Data and Technology Professionals to sign up to volunteer as %{ambassador_link} and provide insights into how the NCCE can support your policy objectives.
+
+      impact_report:
+        heading: NCCE Impact report 2018 to 2022
+        body: Impact report published to mark the key achievements of the NCCE between 2018 and 2022. Learn more about the impact of the NCCE’s programmes, including key statistics on engagement and reach, testimonies from teachers and students and an overview of our future goals.
+        alt: "An image of the NCCE Impact report 2018 to 2022"

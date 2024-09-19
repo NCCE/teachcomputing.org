@@ -2,7 +2,8 @@
   .progress-component__back,
   .progress-component__continue,
   .progress-component__submit,
-  .progress-component__step {
+  .progress-component__step,
+  .progress-component__warning {
     &:not(.active) {
       display: none;
     }

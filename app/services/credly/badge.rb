@@ -1,6 +1,6 @@
 module Credly
   class Badge
-    ORG_ID = ENV["CREDLY_ORGANISATION_ID"].freeze
+    ORG_ID = Rails.application.config.credly_org_id.freeze
     BADGES_RESOURCE_PATH = "organizations/#{ORG_ID}/badges".freeze
     TEMPLATES_RESOURCE_PATH = "organizations/#{ORG_ID}/badge_templates".freeze
 
@@ -26,6 +26,14 @@ module Credly
       user = User.find(user_id)
       query_strings = "?filter=issuer_earner_id::#{user.id}"
       Credly::Request.run(BADGES_RESOURCE_PATH + query_strings, {})[:data]
+    end
+
+    def self.user_has_programme_completion_badge?(user, programme)
+      by_programme_badge_template_ids(user.id, programme.badges.completion.pluck(:credly_badge_template_id))
+    end
+
+    def self.user_has_programme_cpd_badge?(user, programme)
+      by_programme_badge_template_ids(user.id, programme.badges.cpd.pluck(:credly_badge_template_id))
     end
 
     def self.by_programme_badge_template_ids(user_id, template_ids)

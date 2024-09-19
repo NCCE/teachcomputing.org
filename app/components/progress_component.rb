@@ -8,6 +8,7 @@ class ProgressComponent < ViewComponent::Base
   renders_one :back, "Back"
   renders_one :continue, "Continue"
   renders_one :submit, "Submit"
+  renders_one :warning_step, "Warning"
   renders_many :steps, "Step"
 
   erb_template <<~ERB
@@ -58,6 +59,14 @@ class ProgressComponent < ViewComponent::Base
   # Submit is a dumb wrapper to allow forms to weird stuff like pop a modal instead
   # of just submitting the form. We only control it's visibility
   class Submit < TargetWrapper
+    erb_template <<~ERB
+      <div class="<%= css_class %>" data-progress-component-target="<%= target %>">
+        <%= content %>
+      </div>
+    ERB
+  end
+
+  class Warning < TargetWrapper
     erb_template <<~ERB
       <div class="<%= css_class %>" data-progress-component-target="<%= target %>">
         <%= content %>
