@@ -87,6 +87,15 @@ module Cms
             {populate: {iconImage: "alternativeText"}}
           end
 
+          def self.card_wrapper_parameters
+            {
+              populate: {
+                backgroundColour: {fields: "name"},
+                resourceCard: {populate: {icon: [:alternativeText], colourTheme: [:name]}}
+              }
+            }
+          end
+
           def self.picture_card_parameters
             {
               populate: {
