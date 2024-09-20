@@ -1,0 +1,6 @@
+<%= @title %>
+<%= @background_colour %>
+<%= @cards_per_row %>
+<% @cards_block.each do |card| %>
+  <%= render card.render %>
+<% end %>
