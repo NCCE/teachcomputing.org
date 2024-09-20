@@ -31,6 +31,13 @@ module Cms
               DynamicComponents::NcceButton.new(title: strapi_data[:title], link: strapi_data[:link])
             when "blocks.question-and-answer"
               to_question_and_answer(strapi_data)
+            when "blocks.resource-cards"
+              DynamicComponents::CardWrapper.new(
+                title: strapi_data[:sectionTitle],
+                cards_block: resource_card_block(strapi_data[:resourceCard]),
+                cards_per_row: strapi_data[:cardsPerRow],
+                background_colour: strapi_data.dig(:backgroundColour, :data) ? strapi_data[:backgroundColour][:data][:attributes][:name] : nil
+              )
             end
           end
 
@@ -50,6 +57,16 @@ module Cms
               strapi_data[:asideSections][:data].collect { _1[:attributes] }
             else
               []
+          end
+
+          def self.resource_card_block(strapi_data)
+            strapi_data.map do |card_data|
+              Models::ResourceCard.new(
+                title: card_data[:title],
+                icon: card_data.dig(:icon, :data) ? ModelFactory.to_image(card_data[:icon][:data][:attributes]) : nil,
+                colour_theme: card_data.dig(:colourTheme, :data) ? card_data[:colourTheme][:data][:attributes][:name] : nil,
+                body_text: card_data[:bodyText]
+              )
             end
           end
 
