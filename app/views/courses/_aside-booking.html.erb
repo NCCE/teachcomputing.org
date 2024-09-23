@@ -13,7 +13,7 @@
           <% @occurrences.each do |occurrence| %>
             <li class="ncce-booking-list__item">
               <div class='govuk-body-s ncce-booking-list__date'>
-                <%= @booking.activity_date(occurrence.start_date) %>
+                <%= @booking.activity_date(occurrence.start_date, occurrence.end_date) %>
               </div>
               <div class='ncce-booking-list__details-wrapper'>
                 <span class='govuk-body-s govuk-!-margin-bottom-0 ncce-booking-list__address'>
@@ -33,13 +33,15 @@
             </li>
           <% end %>
           </ul>
-          <%= link_to('Find your local Hub', '/hubs',
-              class: 'govuk-button button button--full-width',
-              draggable: 'false',
-              target: :_blank, data_event_action: 'click',
-              data_event_category: 'course details',
-              data_event_label: 'Coming soon')
-          %>
+          <% if !@course.online_cpd %>
+            <%= link_to('Find your local Hub', '/hubs',
+                class: 'govuk-button button button--full-width',
+                draggable: 'false',
+                target: :_blank, data_event_action: 'click',
+                data_event_category: 'course details',
+                data_event_label: 'Coming soon')
+            %>
+          <% end %>
         <% else %>
           <p class="govuk-body">
             <%= link_to(
@@ -152,7 +154,7 @@
     <% end %>
   <% end %>
 
-  <%= render ProviderLogosComponent.new(dashboard: false, no_top_border: current_user.blank? && !(@course.online_cpd && !@started))%>
+  <%= render ProviderLogosComponent.new(dashboard: false, no_top_border: current_user.blank? || @course.online_cpd)%>
 
   <% if current_user && user_achievement_state(current_user, @activity) == :enrolled && @course.online_cpd %>
     <p class='govuk-body-s ncce-booking-list__progress'>
