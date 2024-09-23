@@ -21,6 +21,7 @@
     flex: 1;
     border-left: 2px solid $ncce-grey;
     padding-left: 16px;
+    align-self: center;
 
     @include govuk-media-query($until: desktop) {
       border-left: 0px;
