@@ -36,7 +36,7 @@ module Cms
                 title: strapi_data[:sectionTitle],
                 cards_block: resource_card_block(strapi_data[:resourceCard]),
                 cards_per_row: strapi_data[:cardsPerRow],
-                background_colour: strapi_data.dig(:backgroundColour, :data) ? strapi_data[:backgroundColour][:data][:attributes][:name] : nil
+                background_color: strapi_data.dig(:backgroundColour, :data) ? strapi_data[:backgroundColour][:data][:attributes][:name] : nil
               )
             end
           end
@@ -65,7 +65,9 @@ module Cms
                 title: card_data[:title],
                 icon: card_data.dig(:icon, :data) ? ModelFactory.to_image(card_data[:icon][:data][:attributes]) : nil,
                 colour_theme: card_data.dig(:colourTheme, :data) ? card_data[:colourTheme][:data][:attributes][:name] : nil,
-                body_text: card_data[:bodyText]
+                body_text: card_data[:bodyText],
+                button_text: card_data[:buttonText],
+                button_link: card_data[:buttonLink]
               )
             end
           end

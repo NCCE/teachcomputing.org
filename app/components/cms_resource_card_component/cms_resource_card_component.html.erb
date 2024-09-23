@@ -1,4 +1,12 @@
-<p>THIS IS THE TITLE: <%= @title %></p>
-<p>THIS IS THE THEME: <%= @colour_theme %></p>
-<p>THIS IS THE ICON: <%= @icon %></p>
-<p>THIS IS THE BODY TEXT: <%= @body_text %></p>
+<%= content_tag :div, class: wrapper_classes do %>
+  <div class="cms-resource-card__top-content">
+    <div class="cms-resource-card__top-content-title">
+      <h2 class="govuk-heading-m"><%= @title %></h1>
+    </div>
+    <div class="cms-resource-card__top-content-image">
+      <%= render CmsImageComponent.new(@icon) if @icon %>
+    </div>
+  </div>
+  <%= render CmsRichTextBlockComponent.new(blocks: @body_text, with_wrapper: false) %>
+  <%= link_to @button_text, @button_link, class: "govuk-button ncce-button--white" if @button_link %>
+<% end %>
