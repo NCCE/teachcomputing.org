@@ -60,7 +60,7 @@ class LiveBookingPresenter
     raise NotImplementedError
   end
 
-  def activity_date(start_date)
+  def activity_date(start_date, _end_date)
     return if start_date.blank?
 
     date = Time.zone.parse(start_date)

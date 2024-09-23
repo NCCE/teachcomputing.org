@@ -89,11 +89,12 @@ class OnlineBookingPresenter
     true
   end
 
-  def activity_date(start_date)
+  def activity_date(start_date, end_date)
     return if start_date.blank?
 
-    date = Time.zone.parse(start_date)
-    date.strftime("#{date.day.ordinalize} %B %Y").to_s
+    parsed_start_date = Time.zone.parse(start_date)
+    parsed_end_date = Time.zone.parse(end_date)
+    "#{parsed_start_date.strftime("#{parsed_start_date.day.ordinalize} %B %Y")} - #{parsed_end_date.strftime("#{parsed_end_date.day.ordinalize} %B %Y")}"
   end
 
   def address(occurrence)
