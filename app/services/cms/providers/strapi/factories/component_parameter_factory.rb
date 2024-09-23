@@ -46,7 +46,16 @@ module Cms
             {
               populate: {
                 backgroundColour: {fields: "name"},
-                resourceCard: {populate: {icon: [:alternativeText], colourTheme: [:name]}}
+                resourceCard: resource_card_parameters
+              }
+            }
+          end
+
+          def self.resource_card_parameters
+            {
+              populate: {
+                icon: [:alternativeText],
+                colourTheme: [:name]
               }
             }
           end

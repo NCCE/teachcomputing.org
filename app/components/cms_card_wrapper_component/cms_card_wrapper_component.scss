@@ -3,7 +3,6 @@
   grid-template-columns: auto;
   gap: 24px;
 
-
   @include govuk-media-query($from: tablet) {
     grid-template-columns: repeat(2, 1fr);
   }
