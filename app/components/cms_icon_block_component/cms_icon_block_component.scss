@@ -27,10 +27,15 @@
 
     @include govuk-media-query($until: desktop) {
       flex: auto;
+      flex-direction: column;
     }
   }
 
   &__text {
     margin-left: 10px;
+
+    @include govuk-media-query($until: desktop) {
+      margin-left: 0;
+    }
   }
 }
