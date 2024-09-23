@@ -16,6 +16,7 @@ module CmsHelper
     image_tag(cms_image_url(image), alt: image.alt, class:)
   end
 
+  # Width can range from 1 to 20 pixels
   def cms_colour_theme_class(colour, side, width)
     "cms-colour-theme__border--#{colour}-#{side}-#{width}"
   end
