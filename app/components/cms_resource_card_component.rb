@@ -12,7 +12,7 @@ class CmsResourceCardComponent < ViewComponent::Base
 
   def wrapper_classes
     classes = ["cms-resource-card_wrapper"]
-    classes << cms_colour_theme_class(@colour_theme, "top") if @colour_theme
+    classes << cms_colour_theme_class(@colour_theme, "top", 8) if @colour_theme
     classes
   end
 end
