@@ -73,6 +73,16 @@ module Cms
             }
           end
 
+          def self.question_and_answer_parameters
+            {
+              populate: {
+                fields: ["question", "answer"],
+                asideSections: {populate: {fields: "slug"}},
+                answerIcons: {populate: {iconImage: {populate: [:alternativeText]}}}
+              }
+            }
+          end
+
           def self.picture_card_parameters
             {
               populate: {
