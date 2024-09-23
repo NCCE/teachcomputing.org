@@ -39,7 +39,7 @@ module Cms
               {
                 on: {
                   "blocks.text-with-asides": ComponentParameterFactory.text_with_asides_parameters,
-                  "blocks.resource-cards": ComponentParameterFactory.card_wrapper_parameters,
+                  "blocks.card-section": ComponentParameterFactory.card_wrapper_parameters,
                   "blocks.horizontal-card": ComponentParameterFactory.horizontal_card_parameters,
                   "blocks.question-and-answer": ComponentParameterFactory.question_and_answer_parameters,
                   "content-blocks.text-block": ComponentParameterFactory.text_block_parameters
