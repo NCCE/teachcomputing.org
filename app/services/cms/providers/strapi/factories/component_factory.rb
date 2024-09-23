@@ -31,7 +31,7 @@ module Cms
               DynamicComponents::NcceButton.new(title: strapi_data[:title], link: strapi_data[:link])
             when "blocks.question-and-answer"
               to_question_and_answer(strapi_data)
-            when "blocks.resource-cards"
+            when "blocks.card-section"
               DynamicComponents::CardWrapper.new(
                 title: strapi_data[:sectionTitle],
                 cards_block: resource_card_block(strapi_data[:resourceCard]),
