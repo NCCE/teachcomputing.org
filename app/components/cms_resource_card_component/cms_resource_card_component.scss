@@ -1,0 +1,42 @@
+.cms-resource-card_wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: $white;
+  padding: 16px;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+  height: 100%;
+}
+
+.cms-resource-card__top-content {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+
+  @include govuk-media-query($until: tablet) {
+    margin-bottom: 16px;
+  }
+
+  img {
+    @include govuk-media-query($until: tablet) {
+      width: 30px;
+      height: 30px;
+      object-fit: contain;
+      object-position: center;
+    }
+  }
+}
+
+.cms-resource-card__top-content-title {
+  padding-right: 10px;
+}
+
+.ncce-button--white {
+  width: 100%;
+  margin-top: 24px;
+  margin-bottom: 0;
+
+  @include govuk-media-query($until: tablet) {
+    margin-top: 12px;
+  }
+}
