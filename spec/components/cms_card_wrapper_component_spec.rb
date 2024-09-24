@@ -3,8 +3,27 @@
 require "rails_helper"
 
 RSpec.describe CmsCardWrapperComponent, type: :component do
-  let(:resource_card_one) { Cms::Mocks::ResourceCard.generate(1) }
-  let(:resource_card_three) { Cms::Mocks::ResourceCard.generate }
+  let(:resource_card_one) {
+    Cms::Mocks::ResourceCard.generate(
+      card_count: 1,
+      title: Faker::Lorem.word,
+      icon: Cms::Mocks::Image.as_model,
+      colour_theme: Faker::Lorem.word,
+      button_text: Faker::Lorem.sentence,
+      button_link: Faker::Internet.url
+    )
+  }
+
+  let(:resource_card_three) {
+    Cms::Mocks::ResourceCard.generate(
+      card_count: 3,
+      title: Faker::Lorem.word,
+      icon: Cms::Mocks::Image.as_model,
+      colour_theme: Faker::Lorem.word,
+      button_text: Faker::Lorem.sentence,
+      button_link: Faker::Internet.url
+    )
+  }
 
   context "with one card and no title" do
     before do
