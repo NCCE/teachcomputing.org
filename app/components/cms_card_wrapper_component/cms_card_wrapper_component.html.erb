@@ -1,6 +1,8 @@
 <%= render GovGridRowComponent.new(background_color: @background_color, padding: {top: 6, bottom: 2}) do |row|  %>
   <%= row.with_column("full") do %>
-    <h2 class="govuk-heading-m"><%= @title %></h2>
+    <% if @title %>
+      <h2 class="govuk-heading-m"><%= @title %></h2>
+    <% end %>
     <div class="cms-card-wrapper__grid" style="<%= cards_per_row %>">
       <% @cards_block.each do |card| %>
         <div class="cms-card-wrapper__card">
