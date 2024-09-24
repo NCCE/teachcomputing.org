@@ -10,6 +10,10 @@
     <div class="question-answer__answer">
       <div class="question-answer__answer-content">
         <%= render CmsRichTextBlockComponent.new(blocks: @answer, with_wrapper: false) %>
+
+        <% if @answer_icon_block %>
+          <%= render @answer_icon_block.render %>
+        <% end %>
       </div>
     </div>
 
