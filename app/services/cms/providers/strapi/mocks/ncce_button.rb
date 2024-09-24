@@ -17,9 +17,8 @@ module Cms
           def self.generate_raw_data
             {
               __component: "buttons.ncce-button",
-              id: 1,
-              attributes: generate_data
-            }
+              id: 1
+            }.merge(generate_data)
           end
         end
       end

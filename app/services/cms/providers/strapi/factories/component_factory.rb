@@ -35,8 +35,12 @@ module Cms
           end
 
           def self.to_question_and_answer(strapi_data)
-            DynamicComponents::QuestionAndAnswer.new(question: strapi_data[:question], answer: strapi_data[:answer],
-              aside_sections: extract_aside_sections(strapi_data))
+            DynamicComponents::QuestionAndAnswer.new(
+              question: strapi_data[:question],
+              answer: strapi_data[:answer],
+              aside_sections: extract_aside_sections(strapi_data),
+              answer_icon_block: icon_block(strapi_data[:answerIcons])
+            )
           end
 
           def self.extract_aside_sections(strapi_data)
