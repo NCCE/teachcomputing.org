@@ -1,7 +1,7 @@
 class CmsResourceCardComponent < ViewComponent::Base
   delegate :cms_colour_theme_class, to: :helpers
 
-  def initialize(title:, icon:, colour_theme:, body_text:, button_text:, button_link:)
+  def initialize(title:, body_text:, icon: nil, colour_theme: nil, button_text: nil, button_link: nil)
     @title = title
     @icon = icon
     @colour_theme = colour_theme
