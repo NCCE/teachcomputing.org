@@ -2,6 +2,8 @@ class AuthController < ApplicationController
   def callback
     auth = omniauth_params
     course_booking_uri = course_redirect_params
+    puts "im here"
+    puts auth
     user_exists = User.exists?(stem_user_id: auth.uid)
     user = User.from_auth(auth.uid, auth.credentials, auth.info)
 
@@ -17,12 +19,15 @@ class AuthController < ApplicationController
 
     Achiever::FetchUsersCompletedCoursesFromAchieverJob.perform_later(user)
   rescue => e
+    puts e
     Sentry.capture_exception(e)
 
     raise e
   end
 
   def failure
+    puts request.env["omniauth.error"]
+    puts request.env["omniauth.error.type"]
     Sentry.capture_message(
       "Auth failure",
       extra: {error: request.env["omniauth.error"], error_type: request.env["omniauth.error.type"]}
