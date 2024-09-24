@@ -78,9 +78,13 @@ module Cms
               populate: {
                 fields: ["question", "answer"],
                 asideSections: {populate: {fields: "slug"}},
-                answerIcons: {populate: {iconImage: {populate: [:alternativeText]}}}
+                answerIcons: icon_block_parameters
               }
             }
+          end
+
+          def self.icon_block_parameters
+            {populate: {iconImage: "alternativeText"}}
           end
 
           def self.picture_card_parameters
