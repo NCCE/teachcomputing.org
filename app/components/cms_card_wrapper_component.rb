@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class CmsCardWrapperComponent < ViewComponent::Base
-  def initialize(title:, cards_block:, cards_per_row:, background_color:)
+  def initialize(cards_block:, cards_per_row:, title: nil, background_color: nil)
     @title = title
     @cards_block = cards_block
     @cards_per_row = cards_per_row
