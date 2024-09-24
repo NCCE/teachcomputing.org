@@ -16,7 +16,8 @@ RSpec.describe CmsQuestionAndAnswerComponent, type: :component do
           }
         ]
       }],
-      aside_sections: [{slug: "test-aside"}]
+      aside_sections: [{slug: "test-aside"}],
+      answer_icon_block: nil
     ))
   end
 
