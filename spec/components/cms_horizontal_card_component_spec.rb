@@ -109,7 +109,7 @@ RSpec.describe CmsHorizontalCardComponent, type: :component do
       ))
     end
     it "has a border left in standard colours" do
-      expect(page).to have_css(".cms-colour-theme__border--standard-left")
+      expect(page).to have_css(".cms-colour-theme__border--standard-left-10")
     end
   end
 
