@@ -5,7 +5,7 @@ require "rails_helper"
 RSpec.describe CmsResourceCardComponent, type: :component do
   let(:body_text) { Cms::Mocks::RichBlocks.generate }
 
-  context "has all the fields defined" do
+  context "has all the values defined" do
     before do
       render_inline(described_class.new(
         title: "Card Title",
@@ -38,7 +38,7 @@ RSpec.describe CmsResourceCardComponent, type: :component do
     end
   end
 
-  context "has only the required fields" do
+  context "has only the required values" do
     before do
       render_inline(described_class.new(
         title: "Card title",
