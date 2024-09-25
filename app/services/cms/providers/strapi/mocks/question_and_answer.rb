@@ -12,7 +12,9 @@ module Cms
               question: Faker::Lorem.sentence,
               answer: RichBlocks.generate,
               asideSections: aside_sections,
-              answerIcons: {}
+              answerIcons: {},
+              asideAlignment: :top,
+              showBackgroundTriangle: false
             }
           end
 

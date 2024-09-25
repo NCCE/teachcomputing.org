@@ -3,6 +3,10 @@ module Cms
     module Strapi
       module Mocks
         class RichBlocks
+          def self.as_model
+            Factories::ModelFactory.to_content_block(generate)
+          end
+
           def self.generate
             [paragraph(2)]
           end
