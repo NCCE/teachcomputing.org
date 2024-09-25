@@ -78,6 +78,8 @@ $avatar_size: 32px;
     flex-direction: row;
     position: relative;
 
+
+
     @include govuk-media-query($until: tablet) {
       margin-bottom: 60px;
       width: 100%;
@@ -131,6 +133,35 @@ $avatar_size: 32px;
         }
       }
 
+      &.answer-with-background {
+        background-image: url("../images/components/cms_question_and_answer_component/background_triangle.svg");
+        background-position: top right;
+        background-repeat: no-repeat;
+      }
+
+      .cms-image {
+        text-align: center;
+      }
+
     }
   }
+}
+
+.aside-alignment {
+  &-top {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+
+  &-bottom {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+
+    .aside-component:last-child {
+      margin-bottom: 0px;
+    }
+  }
+
 }

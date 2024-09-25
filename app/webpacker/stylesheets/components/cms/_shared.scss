@@ -32,3 +32,25 @@
     }
   }
 }
+
+
+.tc-row {
+  display: flex;
+  flex-direction: row;
+  padding: 0 40px;
+  gap: 20px;
+
+  @include govuk-media-query($until: desktop) {
+    flex-direction: column;
+    gap: 0px;
+  }
+
+  .tc-row-two-thirds {
+    flex: 1 1 calc(100% * 2/3);
+  }
+
+  .tc-row-one-third {
+    flex: 1 1 calc(100% * 1/3);
+  }
+  
+}
