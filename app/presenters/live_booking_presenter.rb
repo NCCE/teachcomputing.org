@@ -90,7 +90,7 @@ class LiveBookingPresenter
   end
 
   # @return [Boolean] true: always show this
-  def show_stem_occurrence_list
+  def show_stem_occurrence_list(_always_on)
     true
   end
 end
