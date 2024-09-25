@@ -25,10 +25,8 @@
   &__border {
     @each $name, $color in $colors {
       @each $side in $sides {
-        @for $width from 1 through 20 {
-          &--#{$name}-#{$side}-#{$width} {
-            border-#{$side}: #{$width}px solid $color;
-          }
+        &--#{$name}-#{$side} {
+          border-#{$side}: solid $color;
         }
       }
     }
