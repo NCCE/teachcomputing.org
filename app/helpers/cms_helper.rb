@@ -17,7 +17,7 @@ module CmsHelper
   end
 
   # Width can range from 1 to 20 pixels
-  def cms_colour_theme_class(colour, side, width)
-    "cms-colour-theme__border--#{colour}-#{side}-#{width}"
+  def cms_colour_theme_class(colour, side)
+    "cms-colour-theme__border--#{colour}-#{side}"
   end
 end
