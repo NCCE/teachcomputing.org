@@ -1,0 +1,4 @@
+<%= @title %>
+<%= render CmsImageComponent.new(@image) %>
+<%= render CmsRichTextBlockComponent.new(blocks: @body_text, with_wrapper: false) %>
+<%= @link %>

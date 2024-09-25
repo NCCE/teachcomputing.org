@@ -97,6 +97,23 @@ module Cms
                 button_text: card_data[:buttonText],
                 button_link: card_data[:buttonLink]
               )
+            when "blocks.card-section"
+              DynamicComponents::CardWrapper.new(
+                title: strapi_data[:sectionTitle],
+                cards_per_row: strapi_data[:cardsPerRow],
+                background_color: strapi_data.dig(:backgroundColour, :data) ? strapi_data[:backgroundColour][:data][:attributes][:name] : nil
+              )
+            end
+          end
+
+          def self.picture_card_block(strapi_data)
+            strapi_data.map do |card_data|
+              Models::PictureCard.new(
+                image: card_data.dig(:image, :data) ? ModelFactory.to_image(card_data[:image][:data][:attributes]) : nil,
+                title: card_data[:title],
+                body_text: card_data[:bodyText],
+                link: card_data[:link]
+              )
             end
           end
 

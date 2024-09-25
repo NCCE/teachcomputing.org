@@ -72,6 +72,23 @@ module Cms
               }
             }
           end
+
+          def self.card_wrapper_parameters
+            {
+              populate: {
+                backgroundColour: {fields: "name"},
+                pictureCard: picture_card_parameters
+              }
+            }
+          end
+
+          def self.picture_card_parameters
+            {
+              populate: {
+                image: [:alternativeText]
+              }
+            }
+          end
         end
       end
     end
