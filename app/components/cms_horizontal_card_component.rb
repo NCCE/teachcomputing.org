@@ -14,7 +14,7 @@ class CmsHorizontalCardComponent < ViewComponent::Base
 
   def wrapper_classes
     classes = ["horizontal-card-component__wrapper"]
-    classes << cms_colour_theme_class(@colour_theme, "left", 10) if @colour_theme
+    classes << cms_colour_theme_class(@colour_theme, "left") if @colour_theme
     classes
   end
 end

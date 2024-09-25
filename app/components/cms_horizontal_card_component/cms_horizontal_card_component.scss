@@ -5,6 +5,7 @@
     align-items: center;
     background-color: white;
     box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+    border-width: 10px !important;
 
     @include govuk-media-query($until: desktop) {
       flex-direction: column;
