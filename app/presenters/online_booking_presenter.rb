@@ -85,8 +85,8 @@ class OnlineBookingPresenter
     "#{ENV.fetch("STEM_OAUTH_SITE")}/cpdredirect/#{stem_course_id}"
   end
 
-  def show_stem_occurrence_list
-    true
+  def show_stem_occurrence_list(always_on)
+    !always_on
   end
 
   def activity_date(start_date, end_date)

@@ -8,7 +8,7 @@
           <h2 class="govuk-heading-m ncce-aside__title"><%= @booking.authenticated_title %></h2>
           <p class="govuk-body-s ncce-aside__text"><%= @booking.introduction %></p>
         <% end %>
-        <% if (@booking.show_stem_occurrence_list) %>
+        <% if (@booking.show_stem_occurrence_list(@course.always_on)) %>
           <ul class="govuk-list ncce-booking-list">
           <% @occurrences.each do |occurrence| %>
             <li class="ncce-booking-list__item">
