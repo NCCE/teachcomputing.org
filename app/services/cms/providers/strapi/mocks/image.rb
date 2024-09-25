@@ -13,6 +13,13 @@ module Cms
             Factories::ModelFactory.to_image(generate_data)
           end
 
+          def self.generate_raw_data(caption: nil)
+            {
+              id: 1,
+              attributes: generate_data
+            }
+          end
+
           def self.generate_data(caption: nil)
             name = Faker::Lorem.word
             filename = "#{name}.png"

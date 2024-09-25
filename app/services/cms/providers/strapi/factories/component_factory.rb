@@ -37,9 +37,11 @@ module Cms
           def self.to_question_and_answer(strapi_data)
             DynamicComponents::QuestionAndAnswer.new(
               question: strapi_data[:question],
-              answer: strapi_data[:answer],
+              answer: ModelFactory.to_content_block(strapi_data[:answer], with_wrapper: false),
               aside_sections: extract_aside_sections(strapi_data),
-              answer_icon_block: icon_block(strapi_data[:answerIcons])
+              answer_icon_block: icon_block(strapi_data[:answerIcons]),
+              aside_alignment: strapi_data[:asideAlignment],
+              show_background_triangle: strapi_data[:showBackgroundTriangle]
             )
           end
 
@@ -52,13 +54,13 @@ module Cms
           end
 
           def self.icon_block(strapi_data)
-            DynamicComponents::IconBlock.new(
-              icons: strapi_data.map do |icon_data|
-                DynamicComponents::Icon.new(
-                  text: icon_data[:iconText],
-                  image: ModelFactory.to_image(icon_data[:iconImage][:data][:attributes])
-                )
-              end
+            DynamicComponents::IconBlock.new(icons: strapi_data.map { icon(_1) })
+          end
+
+          def self.icon(icon_data)
+            DynamicComponents::Icon.new(
+              text: icon_data[:iconText],
+              image: ModelFactory.to_image(icon_data[:iconImage][:data][:attributes])
             )
           end
         end
