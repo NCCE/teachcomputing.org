@@ -26,7 +26,7 @@ RSpec.describe CmsResourceCardComponent, type: :component do
     end
 
     it "renders a colour theme" do
-      expect(page).to have_css(".cms-colour-theme__border--standard-top-8")
+      expect(page).to have_css(".cms-colour-theme__border--standard-top")
     end
 
     it "renders the body text" do
