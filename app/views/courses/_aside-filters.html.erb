@@ -45,16 +45,20 @@
         data: { action: "change->course-filter#filter change->course-filter#toggleActiveSelect change->course-filter#topicSelectChanged" }
       }
     %>
-    <%= label_tag :certificate, 'Certificate:', class: 'govuk-body-s ncce-label--s' %>
-    <%= select_tag :certificate,
-      options_for_select(@course_filter.certificates, @course_filter.current_certificate),
-      {
-        include_blank: 'Any certificate',
-        class: ['govuk-select', 'ncce-select', 'ncce-select--filters', { 'filter--active': @course_filter.current_certificate }],
-        'aria-label': 'Filter by certificate',
-        data: { action: "change->course-filter#filter change->course-filter#toggleActiveSelect change->course-filter#certificateSelectChanged" }
-      }
-    %>
+    <% unless @certificate_filter.presence %>
+      <%= label_tag :certificate, 'Certificate:', class: 'govuk-body-s ncce-label--s' %>
+      <%= select_tag :certificate,
+        options_for_select(@course_filter.certificates, @course_filter.current_certificate),
+        {
+          include_blank: 'Any certificate',
+          class: ['govuk-select', 'ncce-select', 'ncce-select--filters', { 'filter--active': @course_filter.current_certificate }],
+          'aria-label': 'Filter by certificate',
+          data: { action: "change->course-filter#filter change->course-filter#toggleActiveSelect change->course-filter#certificateSelectChanged" }
+        }
+      %>
+    <% else %>
+      <%= hidden_field_tag :certificate, @certificate_filter %>
+    <% end %>
     <%= label_tag :format, 'Course format:', class: 'govuk-body-s ncce-label--s' %>
     <div class="govuk-checkboxes govuk-!-margin-bottom-2">
       <% @course_filter.course_formats.each_with_index do |course_format, index| %>

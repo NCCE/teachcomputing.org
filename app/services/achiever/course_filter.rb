@@ -9,11 +9,20 @@ module Achiever
     # on the same day.
     DATE_RANGE_PATTERN = /^(?<from>[\d-]+)(?: to (?<to>[\d-]+))?$/
 
-    def initialize(filter_params:)
+    def initialize(filter_params:, certificate: nil)
       @filter_params = filter_params
+      @certificate = certificate
+
+      @filter_params[:certificate] = @certificate if @certificate
 
       @subjects ||= Achiever::Course::Subject.all
-      @age_groups ||= Achiever::Course::AgeGroup.all
+      @age_groups ||= if certificate == "primary-certificate"
+        Achiever::Course::AgeGroup.primary_certificate
+      elsif certificate == "secondary-certificate"
+        Achiever::Course::AgeGroup.secondary_certificate
+      else
+        Achiever::Course::AgeGroup.all
+      end
       @search_radii = SEARCH_RADII
     end
 
@@ -163,7 +172,7 @@ module Achiever
       filter_strings = []
       filter_strings.push(ERB::Util.html_escape(current_level).to_s) if current_level
       filter_strings.push(ERB::Util.html_escape(current_topic).to_s) if current_topic
-      filter_strings.push(ERB::Util.html_escape(current_certificate).to_s) if current_certificate
+      filter_strings.push(ERB::Util.html_escape(current_certificate).to_s) if current_certificate && @certificate.nil?
       filter_strings.push(ERB::Util.html_escape(current_format).to_s) if current_format
       filter_strings.push(ERB::Util.html_escape(current_date_range).to_s) if current_date_range
       filter_strings.push(current_hub) if current_hub

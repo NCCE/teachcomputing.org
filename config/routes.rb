@@ -234,6 +234,8 @@ Rails.application.routes.draw do
 
   get "/certificate/cs-accelerator", to: redirect("/certificate/subject-knowledge")
   get "/cs-accelerator", to: redirect("/subject-knowledge")
+  get "/primary-certificate/courses", action: :programme_courses, controller: "courses", as: :primary_courses,
+    defaults: {slug: "primary-certificate"}
 
   # CMS ROUTES
   get "/primary-enrichment", to: "cms#enrichment", defaults: {page_slug: "primary-enrichment"}, as: :primary_enrichment

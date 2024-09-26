@@ -126,5 +126,43 @@ RSpec.describe("courses/_aside-filters", type: :view) do
         )
       end
     end
+
+    describe "with programme preselected" do
+      before do
+        allow(filter_stub).to receive_messages(
+          course_tags: {Algorithms: "101"},
+          age_groups: age_groups,
+          subjects: subjects,
+          certificates: "primary-certificate",
+          courses: courses,
+          course_formats: [{label: "Face to face", value: "face_to_face"},
+            {label: "Online", value: "online"},
+            {label: "Live Remote", value: "remote"}],
+          current_hub: "bla",
+          current_hub_id: nil,
+          current_level: nil,
+          current_location: nil,
+          current_topic: nil,
+          current_format: [],
+          current_certificate: "subject-knowledge",
+          applied_filters: %w[bla subject-knowledge],
+          search_radii: [20, 30, 40, 50, 60],
+          current_radius: 40,
+          total_results_count: 3
+        )
+        @certificate_filter = "primary-certificate"
+        @filter_params = {}
+        @course_filter = filter_stub
+        render
+      end
+
+      it "should not show the certificate_select" do
+        expect(rendered).not_to have_css("select[name='certificate']")
+      end
+
+      it "should set certificate in a hidden attribute" do
+        expect(rendered).to have_css("input[name='certificate'][value='primary-certificate']", visible: false)
+      end
+    end
   end
 end
