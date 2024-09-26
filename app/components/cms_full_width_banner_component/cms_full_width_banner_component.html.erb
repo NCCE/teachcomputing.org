@@ -1,7 +1,11 @@
-<%= render GovGridRowComponent.new(additional_classes: banner_classes) do |row| %>
+<%= render GovGridRowComponent.new(additional_classes: wrapper_classes) do |row| %>
   <%= row.with_column("full") do %>
 
-    <div class="cms-full-width-banner">
+    <% if @title %>
+      <h2 class="govuk-heading-l cms-full-width-banner__heading"><%= @title %></h2>
+    <% end %>
+
+    <%= content_tag :div, class: banner_classes do %>
     
       <% if @image %>
         <div class="cms-full-width-banner__media">
@@ -10,7 +14,7 @@
       <% end %>
 
       <div class="cms-full-width-banner__content">
-        <%= render CmsRichTextBlockComponent.new(blocks: @text_content, with_wrapper: false) %>
+        <%= render @text_content.render %>
 
         <% if @buttons %>
           <div class="cms-full-width-banner__content-buttons">
@@ -20,6 +24,6 @@
           </div>
         <% end %>
       </div>
-    </div>
+    <% end %>
   <% end %>
 <% end %>

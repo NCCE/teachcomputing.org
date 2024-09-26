@@ -1,14 +1,15 @@
 module Cms
   module DynamicComponents
     class FullWidthBanner
-      attr_accessor :text_content, :image, :image_side, :buttons, :image_link, :background_color
+      attr_accessor :text_content, :image, :image_side, :buttons, :image_link, :title, :background_color
 
-      def initialize(text_content:, image: nil, image_side: :left, image_link: nil, background_color: :white, buttons: [])
+      def initialize(text_content:, title:, image: nil, image_side: :left, image_link: nil, background_color: :white, buttons: [])
         @text_content = text_content
         @image = image
         @image_side = image_side
         @image_link = image_link
         @background_color = background_color
+        @title = title
         @buttons = buttons
       end
 
@@ -19,7 +20,8 @@ module Cms
           image_side:,
           image_link:,
           background_color:,
-          buttons:
+          buttons:,
+          title:
         )
       end
     end
