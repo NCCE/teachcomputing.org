@@ -1,0 +1,22 @@
+.dashboard-certificate {
+  display: flex;
+  background-color: $white;
+  border-left: 10px solid $lime-green;
+  margin-bottom: 20px;
+  padding: 14px 14px;
+  justify-content: space-between;
+  align-items: center;
+
+  &__icon {
+    background-image: url("../images/icons/individual-achievement.svg");
+    background-repeat: no-repeat;
+    width: 23px;
+    height: 23px;
+
+  }
+
+  &__title {
+    flex: 1;
+    padding: 0 14px;
+  }
+}

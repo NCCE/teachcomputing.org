@@ -1,38 +1,30 @@
 <% meta_tag :title, 'Your dashboard - Teach Computing' %>
-<%= render 'components/hero', hero_title: 'Your dashboard', colour: 'lime-green', glyph_num: '1', glyph_position: 'bottom' %>
-<div class="ncce-dashboard-activity">
-	<div class="govuk-width-container">
-		<div class="govuk-main-wrapper">
-			<div class="govuk-grid-row">
-				<div class="govuk-grid-column-two-thirds">
-          <p class='govuk-body'>
-            Welcome to the Teach Computing dashboard!<br>
-            Enrol and track your progress in our range of professional development programmes, awarded by BCS; The Chartered Institute for IT.
-          </p>
-				</div>
-			</div>
-			<h2 class="govuk-heading-m govuk-!-margin-bottom-6 govuk-!-margin-top-6">Certificates</h2>
-				<div class="certification__container">
-					<%= render 'dashboard/certificates/primary', programme: Programme.primary_certificate %>
-					<%= render 'dashboard/certificates/cs-accelerator', programme: Programme.cs_accelerator %>
-          <%= render 'dashboard/certificates/secondary', programme: Programme.secondary_certificate %>
-          <% if FeatureFlagService.new.flags[:alevel_programme_feature] %>
-            <%= render 'dashboard/certificates/a_level', programme: Programme.a_level %>
-          <% else %>
-            <%= render(
-              'dashboard/certificates/coming_soon',
-              bullets: [
-                'subject knowledge test',
-                'suggested courses and resources to support your development',
-                'awarded by BCS'
-              ],
-              title: 'A level computer science certificate'
-            ) %>
-          <% end %>
-          <%= render 'dashboard/certificates/i_belong', programme: Programme.i_belong %>
 
-				</div>
-			<%= render 'dashboard/courses' %>
-		</div>
-	</div>
-</div>
+<%= render CmsPageTitleComponent.new(title: "Progress overview", intro_text: nil) %>
+
+<%= render GovGridRowComponent.new(background_color: "light-grey", padding: {top: 7, bottom: 2}) do |row| %>
+  <%= row.with_column("two-thirds") do %>
+    <h1 class="govuk-heading-l govuk-!-margin-bottom-4">Enrolled certificates</h1>
+
+    <% @enrolled_certificates.each do |certificate| %>
+      <%= render DashboardCertificateComponent.new(certificate:) %>
+    <% end %>
+  <% end %>
+<% end %>
+
+<%= render GovGridRowComponent.new(background_color: "light-grey", padding: {top: 3, bottom: 4}) do |row| %>
+  <%= row.with_column("two-thirds") do %>
+    <h1 class="govuk-heading-l govuk-!-margin-bottom-4">Other certificates</h1>
+
+    <% @unenrolled_certificates.each do |certificate| %>
+      <%= render DashboardCertificateComponent.new(certificate:) %>
+    <% end %>
+  <% end %>
+<% end %>
+
+<%= render GovGridRowComponent.new(padding: {top: 7, bottom: 4}) do |row| %>
+  <%= row.with_column("two-thirds") do %>
+    <h1 class="govuk-heading-l govuk-!-margin-bottom-4">Booked courses</h1>
+    <%= render 'achievement_list', user_course_info: @user_course_info, achievements: @incomplete_achievements if @incomplete_achievements.present? %>
+  <% end %>
+<% end %>
