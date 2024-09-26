@@ -19,7 +19,7 @@ class CmsFullWidthBannerComponentPreview < ViewComponent::Preview
       image: Cms::Mocks::Image.as_model,
       image_side: :left,
       image_link: nil,
-      buttons: [] # TODO after merge
+      buttons: [Cms::Mocks::NcceButton.as_model]
     ))
   end
 end

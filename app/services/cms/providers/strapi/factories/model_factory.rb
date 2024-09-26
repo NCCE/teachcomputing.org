@@ -16,14 +16,12 @@ module Cms
               model_class.new(
                 title: strapi_data[:title],
                 description: strapi_data[:description],
-                featured_image: strapi_data.dig(:featuredImage, :data) ? to_image(strapi_data[:featuredImage][:data][:attributes]) : nil
+                featured_image: to_image(strapi_data, :featuredImage)
               )
             elsif model_class == Models::FeaturedImage
               to_featured_image(strapi_data[:data][:attributes]) if strapi_data[:data]
             elsif model_class == Models::ContentBlock
               to_content_block(strapi_data)
-            elsif model_class == Models::RichHeader
-              model_class.new(blocks: strapi_data)
             elsif model_class == Models::SimpleTitle
               model_class.new(title: strapi_data)
             elsif model_class == Models::Aside
@@ -76,17 +74,17 @@ module Cms
               i_belong: strapi_data[:i_belong],
               terms: strapi_data.dig(:terms, :data).map { _1[:attributes][:name] },
               age_groups: strapi_data.dig(:age_groups, :data).map { _1[:attributes][:name] },
-              partner_icon: strapi_data[:partner_icon][:data].nil? ? nil : to_image(strapi_data[:partner_icon][:data][:attributes]),
+              partner_icon: to_image(strapi_data, :partner_icon, default_size: :small),
               type: Models::EnrichmentType.new(
                 name: type_data[:name],
-                icon: type_data[:icon][:data].nil? ? nil : to_image(type_data[:icon][:data][:attributes])
+                icon: to_image(type_data, :icon, default_size: :small)
               )
             )
           end
 
           def self.to_content_block(data, with_wrapper: true)
             data.map! do |block|
-              block[:image] = to_image(block[:image]) if block[:type] == "image"
+              block[:image] = as_image(block[:image], :medium) if block[:type] == "image"
               block
             end
             Models::ContentBlock.new(blocks: data, with_wrapper:)
@@ -102,7 +100,14 @@ module Cms
             )
           end
 
-          def self.to_image(image_data, default_size: :medium)
+          def self.to_image(strapi_data, image_key, default_size: :medium)
+            if strapi_data.dig(image_key, :data)
+              image_data = strapi_data[image_key][:data][:attributes]
+              as_image(image_data, default_size)
+            end
+          end
+
+          def self.as_image(image_data, default_size = :medium)
             Models::Image.new(
               url: image_data[:url],
               alt: image_data[:alternativeText],

@@ -38,6 +38,16 @@ module Cms
             }
           end
 
+          def self.full_width_banner_parameters
+            {
+              populate: {
+                image: {populate: [:alternativeText]},
+                backgroundColour: {populate: [:name]},
+                buttons: {populate: [:title, :link]}
+              }
+            }
+          end
+
           def self.icon_block_parameters
             {populate: {iconImage: "alternativeText"}}
           end
