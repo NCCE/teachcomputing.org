@@ -55,11 +55,24 @@ class CoursesController < ApplicationController
     render :show
   end
 
+  def programme_courses
+    @certificate_filter = programme_course_filters[:slug]
+    @filter_params = filter_params
+    @course_filter = Achiever::CourseFilter.new(
+      filter_params: @filter_params,
+      certificate: @certificate_filter
+    )
+  end
+
   private
 
   def course_programmes
     @activity = Activity.find_by(stem_course_template_no: @course.course_template_no)
     @programmes = @activity.programmes.enrollable if @activity
+  end
+
+  def programme_course_filters
+    params.permit(:slug)
   end
 
   def filter_params
