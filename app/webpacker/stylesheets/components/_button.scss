@@ -51,6 +51,11 @@
   @include ncce_button($blue);
 }
 
+.ncce-button--green {
+  @include ncce_button($lime-green);
+  color: $govuk-text-colour;
+}
+
 .button {
   @include ncce_button($lime-green);
   color: $govuk-text-colour;

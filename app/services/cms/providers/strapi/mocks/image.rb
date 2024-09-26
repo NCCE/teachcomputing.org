@@ -10,7 +10,7 @@ module Cms
           }
 
           def self.as_model
-            Factories::ModelFactory.to_image(generate_data)
+            Factories::ModelFactory.as_image(generate_data)
           end
 
           def self.generate_raw_data(caption: nil)
