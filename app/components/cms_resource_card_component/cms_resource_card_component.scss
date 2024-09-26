@@ -28,6 +28,10 @@
       padding-right: 10px;
     }
   }
+
+  &__body-text {
+    flex-grow: 1;
+  }
 }
 
 .ncce-button--white {
