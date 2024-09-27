@@ -4,7 +4,7 @@ require "rails_helper"
 
 RSpec.describe CmsTextWithAsidesComponent, type: :component do
   before do
-    stub_strapi_aside_section
+    stub_strapi_aside_section("test-aside")
     render_inline(described_class.new(blocks: [], asides: [{slug: "test-aside"}]))
   end
 

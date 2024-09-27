@@ -3,7 +3,7 @@ require "rails_helper"
 RSpec.describe CmsWithAsidesComponent, type: :component do
   context "with valid aside" do
     before do
-      stub_strapi_aside_section
+      stub_strapi_aside_section("test-aside")
       render_inline(described_class.new(aside_sections: [{slug: "test-aside"}]))
     end
 
@@ -14,7 +14,7 @@ RSpec.describe CmsWithAsidesComponent, type: :component do
 
   context "with multiple asides" do
     before do
-      stub_strapi_aside_section
+      stub_strapi_aside_section("test-aside")
       render_inline(described_class.new(aside_sections: [{slug: "test-aside"}, {slug: "test-aside-2"}]))
     end
 
@@ -26,6 +26,7 @@ RSpec.describe CmsWithAsidesComponent, type: :component do
   context "missing aside" do
     before do
       stub_strapi_aside_section_missing("missing-aside")
+      puts "Im here"
       render_inline(described_class.new(aside_sections: [{slug: "missing-aside"}]))
     end
 

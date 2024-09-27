@@ -4,7 +4,7 @@ require "rails_helper"
 
 RSpec.describe CmsQuestionAndAnswerComponent, type: :component do
   before do
-    stub_strapi_aside_section
+    stub_strapi_aside_section("test-aside")
   end
 
   context "standard layout" do

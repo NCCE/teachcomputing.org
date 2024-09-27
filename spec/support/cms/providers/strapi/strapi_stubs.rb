@@ -91,9 +91,9 @@ module StrapiStubs
     stub_request(:get, /^https:\/\/strapi.teachcomputing.org\/api\/blogs\?.*(filters\[blog_tags\]\[slug\]\[\$eq\]=#{tag}).*/).to_return(body: json_response)
   end
 
-  def stub_strapi_aside_section
+  def stub_strapi_aside_section(key)
     json_response = File.new("spec/support/cms/providers/strapi/aside_section_response.json")
-    stub_request(:get, /^https:\/\/strapi.teachcomputing.org\/api\/aside-sections/).to_return(body: json_response)
+    stub_request(:get, /^https:\/\/strapi.teachcomputing.org\/api\/aside-sections\/#{key}/).to_return(body: json_response)
   end
 
   def stub_strapi_aside_section_missing(key)
