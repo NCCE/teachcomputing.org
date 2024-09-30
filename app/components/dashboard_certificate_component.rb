@@ -24,9 +24,10 @@ class DashboardCertificateComponent < ViewComponent::Base
     }
   }
 
-  def initialize(certificate:, button_text:)
+  def initialize(certificate:, button_text:, button_color:)
     @certificate = certificate
     @button_text = button_text
+    @button_color = button_color
   end
 
   def programme
