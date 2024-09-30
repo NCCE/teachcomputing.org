@@ -8,8 +8,8 @@
     <h2 class="dashboard-certificate__title govuk-heading-m govuk-!-margin-bottom-0"><%= title %></h2>
   </div>
   <div class="dashboard-certificate__button">
-    <a class="govuk-button button ncce-button govuk-!-margin-bottom-0" href="<%= programme_type.path %>">
+    <%= content_tag :a, href: programme_type.path, class: ["govuk-button button govuk-!-margin-bottom-0", @button_color] do %>
       <%= @button_text %>
-    </a>
+    <% end %>
   </div>
 <% end %>

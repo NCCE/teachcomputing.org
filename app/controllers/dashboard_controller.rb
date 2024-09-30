@@ -10,7 +10,17 @@ class DashboardController < ApplicationController
     user_course_info = Achiever::Course::Delegate.find_by_achiever_contact_number(current_user.stem_achiever_contact_no)
     @user_course_info = user_course_info.select { |course| %w[enrolled attended].include?(course.attendance_status) }
 
-    @enrolled_certificates = current_user.programmes
+    @enrolled_certificates = []
+
+    current_user.enrolments.each do |enrolment|
+      programme = Programme.find(enrolment.programme_id)
+
+      # Check the enrolment status for the programme
+      if current_user.programme_enrolment_state(programme.id) == "enrolled"
+        @enrolled_certificates << programme
+      end
+    end
+
     @unenrolled_certificates = Programme.where.not(id: @enrolled_certificates.pluck(:id))
   end
 end
