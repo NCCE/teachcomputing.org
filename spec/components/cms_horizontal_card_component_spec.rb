@@ -114,7 +114,7 @@ RSpec.describe CmsHorizontalCardComponent, type: :component do
   end
 
   context "has an icon block" do
-    let(:icon_block) { Cms::Mocks::IconBlocks.generate }
+    let(:icon_block) { Cms::Mocks::IconBlocks.as_model }
     before do
       render_inline(described_class.new(
         title: "Page title",

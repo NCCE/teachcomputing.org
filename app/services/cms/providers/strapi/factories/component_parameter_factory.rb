@@ -3,7 +3,7 @@ module Cms
     module Strapi
       module Factories
         module ComponentParameterFactory
-          def self.text_with_asides_paramters
+          def self.text_with_asides_parameters
             {
               populate: {
                 fields: ["textContent"],
@@ -15,7 +15,7 @@ module Cms
           def self.horizontal_card_parameters
             {
               populate: {
-                iconBlock: {populate: {iconImage: "alternativeText"}},
+                iconBlock: icon_block_parameters,
                 colourTheme: {populate: {fields: "name"}},
                 image: {populate: [:alternativeText]}
               }
@@ -26,6 +26,20 @@ module Cms
             {
               populate: {fields: "content"}
             }
+          end
+
+          def self.question_and_answer_parameters
+            {
+              populate: {
+                fields: ["question", "answer"],
+                asideSections: {populate: {fields: "slug"}},
+                answerIcons: icon_block_parameters
+              }
+            }
+          end
+
+          def self.icon_block_parameters
+            {populate: {iconImage: "alternativeText"}}
           end
         end
       end

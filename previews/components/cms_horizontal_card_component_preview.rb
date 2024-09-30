@@ -41,7 +41,7 @@ class CmsHorizontalCardComponentPreview < ViewComponent::Preview
       image: nil,
       image_link: nil,
       colour_theme: "standard",
-      icon_block: Cms::Mocks::IconBlocks.generate_data(3)
+      icon_block: Cms::Mocks::IconBlocks.as_model(icon_count: 3)
     ))
   end
 end

@@ -7,7 +7,7 @@ module Cms
             component_name = strapi_data[:__component]
             case component_name
             when "content-blocks.text-block"
-              Models::ContentBlock.new(blocks: strapi_data[:content], with_wrapper: false)
+              ModelFactory.to_content_block(strapi_data[:content], with_wrapper: false)
             when "content-blocks.file-link"
               file_data = strapi_data.dig(:file, :data) ? strapi_data[:file][:data][:attributes] : nil
               ModelFactory.to_file(file_data) if file_data
@@ -27,17 +27,40 @@ module Cms
                 colour_theme: strapi_data.dig(:colourTheme, :data) ? strapi_data[:colourTheme][:data][:attributes][:name] : nil,
                 icon_block: icon_block(strapi_data[:iconBlock])
               )
+            when "buttons.ncce-button"
+              DynamicComponents::NcceButton.new(title: strapi_data[:title], link: strapi_data[:link])
+            when "blocks.question-and-answer"
+              to_question_and_answer(strapi_data)
+            end
+          end
+
+          def self.to_question_and_answer(strapi_data)
+            DynamicComponents::QuestionAndAnswer.new(
+              question: strapi_data[:question],
+              answer: ModelFactory.to_content_block(strapi_data[:answer], with_wrapper: false),
+              aside_sections: extract_aside_sections(strapi_data),
+              answer_icon_block: icon_block(strapi_data[:answerIcons]),
+              aside_alignment: strapi_data[:asideAlignment],
+              show_background_triangle: strapi_data[:showBackgroundTriangle]
+            )
+          end
+
+          def self.extract_aside_sections(strapi_data)
+            if strapi_data.dig(:asideSections, :data)
+              strapi_data[:asideSections][:data].collect { _1[:attributes] }
+            else
+              []
             end
           end
 
           def self.icon_block(strapi_data)
-            DynamicComponents::IconBlock.new(
-              icons: strapi_data.map do |icon_data|
-                DynamicComponents::Icon.new(
-                  text: icon_data[:iconText],
-                  image: ModelFactory.to_image(icon_data[:iconImage][:data][:attributes])
-                )
-              end
+            DynamicComponents::IconBlock.new(icons: strapi_data.map { icon(_1) })
+          end
+
+          def self.icon(icon_data)
+            DynamicComponents::Icon.new(
+              text: icon_data[:iconText],
+              image: ModelFactory.to_image(icon_data[:iconImage][:data][:attributes])
             )
           end
         end

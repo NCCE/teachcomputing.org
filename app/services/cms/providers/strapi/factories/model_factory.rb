@@ -29,9 +29,8 @@ module Cms
             elsif model_class == Models::Aside
               model_class.new(
                 title: strapi_data[:title],
-                content: strapi_data[:content],
-                files: strapi_data.dig(:files, :data) ? strapi_data[:files][:data]&.map { to_file(_1[:attributes]) } : nil,
-                dynamic_content: Models::DynamicZone.new(strapi_data[:content].map { ComponentFactory.process_component(_1) }.compact)
+                dynamic_content: Models::DynamicZone.new(strapi_data[:content].map { ComponentFactory.process_component(_1) }.compact),
+                show_heading_line: strapi_data[:showHeadingLine]
               )
             elsif model_class == Models::PageTitle
               model_class.new(
@@ -94,12 +93,12 @@ module Cms
             )
           end
 
-          def self.to_content_block(data)
+          def self.to_content_block(data, with_wrapper: true)
             data.map! do |block|
               block[:image] = to_image(block[:image]) if block[:type] == "image"
               block
             end
-            Models::ContentBlock.new(blocks: data, with_wrapper: true)
+            Models::ContentBlock.new(blocks: data, with_wrapper:)
           end
 
           def self.to_featured_image(image_data, size = :large)
