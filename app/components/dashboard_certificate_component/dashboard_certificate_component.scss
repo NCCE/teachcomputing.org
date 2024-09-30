@@ -3,20 +3,42 @@
   background-color: $white;
   border-left: 10px solid $lime-green;
   margin-bottom: 20px;
-  padding: 14px 14px;
+  padding: 14px;
   justify-content: space-between;
   align-items: center;
+
+  @include govuk-media-query($until: desktop) {
+    flex-direction: column;
+  }
+
+  &__content {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+
+    @include govuk-media-query($from: desktop) {
+      margin-bottom: 0;
+    }
+  }
 
   &__icon {
     background-image: url("../images/icons/individual-achievement.svg");
     background-repeat: no-repeat;
     width: 23px;
     height: 23px;
-
   }
 
   &__title {
     flex: 1;
-    padding: 0 14px;
+    padding: 0 10px;
+  }
+
+  &__button {
+    flex-shrink: 0;
+    width: 220px;
+
+    .govuk-button {
+      width: 100%;
+    }
   }
 }
