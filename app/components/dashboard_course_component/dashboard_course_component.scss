@@ -29,4 +29,9 @@
 }
 .dashboard-course-component__format {
   padding-top: 5px;
+  display: flex;
+
+  span {
+    font-size: 16px;
+  }
 }

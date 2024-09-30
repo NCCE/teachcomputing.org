@@ -8,9 +8,12 @@
       <% end %>
     </div>
     <div class="dashboard-course-component__format">
-      <span class="govuk-body-s <%= helpers.course_icon_class(@achievement.activity) %>">
-        <%= t("shared.course_types.#{@achievement.activity.category}") %>
-      </span>
+      <div class="dashboard-course-component__format--icon">
+        <span class="govuk-body-s <%= helpers.course_icon_class(@achievement.activity) %>"></span>
+      </div>
+      <div class="dashboard-course-component__format--text">
+        <span class="govuk-body-s"><%= t("shared.course_types.#{@achievement.activity.category}") %></span>
+      </div>
     </div>
   </div>
 </div>
