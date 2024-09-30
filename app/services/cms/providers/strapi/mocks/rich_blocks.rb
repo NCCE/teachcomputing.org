@@ -4,10 +4,10 @@ module Cms
       module Mocks
         class RichBlocks
           def self.as_model
-            Factories::ModelFactory.to_content_block(generate)
+            Factories::ModelFactory.to_content_block(generate_data)
           end
 
-          def self.generate
+          def self.generate_data
             [paragraph(2)]
           end
 

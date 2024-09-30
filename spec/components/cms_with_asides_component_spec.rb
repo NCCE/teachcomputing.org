@@ -26,7 +26,6 @@ RSpec.describe CmsWithAsidesComponent, type: :component do
   context "missing aside" do
     before do
       stub_strapi_aside_section_missing("missing-aside")
-      puts "Im here"
       render_inline(described_class.new(aside_sections: [{slug: "missing-aside"}]))
     end
 
