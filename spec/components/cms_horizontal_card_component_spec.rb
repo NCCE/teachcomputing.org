@@ -4,7 +4,7 @@ require "rails_helper"
 
 RSpec.describe CmsHorizontalCardComponent, type: :component do
   context "with only a title and body block" do
-    let(:content_block) { Cms::Mocks::RichBlocks.generate }
+    let(:content_block) { Cms::Mocks::RichBlocks.generate_data }
 
     before do
       render_inline(described_class.new(
@@ -42,7 +42,7 @@ RSpec.describe CmsHorizontalCardComponent, type: :component do
     before do
       render_inline(described_class.new(
         title: "Page title",
-        body_blocks: Cms::Mocks::RichBlocks.generate,
+        body_blocks: Cms::Mocks::RichBlocks.generate_data,
         image: Cms::Mocks::Image.as_model,
         image_link: nil,
         colour_theme: nil,
@@ -59,7 +59,7 @@ RSpec.describe CmsHorizontalCardComponent, type: :component do
     before do
       render_inline(described_class.new(
         title: "Page title",
-        body_blocks: Cms::Mocks::RichBlocks.generate,
+        body_blocks: Cms::Mocks::RichBlocks.generate_data,
         image: Cms::Mocks::Image.as_model,
         image_link: "https://www.example.com",
         colour_theme: nil,
@@ -80,7 +80,7 @@ RSpec.describe CmsHorizontalCardComponent, type: :component do
     before do
       render_inline(described_class.new(
         title: "Page title",
-        body_blocks: Cms::Mocks::RichBlocks.generate,
+        body_blocks: Cms::Mocks::RichBlocks.generate_data,
         image: Cms::Mocks::Image.as_model,
         image_link: nil,
         colour_theme: nil,
@@ -101,7 +101,7 @@ RSpec.describe CmsHorizontalCardComponent, type: :component do
     before do
       render_inline(described_class.new(
         title: "Page title",
-        body_blocks: Cms::Mocks::RichBlocks.generate,
+        body_blocks: Cms::Mocks::RichBlocks.generate_data,
         image: nil,
         image_link: nil,
         colour_theme: "standard",
@@ -118,7 +118,7 @@ RSpec.describe CmsHorizontalCardComponent, type: :component do
     before do
       render_inline(described_class.new(
         title: "Page title",
-        body_blocks: Cms::Mocks::RichBlocks.generate,
+        body_blocks: Cms::Mocks::RichBlocks.generate_data,
         image: nil,
         image_link: nil,
         colour_theme: nil,

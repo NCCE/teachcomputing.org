@@ -43,7 +43,7 @@ module Cms
                   "blocks.horizontal-card": ComponentParameterFactory.horizontal_card_parameters,
                   "blocks.question-and-answer": ComponentParameterFactory.question_and_answer_parameters,
                   "blocks.full-width-banner": ComponentParameterFactory.full_width_banner_parameters,
-                  "content-blocks.text-block": ComponentParameterFactory.text_block_parameters
+                  "blocks.full-width-text": ComponentParameterFactory.text_block_parameters
                 }
               }
             end
