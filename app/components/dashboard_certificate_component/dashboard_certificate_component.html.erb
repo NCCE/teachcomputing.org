@@ -1,11 +1,15 @@
-<div class="dashboard-certificate">
+<%= content_tag :div, class: ['dashboard-certificate', 'dashboard-certificate' + (programme_type.school_achievement? ? "--orange-ribbon" : "--green-ribbon")] do %>
   <div class="dashboard-certificate__content">
-    <div class="dashboard-certificate__icon"></div>
+    <%= content_tag :div, class: ['tooltip', 'dashboard-certificate__icon' + (programme_type.school_achievement? ? "--school" : "--individual")] do %>
+      <span class="tooltiptext govuk-body-s">
+        <%= tool_tip_text %>
+      </span>
+    <% end %>
     <h2 class="dashboard-certificate__title govuk-heading-m govuk-!-margin-bottom-0"><%= title %></h2>
   </div>
   <div class="dashboard-certificate__button">
-    <a class="govuk-button button ncce-button govuk-!-margin-bottom-0" href="<%= programme.path %>">
+    <a class="govuk-button button ncce-button govuk-!-margin-bottom-0" href="<%= programme_type.path %>">
       <%= @button_text %>
     </a>
   </div>
-</div>
+<% end %>

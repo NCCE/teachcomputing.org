@@ -191,4 +191,12 @@ class Programme < ApplicationRecord
   def minimum_character_required_community_evidence
     0
   end
+
+  def school_achievement?
+    slug == "i-belong"
+  end
+
+  def individual_achievement?
+    !school_achievement?
+  end
 end

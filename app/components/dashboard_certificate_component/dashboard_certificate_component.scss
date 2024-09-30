@@ -1,7 +1,6 @@
 .dashboard-certificate {
   display: flex;
   background-color: $white;
-  border-left: 10px solid $lime-green;
   margin-bottom: 20px;
   padding: 14px;
   justify-content: space-between;
@@ -9,6 +8,14 @@
 
   @include govuk-media-query($until: desktop) {
     flex-direction: column;
+  }
+
+  &--orange-ribbon {
+    border-left: 10px solid $orange;
+  }
+
+  &--green-ribbon {
+    border-left: 10px solid $lime-green;
   }
 
   &__content {
@@ -21,8 +28,15 @@
     }
   }
 
-  &__icon {
+  &__icon--individual {
     background-image: url("../images/icons/individual-achievement.svg");
+    background-repeat: no-repeat;
+    width: 23px;
+    height: 23px;
+  }
+
+  &__icon--school {
+    background-image: url("../images/icons/school-achievement.svg");
     background-repeat: no-repeat;
     width: 23px;
     height: 23px;
