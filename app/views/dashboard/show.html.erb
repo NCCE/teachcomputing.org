@@ -6,7 +6,7 @@
   <%= row.with_column("two-thirds") do %>
     <h1 class="govuk-heading-l govuk-!-margin-bottom-4">Enrolled certificates</h1>
     <% @enrolled_certificates.each do |certificate| %>
-      <%= render DashboardCertificateComponent.new(certificate: certificate, button_text: "Check my progress") %>
+      <%= render DashboardCertificateComponent.new(certificate: certificate, button_text: "Check my progress", button_color: "ncce-button") %>
     <% end %>
   <% end %>
 <% end %>
@@ -15,7 +15,7 @@
   <%= row.with_column("two-thirds") do %>
     <h1 class="govuk-heading-l govuk-!-margin-bottom-4">Other certificates</h1>
     <% @unenrolled_certificates.each do |certificate| %>
-      <%= render DashboardCertificateComponent.new(certificate:, button_text: "Find out more") %>
+      <%= render DashboardCertificateComponent.new(certificate:, button_text: "Find out more", button_color: "ncce-button--white") %>
     <% end %>
   <% end %>
 <% end %>
