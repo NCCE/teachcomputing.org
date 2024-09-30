@@ -9,7 +9,7 @@
     </div>
     <div class="dashboard-course-component__format">
       <div class="dashboard-course-component__format--icon">
-        <span class="govuk-body-s <%= helpers.course_icon_class(@achievement.activity) %>"></span>
+        <span class="govuk-body-s <%= course_icon_class(@achievement.activity) %>"></span>
       </div>
       <div class="dashboard-course-component__format--text">
         <span class="govuk-body-s"><%= t("shared.course_types.#{@achievement.activity.category}") %></span>
