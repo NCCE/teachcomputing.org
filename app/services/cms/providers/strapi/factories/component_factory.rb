@@ -14,14 +14,7 @@ module Cms
             when "blocks.text-with-asides"
               DynamicComponents::TextWithAsides.new(blocks: strapi_data[:textContent], asides: extract_aside_sections(strapi_data))
             when "blocks.horizontal-card"
-              DynamicComponents::HorizontalCard.new(
-                title: strapi_data[:title],
-                body_blocks: strapi_data[:bodyText],
-                image: ModelFactory.to_image(strapi_data, :image, default_size: :small),
-                image_link: strapi_data[:imageLink],
-                colour_theme: strapi_data.dig(:colourTheme, :data) ? strapi_data[:colourTheme][:data][:attributes][:name] : nil,
-                icon_block: icon_block(strapi_data[:iconBlock])
-              )
+              to_horizontal_card(strapi_data)
             when "buttons.ncce-button"
               to_ncce_button(strapi_data)
             when "blocks.question-and-answer"
@@ -35,7 +28,20 @@ module Cms
               )
             when "blocks.full-width-banner"
               to_full_width_banner(strapi_data)
+            when "blocks.full-width-text"
+              DynamicComponents::FullWidthText.new(blocks: ModelFactory.to_content_block(strapi_data[:content], with_wrapper: false))
             end
+          end
+
+          def self.to_horizontal_card(strapi_data)
+            DynamicComponents::HorizontalCard.new(
+              title: strapi_data[:title],
+              body_blocks: strapi_data[:bodyText],
+              image: ModelFactory.to_image(strapi_data, :image, default_size: :small),
+              image_link: strapi_data[:imageLink],
+              colour_theme: strapi_data.dig(:colourTheme, :data) ? strapi_data[:colourTheme][:data][:attributes][:name] : nil,
+              icon_block: icon_block(strapi_data[:iconBlock])
+            )
           end
 
           def self.to_full_width_banner(strapi_data)

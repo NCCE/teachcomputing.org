@@ -1,0 +1,5 @@
+<%= render GovGridRowComponent.new do |row| %>
+  <%= row.with_column("full-width") do %>
+    <%= render @blocks.render %>
+  <% end %>
+<% end %>
