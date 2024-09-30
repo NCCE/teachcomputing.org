@@ -1,0 +1,16 @@
+<div class="dashboard-course-component">
+  <%= link_to @achievement.activity.title, course_path(id: @achievement.activity&.stem_activity_code, name: @achievement.activity.slug),
+    class: 'govuk-heading-s ncce-link govuk-link--no-underline' if @achievement.activity.stem_activity_code %>
+  <div class="dashboard-course-component__wrapper">
+    <div class="dashboard-course-component__programme">
+      <% @achievement.activity.programmes.each do |programme| %>
+        <p class="dashboard-course-component__programme-wrapper govuk-body-s"><%= programme.title %></p>
+      <% end %>
+    </div>
+    <div class="dashboard-course-component__format">
+      <span class="govuk-body-s <%= helpers.course_icon_class(@achievement.activity) %>">
+        <%= t("shared.course_types.#{@achievement.activity.category}") %>
+      </span>
+    </div>
+  </div>
+</div>
