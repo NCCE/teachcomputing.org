@@ -7,11 +7,9 @@ class DashboardController < ApplicationController
     @user_achievements = current_user.achievements.with_courses.order("updated_at DESC")
 
     @enrolled_certificates = []
-
     current_user.enrolments.each do |enrolment|
       programme = Programme.find(enrolment.programme_id)
 
-      # Check the enrolment status for the programme
       if current_user.programme_enrolment_state(programme.id) == "enrolled"
         @enrolled_certificates << programme
       end

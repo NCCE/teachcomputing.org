@@ -22,7 +22,6 @@
   &__content {
     display: flex;
     align-items: center;
-    margin-bottom: 10px;
 
     @include govuk-media-query($until: desktop) {
       margin-bottom: 0;
@@ -30,18 +29,19 @@
     }
   }
 
-  &__icon--individual {
-    background-image: url("../images/icons/individual-achievement.svg");
+  &__icon--individual,
+  &__icon--school {
     background-repeat: no-repeat;
     width: 23px;
     height: 23px;
   }
 
+  &__icon--individual {
+    background-image: url("../images/icons/individual-achievement.svg");
+  }
+
   &__icon--school {
     background-image: url("../images/icons/school-achievement.svg");
-    background-repeat: no-repeat;
-    width: 23px;
-    height: 23px;
   }
 
   &__title {
