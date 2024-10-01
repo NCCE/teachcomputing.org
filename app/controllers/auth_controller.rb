@@ -2,8 +2,6 @@ class AuthController < ApplicationController
   def callback
     auth = omniauth_params
     course_booking_uri = course_redirect_params
-    puts "im here"
-    puts auth
     user_exists = User.exists?(stem_user_id: auth.uid)
     user = User.from_auth(auth.uid, auth.credentials, auth.info)
 
