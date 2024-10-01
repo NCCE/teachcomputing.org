@@ -4,7 +4,9 @@
   <div class="dashboard-course-component__wrapper">
     <div class="dashboard-course-component__programme">
       <% @achievement.activity.programmes.each do |programme| %>
-        <p class="dashboard-course-component__programme-wrapper govuk-body-s"><%= programme.title %></p>
+        <div class="dashboard-course-component__programme-wrapper">
+          <p class="govuk-body-s"><%= programme.certificate_name %></p>
+        </div>
       <% end %>
     </div>
     <div class="dashboard-course-component__format">
