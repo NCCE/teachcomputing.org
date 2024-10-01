@@ -7,10 +7,7 @@ module OmniAuth::Strategies
     option :name, "stem"
 
     info do
-      our_info = {}
-      puts "User Info"
-      puts user_info
-
+      # our_info = {}
       # {
       #  first_name: "firstName",
       #  last_name: "lastName",
