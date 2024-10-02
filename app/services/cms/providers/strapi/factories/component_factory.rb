@@ -97,12 +97,6 @@ module Cms
                 button_text: card_data[:buttonText],
                 button_link: card_data[:buttonLink]
               )
-            when "blocks.card-section"
-              DynamicComponents::CardWrapper.new(
-                title: strapi_data[:sectionTitle],
-                cards_per_row: strapi_data[:cardsPerRow],
-                background_color: strapi_data.dig(:backgroundColour, :data) ? strapi_data[:backgroundColour][:data][:attributes][:name] : nil
-              )
             end
           end
 
