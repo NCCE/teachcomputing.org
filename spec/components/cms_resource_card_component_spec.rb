@@ -3,7 +3,7 @@
 require "rails_helper"
 
 RSpec.describe CmsResourceCardComponent, type: :component do
-  let(:body_text) { Cms::Mocks::RichBlocks.generate }
+  let(:body_text) { Cms::Mocks::RichBlocks.generate_data }
 
   context "has all the values defined" do
     before do
