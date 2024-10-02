@@ -57,6 +57,7 @@ module Cms
               strapi_data[:asideSections][:data].collect { _1[:attributes] }
             else
               []
+            end
           end
 
           def self.resource_card_block(strapi_data)
