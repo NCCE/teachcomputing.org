@@ -83,7 +83,7 @@ module Cms
             strapi_data.map do |card_data|
               Models::ResourceCard.new(
                 title: card_data[:title],
-                icon: card_data.dig(:icon, :data) ? ModelFactory.to_image(card_data[:icon][:data][:attributes]) : nil,
+                icon: ModelFactory.to_image(card_data, :icon, default_size: :medium),
                 colour_theme: card_data.dig(:colourTheme, :data) ? card_data[:colourTheme][:data][:attributes][:name] : nil,
                 body_text: card_data[:bodyText],
                 button_text: card_data[:buttonText],
