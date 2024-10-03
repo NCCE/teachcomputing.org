@@ -6,7 +6,7 @@ class User < ApplicationRecord
   validates :last_name, presence: true
   validates :stem_achiever_contact_no, presence: true
   validates :stem_credentials_access_token, presence: true
-  validates :stem_credentials_refresh_token, presence: true
+  # validates :stem_credentials_refresh_token, presence: true
   validates :stem_credentials_expires_at, presence: true
   validates :stem_user_id, presence: true, uniqueness: true
   # WARNING: We are consiously choosing not to have a unique constraint on
@@ -36,7 +36,7 @@ class User < ApplicationRecord
   alias_attribute :support_audits, :audits
 
   def self.from_auth(id, credentials, info)
-    user = where(stem_user_id: id).first_or_initialize
+    user = where(stem_user_id: info.stem_user_info).first_or_initialize
 
     users_with_new_email_count = User.where(email: info.email.downcase).count
 
