@@ -1,7 +1,7 @@
 class CmsPictureCardComponent < ViewComponent::Base
   delegate :cms_colour_theme_class, to: :helpers
 
-  def initialize(image:, title:, body_text:, link:, colour_theme:)
+  def initialize(image:, title:, body_text:, colour_theme: nil, link: nil)
     @image = image
     @title = title
     @body_text = body_text
