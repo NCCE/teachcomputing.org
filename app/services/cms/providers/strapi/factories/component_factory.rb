@@ -19,19 +19,19 @@ module Cms
               to_ncce_button(strapi_data)
             when "blocks.question-and-answer"
               to_question_and_answer(strapi_data)
-            when "blocks.card-section"
+            when "blocks.resource-card-section"
               DynamicComponents::CardWrapper.new(
                 title: strapi_data[:sectionTitle],
                 cards_block: resource_card_block(strapi_data[:resourceCard]),
                 cards_per_row: strapi_data[:cardsPerRow],
-                background_color: extract_color_name(strapi_data, :backgroundColour)
+                background_color: extract_color_name(strapi_data, :bkColour)
               )
-            when "blocks.full-width-banner"
-              to_full_width_banner(strapi_data)
-            when "blocks.full-width-text"
-              DynamicComponents::FullWidthText.new(
-                blocks: ModelFactory.to_content_block(strapi_data[:content], with_wrapper: false),
-                background_color: extract_color_name(strapi_data, :backgroundColour)
+            when "blocks.picture-card-section"
+              DynamicComponents::CardWrapper.new(
+                title: strapi_data[:sectionTitle],
+                cards_block: picture_card_block(strapi_data[:pictureCard]),
+                cards_per_row: strapi_data[:cardsPerRow],
+                background_color: extract_color_name(strapi_data, :bkColour)
               )
             end
           end
@@ -106,7 +106,8 @@ module Cms
                 image: card_data.dig(:image, :data) ? ModelFactory.to_image(card_data[:image][:data][:attributes]) : nil,
                 title: card_data[:title],
                 body_text: card_data[:bodyText],
-                link: card_data[:link]
+                link: card_data[:link],
+                colour_theme: card_data.dig(:colourTheme, :data) ? card_data[:colourTheme][:data][:attributes][:name] : nil
               )
             end
           end

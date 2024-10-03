@@ -1,4 +1,15 @@
-<%= @title %>
-<%= render CmsImageComponent.new(@image) %>
-<%= render CmsRichTextBlockComponent.new(blocks: @body_text, with_wrapper: false) %>
-<%= @link %>
+<div class="cms-picture-card">
+  <%= content_tag :div, class: ["cms-picture-card__image", ribbon_class] do %>
+    <% if @link %>
+      <%= link_to (render CmsImageComponent.new(@image)), @link, class: ribbon_class %>
+    <% end %>
+  <% end %>
+  <div class="cms-picture-card__title">
+    <% if @link %>
+      <h2 class="govuk-heading-m"><%= link_to @title, @link %></h2>
+    <% end %>
+  </div>
+  <div class="cms-picture-card__text">
+    <%= render CmsRichTextBlockComponent.new(blocks: @body_text, with_wrapper: false) %>
+  </div>
+</div>
