@@ -16,7 +16,8 @@ module OmniAuth::Strategies
         email: "name",
         achiever_contact_no: "achiever_contact_no",
         achiever_organisation_no: "achiever_organisation_no",
-        school_name: "school_name"
+        school_name: "school_name",
+        stem_user_id: "integrationkey"
       }.each_pair do |key, stem_key|
         our_info[key] = user_data[stem_key] if user_data.has_key?(stem_key)
       end
