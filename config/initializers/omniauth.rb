@@ -8,6 +8,7 @@ module OmniAuth::Strategies
 
     info do
       Rails.logger.debug "Custom Auth0 claim: #{user_info}"
+      user_data = user_info
       our_info = {}
       {
         first_name: "given_name",
@@ -17,7 +18,7 @@ module OmniAuth::Strategies
         achiever_organisation_no: "achiever_organisation_no",
         school_name: "school_name"
       }.each_pair do |key, stem_key|
-        our_info[key] = user_info[stem_key] if user_info.has_key?(stem_key)
+        our_info[key] = user_data[stem_key] if user_data.has_key?(stem_key)
       end
       our_info
     end
