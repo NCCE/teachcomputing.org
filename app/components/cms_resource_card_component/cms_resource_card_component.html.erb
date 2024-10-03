@@ -8,7 +8,7 @@
     </div>
   </div>
   <div class="cms-resource-card__body-text">
-    <%= render CmsRichTextBlockComponent.new(blocks: @body_text, with_wrapper: false) %>
+    <%= render @body_text.render %>
   </div>
   <%= link_to @button_text, @button_link, class: "govuk-button ncce-button--white" if @button_link %>
 <% end %>
