@@ -7,8 +7,8 @@ module OmniAuth::Strategies
     option :name, "stem"
 
     info do
-      Rails.logger.debug "Custom Auth0 claim: #{user_info}"
       user_data = user_info
+      Rails.logger.info "Custom Auth0 claim: #{user_data}"
       our_info = {}
       {
         first_name: "given_name",
