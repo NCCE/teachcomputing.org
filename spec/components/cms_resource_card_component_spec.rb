@@ -3,7 +3,7 @@
 require "rails_helper"
 
 RSpec.describe CmsResourceCardComponent, type: :component do
-  let(:body_text) { Cms::Mocks::RichBlocks.generate_data }
+  let(:body_text) { Cms::Mocks::RichBlocks.as_model }
 
   context "has all the values defined" do
     before do
@@ -30,7 +30,7 @@ RSpec.describe CmsResourceCardComponent, type: :component do
     end
 
     it "renders the body text" do
-      expect(page).to have_text(body_text.dig(0, :children, 0, :text))
+      expect(page).to have_css(".cms-rich-text-block-component")
     end
 
     it "renders a button with a link" do
