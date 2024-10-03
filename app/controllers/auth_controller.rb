@@ -17,12 +17,15 @@ class AuthController < ApplicationController
 
     Achiever::FetchUsersCompletedCoursesFromAchieverJob.perform_later(user)
   rescue => e
+    puts e
     Sentry.capture_exception(e)
 
     raise e
   end
 
   def failure
+    puts request.env["omniauth.error"]
+    puts request.env["omniauth.error.type"]
     Sentry.capture_message(
       "Auth failure",
       extra: {error: request.env["omniauth.error"], error_type: request.env["omniauth.error.type"]}
