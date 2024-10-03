@@ -2,7 +2,8 @@ class AuthController < ApplicationController
   def callback
     auth = omniauth_params
     course_booking_uri = course_redirect_params
-    user_exists = User.exists?(stem_user_id: auth.uid)
+    # user_exists = User.exists?(stem_user_id: auth.uid)
+    user_exists = true
     Rails.logger.info("Auth data #{auth}")
     user = User.from_auth(auth.uid, auth.credentials, auth.info)
 
