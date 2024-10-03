@@ -1,0 +1,22 @@
+.cms-picture-card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+
+  &__title {
+    margin-top: 20px;
+  }
+
+  &__text {
+    flex: 1;
+  }
+
+  &__image {
+    border-width: 4px;
+
+    img {
+      width: 100%;
+      display: block;
+    }
+  }
+}
