@@ -20,19 +20,9 @@ module Cms
             when "blocks.question-and-answer"
               to_question_and_answer(strapi_data)
             when "blocks.resource-card-section"
-              DynamicComponents::CardWrapper.new(
-                title: strapi_data[:sectionTitle],
-                cards_block: resource_card_block(strapi_data[:resourceCard]),
-                cards_per_row: strapi_data[:cardsPerRow],
-                background_color: extract_color_name(strapi_data, :bkColour)
-              )
+              to_card_wrapper(strapi_data, resource_card_block(strapi_data[:resourceCard]))
             when "blocks.picture-card-section"
-              DynamicComponents::CardWrapper.new(
-                title: strapi_data[:sectionTitle],
-                cards_block: picture_card_block(strapi_data[:pictureCard]),
-                cards_per_row: strapi_data[:cardsPerRow],
-                background_color: extract_color_name(strapi_data, :bkColour)
-              )
+              to_card_wrapper(strapi_data, picture_card_block(strapi_data[:pictureCard]))
             end
           end
 
@@ -87,13 +77,22 @@ module Cms
             strapi_data[key][:data][:attributes][:name] if strapi_data.dig(key, :data)
           end
 
+          def self.to_card_wrapper(strapi_data, cards_block)
+            DynamicComponents::CardWrapper.new(
+              title: strapi_data[:sectionTitle],
+              cards_block: cards_block,
+              cards_per_row: strapi_data[:cardsPerRow],
+              background_color: extract_color_name(strapi_data, :bkColour)
+            )
+          end
+
           def self.resource_card_block(strapi_data)
             strapi_data.map do |card_data|
               Models::ResourceCard.new(
                 title: card_data[:title],
                 icon: ModelFactory.to_image(card_data, :icon, default_size: :medium),
                 colour_theme: extract_color_name(card_data, :colourTheme),
-                body_text: card_data[:bodyText],
+                body_text: ModelFactory.to_content_block(card_data[:bodyText], with_wrapper: false),
                 button_text: card_data[:buttonText],
                 button_link: card_data[:buttonLink]
               )
@@ -103,11 +102,11 @@ module Cms
           def self.picture_card_block(strapi_data)
             strapi_data.map do |card_data|
               Models::PictureCard.new(
-                image: card_data.dig(:image, :data) ? ModelFactory.to_image(card_data[:image][:data][:attributes]) : nil,
+                image: ModelFactory.to_image(card_data, :image, default_size: :medium),
                 title: card_data[:title],
-                body_text: card_data[:bodyText],
+                body_text: ModelFactory.to_content_block(card_data[:bodyText], with_wrapper: false),
                 link: card_data[:link],
-                colour_theme: card_data.dig(:colourTheme, :data) ? card_data[:colourTheme][:data][:attributes][:name] : nil
+                colour_theme: extract_color_name(strapi_data, :colourTheme)
               )
             end
           end
