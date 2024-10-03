@@ -8,24 +8,23 @@ module OmniAuth::Strategies
 
     info do
       Rails.logger.debug "Custom Auth0 claim: #{user_info}"
-      # our_info = {}
-      # {
-      #  first_name: "firstName",
-      #  last_name: "lastName",
-      #  email: "mail",
-      #  achiever_contact_no: "achieverContactNo",
-      #  achiever_organisation_no: "achieverOrganisationNo",
-      #  school_name: "school"
-      # }.each_pair do |key, stem_key|
-      #  our_info[key] = user_info["attributes"][stem_key][0] if user_info["attributes"].has_key?(stem_key)
-      # end
-      # our_info
-      {}
+      our_info = {}
+      {
+        first_name: "given_name",
+        last_name: "family_name",
+        email: "name",
+        achiever_contact_no: "achiever_contact_no",
+        achiever_organisation_no: "achiever_organisation_no",
+        school_name: "school_name"
+      }.each_pair do |key, stem_key|
+        our_info[key] = user_info[stem_key] if user_info.has_key?(stem_key)
+      end
+      our_info
     end
 
     def user_info
       response ||= access_token.get("/userinfo", snaky: false)
-      entry_context(response)
+      sentry_context(response)
       response.parsed
     end
 
