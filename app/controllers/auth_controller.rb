@@ -3,6 +3,7 @@ class AuthController < ApplicationController
     auth = omniauth_params
     course_booking_uri = course_redirect_params
     user_exists = User.exists?(stem_user_id: auth.uid)
+    Rails.logger.debug("Auth data #{auth}")
     user = User.from_auth(auth.uid, auth.credentials, auth.info)
 
     session[:user_id] = user.id
@@ -24,8 +25,6 @@ class AuthController < ApplicationController
   end
 
   def failure
-    puts request.env["omniauth.error"]
-    puts request.env["omniauth.error.type"]
     Sentry.capture_message(
       "Auth failure",
       extra: {error: request.env["omniauth.error"], error_type: request.env["omniauth.error.type"]}
