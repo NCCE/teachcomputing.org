@@ -6,6 +6,6 @@
     <h2 class="govuk-heading-m"><%= link_to_if @link, @title, @link %></h2>
   </div>
   <div class="cms-picture-card__text">
-    <%= render CmsRichTextBlockComponent.new(blocks: @body_text, with_wrapper: false) %>
+    <%= render @body_text.render %>
   </div>
 </div>
