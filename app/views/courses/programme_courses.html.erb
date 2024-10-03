@@ -1,21 +1,14 @@
-<% meta_tag :title, 'Primary Computing Certificate Courses - Teach Computing' %>
+<% meta_tag :title, 'Primary computing certificate courses - Teach Computing' %>
 
-<%= render CmsPageTitleComponent.new(title: "Teach Primary Computing Certificate courses") %>
+<%= render CmsPageTitleComponent.new(title: "Teach primary computing certificate courses") %>
 
 <div data-controller="course-filter">
 
   <%= render GovGridRowComponent.new(margin: {bottom: 0}) do |row| %>
-    <%= row.with_column("two-thirds") do %>
+    <%= row.with_column("full-width") do %>
       <p class="govuk-body">
         Use the filters to find the right course for you that count towards the Teach Primary Computing Certificate
       </p>
-    <% end %>
-    <%= row.with_column("one-third") do %>
-      <%= render BursaryComponent.new(
-        tracking_event_category: 'Courses',
-        tracking_event_label: 'Bursaries',
-        bottom_margin: false
-        ) %>
     <% end %>
   <% end %>
 
