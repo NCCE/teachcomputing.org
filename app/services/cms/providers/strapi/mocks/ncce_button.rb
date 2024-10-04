@@ -4,7 +4,7 @@ module Cms
       module Mocks
         class NcceButton
           def self.as_model
-            Factories::ComponentFactory.process_component(generate_data)
+            Factories::ComponentFactory.process_component(generate_raw_data)
           end
 
           def self.generate_data(aside_sections: [])
