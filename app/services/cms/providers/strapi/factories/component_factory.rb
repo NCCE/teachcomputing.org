@@ -106,7 +106,7 @@ module Cms
                 title: card_data[:title],
                 body_text: ModelFactory.to_content_block(card_data[:bodyText], with_wrapper: false),
                 link: card_data[:link],
-                colour_theme: extract_color_name(strapi_data, :colourTheme)
+                colour_theme: extract_color_name(card_data, :colourTheme)
               )
             end
           end
