@@ -24,7 +24,10 @@ module Cms
 
           def self.text_block_parameters
             {
-              populate: {fields: "content"}
+              populate: {
+                fields: "content",
+                backgroundColour: {populate: {fields: "name"}}
+              }
             }
           end
 
