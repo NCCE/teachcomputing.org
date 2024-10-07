@@ -1,4 +1,12 @@
 
+.cms-full-width-banner-row {
+  &.has-border {
+    .govuk-main-wrapper {
+      border-bottom: 2px solid $ncce-grey;
+    }
+  }
+}
+
 .cms-full-width-banner__heading {
   margin-bottom: 20px;
 }
@@ -14,8 +22,13 @@
   flex-direction: row;
   gap: 15px;
 
+  @include govuk-media-query($until: tablet) {
+    flex-direction: column;
+    gap: 0px;
+  }
+
   &__media {
-    flex: 0 1 calc(100% * 1/3);
+    flex: 0 0 calc(100% * 1/3);
     padding: 10px;
 
     img {
