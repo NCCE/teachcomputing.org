@@ -36,7 +36,7 @@ class User < ApplicationRecord
   alias_attribute :support_audits, :audits
 
   def self.from_auth(id, credentials, info)
-    user = where(stem_user_id: info.stem_user_info).first_or_initialize
+    user = where(stem_user_id: info.stem_user_id).first_or_initialize
 
     users_with_new_email_count = User.where(email: info.email.downcase).count
 
@@ -50,7 +50,7 @@ class User < ApplicationRecord
       Sentry.capture_message("User #{id} created with duplicated email #{info.email.downcase}", level: :warning)
     end
 
-    user.stem_user_id = id
+    user.stem_user_id = info.stem_user_id
     user.first_name = info.first_name
     user.last_name = info.last_name
     user.email = info.email.downcase
