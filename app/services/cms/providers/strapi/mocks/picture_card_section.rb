@@ -41,7 +41,7 @@ module Cms
             {
               title: Faker::Lorem.words(number: 5),
               image: {data: Image.generate_raw_data},
-              bodyText: RichBlocks.generate,
+              bodyText: RichBlocks.generate_data,
               colourTheme: ColourScheme.generate_data(name: colour_scheme),
               link: Faker::Internet.url
             }
