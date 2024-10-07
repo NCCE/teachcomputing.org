@@ -13,6 +13,11 @@
     justify-content: space-between;
     margin-bottom: 10px;
 
+    &-image img {
+      max-width: 100%;
+      height: auto;
+    }
+
     @include govuk-media-query($until: tablet) {
       margin-bottom: 16px;
 
