@@ -36,7 +36,7 @@ class AuthController < ApplicationController
 
   def logout
     reset_session
-    redirect_to "#{ENV.fetch("STEM_OAUTH_SITE")}/user/ncce/logout"
+    redirect_to "#{Rails.config.stem_account_domain}/user/logout"
   end
 
   private
