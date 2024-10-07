@@ -7,7 +7,7 @@ class CmsPictureCardComponentPreview < ViewComponent::Preview
     render(CmsCardWrapperComponent.new(
       title: card_section.title,
       cards_block: card_section.cards_block,
-      background_color: card_section.background_color,
+      background_color: nil,
       cards_per_row: 3
     ))
   end
@@ -18,7 +18,7 @@ class CmsPictureCardComponentPreview < ViewComponent::Preview
     render(CmsCardWrapperComponent.new(
       title: card_section.title,
       cards_block: card_section.cards_block,
-      background_color: card_section.background_color,
+      background_color: "light-grey",
       cards_per_row: 2
     ))
   end
@@ -29,7 +29,7 @@ class CmsPictureCardComponentPreview < ViewComponent::Preview
     render(CmsCardWrapperComponent.new(
       title: card_section.title,
       cards_block: card_section.cards_block,
-      background_color: card_section.background_color,
+      background_color: nil,
       cards_per_row: 3
     ))
   end

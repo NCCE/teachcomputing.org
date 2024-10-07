@@ -6,9 +6,7 @@ module Cms
           def self.generate_data(name: "standard")
             {
               id: 1,
-              data: {
-                attributes: generate_raw_data(name: name)
-              }
+              attributes: generate_raw_data(name: name)
             }
           end
 
