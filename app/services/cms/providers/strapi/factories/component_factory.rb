@@ -24,12 +24,15 @@ module Cms
                 title: strapi_data[:sectionTitle],
                 cards_block: resource_card_block(strapi_data[:resourceCard]),
                 cards_per_row: strapi_data[:cardsPerRow],
-                background_color: strapi_data.dig(:backgroundColour, :data) ? strapi_data[:backgroundColour][:data][:attributes][:name] : nil
+                background_color: extract_color_name(strapi_data, :backgroundColour)
               )
             when "blocks.full-width-banner"
               to_full_width_banner(strapi_data)
             when "blocks.full-width-text"
-              DynamicComponents::FullWidthText.new(blocks: ModelFactory.to_content_block(strapi_data[:content], with_wrapper: false))
+              DynamicComponents::FullWidthText.new(
+                blocks: ModelFactory.to_content_block(strapi_data[:content], with_wrapper: false),
+                background_color: extract_color_name(strapi_data, :backgroundColour)
+              )
             end
           end
 
@@ -39,7 +42,7 @@ module Cms
               body_blocks: strapi_data[:bodyText],
               image: ModelFactory.to_image(strapi_data, :image, default_size: :small),
               image_link: strapi_data[:imageLink],
-              colour_theme: strapi_data.dig(:colourTheme, :data) ? strapi_data[:colourTheme][:data][:attributes][:name] : nil,
+              colour_theme: extract_color_name(strapi_data, :colourTheme),
               icon_block: icon_block(strapi_data[:iconBlock])
             )
           end
@@ -47,12 +50,13 @@ module Cms
           def self.to_full_width_banner(strapi_data)
             DynamicComponents::FullWidthBanner.new(
               text_content: ModelFactory.to_content_block(strapi_data[:textContent], with_wrapper: false),
-              background_color: strapi_data.dig(:backgroundColour, :data) ? strapi_data[:backgroundColour][:data][:attributes][:name] : nil,
+              background_color: extract_color_name(strapi_data, :backgroundColour),
               image: ModelFactory.to_image(strapi_data, :image, default_size: :medium),
               image_side: strapi_data[:imageSide],
               image_link: strapi_data[:imageLink],
               buttons: strapi_data[:buttons] ? strapi_data[:buttons].map { to_ncce_button(_1) } : [],
-              title: strapi_data[:sectionTitle]
+              title: strapi_data[:sectionTitle],
+              show_bottom_border: strapi_data[:showBottomBorder]
             )
           end
 
@@ -79,12 +83,16 @@ module Cms
             end
           end
 
+          def self.extract_color_name(strapi_data, key)
+            strapi_data[key][:data][:attributes][:name] if strapi_data.dig(key, :data)
+          end
+
           def self.resource_card_block(strapi_data)
             strapi_data.map do |card_data|
               Models::ResourceCard.new(
                 title: card_data[:title],
                 icon: ModelFactory.to_image(card_data, :icon, default_size: :medium),
-                colour_theme: card_data.dig(:colourTheme, :data) ? card_data[:colourTheme][:data][:attributes][:name] : nil,
+                colour_theme: extract_color_name(strapi_data, :colourTheme),
                 body_text: card_data[:bodyText],
                 button_text: card_data[:buttonText],
                 button_link: card_data[:buttonLink]

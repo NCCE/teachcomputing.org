@@ -9,7 +9,7 @@
     
       <% if @image %>
         <div class="cms-full-width-banner__media">
-          <%= cms_image(@image) %>
+          <%= render CmsImageComponent.new(@image, show_caption: false, link: @image_link) %>
         </div>
       <% end %>
 
