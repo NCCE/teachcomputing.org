@@ -32,7 +32,7 @@ RSpec.describe AuthController do
 
     it "redirects you to the root path" do
       get logout_path
-      expect(response).to redirect_to("#{ENV.fetch("STEM_OAUTH_SITE")}/user/ncce/logout")
+      expect(response).to redirect_to("#{Rails.config.stem_account_domain}/user/logout")
     end
   end
 end

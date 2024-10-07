@@ -10,8 +10,6 @@ ignore:
   - Rails/EnvironmentVariableAccess
 - app/controllers/application_controller.rb:
   - Rails/EnvironmentVariableAccess
-- app/controllers/auth_controller.rb:
-  - Rails/EnvironmentVariableAccess
 - app/controllers/class_marker/webhooks_controller.rb:
   - Rails/EnvironmentVariableAccess
 - app/controllers/dynamics/webhooks_controller.rb:
