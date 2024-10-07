@@ -3,12 +3,12 @@ module Cms
     module Strapi
       module Mocks
         class RichBlocks
-          def self.as_model
-            Factories::ModelFactory.to_content_block(generate)
+          def self.as_model(with_wrapper: false)
+            Factories::ModelFactory.to_content_block(generate_data, with_wrapper:)
           end
 
-          def self.generate
-            [paragraph(2)]
+          def self.generate_data
+            [paragraph(6)]
           end
 
           def self.paragraph(sentences)

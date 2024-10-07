@@ -10,25 +10,13 @@ module Cms
               ModelFactory.to_content_block(strapi_data[:content], with_wrapper: false)
             when "content-blocks.file-link"
               file_data = strapi_data.dig(:file, :data) ? strapi_data[:file][:data][:attributes] : nil
-              ModelFactory.to_file(file_data) if file_data
+              to_file(file_data) if file_data
             when "blocks.text-with-asides"
-              asides = if strapi_data.dig(:asideSections, :data)
-                strapi_data[:asideSections][:data].collect { _1[:attributes] }
-              else
-                []
-              end
-              DynamicComponents::TextWithAsides.new(blocks: strapi_data[:textContent], asides:)
+              DynamicComponents::TextWithAsides.new(blocks: strapi_data[:textContent], asides: extract_aside_sections(strapi_data))
             when "blocks.horizontal-card"
-              DynamicComponents::HorizontalCard.new(
-                title: strapi_data[:title],
-                body_blocks: strapi_data[:bodyText],
-                image: strapi_data.dig(:image, :data) ? ModelFactory.to_image(strapi_data[:image][:data][:attributes], default_size: :small) : nil,
-                image_link: strapi_data[:imageLink],
-                colour_theme: strapi_data.dig(:colourTheme, :data) ? strapi_data[:colourTheme][:data][:attributes][:name] : nil,
-                icon_block: icon_block(strapi_data[:iconBlock])
-              )
+              to_horizontal_card(strapi_data)
             when "buttons.ncce-button"
-              DynamicComponents::NcceButton.new(title: strapi_data[:title], link: strapi_data[:link])
+              to_ncce_button(strapi_data)
             when "blocks.question-and-answer"
               to_question_and_answer(strapi_data)
             when "blocks.card-section"
@@ -36,9 +24,44 @@ module Cms
                 title: strapi_data[:sectionTitle],
                 cards_block: resource_card_block(strapi_data[:resourceCard]),
                 cards_per_row: strapi_data[:cardsPerRow],
-                background_color: strapi_data.dig(:backgroundColour, :data) ? strapi_data[:backgroundColour][:data][:attributes][:name] : nil
+                background_color: extract_color_name(strapi_data, :backgroundColour)
+              )
+            when "blocks.full-width-banner"
+              to_full_width_banner(strapi_data)
+            when "blocks.full-width-text"
+              DynamicComponents::FullWidthText.new(
+                blocks: ModelFactory.to_content_block(strapi_data[:content], with_wrapper: false),
+                background_color: extract_color_name(strapi_data, :backgroundColour)
               )
             end
+          end
+
+          def self.to_horizontal_card(strapi_data)
+            DynamicComponents::HorizontalCard.new(
+              title: strapi_data[:title],
+              body_blocks: strapi_data[:bodyText],
+              image: ModelFactory.to_image(strapi_data, :image, default_size: :small),
+              image_link: strapi_data[:imageLink],
+              colour_theme: extract_color_name(strapi_data, :colourTheme),
+              icon_block: icon_block(strapi_data[:iconBlock])
+            )
+          end
+
+          def self.to_full_width_banner(strapi_data)
+            DynamicComponents::FullWidthBanner.new(
+              text_content: ModelFactory.to_content_block(strapi_data[:textContent], with_wrapper: false),
+              background_color: extract_color_name(strapi_data, :backgroundColour),
+              image: ModelFactory.to_image(strapi_data, :image, default_size: :medium),
+              image_side: strapi_data[:imageSide],
+              image_link: strapi_data[:imageLink],
+              buttons: strapi_data[:buttons] ? strapi_data[:buttons].map { to_ncce_button(_1) } : [],
+              title: strapi_data[:sectionTitle],
+              show_bottom_border: strapi_data[:showBottomBorder]
+            )
+          end
+
+          def self.to_ncce_button(strapi_data)
+            DynamicComponents::NcceButton.new(title: strapi_data[:title], link: strapi_data[:link], color: strapi_data[:buttonTheme])
           end
 
           def self.to_question_and_answer(strapi_data)
@@ -60,12 +83,16 @@ module Cms
             end
           end
 
+          def self.extract_color_name(strapi_data, key)
+            strapi_data[key][:data][:attributes][:name] if strapi_data.dig(key, :data)
+          end
+
           def self.resource_card_block(strapi_data)
             strapi_data.map do |card_data|
               Models::ResourceCard.new(
                 title: card_data[:title],
-                icon: card_data.dig(:icon, :data) ? ModelFactory.to_image(card_data[:icon][:data][:attributes]) : nil,
-                colour_theme: card_data.dig(:colourTheme, :data) ? card_data[:colourTheme][:data][:attributes][:name] : nil,
+                icon: ModelFactory.to_image(card_data, :icon, default_size: :medium),
+                colour_theme: extract_color_name(card_data, :colourTheme),
                 body_text: card_data[:bodyText],
                 button_text: card_data[:buttonText],
                 button_link: card_data[:buttonLink]
@@ -80,7 +107,16 @@ module Cms
           def self.icon(icon_data)
             DynamicComponents::Icon.new(
               text: icon_data[:iconText],
-              image: ModelFactory.to_image(icon_data[:iconImage][:data][:attributes])
+              image: ModelFactory.to_image(icon_data, :iconImage, default_size: :small)
+            )
+          end
+
+          def self.to_file(data)
+            Models::File.new(
+              url: data[:url],
+              filename: data[:name],
+              size: data[:size],
+              updated_at: DateTime.parse(data[:updatedAt])
             )
           end
         end

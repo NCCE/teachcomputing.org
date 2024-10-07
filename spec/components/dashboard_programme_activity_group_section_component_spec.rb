@@ -6,7 +6,7 @@ RSpec.describe DashboardProgrammeActivityGroupSectionComponent, type: :component
   context "with aside slug" do
     context "when cms returns aside" do
       before do
-        stub_strapi_aside_section
+        stub_strapi_aside_section("testing-with-aside")
         render_inline(described_class.new(
           anchor_id: "test-id",
           title: "With Aside",

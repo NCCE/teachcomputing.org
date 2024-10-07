@@ -140,7 +140,12 @@ $avatar_size: 32px;
       }
 
       .cms-image {
-        text-align: center;
+        width: 80%;
+        margin: auto;
+
+        img {
+          width: 100%;
+        }
       }
 
     }

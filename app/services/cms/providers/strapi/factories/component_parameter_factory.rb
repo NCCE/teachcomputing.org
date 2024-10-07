@@ -24,7 +24,10 @@ module Cms
 
           def self.text_block_parameters
             {
-              populate: {fields: "content"}
+              populate: {
+                fields: "content",
+                backgroundColour: {populate: {fields: "name"}}
+              }
             }
           end
 
@@ -34,6 +37,16 @@ module Cms
                 fields: ["question", "answer"],
                 asideSections: {populate: {fields: "slug"}},
                 answerIcons: icon_block_parameters
+              }
+            }
+          end
+
+          def self.full_width_banner_parameters
+            {
+              populate: {
+                image: {populate: [:alternativeText]},
+                backgroundColour: {populate: [:name]},
+                buttons: {populate: [:title, :link]}
               }
             }
           end
