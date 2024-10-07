@@ -3,40 +3,21 @@
 require "rails_helper"
 
 RSpec.describe CmsCardWrapperComponent, type: :component do
-  let(:resource_card_one) {
-    Cms::Mocks::ResourceCard.generate(
-      card_count: 1,
-      title: Faker::Lorem.word,
-      icon: Cms::Mocks::Image.as_model,
-      colour_theme: Faker::Lorem.word,
-      button_text: Faker::Lorem.sentence,
-      button_link: Faker::Internet.url
-    )
-  }
-
-  let(:resource_card_three) {
-    Cms::Mocks::ResourceCard.generate(
-      card_count: 3,
-      title: Faker::Lorem.word,
-      icon: Cms::Mocks::Image.as_model,
-      colour_theme: Faker::Lorem.word,
-      button_text: Faker::Lorem.sentence,
-      button_link: Faker::Internet.url
-    )
-  }
+  def resource_cards(number_of_cards)
+    Cms::Mocks::ResourceCardSection.as_model(number_of_cards:)
+  end
 
   context "with one card and no title" do
     before do
       render_inline(described_class.new(
         title: nil,
-        cards_block: resource_card_one,
         cards_per_row: 3,
-        background_color: nil
+        cards_block: resource_cards(1).cards_block
       ))
     end
 
     it "renders one card" do
-      expect(page).to have_css(".cms-card-wrapper__card", count: 1)
+      expect(page).to have_css(".cms-resource-wrapper__card", count: 1)
     end
 
     it "does not render a title" do
@@ -48,9 +29,8 @@ RSpec.describe CmsCardWrapperComponent, type: :component do
     before do
       render_inline(described_class.new(
         title: nil,
-        cards_block: resource_card_three,
         cards_per_row: 3,
-        background_color: nil
+        cards_block: resource_cards(3).cards_block
       ))
     end
 
@@ -63,8 +43,8 @@ RSpec.describe CmsCardWrapperComponent, type: :component do
     before do
       render_inline(described_class.new(
         title: "Section Title",
-        cards_block: resource_card_three,
         cards_per_row: 3,
+        cards_block: resource_cards(1).cards_block,
         background_color: "light-grey"
       ))
     end
@@ -75,6 +55,35 @@ RSpec.describe CmsCardWrapperComponent, type: :component do
 
     it "has a background colour" do
       expect(page).to have_css(".light-grey-bg")
+    end
+  end
+
+  context "is a resource card" do
+    before do
+      render_inline(described_class.new(
+        title: nil,
+        cards_per_row: 3,
+        cards_block: resource_cards(1).cards_block
+      ))
+    end
+
+    it "renders one resource card" do
+      expect(page).to have_css(".cms-resource-card")
+    end
+  end
+
+  context "is a picture card" do
+    let(:picture_card) { Cms::Mocks::PictureCardSection.as_model }
+    before do
+      render_inline(described_class.new(
+        title: nil,
+        cards_per_row: 3,
+        cards_block: picture_card.cards_block
+      ))
+    end
+
+    it "renders three picture cards" do
+      expect(page).to have_css(".cms-picture-card", count: 3)
     end
   end
 end
