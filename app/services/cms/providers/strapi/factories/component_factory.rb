@@ -92,7 +92,7 @@ module Cms
               Models::ResourceCard.new(
                 title: card_data[:title],
                 icon: ModelFactory.to_image(card_data, :icon, default_size: :medium),
-                colour_theme: extract_color_name(strapi_data, :colourTheme),
+                colour_theme: extract_color_name(card_data, :colourTheme),
                 body_text: card_data[:bodyText],
                 button_text: card_data[:buttonText],
                 button_link: card_data[:buttonLink]
