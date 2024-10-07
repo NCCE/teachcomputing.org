@@ -81,7 +81,7 @@ module Cms
             {
               title: Faker::Lorem.words(number: 5),
               icon: icon,
-              bodyText: RichBlocks.generate,
+              bodyText: RichBlocks.generate_data,
               colourTheme: {data: ColourScheme.generate_data(name: colour_scheme)},
               buttonText: button_text,
               buttonLink: button_link
