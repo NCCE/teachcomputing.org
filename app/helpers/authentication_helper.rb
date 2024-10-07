@@ -4,6 +4,6 @@ module AuthenticationHelper
   end
 
   def profile_edit_url
-    "#{Rails.config.stem_account_domain}/edit-profile"
+    "#{Rails.application.config.stem_account_domain}/edit-profile"
   end
 end
