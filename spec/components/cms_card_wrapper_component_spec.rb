@@ -17,7 +17,7 @@ RSpec.describe CmsCardWrapperComponent, type: :component do
     end
 
     it "renders one card" do
-      expect(page).to have_css(".cms-resource-wrapper__card", count: 1)
+      expect(page).to have_css(".cms-resource-card", count: 1)
     end
 
     it "does not render a title" do
