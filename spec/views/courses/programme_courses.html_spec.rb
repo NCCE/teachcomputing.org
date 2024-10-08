@@ -27,7 +27,7 @@ RSpec.describe("courses/programme_courses", type: :view) do
     end
 
     it "has the clear filters link" do
-      expect(rendered).to have_css(".govuk-heading-l", text: "Teach Primary Computing Certificate courses")
+      expect(rendered).to have_css(".govuk-heading-l", text: "Teach primary computing certificate courses")
     end
   end
 end

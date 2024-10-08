@@ -14,6 +14,14 @@ RSpec.describe("courses/_aside-filters", type: :view) do
   let(:subjects) { {"Algorithmic thinking": 100_000_011, Biology: 157_430_000, Careers: 157_430_001} }
   let(:age_groups) { {"Key stage 1": 157_430_008, "Key stage 2": 157_430_009} }
   let(:certificates) { {"CS Accelerator": "subject-knowledge"} }
+  let(:course_lengths) {
+    [
+      {label: "0 - 3 Hours", value: "short_course", min: 0, max: 3.hours.to_i},
+      {label: "3 - 6 Hours", value: "long_course", min: 3.hours.to_i, max: 6.hours.to_i},
+      {label: "1 Day", value: "day_course", min: 1.day.to_i, max: (1.day + 23.hours).to_i},
+      {label: "2+ Days", value: "multi_day_course", min: 2.days.to_i, max: 1.year.to_i}
+    ]
+  }
 
   describe "courses" do
     context "with no filters applied" do
@@ -27,8 +35,10 @@ RSpec.describe("courses/_aside-filters", type: :view) do
           course_formats: [{label: "Face to face", value: "face_to_face"},
             {label: "Online", value: "online"},
             {label: "Live Remote", value: "remote"}],
+          course_lengths:,
           current_hub: "bla",
           current_hub_id: nil,
+          current_length: nil,
           current_level: nil,
           current_location: nil,
           current_topic: nil,
@@ -70,11 +80,16 @@ RSpec.describe("courses/_aside-filters", type: :view) do
       end
 
       it "renders the checkboxes" do
-        expect(rendered).to have_css(".ncce-checkboxes__input", count: 3)
+        expect(rendered).to have_css(".ncce-checkboxes__input", count: 7)
 
         expect(rendered).to have_css(".ncce-checkboxes__label", text: "Face to face")
         expect(rendered).to have_css(".ncce-checkboxes__label", text: "Online")
         expect(rendered).to have_css(".ncce-checkboxes__label", text: "Remote")
+
+        expect(rendered).to have_css(".ncce-checkboxes__label", text: "0 - 3 Hours")
+        expect(rendered).to have_css(".ncce-checkboxes__label", text: "3 - 6 Hours")
+        expect(rendered).to have_css(".ncce-checkboxes__label", text: "1 Day")
+        expect(rendered).to have_css(".ncce-checkboxes__label", text: "2+ Days")
       end
 
       it "has a view results button" do
@@ -97,8 +112,10 @@ RSpec.describe("courses/_aside-filters", type: :view) do
           course_formats: [{label: "Face to face", value: "face_to_face"},
             {label: "Online", value: "online"},
             {label: "Live Remote", value: "remote"}],
+          course_lengths:,
           current_hub: "bla",
           current_hub_id: nil,
+          current_length: nil,
           current_level: nil,
           current_location: nil,
           current_topic: nil,
@@ -138,8 +155,10 @@ RSpec.describe("courses/_aside-filters", type: :view) do
           course_formats: [{label: "Face to face", value: "face_to_face"},
             {label: "Online", value: "online"},
             {label: "Live Remote", value: "remote"}],
+          course_lengths:,
           current_hub: "bla",
           current_hub_id: nil,
+          current_length: nil,
           current_level: nil,
           current_location: nil,
           current_topic: nil,
