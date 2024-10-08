@@ -16,7 +16,11 @@
 <%= render GovGridRowComponent.new(background_color: "light-grey", padding: {top: 7, bottom: 4}) do |row| %>
   <%= row.with_column("two-thirds") do %>
     <h1 class="govuk-heading-l govuk-!-margin-bottom-4">
-      <%= @enrolled_certificates.any? ? "Choose your next certificate" : "Choose your certificate" %>
+      <% if @enrolled_certificates %>
+        Choose your next certificate
+      <% else %>
+        Choose your certificate
+      <% end %>
     </h1>
     <% @unenrolled_certificates.each do |certificate| %>
       <%= render DashboardCertificateComponent.new(certificate:, button_text: "Find out more", button_color: "ncce-button--white") %>
