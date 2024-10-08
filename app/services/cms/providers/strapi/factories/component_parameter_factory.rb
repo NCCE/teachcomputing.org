@@ -74,29 +74,6 @@ module Cms
             }
           end
 
-          def self.question_and_answer_parameters
-            {
-              populate: {
-                fields: ["question", "answer"],
-                asideSections: {populate: {fields: "slug"}},
-                answerIcons: icon_block_parameters
-              }
-            }
-          end
-
-          def self.icon_block_parameters
-            {populate: {iconImage: "alternativeText"}}
-          end
-
-          def self.card_wrapper_parameters
-            {
-              populate: {
-                backgroundColour: {fields: "name"},
-                resourceCard: {populate: {icon: [:alternativeText], colourTheme: [:name]}}
-              }
-            }
-          end
-
           def self.picture_card_parameters
             {
               populate: {
