@@ -10,6 +10,7 @@ RSpec.describe CoursesController do
       stub_face_to_face_occurrences
       stub_online_occurrences
       stub_subjects
+      stub_duration_units
     end
 
     context "when there is no filtering" do
@@ -39,7 +40,8 @@ RSpec.describe CoursesController do
         programme
         get primary_courses_path, params: {
           level: "Key stage 1",
-          topic: "Computing"
+          topic: "Computing",
+          course_length: ["short_course"]
         }
       end
 
@@ -51,7 +53,7 @@ RSpec.describe CoursesController do
         filters = assigns(:course_filter).applied_filters
         expect(filters)
           .to match_array(
-            ["Key stage 1", "Computing"]
+            ["Key stage 1", "Computing", "[&quot;short_course&quot;]"]
           )
       end
     end

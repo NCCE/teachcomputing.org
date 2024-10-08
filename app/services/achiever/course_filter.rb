@@ -91,8 +91,8 @@ module Achiever
     def course_lengths
       @course_lengths ||= [
         {label: "0 - 3 Hours", value: "short_course", min: 0, max: 3.hours.to_i},
-        {label: "3 - 6 Hours", value: "long_course", min: 3.01.hours.to_i, max: 6.hours.to_i},
-        {label: "1 Day", value: "day_course", min: 1.day.to_i, max: (1.day + 23.hours).to_i},
+        {label: "3 - 6 Hours", value: "long_course", min: (3.hours.to_i + 1), max: (1.day.to_i - 1)},
+        {label: "1 Day", value: "day_course", min: 1.day.to_i, max: (2.day.to_i - 1)},
         {label: "2+ Days", value: "multi_day_course", min: 2.days.to_i, max: 1.year.to_i}
       ]
     end
