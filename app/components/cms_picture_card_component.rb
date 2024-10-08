@@ -9,7 +9,9 @@ class CmsPictureCardComponent < ViewComponent::Base
     @colour_theme = colour_theme
   end
 
-  def ribbon_class
-    cms_colour_theme_class(@colour_theme, "bottom") if @colour_theme
+  def image_classes
+    classes = ["cms-picture-card__image"]
+    classes << cms_colour_theme_class(@colour_theme, "bottom") if @colour_theme
+    classes
   end
 end
