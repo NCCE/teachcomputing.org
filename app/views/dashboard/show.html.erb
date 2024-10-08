@@ -2,29 +2,35 @@
 
 <%= render CmsPageTitleComponent.new(title: "Progress overview", intro_text: nil) %>
 
-<%= render GovGridRowComponent.new(background_color: "light-grey", padding: {top: 7, bottom: 2}) do |row| %>
-  <%= row.with_column("two-thirds") do %>
-    <h1 class="govuk-heading-l govuk-!-margin-bottom-4">Enrolled certificates</h1>
-    <% @enrolled_certificates.each do |certificate| %>
-      <%= render DashboardCertificateComponent.new(certificate: certificate, button_text: "Check my progress", button_color: "ncce-button") %>
+<% if @enrolled_certificates.any? %>
+  <%= render GovGridRowComponent.new(background_color: "light-grey", padding: {top: 7, bottom: 0}) do |row| %>
+    <%= row.with_column("two-thirds") do %>
+      <h1 class="govuk-heading-l govuk-!-margin-bottom-4">Enrolled certificates</h1>
+      <% @enrolled_certificates.each do |certificate| %>
+        <%= render DashboardCertificateComponent.new(certificate: certificate, button_text: "Check my progress", button_color: "ncce-button") %>
+      <% end %>
     <% end %>
   <% end %>
-<% end %>
+<% end%>
 
-<%= render GovGridRowComponent.new(background_color: "light-grey", padding: {top: 3, bottom: 4}) do |row| %>
+<%= render GovGridRowComponent.new(background_color: "light-grey", padding: {top: 7, bottom: 4}) do |row| %>
   <%= row.with_column("two-thirds") do %>
-    <h1 class="govuk-heading-l govuk-!-margin-bottom-4">Other certificates</h1>
+    <h1 class="govuk-heading-l govuk-!-margin-bottom-4">
+      <%= @enrolled_certificates.any? ? "Choose your next certificate" : "Choose your certificate" %>
+    </h1>
     <% @unenrolled_certificates.each do |certificate| %>
       <%= render DashboardCertificateComponent.new(certificate:, button_text: "Find out more", button_color: "ncce-button--white") %>
     <% end %>
   <% end %>
 <% end %>
 
-<%= render GovGridRowComponent.new(padding: {top: 7, bottom: 2}) do |row| %>
-  <%= row.with_column("two-thirds") do %>
-    <h1 class="govuk-heading-l govuk-!-margin-bottom-4">Your courses</h1>
-    <% @user_achievements.each do |achievement| %>
-      <%= render DashboardCourseComponent.new(achievement:) %>
+<% if @user_achievements.any? %>
+  <%= render GovGridRowComponent.new(padding: {top: 7, bottom: 2}) do |row| %>
+    <%= row.with_column("two-thirds") do %>
+      <h1 class="govuk-heading-l govuk-!-margin-bottom-4">Your courses</h1>
+      <% @user_achievements.each do |achievement| %>
+        <%= render DashboardCourseComponent.new(achievement:) %>
+      <% end %>
     <% end %>
   <% end %>
 <% end %>
