@@ -40,4 +40,34 @@ RSpec.describe Cms::Providers::Strapi::Factories::ComponentFactory do
       expect(model).to be_a Cms::DynamicComponents::FullWidthText
     end
   end
+
+  context "CardWrapper" do
+    context "PictureCard" do
+      it "should create card wrapper" do
+        strapi_data = Cms::Providers::Strapi::Mocks::PictureCardSection.generate_raw_data
+        model = described_class.process_component(strapi_data)
+        expect(model).to be_a Cms::DynamicComponents::CardWrapper
+      end
+
+      it "creates correct card model" do
+        strapi_data = Cms::Providers::Strapi::Mocks::PictureCardSection.generate_raw_data
+        model = described_class.process_component(strapi_data)
+        expect(model.cards_block).to all(be_a(Cms::DynamicComponents::PictureCard))
+      end
+
+      context "ResourceCard" do
+        it "should create card wrapper" do
+          strapi_data = Cms::Providers::Strapi::Mocks::ResourceCardSection.generate_raw_data
+          model = described_class.process_component(strapi_data)
+          expect(model).to be_a Cms::DynamicComponents::CardWrapper
+        end
+
+        it "creates correct card model" do
+          strapi_data = Cms::Providers::Strapi::Mocks::ResourceCardSection.generate_raw_data
+          model = described_class.process_component(strapi_data)
+          expect(model.cards_block).to all(be_a(Cms::DynamicComponents::ResourceCard))
+        end
+      end
+    end
+  end
 end
