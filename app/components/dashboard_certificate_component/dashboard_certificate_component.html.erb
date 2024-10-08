@@ -5,12 +5,14 @@
         <%= tool_tip_text %>
       </span>
     <% end %>
-    <h2 class="dashboard-certificate__title govuk-heading-m govuk-!-margin-bottom-0">
-      <%= @certificate.certificate_name %>
-    </h2>
+    <div class="dashboard-certificate__title">
+      <h2 class="govuk-heading-m govuk-!-margin-bottom-0">
+        <%= @certificate.certificate_name %>
+      </h2>
+    </div>
   </div>
   <div class="dashboard-certificate__button">
-    <%= content_tag :a, href: @certificate.path, class: ["govuk-button button govuk-!-margin-bottom-0", @button_color] do %>
+    <%= content_tag :a, href: @certificate.path, class: button_classes do %>
       <%= @button_text %>
     <% end %>
   </div>

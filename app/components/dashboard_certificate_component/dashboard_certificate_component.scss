@@ -1,3 +1,6 @@
+$individual-achievement: "../images/icons/individual-achievement.svg";
+$school-achievement: "../images/icons/school-achievement.svg";
+
 .dashboard-certificate {
   display: flex;
   background-color: $white;
@@ -37,11 +40,11 @@
   }
 
   &__icon--individual {
-    background-image: url("../images/icons/individual-achievement.svg");
+    background-image: url($individual-achievement);
   }
 
   &__icon--school {
-    background-image: url("../images/icons/school-achievement.svg");
+    background-image: url($school-achievement);
   }
 
   &__title {

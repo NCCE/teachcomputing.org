@@ -34,4 +34,10 @@ class DashboardCertificateComponent < ViewComponent::Base
     end
     classes
   end
+
+  def button_classes
+    classes = ["govuk-button button govuk-!-margin-bottom-0"]
+    classes << @button_color
+    classes
+  end
 end
