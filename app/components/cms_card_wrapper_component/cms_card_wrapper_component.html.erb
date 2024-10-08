@@ -1,4 +1,4 @@
-<%= render GovGridRowComponent.new(background_color: @background_color, padding: {top: 6, bottom: 2}) do |row|  %>
+<%= render GovGridRowComponent.new(background_color: @background_color) do |row|  %>
   <%= row.with_column("full") do %>
     <% if @title %>
       <h2 class="govuk-heading-m"><%= @title %></h2>
