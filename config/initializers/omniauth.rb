@@ -13,7 +13,7 @@ module OmniAuth::Strategies
       {
         first_name: "given_name",
         last_name: "family_name",
-        email: "name",
+        email: "userEmail",
         achiever_contact_no: "achiever_contact_no",
         achiever_organisation_no: "achiever_organisation_no",
         school_name: "school_name",
