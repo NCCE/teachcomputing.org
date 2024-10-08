@@ -4,18 +4,28 @@ class DashboardController < ApplicationController
   after_action :discourage_caching
 
   def show
-    @incomplete_achievements = current_user.achievements.not_in_state(:dropped, :complete).with_courses.order("created_at DESC")
-    @completed_achievements = current_user.achievements.in_state(:complete).with_courses.order("updated_at DESC")
+    @incomplete_achievements = get_incomplete_achievements
+    @completed_achievements = get_completed_achievements
+    @enrolled_certificates, @unenrolled_certificates = get_certificates
+  end
 
-    @enrolled_certificates = []
-    current_user.enrolments.each do |enrolment|
-      programme = Programme.find(enrolment.programme_id)
+  def get_incomplete_achievements
+    current_user.achievements.not_in_state(:dropped, :complete).with_courses.order("created_at DESC")
+  end
 
-      if current_user.programme_enrolment_state(programme.id) == "enrolled"
-        @enrolled_certificates << programme
-      end
-    end
+  def get_completed_achievements
+    current_user.achievements.in_state(:complete).with_courses.order("updated_at DESC")
+  end
 
-    @unenrolled_certificates = Programme.where.not(id: @enrolled_certificates.pluck(:id))
+  def get_certificates
+    user_enrolments = current_user.enrolments.includes(:programme)
+
+    enrolled = user_enrolments
+      .select { |enrolment| current_user.programme_enrolment_state(enrolment.programme_id) == "enrolled" }
+      .map(&:programme)
+
+    unenrolled = Programme.where.not(id: enrolled.map(&:id))
+
+    [enrolled, unenrolled]
   end
 end
