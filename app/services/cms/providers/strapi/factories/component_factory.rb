@@ -23,6 +23,13 @@ module Cms
               to_card_wrapper(strapi_data, resource_card_block(strapi_data[:resourceCard]))
             when "blocks.picture-card-section"
               to_card_wrapper(strapi_data, picture_card_block(strapi_data[:pictureCard]))
+            when "blocks.full-width-banner"
+              to_full_width_banner(strapi_data)
+            when "blocks.full-width-text"
+              DynamicComponents::FullWidthText.new(
+                blocks: ModelFactory.to_content_block(strapi_data[:content], with_wrapper: false),
+                background_color: extract_color_name(strapi_data, :backgroundColour)
+              )
             end
           end
 
@@ -88,7 +95,7 @@ module Cms
 
           def self.resource_card_block(strapi_data)
             strapi_data.map do |card_data|
-              Models::ResourceCard.new(
+              DynamicComponents::ResourceCard.new(
                 title: card_data[:title],
                 icon: ModelFactory.to_image(card_data, :icon, default_size: :medium),
                 colour_theme: extract_color_name(card_data, :colourTheme),
@@ -101,7 +108,7 @@ module Cms
 
           def self.picture_card_block(strapi_data)
             strapi_data.map do |card_data|
-              Models::PictureCard.new(
+              DynamicComponents::PictureCard.new(
                 image: ModelFactory.to_image(card_data, :image, default_size: :medium),
                 title: card_data[:title],
                 body_text: ModelFactory.to_content_block(card_data[:bodyText], with_wrapper: false),
