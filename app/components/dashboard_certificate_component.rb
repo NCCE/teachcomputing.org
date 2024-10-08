@@ -1,52 +1,37 @@
 # frozen_string_literal: true
 
 class DashboardCertificateComponent < ViewComponent::Base
-  PROGRAMMES = {
-    Programmes::PrimaryCertificate => {
-      title: "Teach primary computing",
-      programme_type: Programme.primary_certificate
-    },
-    Programmes::SecondaryCertificate => {
-      title: "Teach secondary computing",
-      programme_type: Programme.secondary_certificate
-    },
-    Programmes::IBelong => {
-      title: "I Belong",
-      programme_type: Programme.i_belong
-    },
-    Programmes::CSAccelerator => {
-      title: "Key Stage 3 and GCSE subject knowledge",
-      programme_type: Programme.cs_accelerator
-    },
-    Programmes::ALevel => {
-      title: "A level subject knowledge",
-      programme_type: Programme.a_level
-    }
-  }
-
   def initialize(certificate:, button_text:, button_color:)
     @certificate = certificate
     @button_text = button_text
     @button_color = button_color
   end
 
-  def programme
-    PROGRAMMES[@certificate.class]
-  end
-
-  def title
-    programme[:title]
-  end
-
-  def programme_type
-    programme[:programme_type]
-  end
-
   def tool_tip_text
-    if programme_type.school_achievement?
+    if @certificate.school_achievement?
       "School achievement"
     else
       "Individual achievement"
     end
+  end
+
+  def certificate_classes
+    classes = ["dashboard-certificate"]
+    classes << if @certificate.school_achievement?
+      "dashboard-certificate--orange-ribbon"
+    else
+      "dashboard-certificate--green-ribbon"
+    end
+    classes
+  end
+
+  def tool_tip_classes
+    classes = ["tooltip"]
+    classes << if @certificate.school_achievement?
+      "dashboard-certificate__icon--school"
+    else
+      "dashboard-certificate__icon--individual"
+    end
+    classes
   end
 end
