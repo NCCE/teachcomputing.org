@@ -1,5 +1,5 @@
 module Cms
-  module Models
+  module DynamicComponents
     class ResourceCard
       attr_accessor :title, :icon, :colour_theme, :body_text, :button_text, :button_link
 

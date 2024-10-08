@@ -4,7 +4,7 @@ require "rails_helper"
 
 RSpec.describe CmsPictureCardComponent, type: :component do
   let(:title) { Faker::Lorem.word }
-  let(:body_text) { Cms::Providers::Strapi::Factories::ModelFactory.to_content_block(Cms::Mocks::RichBlocks.generate) }
+  let(:body_text) { Cms::Mocks::RichBlocks.as_model }
 
   context "has all the values defined" do
     before do

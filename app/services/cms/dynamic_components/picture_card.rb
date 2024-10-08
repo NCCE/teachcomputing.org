@@ -1,5 +1,5 @@
 module Cms
-  module Models
+  module DynamicComponents
     class PictureCard
       attr_accessor :image, :title, :body_text, :link, :colour_theme
 
