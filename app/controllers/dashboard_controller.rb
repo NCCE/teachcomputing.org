@@ -4,7 +4,8 @@ class DashboardController < ApplicationController
   after_action :discourage_caching
 
   def show
-    @user_achievements = current_user.achievements.with_courses.order("updated_at DESC")
+    @incomplete_achievements = current_user.achievements.not_in_state(:dropped, :complete).with_courses.order("created_at DESC")
+    @completed_achievements = current_user.achievements.in_state(:complete).with_courses.order("updated_at DESC")
 
     @enrolled_certificates = []
     current_user.enrolments.each do |enrolment|
