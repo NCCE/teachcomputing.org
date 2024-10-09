@@ -2,7 +2,11 @@ require "rails_helper"
 
 RSpec.describe("cms/resource", type: :view) do
   before do
-    stub_strapi_get_single_blog_post("blogs/test-blog")
+    stub_strapi_get_single_blog_post("blogs/test-blog",
+      seo: {
+        title: "some SEO content",
+        description: "testing"
+      })
     @resource = Cms::Collections::Blog.get("test-blog")
     render template: "cms/resource", layout: "layouts/application"
   end

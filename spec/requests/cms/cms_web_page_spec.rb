@@ -2,6 +2,19 @@ require "rails_helper"
 
 RSpec.describe CmsController do
   describe "GET #cms_page" do
+    describe "GET #web_page_resource" do
+      before do
+        stub_strapi_web_page("primary-early-careers")
+        get "/primary-early-careers"
+      end
+      it "assigns @resource" do
+        expect(assigns(:resource)).to be_a(Object)
+      end
+      it "renders the template" do
+        expect(response).to render_template("resource")
+      end
+    end
+
     context "with a valid page" do
       before do
         stub_strapi_get_single_simple_page("simple-pages/privacy")
