@@ -184,6 +184,24 @@ RSpec.describe Achiever::CourseFilter do
     end
   end
 
+  describe "#current_length" do
+    context "when not filtering by course_length" do
+      let(:filter_params) { {certificate: "", level: "", location: "", topic: "", course_length: ""} }
+
+      it "returns nil" do
+        expect(course_filter.current_length).to eq(nil)
+      end
+    end
+
+    context "when filtering by course_length" do
+      let(:filter_params) { {certificate: "", level: "", location: "", topic: "", course_length: "short_course"} }
+
+      it "returns the course_length" do
+        expect(course_filter.current_length).to eq("short_course")
+      end
+    end
+  end
+
   describe "#current_level" do
     context "when not filtering by level" do
       let(:filter_params) { {certificate: "", level: "", location: "", topic: ""} }
@@ -445,7 +463,7 @@ RSpec.describe Achiever::CourseFilter do
     end
 
     context "when filtering by hub" do
-      let(:filter_params) { {hub_id: "hubid", certificate: "", level: "", location: "", topic: ""} }
+      let(:filter_params) { {hub_id: "hubid", certificate: "", level: "", location: "", topic: "", course_format: ""} }
 
       it "only returns courses with occurrences at the correct hub" do
         expect(course_filter.non_location_based_results).to match_array([hub_template])
@@ -576,6 +594,14 @@ RSpec.describe Achiever::CourseFilter do
       end
     end
 
+    context "when filtering by course_length" do
+      let(:filter_params) { {certificate: "", level: "", location: "", topic: "", course_length: "short_course"} }
+
+      it "returns topic" do
+        expect(course_filter.applied_filters).to match_array(["short_course"])
+      end
+    end
+
     context "when filtering by level" do
       let(:filter_params) { {certificate: "", level: "Key stage 2", location: "", topic: ""} }
 
@@ -627,7 +653,7 @@ RSpec.describe Achiever::CourseFilter do
     context "when filtering by all options" do
       let(:filter_params) do
         {certificate: "secondary-certificate", course_format: %w[remote face_to_face], level: "Key stage 2", topic: "Algorithms",
-         hub_id: "hubid"}
+         hub_id: "hubid", course_length: %w[short_course]}
       end
 
       it "returns all strings" do
@@ -638,7 +664,8 @@ RSpec.describe Achiever::CourseFilter do
               "secondary-certificate",
               "Algorithms",
               "Key stage 2",
-              "[&quot;remote&quot;, &quot;face_to_face&quot;]"
+              "[&quot;remote&quot;, &quot;face_to_face&quot;]",
+              "[&quot;short_course&quot;]"
             ]
           )
       end

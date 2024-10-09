@@ -208,8 +208,11 @@ Rails.application.routes.draw do
   get "/logout", to: "auth#logout", as: :logout
   get "/maintenance", to: "pages#page", as: :maintenance, defaults: {page_slug: "maintenance"}
   get "/contributing-partners", to: redirect("/get-involved")
+
   get "/primary-certificate", to: "pages#static_programme_page", as: :primary,
     defaults: {page_slug: "primary-certificate"}
+  get "/primary-certificate/courses", action: :primary_courses, controller: "courses", as: :primary_courses
+
   get "/primary-teachers", to: "pages#page", as: :primary_teachers,
     defaults: {page_slug: "primary-toolkit"}
   get "/secondary-certificate",

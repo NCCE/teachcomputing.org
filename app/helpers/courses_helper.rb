@@ -136,7 +136,7 @@ module CoursesHelper
   end
 
   def applied_filters_string(course_filter)
-    "#{filter_count(course_filter)}#{pluralize(filter_count(course_filter), "filter")} applied"
+    "#{pluralize(filter_count(course_filter), "filter")} applied"
   end
 
   def certificate_card_summary(programme)

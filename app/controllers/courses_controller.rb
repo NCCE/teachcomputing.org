@@ -55,15 +55,35 @@ class CoursesController < ApplicationController
     render :show
   end
 
+  def primary_courses
+    @title = "Teach primary computing certificate courses"
+    @programme = Programme.primary_certificate
+    programme_courses("primary-certificate")
+  end
+
   private
+
+  def programme_courses(certificate_filter)
+    @certificate_filter = certificate_filter
+    @filter_params = filter_params
+    @course_filter = Achiever::CourseFilter.new(
+      filter_params: @filter_params,
+      certificate: @certificate_filter
+    )
+    render :programme_courses
+  end
 
   def course_programmes
     @activity = Activity.find_by(stem_course_template_no: @course.course_template_no)
     @programmes = @activity.programmes.enrollable if @activity
   end
 
+  def programme_course_filters
+    params.permit(:slug, :title)
+  end
+
   def filter_params
-    params.permit(:certificate, :level, :location, :topic, :hub_id, :js_enabled, :radius, :date_range, course_format: [])
+    params.permit(:certificate, :level, :location, :topic, :hub_id, :js_enabled, :radius, :date_range, course_format: [], course_length: [])
   end
 
   def assign_start_date
