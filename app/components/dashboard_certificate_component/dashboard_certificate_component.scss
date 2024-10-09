@@ -54,7 +54,7 @@ $school-achievement: "../images/icons/school-achievement.svg";
 
   &__button {
     flex-shrink: 0;
-    width: 220px;
+    width: 225px;
 
     @include govuk-media-query($until: desktop) {
       width: 100%;
@@ -63,6 +63,7 @@ $school-achievement: "../images/icons/school-achievement.svg";
 
     .govuk-button {
       width: 100%;
+      padding: 10px 0;
     }
   }
 }
