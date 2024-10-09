@@ -2,7 +2,7 @@
 
 <%= render CmsPageTitleComponent.new(title: "Progress overview", intro_text: nil) %>
 
-<% if @enrolled_certificates %>
+<% if @enrolled_certificates&.any? %>
   <%= render GovGridRowComponent.new(background_color: "light-grey", padding: {top: 7, bottom: 1}) do |row| %>
     <%= row.with_column("two-thirds") do %>
       <h1 class="govuk-heading-l govuk-!-margin-bottom-4">Enrolled certificates</h1>
@@ -22,7 +22,7 @@
 <%= render GovGridRowComponent.new(background_color: "light-grey", padding: {top: 5, bottom: 4}) do |row| %>
   <%= row.with_column("two-thirds") do %>
     <h1 class="govuk-heading-l govuk-!-margin-bottom-4">
-      <% if @enrolled_certificates %>
+      <% if @enrolled_certificates&.any? %>
         Choose your next certificate
       <% else %>
         Choose your certificate
@@ -34,7 +34,7 @@
   <% end %>
 <% end %>
 
-<% if @incomplete_achievements.any? %>
+<% if @incomplete_achievements&.any? %>
   <%= render GovGridRowComponent.new(padding: {top: 7, bottom: 0}) do |row| %>
     <%= row.with_column("two-thirds") do %>
       <h1 class="govuk-heading-l govuk-!-margin-bottom-4">Booked courses</h1>
@@ -59,7 +59,7 @@
   <% end %>
 <% end %>
 
-<% if @completed_achievements.any? %>
+<% if @completed_achievements&.any? %>
   <%= render GovGridRowComponent.new(padding: {top: 4, bottom: 2}) do |row| %>
     <%= row.with_column("two-thirds") do %>
       <h1 class="govuk-heading-l govuk-!-margin-bottom-4">Completed courses</h1>
