@@ -55,16 +55,23 @@ class CoursesController < ApplicationController
     render :show
   end
 
-  def programme_courses
-    @certificate_filter = programme_course_filters[:slug]
+  def primary_courses
+    @title = "Teach primary computing certificate courses"
+    @programme = Programme.primary_certificate
+    programme_courses("primary-certificate")
+  end
+
+  private
+
+  def programme_courses(certificate_filter)
+    @certificate_filter = certificate_filter
     @filter_params = filter_params
     @course_filter = Achiever::CourseFilter.new(
       filter_params: @filter_params,
       certificate: @certificate_filter
     )
+    render :programme_courses
   end
-
-  private
 
   def course_programmes
     @activity = Activity.find_by(stem_course_template_no: @course.course_template_no)
@@ -72,7 +79,7 @@ class CoursesController < ApplicationController
   end
 
   def programme_course_filters
-    params.permit(:slug)
+    params.permit(:slug, :title)
   end
 
   def filter_params
