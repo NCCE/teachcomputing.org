@@ -1,7 +1,7 @@
 require "rails_helper"
 
 RSpec.describe CoursesController do
-  let(:programme) { create(:primary_certificate) }
+  let!(:programme) { create(:primary_certificate) }
 
   describe "GET #programme_courses" do
     before do
@@ -37,7 +37,6 @@ RSpec.describe CoursesController do
 
     context "when using filtering" do
       before do
-        programme
         get primary_courses_path, params: {
           level: "Key stage 1",
           topic: "Computing",
