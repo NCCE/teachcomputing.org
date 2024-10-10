@@ -2,11 +2,10 @@ module Cms
   module Providers
     module Strapi
       module Mocks
-        class NcceButton < StrapiMock
-          strapi_component "buttons.ncce-button"
-
+        class BlogTag < StrapiMock
           attribute(:title) { Faker::Lorem.word }
-          attribute(:link) { Faker::Internet.url }
+          attribute(:slug) { Faker::Internet.slug }
+          attribute(:description) { Faker::Lorem.paragraph }
         end
       end
     end

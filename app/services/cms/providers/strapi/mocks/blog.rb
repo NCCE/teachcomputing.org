@@ -2,28 +2,14 @@ module Cms
   module Providers
     module Strapi
       module Mocks
-        class Blog
-          def self.generate_data(slug: nil, publish_date: nil, published: true, title: nil, excerpt: nil, seo: {})
-            {
-              slug: slug.presence || Faker::Internet.slug,
-              content: RichBlocks.generate_data,
-              publishDate: publish_date.presence || Faker::Date.backward,
-              excerpt: excerpt.presence || Faker::Lorem.paragraph,
-              seo: Seo.generate_raw_data(**seo),
-              title: title.presence || Faker::Lorem.sentence,
-              featuredImage: {data: Image.generate_raw_data},
-              publishedAt: published ? Faker::Date.backward : nil,
-              createdAt: Faker::Date.backward,
-              updatedAt: Faker::Date.backward
-            }
-          end
-
-          def self.generate_raw_data(slug: nil, publish_date: nil, published: true, title: nil, id: nil, excerpt: nil, seo: {})
-            {
-              id: id.presence || Faker::Number.number,
-              attributes: generate_data(slug:, publish_date:, published:, title:, excerpt:, seo:)
-            }
-          end
+        class Blog < StrapiMock
+          attribute(:slug) { Faker::Internet.slug }
+          attribute(:content) { RichBlocks.generate_data }
+          attribute(:publishDate) { Faker::Date.backward }
+          attribute(:excerpt) { Faker::Lorem.paragraph }
+          attribute(:seo) { Seo.generate_raw_data }
+          attribute(:title) { Faker::Lorem.sentence }
+          attribute(:featuredImage) { {data: Image.generate_raw_data} }
         end
       end
     end

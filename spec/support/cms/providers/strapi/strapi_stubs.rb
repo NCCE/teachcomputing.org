@@ -22,13 +22,14 @@ module StrapiStubs
 
   def stub_strapi_get_single_unpublished_blog_post(resource_key)
     stub_request(:get, /^https:\/\/strapi.teachcomputing.org\/api\/#{resource_key}?/).to_return_json(body: {
-      data: Cms::Mocks::Blog.generate_raw_data(slug: resource_key, publish_date: nil, published: false)
+      data: Cms::Mocks::Blog.generate_raw_data(slug: resource_key, publish_date: nil, published_at: nil)
     })
   end
 
   def stub_strapi_get_collection_entity(resource_key)
-    json_response = File.new("spec/support/cms/providers/strapi/collection_type_response.json")
-    stub_request(:get, /^https:\/\/strapi.teachcomputing.org\/api\/#{resource_key}?/).to_return(body: json_response)
+    stub_request(:get, /^https:\/\/strapi.teachcomputing.org\/api\/#{resource_key}?/).to_return_json(body: to_strapi_collection(
+      Array.new(5) { Cms::Mocks::BlogTag.generate_raw_data }
+    ))
   end
 
   def stub_strapi_get_empty_collection_entity(resource_key)
@@ -40,8 +41,9 @@ module StrapiStubs
   end
 
   def stub_strapi_blog_tags
-    json_response = File.new("spec/support/cms/providers/strapi/blog_tags.json")
-    stub_request(:get, /^https:\/\/strapi.teachcomputing.org\/api\/blog-tags/).to_return(body: json_response)
+    stub_request(:get, /^https:\/\/strapi.teachcomputing.org\/api\/blog-tags/).to_return_json(body: to_strapi_collection(
+      Array.new(5) { Cms::Mocks::BlogTag.generate_raw_data }
+    ))
   end
 
   def stub_strapi_media_upload
@@ -88,13 +90,11 @@ module StrapiStubs
   end
 
   def stub_strapi_aside_section(key)
-    json_response = File.new("spec/support/cms/providers/strapi/aside_section_response.json")
-    stub_request(:get, /^https:\/\/strapi.teachcomputing.org\/api\/aside-sections\/#{key}/).to_return(body: json_response)
+    stub_request(:get, /^https:\/\/strapi.teachcomputing.org\/api\/aside-sections\/#{key}/).to_return_json(body: to_strapi_data_structure(Cms::Mocks::AsideSection.generate_data(slug: key)))
   end
 
   def stub_strapi_aside_section_missing(key)
-    json_response = File.new("spec/support/cms/providers/strapi/aside_section_response.json")
-    stub_request(:get, /^https:\/\/strapi.teachcomputing.org\/api\/aside-sections\/#{key}/).to_return(body: json_response, status: 404)
+    stub_request(:get, /^https:\/\/strapi.teachcomputing.org\/api\/aside-sections\/#{key}/).to_return_json(body: not_found_response, status: 404)
   end
 
   def stub_strapi_enrichment_page(key)
