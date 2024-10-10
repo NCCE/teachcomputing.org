@@ -1,0 +1,19 @@
+<%= content_tag :div, class: certificate_classes do %>
+  <div class="dashboard-certificate__content">
+    <%= content_tag :div, class: tool_tip_classes do %>
+      <span class="tooltiptext govuk-body-s">
+        <%= tool_tip_text %>
+      </span>
+    <% end %>
+    <div class="dashboard-certificate__title">
+      <h2 class="govuk-heading-m govuk-!-margin-bottom-0">
+        <%= @certificate.certificate_name %>
+      </h2>
+    </div>
+  </div>
+  <div class="dashboard-certificate__button">
+    <%= content_tag :a, href: @certificate.path, class: button_classes do %>
+      <%= @button_text %>
+    <% end %>
+  </div>
+<% end %>
