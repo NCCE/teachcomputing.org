@@ -1,5 +1,5 @@
 <div class="dashboard-course-component">
-  <%= link_to @achievement.activity.title, course_path(id: @achievement.activity&.stem_activity_code, name: @achievement.activity.slug),
+  <%= link_to @achievement.activity.title, course_path(id: @achievement.activity.stem_activity_code, name: @achievement.activity.slug),
     class: 'govuk-heading-s ncce-link govuk-link--no-underline' if @achievement.activity.stem_activity_code %>
   <div class="dashboard-course-component__wrapper">
     <div class="dashboard-course-component__programme">

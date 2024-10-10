@@ -9,6 +9,8 @@ class DashboardController < ApplicationController
     @enrolled_certificates, @unenrolled_certificates = enrolments
   end
 
+  private
+
   def incomplete_achievements
     current_user.achievements.not_in_state(:dropped, :complete).with_courses.order("created_at DESC")
   end
