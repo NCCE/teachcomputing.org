@@ -2,30 +2,14 @@ module Cms
   module Providers
     module Strapi
       module Mocks
-        class FullWidthBanner
-          def self.as_model
-            Factories::ComponentFactory.process_component(generate_data)
-          end
-
-          def self.generate_data
-            {
-              textContent: RichBlocks.generate_data,
-              image: Mocks::Image.generate_data,
-              imageLink: Faker::Internet.url,
-              backgroundColor: {
-                name: "white"
-              },
-              imageSide: "right",
-              buttons: nil
-            }
-          end
-
-          def self.generate_raw_data
-            {
-              __component: "blocks.full-width-banner",
-              id: 1
-            }.merge(generate_data)
-          end
+        class FullWidthBanner < StrapiMock
+          strapi_component "blocks.full-width-banner"
+          attribute(:textContent) { RichBlocks.generate_data }
+          attribute(:image) { Mocks::Image.generate_data }
+          attribute(:imageLink) { Faker::Internet.url }
+          attribute(:backgroundColor) { {name: "white"} }
+          attribute(:imageSide) { "right" }
+          attribute(:buttons) { nil }
         end
       end
     end

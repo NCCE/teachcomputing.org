@@ -1,6 +1,7 @@
 require "rails_helper"
 
 RSpec.describe SearchablePageIndexingJob, type: :job do
+  let(:blog_excerpt) { Faker::Lorem.paragraph }
   describe "#perform" do
     it "should clear out any old posts and pages" do
       stub_strapi_get_empty_collection_entity("blogs")
@@ -28,7 +29,12 @@ RSpec.describe SearchablePageIndexingJob, type: :job do
     end
 
     it "should create searchable pages if they are pulled from ghost" do
-      stub_strapi_blog_collection
+      blogs = Array.new(4) { Cms::Mocks::Blog.generate_raw_data }
+      blogs << Cms::Mocks::Blog.generate_raw_data(slug: "tech-for-success",
+        excerpt: blog_excerpt,
+        title: "Education and industry unite at key event championing gender equity in computer science")
+
+      stub_strapi_blog_collection(blogs:)
       stub_strapi_simple_page_collection
 
       allow(SearchableSitePages).to receive(:all).and_return([
@@ -52,7 +58,7 @@ RSpec.describe SearchablePageIndexingJob, type: :job do
 
       blog_test = SearchablePages::CmsBlog.find_by(title: "Education and industry unite at key event championing gender equity in computer science")
       expect(blog_test).to be_present
-      expect(blog_test.excerpt).to match(/^Yesterday, we were delighted/)
+      expect(blog_test.excerpt).to eq blog_excerpt
       expect(blog_test.slug).to eq "tech-for-success"
 
       expect(SearchablePages::CmsSimplePage.first.title).to eq "Test Page"

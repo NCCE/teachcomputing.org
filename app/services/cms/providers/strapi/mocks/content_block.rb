@@ -2,8 +2,8 @@ module Cms
   module Providers
     module Strapi
       module Mocks
-        class FullWidthText < StrapiMock
-          strapi_component "blocks.full-width-text"
+        class ContentBlock < StrapiMock
+          strapi_component "content-blocks.text-block"
 
           attribute(:content) { RichBlocks.generate_data }
         end

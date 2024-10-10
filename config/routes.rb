@@ -196,9 +196,9 @@ Rails.application.routes.draw do
   get "/isaac-computer-science", to: "pages#isaac_computer_science", as: :about_isaac_computer_science, defaults: {page_slug: "isaac-computer-science"}
   get "/gender-balance", to: "pages#page", as: :gender_balance, defaults: {page_slug: "gender-balance"}
   get "/get-involved", to: "pages#page", as: :get_involved, defaults: {page_slug: "get-involved"}
-  get "/secondary-early-careers", to: "pages#page", as: :secondary_early_careers, defaults: {page_slug: "secondary-early-careers"}
+  # get "/secondary-early-careers", to: "pages#page", as: :secondary_early_careers, defaults: {page_slug: "secondary-early-careers"}
   get "/secondary-question-banks", to: "pages#page", as: :secondary_question_banks, defaults: {page_slug: "secondary-question-banks"}
-  get "/primary-early-careers", to: "pages#page", as: :primary_early_careers, defaults: {page_slug: "primary-early-careers"}
+  # get "/primary-early-careers", to: "pages#page", as: :primary_early_careers, defaults: {page_slug: "primary-early-careers"}
   get "/powerupthedigitalgeneration", to: redirect("/supporting-partners")
   get "/pedagogy", to: "pages#page", as: :pedagogy, defaults: {page_slug: "pedagogy"}
   get "/impact-and-evaluation", to: "pages#page", as: :impact, defaults: {page_slug: "impact-and-evaluation"}
