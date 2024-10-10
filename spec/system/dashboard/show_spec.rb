@@ -29,7 +29,7 @@ RSpec.describe("Dashboard page", type: :system) do
 
   it "is the correct page" do
     visit dashboard_path
-    expect(page).to have_content("Your dashboard")
+    expect(page).to have_content("Progress overview")
   end
 
   it "main is accessible" do
