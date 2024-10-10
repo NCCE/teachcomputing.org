@@ -32,7 +32,7 @@ RSpec.describe("components/_header", type: :view) do
 
     context "when enrolled on a certificate" do
       it "shows a link to your your certificate" do
-        expect(rendered).to have_css(".govuk-header__navigation-item", text: "Your dashboard")
+        expect(rendered).to have_css(".govuk-header__navigation-item", text: "Your progress")
       end
 
       it "shows a link to your edit profile" do
@@ -60,7 +60,7 @@ RSpec.describe("components/_header", type: :view) do
     end
 
     it "does not show a link to your dashboard" do
-      expect(rendered).not_to have_css(".govuk-header__navigation-item", text: "Your dashboard")
+      expect(rendered).not_to have_css(".govuk-header__navigation-item", text: "Your progress")
     end
   end
 end
