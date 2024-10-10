@@ -11,7 +11,8 @@ RSpec.describe Certificates::IBelongController do
     before do
       stub_attendance_sets
       stub_delegate
-      stub_strapi_aside_section
+      stub_strapi_aside_section("i-belong-dashboard-help-section")
+      stub_strapi_aside_section("i-belong-community-help")
     end
 
     describe "while unenrolled" do

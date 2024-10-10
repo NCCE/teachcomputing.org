@@ -26,4 +26,21 @@ RSpec.describe CmsController do
       end
     end
   end
+
+  describe "cache clearing" do
+    before do
+      allow(Cms::Collections::EnrichmentPage).to receive(:clear_cache).and_return(nil)
+      get "/primary-enrichment/refresh"
+    end
+
+    context "with a cms page" do
+      it "redirects to page" do
+        expect(response).to redirect_to("/primary-enrichment")
+      end
+
+      it "calls cache clear method" do
+        expect(Cms::Collections::EnrichmentPage).to have_received(:clear_cache).with("primary-enrichment")
+      end
+    end
+  end
 end

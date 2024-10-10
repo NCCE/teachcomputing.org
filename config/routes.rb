@@ -241,6 +241,16 @@ Rails.application.routes.draw do
   get "/secondary-enrichment", to: "cms#enrichment", defaults: {page_slug: "secondary-enrichment"}, as: :secondary_enrichment
   get "/secondary-enrichment/refresh", to: "cms#enrichment_refresh", defaults: {page_slug: "secondary-enrichment"}, as: :secondary_enrichment_reload
 
+  # TEMPORARY ROUTES UNTIL CONVERSION OF SIMPLE
+  get "/primary-early-careers", to: "cms#web_page_resource", defaults: {page_slug: "primary-early-careers"}
+  get "/primary-early-careers/refresh", to: "cms#web_page_refresh", defaults: {page_slug: "primary-early-careers"}
+  get "/primary-trainees", to: "cms#web_page_resource", defaults: {page_slug: "primary-trainees"}
+  get "/primary-trainees/refresh", to: "cms#web_page_refresh", defaults: {page_slug: "primary-trainees"}
+  get "/secondary-early-careers", to: "cms#web_page_resource", defaults: {page_slug: "secondary-early-careers"}
+  get "/secondary-early-careers/refresh", to: "cms#web_page_refresh", defaults: {page_slug: "secondary-early-careers"}
+  get "/secondary-trainees", to: "cms#web_page_resource", defaults: {page_slug: "secondary-trainees"}
+  get "/secondary-trainees/refresh", to: "cms#web_page_refresh", defaults: {page_slug: "secondary-trainees"}
+
   get "/home-teaching-resources" => redirect("/home-teaching")
   get "/home-teaching/:page_slug" => redirect("/home-teaching")
   get "/blog/:page_slug/refresh", to: "cms#clear_blog_cache"
@@ -250,6 +260,7 @@ Rails.application.routes.draw do
     get "/blog", to: "cms#blog", as: :cms_posts
     get "/blog/articles", to: redirect(path: "/blog")
     get "/blog/:page_slug", to: "cms#blog_resource", as: :cms_post
+    get "/test-web/:page_slug", to: "cms#web_page_resource", as: :cms_web_page if Rails.env.development?
     get "/:page_slug", to: "cms#page_resource", as: :cms_page
   end
 end

@@ -9,7 +9,8 @@ RSpec.describe("certificates/i_belong/show", type: :view) do
   before do
     stub_course_templates
     stub_duration_units
-    stub_strapi_aside_section
+    stub_strapi_aside_section("i-belong-dashboard-help-section")
+    stub_strapi_aside_section("i-belong-community-help")
 
     groups = professional_development_groups
 
