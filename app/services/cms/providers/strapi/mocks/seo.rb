@@ -3,8 +3,8 @@ module Cms
     module Strapi
       module Mocks
         class Seo < StrapiMock
-          attribute(:title) { Faker::Lorem.words(number: 5) }
-          attribute(:description) { Faker::Lorem.paragraphs(number: 2) }
+          attribute(:title) { Faker::Lorem.sentence }
+          attribute(:description) { Faker::Lorem.paragraphs(number: 2).join(" ") }
           attribute(:featured_image) { nil }
 
           def self.as_model(key: nil)
