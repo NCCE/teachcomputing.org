@@ -2,27 +2,18 @@ module Cms
   module Providers
     module Strapi
       module Mocks
-        class QuestionAndAnswer
+        class QuestionAndAnswer < StrapiMock
+          strapi_component "blocks.question-and-answer"
+
+          attribute(:question) { Faker::Lorem.sentence }
+          attribute(:answer) { RichBlocks.generate_data }
+          attribute(:asideSections) { Cms::Mocks::AsideSection.generate_aside_list }
+          attribute(:answerIcons) { {} }
+          attribute(:asideAlignment) { :top }
+          attribute(:showBackgroundTriangle) { false }
+
           def self.as_model
             Factories::ComponentFactory.to_question_and_answer(generate_data)
-          end
-
-          def self.generate_data(aside_slugs: [])
-            {
-              question: Faker::Lorem.sentence,
-              answer: RichBlocks.generate_data,
-              asideSections: AsideSections.generate_raw_data(slugs: aside_slugs),
-              answerIcons: {},
-              asideAlignment: :top,
-              showBackgroundTriangle: false
-            }
-          end
-
-          def self.generate_raw_data
-            {
-              __component: "blocks.question-and-answer",
-              id: 1
-            }.merge(generate_data)
           end
         end
       end
