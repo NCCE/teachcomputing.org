@@ -45,9 +45,9 @@ module Cms
               end
             end
 
-            def as_model
+            def as_model(**values)
               if @type == :component
-                Factories::ComponentFactory.process_component(generate_raw_data)
+                Factories::ComponentFactory.process_component(generate_raw_data(**values))
               end
             end
           end
