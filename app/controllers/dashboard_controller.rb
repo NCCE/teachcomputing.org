@@ -18,13 +18,21 @@ class DashboardController < ApplicationController
   end
 
   def enrolments
+    programmes = [
+      Programme.primary_certificate,
+      Programme.secondary_certificate,
+      Programme.cs_accelerator,
+      Programme.a_level,
+      Programme.i_belong
+    ]
+
     user_enrolments = current_user.enrolments.includes(:programme)
 
     enrolled = user_enrolments
-      .select { |enrolment| ["complete", "enrolled", "pending"].include?(current_user.programme_enrolment_state(enrolment.programme_id)) }
+      .select { |enrolment| enrolment.current_state != "unenrolled" }
       .map(&:programme)
 
-    unenrolled = Programme.where.not(id: enrolled.map(&:id))
+    unenrolled = programmes.find_all { !enrolled.collect(&:id).include?(_1.id) }
 
     [enrolled, unenrolled]
   end
