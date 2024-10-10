@@ -130,7 +130,7 @@ module Cms
           end
 
           def self.to_file(data)
-            Models::File.new(
+            DynamicComponents::FileLink.new(
               url: data[:url],
               filename: data[:name],
               size: data[:size],

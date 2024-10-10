@@ -1,6 +1,6 @@
 module Cms
-  module Models
-    class File
+  module DynamicComponents
+    class FileLink
       attr_accessor :url, :filename, :size, :updated_at
 
       def initialize(url:, filename:, size:, updated_at:)
