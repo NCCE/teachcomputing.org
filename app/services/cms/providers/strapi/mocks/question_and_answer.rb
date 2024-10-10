@@ -8,7 +8,7 @@ module Cms
           attribute(:question) { Faker::Lorem.sentence }
           attribute(:answer) { RichBlocks.generate_data }
           attribute(:asideSections) { Cms::Mocks::AsideSection.generate_aside_list }
-          attribute(:answerIcons) { {} }
+          attribute(:answerIcons) { [] }
           attribute(:asideAlignment) { :top }
           attribute(:showBackgroundTriangle) { false }
 
