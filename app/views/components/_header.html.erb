@@ -31,7 +31,7 @@
               <%= render NotificationComponent.new(user: current_user, wrapper_css: 'desktop-notifications govuk-header__link') %>
             </li>
             <li class="govuk-header__navigation-item ncce-header__navigation-item">
-              <%= link_to 'Your dashboard', dashboard_path, class: 'govuk-header__link', data: { event_action: 'click', event_category: 'Header: Navigation', event_label: 'Your dashboard' } %>
+              <%= link_to 'Your progress', dashboard_path, class: 'govuk-header__link', data: { event_action: 'click', event_category: 'Header: Navigation', event_label: 'Your dashboard' } %>
             </li>
             <li class="govuk-header__navigation-item ncce-header__navigation-item">
               <%= link_to 'Edit profile', profile_edit_url, class: 'govuk-header__link', data: { event_action: 'click', event_category: 'Header: Navigation', event_label: 'Edit profile' } %>
