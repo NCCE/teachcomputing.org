@@ -39,7 +39,7 @@
     <%= row.with_column("two-thirds") do %>
       <h1 class="govuk-heading-l govuk-!-margin-bottom-4">Booked courses</h1>
       <% @incomplete_achievements.each do |achievement| %>
-        <%= render DashboardCourseComponent.new(achievement:) %>
+        <%= render DashboardCourseComponent.new(achievement:, user_course_info: @user_course_info) %>
       <% end %>
     <% end %>
   <% end %>
@@ -64,7 +64,7 @@
     <%= row.with_column("two-thirds") do %>
       <h1 class="govuk-heading-l govuk-!-margin-bottom-4">Completed courses</h1>
       <% @completed_achievements.each do |achievement| %>
-        <%= render DashboardCourseComponent.new(achievement:) %>
+        <%= render DashboardCourseComponent.new(achievement:, user_course_info: @user_course_info) %>
       <% end %>
     <% end %>
   <% end %>
