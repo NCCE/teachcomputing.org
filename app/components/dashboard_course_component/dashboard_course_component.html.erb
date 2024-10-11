@@ -1,11 +1,11 @@
 <div class="dashboard-course-component">
   <%= link_to @achievement.activity.title, course_path(id: @achievement.activity.stem_activity_code, name: @achievement.activity.slug),
-    class: 'govuk-heading-s ncce-link govuk-link--no-underline' if @achievement.activity.stem_activity_code %>
-  <div class="dashboard-course-component__wrapper">
-    <div class="dashboard-course-component__programme">
+    class: 'govuk-heading-s govuk-!-margin-bottom-0 ncce-link govuk-link--no-underline' if @achievement.activity.stem_activity_code %>
+  <div class="dashboard-course-component__top-wrapper">
+    <div class="dashboard-course-component__programmes">
       <% @achievement.activity.programmes.each do |programme| %>
-        <div class="dashboard-course-component__programme-wrapper">
-          <p class="govuk-body-s"><%= programme.certificate_name %></p>
+        <div class="govuk-body ncce-activity-list__tags">
+          <strong class="dashboard-tags--<%= programme.slug %>"><%= programme.certificate_name %></strong>
         </div>
       <% end %>
     </div>
@@ -16,6 +16,20 @@
       <div class="dashboard-course-component__format--text">
         <span class="govuk-body-s"><%= t("shared.course_types.#{course_category(@achievement.activity)}") %></span>
       </div>
+    </div>
+  </div>
+  <div class="dashboard-course-component__bottom-wrapper">
+    <% details = stem_course_details(@user_course_info, @achievement.activity.stem_course_template_no) %>
+    <% if details.present? %>
+      <div class="dashboard-course-component__course-details govuk-body">
+        <strong><%= course_start_date(details.start_date) %></strong>
+        <p class="govuk-!-margin-top-2">
+          <%= "#{details.address_venue_name}, #{details.address_line_one}, #{details.address_town}, #{details.address_postcode}" %>
+        </p>
+      </div>
+    <% end %>
+    <div class="dashboard-course-component__enrolled-date">
+      <span class="govuk-body-s"><%= get_date_string(@achievement) %></span>
     </div>
   </div>
 </div>

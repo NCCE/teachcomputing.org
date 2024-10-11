@@ -7,6 +7,9 @@ class DashboardController < ApplicationController
     @incomplete_achievements = incomplete_achievements
     @completed_achievements = completed_achievements
     @enrolled_certificates, @unenrolled_certificates = enrolments
+
+    user_course_info = Achiever::Course::Delegate.find_by_achiever_contact_number(current_user.stem_achiever_contact_no)
+    @user_course_info = user_course_info.select { |course| %w[enrolled attended].include?(course.attendance_status) }
   end
 
   private
