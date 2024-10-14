@@ -124,7 +124,7 @@ describe CoursesHelper, type: :helper do
 
     it "returns icon for online occurrences" do
       online_occurrence = build(:achiever_course_occurrence, online_cpd: true)
-      expect(helper.occurrence_meta_location(online_occurrence)).to eq("Online course")
+      expect(helper.occurrence_meta_location(online_occurrence)).to eq("Free online course")
     end
   end
 
@@ -297,7 +297,7 @@ describe CoursesHelper, type: :helper do
     it "returns online correctly" do
       course = instance_double("course", online_cpd: true, remote_delivered_cpd:
                               false)
-      expect(helper.course_type(course)).to eq("Online course")
+      expect(helper.course_type(course)).to eq("Free online course")
     end
 
     it "returns face to face correctly" do
@@ -326,8 +326,13 @@ describe CoursesHelper, type: :helper do
     end
 
     it "returns correctly for non remote courses" do
-      course = instance_double("course", remote_delivered_cpd: false)
+      course = instance_double("course", remote_delivered_cpd: false, online_cpd: false)
       expect(helper.view_course_phrase(course)).to eq("View locations and dates")
+    end
+
+    it "returns correctly for online courses" do
+      course = instance_double("course", remote_delivered_cpd: false, online_cpd: true)
+      expect(helper.view_course_phrase(course)).to eq("View dates")
     end
   end
 

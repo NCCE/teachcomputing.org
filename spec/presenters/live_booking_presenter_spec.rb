@@ -61,7 +61,7 @@ RSpec.describe LiveBookingPresenter do
 
   describe "#activity_date" do
     it "reformats a date and time string" do
-      expect(described_class.new.activity_date("01/06/2023 10:30:55")).to eq "1st June 2023, Thursday 10:30"
+      expect(described_class.new.activity_date("01/06/2023 10:30:55", "01/06/1023 16:30:55")).to eq "1st June 2023, Thursday 10:30"
     end
   end
 
@@ -136,7 +136,7 @@ RSpec.describe LiveBookingPresenter do
 
   describe "#show_stem_occurrence_list" do
     it "is true" do
-      expect(described_class.new.show_stem_occurrence_list).to be true
+      expect(described_class.new.show_stem_occurrence_list(nil)).to be true
     end
   end
 end

@@ -42,7 +42,7 @@ a = Activity.find_or_create_by(stem_course_template_no: "9187d975-a6b6-ed11-b597
   activity.category = "online"
   activity.provider = "stem-learning"
   activity.stem_activity_code = "CO207"
-  activity.always_on = true
+  activity.always_on = false
 end
 
 a.programmes << cs_accelerator unless a.programmes.include?(cs_accelerator)
@@ -99,7 +99,7 @@ a = Activity.find_or_create_by(stem_course_template_no: "f670dfa1-ce3d-ee11-bdf4
   activity.category = "online"
   activity.provider = "stem-learning"
   activity.stem_activity_code = "CO220"
-  activity.always_on = true
+  activity.always_on = false
 end
 
 a.programmes << cs_accelerator unless a.programmes.include?(cs_accelerator)
@@ -320,7 +320,7 @@ Activity.find_or_initialize_by(stem_course_template_no: "f6a9f913-cd3d-ee11-bdf4
   activity.self_certifiable = false
   activity.provider = "stem-learning"
   activity.stem_activity_code = "CO040"
-  activity.always_on = true
+  activity.always_on = false
 
   activity.programmes = [primary_certificate]
 end.save!
@@ -335,7 +335,7 @@ Activity.find_or_initialize_by(stem_course_template_no: "0a70f9ad-cd3d-ee11-bdf4
   activity.self_certifiable = false
   activity.provider = "stem-learning"
   activity.stem_activity_code = "CO042"
-  activity.always_on = true
+  activity.always_on = false
 
   activity.programmes = [primary_certificate]
 end.save!
@@ -350,7 +350,7 @@ Activity.find_or_initialize_by(stem_course_template_no: "ded270cb-a4b6-ed11-b597
   activity.self_certifiable = false
   activity.provider = "stem-learning"
   activity.stem_activity_code = "CO700"
-  activity.always_on = true
+  activity.always_on = false
 
   activity.programmes = [primary_certificate, secondary_certificate]
 end.save!
