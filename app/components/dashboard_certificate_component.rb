@@ -8,7 +8,7 @@ class DashboardCertificateComponent < ViewComponent::Base
   end
 
   def tool_tip_text
-    if @certificate.school_achievement?
+    if @certificate.achievement_type == :school
       "School achievement"
     else
       "Individual achievement"
@@ -17,7 +17,7 @@ class DashboardCertificateComponent < ViewComponent::Base
 
   def certificate_classes
     classes = ["dashboard-certificate"]
-    classes << if @certificate.school_achievement?
+    classes << if @certificate.achievement_type == :school
       "dashboard-certificate--orange-ribbon"
     else
       "dashboard-certificate--green-ribbon"
@@ -27,7 +27,7 @@ class DashboardCertificateComponent < ViewComponent::Base
 
   def tool_tip_classes
     classes = ["tooltip"]
-    classes << if @certificate.school_achievement?
+    classes << if @certificate.achievement_type == :school
       "dashboard-certificate__icon--school"
     else
       "dashboard-certificate__icon--individual"

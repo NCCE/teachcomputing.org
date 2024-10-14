@@ -192,11 +192,7 @@ class Programme < ApplicationRecord
     0
   end
 
-  def school_achievement?
-    slug == "i-belong"
-  end
-
-  def individual_achievement?
-    !school_achievement?
+  def achievement_type
+    raise NotImplementedError
   end
 end
