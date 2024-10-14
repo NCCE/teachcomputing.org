@@ -31,7 +31,8 @@ RSpec.describe("dashboard/show", type: :view) do
         i_belong,
         a_level
       ]
-      @user_achievements = []
+      @incomplete_achievements = []
+      @completed_achievements = []
       render
     end
 
@@ -69,6 +70,9 @@ RSpec.describe("dashboard/show", type: :view) do
         i_belong,
         a_level
       ]
+
+      @incomplete_achievements = []
+      @completed_achievements = []
       render
     end
 
@@ -108,6 +112,9 @@ RSpec.describe("dashboard/show", type: :view) do
         i_belong,
         a_level
       ]
+
+      @incomplete_achievements = []
+      @completed_achievements = []
       render
     end
 
@@ -123,6 +130,7 @@ RSpec.describe("dashboard/show", type: :view) do
       @unenrolled_certificates = []
 
       @incomplete_achievements = create_list(:in_progress_achievement, 2, user: user)
+      @completed_achievements = []
       user.reload
       render
     end
@@ -142,6 +150,7 @@ RSpec.describe("dashboard/show", type: :view) do
       @enrolled_certificates = []
       @unenrolled_certificates = []
 
+      @incomplete_achievements = []
       @completed_achievements = [create(:completed_achievement, user: user, activity: face_to_face)]
       user.reload
       render
