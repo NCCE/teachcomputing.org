@@ -15,11 +15,23 @@ RSpec.describe DashboardCourseComponent, type: :component do
   let!(:programme_activity_face_to_face) { create(:programme_activity, activity: face_to_face_activity, programme: secondary_certificate) }
   let!(:programme_activity_online) { create(:programme_activity, activity: online_activity, programme: secondary_certificate) }
   let!(:programme_activity_remote) { create(:programme_activity, activity: remote_activity, programme: secondary_certificate) }
+  let(:achievement) { build(:achievement, :online) }
+  let(:course_delegate) do
+    Achiever::Course::Delegate.new(
+      JSON.parse({
+        "Activity.COURSETEMPLATENO": achievement.activity.stem_course_template_no,
+        "Delegate.Is_Fully_Attended": "True",
+        OnlineCPD: true,
+        "Activity.StartDate": "31/01/2023 00:00:00"
+      }.to_json, object_class: OpenStruct)
+    )
+  end
 
   context "is a face to face achievement" do
     before do
       render_inline(described_class.new(
-        achievement: face_to_face_achivement
+        achievement: face_to_face_achivement,
+        user_course_info: [course_delegate]
       ))
     end
 
@@ -28,7 +40,7 @@ RSpec.describe DashboardCourseComponent, type: :component do
     end
 
     it "has the achievement programme" do
-      expect(page).to have_css("p", text: face_to_face_achivement.activity.programmes.first.certificate_name)
+      expect(page).to have_css("strong", text: face_to_face_achivement.activity.programmes.first.certificate_name)
     end
 
     it "has the face to face icon" do
@@ -43,7 +55,8 @@ RSpec.describe DashboardCourseComponent, type: :component do
   context "is an online achievement" do
     before do
       render_inline(described_class.new(
-        achievement: online_achievement
+        achievement: online_achievement,
+        user_course_info: [course_delegate]
       ))
     end
 
@@ -52,7 +65,7 @@ RSpec.describe DashboardCourseComponent, type: :component do
     end
 
     it "has the achievement programme" do
-      expect(page).to have_css("p", text: online_achievement.activity.programmes.first.certificate_name)
+      expect(page).to have_css("strong", text: online_achievement.activity.programmes.first.certificate_name)
     end
 
     it "has the face to face icon" do
@@ -67,7 +80,8 @@ RSpec.describe DashboardCourseComponent, type: :component do
   context "is a remote achievement" do
     before do
       render_inline(described_class.new(
-        achievement: remote_achievement
+        achievement: remote_achievement,
+        user_course_info: [course_delegate]
       ))
     end
 
@@ -76,7 +90,7 @@ RSpec.describe DashboardCourseComponent, type: :component do
     end
 
     it "has the achievement programme" do
-      expect(page).to have_css("p", text: remote_achievement.activity.programmes.first.certificate_name)
+      expect(page).to have_css("strong", text: remote_achievement.activity.programmes.first.certificate_name)
     end
 
     it "has the face to face icon" do

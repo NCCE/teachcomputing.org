@@ -24,7 +24,7 @@
       <div class="dashboard-course-component__course-details govuk-body">
         <% if @achievement.activity.online? %>
           <%= online_course_availability(Date.parse(details.start_date)) unless started?(details.start_date) %>
-        <% else %>
+        <% elsif !@achievement.complete? %>
           <strong><%= course_start_date(details.start_date) %></strong>
         <% end %>
       <% unless @achievement.activity.remote_delivered_cpd || @achievement.activity.online? || @achievement.complete? %>
@@ -34,7 +34,6 @@
       <% end %>
       </div>
     <% end %>
-
     <div class="dashboard-course-component__enrolled-date">
       <span class="govuk-body-s"><%= get_date_string(@achievement) %></span>
     </div>
