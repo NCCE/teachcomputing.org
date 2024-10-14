@@ -60,5 +60,9 @@ module Programmes
     def auto_enrollable?
       true
     end
+
+    def achievement_type
+      :individual
+    end
   end
 end

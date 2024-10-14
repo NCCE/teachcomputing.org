@@ -50,5 +50,9 @@ module Programmes
     def minimum_character_required_community_evidence
       50
     end
+
+    def achievement_type
+      :school
+    end
   end
 end
