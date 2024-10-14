@@ -21,23 +21,18 @@
   <div class="dashboard-course-component__bottom-wrapper">
     <% details = stem_course_details(@user_course_info, @achievement.activity.stem_course_template_no) %>
     <% if details.present? %>
-
       <div class="dashboard-course-component__course-details govuk-body">
-
         <% if @achievement.activity.online? %>
           <%= online_course_availability(Date.parse(details.start_date)) unless started?(details.start_date) %>
         <% else %>
           <strong><%= course_start_date(details.start_date) %></strong>
         <% end %>
-
       <% unless @achievement.activity.remote_delivered_cpd || @achievement.activity.online? || @achievement.complete? %>
         <p class="govuk-!-margin-top-2">
           <%= "#{details.address_venue_name}, #{details.address_line_one}, #{details.address_town}, #{details.address_postcode}" %>
         </p>
       <% end %>
-
       </div>
-
     <% end %>
 
     <div class="dashboard-course-component__enrolled-date">
