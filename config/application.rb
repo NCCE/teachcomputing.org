@@ -37,7 +37,8 @@ module TeachComputing
     config.credly_url = ENV["CREDLY_URL"]
     config.credly_auth_token = ENV["CREDLY_AUTH_TOKEN"]
     config.credly_org_id = ENV["CREDLY_ORGANISATION_ID"]
-    config.stem_account_domain = "https://preprod-account.stem.org.uk"
+    config.stem_account_domain = ENV["STEM_ACCOUNT_DOMAIN"]
+    config.stem_course_redirect = ENV["STEM_COURSE_REDIRECT"]
 
     # default is true
     config.secure_cookies = ENV["SECURE_COOKIES"] != "off"
