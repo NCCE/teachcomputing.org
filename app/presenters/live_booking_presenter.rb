@@ -80,7 +80,7 @@ class LiveBookingPresenter
   end
 
   def booking_path(occurrence_id)
-    "#{ENV.fetch("STEM_OAUTH_SITE")}/cpdredirect/#{occurrence_id}"
+    "#{Rails.application.config.stem_course_redirect}/cpdredirect/#{occurrence_id}"
   end
 
   def address(occurrence)
