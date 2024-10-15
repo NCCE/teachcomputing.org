@@ -5,6 +5,7 @@ i_belong = Programmes::IBelong.find_or_initialize_by(slug: "i-belong").tap do |p
   programme.slug = "i-belong"
   programme.description = "Encouraging girls into computer science"
   programme.enrollable = true
+  programme.dashboard_name = "I Belong"
 
   programme.save!
 end
