@@ -28,21 +28,28 @@ module TeachComputing
 
     config.mylearning_dashboard_url = ENV["MYLEARNING_DASHBOARD_URL"]
 
+    config.static_asset_url = ENV["STATIC_FILE_PATH"]
+
+    # CMS settings
     config.cms_provider = ENV["CMS_PROVIDER"]
     config.strapi_api_key = ENV["STRAPI_API_KEY"]
     config.strapi_api_url = ENV["STRAPI_API_URL"]
     config.strapi_write_api_key = ENV["STRAPI_WRITE_API_KEY"]
     config.ghost_endpoint = ENV["GHOST_API_ENDPOINT"]
     config.ghost_api_key = ENV["GHOST_CONTENT_API_KEY"]
+
+    # Credly settings
     config.credly_url = ENV["CREDLY_URL"]
     config.credly_auth_token = ENV["CREDLY_AUTH_TOKEN"]
     config.credly_org_id = ENV["CREDLY_ORGANISATION_ID"]
 
-    config.stem_account_domain = ENV["STEM_ACCOUNT_DOMAIN"]
-    config.stem_course_redirect = ENV["STEM_COURSE_REDIRECT"]
-
+    # Auth Settings
+    config.bypass_oauth = ENV["BYPASS_OAUTH"] == "true"
+    config.stem_account_site = ENV["STEM_ACCOUNT_SITE"]
     config.stem_credentials_access_token = ENV["STEM_CREDENTIALS_ACCESS_TOKEN_KEY"]
     config.stem_credentials_refresh_token = ENV["STEM_CREDENTIALS_REFRESH_TOKEN_KEY"]
+
+    config.stem_course_redirect = ENV["STEM_COURSE_REDIRECT"]
 
     # default is true
     config.secure_cookies = ENV["SECURE_COOKIES"] != "off"

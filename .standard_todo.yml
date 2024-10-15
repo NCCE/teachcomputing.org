@@ -16,8 +16,6 @@ ignore:
   - Rails/EnvironmentVariableAccess
 - app/helpers/activities_helper.rb:
   - Rails/EnvironmentVariableAccess
-- app/helpers/application_helper.rb:
-  - Rails/EnvironmentVariableAccess
 - app/helpers/curriculum_helper.rb:
   - Style/IdenticalConditionalBranches
 - app/models/support_audit.rb:

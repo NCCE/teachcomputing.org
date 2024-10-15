@@ -82,7 +82,7 @@ RSpec.describe Certificates::CSAcceleratorController do
     describe "while logged out" do
       it "redirects to login" do
         get complete_cs_accelerator_certificate_path
-        expect(response).to redirect_to(/register/)
+        expect(response).to redirect_to(Rails.application.config.stem_account_site)
       end
     end
   end
