@@ -1,0 +1,18 @@
+<div class="cms-testimonial"> 
+  <div class="cms-testimonial__quote"> 
+    <%= render @quote.render %>
+  </div>
+  <div class="cms-testimonial__bio">
+    <div class="cms-testimonial__bio-avatar">
+      <%= render CmsImageComponent.new(@avatar) if @avatar %>
+    </div>
+    <div class="cms-testimonial__bio-content">
+      <span class="name">
+        <%= @name %>
+      </span>
+      <span class="job-title">
+        <%= @job_title %>
+      </span>
+    </div>
+  </div>
+</div>

@@ -82,6 +82,19 @@ module Cms
               }
             }
           end
+
+          def self.testimonial_row_parameters
+            {
+              populate: {
+                backgroundColour: [:name],
+                testimonials: {
+                  populate: {
+                    avatar: [:alternativeText]
+                  }
+                }
+              }
+            }
+          end
         end
       end
     end
