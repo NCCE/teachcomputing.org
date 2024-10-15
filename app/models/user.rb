@@ -14,8 +14,8 @@ class User < ApplicationRecord
   validates :email, presence: true
   validates :teacher_reference_number, uniqueness: true, if: proc { |u| u.teacher_reference_number.present? }
 
-  attr_encrypted :stem_credentials_access_token, key: ENV.fetch("STEM_CREDENTIALS_ACCESS_TOKEN_KEY")
-  attr_encrypted :stem_credentials_refresh_token, key: ENV.fetch("STEM_CREDENTIALS_REFRESH_TOKEN_KEY")
+  attr_encrypted :stem_credentials_access_token, key: Rails.application.config.stem_credentials_access_token
+  attr_encrypted :stem_credentials_refresh_token, key: Rails.application.config.stem_credentials_refresh_token
 
   has_many :achievements, dependent: :restrict_with_exception
   has_many :activities, through: :achievements
@@ -50,6 +50,7 @@ class User < ApplicationRecord
       Sentry.capture_message("User #{id} created with duplicated email #{info.email.downcase}", level: :warning)
     end
 
+    user.auth0_id = id
     user.stem_user_id = info.stem_user_id
     user.first_name = info.first_name
     user.last_name = info.last_name

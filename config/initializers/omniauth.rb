@@ -3,13 +3,9 @@ require "omniauth-auth0"
 
 module OmniAuth::Strategies
   class Stem < OmniAuth::Strategies::Auth0
-    # uid { user_info["attributes"]["uid"][0] }
     option :name, "stem"
 
     info do
-      user_data = user_info
-      Rails.logger.info "Custom Auth0 claim: #{user_data}"
-      our_info = {}
       {
         first_name: "given_name",
         last_name: "family_name",
@@ -18,16 +14,15 @@ module OmniAuth::Strategies
         achiever_organisation_no: "achiever_organisation_no",
         school_name: "school_name",
         stem_user_id: "integrationkey"
-      }.each_pair do |key, stem_key|
-        our_info[key] = user_data[stem_key] if user_data.has_key?(stem_key)
+      }.each_with_object({}) do |(key, auth0_key), our_info|
+        our_info[key] = raw_info[auth0_key] if user_data.has_key?(auth0_key)
       end
-      our_info
     end
 
     def user_info
-      response ||= access_token.get("/userinfo", snaky: false)
-      sentry_context(response)
-      response.parsed
+      @response ||= access_token.get("/userinfo", snaky: false)
+      sentry_context(@response)
+      @response.parsed
     end
 
     def callback_url
