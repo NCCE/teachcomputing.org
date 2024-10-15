@@ -1,0 +1,14 @@
+<%= render GovGridRowComponent.new(additional_classes: wrapper_classes) do |row| %>
+  <%= row.with_column("full") do %>
+    <% if @title %>
+      <h1 class="govuk-heading-m"><%= @title %></h1>
+    <% end %>
+
+    <div class="cms-testimonials-row">
+      <% @testimonials.each do |testimonial| %>
+       <%= render testimonial.render %>
+      <% end %>
+    </div>
+
+  <% end %>
+<% end %>
