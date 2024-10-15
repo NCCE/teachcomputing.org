@@ -3,6 +3,7 @@ primary = Programmes::PrimaryCertificate.find_or_initialize_by(slug: "primary-ce
   programme.slug = "primary-certificate"
   programme.description = "Teach primary computing"
   programme.enrollable = true
+  programme.dashboard_name = "Teach primary computing"
   programme.save!
 end
 

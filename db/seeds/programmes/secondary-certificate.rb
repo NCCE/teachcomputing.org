@@ -1,8 +1,10 @@
-secondary = Programmes::SecondaryCertificate.find_or_create_by(slug: "secondary-certificate") do |programme|
+secondary = Programmes::SecondaryCertificate.find_or_create_by(slug: "secondary-certificate").tap do |programme|
   programme.title = "Teach secondary computing"
   programme.slug = "secondary-certificate"
   programme.description = "Teach secondary computing"
   programme.enrollable = true
+  programme.dashboard_name = "Teach secondary computing"
+  programme.save!
 end
 
 puts "Created Programme: #{secondary.title} (#{secondary})"
