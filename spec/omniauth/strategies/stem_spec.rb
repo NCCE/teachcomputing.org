@@ -5,6 +5,7 @@ RSpec.describe OmniAuth::Strategies::Stem do
 
   let(:full_info) {
     {
+      "id_token" => "Test",
       "firstName" => ["Keymaster of"],
       "lastName" => ["Gozer"],
       "mail" => ["vince@gozer.com"],
@@ -21,7 +22,7 @@ RSpec.describe OmniAuth::Strategies::Stem do
 
   context "with correct fields info returns the correct" do
     before do
-      allow(strategy).to receive(:user_info).and_return({"attributes" => full_info})
+      allow(strategy).to receive(:user_info).and_return(full_info)
     end
 
     it "first name" do
