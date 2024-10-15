@@ -36,7 +36,28 @@ module Cms
                 background_color: extract_color_name(strapi_data, :backgroundColor),
                 show_bottom_border: strapi_data[:showBottomBorder]
               )
+            when "blocks.testimonial-row"
+              to_testimonial_row(strapi_data)
+            when "content-blocks.testimonial"
+              to_testimonial(strapi_data)
             end
+          end
+
+          def self.to_testimonial_row(strapi_data)
+            DynamicComponents::TestimonialRow.new(
+              title: strapi_data[:title],
+              background_color: strapi_data[:backgroundColour],
+              testimonials: strapi_data[:testimonials].map { to_testimonial(_1) }
+            )
+          end
+
+          def self.to_testimonial(strapi_data)
+            DynamicComponents::Testimonial.new(
+              name: strapi_data[:name],
+              job_title: strapi_data[:jobTitle],
+              avatar: ModelFactory.to_image(strapi_data, :avatar, default_size: :small),
+              quote: ModelFactory.to_content_block(strapi_data[:quote], with_wrapper: false)
+            )
           end
 
           def self.to_horizontal_card(strapi_data)
