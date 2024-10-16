@@ -1,0 +1,7 @@
+.cms-full-width-text-row {
+  &.has-border {
+    .govuk-main-wrapper {
+      border-bottom: 2px solid $ncce-grey;
+    }
+  }
+}

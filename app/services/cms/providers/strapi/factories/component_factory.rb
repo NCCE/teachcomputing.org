@@ -28,7 +28,8 @@ module Cms
             when "blocks.full-width-text"
               DynamicComponents::FullWidthText.new(
                 blocks: ModelFactory.to_content_block(strapi_data[:content], with_wrapper: false),
-                background_color: extract_color_name(strapi_data, :backgroundColour)
+                background_color: extract_color_name(strapi_data, :backgroundColour),
+                show_bottom_border: strapi_data[:showBottomBorder]
               )
             end
           end
