@@ -5,8 +5,8 @@ module Cms
         class PictureCard < StrapiMock
           attribute(:title) { Faker::Lorem.words(number: 5).join(" ") }
           attribute(:image) { {data: Image.generate_raw_data} }
-          attribute(:bodyText) { RichBlocks.generate_data }
-          attribute(:colourTheme) { ColourScheme.generate_data(name: "standard") }
+          attribute(:textContent) { RichBlocks.generate_data }
+          attribute(:colorTheme) { ColourScheme.generate_data(name: "standard") }
           attribute(:link) { Faker::Internet.url }
         end
       end

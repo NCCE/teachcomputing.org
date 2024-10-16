@@ -5,7 +5,7 @@ module Cms
         class AsideSection < StrapiMock
           attribute(:slug) { Faker::Internet.slug }
           attribute(:title) { Faker::Lorem.sentence }
-          attribute(:content) { [ContentBlock.generate_raw_data] }
+          attribute(:content) { [TextBlock.generate_raw_data] }
           attribute(:showHeadingLine) { true }
 
           def self.generate_aside_list(aside_slugs: [])

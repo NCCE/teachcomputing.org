@@ -4,7 +4,7 @@ module Cms
       module Mocks
         class PageTitle < StrapiMock
           attribute(:title) { Faker::Lorem.words(number: 5) }
-          attribute(:introText) { nil }
+          attribute(:subText) { nil }
         end
       end
     end

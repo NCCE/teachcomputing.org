@@ -20,7 +20,7 @@ module Cms
               )
             elsif model_class == Models::FeaturedImage
               to_featured_image(strapi_data[:data][:attributes]) if strapi_data[:data]
-            elsif model_class == Models::ContentBlock
+            elsif model_class == Models::TextBlock
               to_content_block(strapi_data)
             elsif model_class == Models::SimpleTitle
               model_class.new(title: strapi_data)
@@ -87,7 +87,7 @@ module Cms
               block[:image] = as_image(block[:image], :medium) if block[:type] == "image"
               block
             end
-            Models::ContentBlock.new(blocks: data, with_wrapper:)
+            Models::TextBlock.new(blocks: data, with_wrapper:)
           end
 
           def self.to_featured_image(image_data, size = :large)

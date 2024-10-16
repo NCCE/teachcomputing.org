@@ -6,8 +6,8 @@ module Cms
           strapi_component "blocks.picture-card-section"
           attribute(:cardsPerRow) { 3 }
           attribute(:sectionTitle) { Faker::Lorem.sentence }
-          attribute(:colourTheme) { nil }
-          attribute(:pictureCard) { Array.new(3) { PictureCard.generate_data } }
+          attribute(:colorTheme) { nil }
+          attribute(:pictureCards) { Array.new(3) { PictureCard.generate_data } }
         end
       end
     end

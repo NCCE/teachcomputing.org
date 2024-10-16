@@ -4,7 +4,7 @@ require "rails_helper"
 
 RSpec.describe CmsCardWrapperComponent, type: :component do
   def resource_cards(number_of_cards)
-    Cms::Mocks::ResourceCardSection.as_model(resource_card: Array.new(number_of_cards) {
+    Cms::Mocks::ResourceCardSection.as_model(resource_cards: Array.new(number_of_cards) {
       Cms::Mocks::ResourceCard.generate_data
     })
   end

@@ -6,13 +6,13 @@ RSpec.describe CmsDynamicZoneComponent, type: :component do
   before do
     render_inline(described_class.new(
       [
-        Cms::Models::ContentBlock.new(blocks: [
+        Cms::Models::TextBlock.new(blocks: [
           type: "paragraph",
           children: [
             {type: "text", text: "Hello world!"}
           ]
         ]),
-        Cms::Models::ContentBlock.new(blocks: [
+        Cms::Models::TextBlock.new(blocks: [
           type: "paragraph",
           children: [
             {type: "text", text: "Hello world! Number 2"}
