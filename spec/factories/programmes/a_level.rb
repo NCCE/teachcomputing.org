@@ -4,6 +4,7 @@ FactoryBot.define do
     slug { "a-level-certificate" }
     description { "A level Computer Science subject knowledge" }
     enrollable { true }
+    dashboard_name { "A level subject knowledge" }
     programme_complete_counter { create(:programme_complete_counter, programme: instance) }
 
     trait :with_activity_groupings do

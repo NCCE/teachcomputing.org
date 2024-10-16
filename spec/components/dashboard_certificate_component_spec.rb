@@ -16,7 +16,7 @@ RSpec.describe DashboardCertificateComponent, type: :component do
     end
 
     it "renders the correct certficiate name" do
-      expect(page).to have_css("h2", text: "Teach primary computing certificate")
+      expect(page).to have_css("h2", text: primary_certificate.dashboard_name)
     end
 
     it "has the correct button text" do
@@ -50,7 +50,7 @@ RSpec.describe DashboardCertificateComponent, type: :component do
     end
 
     it "renders the correct certficiate name" do
-      expect(page).to have_css("h2", text: "I Belong")
+      expect(page).to have_css("h2", text: i_belong.dashboard_name)
     end
 
     it "has the correct ribbon colour for I belong certificate" do
