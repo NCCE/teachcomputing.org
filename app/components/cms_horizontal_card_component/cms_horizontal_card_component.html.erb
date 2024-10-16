@@ -1,4 +1,4 @@
-<%= render GovGridRowComponent.new do |row|  %>
+<%= render GovGridRowComponent.new(additional_classes: "cms-horizontal-card", padding: padding) do |row|  %>
   <%= row.with_column("full") do %>
     <%= content_tag :div, class: wrapper_classes do %>
       <div class="horizontal-card-component__content">

@@ -40,7 +40,8 @@ module Cms
               image: ModelFactory.to_image(strapi_data, :image, default_size: :small),
               image_link: strapi_data[:imageLink],
               colour_theme: extract_color_name(strapi_data, :colourTheme),
-              icon_block: icon_block(strapi_data[:iconBlock])
+              icon_block: icon_block(strapi_data[:iconBlock]),
+              spacing: strapi_data[:spacing]
             )
           end
 
