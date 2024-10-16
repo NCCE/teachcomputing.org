@@ -2,10 +2,10 @@ module Cms
   module Providers
     module Strapi
       module Mocks
-        class ContentBlock < StrapiMock
+        class TextBlock < StrapiMock
           strapi_component "content-blocks.text-block"
 
-          attribute(:content) { RichBlocks.generate_data }
+          attribute(:textContent) { RichBlocks.generate_data }
         end
       end
     end

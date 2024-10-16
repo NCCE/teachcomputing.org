@@ -4,7 +4,7 @@ require "rails_helper"
 
 RSpec.describe CmsPageTitleComponent, type: :component do
   before do
-    render_inline(described_class.new(title: "Page title", intro_text: "Intro text for the page"))
+    render_inline(described_class.new(title: "Page title", sub_text: "Intro text for the page"))
   end
 
   it "renders the title" do

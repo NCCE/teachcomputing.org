@@ -1,6 +1,6 @@
 module Cms
   module Models
-    class ContentBlock
+    class TextBlock
       attr_accessor :blocks, :with_wrapper
 
       def initialize(blocks:, with_wrapper: false)

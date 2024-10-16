@@ -7,7 +7,7 @@ module Cms
             component_name = strapi_data[:__component]
             case component_name
             when "content-blocks.text-block"
-              ModelFactory.to_content_block(strapi_data[:content], with_wrapper: false)
+              ModelFactory.to_content_block(strapi_data[:textContent], with_wrapper: false)
             when "content-blocks.file-link"
               file_data = strapi_data.dig(:file, :data) ? strapi_data[:file][:data][:attributes] : nil
               to_file(file_data) if file_data
@@ -20,15 +20,15 @@ module Cms
             when "blocks.question-and-answer"
               to_question_and_answer(strapi_data)
             when "blocks.resource-card-section"
-              to_card_wrapper(strapi_data, resource_card_block(strapi_data[:resourceCard]))
+              to_card_wrapper(strapi_data, resource_card_block(strapi_data[:resourceCards]))
             when "blocks.picture-card-section"
-              to_card_wrapper(strapi_data, picture_card_block(strapi_data[:pictureCard]))
+              to_card_wrapper(strapi_data, picture_card_block(strapi_data[:pictureCards]))
             when "blocks.full-width-banner"
               to_full_width_banner(strapi_data)
             when "blocks.full-width-text"
               DynamicComponents::FullWidthText.new(
-                blocks: ModelFactory.to_content_block(strapi_data[:content], with_wrapper: false),
-                background_color: extract_color_name(strapi_data, :backgroundColour),
+                blocks: ModelFactory.to_content_block(strapi_data[:textContent], with_wrapper: false),
+                background_color: extract_color_name(strapi_data, :backgroundColor),
                 show_bottom_border: strapi_data[:showBottomBorder]
               )
             end
@@ -37,10 +37,10 @@ module Cms
           def self.to_horizontal_card(strapi_data)
             DynamicComponents::HorizontalCard.new(
               title: strapi_data[:title],
-              body_blocks: strapi_data[:bodyText],
+              body_blocks: strapi_data[:textContent],
               image: ModelFactory.to_image(strapi_data, :image, default_size: :small),
               image_link: strapi_data[:imageLink],
-              colour_theme: extract_color_name(strapi_data, :colourTheme),
+              colour_theme: extract_color_name(strapi_data, :colorTheme),
               icon_block: icon_block(strapi_data[:iconBlock]),
               spacing: strapi_data[:spacing]
             )
@@ -49,7 +49,7 @@ module Cms
           def self.to_full_width_banner(strapi_data)
             DynamicComponents::FullWidthBanner.new(
               text_content: ModelFactory.to_content_block(strapi_data[:textContent], with_wrapper: false),
-              background_color: extract_color_name(strapi_data, :backgroundColour),
+              background_color: extract_color_name(strapi_data, :backgroundColor),
               image: ModelFactory.to_image(strapi_data, :image, default_size: :medium),
               image_side: strapi_data[:imageSide],
               image_link: strapi_data[:imageLink],
@@ -91,7 +91,7 @@ module Cms
               title: strapi_data[:sectionTitle],
               cards_block: cards_block,
               cards_per_row: strapi_data[:cardsPerRow],
-              background_color: extract_color_name(strapi_data, :bkColour)
+              background_color: extract_color_name(strapi_data, :bkColor)
             )
           end
 
@@ -100,8 +100,8 @@ module Cms
               DynamicComponents::ResourceCard.new(
                 title: card_data[:title],
                 icon: ModelFactory.to_image(card_data, :icon, default_size: :medium),
-                colour_theme: extract_color_name(card_data, :colourTheme),
-                body_text: ModelFactory.to_content_block(card_data[:bodyText], with_wrapper: false),
+                colour_theme: extract_color_name(card_data, :colorTheme),
+                body_text: ModelFactory.to_content_block(card_data[:textContent], with_wrapper: false),
                 button_text: card_data[:buttonText],
                 button_link: card_data[:buttonLink]
               )
@@ -113,7 +113,7 @@ module Cms
               DynamicComponents::PictureCard.new(
                 image: ModelFactory.to_image(card_data, :image, default_size: :medium),
                 title: card_data[:title],
-                body_text: ModelFactory.to_content_block(card_data[:bodyText], with_wrapper: false),
+                body_text: ModelFactory.to_content_block(card_data[:textContent], with_wrapper: false),
                 link: card_data[:link],
                 colour_theme: extract_color_name(card_data, :colourTheme)
               )
