@@ -29,10 +29,10 @@ class CmsResourceCardComponentPreview < ViewComponent::Preview
     ))
   end
 
-  def with_colour_theme_and_icon
+  def with_color_theme_and_icon
     card_section = Cms::Mocks::ResourceCardSection.as_model(
       number_of_cards: 3,
-      colour_scheme: "standard",
+      color_scheme: "standard",
       button_text: Faker::Lorem.words(number: 2),
       button_link: Faker::Internet.url,
       icon: {data: Cms::Mocks::Image.generate_raw_data}

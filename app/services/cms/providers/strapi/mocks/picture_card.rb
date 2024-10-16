@@ -6,7 +6,7 @@ module Cms
           attribute(:title) { Faker::Lorem.words(number: 5).join(" ") }
           attribute(:image) { {data: Image.generate_raw_data} }
           attribute(:textContent) { RichBlocks.generate_data }
-          attribute(:colorTheme) { ColourScheme.generate_data(name: "standard") }
+          attribute(:colorTheme) { ColorScheme.generate_data(name: "standard") }
           attribute(:link) { Faker::Internet.url }
         end
       end

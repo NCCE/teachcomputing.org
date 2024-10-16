@@ -2,7 +2,7 @@ module Cms
   module Providers
     module Strapi
       module Mocks
-        class ColourScheme
+        class ColorScheme
           def self.generate_data(name: "standard")
             {
               id: 1,

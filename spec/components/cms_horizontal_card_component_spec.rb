@@ -12,7 +12,7 @@ RSpec.describe CmsHorizontalCardComponent, type: :component do
         body_blocks: content_block,
         image: nil,
         image_link: nil,
-        colour_theme: nil,
+        color_theme: nil,
         icon_block: nil
       ))
     end
@@ -29,8 +29,8 @@ RSpec.describe CmsHorizontalCardComponent, type: :component do
       expect(page).to_not have_css(".horizontal-card-component__image")
     end
 
-    it "has no colour theme" do
-      expect(page).to_not have_css("[class^='cms-colour-theme__border-']")
+    it "has no color theme" do
+      expect(page).to_not have_css("[class^='cms-color-theme__border-']")
     end
 
     it "has no icon block" do
@@ -45,7 +45,7 @@ RSpec.describe CmsHorizontalCardComponent, type: :component do
         body_blocks: Cms::Mocks::RichBlocks.generate_data,
         image: Cms::Mocks::Image.as_model,
         image_link: nil,
-        colour_theme: nil,
+        color_theme: nil,
         icon_block: nil
       ))
     end
@@ -62,7 +62,7 @@ RSpec.describe CmsHorizontalCardComponent, type: :component do
         body_blocks: Cms::Mocks::RichBlocks.generate_data,
         image: Cms::Mocks::Image.as_model,
         image_link: "https://www.example.com",
-        colour_theme: nil,
+        color_theme: nil,
         icon_block: nil
       ))
     end
@@ -83,7 +83,7 @@ RSpec.describe CmsHorizontalCardComponent, type: :component do
         body_blocks: Cms::Mocks::RichBlocks.generate_data,
         image: Cms::Mocks::Image.as_model,
         image_link: nil,
-        colour_theme: nil,
+        color_theme: nil,
         icon_block: nil
       ))
     end
@@ -97,19 +97,19 @@ RSpec.describe CmsHorizontalCardComponent, type: :component do
     end
   end
 
-  context "with a colour theme" do
+  context "with a color theme" do
     before do
       render_inline(described_class.new(
         title: "Page title",
         body_blocks: Cms::Mocks::RichBlocks.generate_data,
         image: nil,
         image_link: nil,
-        colour_theme: "standard",
+        color_theme: "standard",
         icon_block: nil
       ))
     end
-    it "has a border left in standard colours" do
-      expect(page).to have_css(".cms-colour-theme__border--standard-left")
+    it "has a border left in standard colors" do
+      expect(page).to have_css(".cms-color-theme__border--standard-left")
     end
   end
 
@@ -121,7 +121,7 @@ RSpec.describe CmsHorizontalCardComponent, type: :component do
         body_blocks: Cms::Mocks::RichBlocks.generate_data,
         image: nil,
         image_link: nil,
-        colour_theme: nil,
+        color_theme: nil,
         icon_block: icon_block
       ))
     end

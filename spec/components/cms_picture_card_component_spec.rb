@@ -11,7 +11,7 @@ RSpec.describe CmsPictureCardComponent, type: :component do
       render_inline(described_class.new(
         title: title,
         image: Cms::Mocks::Image.as_model,
-        colour_theme: "standard",
+        color_theme: "standard",
         body_text: body_text,
         link: Faker::Internet.url
       ))
@@ -38,7 +38,7 @@ RSpec.describe CmsPictureCardComponent, type: :component do
     end
 
     it "applies the ribbon class" do
-      expect(page).to have_css(".cms-colour-theme__border--standard-bottom")
+      expect(page).to have_css(".cms-color-theme__border--standard-bottom")
     end
   end
 
@@ -56,7 +56,7 @@ RSpec.describe CmsPictureCardComponent, type: :component do
     end
 
     it "does not have a ribbon" do
-      expect(page).to_not have_css("[class^='cms-colour-theme']")
+      expect(page).to_not have_css("[class^='cms-color-theme']")
     end
   end
 end

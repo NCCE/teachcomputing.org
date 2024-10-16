@@ -7,7 +7,7 @@ class CmsHorizontalCardComponentPreview < ViewComponent::Preview
       body_blocks: Cms::Mocks::RichBlocks.generate,
       image: nil,
       image_link: nil,
-      colour_theme: nil,
+      color_theme: nil,
       icon_block: nil
     ))
   end
@@ -18,18 +18,18 @@ class CmsHorizontalCardComponentPreview < ViewComponent::Preview
       body_blocks: Cms::Mocks::RichBlocks.generate,
       image: Cms::Mocks::Image.as_model,
       image_link: Faker::Internet.url,
-      colour_theme: nil,
+      color_theme: nil,
       icon_block: nil
     ))
   end
 
-  def with_colour_theme
+  def with_color_theme
     render(CmsHorizontalCardComponent.new(
       title: "Page title",
       body_blocks: Cms::Mocks::RichBlocks.generate,
       image: nil,
       image_link: nil,
-      colour_theme: "standard",
+      color_theme: "standard",
       icon_block: nil
     ))
   end
@@ -40,7 +40,7 @@ class CmsHorizontalCardComponentPreview < ViewComponent::Preview
       body_blocks: Cms::Mocks::RichBlocks.generate,
       image: nil,
       image_link: nil,
-      colour_theme: "standard",
+      color_theme: "standard",
       icon_block: Cms::Mocks::IconBlocks.as_model(icon_count: 3)
     ))
   end
