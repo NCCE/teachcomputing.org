@@ -24,7 +24,7 @@
 .ncce-activity-list__item {
   background-color: $white;
   align-items: flex-start;
-  
+
 
   &:last-child {
     margin-bottom: 0;
@@ -37,17 +37,17 @@
   &--with-gap {
     grid-row-gap: 10px;
   }
-  
+
   .ncce-activity-list__item-content {
     align-items: flex-start;
-  
+
     border-bottom-width: 2px;
     display: grid;
     grid-template-rows: auto auto auto;
     margin-bottom: 2px !important;
     padding: 1.125rem;
     grid-gap: 0;
-  
+
     @include govuk-media-query($from: tablet) {
       padding-bottom: 0.5rem;
     }
@@ -288,6 +288,10 @@
 
 .dashboard-tags--i-belong {
   background-color: $i-belong-cert-color;
+}
+
+.dashboard-tags--a-level-certificate {
+  background-color: $a-level-color;
 }
 
 .ncce-activity-list__subtext {
