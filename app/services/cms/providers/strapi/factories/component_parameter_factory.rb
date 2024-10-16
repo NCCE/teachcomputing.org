@@ -16,7 +16,7 @@ module Cms
             {
               populate: {
                 iconBlock: icon_block_parameters,
-                colourTheme: {populate: {fields: "name"}},
+                colorTheme: {populate: {fields: "name"}},
                 image: {populate: [:alternativeText]}
               }
             }
@@ -26,7 +26,7 @@ module Cms
             {
               populate: {
                 fields: "content",
-                backgroundColour: {populate: {fields: "name"}}
+                backgroundColor: {populate: {fields: "name"}}
               }
             }
           end
@@ -45,7 +45,7 @@ module Cms
             {
               populate: {
                 image: {populate: [:alternativeText]},
-                backgroundColour: {populate: [:name]},
+                backgroundColor: {populate: [:name]},
                 buttons: {populate: [:title, :link]}
               }
             }
@@ -58,9 +58,9 @@ module Cms
           def self.card_wrapper_parameters
             {
               populate: {
-                bkColour: {fields: "name"},
-                resourceCard: resource_card_parameters,
-                pictureCard: picture_card_parameters
+                bkColor: {fields: "name"},
+                resourceCards: resource_card_parameters,
+                pictureCards: picture_card_parameters
               }
             }
           end
@@ -69,7 +69,7 @@ module Cms
             {
               populate: {
                 icon: [:alternativeText],
-                colourTheme: [:name]
+                colorTheme: [:name]
               }
             }
           end
@@ -78,7 +78,7 @@ module Cms
             {
               populate: {
                 image: [:alternativeText],
-                colourTheme: [:name]
+                colorTheme: [:name]
               }
             }
           end
