@@ -37,6 +37,10 @@
 
   .ncce-activity-list__tags {
     margin: 0;
+
+    strong {
+      display: block;
+    }
   }
 
   .dashboard-course-component__format {
