@@ -45,16 +45,21 @@
         data: { action: "change->course-filter#filter change->course-filter#toggleActiveSelect change->course-filter#topicSelectChanged" }
       }
     %>
-    <%= label_tag :certificate, 'Certificate:', class: 'govuk-body-s ncce-label--s' %>
-    <%= select_tag :certificate,
-      options_for_select(@course_filter.certificates, @course_filter.current_certificate),
-      {
-        include_blank: 'Any certificate',
-        class: ['govuk-select', 'ncce-select', 'ncce-select--filters', { 'filter--active': @course_filter.current_certificate }],
-        'aria-label': 'Filter by certificate',
-        data: { action: "change->course-filter#filter change->course-filter#toggleActiveSelect change->course-filter#certificateSelectChanged" }
-      }
-    %>
+    <% unless @certificate_filter.presence %>
+      <%= label_tag :certificate, 'Certificate:', class: 'govuk-body-s ncce-label--s' %>
+      <%= select_tag :certificate,
+        options_for_select(@course_filter.certificates, @course_filter.current_certificate),
+        {
+          include_blank: 'Any certificate',
+          class: ['govuk-select', 'ncce-select', 'ncce-select--filters', { 'filter--active': @course_filter.current_certificate }],
+          'aria-label': 'Filter by certificate',
+          data: { action: "change->course-filter#filter change->course-filter#toggleActiveSelect change->course-filter#certificateSelectChanged" }
+        }
+      %>
+    <% else %>
+      <%= hidden_field_tag :certificate, @certificate_filter %>
+    <% end %>
+
     <%= label_tag :format, 'Course format:', class: 'govuk-body-s ncce-label--s' %>
     <div class="govuk-checkboxes govuk-!-margin-bottom-2">
       <% @course_filter.course_formats.each_with_index do |course_format, index| %>
@@ -62,6 +67,17 @@
           <%= check_box_tag 'course_format[]', course_format[:value], @course_filter&.current_format&.include?(course_format[:value]), class: 'govuk-checkboxes__input ncce-checkboxes__input',
             data: { action: 'change->course-filter#processValueChanges change->course-filter#filter change->course-filter#toggleActiveCheckbox', 'aria-label': 'Filter by format' }, id: "course_format_#{index}" %>
           <%= label_tag "course_format_#{index}", course_format[:label], class: 'govuk-label govuk-checkboxes__label ncce-label ncce-checkboxes__label' %>
+        </div>
+      <% end %>
+    </div>
+
+    <%= label_tag :format, 'Course Length:', class: 'govuk-body-s ncce-label--s' %>
+    <div class="govuk-checkboxes govuk-!-margin-bottom-2">
+      <% @course_filter.course_lengths.each_with_index do |course_length, index| %>
+        <div class='govuk-checkboxes__item ncce-checkboxes__item'>
+          <%= check_box_tag 'course_length[]', course_length[:value], @course_filter&.current_length&.include?(course_length[:value]), class: 'govuk-checkboxes__input ncce-checkboxes__input',
+            data: { action: 'change->course-filter#processValueChanges change->course-filter#filter change->course-filter#toggleActiveCheckbox', 'aria-label': 'Filter by Length' }, id: "course_length_#{index}" %>
+          <%= label_tag "course_length_#{index}", course_length[:label], class: 'govuk-label govuk-checkboxes__label ncce-label ncce-checkboxes__label' %>
         </div>
       <% end %>
     </div>

@@ -9,11 +9,20 @@ module Achiever
     # on the same day.
     DATE_RANGE_PATTERN = /^(?<from>[\d-]+)(?: to (?<to>[\d-]+))?$/
 
-    def initialize(filter_params:)
+    def initialize(filter_params:, certificate: nil)
       @filter_params = filter_params
+      @certificate = certificate
+
+      @filter_params[:certificate] = @certificate if @certificate
 
       @subjects ||= Achiever::Course::Subject.all
-      @age_groups ||= Achiever::Course::AgeGroup.all
+      @age_groups ||= if certificate == "primary-certificate"
+        Achiever::Course::AgeGroup.primary_certificate
+      elsif certificate == "secondary-certificate"
+        Achiever::Course::AgeGroup.secondary_certificate
+      else
+        Achiever::Course::AgeGroup.all
+      end
       @search_radii = SEARCH_RADII
     end
 
@@ -79,6 +88,15 @@ module Achiever
         {label: "Live remote", value: "remote"}]
     end
 
+    def course_lengths
+      @course_lengths ||= [
+        {label: "0 - 3 Hours", value: "short_course", min: 0, max: 3.hours.to_i},
+        {label: "3 - 6 Hours", value: "long_course", min: (3.hours.to_i + 1), max: 6.hours.to_i},
+        {label: "1 Day", value: "day_course", min: (6.hours.to_i + 1), max: (2.day.to_i - 1)},
+        {label: "2+ Days", value: "multi_day_course", min: 2.days.to_i, max: 1.year.to_i}
+      ]
+    end
+
     def course_tags
       used_subjects = all_courses.reduce([]) { |tags, c| tags + c.subjects }.uniq.sort
       @subjects.select { |_k, v| used_subjects.include?(v.to_s) }
@@ -103,6 +121,12 @@ module Achiever
       return nil if @filter_params[:topic].blank?
 
       @current_topic ||= @filter_params[:topic]
+    end
+
+    def current_length
+      return nil if @filter_params[:course_length].blank?
+
+      @current_length ||= @filter_params[:course_length]
     end
 
     def current_level
@@ -163,8 +187,9 @@ module Achiever
       filter_strings = []
       filter_strings.push(ERB::Util.html_escape(current_level).to_s) if current_level
       filter_strings.push(ERB::Util.html_escape(current_topic).to_s) if current_topic
-      filter_strings.push(ERB::Util.html_escape(current_certificate).to_s) if current_certificate
+      filter_strings.push(ERB::Util.html_escape(current_certificate).to_s) if current_certificate && @certificate.nil?
       filter_strings.push(ERB::Util.html_escape(current_format).to_s) if current_format
+      filter_strings.push(ERB::Util.html_escape(current_length).to_s) if current_length
       filter_strings.push(ERB::Util.html_escape(current_date_range).to_s) if current_date_range
       filter_strings.push(current_hub) if current_hub
 
@@ -266,13 +291,31 @@ module Achiever
         has_level = true
         has_topic = true
         has_format = true
+        in_length = true
 
         has_certificate = c.by_certificate(current_certificate) if current_certificate
         has_level = c.age_groups.any?(current_level_age_group_key) if current_level
         has_topic = c.subjects.any?(current_topic_subject_key) if current_topic
         has_format = current_format.any? { |course_format| by_course_format(c, course_format) } if current_format
+        in_length = current_length.any? { |course_length| by_course_length(c, course_length) } if current_length
 
-        has_certificate && has_level && has_topic && has_format
+        has_certificate && has_level && has_topic && has_format && in_length
+      end
+    end
+
+    def by_course_length(course, course_length)
+      duration_value = course.duration_value.to_i
+      duration_unit = Achiever::Course::DurationUnit.look_up(course.duration_unit.to_i)
+      if duration_unit && duration_value
+        begin
+          as_time = duration_value.send(duration_unit.downcase).to_i
+          length_values = course_lengths.find { _1[:value] == course_length }
+          as_time.between?(length_values[:min], length_values[:max])
+        rescue NoMethodError # Invalid duration unit
+          false
+        end
+      else
+        false
       end
     end
 
