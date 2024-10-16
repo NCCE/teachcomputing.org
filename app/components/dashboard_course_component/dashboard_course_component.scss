@@ -6,6 +6,15 @@
 }
 
 .dashboard-course-component__top-wrapper {
+  margin-top: 14px;
+}
+
+.dashboard-course-component__enrolled-date {
+  border-top: 2px solid #f0f5f4;
+  padding-top: 14px;
+}
+
+.dashboard-course-component__bottom-wrapper {
   display: flex;
   gap: 20px;
   margin-top: 14px;
@@ -19,6 +28,11 @@
     display: flex;
     flex-direction: column;
     gap: 10px;
+
+    a {
+      text-decoration: none;
+      color: $black;
+    }
   }
 
   .ncce-activity-list__tags {
@@ -35,11 +49,3 @@
   }
 }
 
-.dashboard-course-component__bottom-wrapper {
-  margin-top: 14px;
-
-  .dashboard-course-component__enrolled-date {
-    border-top: 2px solid #f0f5f4;
-    padding-top: 5px;
-  }
-}
