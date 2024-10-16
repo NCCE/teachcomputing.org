@@ -3,13 +3,53 @@
 require "rails_helper"
 
 RSpec.describe CmsTestimonialRowComponent, type: :component do
-  pending "add some examples to (or delete) #{__FILE__}"
+  context "Without title and background" do
+    let(:testimonials) { Array.new(2) { Cms::Mocks::Testimonial.as_model } }
 
-  # it "renders something useful" do
-  #   expect(
-  #     render_inline(described_class.new(attr: "value")) { "Hello, components!" }.css("p").to_html
-  #   ).to include(
-  #     "Hello, components!"
-  #   )
-  # end
+    before do
+      render_inline(described_class.new(
+        title: nil,
+        testimonials:,
+        background_color: nil
+      ))
+    end
+
+    it "should not render title" do
+      expect(page).not_to have_css(".govuk-heading-m")
+    end
+
+    it "should render row" do
+      expect(page).to have_css(".cms-testimonial-row")
+    end
+
+    it "should render two testimonials" do
+      expect(page).to have_css(".cms-testimonial", count: 2)
+    end
+  end
+
+  context "With title and background" do
+    let(:title) { Faker::Lorem.sentence }
+    let(:testimonials) { Array.new(3) { Cms::Mocks::Testimonial.as_model } }
+    let(:background_color) { "light-grey" }
+
+    before do
+      render_inline(described_class.new(
+        title:,
+        testimonials:,
+        background_color:
+      ))
+    end
+
+    it "should render title" do
+      expect(page).to have_css(".govuk-heading-m", text: title)
+    end
+
+    it "should have background color" do
+      expect(page).to have_css(".cms-testimonial-row.light-grey-bg")
+    end
+
+    it "should have 3 testimonials" do
+      expect(page).to have_css(".cms-testimonial", count: 3)
+    end
+  end
 end

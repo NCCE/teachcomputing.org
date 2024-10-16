@@ -94,4 +94,12 @@ RSpec.describe Cms::Providers::Strapi::Factories::ComponentFactory do
       end
     end
   end
+
+  context "TestimonialRow" do
+    it "should create testimonial row" do
+      strapi_data = Cms::Providers::Strapi::Mocks::TestimonialRow.generate_raw_data
+      model = described_class.process_component(strapi_data)
+      expect(model).to be_a Cms::DynamicComponents::TestimonialRow
+    end
+  end
 end
