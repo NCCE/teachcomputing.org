@@ -11,6 +11,7 @@ module Cms
           attribute(:imageLink) { nil }
           attribute(:colourTheme) { nil }
           attribute(:iconBlock) { IconBlocks.generate_data }
+          attribute(:spacing) { "First" }
         end
       end
     end
