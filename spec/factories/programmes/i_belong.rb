@@ -4,6 +4,7 @@ FactoryBot.define do
     slug { "i-belong" }
     description { "Encouraging girls into computer science" }
     enrollable { true }
+    dashboard_name { "I Belong" }
     programme_complete_counter { create(:programme_complete_counter, programme: instance) }
 
     trait :with_activity_groupings do
