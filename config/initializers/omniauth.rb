@@ -15,7 +15,7 @@ module OmniAuth::Strategies
         school_name: "school_name",
         stem_user_id: "integrationkey"
       }.each_with_object({}) do |(key, auth0_key), our_info|
-        our_info[key] = raw_info[auth0_key] if user_data.has_key?(auth0_key)
+        our_info[key] = raw_info[auth0_key] if raw_info.has_key?(auth0_key)
       end
     end
 
