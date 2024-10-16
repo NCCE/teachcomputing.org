@@ -23,8 +23,8 @@ class CmsPictureCardComponentPreview < ViewComponent::Preview
     ))
   end
 
-  def with_colour_theme
-    card_section = Cms::Mocks::PictureCardSection.as_model(number_of_cards: 3, colour_scheme: "standard")
+  def with_color_theme
+    card_section = Cms::Mocks::PictureCardSection.as_model(number_of_cards: 3, color_scheme: "standard")
 
     render(CmsCardWrapperComponent.new(
       title: card_section.title,

@@ -1,10 +1,10 @@
 class CmsResourceCardComponent < ViewComponent::Base
-  delegate :cms_colour_theme_class, to: :helpers
+  delegate :cms_color_theme_class, to: :helpers
 
-  def initialize(title:, body_text:, icon: nil, colour_theme: nil, button_text: nil, button_link: nil)
+  def initialize(title:, body_text:, icon: nil, color_theme: nil, button_text: nil, button_link: nil)
     @title = title
     @icon = icon
-    @colour_theme = colour_theme
+    @color_theme = color_theme
     @body_text = body_text
     @button_text = button_text
     @button_link = button_link
@@ -12,7 +12,7 @@ class CmsResourceCardComponent < ViewComponent::Base
 
   def wrapper_classes
     classes = ["cms-resource-card"]
-    classes << cms_colour_theme_class(@colour_theme, "top") if @colour_theme
+    classes << cms_color_theme_class(@color_theme, "top") if @color_theme
     classes
   end
 end

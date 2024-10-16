@@ -17,7 +17,7 @@ module CmsHelper
   end
 
   # border-width should be defined in the component
-  def cms_colour_theme_class(colour, side)
-    "cms-colour-theme__border--#{colour}-#{side}"
+  def cms_color_theme_class(color, side)
+    "cms-color-theme__border--#{color}-#{side}"
   end
 end

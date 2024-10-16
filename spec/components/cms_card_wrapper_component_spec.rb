@@ -55,7 +55,7 @@ RSpec.describe CmsCardWrapperComponent, type: :component do
       expect(page).to have_text("Section Title")
     end
 
-    it "has a background colour" do
+    it "has a background color" do
       expect(page).to have_css(".light-grey-bg")
     end
   end

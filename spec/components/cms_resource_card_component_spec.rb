@@ -10,7 +10,7 @@ RSpec.describe CmsResourceCardComponent, type: :component do
       render_inline(described_class.new(
         title: "Card Title",
         icon: Cms::Mocks::Image.as_model,
-        colour_theme: "standard",
+        color_theme: "standard",
         body_text: body_text,
         button_text: "Click here",
         button_link: "https://www.example.com"
@@ -25,8 +25,8 @@ RSpec.describe CmsResourceCardComponent, type: :component do
       expect(page).to have_css("img")
     end
 
-    it "renders a colour theme" do
-      expect(page).to have_css(".cms-colour-theme__border--standard-top")
+    it "renders a color theme" do
+      expect(page).to have_css(".cms-color-theme__border--standard-top")
     end
 
     it "renders the body text" do
@@ -43,7 +43,7 @@ RSpec.describe CmsResourceCardComponent, type: :component do
       render_inline(described_class.new(
         title: "Card title",
         icon: nil,
-        colour_theme: nil,
+        color_theme: nil,
         body_text: body_text,
         button_text: nil,
         button_link: nil
@@ -54,8 +54,8 @@ RSpec.describe CmsResourceCardComponent, type: :component do
       expect(page).to_not have_css("img")
     end
 
-    it "does not have a colour scheme" do
-      expect(page).to_not have_css("[class^='cms-colour-theme']")
+    it "does not have a color scheme" do
+      expect(page).to_not have_css("[class^='cms-color-theme']")
     end
 
     it "does not render a button" do

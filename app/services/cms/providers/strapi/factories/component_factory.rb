@@ -40,7 +40,7 @@ module Cms
               body_blocks: strapi_data[:textContent],
               image: ModelFactory.to_image(strapi_data, :image, default_size: :small),
               image_link: strapi_data[:imageLink],
-              colour_theme: extract_color_name(strapi_data, :colorTheme),
+              color_theme: extract_color_name(strapi_data, :colorTheme),
               icon_block: icon_block(strapi_data[:iconBlock]),
               spacing: strapi_data[:spacing]
             )
@@ -100,7 +100,7 @@ module Cms
               DynamicComponents::ResourceCard.new(
                 title: card_data[:title],
                 icon: ModelFactory.to_image(card_data, :icon, default_size: :medium),
-                colour_theme: extract_color_name(card_data, :colorTheme),
+                color_theme: extract_color_name(card_data, :colorTheme),
                 body_text: ModelFactory.to_content_block(card_data[:textContent], with_wrapper: false),
                 button_text: card_data[:buttonText],
                 button_link: card_data[:buttonLink]
@@ -115,7 +115,7 @@ module Cms
                 title: card_data[:title],
                 body_text: ModelFactory.to_content_block(card_data[:textContent], with_wrapper: false),
                 link: card_data[:link],
-                colour_theme: extract_color_name(card_data, :colourTheme)
+                color_theme: extract_color_name(card_data, :colorTheme)
               )
             end
           end
