@@ -79,7 +79,7 @@ RSpec.describe Certificates::ALevelController do
       end
 
       it "redirects to login" do
-        expect(response).to redirect_to(Rails.application.config.stem_account_site)
+        expect(response).to redirect_to(/signup/)
       end
     end
   end
@@ -145,7 +145,7 @@ RSpec.describe Certificates::ALevelController do
       end
 
       it "redirects to login" do
-        expect(response).to redirect_to(Rails.application.config.stem_account_site)
+        expect(response).to redirect_to(/signup/)
       end
     end
   end

@@ -74,7 +74,7 @@ RSpec.describe Certificates::PrimaryCertificateController do
     describe "while logged out" do
       it "redirects to login" do
         get primary_certificate_path
-        expect(response).to redirect_to(Rails.application.config.stem_account_site)
+        expect(response).to redirect_to(/signup/)
       end
     end
   end

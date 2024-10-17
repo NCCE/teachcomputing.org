@@ -10,7 +10,7 @@ describe ApplicationHelper do
   describe("#create_account_url") do
     it "returns the correct url" do
       allow(ENV).to receive(:[]).with("BYPASS_OAUTH").and_return("false")
-      expect(helper.create_account_url).to match(Rails.application.config.stem_account_site)
+      expect(helper.create_account_url).to match("#{Rails.application.config.stem_account_site}/u/signup")
     end
 
     it "returns the login url when we are faking login" do
