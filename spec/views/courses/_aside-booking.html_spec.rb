@@ -613,7 +613,7 @@ RSpec.describe("courses/_aside-booking", type: :view) do
       end
 
       it "renders an account creation link" do
-        expect(rendered).to have_link("Create STEM Learning account", href: Rails.application.config.stem_account_site)
+        expect(rendered).to have_link("Create STEM Learning account", href: /signup/)
       end
     end
 
