@@ -12,7 +12,8 @@ RSpec.describe User do
       achiever_contact_no: "ca432eb9-9b34-46db-afbb-fbd1efa89e6b",
       email: "user@example.com",
       first_name: "Jane",
-      last_name: "Doe"
+      last_name: "Doe",
+      stem_user_id: "id-stem-user"
     )
   end
   let(:uid) { "id-stem-user" }
