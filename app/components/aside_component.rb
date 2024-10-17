@@ -12,6 +12,7 @@ class AsideComponent < ViewComponent::Base
     @use_button = options[:use_button]
     @class_name = options[:class_name]
     @cms_content = options[:cms_content]
+    @aside_icons = options[:aside_icons]
     @show_heading_line = if options[:show_heading_line].nil?
       true
     else
