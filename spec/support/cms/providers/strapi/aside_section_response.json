@@ -11,7 +11,7 @@
                 {
                     "id": 1,
                     "__component": "content-blocks.text-block",
-                    "content": [
+                    "textContent": [
                         {
                             "type": "paragraph",
                             "children": [
