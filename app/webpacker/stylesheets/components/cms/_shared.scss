@@ -12,3 +12,45 @@
   width: 100%;
   height: auto;
 }
+
+.cms-color-theme {
+  $colors: (
+    "standard": $lime-green,
+    "i-belong": $orange,
+    "isaac": $brand-yellow
+  );
+
+  $sides: ("left", "right", "top", "bottom");
+
+  &__border {
+    @each $name, $color in $colors {
+      @each $side in $sides {
+        &--#{$name}-#{$side} {
+          border-#{$side}-color: $color;
+          border-#{$side}-style: solid;
+        }
+      }
+    }
+  }
+}
+
+
+.tc-row {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+
+  @include govuk-media-query($until: desktop) {
+    flex-direction: column;
+    gap: 0px;
+  }
+
+  .tc-row-two-thirds {
+    flex: 1 1 calc(100% * 2/3);
+  }
+
+  .tc-row-one-third {
+    flex: 1 1 calc(100% * 1/3);
+  }
+  
+}

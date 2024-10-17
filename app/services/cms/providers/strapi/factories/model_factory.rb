@@ -16,22 +16,20 @@ module Cms
               model_class.new(
                 title: strapi_data[:title],
                 description: strapi_data[:description],
-                featured_image: strapi_data.dig(:featuredImage, :data) ? to_image(strapi_data[:featuredImage][:data][:attributes]) : nil
+                featured_image: to_image(strapi_data, :featuredImage)
               )
             elsif model_class == Models::FeaturedImage
               to_featured_image(strapi_data[:data][:attributes]) if strapi_data[:data]
-            elsif model_class == Models::ContentBlock
+            elsif model_class == Models::TextBlock
               to_content_block(strapi_data)
-            elsif model_class == Models::RichHeader
-              model_class.new(blocks: strapi_data)
             elsif model_class == Models::SimpleTitle
               model_class.new(title: strapi_data)
             elsif model_class == Models::Aside
               model_class.new(
                 title: strapi_data[:title],
-                content: strapi_data[:content],
-                files: strapi_data.dig(:files, :data) ? strapi_data[:files][:data]&.map { to_file(_1[:attributes]) } : nil,
-                dynamic_content: Models::DynamicZone.new(strapi_data[:content].map { ComponentFactory.process_component(_1) }.compact)
+                dynamic_content: Models::DynamicZone.new(strapi_data[:content].map { ComponentFactory.process_component(_1) }.compact),
+                show_heading_line: strapi_data[:showHeadingLine],
+                aside_icons: ComponentFactory.icon_block(strapi_data[:asideIcons])
               )
             elsif model_class == Models::PageTitle
               model_class.new(
@@ -66,15 +64,6 @@ module Cms
             end
           end
 
-          def self.to_file(data)
-            Models::File.new(
-              url: data[:url],
-              filename: data[:name],
-              size: data[:size],
-              updated_at: DateTime.parse(data[:updatedAt])
-            )
-          end
-
           def self.to_enrichment(strapi_data)
             return nil if strapi_data[:publishedAt].nil? && Rails.env.production?
             type_data = strapi_data[:type][:data][:attributes]
@@ -86,20 +75,20 @@ module Cms
               i_belong: strapi_data[:i_belong],
               terms: strapi_data.dig(:terms, :data).map { _1[:attributes][:name] },
               age_groups: strapi_data.dig(:age_groups, :data).map { _1[:attributes][:name] },
-              partner_icon: strapi_data[:partner_icon][:data].nil? ? nil : to_image(strapi_data[:partner_icon][:data][:attributes]),
+              partner_icon: to_image(strapi_data, :partner_icon, default_size: :small),
               type: Models::EnrichmentType.new(
                 name: type_data[:name],
-                icon: type_data[:icon][:data].nil? ? nil : to_image(type_data[:icon][:data][:attributes])
+                icon: to_image(type_data, :icon, default_size: :small)
               )
             )
           end
 
-          def self.to_content_block(data)
+          def self.to_content_block(data, with_wrapper: true)
             data.map! do |block|
-              block[:image] = to_image(block[:image]) if block[:type] == "image"
+              block[:image] = as_image(block[:image], :medium) if block[:type] == "image"
               block
             end
-            Models::ContentBlock.new(blocks: data, with_wrapper: true)
+            Models::TextBlock.new(blocks: data, with_wrapper:)
           end
 
           def self.to_featured_image(image_data, size = :large)
@@ -112,7 +101,14 @@ module Cms
             )
           end
 
-          def self.to_image(image_data, default_size: :medium)
+          def self.to_image(strapi_data, image_key, default_size: :medium)
+            if strapi_data.dig(image_key, :data)
+              image_data = strapi_data[image_key][:data][:attributes]
+              as_image(image_data, default_size)
+            end
+          end
+
+          def self.as_image(image_data, default_size = :medium)
             Models::Image.new(
               url: image_data[:url],
               alt: image_data[:alternativeText],

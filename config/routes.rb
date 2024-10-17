@@ -196,9 +196,9 @@ Rails.application.routes.draw do
   get "/isaac-computer-science", to: "pages#isaac_computer_science", as: :about_isaac_computer_science, defaults: {page_slug: "isaac-computer-science"}
   get "/gender-balance", to: "pages#page", as: :gender_balance, defaults: {page_slug: "gender-balance"}
   get "/get-involved", to: "pages#page", as: :get_involved, defaults: {page_slug: "get-involved"}
-  get "/secondary-early-careers", to: "pages#page", as: :secondary_early_careers, defaults: {page_slug: "secondary-early-careers"}
+  # get "/secondary-early-careers", to: "pages#page", as: :secondary_early_careers, defaults: {page_slug: "secondary-early-careers"}
   get "/secondary-question-banks", to: "pages#page", as: :secondary_question_banks, defaults: {page_slug: "secondary-question-banks"}
-  get "/primary-early-careers", to: "pages#page", as: :primary_early_careers, defaults: {page_slug: "primary-early-careers"}
+  # get "/primary-early-careers", to: "pages#page", as: :primary_early_careers, defaults: {page_slug: "primary-early-careers"}
   get "/powerupthedigitalgeneration", to: redirect("/supporting-partners")
   get "/pedagogy", to: "pages#page", as: :pedagogy, defaults: {page_slug: "pedagogy"}
   get "/impact-and-evaluation", to: "pages#page", as: :impact, defaults: {page_slug: "impact-and-evaluation"}
@@ -244,6 +244,16 @@ Rails.application.routes.draw do
   get "/secondary-enrichment", to: "cms#enrichment", defaults: {page_slug: "secondary-enrichment"}, as: :secondary_enrichment
   get "/secondary-enrichment/refresh", to: "cms#enrichment_refresh", defaults: {page_slug: "secondary-enrichment"}, as: :secondary_enrichment_reload
 
+  # TEMPORARY ROUTES UNTIL CONVERSION OF SIMPLE
+  get "/primary-early-careers", to: "cms#web_page_resource", defaults: {page_slug: "primary-early-careers"}
+  get "/primary-early-careers/refresh", to: "cms#web_page_refresh", defaults: {page_slug: "primary-early-careers"}
+  get "/primary-trainees", to: "cms#web_page_resource", defaults: {page_slug: "primary-trainees"}
+  get "/primary-trainees/refresh", to: "cms#web_page_refresh", defaults: {page_slug: "primary-trainees"}
+  get "/secondary-early-careers", to: "cms#web_page_resource", defaults: {page_slug: "secondary-early-careers"}
+  get "/secondary-early-careers/refresh", to: "cms#web_page_refresh", defaults: {page_slug: "secondary-early-careers"}
+  get "/secondary-trainees", to: "cms#web_page_resource", defaults: {page_slug: "secondary-trainees"}
+  get "/secondary-trainees/refresh", to: "cms#web_page_refresh", defaults: {page_slug: "secondary-trainees"}
+
   get "/home-teaching-resources" => redirect("/home-teaching")
   get "/home-teaching/:page_slug" => redirect("/home-teaching")
   get "/blog/:page_slug/refresh", to: "cms#clear_blog_cache"
@@ -253,6 +263,7 @@ Rails.application.routes.draw do
     get "/blog", to: "cms#blog", as: :cms_posts
     get "/blog/articles", to: redirect(path: "/blog")
     get "/blog/:page_slug", to: "cms#blog_resource", as: :cms_post
+    get "/test-web/:page_slug", to: "cms#web_page_resource", as: :cms_web_page if Rails.env.development?
     get "/:page_slug", to: "cms#page_resource", as: :cms_page
   end
 end

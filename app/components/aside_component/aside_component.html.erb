@@ -1,4 +1,4 @@
-<div class="aside-component<%= " #{@class_name || ''}" %>">
+<div class="<%= aside_classes %>">
   <% if @image.present? %>
     <div class="aside-component__image">
       <%= link_to aside_image_tag(@image[:file], alt: @image[:alt], title: @image[:title]),
@@ -38,5 +38,8 @@
         draggable: 'false'
       %>
     </p>
+  <% end %>
+  <% if @aside_icons %>
+    <%= render CmsIconBlockComponent.new(icons: @aside_icons.icons) %>
   <% end %>
 </div>

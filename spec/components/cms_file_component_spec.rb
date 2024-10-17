@@ -5,7 +5,7 @@ require "rails_helper"
 RSpec.describe CmsFileComponent, type: :component do
   let(:updated_at) { DateTime.new(2024, 8, 9) }
   let(:file) {
-    Cms::Models::File.new(
+    Cms::DynamicComponents::FileLink.new(
       url: "https://strapi.teachcomputing.org/test_file.pdf",
       filename: "Test File",
       size: 45,

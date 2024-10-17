@@ -26,7 +26,7 @@ module Cms
         [
           {model: Cms::Models::SimpleTitle, key: :title},
           {model: Cms::Models::FeaturedImage, key: :featuredImage},
-          {model: Cms::Models::ContentBlock, key: :content},
+          {model: Cms::Models::TextBlock, key: :content},
           {model: Cms::Models::Seo, key: :seo}
         ]
       end

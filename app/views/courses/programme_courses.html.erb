@@ -5,7 +5,7 @@
 <div data-controller="course-filter">
 
   <%= render GovGridRowComponent.new(margin: {bottom: 0}) do |row| %>
-    <%= row.with_column("full-width") do %>
+    <%= row.with_column(:full) do %>
       <p class="govuk-body">
         Use the filters to find the right course for you that count towards the <%= @programme.title.titleize %> Certificate
       </p>

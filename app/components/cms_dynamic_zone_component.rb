@@ -6,7 +6,7 @@ class CmsDynamicZoneComponent < ViewComponent::Base
   end
 
   erb_template <<~ERB
-    <div class="cms-dynamic-zone">
+    <div class="cms-dynamic-zone govuk-!-margin-bottom-7 govuk-!-margin-top-7">
       <% @cms_models.each do |model| %>
         <%= render model.render %>
       <% end %>
