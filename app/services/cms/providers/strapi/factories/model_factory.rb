@@ -27,7 +27,10 @@ module Cms
             elsif model_class == Models::Aside
               model_class.new(
                 title: strapi_data[:title],
-                dynamic_content: Models::DynamicZone.new(strapi_data[:content].map { ComponentFactory.process_component(_1) }.compact),
+                dynamic_content: Models::DynamicZone.new(
+                  cms_models: strapi_data[:content].map { ComponentFactory.process_component(_1) }.compact,
+                  with_spacing: false
+                ),
                 show_heading_line: strapi_data[:showHeadingLine],
                 aside_icons: ComponentFactory.icon_block(strapi_data[:asideIcons])
               )
@@ -45,7 +48,7 @@ module Cms
                 slug: strapi_data[:slug]
               )
             elsif model_class == Models::DynamicZone
-              model_class.new(strapi_data.map { ComponentFactory.process_component(_1) }.compact)
+              model_class.new(cms_models: strapi_data.map { ComponentFactory.process_component(_1) }.compact)
             elsif model_class == Models::EnrichmentList
               model_class.new(
                 enrichments: strapi_data[:data].map { to_enrichment(_1[:attributes]) }.compact,
