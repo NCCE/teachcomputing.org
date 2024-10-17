@@ -36,7 +36,7 @@ module Cms
             elsif model_class == Models::PageTitle
               model_class.new(
                 title: strapi_data[:title],
-                intro_text: strapi_data[:introText]
+                sub_text: strapi_data[:subText]
               )
             elsif model_class == Models::BlogPreview
               model_class.new(
