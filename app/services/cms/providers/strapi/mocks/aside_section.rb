@@ -7,6 +7,7 @@ module Cms
           attribute(:title) { Faker::Lorem.sentence }
           attribute(:content) { [TextBlock.generate_raw_data] }
           attribute(:showHeadingLine) { true }
+          attribute(:asideIcons) { [] }
 
           def self.generate_aside_list(aside_slugs: [])
             aside_slugs.map! do |slug|
