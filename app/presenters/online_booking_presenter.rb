@@ -25,7 +25,7 @@ class OnlineBookingPresenter
   end
 
   def booking_button_title
-    "Book"
+    "Join"
   end
 
   def enrolled_title
@@ -85,7 +85,19 @@ class OnlineBookingPresenter
     "#{ENV.fetch("STEM_OAUTH_SITE")}/cpdredirect/#{stem_course_id}"
   end
 
-  def show_stem_occurrence_list
-    false
+  def show_stem_occurrence_list(always_on)
+    !always_on
+  end
+
+  def activity_date(start_date, end_date)
+    return if start_date.blank?
+
+    parsed_start_date = Time.zone.parse(start_date)
+    parsed_end_date = Time.zone.parse(end_date)
+    "#{parsed_start_date.strftime("#{parsed_start_date.day.ordinalize} %B %Y")} - #{parsed_end_date.strftime("#{parsed_end_date.day.ordinalize} %B %Y")}"
+  end
+
+  def address(occurrence)
+    "Online Course"
   end
 end

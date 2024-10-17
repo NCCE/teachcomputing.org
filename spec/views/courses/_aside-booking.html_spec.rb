@@ -11,7 +11,12 @@ RSpec.describe("courses/_aside-booking", type: :view) do
   let(:live_booking_presenter) { LiveBookingPresenter.new }
   let!(:face_to_face) { create(:activity, :stem_learning) }
   let(:remote_course) { Achiever::Course::Template.find_by_activity_code("CP428") }
-  let(:online_course) { Achiever::Course::Template.find_by_activity_code("CO225") }
+  let(:online_course_always_on) {
+    c = Achiever::Course::Template.find_by_activity_code("CO225")
+    c.always_on = true
+    c
+  }
+  let(:online_course_not_always_on) { Achiever::Course::Template.find_by_activity_code("CO225") }
 
   before do
     stub_course_templates
@@ -25,13 +30,13 @@ RSpec.describe("courses/_aside-booking", type: :view) do
 
     context "when its an online course" do
       describe "when the course is not always on" do
-        # TODO: As of Q1 2023, the always_on flag is true for all visible(*) online course, so these code paths are no longer used
-        # and should be retired. (*) Course CO010 is retired and not visible and always_on is false
+        # Not always on is now used to allow online courses to show occurences, this is a trial to see how it goes.
+        # If this works, it will become the norm, at which point we will tidy up the logic
         before do
           assign(:booking, online_booking_presenter)
           assign(:occurrences, occurrences)
           assign(:activity, activity)
-          assign(:course, online_course)
+          assign(:course, online_course_not_always_on)
           assign(:start_date, Date.tomorrow)
 
           render
@@ -48,9 +53,10 @@ RSpec.describe("courses/_aside-booking", type: :view) do
           )
         end
 
-        it "renders link to STEM Learning booking page" do
-          expected_link = "https://ncce-www-stage-int.stem.org.uk/cpdredirect/#{activity.stem_course_template_no}"
-          expect(rendered).to have_link("Join this course", href: expected_link)
+        it "renders link to STEM Learning booking page using occurence" do
+          occurence = occurrences.first
+          expected_link = "https://ncce-www-stage-int.stem.org.uk/cpdredirect/#{occurence.course_occurrence_no}"
+          expect(rendered).to have_link("Join", href: expected_link)
         end
 
         it "does not show the 'View course' button" do
@@ -63,7 +69,7 @@ RSpec.describe("courses/_aside-booking", type: :view) do
           assign(:booking, online_booking_presenter)
           assign(:occurrences, occurrences)
           assign(:activity, activity)
-          assign(:course, online_course)
+          assign(:course, online_course_always_on)
         end
 
         context "when the course starts tomorrow" do
@@ -122,7 +128,7 @@ RSpec.describe("courses/_aside-booking", type: :view) do
           before do
             assign(:booking, online_booking_presenter)
             assign(:occurrences, occurrences)
-            assign(:course, online_course)
+            assign(:course, online_course_always_on)
             assign(:activity, activity)
             assign(
               :user_occurrence,
@@ -196,7 +202,7 @@ RSpec.describe("courses/_aside-booking", type: :view) do
           before do
             assign(:booking, online_booking_presenter)
             assign(:occurrences, occurrences)
-            assign(:course, online_course)
+            assign(:course, online_course_always_on)
             assign(:activity, activity)
             assign(
               :user_occurrence,
@@ -273,7 +279,7 @@ RSpec.describe("courses/_aside-booking", type: :view) do
           it "shows items with the expected content" do
             occurrences.each do |occurrence|
               expect(rendered).to have_css(
-                ".ncce-booking-list__date", text: live_booking_presenter.activity_date(occurrence.start_date)
+                ".ncce-booking-list__date", text: live_booking_presenter.activity_date(occurrence.start_date, occurrence.end_date)
               )
 
               expect(rendered).to have_css(
@@ -437,7 +443,7 @@ RSpec.describe("courses/_aside-booking", type: :view) do
           it "shows items with the expected content" do
             occurrences_remote.each do |occurrence|
               expect(rendered).to have_css(
-                ".ncce-booking-list__date", text: live_booking_presenter.activity_date(occurrence.start_date)
+                ".ncce-booking-list__date", text: live_booking_presenter.activity_date(occurrence.start_date, occurrence.end_date)
               )
 
               expect(rendered).to have_css(
@@ -580,7 +586,7 @@ RSpec.describe("courses/_aside-booking", type: :view) do
   describe "when not logged in" do
     context "when its an online course that has not started" do
       before do
-        assign(:course, online_course)
+        assign(:course, online_course_always_on)
         assign(:occurrences, occurrences)
         assign(:booking, online_booking_presenter)
         assign(:started, false)
