@@ -4,6 +4,7 @@ FactoryBot.define do
     slug { "primary-certificate" }
     description { "This is the Primary programme" }
     enrollable { true }
+    dashboard_name { "Teach primary computing" }
     pathways { create_list(:pathway, 3) }
     programme_complete_counter { create(:programme_complete_counter, programme: instance) }
 

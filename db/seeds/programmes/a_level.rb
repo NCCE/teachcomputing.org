@@ -5,6 +5,7 @@ a_level = Programmes::ALevel.find_or_initialize_by(slug: "a-level-certificate").
   programme.slug = "a-level-certificate"
   programme.description = "A level subject Computer Science knowledege"
   programme.enrollable = true
+  programme.dashboard_name = "A level subject knowledge"
 
   programme.save!
 end
