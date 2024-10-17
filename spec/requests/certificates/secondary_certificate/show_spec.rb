@@ -74,7 +74,7 @@ RSpec.describe Certificates::SecondaryCertificateController do
     context "when the user is not logged in" do
       it "redirects to login" do
         get secondary_certificate_path
-        expect(response).to redirect_to(Rails.application.config.stem_account_site)
+        expect(response).to redirect_to(/signup/)
       end
     end
   end
