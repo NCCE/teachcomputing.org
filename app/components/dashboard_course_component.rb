@@ -6,9 +6,6 @@ class DashboardCourseComponent < ViewComponent::Base
     :stem_course_details,
     :get_date_string,
     :course_start_date,
-    :user_course_info,
-    :course_start_date,
-    :start_date,
     :online_course_availability,
     :started?,
     to: :helpers
