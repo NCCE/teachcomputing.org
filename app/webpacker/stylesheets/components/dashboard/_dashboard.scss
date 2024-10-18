@@ -1,0 +1,12 @@
+.other-courses {
+  display: flex;
+  align-items: center;
+
+  &__image {
+    height: 40px;
+  }
+
+  &__text {
+    padding-left: 10px;
+  }
+}
