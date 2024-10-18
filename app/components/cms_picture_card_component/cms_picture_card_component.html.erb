@@ -3,7 +3,7 @@
     <%= render CmsImageComponent.new(@image, show_caption: false, link: @link) %>
   <% end %>
   <div class="cms-picture-card__title">
-    <h2 class="govuk-heading-m"><%= link_to_if @link, @title, @link %></h2>
+    <h2 class="govuk-heading-m"><%= link_to_if @link, @title, @link, class: "cms-picture-card__link" %></h2>
   </div>
   <div class="cms-picture-card__text">
     <%= render @body_text.render %>
