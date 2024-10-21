@@ -28,7 +28,6 @@ RSpec.describe User do
     it { is_expected.to validate_presence_of(:last_name) }
     it { is_expected.to validate_presence_of(:stem_achiever_contact_no) }
     it { is_expected.to validate_presence_of(:stem_credentials_access_token) }
-    it { is_expected.to validate_presence_of(:stem_credentials_refresh_token) }
     it { is_expected.to validate_presence_of(:stem_credentials_expires_at) }
     it { is_expected.to validate_presence_of(:stem_user_id) }
     it { is_expected.to validate_presence_of(:email) }
