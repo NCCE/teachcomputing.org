@@ -1706,10 +1706,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@rails/ujs@npm:^6.1.3":
-  version: 6.1.7
-  resolution: "@rails/ujs@npm:6.1.7"
-  checksum: a597bdaee400f73d4a2b3b2de13433399166273b56e0655da1a4d3cd9e2406224c6506bfc205565e64a02068003647aa51c767bbc5a31d1bdfdc32048a86c618
+"@rails/ujs@npm:^7.1.401":
+  version: 7.1.401
+  resolution: "@rails/ujs@npm:7.1.401"
+  checksum: 3b3943ebcfa706abc3bd66892fe5e21816f2a2426cd7651c7541e3ae8074a8416667df2cc78d48cd99b25f4fead826bcfdeaacd09d9a51b89bc85f681701f3b7
   languageName: node
   linkType: hard
 
@@ -7606,7 +7606,7 @@ __metadata:
     "@hotwired/stimulus-webpack-helpers": ^1.0.1
     "@rails/actiontext": ^6.1.3
     "@rails/activestorage": ^6.1.3
-    "@rails/ujs": ^6.1.3
+    "@rails/ujs": ^7.1.401
     "@rails/webpacker": ^5.4.3
     ansi-html-community: 0.0.8
     channels: ^0.0.4
