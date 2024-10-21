@@ -46,6 +46,7 @@ module TeachComputing
     # Auth Settings
     config.bypass_oauth = ENV["BYPASS_OAUTH"] == "true"
     config.stem_account_site = ENV["STEM_ACCOUNT_SITE"]
+    config.stem_account_client_id = ENV["STEM_OAUTH_CLIENT_ID"]
     config.stem_credentials_access_token = ENV["STEM_CREDENTIALS_ACCESS_TOKEN_KEY"]
     config.stem_credentials_refresh_token = ENV["STEM_CREDENTIALS_REFRESH_TOKEN_KEY"]
 
