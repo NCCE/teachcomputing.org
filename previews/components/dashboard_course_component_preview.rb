@@ -2,13 +2,22 @@
 
 class DashboardCourseComponentPreview < ViewComponent::Preview
   def default
-    user = FactoryBot.build(:user)
-    activity = FactoryBot.build(:activity, stem_activity_code: "CP101")
-    achievement = FactoryBot.build(:achievement, user:, activity:, updated_at: "10/07/2019 00:00:00")
+    achievement = Achievement.in_state(:enrolled).last.presence || FactoryBot.create(:in_progress_achievement)
+    user_course_info = Achiever::Course::Delegate.find_by_achiever_contact_number(User.last.presence&.stem_achiever_contact_no)
+
+    render DashboardCourseComponent.new(
+      achievement:,
+      user_course_info: user_course_info
+    )
+  end
+
+  def completed_achievement
+    achievement = Achievement.in_state(:complete).last.presence || FactoryBot.create(:completed_achievement)
+
     user_course_info = FactoryBot.build(:course_delegate)
 
     render DashboardCourseComponent.new(
-      achievement: achievement,
+      achievement:,
       user_course_info: [user_course_info]
     )
   end
