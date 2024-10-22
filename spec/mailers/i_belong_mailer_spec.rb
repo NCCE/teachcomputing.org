@@ -257,7 +257,7 @@ RSpec.describe IBelongMailer, type: :mailer do
   describe "student_attitude_surveys" do
     let(:mail) { IBelongMailer.with(user: user).student_attitude_surveys }
     let(:mail_subject) do
-      "I Belong: request your student attitude surveys today"
+      "Student attitude surveys for key stage 3"
     end
 
     it "renders the body" do
