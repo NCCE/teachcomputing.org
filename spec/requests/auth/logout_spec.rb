@@ -35,8 +35,8 @@ RSpec.describe AuthController do
     end
 
     it "redirects you to the root path" do
-      get(logout_path, headers: {referer: "https://teachcomputing.org"})
-      expect(response).to redirect_to("#{Rails.application.config.stem_account_site}/user/logout?returnTo=https://teachcomputing.org")
+      get logout_path
+      expect(response).to redirect_to("https://#{Rails.application.config.auth0_domain}/v2/logout?returnTo=http://www.example.com/")
     end
   end
 end
