@@ -34,7 +34,7 @@ class AuthController < ApplicationController
   end
 
   def logout
-    conn = Faraday, new(
+    conn = Faraday.new(
       url: "#{Rails.application.config.stem_account_site}/user/logout"
     )
     response = conn.get("/user/logout")
