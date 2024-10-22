@@ -36,7 +36,7 @@ class AuthController < ApplicationController
   def logout
     # redirect_to "#{Rails.application.config.stem_account_site}/user/logout"
     # redirect_to "https://preprod-signin.stem.org.uk/v2/logout?returnTo=https://qa.teachcomputing.org/"
-    redirect_to "https://https://preprod-signin.stem.org.uk/oidc/logout?id_token_hint=#{current_user.u.stem_credentials_access_token}&post_logout_redirect_uri=https://qa.teachcomputing.org"
+    redirect_to "https://preprod-signin.stem.org.uk/oidc/logout?id_token_hint=#{current_user.u.stem_credentials_access_token}&post_logout_redirect_uri=https://qa.teachcomputing.org"
   end
 
   private
