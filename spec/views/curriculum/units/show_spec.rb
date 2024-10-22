@@ -104,4 +104,26 @@ RSpec.describe("curriculum/units/show", type: :view) do
       expect(rendered).not_to have_css(".gcse-revision__link")
     end
   end
+
+  context "when a url link is present" do
+    before do
+      setup_view
+      render
+    end
+
+    it "renders the external link component" do
+      expect(rendered).to have_css(".external-link-card-component")
+    end
+  end
+
+  context "when a url link is not present" do
+    before do
+      setup_view_with_video
+      render
+    end
+
+    it "renders the external link component" do
+      expect(rendered).to_not have_css(".external-link-card-component")
+    end
+  end
 end

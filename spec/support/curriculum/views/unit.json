@@ -14,6 +14,13 @@
       },
       "digitalSummativeAssessmentUrl": "https://www.stem.org.uk/resources/elibrary/resource/522344/year-3-computer-systems-and-networks-connecting-computers",
       "summative_assessments": [],
+      "url_links": [
+        {
+          "label": "Digtial Summative Assessment",
+          "url": "https://www.google.com",
+          "typeDescriptor": "Microsoft Form"
+        }
+      ],
       "summative_answers": [],
       "learning_graphs": [],
       "rubrics": [],

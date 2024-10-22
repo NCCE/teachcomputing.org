@@ -14,7 +14,8 @@ RSpec.describe MixedCardsComponent, type: :component do
   let(:link_card) do
     {
       title: "Testing",
-      link: "https://www.example.com"
+      link: "https://www.example.com",
+      file_type: "Google Doc"
     }
   end
 
@@ -27,6 +28,10 @@ RSpec.describe MixedCardsComponent, type: :component do
 
     it "renders with the expected link" do
       expect(page).to have_link("Testing", href: "https://www.example.com")
+    end
+
+    it "renders the file type text" do
+      expect(page).to have_text("Google Doc")
     end
   end
 
