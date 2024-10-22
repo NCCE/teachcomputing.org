@@ -42,7 +42,7 @@ class AuthController < ApplicationController
         id_token_hint: current_user.encrypted_stem_credentials_access_token
       })
     response = conn.get("/odic/logout")
-    logger.info "Logout response: #{response}"
+    logger.info "Logout response: #{response.body}"
     reset_session
     redirect_to root_path
   end
