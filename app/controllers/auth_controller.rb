@@ -34,11 +34,8 @@ class AuthController < ApplicationController
   end
 
   def logout
-  end
-
-  def logout_complete
     reset_session
-    redirect_to "#{Rails.application.config.stem_account_site}/user/logout?returnTo=#{request.referrer}"
+    redirect_to "https://#{Rails.application.config.auth0_domain}/v2/logout?returnTo=#{root_url}"
   end
 
   private
