@@ -37,7 +37,7 @@
 <% if @incomplete_achievements.any? %>
   <%= render GovGridRowComponent.new(padding: {top: 7, bottom: 0}) do |row| %>
     <%= row.with_column("two-thirds") do %>
-      <h1 class="govuk-heading-l govuk-!-margin-bottom-4">Booked courses</h1>
+      <h1 class="govuk-heading-l govuk-!-margin-bottom-4">Your courses</h1>
       <% @incomplete_achievements.each do |achievement| %>
         <%= render DashboardCourseComponent.new(achievement:, user_course_info: @user_course_info) %>
       <% end %>

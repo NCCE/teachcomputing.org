@@ -136,7 +136,7 @@ RSpec.describe("dashboard/show", type: :view) do
     end
 
     it "has the section title" do
-      expect(rendered).to have_text("Booked courses")
+      expect(rendered).to have_text("Your courses")
     end
 
     it "renders course components" do
