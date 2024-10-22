@@ -11,6 +11,18 @@
         "created": "5 Nov 2016"
       },
       "summativeAssessments": [],
+      "urlLinks": [
+        {
+          "label": "Digital summative assessment",
+          "url": "https://www.example.com",
+          "typeDescriptor": "Google Doc"
+        },
+        {
+          "label": "Digital summative assessment",
+          "url": "https://www.example.com",
+          "typeDescriptor": "Google Doc"
+        }
+      ],
       "summativeAnswers": [],
       "digitalSummativeAssessmentUrl": "https://www.stem.org.uk/resources/elibrary/resource/522344/year-3-computer-systems-and-networks-connecting-computers",
       "learningGraphs": [

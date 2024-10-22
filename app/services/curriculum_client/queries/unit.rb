@@ -58,6 +58,11 @@ module CurriculumClient
           description
           videoUrl
         }
+        urlLinks {
+          label
+          url
+          typeDescriptor
+        }
       GRAPHQL
 
       def self.all(fields = FIELDS)
