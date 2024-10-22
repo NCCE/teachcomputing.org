@@ -39,7 +39,7 @@ class AuthController < ApplicationController
     logger.info "Attempting ODIC logout"
     conn = Faraday.new("https://preprod-signin.stem.org.uk",
       params: {
-        id_token_hint: current_user.encrypted_stem_credentials_access_token
+        id_token_hint: current_user.stem_credentials_access_token
       })
     response = conn.get("/oidc/logout")
     logger.info "Logout response: #{response.body}"
