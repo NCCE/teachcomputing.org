@@ -1,26 +1,36 @@
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-  // URL of the endpoint you want to call
   const endpoint = "https://preprod-account.stem.org.uk/user/logout"
+  const endpoint_alt = "https://www-preprod.stem.org.uk/user/logout"
 
-  // Make the asynchronous request
   fetch(endpoint, {
-    method: 'GET', // or 'POST', 'PUT', etc. depending on your needs
+    method: 'GET', 
   })
   .then(response => {
     if (!response.ok) {
       throw new Error('Network response was not ok ' + response.statusText);
     }
-    return response.json(); // Assuming the response is JSON
-  })
-  .then(data => {
-    console.log('Data received:', data);
-    // Handle the data you received here
+    console.log(response)
   })
   .catch(error => {
     console.error('There has been a problem with your fetch operation:', error);
   });
+
+  fetch(endpoint_alt, {
+    method: 'GET', 
+  })
+  .then(response => {
+    if (!response.ok) {
+      throw new Error('Network response was not ok ' + response.statusText);
+    }
+    console.log(response)
+  })
+  .catch(error => {
+    console.error('There has been a problem with your fetch operation:', error);
+  });
+
+
 });
 
 </script>
