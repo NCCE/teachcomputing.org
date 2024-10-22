@@ -4,7 +4,8 @@ RSpec.describe ExternalLinkCardComponent, type: :component do
   let(:link_card) do
     {
       title: "Testing",
-      link: "https://www.example.com"
+      link: "https://www.example.com",
+      file_type: "Google Doc"
     }
   end
 
@@ -12,6 +13,13 @@ RSpec.describe ExternalLinkCardComponent, type: :component do
     {
       title: "Missing Link",
       link: nil
+    }
+  end
+
+  let(:link_card_missing_file_type) do
+    {
+      title: "Missing File Type",
+      file_type: nil
     }
   end
 
@@ -32,6 +40,16 @@ RSpec.describe ExternalLinkCardComponent, type: :component do
 
     it "renders with expected link" do
       expect(page).to have_link("Testing", href: "https://www.example.com")
+    end
+  end
+
+  describe "with no file type defined" do
+    before do
+      render_inline(described_class.new(external_link_card: link_card_missing_file_type))
+    end
+
+    it "renders with expected link" do
+      expect(page).not_to have_text("Google Doc")
     end
   end
 end
