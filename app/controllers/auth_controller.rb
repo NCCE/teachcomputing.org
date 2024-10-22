@@ -36,12 +36,13 @@ class AuthController < ApplicationController
   def logout
     # redirect_to "#{Rails.application.config.stem_account_site}/user/logout"
     # redirect_to "https://preprod-signin.stem.org.uk/v2/logout?returnTo=https://qa.teachcomputing.org/"
+    logger.info "Attempting ODIC logout"
     conn = Faraday.new("https://preprod-signin.stem.org.uk",
       params: {
         id_token_hint: current_user.encrypted_stem_credentials_access_token
       })
     response = conn.get("/odic/logout")
-    logger.debug "Logout response: #{response}"
+    logger.info "Logout response: #{response}"
     reset_session
     redirect_to root_path
   end
