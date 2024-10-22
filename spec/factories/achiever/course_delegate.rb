@@ -4,7 +4,7 @@ FactoryBot.define do
     course_template_no { Faker::Number.number(digits: 8) }
     is_fully_attended { "false" }
     online_cpd { false }
-    progress { "157420003" }
+    progress { "157420000" }
     address_venue_name { Faker::Company.name }
     address_venue_code { Faker::Alphanumeric.alphanumeric(number: 6) }
     address_town { Faker::Address.city }
@@ -12,6 +12,18 @@ FactoryBot.define do
     address_line_one { Faker::Address.street_address }
     start_date { Faker::Date.backward(days: 30) }
     end_date { Faker::Date.forward(days: 30) }
+
+    trait :cancelled do
+      progress { "157420003" }
+    end
+
+    trait :completed do
+      is_fully_attended { "true" }
+    end
+
+    trait :online do
+      online_cpd { true }
+    end
 
     initialize_with do
       new(OpenStruct.new(
