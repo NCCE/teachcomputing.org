@@ -58,7 +58,7 @@ class IBelongMailer < ApplicationMailer
   end
 
   def student_attitude_surveys
-    @subject = "I Belong: request your student attitude surveys today"
+    @subject = "Student attitude surveys for key stage 3"
 
     mail(to: @user, subject: @subject, record_sent_mail: true, mailer_type: "i_belong_student_attitude_survey")
   end
