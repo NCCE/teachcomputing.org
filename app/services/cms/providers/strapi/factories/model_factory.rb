@@ -28,8 +28,7 @@ module Cms
               model_class.new(
                 title: strapi_data[:title],
                 dynamic_content: Models::DynamicZone.new(
-                  cms_models: strapi_data[:content].map { ComponentFactory.process_component(_1) }.compact,
-                  with_spacing: false
+                  cms_models: strapi_data[:content].map { ComponentFactory.process_component(_1) }.compact
                 ),
                 show_heading_line: strapi_data[:showHeadingLine],
                 aside_icons: ComponentFactory.icon_block(strapi_data[:asideIcons])

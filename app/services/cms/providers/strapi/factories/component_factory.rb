@@ -11,6 +11,8 @@ module Cms
             when "content-blocks.file-link"
               file_data = strapi_data.dig(:file, :data) ? strapi_data[:file][:data][:attributes] : nil
               to_file(file_data) if file_data
+            when "content-blocks.linked-picture"
+              DynamicComponents::LinkedPicture.new(image: ModelFactory.to_image(strapi_data, :image), link: strapi_data[:link])
             when "blocks.text-with-asides"
               DynamicComponents::TextWithAsides.new(blocks: strapi_data[:textContent], asides: extract_aside_sections(strapi_data))
             when "blocks.horizontal-card"
