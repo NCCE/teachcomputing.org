@@ -34,8 +34,15 @@ class AuthController < ApplicationController
   end
 
   def logout
+    conn = Faraday, new(
+      url: "#{Rails.application.config.stem_account_site}/user/logout"
+    )
+    response = conn.get("/user/logout")
+    logger.debug("Response from logout")
+    logger.debug(response)
     reset_session
-    redirect_to "#{Rails.application.config.stem_account_site}/user/logout"
+    # redirect_to "#{Rails.application.config.stem_account_site}/user/logout"
+    redirect_to "https://preprod-account.stem.org.uk/v2/logout?returnTo=https://qa.teachcomputing.org/"
   end
 
   private
