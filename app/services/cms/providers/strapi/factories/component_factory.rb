@@ -28,6 +28,8 @@ module Cms
               to_card_wrapper(strapi_data, resource_card_block(strapi_data[:resourceCards]))
             when "blocks.picture-card-section"
               to_card_wrapper(strapi_data, picture_card_block(strapi_data[:pictureCards]))
+            when "blocks.numeric-cards-section"
+              to_card_wrapper(strapi_data, numeric_card_block(strapi_data[:numericCards]))
             when "blocks.full-width-banner"
               to_full_width_banner(strapi_data)
             when "blocks.full-width-text"
@@ -142,6 +144,16 @@ module Cms
                 body_text: ModelFactory.to_content_block(card_data[:textContent], with_wrapper: false),
                 link: card_data[:link],
                 color_theme: extract_color_name(card_data, :colorTheme)
+              )
+            end
+          end
+
+          def self.numeric_card_block(strapi_data)
+            strapi_data.map.with_index do |card_data, index|
+              DynamicComponents::NumericCard.new(
+                title: card_data[:title],
+                text_content: ModelFactory.to_content_block(card_data[:textContent], with_wrapper: false, paragraph_class: "govuk-body-l"),
+                number: index + 1
               )
             end
           end

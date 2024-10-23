@@ -44,6 +44,7 @@ module Cms
                   "blocks.text-with-asides": ComponentParameterFactory.text_with_asides_parameters,
                   "blocks.resource-card-section": ComponentParameterFactory.card_wrapper_parameters,
                   "blocks.picture-card-section": ComponentParameterFactory.card_wrapper_parameters,
+                  "blocks.numeric-cards-section": ComponentParameterFactory.card_wrapper_parameters,
                   "blocks.horizontal-card": ComponentParameterFactory.horizontal_card_parameters,
                   "blocks.question-and-answer": ComponentParameterFactory.question_and_answer_parameters,
                   "blocks.full-width-banner": ComponentParameterFactory.full_width_banner_parameters,
