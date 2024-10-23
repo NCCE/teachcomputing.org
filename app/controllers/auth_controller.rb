@@ -35,10 +35,19 @@ class AuthController < ApplicationController
 
   def logout
     reset_session
-    redirect_to "https://#{Rails.application.config.auth0_domain}/v2/logout?returnTo=#{root_url}"
+    redirect_to logout_url
   end
 
   private
+
+  def logout_url
+    request_params = {
+      returnTo: root_url
+    }
+    request_params[:client_id] = Rails.application.config.auth0_client_id if Rails.application.config.logout_send_client
+
+    URI::HTTPS.build(host: Rails.application.config.logout_domain, path: Rails.application.config.logout_path, query: request_params.to_query).to_s
+  end
 
   def omniauth_params
     request.env["omniauth.auth"]
