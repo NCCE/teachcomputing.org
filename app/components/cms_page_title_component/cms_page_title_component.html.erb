@@ -1,13 +1,20 @@
 <%= render GovGridRowComponent.new(background_color: "lime-green", padding: {top: 7, bottom: 7}) do |row| %>
   <%= row.with_column("full") do %>
     <div class="page-title__wrapper">
-      <h1 class="govuk-heading-l page-title__title-text">
-        <%= @title %>
-      </h1>
-      <% if @sub_text %>
-        <p class="govuk-body page-title__sub-text">
-          <%= @sub_text %>
-        </p>
+      <div class="page-title__content">
+        <h1 class="govuk-heading-l page-title__title-text">
+          <%= @title %>
+        </h1>
+        <% if @sub_text %>
+          <p class="govuk-body page-title__sub-text">
+            <%= @sub_text %>
+          </p>
+        <% end %>
+      </div>
+      <% if @title_image %>
+        <div class="page-title__media">
+          <%= render CmsImageComponent.new(@title_image, show_caption: false) %> 
+        </div>
       <% end %>
     </div>
   <% end %>
