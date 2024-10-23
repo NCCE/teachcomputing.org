@@ -1,7 +1,8 @@
 .page-title {
   &__wrapper {
     background-color: $white;
-    padding: 10px;
+    display: flex;
+    flex-direction: row;
   }
 
   &__title-text {
@@ -12,5 +13,27 @@
     color: $mid-gray;
     margin-top: 10px;
     margin-bottom: 0;
+  }
+
+  &__content {
+    padding: 30px;
+    flex: 1 1 auto;
+    display: flex;
+    align-items: center;
+  }
+
+  &__media {
+    flex: 0 1 30%;
+
+    .cms-image {
+      width: 100%;
+      height: 100%;
+
+       img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+       }
+    }
   }
 }

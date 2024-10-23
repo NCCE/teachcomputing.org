@@ -21,7 +21,7 @@ module Cms
       end
 
       def render
-        CmsImageComponent.new(self, size: default_size)
+        CmsImageComponent.new(self)
       end
     end
   end

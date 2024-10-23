@@ -36,7 +36,8 @@ module Cms
               }
             elsif model_class == Models::PageTitle
               {
-                populate: [:title]
+                fields: [:title],
+                populate: {titleImage: {populate: [:alternativeText]}}
               }
             elsif model_class == Models::DynamicZone
               {
