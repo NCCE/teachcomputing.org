@@ -15,6 +15,27 @@ RSpec.describe CmsController do
       end
     end
 
+    describe "GET #cms_page/refresh" do
+      before do
+        stub_strapi_web_page("primary-early-careers")
+      end
+
+      it "redirects to original page" do
+        get "/primary-early-careers/refresh"
+        expect(response).to redirect_to("/primary-early-careers")
+      end
+
+      it "reloads aside cache" do
+        expect(Cms::Collections::AsideSection).to receive(:clear_cache)
+        get "/primary-early-careers/refresh"
+      end
+
+      it "reloads page cache" do
+        expect(Cms::Collections::WebPage).to receive(:clear_cache).with("primary-early-careers")
+        get "/primary-early-careers/refresh"
+      end
+    end
+
     context "with a valid page" do
       before do
         stub_strapi_get_single_simple_page("simple-pages/privacy")

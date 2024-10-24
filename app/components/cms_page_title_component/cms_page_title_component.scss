@@ -19,7 +19,8 @@
     padding: 30px;
     flex: 1 1 auto;
     display: flex;
-    align-items: center;
+    flex-direction: column;
+    justify-content: center;
   }
 
   &__media {
