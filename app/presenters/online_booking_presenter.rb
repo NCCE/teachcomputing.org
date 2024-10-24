@@ -82,7 +82,7 @@ class OnlineBookingPresenter
   end
 
   def booking_path(stem_course_id)
-    "#{ENV.fetch("STEM_OAUTH_SITE")}/cpdredirect/#{stem_course_id}"
+    "#{Rails.application.config.stem_course_redirect}/cpdredirect/#{stem_course_id}"
   end
 
   def show_stem_occurrence_list(always_on)

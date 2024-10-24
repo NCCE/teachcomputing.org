@@ -1,34 +1,22 @@
 require "omniauth-oauth2"
+require "omniauth-auth0"
 
 module OmniAuth::Strategies
-  class Stem < OmniAuth::Strategies::OAuth2
-    option :client_options,
-      site: ENV.fetch("STEM_OAUTH_SITE"),
-      authorize_url: ENV.fetch("STEM_OAUTH_AUTH_URL"),
-      token_url: ENV.fetch("STEM_OAUTH_ACCESS_TOKEN_URL")
-
-    uid { user_info["attributes"]["uid"][0] }
+  class Stem < OmniAuth::Strategies::Auth0
+    option :name, "stem"
 
     info do
-      our_info = {}
-
       {
-        first_name: "firstName",
-        last_name: "lastName",
-        email: "mail",
-        achiever_contact_no: "achieverContactNo",
-        achiever_organisation_no: "achieverOrganisationNo",
-        school_name: "school"
-      }.each_pair do |key, stem_key|
-        our_info[key] = user_info["attributes"][stem_key][0] if user_info["attributes"].has_key?(stem_key)
+        first_name: "given_name",
+        last_name: "family_name",
+        email: "userEmail",
+        achiever_contact_no: "achiever_contact_no",
+        achiever_organisation_no: "achiever_organisation_no",
+        school_name: "school_name",
+        stem_user_id: "integrationkey"
+      }.each_with_object({}) do |(key, auth0_key), our_info|
+        our_info[key] = raw_info[auth0_key] if raw_info.has_key?(auth0_key)
       end
-      our_info
-    end
-
-    def user_info
-      response ||= access_token.get("/idp/module.php/oauth2/userinfo.php", snaky: false)
-      sentry_context(response)
-      response.parsed
     end
 
     def callback_url
@@ -45,8 +33,14 @@ end
 
 Rails.application.config.middleware.use OmniAuth::Builder do
   provider(
-    OmniAuth::Strategies::Stem, ENV.fetch("STEM_OAUTH_CLIENT_ID"), ENV.fetch("STEM_OAUTH_CLIENT_SECRET"),
-    callback_path: "/auth/callback"
+    OmniAuth::Strategies::Stem,
+    ENV.fetch("STEM_OAUTH_CLIENT_ID"),
+    ENV.fetch("STEM_OAUTH_CLIENT_SECRET"),
+    ENV.fetch("STEM_AUTH0_DOMAIN"),
+    callback_path: "/auth/callback",
+    authorize_params: {
+      scope: "openid profile"
+    }
   )
 end
 

@@ -12,7 +12,8 @@ RSpec.describe User do
       achiever_contact_no: "ca432eb9-9b34-46db-afbb-fbd1efa89e6b",
       email: "user@example.com",
       first_name: "Jane",
-      last_name: "Doe"
+      last_name: "Doe",
+      stem_user_id: "id-stem-user"
     )
   end
   let(:uid) { "id-stem-user" }
@@ -27,7 +28,6 @@ RSpec.describe User do
     it { is_expected.to validate_presence_of(:last_name) }
     it { is_expected.to validate_presence_of(:stem_achiever_contact_no) }
     it { is_expected.to validate_presence_of(:stem_credentials_access_token) }
-    it { is_expected.to validate_presence_of(:stem_credentials_refresh_token) }
     it { is_expected.to validate_presence_of(:stem_credentials_expires_at) }
     it { is_expected.to validate_presence_of(:stem_user_id) }
     it { is_expected.to validate_presence_of(:email) }
