@@ -45,7 +45,7 @@ module CoursesHelper
   end
 
   def stem_course_link(course_template_no)
-    "#{ENV.fetch("STEM_OAUTH_SITE")}/cpdredirect/#{course_template_no}"
+    "#{Rails.application.config.stem_course_redirect}/cpdredirect/#{course_template_no}"
   end
 
   def stripped_summary(string)
@@ -64,7 +64,7 @@ module CoursesHelper
   end
 
   def occurrence_meta_location(occurrence)
-    return "Online course" if occurrence&.online_cpd
+    return "Free online course" if occurrence&.online_cpd
     return "Live remote training" if occurrence&.remote_delivered_cpd
 
     occurrence.address_town
@@ -109,7 +109,7 @@ module CoursesHelper
   end
 
   def course_type(course)
-    return "Online course" if course.online_cpd
+    return "Free online course" if course.online_cpd
 
     remote_or_face_to_face(course)
   end
@@ -121,7 +121,7 @@ module CoursesHelper
   end
 
   def view_course_phrase(course)
-    return "View dates" if course.remote_delivered_cpd
+    return "View dates" if course.remote_delivered_cpd || course.online_cpd
 
     "View locations and dates"
   end
@@ -136,7 +136,7 @@ module CoursesHelper
   end
 
   def applied_filters_string(course_filter)
-    "#{filter_count(course_filter)}#{pluralize(filter_count(course_filter), "filter")} applied"
+    "#{pluralize(filter_count(course_filter), "filter")} applied"
   end
 
   def certificate_card_summary(programme)

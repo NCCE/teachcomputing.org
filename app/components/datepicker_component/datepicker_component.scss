@@ -1,5 +1,9 @@
 @import "flatpickr/dist/flatpickr.min.css";
 
+.flatpickr {
+  position: relative;
+}
+
 .flatpickr-input {
   font-size: 1rem;
   &:focus {
@@ -13,6 +17,13 @@
 
 .flatpickr__clear {
   margin-bottom: 0px;
+  display: block !important;
+  visibility: visible !important;
+  position: absolute;
+  right: -5px;
+  top: 11px;
+  background: none;
+  border: none;
 }
 
 .flatpickr-calendar {

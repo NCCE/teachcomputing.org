@@ -16,7 +16,8 @@ class DatepickerComponent < ViewComponent::Base
       data: {
         controller: "flatpickr",
         flatpickr_options_value: @flatpickr.to_json
-      }
+      },
+      class: ["flatpickr"]
     }.deep_merge!(@options)
   end
 

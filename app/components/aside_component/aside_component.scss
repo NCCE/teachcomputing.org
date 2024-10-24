@@ -7,10 +7,12 @@
     @include bottom-margined;
   }
 
-  border-top-color: $orange;
-  border-top-style: solid;
-  border-top-width: 3px;
-  padding-top: 1rem;
+  &.with-heading-line {
+    border-top-color: $orange;
+    border-top-style: solid;
+    border-top-width: 3px;
+    padding-top: 1rem;
+  }
 }
 
 .aside-component__heading {
@@ -38,6 +40,17 @@
 .aside-component__cms-content {
   p {
     @include govuk-font($size: 16);
+  }
+
+  .button {
+    width: 250px;
+  }
+
+  img {
+    width: 100%; 
+    height: auto;
+    margin-bottom: 5px;
+    box-shadow: 0px 0px 4px 0px #00000040;
   }
 }
 

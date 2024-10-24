@@ -1,5 +1,5 @@
 <div class="cms-image">
-  <%= cms_image(@image)%>
+  <%= link_to_if(@link, cms_image(@image), @link) %>
   <% if @show_caption && !@image.caption.blank?%>
     <p class="govuk-body-s govuk-!-margin-bottom-0">
       <%= @image.caption %>

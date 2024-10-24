@@ -63,7 +63,7 @@ RSpec.describe DashboardController do
       end
 
       it "redirects to login" do
-        expect(response).to redirect_to(/register/)
+        expect(response).to redirect_to(/signup/)
       end
     end
   end

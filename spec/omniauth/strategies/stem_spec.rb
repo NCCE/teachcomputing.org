@@ -5,23 +5,25 @@ RSpec.describe OmniAuth::Strategies::Stem do
 
   let(:full_info) {
     {
-      "firstName" => ["Keymaster of"],
-      "lastName" => ["Gozer"],
-      "mail" => ["vince@gozer.com"],
-      "achieverContactNo" => ["abc123"]
+      "id_token" => "Test",
+      "given_name" => "Keymaster of",
+      "family_name" => "Gozer",
+      "userEmail" => "vince@gozer.com",
+      "achiever_contact_no" => "abc123",
+      "integrationkey" => 123456
     }
   }
 
   let(:partial_info) {
     {
-      "firstName" => ["Keymaster of"],
-      "lastName" => ["Gozer"]
+      "given_name" => "Keymaster of",
+      "family_name" => "Gozer"
     }
   }
 
   context "with correct fields info returns the correct" do
     before do
-      allow(strategy).to receive(:user_info).and_return({"attributes" => full_info})
+      allow(strategy).to receive(:raw_info).and_return(full_info)
     end
 
     it "first name" do
@@ -30,6 +32,10 @@ RSpec.describe OmniAuth::Strategies::Stem do
 
     it "last name" do
       expect(strategy.info[:last_name]).to eq("Gozer")
+    end
+
+    it "stem user id" do
+      expect(strategy.info[:stem_user_id]).to eq(123456)
     end
 
     it "email" do
@@ -43,7 +49,7 @@ RSpec.describe OmniAuth::Strategies::Stem do
 
   context "with missing fields info sets them to nil for" do
     before do
-      allow(strategy).to receive(:user_info).and_return({"attributes" => partial_info})
+      allow(strategy).to receive(:raw_info).and_return(partial_info)
     end
 
     it "email" do

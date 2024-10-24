@@ -7,7 +7,7 @@ RSpec.describe GhostToStrapi do
     stub_strapi_blog_tags
     stub_strapi_media_upload
     stub_strapi_media_query
-    stub_strapi_get_single_blog_post("blogs/reducing-workload")
+    stub_strapi_get_single_blog_post("blogs/reducing-workload", id: 3)
     stub_strapi_not_found("blogs/national-careers-week-2024")
     stub_strapi_not_found("simple-pages/privacy")
     stub_strapi_create("blogs")

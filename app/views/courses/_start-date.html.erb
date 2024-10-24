@@ -1,3 +1,5 @@
-<p class="start-date govuk-body-s ncce-aside__text govuk-!-padding-top-4 govuk-!-padding-bottom-4">
-  <%= online_course_availability(date) %>
-</p>
+<% if date %>
+  <p class="start-date govuk-body-s ncce-aside__text govuk-!-padding-top-4 govuk-!-padding-bottom-4">
+    <%= online_course_availability(date) %>
+  </p>
+<% end %>

@@ -1,0 +1,30 @@
+<%= render GovGridRowComponent.new(additional_classes: "question-answer-row") do |row| %>
+  <%= row.with_column("full") do %>
+
+    <div class="tc-row">
+
+      <div class="tc-row-two-thirds">
+
+        <div class="question-answer__question">
+          <div class="question-answer__question-content">
+            <%= @question %>
+          </div>
+        </div>
+
+        <div class="question-answer__answer">
+          <div class="<%= answer_content_class %>">
+            <%= render @answer.render %>
+
+            <% if @answer_icon_block %>
+              <%= render @answer_icon_block.render %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+
+      <div class="tc-row-one-third <%= aside_alignment_class %>">
+        <%= render_parent %>
+      </div>
+    </div>
+  <% end %>
+<% end %>

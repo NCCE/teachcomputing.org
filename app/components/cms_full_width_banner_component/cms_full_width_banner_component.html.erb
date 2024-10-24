@@ -1,0 +1,29 @@
+<%= render GovGridRowComponent.new(additional_classes: wrapper_classes) do |row| %>
+  <%= row.with_column("full") do %>
+
+    <% if @title %>
+      <h2 class="govuk-heading-l cms-full-width-banner__heading"><%= @title %></h2>
+    <% end %>
+
+    <%= content_tag :div, class: banner_classes do %>
+    
+      <% if @image %>
+        <div class="cms-full-width-banner__media">
+          <%= render CmsImageComponent.new(@image, show_caption: false, link: @image_link) %>
+        </div>
+      <% end %>
+
+      <div class="cms-full-width-banner__content">
+        <%= render @text_content.render %>
+
+        <% if @buttons %>
+          <div class="cms-full-width-banner__content-buttons">
+            <% @buttons.each do |button| %>
+              <%= render button.render %>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+  <% end %>
+<% end %>

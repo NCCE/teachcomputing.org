@@ -60,4 +60,19 @@ RSpec.describe GovGridRowComponent, type: :component do
       expect(page).to have_css("div.govuk-grid-column-full[class*='margin-left-1']")
     end
   end
+
+  context "with non valid column" do
+    it "should raise an error" do
+      expect do
+        described_class.new(
+          padding: {right: 5},
+          margin: {bottom: 4}
+        ).tap do |c|
+          c.with_column("full-width", padding: {top: 2}, margin: {left: 1}) do
+            "Some text"
+          end
+        end
+      end.to raise_error(StandardError)
+    end
+  end
 end

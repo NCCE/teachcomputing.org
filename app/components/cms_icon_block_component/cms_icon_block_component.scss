@@ -1,0 +1,41 @@
+.icon-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  @include govuk-media-query($until: desktop) {
+    margin-bottom: 15px;
+    justify-content: space-evenly;
+  }
+
+  .cms-image {
+    display: flex;
+    align-items: center;
+
+    img {
+      width: 23px;
+      height: 23px;
+      object-fit: contain;
+      object-position: center;
+    }
+  }
+
+  &__block {
+    display: flex;
+    align-items: center;
+    flex: 1;
+
+    @include govuk-media-query($until: desktop) {
+      flex: auto;
+      flex-direction: column;
+    }
+  }
+
+  &__text {
+    margin-left: 10px;
+
+    @include govuk-media-query($until: desktop) {
+      margin-left: 0;
+    }
+  }
+}

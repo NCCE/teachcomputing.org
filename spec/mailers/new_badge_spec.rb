@@ -2,7 +2,7 @@ require "rails_helper"
 
 RSpec.describe NewBadgeMailer, type: :mailer do
   let(:user) { create(:user) }
-  let(:programme) { create(:primary_certificate, title: "My title") }
+  let(:programme) { create(:primary_certificate) }
   let(:mail) { NewBadgeMailer.new_badge_email(user, programme) }
   let(:subject) { "You’ve been awarded a new digital badge" }
 
@@ -15,7 +15,7 @@ RSpec.describe NewBadgeMailer, type: :mailer do
 
     it "renders the body" do
       expect(mail.body.encoded).to include(user.first_name.to_s)
-      expect(mail.body.encoded).to include("My title")
+      expect(mail.body.encoded).to include("National Centre for Computing Education (NCCE) certification journey")
     end
   end
 end
