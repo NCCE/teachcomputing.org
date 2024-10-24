@@ -1,25 +1,29 @@
 <% if @current_user %>
-  <div class="enrolment-confirmation-component">
-    <%= render ModalComponent.new(
-      title: "Enrol on the #{@programme.certificate_name}",
-      reopen_button_text: (@enrol_button_text || "Enrol"),
-      show_corner_decoration: false,
-      reopen_button_class: ("enrolment-confirmation-component-button--full-width" if @full_width)
-      ) do |component| %>
+  <% if @programme.enrolment_confirmation_required? %>
+    <div class="enrolment-confirmation-component">
+      <%= render ModalComponent.new(
+        title: "Enrol on the #{@programme.certificate_name}",
+        reopen_button_text: (@enrol_button_text || "Enrol"),
+        show_corner_decoration: false,
+        reopen_button_class: ("enrolment-confirmation-component-button--full-width" if @full_width)
+        ) do |component| %>
 
-      <% component.with_body do %>
-        <div class="enrolment-confirmation-model--wrapper">
-          <div>
-            <h2 class="govuk-heading-s">Ready to enrol?</h2>
-            <p class="govuk-body">Comfirm your enrolment on the certificate, and then let"s find you the perfect training course to get started with.</p>
+        <% component.with_body do %>
+          <div class="enrolment-confirmation-model--wrapper">
+            <div>
+              <h2 class="govuk-heading-s">Ready to enrol?</h2>
+              <p class="govuk-body">Comfirm your enrolment on the certificate, and then let"s find you the perfect training course to get started with.</p>
+            </div>
+            <div>
+              <%= link_to "Comfirm my enrolment", @programme.enrol_path(user_programme_enrolment: { user_id: @current_user.id, programme_id: @programme.id }), method: :post, class: "govuk-button button", role: "button", draggable: "false" %>
+            </div>
           </div>
-          <div>
-            <%= link_to "Comfirm my enrolment", @programme.enrol_path(user_programme_enrolment: { user_id: @current_user.id, programme_id: @programme.id }), method: :post, class: "govuk-button button", role: "button", draggable: "false" %>
-          </div>
-        </div>
+        <% end %>
       <% end %>
-    <% end %>
-  </div>
+    </div>
+  <% else %>
+    <%= link_to (@enrol_button_text || "Enrol"), @programme.enrol_path(user_programme_enrolment: { user_id: @current_user.id, programme_id: @programme.id }), method: :post, class: button_classes, role: "button", draggable: "false" %>
+  <% end %>
 <% else %>
   <%= link_to "Log in", auth_url, method: :post, class: button_classes, role: "button", draggable: "false" %>
 <% end %>

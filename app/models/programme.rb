@@ -195,4 +195,8 @@ class Programme < ApplicationRecord
   def achievement_type
     raise NotImplementedError
   end
+
+  def enrolment_confirmation_required?
+    raise NotImplementedError
+  end
 end
