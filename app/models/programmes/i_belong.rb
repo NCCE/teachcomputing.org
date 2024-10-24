@@ -54,5 +54,9 @@ module Programmes
     def achievement_type
       :school
     end
+
+    def enrolment_confirmation_required?
+      false
+    end
   end
 end

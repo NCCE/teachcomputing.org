@@ -38,5 +38,9 @@ module Programmes
     def achievement_type
       :individual
     end
+
+    def enrolment_confirmation_required?
+      false
+    end
   end
 end
