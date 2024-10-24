@@ -50,9 +50,6 @@ module TeachComputing
     config.auth0_client_id = ENV["STEM_OAUTH_CLIENT_ID"]
     config.stem_credentials_access_token = ENV["STEM_CREDENTIALS_ACCESS_TOKEN_KEY"]
     config.stem_credentials_refresh_token = ENV["STEM_CREDENTIALS_REFRESH_TOKEN_KEY"]
-    config.logout_send_client = ENV["AUTH0_CLIENT_IN_LOGOUT"] == "true"
-    config.logout_domain = ENV["AUTH0_LOGOUT_DOMAIN"]
-    config.logout_path = ENV["AUTH0_LOGOUT_PATH"]
 
     config.stem_course_redirect = ENV["STEM_COURSE_REDIRECT"]
 
