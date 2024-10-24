@@ -5,10 +5,10 @@ module NavigationHelper
        children: [
          {text: "Subject lead toolkit", link: primary_teachers_path, label: "Subject lead toolkit"},
          {text: "Teacher certificate", link: primary_path, label: "Primary teacher certificate"},
+         {text: "Enrichment", link: primary_enrichment_path, label: "Enrichment"},
          {text: "Early career teachers", link: cms_page_path("primary-early-careers"), label: "Primary ECT"},
          {text: "Trainee teachers", link: cms_page_path("primary-trainees"), label: "Primary Trainees"},
-         {text: "Senior leaders", link: primary_senior_leaders_path, label: "Primary SLT"},
-         {text: "Enrichment", link: primary_enrichment_path, label: "Enrichment"}
+         {text: "Senior leaders", link: primary_senior_leaders_path, label: "Primary SLT"}
        ]},
       {text: "Secondary",
        children: [
