@@ -39,7 +39,7 @@ RSpec.describe CmsPageTitleComponent, type: :component do
     end
 
     it "renders the image" do
-      expect(page).to have_css("img")
+      expect(page).to have_css(".cms-image img")
     end
   end
 end
