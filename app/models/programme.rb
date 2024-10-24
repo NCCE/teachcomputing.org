@@ -197,6 +197,6 @@ class Programme < ApplicationRecord
   end
 
   def enrolment_confirmation_required?
-    raise NotImplementedError
+    false
   end
 end
