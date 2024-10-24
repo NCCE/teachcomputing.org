@@ -19,12 +19,6 @@ module OmniAuth::Strategies
       end
     end
 
-    def user_info
-      @response ||= access_token.get("/userinfo", snaky: false)
-      sentry_context(@response)
-      @response.parsed
-    end
-
     def callback_url
       return super if ENV.fetch("BYPASS_OAUTH", false) == "true"
 
