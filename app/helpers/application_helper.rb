@@ -12,7 +12,7 @@ module ApplicationHelper
   def create_account_url
     return login_path if Rails.application.config.bypass_oauth
 
-    "#{Rails.application.config.stem_account_site}/u/signup/"
+    URI::HTTPS.build(host: Rails.application.config.stem_account_site, path: "/u/signup").to_s
   end
 
   def auth_url
