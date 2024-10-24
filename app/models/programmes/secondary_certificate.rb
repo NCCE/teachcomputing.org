@@ -60,5 +60,9 @@ module Programmes
     def auto_enrollable?
       true
     end
+
+    def enrolment_confirmation_required?
+      false
+    end
   end
 end

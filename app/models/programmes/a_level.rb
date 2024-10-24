@@ -34,5 +34,9 @@ module Programmes
         *programme_activity_groupings.includes(:programme_activities).order(:sort_key)
       ]
     end
+
+    def enrolment_confirmation_required?
+      false
+    end
   end
 end

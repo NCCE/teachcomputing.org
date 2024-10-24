@@ -191,4 +191,8 @@ class Programme < ApplicationRecord
   def minimum_character_required_community_evidence
     0
   end
+
+  def enrolment_confirmation_required?
+    raise NotImplementedError
+  end
 end
