@@ -127,9 +127,5 @@ module Programmes
         )
       ]
     end
-
-    def enrolment_confirmation_required?
-      false
-    end
   end
 end
