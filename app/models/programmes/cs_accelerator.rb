@@ -127,5 +127,9 @@ module Programmes
         )
       ]
     end
+
+    def achievement_type
+      :individual
+    end
   end
 end

@@ -371,6 +371,12 @@ RSpec.describe Programme, type: :model do
     end
   end
 
+  describe "#achivement_type" do
+    it "should return not implemented error" do
+      expect { generic_programme.achievement_type }.to raise_error(NotImplementedError)
+    end
+  end
+
   describe "#user_qualifies_for_credly_cpd_badge?" do
     it "should return true if the user has compelted a f2f achievement" do
       programme = create(:primary_certificate)

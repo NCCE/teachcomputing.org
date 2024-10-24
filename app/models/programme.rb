@@ -191,4 +191,8 @@ class Programme < ApplicationRecord
   def minimum_character_required_community_evidence
     0
   end
+
+  def achievement_type
+    raise NotImplementedError
+  end
 end

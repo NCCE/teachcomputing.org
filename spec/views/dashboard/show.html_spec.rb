@@ -3,8 +3,6 @@ require "rails_helper"
 RSpec.describe("dashboard/show", type: :view) do
   let(:user) { create(:user) }
   let(:activity) { create(:activity, :cs_accelerator_diagnostic_tool) }
-  let!(:online_activity) { create(:activity, :my_learning) }
-  let!(:remote_activity) { create(:activity, :remote) }
   let!(:face_to_face) { create(:activity, :stem_learning) }
   let!(:primary_certificate) { create(:primary_certificate) }
   let!(:cs_accelerator) { create(:cs_accelerator) }
@@ -16,204 +14,175 @@ RSpec.describe("dashboard/show", type: :view) do
       user_id: user.id,
       programme_id: cs_accelerator.id)
   end
-
-  before do
-    allow_any_instance_of(AuthenticationHelper).to receive(:current_user).and_return(user)
-    @incomplete_achievements = []
-    @completed_achievements = []
+  let(:completed_programme_enrolment) do
+    create(:completed_enrolment,
+      user_id: user.id,
+      programme_id: cs_accelerator.id)
   end
 
   context "when the user has not enrolled" do
     before do
+      allow_any_instance_of(AuthenticationHelper).to receive(:current_user).and_return(user)
+      @enrolled_certificates = []
+      @unenrolled_certificates = [
+        primary_certificate,
+        secondary_certificate,
+        cs_accelerator,
+        i_belong,
+        a_level
+      ]
+      @incomplete_achievements = []
+      @completed_achievements = []
       render
     end
 
-    it "has a title" do
-      expect(rendered).to have_css("h1", text: "Your dashboard")
+    it "has a page title" do
+      expect(rendered).to have_text("Progress overview")
     end
 
-    it "has courses section" do
-      expect(rendered).to have_css("h2", text: "Your courses")
+    it "has no enrolled certificate section title" do
+      expect(rendered).to_not have_text("Enrolled certificates")
     end
 
-    it "shows the courses link" do
-      expect(rendered).to have_link("Browse our courses", href: "/courses")
+    it "has choose your next certificate title" do
+      expect(rendered).to have_text("Choose your certificate")
+    end
+
+    it "renders five certificate components" do
+      expect(rendered).to have_css(".dashboard-certificate", count: 5)
+    end
+
+    it "shows the certificates as unenrolled" do
+      expect(rendered).to have_text("Find out more", count: 5)
     end
   end
 
-  context "when the user has enrolled on a programme" do
+  context "when the user has enrolled" do
     before do
+      allow_any_instance_of(AuthenticationHelper).to receive(:current_user).and_return(user)
       user_programme_enrolment
+      user.reload
+
+      @enrolled_certificates = [cs_accelerator]
+      @unenrolled_certificates = [
+        primary_certificate,
+        secondary_certificate,
+        i_belong,
+        a_level
+      ]
+
+      @incomplete_achievements = []
+      @completed_achievements = []
+      render
+    end
+
+    it "renders five certificate components" do
+      expect(rendered).to have_css(".dashboard-certificate", count: 5)
+    end
+
+    it "has one enrolled certificate" do
+      expect(rendered).to have_text("Check my progress", count: 1)
+    end
+
+    it "shows four certificates as unenrolled" do
+      expect(rendered).to have_text("Find out more", count: 4)
+    end
+
+    it "has enrolled certificates title" do
+      expect(rendered).to have_text("Enrolled certificates")
+    end
+
+    it "has choose your next certificate title" do
+      expect(rendered).to have_text("Choose your next certificate")
+    end
+  end
+
+  context "when the user has completed a certificate" do
+    before do
+      allow_any_instance_of(AuthenticationHelper).to receive(:current_user).and_return(user)
+      allow_any_instance_of(Programmes::CSAccelerator).to receive(:user_meets_completion_requirement?).with(user).and_return(true)
+
+      completed_programme_enrolment
+      user.reload
+
+      @enrolled_certificates = [cs_accelerator]
+      @unenrolled_certificates = [
+        primary_certificate,
+        secondary_certificate,
+        i_belong,
+        a_level
+      ]
+
+      @incomplete_achievements = []
+      @completed_achievements = []
+      render
+    end
+
+    it "has one completed certificate" do
+      expect(rendered).to have_text("Download my certificate", count: 1)
+    end
+  end
+
+  context "when the user has incomplete achievements" do
+    before do
+      allow_any_instance_of(AuthenticationHelper).to receive(:current_user).and_return(user)
+      @enrolled_certificates = []
+      @unenrolled_certificates = []
+
+      @incomplete_achievements = create_list(:in_progress_achievement, 2, user: user)
+      @completed_achievements = []
       user.reload
       render
     end
 
-    it "shows the certificate progress section" do
-      expect(rendered).to have_css(".govuk-heading-m", text: "Certificates")
+    it "has the section title" do
+      expect(rendered).to have_text("Your courses")
+    end
+
+    it "renders course components" do
+      expect(rendered).to have_css(".dashboard-course-component", count: 2)
     end
   end
 
-  context "when there are no achievements" do
+  context "when the user has a completed achievement" do
     before do
+      allow_any_instance_of(AuthenticationHelper).to receive(:current_user).and_return(user)
+      @enrolled_certificates = []
+      @unenrolled_certificates = []
+
+      @incomplete_achievements = []
+      @completed_achievements = [create(:completed_achievement, user: user, activity: face_to_face)]
+      user.reload
       render
     end
 
-    it "has no activity list" do
-      expect(rendered).not_to have_css(".ncce-activity-list")
+    it "has the completed courses title" do
+      expect(rendered).to have_text("Completed courses")
+    end
+
+    it "renders one course component" do
+      expect(rendered).to have_css(".dashboard-course-component", count: 1)
     end
   end
 
-  context "when there are only incomplete achievements" do
+  context "when the user has both completed and incomplete courses" do
     before do
-      @incomplete_achievements = [create(:achievement, user: user)]
+      allow_any_instance_of(AuthenticationHelper).to receive(:current_user).and_return(user)
+      @enrolled_certificates = []
+      @unenrolled_certificates = []
+
+      @incomplete_achievements = create_list(:in_progress_achievement, 2, user: user)
+      @completed_achievements = create_list(:completed_achievement, 2, user: user)
+      user.reload
       render
     end
 
-    it "renders a checkbox with no ticks" do
-      expect(rendered).to have_css(".ncce-activity-list__item-text--incomplete")
+    it "has the completed courses title" do
+      expect(rendered).to have_text("Completed courses")
     end
 
-    it "shows the enrolled prefix" do
-      expect(rendered).to have_text("Enrolled")
-    end
-
-    it "does not render an empty list for complete achievements" do
-      expect(rendered).to have_css(".ncce-activity-list", count: 1)
-    end
-
-    it "shows the expected course type" do
-      expect(rendered).to have_css(".icon-map-pin", text: "Face to face course")
-    end
-  end
-
-  context "when there are only complete achievements" do
-    before do
-      @completed_achievements = [create(:completed_achievement, user: user)]
-      render
-    end
-
-    it "renders a checkbox with ticks" do
-      expect(rendered).to have_css(".ncce-activity-list__item-text")
-    end
-
-    it "shows the completed prefix" do
-      expect(rendered).to have_text("Completed")
-    end
-
-    it "does not render an empty list for incomplete achievements" do
-      expect(rendered).to have_css(".ncce-activity-list", count: 1)
-    end
-  end
-
-  context "when there are both complete and incomplete achievements" do
-    before do
-      assign(:incomplete_achievements, create_list(:achievement, 2, user: user))
-      assign(:completed_achievements, create_list(:completed_achievement, 2, user: user))
-      assign(:user_course_info, [])
-
-      render
-    end
-
-    it "has an activity list with the expected number of items" do
-      expect(rendered).to have_css(".ncce-activity-list li", count: 4)
-    end
-  end
-
-  context "when there's an achievement not part of a programme" do
-    before do
-      assign(:incomplete_achievements, [create(:achievement, user: user)])
-      render
-    end
-
-    it "has an activity list with the expected number of items" do
-      expect(rendered).to have_css(".ncce-activity-list li", count: 1)
-    end
-  end
-
-  context "when there's a face to face achievement" do
-    before do
-      assign(:incomplete_achievements, [create(:achievement, activity: face_to_face)])
-      assign(:user_course_info, [
-        Achiever::Course::Delegate.new(JSON.parse({
-          "Activity.COURSEOCCURRENCENO": "cf8903f9-91a2-4d08-ba41-596ea05b498d",
-          "Activity.COURSETEMPLATENO": face_to_face.stem_course_template_no,
-          "Delegate.Is_Fully_Attended": "True",
-          OnlineCPD: false,
-          "Delegate.Progress": "157420003",
-          "ActivityVenueAddress.VenueName": "National STEM Learning Centre",
-          "ActivityVenueAddress.VenueCode": "",
-          "ActivityVenueAddress.City": "York",
-          "ActivityVenueAddress.PostCode": "YO10 5DD",
-          "ActivityVenueAddress.Address.Line1": "University of York",
-          "Activity.StartDate": "10/07/2019 00:00:00",
-          "Activity.EndDate": "17/07/2019 00:00:00"
-        }.to_json, object_class: OpenStruct)),
-        Achiever::Course::Delegate.new(JSON.parse({
-          "Activity.COURSEOCCURRENCENO": "cf8903f9-91a2-4d08-ba41-596ea05b498d",
-          "Activity.COURSETEMPLATENO": "92f4f86e-0237-4ecc-a905-2f6c62d6b5ae",
-          "Delegate.Is_Fully_Attended": "False",
-          OnlineCPD: false,
-          "Delegate.Progress": "157420003",
-          "ActivityVenueAddress.VenueName": "Raspberry Pi Foundation",
-          "ActivityVenueAddress.VenueCode": "",
-          "ActivityVenueAddress.City": "Cambridge",
-          "ActivityVenueAddress.PostCode": "CB2 1NT",
-          "ActivityVenueAddress.Address.Line1": "37 Hills Road",
-          "Activity.StartDate": "10/07/2019 00:00:00",
-          "Activity.EndDate": "17/07/2019 00:00:00"
-        }.to_json, object_class: OpenStruct))
-      ])
-
-      render
-    end
-
-    it "shows the address" do
-      expect(rendered).to have_css(
-        ".ncce-activity-list__subtext--address",
-        text: "National STEM Learning Centre, University of York, York, YO10 5DD"
-      )
-    end
-
-    it "shows the providers component" do
-      expect(rendered).to have_css(".provider-logos-component")
-    end
-  end
-
-  context "when there's an online achievement" do
-    before do
-      assign(:incomplete_achievements, [create(:achievement, activity: online_activity)])
-      render
-    end
-
-    it "shows the expected course type" do
-      expect(rendered).to have_css(".icon-online", text: "Online course")
-    end
-
-    it "does not show an address" do
-      expect(rendered).not_to have_css(".ncce-activity-list__subtext--address")
-    end
-
-    it "shows the providers component" do
-      expect(rendered).to have_css(".provider-logos-component")
-    end
-  end
-
-  context "when there's a remote achievement" do
-    before do
-      assign(:incomplete_achievements, [create(:achievement, activity: remote_activity)])
-      render
-    end
-
-    it "shows the expected course type" do
-      expect(rendered).to have_css(".icon-remote", text: "Live remote course")
-    end
-
-    it "does not show an address" do
-      expect(rendered).not_to have_css(".ncce-activity-list__subtext--address")
-    end
-
-    it "shows the providers component" do
-      expect(rendered).to have_css(".provider-logos-component")
+    it "renders four course components" do
+      expect(rendered).to have_css(".dashboard-course-component", count: 4)
     end
   end
 end
