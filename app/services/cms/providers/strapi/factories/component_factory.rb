@@ -42,7 +42,17 @@ module Cms
               to_testimonial_row(strapi_data)
             when "content-blocks.testimonial"
               to_testimonial(strapi_data)
+            when "blocks.numbered-icon-list"
+              to_numbered_icon_list(strapi_data)
             end
+          end
+
+          def self.to_numbered_icon_list(strapi_data)
+            DynamicComponents::NumberedIconList.new(
+              title: strapi_data[:title],
+              title_icon: ModelFactory.to_image(strapi_data, :titleIcon),
+              points: strapi_data[:points].map { ModelFactory.to_content_block(_1, with_wrapper: false) }
+            )
           end
 
           def self.to_testimonial_row(strapi_data)

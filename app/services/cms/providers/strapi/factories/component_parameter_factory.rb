@@ -60,7 +60,8 @@ module Cms
               populate: {
                 bkColor: {fields: "name"},
                 resourceCards: resource_card_parameters,
-                pictureCards: picture_card_parameters
+                pictureCards: picture_card_parameters,
+                numericCards: {fields: [:textContent, :title]}
               }
             }
           end
