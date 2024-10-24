@@ -44,9 +44,7 @@ class AuthController < ApplicationController
     request_params = {
       returnTo: root_url
     }
-    request_params[:client_id] = Rails.application.config.auth0_client_id if Rails.application.config.logout_send_client
-
-    URI::HTTPS.build(host: Rails.application.config.logout_domain, path: Rails.application.config.logout_path, query: request_params.to_query).to_s
+    URI::HTTPS.build(host: Rails.application.config.stem_account_site, path: "/api/auth/logout", query: request_params.to_query).to_s
   end
 
   def omniauth_params

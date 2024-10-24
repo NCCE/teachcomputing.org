@@ -4,6 +4,6 @@ module AuthenticationHelper
   end
 
   def profile_edit_url
-    "#{Rails.application.config.stem_account_site}/edit-profile"
+    URI::HTTPS.build(host: Rails.application.config.stem_account_site, path: "/edit-profile").to_s
   end
 end
