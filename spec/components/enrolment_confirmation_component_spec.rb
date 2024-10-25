@@ -49,7 +49,7 @@ RSpec.describe EnrolmentConfirmationComponent, type: :component do
       render_inline(described_class.new(
         programme: primary_certificate,
         current_user: user,
-        enrol_button_text: "Click here to enrol",
+        button_text: "Click here to enrol",
         full_width: false
       ))
     end
@@ -59,7 +59,7 @@ RSpec.describe EnrolmentConfirmationComponent, type: :component do
     end
 
     it "does not apply the full width button classes" do
-      expect(page).to_not have_css(".enrolment-confirmation-component-button--full-width")
+      expect(page).to_not have_css(".enrolment-confirmation-component__button--full-width")
     end
   end
 end
