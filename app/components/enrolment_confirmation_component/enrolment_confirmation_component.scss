@@ -2,15 +2,17 @@
   .ncce-modal--body {
     box-shadow: 4px 4px 8px 2px #00000040;
   }
-}
 
-.enrolment-confirmation-model--wrapper {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-top: 20px;
-}
+  &__wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+  }
 
-.enrolment-confirmation-component-button--full-width {
-  width: 100%;
+  &__button {
+    &--full-width {
+      width: 100%;
+    }
+  }
 }
