@@ -439,4 +439,12 @@ RSpec.describe Programme, type: :model do
       expect(programme.minimum_character_required_community_evidence).to eq(0)
     end
   end
+
+  describe "#enrolment_confirmation_required?" do
+    it "should default to false" do
+      programme = create(:programme)
+
+      expect(programme.enrolment_confirmation_required?).to eq(false)
+    end
+  end
 end
