@@ -3,7 +3,7 @@
     <div class="enrolment-confirmation-component">
       <%= render ModalComponent.new(
         title: "Enrol on the #{@programme.certificate_name}",
-        reopen_button_text: (@button_text || "Enrol"),
+        reopen_button_text: button_text,
         show_corner_decoration: false,
         reopen_button_class: ("enrolment-confirmation-component__button--full-width" if @full_width)
         ) do |component| %>
@@ -11,18 +11,22 @@
           <div class="enrolment-confirmation-component__wrapper">
             <div>
               <h2 class="govuk-heading-s">Ready to enrol?</h2>
-              <p class="govuk-body">Confirm your enrolment on the certificate, and then let"s find you the perfect training course to get started with.</p>
+              <p class="govuk-body">Confirm your enrolment on the certificate, and then let's find you the perfect training course to get started with.</p>
             </div>
             <div>
-              <%= link_to "Comfirm my enrolment", @programme.enrol_path(user_programme_enrolment: { user_id: @current_user.id, programme_id: @programme.id }), method: :post, class: "govuk-button button", role: "button", draggable: "false" %>
+              <%= link_to "Comfirm my enrolment", @programme.enrol_path(user_programme_enrolment: { user_id: @current_user.id, programme_id: @programme.id }), method: :post, class: "govuk-button button", role: "button" %>
             </div>
           </div>
         <% end %>
       <% end %>
     </div>
   <% else %>
-    <%= link_to (@button_text || "Enrol"), @programme.enrol_path(user_programme_enrolment: { user_id: @current_user.id, programme_id: @programme.id }), method: :post, class: button_classes, role: "button", draggable: "false" %>
+    <% if @programme.user_enrolled?(@current_user) %>
+      <%= link_to "Visit dashboard", dashboard_path, class: button_classes, role: "button" %>
+    <% else %>
+      <%= link_to button_text, @programme.enrol_path(user_programme_enrolment: { user_id: @current_user.id, programme_id: @programme.id }), method: :post, class: button_classes, role: "button" %>
+    <% end %>
   <% end %>
 <% else %>
-  <%= link_to "Log in", auth_url, method: :post, class: button_classes, role: "button", draggable: "false" %>
+  <%= link_to "Log in", auth_url, method: :post, class: button_classes, role: "button" %>
 <% end %>
