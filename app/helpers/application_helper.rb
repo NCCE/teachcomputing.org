@@ -17,7 +17,8 @@ module ApplicationHelper
       client_id: Rails.application.config.auth0_client_id,
       screen_hint: "signup",
       scope: "openid profile",
-      response_type: "code"
+      response_type: "code",
+      redirect_uri: "https://preprod-account.stem.org.uk/api/auth/callback"
     }
     URI::HTTPS.build(host: Rails.application.config.stem_signin_site, path: "/authorize", query: request_params.to_query).to_s
   end
