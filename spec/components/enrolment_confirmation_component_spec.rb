@@ -62,4 +62,19 @@ RSpec.describe EnrolmentConfirmationComponent, type: :component do
       expect(page).to_not have_css(".enrolment-confirmation-component__button--full-width")
     end
   end
+
+  context "when the user is already enrolled" do
+    before do
+      allow(cs_accelerator).to receive(:user_enrolled?).with(user).and_return(true)
+
+      render_inline(described_class.new(
+        programme: cs_accelerator,
+        current_user: user
+      ))
+    end
+
+    it "render the view dashboard button" do
+      expect(page).to have_text("Visit dashboard")
+    end
+  end
 end
