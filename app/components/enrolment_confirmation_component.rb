@@ -15,4 +15,8 @@ class EnrolmentConfirmationComponent < ViewComponent::Base
     classes << "button--full-width" if @full_width
     classes
   end
+
+  def button_text
+    @button_text || "Enrol"
+  end
 end
