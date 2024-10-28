@@ -13,7 +13,6 @@ module ApplicationHelper
     return login_path if Rails.application.config.bypass_oauth
 
     request_params = {
-      redirect_uri: root_url,
       client_id: Rails.application.config.auth0_client_id,
       screen_hint: "signup",
       scope: "openid profile",
