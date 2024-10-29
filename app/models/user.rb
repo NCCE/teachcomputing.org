@@ -6,7 +6,6 @@ class User < ApplicationRecord
   validates :last_name, presence: true
   validates :stem_achiever_contact_no, presence: true
   validates :stem_credentials_access_token, presence: true
-  # validates :stem_credentials_refresh_token, presence: true
   validates :stem_credentials_expires_at, presence: true
   validates :stem_user_id, presence: true, uniqueness: true
   # WARNING: We are consiously choosing not to have a unique constraint on
