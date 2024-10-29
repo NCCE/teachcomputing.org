@@ -14,7 +14,7 @@
               <p class="govuk-body">Confirm your enrolment on the certificate, and then let's find you the perfect training course to get started with.</p>
             </div>
             <div>
-              <%= link_to "Comfirm my enrolment", @programme.enrol_path(user_programme_enrolment: { user_id: @current_user.id, programme_id: @programme.id }), method: :post, class: "govuk-button button", role: "button" %>
+              <%= link_to "Confirm my enrolment", @programme.enrol_path(user_programme_enrolment: { user_id: @current_user.id, programme_id: @programme.id }), method: :post, class: "govuk-button button", role: "button" %>
             </div>
           </div>
         <% end %>
