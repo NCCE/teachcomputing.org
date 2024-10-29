@@ -12,16 +12,7 @@ module ApplicationHelper
   def create_account_url
     return login_path if Rails.application.config.bypass_oauth
 
-    request_params = {
-      # registrationUrl: "https://preprod-account.stem.org.uk/registration",
-      # client_id: Rails.application.config.auth0_client_id,
-      screen_hint: "signup"
-      # scope: "openid profile",
-      # response_type: "code",
-      # redirect_uri: "https://preprod-account.stem.org.uk/api/auth/callback",
-      # state: SecureRandom.hex(10)
-    }
-    URI::HTTPS.build(host: Rails.application.config.stem_signin_site, path: "/api/auth/login", query: request_params.to_query).to_s
+    "#{auth_url}?screen_hint=signup"
   end
 
   def auth_url
