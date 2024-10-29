@@ -96,6 +96,18 @@ module Cms
               }
             }
           end
+
+          def self.numbered_icon_list_parameters
+            {
+              populate: {
+                titleIcon: {populate: [:alternativeText]},
+                asideSections: {populate: {fields: "slug"}},
+                points: {
+                  populate: {fields: [:textContent]}
+                }
+              }
+            }
+          end
         end
       end
     end

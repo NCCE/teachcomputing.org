@@ -51,7 +51,8 @@ module Cms
             DynamicComponents::NumberedIconList.new(
               title: strapi_data[:title],
               title_icon: ModelFactory.to_image(strapi_data, :titleIcon),
-              points: strapi_data[:points].map { ModelFactory.to_content_block(_1, with_wrapper: false) }
+              points: strapi_data[:points].map { ModelFactory.to_content_block(_1[:textContent], with_wrapper: false) },
+              aside_sections: extract_aside_sections(strapi_data)
             )
           end
 

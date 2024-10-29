@@ -50,7 +50,8 @@ module Cms
                   "blocks.question-and-answer": ComponentParameterFactory.question_and_answer_parameters,
                   "blocks.full-width-banner": ComponentParameterFactory.full_width_banner_parameters,
                   "blocks.full-width-text": ComponentParameterFactory.text_block_parameters,
-                  "blocks.testimonial-row": ComponentParameterFactory.testimonial_row_parameters
+                  "blocks.testimonial-row": ComponentParameterFactory.testimonial_row_parameters,
+                  "blocks.numbered-icon-list": ComponentParameterFactory.numbered_icon_list_parameters
                 }
               }
             end
