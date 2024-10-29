@@ -77,7 +77,7 @@ RSpec.describe Certificates::IBelongController do
       end
 
       it "redirects to login" do
-        expect(response).to redirect_to(/signup/)
+        expect(response).to redirect_to(/auth\/stem\?screen_hint=signup/)
       end
     end
   end
@@ -123,7 +123,7 @@ RSpec.describe Certificates::IBelongController do
       end
 
       it "redirects to login" do
-        expect(response).to redirect_to(/signup/)
+        expect(response).to redirect_to(/auth\/stem\?screen_hint=signup/)
       end
     end
   end
@@ -170,7 +170,7 @@ RSpec.describe Certificates::IBelongController do
       end
 
       it "redirects to login" do
-        expect(response).to redirect_to(/signup/)
+        expect(response).to redirect_to(/auth\/stem\?screen_hint=signup/)
       end
     end
   end
