@@ -17,7 +17,6 @@ class AuthController < ApplicationController
 
     Achiever::FetchUsersCompletedCoursesFromAchieverJob.perform_later(user)
   rescue => e
-    puts e
     Sentry.capture_exception(e)
 
     raise e
