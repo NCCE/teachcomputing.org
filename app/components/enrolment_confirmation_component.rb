@@ -2,8 +2,9 @@
 
 class EnrolmentConfirmationComponent < ViewComponent::Base
   delegate :auth_url, to: :helpers
+  attr_reader :button_text
 
-  def initialize(programme:, current_user:, full_width: true, button_text: nil)
+  def initialize(programme:, current_user:, full_width: true, button_text: "Enrol")
     @current_user = current_user
     @programme = programme
     @full_width = full_width
@@ -14,9 +15,5 @@ class EnrolmentConfirmationComponent < ViewComponent::Base
     classes = ["govuk-button button"]
     classes << "button--full-width" if @full_width
     classes
-  end
-
-  def button_text
-    @button_text || "Enrol"
   end
 end

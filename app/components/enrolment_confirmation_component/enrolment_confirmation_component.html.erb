@@ -1,5 +1,7 @@
 <% if @current_user %>
-  <% if @programme.enrolment_confirmation_required? %>
+  <% if @programme.user_enrolled?(@current_user) %>
+    <%= link_to "Visit dashboard", dashboard_path, class: button_classes, role: "button" %>
+  <% elsif @programme.enrolment_confirmation_required? %>
     <div class="enrolment-confirmation-component">
       <%= render ModalComponent.new(
         title: "Enrol on the #{@programme.certificate_name}",
@@ -21,11 +23,7 @@
       <% end %>
     </div>
   <% else %>
-    <% if @programme.user_enrolled?(@current_user) %>
-      <%= link_to "Visit dashboard", dashboard_path, class: button_classes, role: "button" %>
-    <% else %>
-      <%= link_to button_text, @programme.enrol_path(user_programme_enrolment: { user_id: @current_user.id, programme_id: @programme.id }), method: :post, class: button_classes, role: "button" %>
-    <% end %>
+    <%= link_to button_text, @programme.enrol_path(user_programme_enrolment: { user_id: @current_user.id, programme_id: @programme.id }), method: :post, class: button_classes, role: "button" %>
   <% end %>
 <% else %>
   <%= link_to "Log in", auth_url, method: :post, class: button_classes, role: "button" %>

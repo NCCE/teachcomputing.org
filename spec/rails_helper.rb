@@ -75,6 +75,7 @@ RSpec.configure do |config|
   config.include Capybara::RSpecMatchers, type: :component
   config.include ViewComponent::SystemTestHelpers, type: :component_sys_test
 
+  # https://github.com/ViewComponent/view_component/issues/1630 - Overrrides the Capybara overwrite
   config.before(:each, type: :component_sys_test) do
     def page
       Capybara.current_session
