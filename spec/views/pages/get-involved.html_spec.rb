@@ -33,7 +33,7 @@ RSpec.describe("pages/get-involved", type: :view) do
 
   it "has a get in touch section" do
     expect(rendered).to have_css(".govuk-heading-m", text: "Deliver social value through investing in improving young people’s life outcomes")
-    expect(rendered).to have_link("Get in touch", href: "mailto:employers@stem.org.uk")
+    expect(rendered).to have_link("Get in touch", href: "mailto:partner@stem.org.uk")
   end
 
   it "has a get involved section" do
