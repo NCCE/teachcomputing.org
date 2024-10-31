@@ -13,8 +13,12 @@ RSpec.describe EnrolmentConfirmationComponent, type: :component do
       ))
     end
 
+    it "does not render the modal" do
+      expect(page).to_not have_css(".ncce-modal")
+    end
+
     it "renders a log in button" do
-      expect(page).to have_text("Log in")
+      expect(page).to have_link("Log in", href: "/auth/stem")
     end
   end
 
@@ -26,8 +30,12 @@ RSpec.describe EnrolmentConfirmationComponent, type: :component do
       ))
     end
 
-    it "does not render the modal and enrols the user" do
-      expect(page).to have_link(href: cs_accelerator.enrol_path(user_programme_enrolment: {user_id: user.id, programme_id: cs_accelerator.id}))
+    it "does not render the modal" do
+      expect(page).to_not have_css(".ncce-modal")
+    end
+
+    it "has an programme enrolment button" do
+      expect(page).to have_link("Enrol", href: cs_accelerator.enrol_path(user_programme_enrolment: {user_id: user.id, programme_id: cs_accelerator.id}))
     end
   end
 
@@ -39,8 +47,16 @@ RSpec.describe EnrolmentConfirmationComponent, type: :component do
       ))
     end
 
-    it "renders the modal button" do
+    it "renders the modal" do
+      expect(page).to have_css(".ncce-modal")
+    end
+
+    it "renders the enrol button" do
       expect(page).to have_css("button", text: "Enrol")
+    end
+
+    it "renders the enrollment confimation button" do
+      expect(page).to have_link("Confirm my enrolment", href: primary_certificate.enrol_path(user_programme_enrolment: {user_id: user.id, programme_id: primary_certificate.id}))
     end
   end
 
@@ -54,8 +70,12 @@ RSpec.describe EnrolmentConfirmationComponent, type: :component do
       ))
     end
 
+    it "renders the modal" do
+      expect(page).to have_css(".ncce-modal")
+    end
+
     it "renders the button text" do
-      expect(page).to have_text("Click here to enrol")
+      expect(page).to have_button("Click here to enrol")
     end
 
     it "does not apply the full width button classes" do
@@ -73,8 +93,12 @@ RSpec.describe EnrolmentConfirmationComponent, type: :component do
       ))
     end
 
+    it "does not render the modal" do
+      expect(page).to_not have_css(".ncce-modal")
+    end
+
     it "renders the view dashboard button" do
-      expect(page).to have_text("Visit dashboard")
+      expect(page).to have_link("Visit dashboard", href: "/dashboard")
     end
   end
 
@@ -88,8 +112,12 @@ RSpec.describe EnrolmentConfirmationComponent, type: :component do
       ))
     end
 
+    it "does not render the modal" do
+      expect(page).to_not have_css(".ncce-modal")
+    end
+
     it "renders the view dashboard button" do
-      expect(page).to have_text("Visit dashboard")
+      expect(page).to have_link("Visit dashboard", href: "/dashboard")
     end
   end
 end
