@@ -7,7 +7,7 @@ module Cms
             {
               populate: {
                 fields: ["textContent"],
-                asideSections: {populate: {fields: "slug"}}
+                asideSections: populate_fields("name")
               }
             }
           end
@@ -16,8 +16,18 @@ module Cms
             {
               populate: {
                 iconBlock: icon_block_parameters,
-                colorTheme: {populate: {fields: "name"}},
-                image: {populate: [:alternativeText]}
+                colorTheme: populate_fields("name"),
+                image: image_params
+              }
+            }
+          end
+
+          def self.split_horizontal_card_parameters
+            {
+              populate: {
+                colorTheme: populate_fields("name"),
+                bkColor: populate_fields("name"),
+                image: image_params
               }
             }
           end
@@ -26,7 +36,7 @@ module Cms
             {
               populate: {
                 fields: "textContent",
-                backgroundColor: {populate: {fields: "name"}}
+                backgroundColor: populate_fields("name")
               }
             }
           end
@@ -35,7 +45,7 @@ module Cms
             {
               populate: {
                 fields: ["question", "answer"],
-                asideSections: {populate: {fields: "slug"}},
+                asideSections: populate_fields("slug"),
                 answerIcons: icon_block_parameters
               }
             }
@@ -44,8 +54,8 @@ module Cms
           def self.full_width_banner_parameters
             {
               populate: {
-                image: {populate: [:alternativeText]},
-                backgroundColor: {populate: [:name]},
+                image: image_params,
+                backgroundColor: populate_fields("name"),
                 buttons: {populate: [:title, :link]}
               }
             }
@@ -87,7 +97,7 @@ module Cms
           def self.testimonial_row_parameters
             {
               populate: {
-                backgroundColour: [:name],
+                backgroundColor: populate_fields("name"),
                 testimonials: {
                   populate: {
                     avatar: [:alternativeText]
@@ -100,13 +110,21 @@ module Cms
           def self.numbered_icon_list_parameters
             {
               populate: {
-                titleIcon: {populate: [:alternativeText]},
-                asideSections: {populate: {fields: "slug"}},
+                titleIcon: image_params,
+                asideSections: populate_fields("slug"),
                 points: {
                   populate: {fields: [:textContent]}
                 }
               }
             }
+          end
+
+          def self.image_params
+            {populate: [:alternativeText]}
+          end
+
+          def self.populate_fields(fields)
+            {populate: {fields:}}
           end
         end
       end

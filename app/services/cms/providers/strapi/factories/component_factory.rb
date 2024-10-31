@@ -44,7 +44,21 @@ module Cms
               to_testimonial(strapi_data)
             when "blocks.numbered-icon-list"
               to_numbered_icon_list(strapi_data)
+            when "blocks.split-horizontal-card"
+              to_split_horizontal_card(strapi_data)
             end
+          end
+
+          def self.to_split_horizontal_card(strapi_data)
+            DynamicComponents::SplitHorizontalCard.new(
+              card_content: ModelFactory.to_content_block(strapi_data[:cardContent], with_wrapper: false),
+              aside_content: ModelFactory.to_content_block(strapi_data[:asideContent], with_wrapper: false),
+              aside_icon: ModelFactory.to_image(strapi_data, :asideIcon),
+              aside_title: strapi_data[:asideTitle],
+              section_title: strapi_data[:sectionTitle],
+              color_theme: extract_color_name(strapi_data, :colorTheme),
+              background_color: extract_color_name(strapi_data, :bkColor)
+            )
           end
 
           def self.to_numbered_icon_list(strapi_data)
@@ -59,7 +73,7 @@ module Cms
           def self.to_testimonial_row(strapi_data)
             DynamicComponents::TestimonialRow.new(
               title: strapi_data[:title],
-              background_color: strapi_data[:backgroundColour],
+              background_color: extract_color_name(strapi_data, :backgroundColor),
               testimonials: strapi_data[:testimonials].map { to_testimonial(_1) }
             )
           end
@@ -76,7 +90,7 @@ module Cms
           def self.to_horizontal_card(strapi_data)
             DynamicComponents::HorizontalCard.new(
               title: strapi_data[:title],
-              body_blocks: strapi_data[:textContent],
+              body_blocks: ModelFactory.to_content_block(strapi_data[:textContent], with_wrapper: false),
               image: ModelFactory.to_image(strapi_data, :image, default_size: :small),
               image_link: strapi_data[:imageLink],
               color_theme: extract_color_name(strapi_data, :colorTheme),

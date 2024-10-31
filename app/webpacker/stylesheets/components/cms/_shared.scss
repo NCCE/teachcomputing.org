@@ -42,7 +42,7 @@
 
   @include govuk-media-query($until: desktop) {
     flex-direction: column;
-    gap: 0px;
+    gap: 10px;
   }
 
   .tc-row-two-thirds {

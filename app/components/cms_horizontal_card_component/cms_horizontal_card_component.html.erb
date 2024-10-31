@@ -3,7 +3,7 @@
     <%= content_tag :div, class: wrapper_classes do %>
       <div class="horizontal-card-component__content">
         <h1 class="govuk-heading-m"><%= @title %></h1>
-        <%= render CmsRichTextBlockComponent.new(blocks: @body_blocks, with_wrapper: false) %>
+        <%= render @body_blocks.render %>
         <%= render @icon_block.render if @icon_block%>
       </div>
       <% if @image %>

@@ -7,6 +7,7 @@
   .numeric-card__header {
     display: flex;
     flex-direction: row;
+    gap: 5px;
 
     .numeric-card__number {
       flex: 0 1 auto;

@@ -1,0 +1,10 @@
+<div class="section-title-with-icon">
+  <% if @icon %>
+    <div class="section-title-with-icon__icon">
+      <%= render CmsImageComponent.new(@icon, show_caption: false) %>
+    </div>
+  <% end %>
+  <div class="section-title-with-icon__header">
+    <%= text_tag %>
+  </div>
+</div>

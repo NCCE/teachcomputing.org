@@ -1,0 +1,20 @@
+.section-title-with-icon {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+
+  &__icon {
+    flex: 0 0 30px; 
+    
+    .cms-image {
+      img {
+        width: 30px;
+        height: 30px;
+      }
+    }
+  }
+
+  &__header {
+    flex: 1 1 auto;
+  }
+}

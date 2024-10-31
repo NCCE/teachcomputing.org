@@ -4,7 +4,7 @@ require "rails_helper"
 
 RSpec.describe CmsHorizontalCardComponent, type: :component do
   context "with only a title and body block" do
-    let(:content_block) { Cms::Mocks::RichBlocks.generate_data }
+    let(:content_block) { Cms::Mocks::RichBlocks.as_model }
 
     before do
       render_inline(described_class.new(
@@ -22,7 +22,7 @@ RSpec.describe CmsHorizontalCardComponent, type: :component do
     end
 
     it "renders the body block text" do
-      expect(page).to have_text(content_block.dig(0, :children, 0, :text))
+      expect(page).to have_text(content_block.blocks.dig(0, :children, 0, :text))
     end
 
     it "has no image" do
@@ -42,7 +42,7 @@ RSpec.describe CmsHorizontalCardComponent, type: :component do
     before do
       render_inline(described_class.new(
         title: "Page title",
-        body_blocks: Cms::Mocks::RichBlocks.generate_data,
+        body_blocks: Cms::Mocks::RichBlocks.as_model,
         image: Cms::Mocks::Image.as_model,
         image_link: nil,
         color_theme: nil,
@@ -59,7 +59,7 @@ RSpec.describe CmsHorizontalCardComponent, type: :component do
     before do
       render_inline(described_class.new(
         title: "Page title",
-        body_blocks: Cms::Mocks::RichBlocks.generate_data,
+        body_blocks: Cms::Mocks::RichBlocks.as_model,
         image: Cms::Mocks::Image.as_model,
         image_link: "https://www.example.com",
         color_theme: nil,
@@ -80,7 +80,7 @@ RSpec.describe CmsHorizontalCardComponent, type: :component do
     before do
       render_inline(described_class.new(
         title: "Page title",
-        body_blocks: Cms::Mocks::RichBlocks.generate_data,
+        body_blocks: Cms::Mocks::RichBlocks.as_model,
         image: Cms::Mocks::Image.as_model,
         image_link: nil,
         color_theme: nil,
@@ -101,7 +101,7 @@ RSpec.describe CmsHorizontalCardComponent, type: :component do
     before do
       render_inline(described_class.new(
         title: "Page title",
-        body_blocks: Cms::Mocks::RichBlocks.generate_data,
+        body_blocks: Cms::Mocks::RichBlocks.as_model,
         image: nil,
         image_link: nil,
         color_theme: "standard",
@@ -118,7 +118,7 @@ RSpec.describe CmsHorizontalCardComponent, type: :component do
     before do
       render_inline(described_class.new(
         title: "Page title",
-        body_blocks: Cms::Mocks::RichBlocks.generate_data,
+        body_blocks: Cms::Mocks::RichBlocks.as_model,
         image: nil,
         image_link: nil,
         color_theme: nil,

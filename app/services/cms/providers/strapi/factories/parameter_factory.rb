@@ -51,7 +51,8 @@ module Cms
                   "blocks.full-width-banner": ComponentParameterFactory.full_width_banner_parameters,
                   "blocks.full-width-text": ComponentParameterFactory.text_block_parameters,
                   "blocks.testimonial-row": ComponentParameterFactory.testimonial_row_parameters,
-                  "blocks.numbered-icon-list": ComponentParameterFactory.numbered_icon_list_parameters
+                  "blocks.numbered-icon-list": ComponentParameterFactory.numbered_icon_list_parameters,
+                  "blocks.split-horizontal-card": ComponentParameterFactory.split_horizontal_card_parameters
                 }
               }
             end
