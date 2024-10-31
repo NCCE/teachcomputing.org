@@ -32,4 +32,13 @@ class EnrolmentConfirmationComponentPreview < ViewComponent::Preview
       full_width: false
     ))
   end
+
+  def user_already_enrolled
+    programme = UserProgrammeEnrolment.last || FactoryBot.create(:user_programme_enrolment)
+
+    render(EnrolmentConfirmationComponent.new(
+      current_user: User.last,
+      programme: Programme.find(programme.programme_id)
+    ))
+  end
 end
