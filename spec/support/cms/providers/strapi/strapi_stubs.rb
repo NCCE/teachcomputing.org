@@ -112,6 +112,10 @@ module StrapiStubs
     }))
   end
 
+  def stub_strapi_web_page_not_found(key)
+    stub_request(:get, /^https:\/\/strapi.teachcomputing.org\/api\/web-pages\/#{key}/).to_return_json(body: not_found_response, status: 404)
+  end
+
   private
 
   def to_strapi_collection(records, page: 1, page_size: 10, page_count: 1)
