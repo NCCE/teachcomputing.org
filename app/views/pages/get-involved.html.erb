@@ -33,7 +33,7 @@
     media_column_size: :half,
     media_side: :right,
     padding: 5,
-    button: { 
+    button: {
       text: t(".ambassador.link.title"),
       link: stem_ambassadors_url,
       class: "govuk-button button get-involved_ambassador-button bordered-card__get-involved-button bordered-card__external-button",
@@ -58,7 +58,7 @@
     media_column_size: :half,
     media_side: :right,
     padding: 5,
-    button: { 
+    button: {
       text: t(".governor.link.title"),
       link: governors_and_trustees_url,
       class: "govuk-button button get-involved_governor-button",
@@ -77,9 +77,9 @@
 
             <p class="govuk-body-m"><%= t(".donate.body_1") %></p>
             <p class="govuk-body-m"><%= t(".donate.body_2") %></p>
-          
+
             <div class="get-involved_get-in-touch-button-container">
-              <%= link_to t(".donate.link.title"), "mailto:employers@stem.org.uk", class: "govuk-button button button--inverted get-involved_get-in-touch-button bordered-card__external-button"%>
+              <%= link_to t(".donate.link.title"), "mailto:partner@stem.org.uk", class: "govuk-button button button--inverted get-involved_get-in-touch-button bordered-card__external-button"%>
             </div>
           </div>
         </div>
@@ -150,7 +150,7 @@
         </div>
 
         <div class="get-involved_impact-report-image govuk-grid-column-one-third">
-          <%= link_to impact_report_url, target: "_blank" do %> 
+          <%= link_to impact_report_url, target: "_blank" do %>
             <%= image_pack_tag "media/images/pages/get-involved/impact_report.png", alt: t(".impact_report.alt") %>
           <% end %>
         </div>
