@@ -57,6 +57,8 @@ module Cms
                 age_group_filter_placeholder: all_data[:ageGroupFilterPlaceholder],
                 term_filter_placeholder: all_data[:termFilterPlaceholder]
               )
+            elsif model_class == Models::Slug
+              model_class.new(slug: strapi_data[:slug])
             elsif model_class == Models::SimplePagePreview
               model_class.new(
                 title: strapi_data[:title],
