@@ -63,7 +63,7 @@ RSpec.describe EnrolmentConfirmationComponent, type: :component do
     end
   end
 
-  context "when the user is already enrolled" do
+  context "when the user is already enrolled on a non confirmation programme" do
     before do
       allow(cs_accelerator).to receive(:user_enrolled?).with(user).and_return(true)
 
@@ -73,7 +73,22 @@ RSpec.describe EnrolmentConfirmationComponent, type: :component do
       ))
     end
 
-    it "render the view dashboard button" do
+    it "renders the view dashboard button" do
+      expect(page).to have_text("Visit dashboard")
+    end
+  end
+
+  context "when the user is already enrolled on a programme that requires confirmation" do
+    before do
+      allow(primary_certificate).to receive(:user_enrolled?).with(user).and_return(true)
+
+      render_inline(described_class.new(
+        programme: primary_certificate,
+        current_user: user
+      ))
+    end
+
+    it "renders the view dashboard button" do
       expect(page).to have_text("Visit dashboard")
     end
   end

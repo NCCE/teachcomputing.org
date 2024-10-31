@@ -1,8 +1,9 @@
 # frozen_string_literal: true
 
 class EnrolmentConfirmationComponent < ViewComponent::Base
-  delegate :auth_url, to: :helpers
   attr_reader :button_text
+
+  delegate :auth_url, to: :helpers
 
   def initialize(programme:, current_user:, full_width: true, button_text: "Enrol")
     @current_user = current_user
