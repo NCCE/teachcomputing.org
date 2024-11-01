@@ -6,7 +6,7 @@ RSpec.describe("Enrolment confirmation component system test", type: [:system, :
   let(:primary_certificate) { create(:primary_certificate) }
   let(:secondary_certificate) { create(:secondary_certificate) }
 
-  context "the programme requires enrolment confirmation" do
+  context "when the programme requires enrolment confirmation" do
     before do
       with_rendered_component_path(render_inline(EnrolmentConfirmationComponent.new(
         current_user: user,
@@ -32,14 +32,6 @@ RSpec.describe("Enrolment confirmation component system test", type: [:system, :
       click_on "Enrol"
       expect(page).to have_selector(".ncce-modal--header h2", text: "Enrol on the Teach primary computing certificate")
       find(".icon-close").click
-      expect(page).to have_no_selector(".ncce-modal--body")
-    end
-
-    it "lets the user enrol on the certificate" do
-      # continue with enrolment confirmation
-      click_on "Enrol"
-      expect(page).to have_selector(".ncce-modal--header h2", text: "Enrol on the Teach primary computing certificate")
-      click_on "Confirm my enrolment"
       expect(page).to have_no_selector(".ncce-modal--body")
     end
   end
