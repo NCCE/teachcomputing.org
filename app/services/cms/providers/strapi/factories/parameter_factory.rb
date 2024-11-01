@@ -5,7 +5,10 @@ module Cms
         module ParameterFactory
           def self.generate_parameters(model_class)
             if model_class == Cms::Models::Seo
-              {populate: {featuredImage: {populate: [:alternativeText]}}}
+              {
+                populate: {featuredImage: {populate: [:alternativeText]}},
+                fields: [:title, :description]
+              }
             elsif model_class == Cms::Models::FeaturedImage
               {populate: [:alternativeText, :caption]}
             elsif model_class == Cms::Models::EnrichmentList
@@ -25,6 +28,11 @@ module Cms
                 filters: {
                   publishDate: {"$lt": DateTime.now.strftime}
                 }
+              }
+            elsif model_class == Models::WebPagePreview
+              {
+                populate: {seo: {fields: [:title, :description]}},
+                fields: [:slug, :publishedAt, :createdAt, :updatedAt]
               }
             elsif model_class == Models::PageTitle
               {

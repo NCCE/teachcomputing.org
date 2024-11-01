@@ -46,12 +46,16 @@ module Cms
                 featured_image: strapi_data[:featuredImage][:data].nil? ? nil : to_featured_image(strapi_data[:featuredImage][:data][:attributes], :small),
                 slug: strapi_data[:slug]
               )
+            elsif model_class == Models::WebPagePreview
+              model_class.new(
+                title: strapi_data[:seo][:title],
+                description: strapi_data[:seo][:description],
+                slug: strapi_data[:slug]
+              )
             elsif model_class == Models::DynamicZone
               model_class.new(cms_models: strapi_data.map { ComponentFactory.process_component(_1) }.compact)
             elsif model_class == Models::EnrichmentList
               to_enrichment_list(all_data, strapi_data)
-            elsif model_class == Models::Slug
-              model_class.new(slug: strapi_data[:slug])
             end
           end
 

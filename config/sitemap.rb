@@ -18,7 +18,6 @@ SitemapGenerator::Sitemap.create do
   add "/", changefreq: "daily"
   add "/about", changefreq: "monthly"
   add "/accessibility-statement", changefreq: "monthly"
-  add "/artificial-intelligence", changefreq: "monthly"
   add "/blog", changefreq: "daily"
   add "/bursary", changefreq: "monthly"
   add "/careers-week", changefreq: "monthly"
@@ -43,7 +42,6 @@ SitemapGenerator::Sitemap.create do
   add "/press", changefreq: "daily"
   add "/primary-certificate", changefreq: "monthly"
   add "/primary-computing-glossary", changefreq: "monthly"
-  add "/primary-early-careers", changefreq: "monthly"
   add "/primary-enrichment", changefreq: "monthly"
   add "/primary-online-safety-recommendations", changefreq: "monthly"
   add "/primary-senior-leaders", changefreq: "monthly"
@@ -53,7 +51,6 @@ SitemapGenerator::Sitemap.create do
   add "/school-trusts", changefreq: "monthly"
   add "/secondary-certificate", changefreq: "monthly"
   add "/secondary-certification", changefreq: "monthly"
-  add "/secondary-early-careers", changefreq: "monthly"
   add "/secondary-enrichment", changefreq: "monthly"
   add "/secondary-question-banks", changefreq: "monthly"
   add "/secondary-senior-leaders", changefreq: "monthly"
@@ -65,6 +62,10 @@ SitemapGenerator::Sitemap.create do
 
   # CMS Routes
   add "/privacy", changefreq: "monthly"
+
+  Cms::Collections::WebPage.all(1, 200).resources.each do |page|
+    add cms_page_path(page.slug), changefreq: "monthly", lastmod: page.updated_at
+  end
 
   Achiever::Course::Template.all.each do |course|
     add course_path(id: course.activity_code, name: course.title.parameterize), changefreq: "weekly"
