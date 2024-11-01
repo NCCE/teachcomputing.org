@@ -49,23 +49,21 @@ module Cms
             elsif model_class == Models::DynamicZone
               model_class.new(cms_models: strapi_data.map { ComponentFactory.process_component(_1) }.compact)
             elsif model_class == Models::EnrichmentList
-              model_class.new(
-                enrichments: strapi_data[:data].map { to_enrichment(_1[:attributes]) }.compact,
-                featured_title: all_data[:featuredSectionTitle],
-                all_title: all_data[:allSectionTitle],
-                type_filter_placeholder: all_data[:typeFilterPlaceholder],
-                age_group_filter_placeholder: all_data[:ageGroupFilterPlaceholder],
-                term_filter_placeholder: all_data[:termFilterPlaceholder]
-              )
+              to_enrichment_list(all_data, strapi_data)
             elsif model_class == Models::Slug
               model_class.new(slug: strapi_data[:slug])
-            elsif model_class == Models::SimplePagePreview
-              model_class.new(
-                title: strapi_data[:title],
-                slug: strapi_data[:slug],
-                excerpt: strapi_data[:seo][:description]
-              )
             end
+          end
+
+          def self.to_enrichment_list(all_data, strapi_data)
+            Models::EnrichmentList.new(
+              enrichments: strapi_data[:data].map { to_enrichment(_1[:attributes]) }.compact,
+              featured_title: all_data[:featuredSectionTitle],
+              all_title: all_data[:allSectionTitle],
+              type_filter_placeholder: all_data[:typeFilterPlaceholder],
+              age_group_filter_placeholder: all_data[:ageGroupFilterPlaceholder],
+              term_filter_placeholder: all_data[:termFilterPlaceholder]
+            )
           end
 
           def self.to_enrichment(strapi_data)

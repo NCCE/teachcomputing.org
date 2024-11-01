@@ -12,7 +12,7 @@ RSpec.describe Cms::Collections::WebPage do
     expect(described_class.resource_key).to eq("web-pages")
   end
 
-  it "should have 15 minute cache expiry" do
+  it "should have 4 hour cache expiry" do
     expect(described_class.cache_expiry).to eq(4.hours)
   end
 

@@ -8,11 +8,6 @@ module Cms
               {populate: {featuredImage: {populate: [:alternativeText]}}}
             elsif model_class == Cms::Models::FeaturedImage
               {populate: [:alternativeText, :caption]}
-            elsif model_class == Cms::Models::SimplePagePreview
-              {
-                populate: {seo: {populate: [:description]}},
-                fields: [:title, :slug, :publishedAt, :createdAt, :updatedAt]
-              }
             elsif model_class == Cms::Models::EnrichmentList
               {
                 populate: {

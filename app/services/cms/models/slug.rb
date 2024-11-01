@@ -8,7 +8,6 @@ module Cms
       end
 
       def render
-        raise StandardError("Not available on slug models")
       end
     end
   end

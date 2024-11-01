@@ -4,11 +4,6 @@ module StrapiStubs
     stub_request(:get, /^https:\/\/strapi.teachcomputing.org\/api\/#{resource_key}?/).to_return(body: json_response)
   end
 
-  def stub_strapi_get_single_simple_page(resource_key)
-    json_response = File.new("spec/support/cms/providers/strapi/simple_page_response.json")
-    stub_request(:get, /^https:\/\/strapi.teachcomputing.org\/api\/#{resource_key}?/).to_return(body: json_response)
-  end
-
   def stub_strapi_get_single_entity_with_preview(resource_key)
     json_response = File.new("spec/support/cms/providers/strapi/single_type_response_with_preview.json")
     stub_request(:get, /^https:\/\/strapi.teachcomputing.org\/api\/#{resource_key}?/).to_return(body: json_response)
@@ -69,11 +64,6 @@ module StrapiStubs
   def stub_featured_posts_error
     stub_request(:get, /^https:\/\/strapi.teachcomputing.org\/api\/blogs/)
       .to_return(status: [500, "Internal Server Error"])
-  end
-
-  def stub_strapi_simple_page_collection
-    json_response = File.new("spec/support/cms/providers/strapi/simple_pages_collection_response.json")
-    stub_request(:get, /^https:\/\/strapi.teachcomputing.org\/api\/simple-pages/).to_return(body: json_response)
   end
 
   def stub_strapi_blog_collection(blogs: nil)

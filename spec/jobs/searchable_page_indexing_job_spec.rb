@@ -45,7 +45,6 @@ RSpec.describe SearchablePageIndexingJob, type: :job do
       web_pages += Array.new(2) { Cms::Mocks::WebPage.generate_raw_data }
 
       stub_strapi_blog_collection(blogs:)
-      stub_strapi_simple_page_collection
       stub_strapi_web_page_collection(web_pages:)
 
       allow(SearchableSitePages).to receive(:all).and_return([
@@ -89,7 +88,6 @@ RSpec.describe SearchablePageIndexingJob, type: :job do
 
     it "should create them all at the same time" do
       stub_strapi_blog_collection
-      stub_strapi_simple_page_collection
       stub_strapi_web_page_collection
 
       allow(SearchableSitePages).to receive(:all).and_return([
