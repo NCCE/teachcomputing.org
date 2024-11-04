@@ -11325,9 +11325,9 @@ __metadata:
   linkType: hard
 
 "trix@npm:^2.1":
-  version: 2.1.5
-  resolution: "trix@npm:2.1.5"
-  checksum: 34b6108d8ade9a90e25b7185d1518da1c54c91298b9d0b21beb1c37775977efda57f4473c344da81a39e747706315967fe9c919092fd3bec2b2dd6660419b3cc
+  version: 2.1.8
+  resolution: "trix@npm:2.1.8"
+  checksum: c7eba83e31a080bdac92ab60fd1b24d142a74d6b4cbf48fb6dce4913b5250b226be77d7d10fb444fa6e7dcaa30eefdf888311329440f3095cef398a4bb5a584f
   languageName: node
   linkType: hard
 
