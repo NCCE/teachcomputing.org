@@ -11,6 +11,7 @@
 
   li::before {
     content: counter(numbered-points-counter);
+    font-family: $font-family-body;
     background: $purple;
     width: 2rem;
     height: 2rem;

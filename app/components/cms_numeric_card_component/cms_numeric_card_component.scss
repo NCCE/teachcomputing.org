@@ -21,6 +21,11 @@
     .numeric-card__title {
       flex: 1 1 auto;
     }
+  }
 
+  .numeric-card__content {
+    p {
+      font-size: 1.4rem;
+    }
   }
 }
