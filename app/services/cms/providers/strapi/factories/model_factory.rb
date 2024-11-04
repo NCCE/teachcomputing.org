@@ -18,6 +18,8 @@ module Cms
                 description: strapi_data[:description],
                 featured_image: to_image(strapi_data, :featuredImage)
               )
+            elsif model_class == Models::Slug
+              model_class.new(slug: strapi_data[:slug])
             elsif model_class == Models::FeaturedImage
               to_featured_image(strapi_data[:data][:attributes]) if strapi_data[:data]
             elsif model_class == Models::TextBlock
@@ -44,12 +46,6 @@ module Cms
                 excerpt: strapi_data[:excerpt],
                 publish_date: strapi_data[:publishDate],
                 featured_image: strapi_data[:featuredImage][:data].nil? ? nil : to_featured_image(strapi_data[:featuredImage][:data][:attributes], :small),
-                slug: strapi_data[:slug]
-              )
-            elsif model_class == Models::WebPagePreview
-              model_class.new(
-                title: strapi_data[:seo][:title],
-                description: strapi_data[:seo][:description],
                 slug: strapi_data[:slug]
               )
             elsif model_class == Models::DynamicZone

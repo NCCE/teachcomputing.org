@@ -2,7 +2,7 @@ require "rails_helper"
 
 RSpec.describe Cms::Collections::WebPage do
   let(:required_models) {
-    [Cms::Models::PageTitle, Cms::Models::Seo, Cms::Models::DynamicZone]
+    [Cms::Models::Slug, Cms::Models::PageTitle, Cms::Models::Seo, Cms::Models::DynamicZone]
   }
 
   before do

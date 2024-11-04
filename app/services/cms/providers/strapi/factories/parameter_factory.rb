@@ -29,11 +29,6 @@ module Cms
                   publishDate: {"$lt": DateTime.now.strftime}
                 }
               }
-            elsif model_class == Models::WebPagePreview
-              {
-                populate: {seo: {fields: [:title, :description]}},
-                fields: [:slug, :publishedAt, :createdAt, :updatedAt]
-              }
             elsif model_class == Models::PageTitle
               {
                 populate: [:title]
