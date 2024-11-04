@@ -10,7 +10,7 @@
         <h2 class="govuk-body-m"><%= @course&.meta_description %></h2>
         <%= link_to 'Skip to course booking', course_path(id: @course.activity_code, name: @course.title.parameterize, anchor: 'booking-list'), class: 'govuk-button button button--full-width ncce-booking-list__skip-button' %>
         <%= render 'courses/courses-details' %>
-        <%= render(YouTubeEmbedComponent.new(video_url: @activity.course_video_url))  if @activity.course_video_url %>
+        <%= render(YouTubeEmbedComponent.new(video_url: @activity.course_video_url)) %>
         <div class="external-content govuk-!-margin-bottom-7">
           <p class="govuk-body"><%= sanitize_stem_html @course.summary %></p>
           <% unless @course.who_is_it_for.blank? %>

@@ -5,7 +5,8 @@ RSpec.describe("Course Details page", type: :system) do
   let(:user) { create(:user) }
   let(:course_id) { "CP428" }
   let(:course_slug) { "an-introduction-to-algorithms-programming-and-data-in-gcse-computer-science-remote" }
-  let(:activity) { create(:activity, :with_course_video, :stem_learning, stem_activity_code: course_id) }
+  let(:course_template_no) { "526b3a42-b688-ea11-a811-000d3a86d545" }
+  let(:activity) { create(:activity, :with_course_video, :stem_learning, stem_activity_code: course_id, stem_course_template_no: course_template_no) }
 
   before do
     activity
