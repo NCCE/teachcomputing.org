@@ -3,10 +3,12 @@ require "rails_helper"
 RSpec.describe SearchablePageIndexingJob, type: :job do
   let(:blog_excerpt) { Faker::Lorem.paragraph }
   let(:page_excerpt) { Faker::Lorem.paragraph }
+  let(:enrichment_excerpt) { Faker::Lorem.paragraph }
   describe "#perform" do
     it "should clear out any old posts and pages" do
       stub_strapi_get_empty_collection_entity("blogs")
       stub_strapi_get_empty_collection_entity("web-pages")
+      stub_strapi_get_empty_collection_entity("enrichment-pages")
 
       create_list(:searchable_pages_cms_simple_page, 2)
       create_list(:searchable_pages_cms_web_page, 5)
@@ -44,8 +46,14 @@ RSpec.describe SearchablePageIndexingJob, type: :job do
       )]
       web_pages += Array.new(2) { Cms::Mocks::WebPage.generate_raw_data }
 
+      enrichment_pages = [Cms::Mocks::EnrichmentPage.generate_raw_data(
+        slug: "enrichment-test",
+        seo: Cms::Mocks::Seo.generate_data(title: "Enrichment Test", description: enrichment_excerpt)
+      )]
+
       stub_strapi_blog_collection(blogs:)
       stub_strapi_web_page_collection(web_pages:)
+      stub_strapi_enrichment_collection(enrichment_pages:)
 
       allow(SearchableSitePages).to receive(:all).and_return([
         {
@@ -65,7 +73,7 @@ RSpec.describe SearchablePageIndexingJob, type: :job do
       SearchablePageIndexingJob.perform_now
 
       expect(SearchablePages::CmsBlog.count).to eq(5)
-      expect(SearchablePages::CmsWebPage.count).to eq(3)
+      expect(SearchablePages::CmsWebPage.count).to eq(4) # three web pages + one enrichement page
 
       blog_test = SearchablePages::CmsBlog.find_by(title: "Education and industry unite at key event championing gender equity in computer science")
       expect(blog_test).to be_present
@@ -76,6 +84,11 @@ RSpec.describe SearchablePageIndexingJob, type: :job do
       expect(page_test).to be_present
       expect(page_test.excerpt).to eq page_excerpt
       expect(page_test.slug).to eq "test-page"
+
+      enrichment_page_test = SearchablePages::CmsWebPage.find_by(title: "Enrichment Test")
+      expect(enrichment_page_test).to be_present
+      expect(enrichment_page_test.excerpt).to eq enrichment_excerpt
+      expect(enrichment_page_test.slug).to eq "enrichment-test"
 
       expect(SearchablePages::SitePage.first.title).to eq "Sitey page"
       expect(SearchablePages::SitePage.first.excerpt).to eq "sitey excerpt"
@@ -89,6 +102,7 @@ RSpec.describe SearchablePageIndexingJob, type: :job do
     it "should create them all at the same time" do
       stub_strapi_blog_collection
       stub_strapi_web_page_collection
+      stub_strapi_enrichment_collection
 
       allow(SearchableSitePages).to receive(:all).and_return([
         {

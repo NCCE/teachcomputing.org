@@ -2,13 +2,12 @@ module Cms
   module Collections
     class WebPage < Resource
       def to_search_record(index_time)
-        slug_data = data_models[0]
-        seo_data = data_models[1]
+        page_data = data_models[0]
         {
           type: SearchablePages::CmsWebPage.name,
-          title: seo_data.title,
-          excerpt: seo_data.description,
-          metadata: {slug: slug_data.slug},
+          title: page_data.title,
+          excerpt: page_data.description,
+          metadata: {slug: page_data.slug},
           published_at: published_at,
           created_at: index_time,
           updated_at: index_time
@@ -23,8 +22,7 @@ module Cms
 
       def self.collection_attribute_mappings
         [
-          {model: Cms::Models::Slug, key: nil},
-          {model: Cms::Models::Seo, key: :seo}
+          {model: Cms::Models::WebPagePreview, key: nil}
         ]
       end
 

@@ -19,7 +19,6 @@ SitemapGenerator::Sitemap.create do
   add "/about", changefreq: "monthly"
   add "/accessibility-statement", changefreq: "monthly"
   add "/blog", changefreq: "daily"
-  add "/bursary", changefreq: "monthly"
   add "/careers-week", changefreq: "monthly"
   add "/careers-support", changefreq: "monthly"
   add "/certification", changefreq: "monthly"
@@ -27,41 +26,37 @@ SitemapGenerator::Sitemap.create do
   add "/contact", changefreq: "monthly"
   add "/courses", changefreq: "daily"
   add "/curriculum", changefreq: "weekly"
-  add "/funding", changefreq: "monthly"
   add "/gcse-cs-support", changefreq: "monthly"
   add "/gender-balance", changefreq: "monthly"
   add "/get-involved", changefreq: "monthly"
-  add "/home-teaching", changefreq: "weekly"
   add "/hubs", changefreq: "monthly"
   add "/i-belong", changefreq: "monthly"
   add "/impact-and-evaluation", changefreq: "monthly"
   add "/isaac-computer-science", changefreq: "monthly"
   add "/news", changefreq: "daily"
   add "/pedagogy", changefreq: "monthly"
-  add "/physical-computing-kit", changefreq: "monthly"
   add "/press", changefreq: "daily"
   add "/primary-certificate", changefreq: "monthly"
   add "/primary-computing-glossary", changefreq: "monthly"
-  add "/primary-enrichment", changefreq: "monthly"
   add "/primary-online-safety-recommendations", changefreq: "monthly"
   add "/primary-senior-leaders", changefreq: "monthly"
   add "/primary-teachers", changefreq: "monthly"
-  add "/privacy", changefreq: "monthly"
-  add "/safeguarding", changefreq: "monthly"
   add "/school-trusts", changefreq: "monthly"
   add "/secondary-certificate", changefreq: "monthly"
   add "/secondary-certification", changefreq: "monthly"
-  add "/secondary-enrichment", changefreq: "monthly"
   add "/secondary-question-banks", changefreq: "monthly"
   add "/secondary-senior-leaders", changefreq: "monthly"
   add "/secondary-teachers", changefreq: "monthly"
   add "/subject-knowledge", changefreq: "monthly"
-  add "/support-for-ite-providers", changefreq: "monthly"
   add "/tech-careers-videos", changefreq: "monthly"
   add "/terms-conditions", changefreq: "monthly"
 
   # CMS Routes
   add "/privacy", changefreq: "monthly"
+
+  Cms::Collections::EnrichmentPage.all(1, 10).resources.each do |enrichment_page|
+    add cms_page_path(enrichment_page.slug), changefreq: "monthly", lastmod: enrichment_page.updated_at
+  end
 
   Cms::Collections::WebPage.all(1, 200).resources.each do |page|
     add cms_page_path(page.slug), changefreq: "monthly", lastmod: page.updated_at

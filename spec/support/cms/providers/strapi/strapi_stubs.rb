@@ -87,9 +87,15 @@ module StrapiStubs
     stub_request(:get, /^https:\/\/strapi.teachcomputing.org\/api\/aside-sections\/#{key}/).to_return_json(body: not_found_response, status: 404)
   end
 
-  def stub_strapi_enrichment_page(key)
+  def stub_strapi_enrichment_page(key, enrichment_page: nil)
+    enrichment_page = enrichment_page.presence || Cms::Mocks::EnrichmentPage.generate_raw_data(slug: key)
     stub_request(:get, /^https:\/\/strapi.teachcomputing.org\/api\/enrichment-pages\/#{key}/)
-      .to_return_json(body: {data: Cms::Mocks::EnrichmentPage.generate_raw_data(slug: key)})
+      .to_return_json(body: {data: enrichment_page})
+  end
+
+  def stub_strapi_enrichment_collection(enrichment_pages: Array.new(2) { Cms::Mocks::EnrichmentPage.generate_raw_data })
+    stub_request(:get, /^https:\/\/strapi.teachcomputing.org\/api\/enrichment-pages/)
+      .to_return_json(body: to_strapi_collection(enrichment_pages))
   end
 
   def stub_strapi_web_page_collection(web_pages: nil)
@@ -97,14 +103,8 @@ module StrapiStubs
     stub_request(:get, /^https:\/\/strapi.teachcomputing.org\/api\/web-pages/).to_return_json(body: to_strapi_collection(web_page_list))
   end
 
-  def stub_strapi_web_page(key)
-    stub_request(:get, /^https:\/\/strapi.teachcomputing.org\/api\/web-pages\/#{key}/).to_return_json(body: to_strapi_data_structure({
-      pageTitle: Cms::Mocks::PageTitle.generate_raw_data,
-      seo: Cms::Mocks::Seo.generate_raw_data,
-      pageContent: [
-        Cms::Mocks::FullWidthBanner.generate_raw_data
-      ]
-    }))
+  def stub_strapi_web_page(key, page: Cms::Mocks::WebPage.generate_raw_data)
+    stub_request(:get, /^https:\/\/strapi.teachcomputing.org\/api\/web-pages\/#{key}/).to_return_json(body: {data: page})
   end
 
   def stub_strapi_web_page_not_found(key)

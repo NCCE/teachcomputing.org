@@ -11,13 +11,8 @@ module Cms
             else
               all_data
             end
-
             if model_class == Models::Seo
-              model_class.new(
-                title: strapi_data[:title],
-                description: strapi_data[:description],
-                featured_image: to_image(strapi_data, :featuredImage)
-              )
+              to_seo(strapi_data)
             elsif model_class == Models::Slug
               model_class.new(slug: strapi_data[:slug])
             elsif model_class == Models::FeaturedImage
@@ -41,18 +36,40 @@ module Cms
                 sub_text: strapi_data[:subText]
               )
             elsif model_class == Models::BlogPreview
-              model_class.new(
-                title: strapi_data[:title],
-                excerpt: strapi_data[:excerpt],
-                publish_date: strapi_data[:publishDate],
-                featured_image: strapi_data[:featuredImage][:data].nil? ? nil : to_featured_image(strapi_data[:featuredImage][:data][:attributes], :small),
-                slug: strapi_data[:slug]
-              )
+              to_blog_preview(strapi_data)
+            elsif model_class == Models::WebPagePreview
+              to_web_page_preview(strapi_data)
             elsif model_class == Models::DynamicZone
               model_class.new(cms_models: strapi_data.map { ComponentFactory.process_component(_1) }.compact)
             elsif model_class == Models::EnrichmentList
               to_enrichment_list(all_data, strapi_data)
             end
+          end
+
+          def self.to_seo(strapi_data)
+            Models::Seo.new(
+              title: strapi_data[:title],
+              description: strapi_data[:description],
+              featured_image: to_image(strapi_data, :featuredImage)
+            )
+          end
+
+          def self.to_blog_preview(strapi_data)
+            Models::BlogPreview.new(
+              title: strapi_data[:title],
+              excerpt: strapi_data[:excerpt],
+              publish_date: strapi_data[:publishDate],
+              featured_image: strapi_data[:featuredImage][:data].nil? ? nil : to_featured_image(strapi_data[:featuredImage][:data][:attributes], :small),
+              slug: strapi_data[:slug]
+            )
+          end
+
+          def self.to_web_page_preview(strapi_data)
+            Models::WebPagePreview.new(
+              title: strapi_data[:seo][:title],
+              description: strapi_data[:seo][:description],
+              slug: strapi_data[:slug]
+            )
           end
 
           def self.to_enrichment_list(all_data, strapi_data)

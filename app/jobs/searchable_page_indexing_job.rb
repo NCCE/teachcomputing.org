@@ -15,9 +15,13 @@ class SearchablePageIndexingJob < ApplicationJob
     end
 
     SearchablePages::CmsWebPage.delete_all
-    page_search_records = Cms::Collections::WebPage.all(1, 100)
+    page_search_records = Cms::Collections::WebPage.all(1, 200)
     if page_search_records.resources.any?
       SearchablePages::CmsWebPage.insert_all(page_search_records.resources.map { |page| page.to_search_record(now) })
+    end
+    enrichment_pages = Cms::Collections::EnrichmentPage.all(1, 10)
+    if enrichment_pages.resources.any?
+      SearchablePages::CmsWebPage.insert_all(enrichment_pages.resources.map { |page| page.to_search_record(now) })
     end
 
     courses = Achiever::Course::Template.all
