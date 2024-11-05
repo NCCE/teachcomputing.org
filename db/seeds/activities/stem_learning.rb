@@ -255,7 +255,7 @@ end
 
 a.programmes << cs_accelerator unless a.programmes.include?(cs_accelerator)
 
-a = Activity.find_or_create_by(stem_course_template_no: "43476cb7-6567-ea11-a811-000d3a86d7a3") do |activity|
+a = Activity.find_or_create_by(stem_course_template_no: "43476cb7-6567-ea11-a811-000d3a86d7a3").tap do |activity|
   activity.title = "Python programming constructs: sequencing, selection, iteration"
   activity.credit = 10
   activity.slug = "python-programming-constructs-sequencing-selection-iteration"
@@ -292,7 +292,7 @@ end
 
 a.programmes << cs_accelerator unless a.programmes.include?(cs_accelerator)
 
-a = Activity.find_or_create_by(stem_course_template_no: "17d78590-4268-ea11-a811-000d3a86d7a3") do |activity|
+a = Activity.find_or_create_by(stem_course_template_no: "17d78590-4268-ea11-a811-000d3a86d7a3").tap do |activity|
   activity.title = "An introduction to computer systems, networking and security in GCSE computer science"
   activity.credit = 10
   activity.slug = "an-introduction-to-computer-systems-networking-and-security-in-gcse-computer-science"
@@ -463,7 +463,7 @@ end
 
 a.programmes << cs_accelerator unless a.programmes.include?(cs_accelerator)
 
-a = Activity.find_or_create_by(stem_course_template_no: "bd6497ad-4386-ea11-a811-000d3a86d545") do |activity|
+a = Activity.find_or_create_by(stem_course_template_no: "bd6497ad-4386-ea11-a811-000d3a86d545").tap do |activity|
   activity.title = "An introduction to computer systems, networking and security in GCSE computer science"
   activity.credit = 10
   activity.slug = "an-introduction-to-computer-systems-networking-and-security-in-gcse-computer-science-remote"
