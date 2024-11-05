@@ -267,6 +267,7 @@ a = Activity.find_or_create_by(stem_course_template_no: "43476cb7-6567-ea11-a811
 end
 
 a.programmes << cs_accelerator unless a.programmes.include?(cs_accelerator)
+a.save!
 
 a = Activity.find_or_create_by(stem_course_template_no: "84568ccf-6767-ea11-a811-000d3a86d7a3") do |activity|
   activity.title = "Python programming: working with data"
@@ -304,6 +305,7 @@ a = Activity.find_or_create_by(stem_course_template_no: "17d78590-4268-ea11-a811
 end
 
 a.programmes << cs_accelerator unless a.programmes.include?(cs_accelerator)
+a.save!
 
 a = Activity.find_or_create_by(stem_course_template_no: "07e76ffd-e17f-ea11-a811-000d3a86f6ce") do |activity|
   activity.title = "Representing algorithms using flowcharts and pseudocode"
@@ -475,6 +477,7 @@ a = Activity.find_or_create_by(stem_course_template_no: "bd6497ad-4386-ea11-a811
 end
 
 a.programmes << cs_accelerator unless a.programmes.include?(cs_accelerator)
+a.save!
 
 Activity.find_or_create_by(stem_course_template_no: "dbb7808c-b888-ea11-a811-000d3a86d545") do |activity|
   activity.title = "Key Stage 3 computing for the non-specialist teacher"
