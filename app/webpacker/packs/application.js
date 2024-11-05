@@ -12,7 +12,6 @@
 // or the `imagePath` JavaScript helper below.
 
 import Rails from '@rails/ujs'
-import 'cookieconsent'
 
 // JS
 import '../javascript/controllers'
