@@ -162,6 +162,10 @@ module StrapiStubs
     end
   end
 
+  def stub_strapi_email_template(key, email_template: Cms::Mock::EmailTemplate.generate_raw_data)
+    stub_request(:get, /^https:\/\/strapi.teachcomputing.org\/api\/email-templates\/#{key}/).to_return_json(body: {data: email_template})
+  end
+
   def stub_strapi_programme(key, programme: Cms::Mocks::Programme.generate_raw_data)
     if as_graphql
       stub_strapi_graphql_query("programmes", programme)

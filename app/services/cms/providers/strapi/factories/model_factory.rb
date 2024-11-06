@@ -59,6 +59,13 @@ module Cms
               to_enrichment_list(all_data, strapi_data)
             elsif model_class == Models::HeaderMenu
               to_menu(strapi_data)
+            elsif model_class == Models::EmailTemplate
+              model_class.new(
+                slug: strapi_data[:slug],
+                subject: strapi_data[:subject],
+                email_content: strapi_data[:emailContent],
+                ctas: nil
+              )
             end
           end
 
