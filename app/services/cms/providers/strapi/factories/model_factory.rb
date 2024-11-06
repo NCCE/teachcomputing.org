@@ -57,6 +57,13 @@ module Cms
               model_class.new(cms_models: strapi_data.map { ComponentFactory.process_component(_1) }.compact)
             elsif model_class == Models::EnrichmentList
               to_enrichment_list(all_data, strapi_data)
+            elsif model_class == Models::EmailTemplate
+              model_class.new(
+                slug: strapi_data[:slug],
+                subject: strapi_data[:subject],
+                email_content: strapi_data[:emailContent],
+                ctas: nil
+              )
             end
           end
 
