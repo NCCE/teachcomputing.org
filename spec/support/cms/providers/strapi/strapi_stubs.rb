@@ -111,6 +111,10 @@ module StrapiStubs
     stub_request(:get, /^https:\/\/strapi.teachcomputing.org\/api\/web-pages\/#{key}/).to_return_json(body: not_found_response, status: 404)
   end
 
+  def stub_strapi_email_template(key, email_template: Cms::Mock::EmailTemplate.generate_raw_data)
+    stub_request(:get, /^https:\/\/strapi.teachcomputing.org\/api\/email-templates\/#{key}/).to_return_json(body: {data: email_template})
+  end
+
   private
 
   def to_strapi_collection(records, page: 1, page_size: 10, page_count: 1)
