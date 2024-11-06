@@ -20,7 +20,7 @@ RSpec.describe("Enrolment confirmation component system test", type: [:system, :
       # click the edge of modal to close
       click_on "Enrol"
       expect(page).to have_selector(".ncce-modal--header h2", text: "Enrol on the Teach primary computing certificate")
-      find(".ncce-modal--body").click(x: 0, y: 500)
+      find(".ncce-modal--body").click(x: 0, y: 200)
 
       # press ESC to close
       click_on "Enrol"
