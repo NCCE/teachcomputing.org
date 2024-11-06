@@ -1,7 +1,7 @@
 require "rails_helper"
 
-RSpec.describe Cms::RichTextBlockComponent, type: :component do
-  it "doesn't renders wrapper by default" do
+RSpec.describe CmsRichTextBlockComponent, type: :component do
+  it "renders wrapper by default" do
     render_inline(described_class.new(blocks: [
       type: "paragraph",
       children: [
@@ -9,18 +9,18 @@ RSpec.describe Cms::RichTextBlockComponent, type: :component do
       ]
     ]))
 
-    expect(page).not_to have_css(".govuk-width-container")
+    expect(page).to have_css(".govuk-width-container")
   end
 
-  it "render wrapper when turned on" do
+  it "doesnt render wrapper by turned off" do
     render_inline(described_class.new(blocks: [
       type: "paragraph",
       children: [
         {type: "text", text: "Hello world!"}
       ]
-    ], with_wrapper: true))
+    ], with_wrapper: false))
 
-    expect(page).to have_css(".govuk-width-container")
+    expect(page).not_to have_css(".govuk-width-container")
   end
 
   it "renders a paragraph" do
@@ -31,7 +31,7 @@ RSpec.describe Cms::RichTextBlockComponent, type: :component do
       ]
     ]))
 
-    expect(page).to have_text("Hello world!")
+    expect(page).to have_css("p", text: "Hello world!")
   end
 
   it "renders a large heading" do
@@ -46,7 +46,7 @@ RSpec.describe Cms::RichTextBlockComponent, type: :component do
     expect(page).to have_css(".govuk-heading-l", text: "Heading world!")
   end
 
-  it "renders a medium heading for h2" do
+  it "renders a medium heading" do
     render_inline(described_class.new(blocks: [
       type: "heading",
       level: 2,
@@ -58,22 +58,10 @@ RSpec.describe Cms::RichTextBlockComponent, type: :component do
     expect(page).to have_css(".govuk-heading-m", text: "Heading world!")
   end
 
-  it "renders a medium heading or h3" do
-    render_inline(described_class.new(blocks: [
-      type: "heading",
-      level: 3,
-      children: [
-        {type: "text", text: "Heading world!"}
-      ]
-    ]))
-
-    expect(page).to have_css(".govuk-heading-m", text: "Heading world!")
-  end
-
   it "renders a small heading" do
     render_inline(described_class.new(blocks: [
       type: "heading",
-      level: 4,
+      level: 3,
       children: [
         {type: "text", text: "Heading world!"}
       ]
@@ -90,6 +78,46 @@ RSpec.describe Cms::RichTextBlockComponent, type: :component do
     expect(page).to have_text("Just text")
   end
 
+  it "renders bold text" do
+    render_inline(described_class.new(blocks: [
+      {type: "text", text: "Bold text", bold: true}
+    ]))
+
+    expect(page).to have_css(".cms-rich-text-block-component__text--bold", text: "Bold text")
+  end
+
+  it "renders italic text" do
+    render_inline(described_class.new(blocks: [
+      {type: "text", text: "Italic text", italic: true}
+    ]))
+
+    expect(page).to have_css(".cms-rich-text-block-component__text--italic", text: "Italic text")
+  end
+
+  it "renders underlined text" do
+    render_inline(described_class.new(blocks: [
+      {type: "text", text: "Underlined text", underline: true}
+    ]))
+
+    expect(page).to have_css(".cms-rich-text-block-component__text--underline", text: "Underlined text")
+  end
+
+  it "renders strikethrough text" do
+    render_inline(described_class.new(blocks: [
+      {type: "text", text: "Strikethrough text", strikethrough: true}
+    ]))
+
+    expect(page).to have_css(".cms-rich-text-block-component__text--strikethrough", text: "Strikethrough text")
+  end
+
+  it "renders code text" do
+    render_inline(described_class.new(blocks: [
+      {type: "text", text: "Code text", code: true}
+    ]))
+
+    expect(page).to have_css(".cms-rich-text-block-component__text--code", text: "Code text")
+  end
+
   it "renders a link" do
     render_inline(described_class.new(blocks: [
       {
@@ -101,7 +129,7 @@ RSpec.describe Cms::RichTextBlockComponent, type: :component do
       }
     ]))
 
-    expect(page).to have_text("A link to google (https://www.google.com)")
+    expect(page).to have_link("A link to google", href: "https://www.google.com")
   end
 
   it "renders an ordered list" do
@@ -116,8 +144,10 @@ RSpec.describe Cms::RichTextBlockComponent, type: :component do
       }
     ]))
 
-    expect(page).to have_text("1. Item 1")
-    expect(page).to have_text("2. Item 2")
+    expect(page).to have_css("ol.govuk-list--number")
+    expect(page).to have_css("ol", count: 1)
+    expect(page).to have_css("ol li", text: "Item 1")
+    expect(page).to have_css("ol li", text: "Item 2")
   end
 
   it "renders an unordered list" do
@@ -145,7 +175,7 @@ RSpec.describe Cms::RichTextBlockComponent, type: :component do
     render_inline(described_class.new(blocks: [
       {
         type: "image",
-        image: Cms::Models::Images::Image.new(url: "/an-image.png", alt: "", caption: "", formats: formats, default_size: :medium)
+        image: Cms::Models::Image.new(url: "/an-image.png", alt: "", caption: "", formats: formats, default_size: :medium)
       }
     ]))
 
