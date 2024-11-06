@@ -8,6 +8,8 @@ module Certificates
     after_action :discourage_caching
 
     def show
+      @achievements = ongoing_achievements
+
       return redirect_to complete_primary_certificate_path if @programme.user_completed?(current_user)
 
       @badge_tracking_event_category = "Primary enrolled"
@@ -22,6 +24,10 @@ module Certificates
       assign_pathway_recommendations
 
       render :show
+    end
+
+    def ongoing_achievements
+      current_user.achievements.not_in_state(:dropped, :complete).with_courses.order("created_at DESC")
     end
 
     def pending
