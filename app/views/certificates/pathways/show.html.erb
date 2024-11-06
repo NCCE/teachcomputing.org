@@ -94,7 +94,16 @@
       </div>
 
       <div class="govuk-grid-column-one-third">
-        <%= render PathwayEnrolComponent.new(programme: @programme, pathway: @pathway, current_user: @current_user) %>
+        <%= render AsideComponent.new(title: 'How to enrol') do |component| %>
+          <% component.with_body do %>
+            <ol class="govuk-body-s">
+              <% @pathway.enrol_copy.each do |line| %>
+                <li><%= line.html_safe %></li>
+              <% end %>
+            </ol>
+            <%= render EnrolmentConfirmationComponent.new(current_user:, programme: Programme.primary_certificate) %>
+          <% end %>
+        <% end %>
         <%= render PathwayImprovementsComponent.new(pathway: @pathway) %>
         <%= render AsideComponent.new(
           title: 'Download the pathway PDF'
