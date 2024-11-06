@@ -5,3 +5,42 @@
     font-size: 1rem;
   }
 }
+
+.primary-dashboard-cpd-courses {
+  &__wrapper {
+    background-color: $white;
+    padding: 20px
+  }
+
+  &__content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__explore {
+    padding-top: 16px;
+    border-top: 2px solid #F0F5F4;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+
+.primary-dashboard-activities {
+  &__wrapper {
+    background-color: $white;
+    padding: 20px;
+  }
+
+  &__content {
+    display: flex;
+    justify-content: space-between;
+
+    .govuk-select {
+      width: 100%;
+    }
+  }
+
+
+}
