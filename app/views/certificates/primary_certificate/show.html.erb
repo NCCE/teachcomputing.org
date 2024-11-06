@@ -8,7 +8,7 @@
   <%= render GovGridRowComponent.new do |row| %>
     <%= row.with_column("two-thirds") do %>
       <div class="bg-white-wrapper">
-        <h1 class="govuk-heading-l">Progress Bar</h1>
+        <%= render ProgressBarComponent.new(current_user, @programme) %>
       </div>
     <% end %>
     <%= row.with_column("one-third") do %>
@@ -18,17 +18,20 @@
     <% end %>
   <% end %>
 
-  <%= render GovGridRowComponent.new do |row| %>
+  <%= render GovGridRowComponent.new(padding: {top: 0}) do |row| %>
     <%= row.with_column("two-thirds") do %>
       <div class="primary-dashboard-cpd-courses__wrapper">
         <h2 class="govuk-heading-m">Step one: CPD courses</h2>
+
         <% if @achievements.present? %>
           <p class="govuk-heading-s">Booked courses</p>
             <% @achievements.each do |achievement| %>
-              <%= link_to achievement.title, course_path(id: achievement.activity.stem_activity_code, name: achievement.activity.slug), class: 'govuk-heading-s ncce-link govuk-link--no-underline' %>
-              <span class="govuk-body-s <%= course_icon_class(achievement.activity) %>"></span><span class="govuk-body-s"><%= t("shared.course_types.#{course_category(achievement.activity)}") %></span>
+              <div class="primary-dashboard-cpd-courses__course-details">
+                <%= link_to achievement.title, course_path(id: achievement.activity.stem_activity_code, name: achievement.activity.slug), class: 'govuk-heading-s ncce-link govuk-link--no-underline' %>
+                <span class="govuk-body-s <%= course_icon_class(achievement.activity) %>"></span><span class="govuk-body-s"><%= t("shared.course_types.#{course_category(achievement.activity)}") %></span>
+              </div>
             <% end %>
-          <div class="primary-dashboard-cpd-courses__explore">
+          <div class="primary-dashboard-cpd-courses__explore-more">
             <div>
               <p class="govuk-heading-s govuk-!-margin-bottom-0">Discover more courses</p>
             </div>
@@ -37,6 +40,7 @@
             </div>
           </div>
         <% else %>
+
         <div class="primary-dashboard-cpd-courses__content">
           <div class="govuk-body govuk-!-margin-bottom-0">Find a CPD course to get started</div>
           <div>
@@ -48,7 +52,7 @@
     <% end %>
   <% end %>
 
-  <%= render GovGridRowComponent.new do |row| %>
+  <%= render GovGridRowComponent.new(padding: {top: 0}) do |row| %>
     <%= row.with_column("two-thirds") do %>
       <div class="primary-dashboard-activities__wrapper">
         <h2 class="govuk-heading-m">Step two: Putting it into practice</h2>
@@ -72,7 +76,7 @@
     <% end %>
   <% end %>
 
-  <%= render GovGridRowComponent.new do |row| %>
+  <%= render GovGridRowComponent.new(padding: {top: 0}) do |row| %>
     <%= row.with_column("two-thirds") do %>
       <div class="primary-dashboard-activities__wrapper">
         <h2 class="govuk-heading-m">Step three: Sharing with others</h2>
