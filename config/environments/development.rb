@@ -110,6 +110,9 @@ Rails.application.configure do
   config.view_component.preview_route = "/rails/components"
   config.view_component.generate.sidecar = true
 
+  config.action_mailer.default_url_options = {host: "teachcomputing.rpfdev.com"}
+  routes.default_url_options = {host: "teachcomputing.rpfdev.com"}
+
   config.lograge.enabled = true
   config.lograge.ignore_actions = [Healthcheck::CONTROLLER_ACTION]
   config.lograge.custom_options = lambda do |event|
