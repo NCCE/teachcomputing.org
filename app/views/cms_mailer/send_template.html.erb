@@ -1,1 +1,3 @@
-<%= render CmsRichTextBlockComponent.new(blocks: @email_content, with_wrapper: false) %>
+<% @template.email_content.each do |comp| %>
+  <%= render comp.render(@template, @user) %>
+<% end %>

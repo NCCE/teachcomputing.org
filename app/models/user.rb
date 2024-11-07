@@ -67,6 +67,13 @@ class User < ApplicationRecord
     user
   end
 
+  def sorted_completed_cpd_achievements_by(programme:)
+    achievements.with_courses.in_state(:complete)
+      .belonging_to_programme(programme)
+      .with_most_recent_transition
+      .order("most_recent_achievement_transition.updated_at")
+  end
+
   def enrolments
     user_programme_enrolments
   end

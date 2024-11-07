@@ -43,23 +43,28 @@ RSpec.describe Cms::Models::EmailTemplate do
     @model = described_class.new(
       slug:,
       subject:,
-      email_content:,
-      ctas: nil
+      email_content: [
+        {
+          __component: "email-content.text",
+          textContent: email_content
+        }
+      ],
+      programme_slug: "primary-certificate"
     )
   end
 
   it "should replace first_name with user name" do
-    content = @model.email_content(user)
+    content = @model.process_blocks(email_content, user)
     text = content.dig(0, :children, 0, :text)
     expect(text).to eq("Hello Frodo")
 
-    content = @model.email_content(user2)
+    content = @model.process_blocks(email_content, user2)
     text = content.dig(0, :children, 0, :text)
     expect(text).to eq("Hello Gandalf")
   end
 
   it "should replace first_name in deeper text" do
-    content = @model.email_content(user)
+    content = @model.process_blocks(email_content, user)
     text = content.dig(1, :children, 1, :children, 0, :text)
     expect(text).to eq("Frodo should click this link")
   end

@@ -63,8 +63,8 @@ module Cms
               model_class.new(
                 slug: strapi_data[:slug],
                 subject: strapi_data[:subject],
-                email_content: strapi_data[:emailContent],
-                ctas: nil
+                programme_slug: strapi_data[:programme][:data][:attributes][:slug],
+                email_content: strapi_data[:emailContent].map { EmailComponentFactory.process_component(_1) }.compact
               )
             end
           end

@@ -39,6 +39,10 @@ class Achievement < ApplicationRecord
     joins(:activity).where.not(activities: {category:})
   }
 
+  scope :with_most_recent_transition, -> {
+    joins(most_recent_transition_join)
+  }
+
   scope :sort_complete_first, lambda {
     select("achievements.*, COALESCE(most_recent_achievement_transition.to_state, 'enrolled') as current_state")
       .joins(most_recent_transition_join)
