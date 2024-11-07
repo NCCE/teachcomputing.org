@@ -29,6 +29,20 @@ module Cms
                   publishDate: {"$lt": DateTime.now.strftime}
                 }
               }
+            elsif model_class == Models::EmailTemplate
+              {
+                programme: {field: [:slug]},
+                emailContent: {
+                  on: {
+                    "email-content.text": {populate: {fields: [:textContent]}},
+                    "email-content.cta": {populate: {fields: [:link, :text]}},
+                    "email-content.course-list": {populate: {
+                      fields: [:sectionTitle],
+                      courses: {populate: {fields: [:activityCode, :displayName, :substitute]}}
+                    }}
+                  }
+                }
+              }
             elsif model_class == Models::WebPagePreview
               {
                 populate: {seo: {fields: [:title, :description]}},
