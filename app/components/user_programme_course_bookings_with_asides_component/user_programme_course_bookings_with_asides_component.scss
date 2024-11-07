@@ -7,10 +7,15 @@
     border-bottom: 2px solid #F0F5F4;
   }
 
-  &__course-details {
-    padding: 10px 0;
-    display: flex;
-    gap: 10px;
+  &__course {
+    &-details {
+      padding: 14px 0;
+      display: flex;
+    }
+
+    &-category {
+      margin-right: 20px;
+    }
   }
 
   &__footer {

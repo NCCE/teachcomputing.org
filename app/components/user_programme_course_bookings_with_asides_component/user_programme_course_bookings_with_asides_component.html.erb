@@ -9,8 +9,17 @@
           <% @courses[:in_progress].each do |course| %>
           <%= link_to course.activity.title, course_path(id: course.activity.stem_activity_code, name: course.activity.slug), class: 'govuk-heading-s govuk-!-margin-bottom-0 ncce-link govuk-link--no-underline' if course.activity.stem_activity_code %>
             <div class="user-programme-course-bookings-with-asides-component__course-details">
-              <div><span class="govuk-body-s"><%= t("shared.course_types.#{course.activity.category}") %></span></div>
-              <div><span class="govuk-body-s">6 hours</span></div>
+              <div class="user-programme-course-bookings-with-asides-component__course-icon">
+                <span class="govuk-body-s <%= course_icon_class(course.activity) %>"></span>
+              </div>
+              <div class="user-programme-course-bookings-with-asides-component__course-category">
+                <span class="govuk-body-s"><%= t("shared.course_types.#{course.activity.category}") %></span>
+              </div>
+              <% if course_duration(course) %>
+                <div>
+                  <span class="govuk-body-s icon-clock"><%= course_duration(course).formatted_duration %></span>
+                </div>
+              <% end %>
             </div>
           <% end %>
         </div>
@@ -23,7 +32,11 @@
           <%= link_to course.activity.title, course_path(id: course.activity.stem_activity_code, name: course.activity.slug), class: 'govuk-heading-s govuk-!-margin-bottom-0 ncce-link govuk-link--no-underline' if course.activity.stem_activity_code %>
             <div class="user-programme-course-bookings-with-asides-component__course-details">
               <div><span class="govuk-body-s"><%= t("shared.course_types.#{course.activity.category}") %></span></div>
-              <div><span class="govuk-body-s">6 hours</span></div>
+              <% if course_duration(course) %>
+                <div>
+                  <span class="govuk-body-s"><%= course_duration(course) %></span>
+                </div>
+              <% end %>
             </div>
           <% end %>
         </div>
@@ -49,4 +62,3 @@
     <% end %>
   <% end %>
 <% end %>
-
