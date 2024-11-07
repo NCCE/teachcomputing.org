@@ -1,0 +1,21 @@
+.user-programme-course-bookings-with-asides-component {
+  background-color: $white;
+  padding: 20px;
+
+  &__course-wrapper {
+    padding-bottom: 15px;
+    border-bottom: 2px solid #F0F5F4;
+  }
+
+  &__course-details {
+    padding: 10px 0;
+    display: flex;
+    gap: 10px;
+  }
+
+  &__footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+}

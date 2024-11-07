@@ -8,9 +8,9 @@ module Certificates
     after_action :discourage_caching
 
     def show
-      @achievements = ongoing_achievements
-
-      return redirect_to complete_primary_certificate_path if @programme.user_completed?(current_user)
+      @user_courses = user_courses
+      @teaching_activities = teaching_activities
+      @community_activities = community_activities
 
       @badge_tracking_event_category = "Primary enrolled"
       @badge_tracking_event_label = "Primary badge"
@@ -18,16 +18,29 @@ module Certificates
       assign_achievements
       assign_issued_badge_data
 
-      @pathways = Pathway.ordered_by_programme(@programme.slug).not_legacy
-      @available_pathways_for_user = @pathways.filter { |pathway| pathway.slug != user_pathway.slug }
-      assign_programme_activity_groupings
-      assign_pathway_recommendations
-
       render :show
     end
 
-    def ongoing_achievements
-      current_user.achievements.not_in_state(:dropped, :complete).with_courses.order("created_at DESC")
+    def user_courses
+      in_progress_achievements = current_user.achievements.in_state(:in_progress, :enrolled).with_courses.order("created_at DESC")
+      complete_achievements = current_user.achievements.in_state(:complete).with_courses.order("created_at DESC")
+
+      return nil if in_progress_achievements.nil? && complete_achievements.nil?
+
+      {
+        in_progress: in_progress_achievements,
+        complete: complete_achievements
+      }
+    end
+
+    def teaching_activities
+      teaching = @programme.programme_activity_groupings.community.find_by_title("Develop your teaching practice")
+      teaching.activities
+    end
+
+    def community_activities
+      community = @programme.programme_activity_groupings.community.find_by_title("Develop computing in your community")
+      community.activities
     end
 
     def pending
@@ -65,10 +78,6 @@ module Certificates
 
     def user_enrolment
       @user_enrolment ||= current_user.user_programme_enrolments.find_by(programme_id: @programme.id)
-    end
-
-    def user_pathway
-      @user_pathway ||= user_enrolment&.pathway
     end
 
     def assign_programme_activity_groupings
