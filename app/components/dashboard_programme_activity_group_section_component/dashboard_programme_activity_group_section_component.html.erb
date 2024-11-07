@@ -21,13 +21,7 @@
     </div>
   <% end %>
 
-  <% if @aside_slug %>
-    <% if @aside_model %>
-      <%= row_component.with_column("one-third") do %>
-        <%= render @aside_model.render %>
-      <% end %>
-    <% else %>
-      <!-- Missing aside <%= @aside_slug %> -->
-    <% end %>
+  <%= row_component.with_column("one-third") do %>
+    <%= render_parent %>
   <% end %>
 <% end %>
