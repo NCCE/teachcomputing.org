@@ -22,8 +22,8 @@ module Cms
                 courses: strapi_data[:courses].map do |course|
                   EmailComponents::Course.new(
                     activity_code: course[:activityCode],
-                    substitute: strapi_data[:substitute],
-                    display_name: strapi_data[:displayName]
+                    substitute: course[:substitute],
+                    display_name: course[:displayName]
                   )
                 end
               )
