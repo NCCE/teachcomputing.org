@@ -25,11 +25,9 @@ module Certificates
       in_progress_achievements = current_user.achievements.in_state(:in_progress, :enrolled).with_courses.order("created_at DESC")
       complete_achievements = current_user.achievements.in_state(:complete).with_courses.order("created_at DESC")
 
-      return nil if in_progress_achievements.nil? && complete_achievements.nil?
-
       {
-        in_progress: in_progress_achievements,
-        complete: complete_achievements
+        in_progress: in_progress_achievements.belonging_to_programme(@programme),
+        complete: complete_achievements.belonging_to_programme(@programme)
       }
     end
 
