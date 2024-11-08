@@ -85,6 +85,8 @@ Rails.application.configure do
   config.action_mailer.asset_host = "http://localhost:3000"
   config.action_mailer.default_url_options = {host: "http://localhost:3000"}
 
+  routes.default_url_options = {host: "teachcomputing.rpfdev.com"}
+
   # Raises error for missing translations
   config.i18n.raise_on_missing_translations = true
 
@@ -107,9 +109,6 @@ Rails.application.configure do
   config.view_component.preview_paths << "#{Rails.root}/previews/components"
   config.view_component.preview_route = "/rails/components"
   config.view_component.generate.sidecar = true
-
-  config.action_mailer.default_url_options = {host: "teachcomputing.rpfdev.com"}
-  routes.default_url_options = {host: "teachcomputing.rpfdev.com"}
 
   config.lograge.enabled = true
   config.lograge.ignore_actions = [Healthcheck::CONTROLLER_ACTION]
