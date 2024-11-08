@@ -23,12 +23,22 @@ module Cms
         display_courses
       end
 
+      def has_match?(email_template, user)
+        latest_cpd = user.sorted_completed_cpd_achievements_by(programme: email_template.programme).last&.activity
+        @courses.select { _1.activity == latest_cpd }.any?
+      end
+
+      def render?(email_template, user)
+        return !has_match?(email_template, user) if @remove_on_match
+        true
+      end
+
       def render(email_template, user)
-        CmsEmailCourseListComponent.new(course_list: activity_list(email_template, user), section_title:)
+        CmsEmailCourseListComponent.new(courses: activity_list(email_template, user), section_title:) if render?(email_template, user)
       end
 
       def render_text(email_template, user)
-        CourseListText.new(activity_list(email_template, user), section_title:)
+        CourseListText.new(activity_list(email_template, user), section_title:) if render?(email_template, user)
       end
     end
 

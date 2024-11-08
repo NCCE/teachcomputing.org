@@ -6,7 +6,7 @@ class CmsEmailCourseListComponent < ViewComponent::Base
       <% if @section_title %>
         <tr><td><h2><%= @section_title %></h2></td></tr>
       <% end %>
-      <% @course_list.each do |course| %>
+      <% @courses.each do |course| %>
         <tr>
           <td>
             <%= link_to display_name(course), course_link(course) %>
@@ -16,8 +16,8 @@ class CmsEmailCourseListComponent < ViewComponent::Base
     </table>
   ERB
 
-  def initialize(course_list:, section_title:)
-    @course_list = course_list
+  def initialize(courses:, section_title:)
+    @courses = courses
     @section_title = section_title
   end
 

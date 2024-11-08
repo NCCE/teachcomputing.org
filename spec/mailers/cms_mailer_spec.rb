@@ -4,15 +4,15 @@ RSpec.describe CmsMailer, type: :mailer do
   let(:programme) { create(:primary_certificate) }
   let(:user) { create(:user) }
   let(:activity) { create(:activity, programmes: [programme], title: "Test activity") }
-  let(:second_activity) { create(:activity, programmes: [programme], title: "Test activity second") }
+  let!(:second_activity) { create(:activity, programmes: [programme], title: "Test activity second") }
+  let!(:other_activity) { create(:activity, programmes: [programme], title: "Other activity", stem_activity_code: "CP123") }
   let!(:achievement) { create(:completed_achievement, activity:, user:) }
   let(:subject) { "I am a test email" }
   let(:slug) { "test-email-slug" }
   let(:email_content) {
     [
-      {
-        __component: "email-content.text",
-        textContent: [
+      Cms::Mocks::EmailComponents::Text.generate_raw_data(
+        text_content: [
           {
             type: :paragraph,
             children: [
@@ -41,17 +41,12 @@ RSpec.describe CmsMailer, type: :mailer do
             ]
           }
         ]
-      },
-      {
-        __component: "email-content.cta",
-        text: "CTA 1",
-        link: "https://teachcomputing.org/cta1"
-      },
-      {
-        __component: "email-content.cta",
-        text: "CTA 2",
-        link: "https://teachcomputing.org/cta2"
-      }
+      ),
+      Cms::Mocks::EmailComponents::Cta.generate_raw_data(text: "CTA 1", link: "https://teachcomputing.org/cta1"),
+      Cms::Mocks::EmailComponents::Cta.generate_raw_data(text: "CTA 2", link: "https://teachcomputing.org/cta2"),
+      Cms::Mocks::EmailComponents::CourseList.generate_raw_data(section_title: nil, courses: [
+        Cms::Mocks::EmailComponents::Course.generate_data(activity_code: "CP123")
+      ])
     ]
   }
   let(:email_template) {
@@ -110,6 +105,14 @@ RSpec.describe CmsMailer, type: :mailer do
 
     it "includes the subject in the email" do
       expect(@mail.body.encoded).to include("<title>#{subject}</title>")
+    end
+
+    it "renders course link in html part" do
+      expect(@mail.html_part.body).to have_link(other_activity.title, href: /#{other_activity.stem_activity_code}/)
+    end
+
+    it "renders course link in text part" do
+      expect(@mail.text_part.body).to include("#{other_activity.title} (http://teachcomputing.test/courses/CP123/#{other_activity.title.parameterize})")
     end
 
     describe "Newer achievement" do
