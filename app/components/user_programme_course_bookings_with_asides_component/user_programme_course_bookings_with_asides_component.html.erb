@@ -1,18 +1,18 @@
 <%= render GovGridRowComponent.new do |row| %>
   <%= row.with_column("two-thirds") do %>
-    <div class="user-programme-course-bookings-with-asides-component">
+    <div class="user-programme-course-bookings-with-asides">
       <h2 class="govuk-heading-m">Step one: CPD courses</h2>
 
       <% if @courses[:in_progress].present? %>
         <h2 class="govuk-heading-s">Booked courses</h2>
-        <div class="user-programme-course-bookings-with-asides-component__course-wrapper govuk-body">
+        <div class="user-programme-course-bookings-with-asides__course-wrapper govuk-body">
           <% @courses[:in_progress].each do |course| %>
           <%= link_to course.activity.title, course_path(id: course.activity.stem_activity_code, name: course.activity.slug), class: 'govuk-heading-s govuk-!-margin-bottom-0 ncce-link govuk-link--no-underline' if course.activity.stem_activity_code %>
-            <div class="user-programme-course-bookings-with-asides-component__course-details">
-              <div class="user-programme-course-bookings-with-asides-component__course-icon">
+            <div class="user-programme-course-bookings-with-asides__course-details">
+              <div class="user-programme-course-bookings-with-asides__course-icon">
                 <span class="govuk-body-s <%= course_icon_class(course.activity) %>"></span>
               </div>
-              <div class="user-programme-course-bookings-with-asides-component__course-category">
+              <div class="user-programme-course-bookings-with-asides__course-category">
                 <span class="govuk-body-s"><%= t("shared.course_types.#{course.activity.category}") %></span>
               </div>
               <% if course_duration(course) %>
@@ -26,15 +26,20 @@
       <% end %>
 
       <% if @courses[:complete].present? %>
-        <h2 class="govuk-heading-s">Completed courses</h2>
-        <div class="user-programme-course-bookings-with-asides-component__course-wrapper govuk-body">
+        <h2 class="govuk-heading-s">Booked courses</h2>
+        <div class="user-programme-course-bookings-with-asides__course-wrapper govuk-body">
           <% @courses[:complete].each do |course| %>
           <%= link_to course.activity.title, course_path(id: course.activity.stem_activity_code, name: course.activity.slug), class: 'govuk-heading-s govuk-!-margin-bottom-0 ncce-link govuk-link--no-underline' if course.activity.stem_activity_code %>
-            <div class="user-programme-course-bookings-with-asides-component__course-details">
-              <div><span class="govuk-body-s"><%= t("shared.course_types.#{course.activity.category}") %></span></div>
+            <div class="user-programme-course-bookings-with-asides__course-details">
+              <div class="user-programme-course-bookings-with-asides__course-icon">
+                <span class="govuk-body-s <%= course_icon_class(course.activity) %>"></span>
+              </div>
+              <div class="user-programme-course-bookings-with-asides__course-category">
+                <span class="govuk-body-s"><%= t("shared.course_types.#{course.activity.category}") %></span>
+              </div>
               <% if course_duration(course) %>
                 <div>
-                  <span class="govuk-body-s"><%= course_duration(course) %></span>
+                  <span class="govuk-body-s icon-clock"><%= course_duration(course).formatted_duration %></span>
                 </div>
               <% end %>
             </div>
@@ -42,21 +47,21 @@
         </div>
       <% end %>
 
-      <% if @courses %>
-        <div class="user-programme-course-bookings-with-asides-component__footer">
-          <div><h2 class="govuk-heading-s govuk-!-margin-0">Discover more courses</h2></div>
-          <div><%= link_to 'Explore courses >', courses_path(certificate: @programme&.slug), class: "govuk-button button button--inverted govuk-!-margin-0" %></div>
-        </div>
-      <% else %>
-        <div class="user-programme-course-bookings-with-asides-component__footer">
+      <% if !@courses[:in_progress].present? && !@courses[:completed].present? %>
+      <div class="user-programme-course-bookings-with-asides__footer">
           <div><h2 class="govuk-heading-s govuk-!-margin-0">Find a CPD course to get started</h2></div>
           <div><%= link_to 'Explore courses >', courses_path(certificate: @programme&.slug), class: "govuk-button button govuk-!-margin-0" %></div>
+        </div>
+      <% else %>
+        <div class="user-programme-course-bookings-with-asides__footer">
+          <div><h2 class="govuk-heading-s govuk-!-margin-0">Discover more courses</h2></div>
+          <div><%= link_to 'Explore courses >', courses_path(certificate: @programme&.slug), class: "govuk-button button button--inverted govuk-!-margin-0" %></div>
         </div>
       <% end %>
 
     </div>
   <% end %>
-  <% if @courses %>
+  <% if @courses[:in_progress].present? || @courses[:completed].present? %>
     <%= row.with_column("one-third") do %>
       <%= render_parent %>
     <% end %>
