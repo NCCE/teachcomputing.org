@@ -12,7 +12,7 @@ module Cms
       end
 
       def render_text(email_template, user)
-        CmsRichTextBlockTextComponent.new(blocks: email_template.process_blocks(@blocks, user))
+        Cms::RichTextBlockTextComponent.new(blocks: email_template.process_blocks(@blocks, user))
       end
     end
   end
