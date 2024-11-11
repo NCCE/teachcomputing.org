@@ -100,9 +100,8 @@ Activity.find_or_create_by(stem_course_template_no: "f670dfa1-ce3d-ee11-bdf4-002
   activity.provider = "stem-learning"
   activity.stem_activity_code = "CO220"
   activity.always_on = false
-  activity.programmes  = [cs_accelerator]
+  activity.programmes = [cs_accelerator]
 end.save!
-
 
 ########################################################################################################################
 
