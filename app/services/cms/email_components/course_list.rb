@@ -34,7 +34,7 @@ module Cms
       end
 
       def render(email_template, user)
-        CmsEmailCourseListComponent.new(courses: activity_list(email_template, user), section_title:) if render?(email_template, user)
+        Cms::EmailCourseListComponent.new(courses: activity_list(email_template, user), section_title:) if render?(email_template, user)
       end
 
       def render_text(email_template, user)
