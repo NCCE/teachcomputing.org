@@ -4,7 +4,7 @@
   flex: 1 1 auto;
   padding: 15px 25px;
 
-  .numeric-card__header {
+  &__header {
     display: flex;
     flex-direction: row;
     gap: 5px;
@@ -23,7 +23,7 @@
     }
   }
 
-  .numeric-card__content {
+  &__content {
     p {
       font-size: 1.4rem;
     }
