@@ -2790,3 +2790,15 @@ Activity.find_or_initialize_by(stem_course_template_no: "2e99cea4-2e53-ef11-bfe3
 
   activity.programmes = [secondary_certificate]
 end.save!
+
+Activity.find_or_initialize_by(stem_course_template_no: "62f7c262-5491-ef11-8a6a-002248c7b0d4").tap do |activity|
+  activity.title = "Introduction to the A level NEA project"
+  activity.slug = "introduction-to-the-a-level-nea-project"
+  activity.category = "face-to-face"
+  activity.remote_delivered_cpd = true
+  activity.provider = "stem-learning"
+  activity.credit = 30
+  activity.stem_activity_code = "CP509"
+
+  activity.programmes = [secondary_certificate]
+end.save!
