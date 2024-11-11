@@ -39,10 +39,10 @@ RSpec.describe Cms::EmailComponents::CourseList do
       end
 
       it "should render as CmsRichTextBlockComponent" do
-        expect(@course_list.render(email_template, user)).to be_a(CmsEmailCourseListComponent)
+        expect(@course_list.render(email_template, user)).to be_a(Cms::EmailCourseListComponent)
       end
 
-      it "should render text as CmsRichTextBlockTextComponent" do
+      it "should render text as CourseListText" do
         expect(@course_list.render_text(email_template, user)).to be_a(Cms::EmailComponents::CourseListText)
       end
     end
@@ -99,10 +99,10 @@ RSpec.describe Cms::EmailComponents::CourseList do
 
     context "no achievements" do
       it "should render as CmsRichTextBlockComponent" do
-        expect(@course_list_with_remove.render(email_template, user)).to be_a(CmsEmailCourseListComponent)
+        expect(@course_list_with_remove.render(email_template, user)).to be_a(Cms::EmailCourseListComponent)
       end
 
-      it "should render text as CmsRichTextBlockTextComponent" do
+      it "should render text as CourseListText" do
         expect(@course_list_with_remove.render_text(email_template, user)).to be_a(Cms::EmailComponents::CourseListText)
       end
     end
