@@ -2,7 +2,7 @@
 
 require "rails_helper"
 
-RSpec.describe CmsEmailCourseListComponent, type: :component do
+RSpec.describe Cms::EmailCourseListComponent, type: :component do
   let!(:activity) { create(:activity, stem_activity_code: "CP468") }
   let!(:activity2) { create(:activity, stem_activity_code: "CP123") }
   let(:course_list) {

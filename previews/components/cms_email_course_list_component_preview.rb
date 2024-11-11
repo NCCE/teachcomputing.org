@@ -2,6 +2,6 @@
 
 class CmsEmailCourseListComponentPreview < ViewComponent::Preview
   def default
-    render(CmsEmailCourseListComponent.new(course_list: "course_list", user: "user"))
+    render(Cms::EmailCourseListComponent.new(course_list: "course_list", user: "user"))
   end
 end

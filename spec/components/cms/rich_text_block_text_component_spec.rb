@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe CmsRichTextBlockTextComponent, type: :component do
+RSpec.describe Cms::RichTextBlockTextComponent, type: :component do
   it "renders a paragraph" do
     render_inline(described_class.new(blocks: [
       type: "paragraph",
