@@ -92,7 +92,7 @@ a.programmes << cs_accelerator unless a.programmes.include?(cs_accelerator)
 
 ########################################################################################################################
 
-a = Activity.find_or_create_by(stem_course_template_no: "f670dfa1-ce3d-ee11-bdf4-002248c6f783").tap do |activity|
+Activity.find_or_create_by(stem_course_template_no: "f670dfa1-ce3d-ee11-bdf4-002248c6f783").tap do |activity|
   activity.title = "Introduction to Encryption and Cryptography"
   activity.credit = 20
   activity.slug = "design-and-prototype-embedded-computer-systems"
