@@ -26,7 +26,7 @@
       <% end %>
 
       <% if @courses[:complete].present? %>
-        <h2 class="govuk-heading-s">Booked courses</h2>
+        <h2 class="govuk-heading-s">Completed courses</h2>
         <div class="user-programme-course-bookings-with-asides__course-wrapper govuk-body">
           <% @courses[:complete].each do |course| %>
           <%= link_to course.activity.title, course_path(id: course.activity.stem_activity_code, name: course.activity.slug), class: 'govuk-heading-s govuk-!-margin-bottom-0 ncce-link govuk-link--no-underline' if course.activity.stem_activity_code %>
@@ -35,11 +35,11 @@
                 <span class="govuk-body-s <%= course_icon_class(course.activity) %>"></span>
               </div>
               <div class="user-programme-course-bookings-with-asides__course-category">
-                <span class="govuk-body-s"><%= t("shared.course_types.#{course.activity.category}") %></span>
+                <p class="govuk-body-s govuk-!-margin-0"><%= t("shared.course_types.#{course.activity.category}") %></p>
               </div>
               <% if course_duration(course) %>
                 <div>
-                  <span class="govuk-body-s icon-clock"><%= course_duration(course).formatted_duration %></span>
+                  <p class="govuk-body-s icon-clock govuk-!-margin-0"><%= course_duration(course).formatted_duration %></P>
                 </div>
               <% end %>
             </div>
