@@ -1,0 +1,13 @@
+<div class="primary-dashboard-activity" data-controller="primary-dashboard-activity-component">
+  <h2 class="govuk-heading-s">Complete at least one activity</h2>
+  <div class="primary-dashboard-activity__details" data-primary-dashboard-activity-component-target="activityDetails"></div>
+  <div class="primary-dashboard-activity__selection-wrapper">
+    <%= select_tag :activity, options_for_select(@programme_activities.map { |pa| [pa.activity.title, pa.id] }),
+      prompt: "Select from the list", class: "govuk-select",
+      data: {
+        action: "change->primary-dashboard-activity-component#selectActivity"
+      } %>
+    <%= link_to "Choose activity", "#", class: "govuk-button button button--inverted govuk-!-margin-0",
+      data: { action: "primary-dashboard-activity-component#showActivityDetails" } %>
+  </div>
+</div>
