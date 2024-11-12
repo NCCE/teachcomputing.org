@@ -1,0 +1,15 @@
+.primary-dashboard-activity {
+  &__selection-wrapper {
+    display: flex;
+    gap: 15px;
+
+    .govuk-button {
+      white-space: nowrap;
+    }
+  }
+
+  &__details {
+    background-color: aqua;
+    margin-bottom: 20px;
+  }
+}
