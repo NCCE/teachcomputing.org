@@ -6,4 +6,8 @@
 <div class="light-grey-bg">
   <%= render ProgressBarComponent.new(current_user, @programme) %>
   <%= render UserProgrammeCourseBookingsWithAsidesComponent.new(courses: @user_courses, programme: Programme.primary_certificate, aside_slug: "primary-dashboard-cpd-section") %>
+  <% @community_groups.each_with_index do |group, index| %>
+    <% title = index == 0 ? "Step two: Putting it into practice" : "Step three: Sharing with others" %>
+    <%= render PrimaryDashboardProgrammeActivityGroupComponent.new(title:, programme_activity_group: group, community_achievements: @community_achievements,  aside_slug: "primary-dashboard-cpd-section") %>
+  <% end %>
 </div>
