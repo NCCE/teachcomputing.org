@@ -1,13 +1,25 @@
-<div class="primary-dashboard-activity" data-controller="primary-dashboard-activity-component">
+<div
+  class="primary-dashboard-activity"
+  data-controller="primary-dashboard-activity-component"
+  data-primary-dashboard-activity-component-create-path-value="<%= achievements_path %>"
+  data-primary-dashboard-activity-component-update-path-value="<%= achievement_path(@achievement) if @achievement %>"
+>
   <h2 class="govuk-heading-s">Complete at least one activity</h2>
-  <div class="primary-dashboard-activity__details" data-primary-dashboard-activity-component-target="activityDetails"></div>
+  <div class="primary-dashboard-activity__details" data-primary-dashboard-activity-component-target="activityDetails">
+    <% user_programme_activities.each do |upa| %>
+      <p class="govuk-body-m"><%= upa.activity.title %></p>
+      <p class="govuk-body-s"><%= upa.activity.public_copy["description"].html_safe %></p>
+    <% end %>
+  </div>
   <div class="primary-dashboard-activity__selection-wrapper">
-    <%= select_tag :activity, options_for_select(@programme_activities.map { |pa| [pa.activity.title, pa.id] }),
+    <%= select_tag :activity, options_for_select(@programme_activities
+      .reject { |pa| user_programme_activities.map(&:activity_id).include?(pa.activity.id) }
+      .map { |pa| [pa.activity.title, pa.activity.id] }),
       prompt: "Select from the list", class: "govuk-select",
       data: {
         action: "change->primary-dashboard-activity-component#selectActivity"
       } %>
     <%= link_to "Choose activity", "#", class: "govuk-button button button--inverted govuk-!-margin-0",
-      data: { action: "primary-dashboard-activity-component#showActivityDetails" } %>
+      data: { action: "primary-dashboard-activity-component#submitActivitySelection" } %>
   </div>
 </div>

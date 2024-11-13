@@ -11,6 +11,7 @@ module Certificates
       @user_courses = user_courses
       @teaching_activities = teaching_activities
       @community_activities = community_activities
+      @community_groups = @programme.programme_activity_groupings.community.order(:sort_key)
 
       @badge_tracking_event_category = "Primary enrolled"
       @badge_tracking_event_label = "Primary badge"
