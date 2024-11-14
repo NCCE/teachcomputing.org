@@ -6,6 +6,7 @@ class SearchablePageIndexingJob < ApplicationJob
     now = DateTime.now
     SearchablePages::GhostPost.delete_all
     SearchablePages::GhostPage.delete_all
+    SearchablePages::CmsSimplePage.delete_all
 
     SearchablePages::CmsBlog.delete_all
     blog_search_records = Cms::Collections::Blog.all(1, 1000)
@@ -13,10 +14,14 @@ class SearchablePageIndexingJob < ApplicationJob
       SearchablePages::CmsBlog.insert_all(blog_search_records.resources.map { |blog| blog.to_search_record(now) })
     end
 
-    SearchablePages::CmsSimplePage.delete_all
-    page_search_records = Cms::Collections::SimplePage.all(1, 100)
+    SearchablePages::CmsWebPage.delete_all
+    page_search_records = Cms::Collections::WebPage.all(1, 200)
     if page_search_records.resources.any?
-      SearchablePages::CmsSimplePage.insert_all(page_search_records.resources.map { |page| page.to_search_record(now) })
+      SearchablePages::CmsWebPage.insert_all(page_search_records.resources.map { |page| page.to_search_record(now) })
+    end
+    enrichment_pages = Cms::Collections::EnrichmentPage.all(1, 10)
+    if enrichment_pages.resources.any?
+      SearchablePages::CmsWebPage.insert_all(enrichment_pages.resources.map { |page| page.to_search_record(now) })
     end
 
     courses = Achiever::Course::Template.all

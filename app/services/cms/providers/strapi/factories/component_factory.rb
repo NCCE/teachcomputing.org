@@ -14,7 +14,10 @@ module Cms
             when "content-blocks.linked-picture"
               DynamicComponents::LinkedPicture.new(image: ModelFactory.to_image(strapi_data, :image), link: strapi_data[:link])
             when "blocks.text-with-asides"
-              DynamicComponents::TextWithAsides.new(blocks: strapi_data[:textContent], asides: extract_aside_sections(strapi_data))
+              DynamicComponents::TextWithAsides.new(
+                blocks: ModelFactory.to_content_block(strapi_data[:textContent], with_wrapper: false),
+                asides: extract_aside_sections(strapi_data)
+              )
             when "blocks.horizontal-card"
               to_horizontal_card(strapi_data)
             when "buttons.ncce-button"
