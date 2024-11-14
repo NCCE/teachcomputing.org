@@ -1,4 +1,10 @@
-<div data-controller="modal" data-modal-confirm-value="true" class="<%= class_name %>">
+<div data-controller="modal" data-modal-confirm-value="true" data-modal-modal-id-value="<%= modal_id %>" class="<%= class_name %>">
+  <% if reopen_button %>
+    <%= reopen_button %>
+  <% elsif reopen_button_text.present? %>
+    <button class="govuk-button button ncce-modal--reopen <%= reopen_button_class %>" data-action="modal#toggle"><%= reopen_button_text %></button>
+  <% end %>
+
   <% if confirmation %>
     <div data-modal-target="confirmation">
       <%= confirmation %>
@@ -6,7 +12,8 @@
   <% end %>
 
   <div class="ncce-modal <%= 'ncce-modal--expanded' if expanded %>" style="<%= z_index %>" data-modal-target="modal">
-    <div class="ncce-modal--body <%= 'corner-decoration' if show_corner_decoration %>" tabindex="0">
+    <span tabindex="0" data-modal-target="topFocus" aria-hidden="true"></span>
+    <div id="<%= modal_id %>" class="ncce-modal--body <%= 'corner-decoration' if show_corner_decoration %>" tabindex="0">
       <div class="ncce-modal--header">
         <% if header %>
           <%= header %>
@@ -20,10 +27,6 @@
       </div>
       <%= body %>
     </div>
+    <span tabindex="0" data-modal-target="bottomFocus" aria-hidden="true"></span>
   </div>
-  <% if reopen_button %>
-    <%= reopen_button %>
-  <% elsif reopen_button_text.present? %>
-    <button class="govuk-button button ncce-modal--reopen <%= reopen_button_class %>" data-action="modal#toggle"><%= reopen_button_text %></button>
-  <% end %>
 </div>
