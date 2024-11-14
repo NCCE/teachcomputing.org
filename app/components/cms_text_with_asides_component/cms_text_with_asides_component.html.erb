@@ -4,12 +4,6 @@
   <% end %>
 
   <%= row.with_column("one-third") do %>
-
-    <% @aside_models.each do |aside| %>
-      <% if aside[:model] %>
-        <%= render aside[:model].render %>
-      <% end %>
-    <% end %>
-
+    <%= render_parent %>
   <% end %>
 <% end %>

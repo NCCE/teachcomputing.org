@@ -33,7 +33,8 @@ module Cms
             elsif model_class == Models::PageTitle
               model_class.new(
                 title: strapi_data[:title],
-                sub_text: strapi_data[:subText]
+                sub_text: strapi_data[:subText],
+                title_image: to_image(strapi_data, :titleImage)
               )
             elsif model_class == Models::BlogPreview
               to_blog_preview(strapi_data)
@@ -102,12 +103,12 @@ module Cms
             )
           end
 
-          def self.to_content_block(data, with_wrapper: true)
+          def self.to_content_block(data, with_wrapper: true, **options)
             data.map! do |block|
               block[:image] = as_image(block[:image], :medium) if block[:type] == "image"
               block
             end
-            Models::TextBlock.new(blocks: data, with_wrapper:)
+            Models::TextBlock.new(blocks: data, with_wrapper:, **options)
           end
 
           def self.to_featured_image(image_data, size = :large)

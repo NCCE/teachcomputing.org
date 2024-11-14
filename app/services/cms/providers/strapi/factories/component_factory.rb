@@ -28,6 +28,8 @@ module Cms
               to_card_wrapper(strapi_data, resource_card_block(strapi_data[:resourceCards]))
             when "blocks.picture-card-section"
               to_card_wrapper(strapi_data, picture_card_block(strapi_data[:pictureCards]))
+            when "blocks.numeric-cards-section"
+              to_card_wrapper(strapi_data, numeric_card_block(strapi_data[:numericCards]))
             when "blocks.full-width-banner"
               to_full_width_banner(strapi_data)
             when "blocks.full-width-text"
@@ -36,13 +38,59 @@ module Cms
                 background_color: extract_color_name(strapi_data, :backgroundColor),
                 show_bottom_border: strapi_data[:showBottomBorder]
               )
+            when "blocks.testimonial-row"
+              to_testimonial_row(strapi_data)
+            when "content-blocks.testimonial"
+              to_testimonial(strapi_data)
+            when "blocks.numbered-icon-list"
+              to_numbered_icon_list(strapi_data)
+            when "blocks.split-horizontal-card"
+              to_split_horizontal_card(strapi_data)
             end
+          end
+
+          def self.to_split_horizontal_card(strapi_data)
+            DynamicComponents::SplitHorizontalCard.new(
+              card_content: ModelFactory.to_content_block(strapi_data[:cardContent], with_wrapper: false),
+              aside_content: ModelFactory.to_content_block(strapi_data[:asideContent], with_wrapper: false),
+              aside_icon: ModelFactory.to_image(strapi_data, :asideIcon),
+              aside_title: strapi_data[:asideTitle],
+              section_title: strapi_data[:sectionTitle],
+              color_theme: extract_color_name(strapi_data, :colorTheme),
+              background_color: extract_color_name(strapi_data, :bkColor)
+            )
+          end
+
+          def self.to_numbered_icon_list(strapi_data)
+            DynamicComponents::NumberedIconList.new(
+              title: strapi_data[:title],
+              title_icon: ModelFactory.to_image(strapi_data, :titleIcon),
+              points: strapi_data[:points].map { ModelFactory.to_content_block(_1[:textContent], with_wrapper: false) },
+              aside_sections: extract_aside_sections(strapi_data)
+            )
+          end
+
+          def self.to_testimonial_row(strapi_data)
+            DynamicComponents::TestimonialRow.new(
+              title: strapi_data[:title],
+              background_color: extract_color_name(strapi_data, :backgroundColor),
+              testimonials: strapi_data[:testimonials].map { to_testimonial(_1) }
+            )
+          end
+
+          def self.to_testimonial(strapi_data)
+            DynamicComponents::Testimonial.new(
+              name: strapi_data[:name],
+              job_title: strapi_data[:jobTitle],
+              avatar: ModelFactory.to_image(strapi_data, :avatar, default_size: :small),
+              quote: ModelFactory.to_content_block(strapi_data[:quote], with_wrapper: false)
+            )
           end
 
           def self.to_horizontal_card(strapi_data)
             DynamicComponents::HorizontalCard.new(
               title: strapi_data[:title],
-              body_blocks: strapi_data[:textContent],
+              body_blocks: ModelFactory.to_content_block(strapi_data[:textContent], with_wrapper: false),
               image: ModelFactory.to_image(strapi_data, :image, default_size: :small),
               image_link: strapi_data[:imageLink],
               color_theme: extract_color_name(strapi_data, :colorTheme),
@@ -121,6 +169,16 @@ module Cms
                 body_text: ModelFactory.to_content_block(card_data[:textContent], with_wrapper: false),
                 link: card_data[:link],
                 color_theme: extract_color_name(card_data, :colorTheme)
+              )
+            end
+          end
+
+          def self.numeric_card_block(strapi_data)
+            strapi_data.map.with_index do |card_data, index|
+              DynamicComponents::NumericCard.new(
+                title: card_data[:title],
+                text_content: ModelFactory.to_content_block(card_data[:textContent], with_wrapper: false, paragraph_class: "govuk-body-l"),
+                number: index + 1
               )
             end
           end
