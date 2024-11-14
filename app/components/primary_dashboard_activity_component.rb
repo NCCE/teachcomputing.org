@@ -13,4 +13,8 @@ class PrimaryDashboardActivityComponent < CmsWithAsidesComponent
       .where(activity_id: user_activity_ids)
       .includes(:activity)
   end
+
+  def heading_text
+    user_programme_activities.present? ? "Complete your chosen activity" : "Complete at least one activity"
+  end
 end
