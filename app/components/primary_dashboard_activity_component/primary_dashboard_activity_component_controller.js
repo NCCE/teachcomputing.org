@@ -3,7 +3,6 @@ import ApplicationController from "../../webpacker/javascript/controllers/applic
 export default class extends ApplicationController {
   static values = {
     createPath: String,
-    updatePath: String,
     achievementId: String,
     activityId: String,
   }
