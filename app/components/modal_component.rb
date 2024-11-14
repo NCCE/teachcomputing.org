@@ -5,7 +5,7 @@ class ModalComponent < ViewComponent::Base
   renders_one :reopen_button
   renders_one :confirmation # are you sure?
 
-  attr_reader :expanded, :title, :reopen_button_text, :show_corner_decoration, :class_name, :reopen_button_class
+  attr_reader :expanded, :title, :reopen_button_text, :show_corner_decoration, :class_name, :reopen_button_class, :modal_id
 
   def initialize(title:, expanded: false, reopen_button_text: nil, show_corner_decoration: true, class_name: nil, reopen_button_class: nil, z_index: 1000)
     super
@@ -16,6 +16,7 @@ class ModalComponent < ViewComponent::Base
     @class_name = class_name
     @reopen_button_class = reopen_button_class
     @z_index = z_index
+    @modal_id = SecureRandom.hex(6)
   end
 
   def z_index
