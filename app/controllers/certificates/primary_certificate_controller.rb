@@ -9,14 +9,11 @@ module Certificates
 
     def show
       @user_courses = user_courses
-      @teaching_activities = teaching_activities
-      @community_activities = community_activities
       @community_groups = @programme.programme_activity_groupings.community.order(:sort_key)
 
       @badge_tracking_event_category = "Primary enrolled"
       @badge_tracking_event_label = "Primary badge"
 
-      assign_achievements
       assign_issued_badge_data
 
       render :show
@@ -30,16 +27,6 @@ module Certificates
         in_progress: in_progress_achievements.belonging_to_programme(@programme),
         complete: complete_achievements.belonging_to_programme(@programme)
       }
-    end
-
-    def teaching_activities
-      teaching = @programme.programme_activity_groupings.community.find_by_title("Develop your teaching practice")
-      teaching.activities
-    end
-
-    def community_activities
-      community = @programme.programme_activity_groupings.community.find_by_title("Develop computing in your community")
-      community.activities
     end
 
     def pending
@@ -77,17 +64,6 @@ module Certificates
 
     def user_enrolment
       @user_enrolment ||= current_user.user_programme_enrolments.find_by(programme_id: @programme.id)
-    end
-
-    def assign_programme_activity_groupings
-      @professional_development_groups = @programme.programme_activity_groupings.not_community.order(:sort_key)
-      @community_groups = @programme.programme_activity_groupings.community.order(:sort_key)
-    end
-
-    def assign_pathway_recommendations
-      recommended_activities = user_pathway.pathway_activities.includes(:activity)
-      @recommended_community_activities = recommended_activities.filter { |pa| pa.activity.category == :community.to_s }
-      @recommended_activities = recommended_activities - @recommended_community_activities
     end
 
     def find_programme
