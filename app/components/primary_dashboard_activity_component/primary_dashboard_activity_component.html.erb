@@ -1,14 +1,23 @@
 <div
   class="primary-dashboard-activity"
   data-controller="primary-dashboard-activity-component"
-  data-primary-dashboard-activity-component-create-path-value="<%= achievements_path %>"
-  data-primary-dashboard-activity-component-update-path-value="<%= achievement_path(@achievement) if @achievement %>"
->
-  <h2 class="govuk-heading-s">Complete at least one activity</h2>
-  <div class="primary-dashboard-activity__details" data-primary-dashboard-activity-component-target="activityDetails">
+  data-primary-dashboard-activity-component-create-path-value="<%= achievements_path %>">
+
+  <h2 class="govuk-heading-s"><%= heading_text %></h2>
+  <div class="primary-dashboard-activity__activity" data-primary-dashboard-activity-component-target="activityDetails">
     <% user_programme_activities.each do |upa| %>
-      <p class="govuk-body-m"><%= upa.activity.title %></p>
-      <p class="govuk-body-s"><%= upa.activity.public_copy["description"].html_safe %></p>
+      <div class="primary-dashboard-activity__activity-details">
+        <div class="primary-dashboard-activity__activity-details-title">
+          <div>
+            <p class="govuk-body-m"><%= upa.activity.title %></p>
+          </div>
+          <div>
+            <%= image_pack_tag('media/images/icons/remove-activity-icon.svg') %>
+          </div>
+        </div>
+        <p class="govuk-body-s"><%= upa.activity.public_copy["description"].html_safe %></p>
+        <%= link_to "Submit evidence >", "#", class: "govuk-button ncce-button button" %>
+      </div>
     <% end %>
   </div>
   <div class="primary-dashboard-activity__selection-wrapper">

@@ -1,4 +1,4 @@
-<%= render GovGridRowComponent.new do |row| %>
+<%= render GovGridRowComponent.new(padding: {top: 0, bottom: 7}) do |row| %>
   <%= row.with_column("two-thirds") do %>
     <div class="user-programme-activities-with-asides">
       <h2 class="govuk-heading-m"><%= @title %></h2>
