@@ -123,6 +123,25 @@ module Cms
             {populate: [:alternativeText]}
           end
 
+          def self.content_block_text_block = populate_fields([:textContent])
+
+          def self.content_block_file_link
+            {
+              populate: {
+                file: {populate: {fields: [:alternativeText]}}
+              }
+            }
+          end
+
+          def self.content_block_linked_picture
+            {
+              populate: {
+                fields: [:link],
+                image: {populate: {fields: [:alternativeText]}}
+              }
+            }
+          end
+
           def self.populate_fields(fields)
             {populate: {fields:}}
           end

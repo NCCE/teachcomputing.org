@@ -13,6 +13,7 @@ class AsideComponent < ViewComponent::Base
     @class_name = options[:class_name]
     @cms_content = options[:cms_content]
     @aside_icons = options[:aside_icons]
+    @title_icon = options[:title_icon] # Only used in CMS
     @show_heading_line = if options[:show_heading_line].nil?
       true
     else

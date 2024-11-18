@@ -2,7 +2,11 @@
   &__wrapper {
     background-color: $white;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
+    
+    @include govuk-media-query($from: tablet) {
+      flex-direction: row;
+    }
   }
 
   &__title-text {
@@ -17,24 +21,51 @@
 
   &__content {
     padding: 30px;
-    flex: 1 1 auto;
+    flex: 1 1 50%;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
   }
 
   &__media {
-    flex: 0 1 30%;
+    flex: 1 1 100%;
+
+    &--video {
+      flex: 1 1 100%;
+      padding: 10px;
+    }
 
     .cms-image {
       width: 100%;
       height: 100%;
 
-       img {
+      img {
+        width: 75%;
+        height: auto;
+        object-fit: cover;
+        margin: 0 12.5%
+      }
+    }
+
+    @include govuk-media-query($from: tablet) {
+      flex: 0 1 30%;
+
+      &--video {
+        flex: 0 1 50%;
+        padding: 10px;
+      }
+
+      .cms-image {
         width: 100%;
         height: 100%;
-        object-fit: cover;
-       }
+
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          margin: 0;
+        }
+      }
     }
   }
 }

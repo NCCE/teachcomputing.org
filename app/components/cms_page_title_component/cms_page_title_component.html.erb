@@ -11,7 +11,11 @@
           </p>
         <% end %>
       </div>
-      <% if @title_image %>
+      <% if @title_video_url %>
+        <div class="page-title__media--video">
+          <%= render YouTubeEmbedComponent.new(video_url: @title_video_url) %>
+        </div>
+      <% elsif @title_image %>
         <div class="page-title__media">
           <%= render CmsImageComponent.new(@title_image, show_caption: false) %> 
         </div>
