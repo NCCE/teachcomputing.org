@@ -75,15 +75,6 @@
     "PROXY_URL": {
       "required": true
     },
-    "GHOST_API_ENDPOINT": {
-      "required": true
-    },
-    "GHOST_CONTENT_API_KEY": {
-      "required": true
-    },
-    "GHOST_LIMIT_FEATURED_POSTS": {
-      "required": true
-    },
     "CLASS_MARKER_DIAGNOSTIC_URL": {
       "required": true
     },

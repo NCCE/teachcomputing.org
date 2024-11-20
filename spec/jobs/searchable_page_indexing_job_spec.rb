@@ -31,7 +31,7 @@ RSpec.describe SearchablePageIndexingJob, type: :job do
       expect(SearchablePages::SitePage.count).to eq 0
     end
 
-    it "should create searchable pages if they are pulled from ghost" do
+    it "should create searchable pages if they are pulled from strapi" do
       blogs = Array.new(4) { Cms::Mocks::Blog.generate_raw_data }
       blogs << Cms::Mocks::Blog.generate_raw_data(slug: "tech-for-success",
         excerpt: blog_excerpt,

@@ -7,12 +7,6 @@
   }
 }
 
-// fixes for Ghost CMS image sizes
-.kg-image-card img {
-  width: 100%;
-  height: auto;
-}
-
 .cms-color-theme {
   $colors: (
     "standard": $lime-green,

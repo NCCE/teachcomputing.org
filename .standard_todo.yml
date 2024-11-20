@@ -30,8 +30,6 @@ ignore:
   - Rails/EnvironmentVariableAccess
 - app/services/feature_flag_service.rb:
   - Rails/EnvironmentVariableAccess
-- app/services/ghost.rb:
-  - Rails/EnvironmentVariableAccess
 - db/migrate/20190208094751_add_self_certifiable_to_activity_model.rb:
   - Rails/ThreeStateBooleanColumn
 - db/migrate/20190410152324_create_achievement_transitions.rb:
