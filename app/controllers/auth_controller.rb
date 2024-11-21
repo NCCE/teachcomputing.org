@@ -2,7 +2,7 @@ class AuthController < ApplicationController
   def callback
     auth = omniauth_params
     course_booking_uri = course_redirect_params
-    user_exists = User.exists?(stem_user_id: auth.uid)
+    user_exists = User.exists?(stem_user_id: auth.info.stem_user_id)
     user = User.from_auth(auth.uid, auth.credentials, auth.info)
 
     session[:user_id] = user.id
@@ -33,10 +33,17 @@ class AuthController < ApplicationController
 
   def logout
     reset_session
-    redirect_to "#{ENV.fetch("STEM_OAUTH_SITE")}/user/ncce/logout"
+    redirect_to logout_url
   end
 
   private
+
+  def logout_url
+    request_params = {
+      returnTo: root_url
+    }
+    URI::HTTPS.build(host: Rails.application.config.stem_account_site, path: "/api/auth/logout", query: request_params.to_query).to_s
+  end
 
   def omniauth_params
     request.env["omniauth.auth"]

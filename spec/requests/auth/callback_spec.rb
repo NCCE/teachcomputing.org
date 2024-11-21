@@ -2,25 +2,30 @@ require "rails_helper"
 
 RSpec.describe AuthController do
   describe "#callback" do
-    let(:user) { create(:user, stem_user_id: "2074871c-eb73-4a2f-b9fd-c2fff15f97e7") }
-
-    before do
-      OmniAuth.config.test_mode = true
-      OmniAuth.config.mock_auth[:stem] = OmniAuth::AuthHash.new(
+    let(:integration_key) { "13251241" }
+    let(:user) { create(:user, stem_user_id: integration_key) }
+    let(:auth0_hash) {
+      OmniAuth::AuthHash.new(
         provider: "stem",
-        uid: "2074871c-eb73-4a2f-b9fd-c2fff15f97e7",
+        uid: "auth0|user@example.com",
         credentials: {
           expires_at: 1_546_601_180,
-          refresh_token: "27266366070255897068",
           token: "14849048797785647933"
         },
         info: {
           achiever_contact_no: "b44cb53f-c690-4535-bd79-89e893337ec6",
           first_name: "Jane",
           last_name: "Doe",
-          email: "user@example.com"
+          email: "user@example.com",
+          stem_user_id: integration_key
+
         }
       )
+    }
+
+    before do
+      OmniAuth.config.test_mode = true
+      OmniAuth.config.mock_auth[:stem] = auth0_hash
     end
 
     it "sets the user session" do
@@ -51,22 +56,7 @@ RSpec.describe AuthController do
     context "when source_uri is not present" do
       before do
         OmniAuth.config.test_mode = true
-        OmniAuth.config.mock_auth[:stem] = OmniAuth::AuthHash.new(
-          provider: "stem",
-          uid: "2074871c-eb73-4a2f-b9fd-c2fff15f97e7",
-          credentials: {
-            expires_at: 1_546_601_180,
-            refresh_token: "27266366070255897068",
-            token: "14849048797785647933"
-
-          },
-          info: {
-            achiever_contact_no: "b44cb53f-c690-4535-bd79-89e893337ec6",
-            first_name: "Jane",
-            last_name: "Doe",
-            email: "user@example.com"
-          }
-        )
+        OmniAuth.config.mock_auth[:stem] = auth0_hash
       end
 
       it "redirects to the dashboard path" do

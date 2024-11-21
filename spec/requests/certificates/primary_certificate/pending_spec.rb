@@ -84,7 +84,7 @@ RSpec.describe Certificates::PrimaryCertificateController do
       end
 
       it "redirects to login" do
-        expect(response).to redirect_to(/register/)
+        expect(response).to redirect_to(/auth\/stem\?screen_hint=signup/)
       end
     end
   end

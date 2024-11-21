@@ -74,7 +74,7 @@ RSpec.describe Certificates::PrimaryCertificateController do
     describe "while logged out" do
       it "redirects to login" do
         get primary_certificate_path
-        expect(response).to redirect_to(/register/)
+        expect(response).to redirect_to(/auth\/stem\?screen_hint=signup/)
       end
     end
   end

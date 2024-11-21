@@ -9,13 +9,12 @@ describe ApplicationHelper do
 
   describe("#create_account_url") do
     it "returns the correct url" do
-      allow(ENV).to receive(:[]).with("BYPASS_OAUTH").and_return("false")
-      allow(ENV).to receive(:[]).with("STEM_OAUTH_SITE").and_return("")
-      expect(helper.create_account_url).to match(/register/)
+      allow(Rails.application.config).to receive(:bypass_oauth).and_return(false)
+      expect(helper.create_account_url).to eq "/auth/stem?screen_hint=signup"
     end
 
     it "returns the login url when we are faking login" do
-      allow(ENV).to receive(:fetch).with("BYPASS_OAUTH", "false").and_return("true")
+      allow(Rails.application.config).to receive(:bypass_oauth).and_return(true)
       expect(helper.create_account_url).to match(login_path)
     end
   end

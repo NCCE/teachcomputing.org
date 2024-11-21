@@ -6,7 +6,6 @@ class User < ApplicationRecord
   validates :last_name, presence: true
   validates :stem_achiever_contact_no, presence: true
   validates :stem_credentials_access_token, presence: true
-  validates :stem_credentials_refresh_token, presence: true
   validates :stem_credentials_expires_at, presence: true
   validates :stem_user_id, presence: true, uniqueness: true
   # WARNING: We are consiously choosing not to have a unique constraint on
@@ -14,8 +13,8 @@ class User < ApplicationRecord
   validates :email, presence: true
   validates :teacher_reference_number, uniqueness: true, if: proc { |u| u.teacher_reference_number.present? }
 
-  attr_encrypted :stem_credentials_access_token, key: ENV.fetch("STEM_CREDENTIALS_ACCESS_TOKEN_KEY")
-  attr_encrypted :stem_credentials_refresh_token, key: ENV.fetch("STEM_CREDENTIALS_REFRESH_TOKEN_KEY")
+  attr_encrypted :stem_credentials_access_token, key: Rails.application.config.stem_credentials_access_token
+  attr_encrypted :stem_credentials_refresh_token, key: Rails.application.config.stem_credentials_refresh_token
 
   has_many :achievements, dependent: :restrict_with_exception
   has_many :activities, through: :achievements
@@ -36,7 +35,7 @@ class User < ApplicationRecord
   alias_attribute :support_audits, :audits
 
   def self.from_auth(id, credentials, info)
-    user = where(stem_user_id: id).first_or_initialize
+    user = where(stem_user_id: info.stem_user_id).first_or_initialize
 
     users_with_new_email_count = User.where(email: info.email.downcase).count
 
@@ -50,7 +49,8 @@ class User < ApplicationRecord
       Sentry.capture_message("User #{id} created with duplicated email #{info.email.downcase}", level: :warning)
     end
 
-    user.stem_user_id = id
+    user.auth0_id = id
+    user.stem_user_id = info.stem_user_id
     user.first_name = info.first_name
     user.last_name = info.last_name
     user.email = info.email.downcase

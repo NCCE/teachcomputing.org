@@ -10,9 +10,9 @@ module ApplicationHelper
   end
 
   def create_account_url
-    return login_path if ActiveRecord::Type::Boolean.new.cast(ENV.fetch("BYPASS_OAUTH", "false"))
+    return login_path if Rails.application.config.bypass_oauth
 
-    "#{ENV.fetch("STEM_OAUTH_SITE")}/user/register?from=NCCE"
+    "#{auth_url}?screen_hint=signup"
   end
 
   def auth_url
@@ -28,7 +28,7 @@ module ApplicationHelper
   end
 
   def static_asset_url(filename)
-    "#{ENV.fetch("STATIC_FILE_PATH")}/#{filename}"
+    "#{Rails.application.config.static_asset_url}/#{filename}"
   end
 
   def safe_redirect_url(url)
@@ -45,7 +45,7 @@ module ApplicationHelper
       %r{^https://ncce.io},
       %r{^https://qa.teachcomputing.org}
     ]
-    allowed_redirect_urls.push(%r{^http://localhost:3000}) if ENV["RAILS_ENV"] == "development"
+    allowed_redirect_urls.push(%r{^http://localhost:3000}) if Rails.env.development?
     allowed_redirect_urls.each do |regex|
       return url if url&.match?(regex)
     end

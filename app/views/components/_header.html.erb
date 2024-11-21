@@ -34,7 +34,7 @@
               <%= link_to 'Your dashboard', dashboard_path, class: 'govuk-header__link', data: { event_action: 'click', event_category: 'Header: Navigation', event_label: 'Your dashboard' } %>
             </li>
             <li class="govuk-header__navigation-item ncce-header__navigation-item">
-              <%= link_to 'Edit profile', "#{ENV.fetch('STEM_OAUTH_SITE')}/user/#{current_user.stem_user_id}/edit?from=NCCE", class: 'govuk-header__link', data: { event_action: 'click', event_category: 'Header: Navigation', event_label: 'Edit profile' } %>
+              <%= link_to 'Edit profile', profile_edit_url, class: 'govuk-header__link', data: { event_action: 'click', event_category: 'Header: Navigation', event_label: 'Edit profile' } %>
             </li>
             <li class="govuk-header__navigation-item ncce-header__navigation-item">
               <%= link_to 'Logout', logout_url, class: 'govuk-header__link', data: { event_action: 'click', event_category: 'Header: Navigation', event_label: 'Logout' } %>
@@ -43,7 +43,7 @@
         <% else %>
           <ul class="ncce-header__user">
             <li class="govuk-header__navigation-item ncce-header__navigation-item">
-              <%= link_to 'Create an account', create_account_url, :class => 'govuk-header__link', data: { event_action: 'click', event_category: 'Header: Navigation', event_label: 'Create an account' } %>
+              <%= link_to 'Create an account', "#{auth_url}?screen_hint=signup", method: :post, :class => 'govuk-header__link', data: { event_action: 'click', event_category: 'Header: Navigation', event_label: 'Create an account' } %>
             </li>
             <li class="govuk-header__navigation-item ncce-header__navigation-item">
               <%= link_to 'Log in', auth_url, method: :post, :class => 'govuk-header__link', data: { event_action: 'click', event_category: 'Header: Navigation', event_label: 'Log in' } %>
