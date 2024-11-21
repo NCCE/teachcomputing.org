@@ -1,0 +1,43 @@
+
+<%= render GovGridRowComponent.new(additional_classes: "community-activity-list-wrapper") do |row| %>
+  <%= row.with_column(:full) do %>
+    <div class="community-activity-list">
+      <% if @title %>
+        <h2 class="govuk-heading-m"><%= @title %></h2>
+      <% end %>
+
+      <%= render @intro.render if @intro %>
+
+      <div class="community-activity-list__grid">
+
+        <% @started_activities.each do |activity| %>
+          <div class="community-activity-list__grid-activity community-activity-list__grid-activity--started">
+            <div class="activity-started">
+              <span class="govuk-heading-s">ACTIVITY ADDED</span>
+            </div>
+            <div class="community-activity-list__grid-activity-content">
+              <h3 class="govuk-heading-s"><%= activity.title %></h3>
+              <p class="govuk-body-s activity-content"><%= activity.description.html_safe %></p>
+              <%= link_to "Manage on Dashboard", primary_certificate_path, class: "govuk-button ncce-button--white" %>
+            </div>
+          </div>
+        <% end %>
+
+        <% @activities.each do |activity| %>
+          <div class="community-activity-list__grid-activity">
+            <div class="community-activity-list__grid-activity-content">
+              <h3 class="govuk-heading-s"><%= activity.title %></h3>
+              <p class="govuk-body-s activity-content"><%= activity.description.html_safe %></p>
+              <% if @enrolled && !@started_activities.any? %>
+                <a class="govuk-button ncce-button--white" role="button">
+                  Choose Activity
+                </a>
+              <% end %>
+            </div>
+          </div>
+        <% end %>
+
+      </div>
+    </div>
+  <% end %>
+<% end %>
