@@ -67,7 +67,9 @@ module Cms
                   "blocks.full-width-text": ComponentParameterFactory.text_block_parameters,
                   "blocks.testimonial-row": ComponentParameterFactory.testimonial_row_parameters,
                   "blocks.numbered-icon-list": ComponentParameterFactory.numbered_icon_list_parameters,
-                  "blocks.split-horizontal-card": ComponentParameterFactory.split_horizontal_card_parameters
+                  "blocks.split-horizontal-card": ComponentParameterFactory.split_horizontal_card_parameters,
+                  "blocks.community-activity-list": ComponentParameterFactory.community_activity_list_parameters,
+                  "blocks.sticky-dashboard-bar": ComponentParameterFactory.sticky_dashboard_bar_parameters
                 }
               }
             end
