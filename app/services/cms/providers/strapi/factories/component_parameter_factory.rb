@@ -120,6 +120,10 @@ module Cms
             }
           end
 
+          def self.community_activity_list_parameters = populate_fields([:title, :intro, :programmeActivityGroupSlug])
+
+          def self.sticky_dashboard_bar_parameters = populate_fields([:programmeSlug])
+
           def self.image_params
             {populate: [:alternativeText]}
           end

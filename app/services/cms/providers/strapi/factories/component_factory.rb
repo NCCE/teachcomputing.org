@@ -47,7 +47,19 @@ module Cms
               to_numbered_icon_list(strapi_data)
             when "blocks.split-horizontal-card"
               to_split_horizontal_card(strapi_data)
+            when "blocks.community-activity-list"
+              to_community_activity_list(strapi_data)
+            when "blocks.sticky-dashboard-bar"
+              DynamicComponents::StickyDashboardBar.new(programme_slug: strapi_data[:programmeSlug])
             end
+          end
+
+          def self.to_community_activity_list(strapi_data)
+            DynamicComponents::CommunityActivityList.new(
+              title: strapi_data[:title],
+              intro: ModelFactory.to_content_block(strapi_data[:intro], with_wrapper: false),
+              programme_activity_group_slug: strapi_data[:programmeActivityGroupSlug]
+            )
           end
 
           def self.to_split_horizontal_card(strapi_data)
