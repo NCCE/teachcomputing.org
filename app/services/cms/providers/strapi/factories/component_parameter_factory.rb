@@ -99,13 +99,13 @@ module Cms
             {
               populate: {
                 backgroundColor: populate_fields("name"),
-                testimonials: {
-                  populate: {
-                    avatar: [:alternativeText]
-                  }
-                }
+                testimonials: testimonial_parameters
               }
             }
+          end
+
+          def self.testimonial_parameters
+            {populate: {avatar: [:alternativeText]}}
           end
 
           def self.numbered_icon_list_parameters
@@ -123,6 +123,17 @@ module Cms
           def self.community_activity_list_parameters = populate_fields([:title, :intro, :programmeActivityGroupSlug])
 
           def self.sticky_dashboard_bar_parameters = populate_fields([:programmeSlug])
+
+          def self.enrolment_testimonial_parameters
+            {
+              populate: {
+                fields: [:title],
+                testimonial: testimonial_parameters,
+                enrolledAside: populate_fields("slug"),
+                bkColor: populate_fields("name")
+              }
+            }
+          end
 
           def self.image_params
             {populate: [:alternativeText]}

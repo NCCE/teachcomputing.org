@@ -51,7 +51,19 @@ module Cms
               to_community_activity_list(strapi_data)
             when "blocks.sticky-dashboard-bar"
               DynamicComponents::StickyDashboardBar.new(programme_slug: strapi_data[:programmeSlug])
+            when "blocks.enrolment-testimonial"
+              to_enrolment_testimonial(strapi_data)
             end
+          end
+
+          def self.to_enrolment_testimonial(strapi_data)
+            DynamicComponents::EnrolmentTestimonial.new(
+              title: strapi_data[:title],
+              testimonial: to_testimonial(strapi_data[:testimonial]),
+              enrolled_aside: extract_aside_sections(strapi_data, param_name: :enrolledAside),
+              programme_slug: "primary-certificate",
+              background_color: extract_color_name(strapi_data, :bkColor)
+            )
           end
 
           def self.to_community_activity_list(strapi_data)
@@ -141,9 +153,9 @@ module Cms
             )
           end
 
-          def self.extract_aside_sections(strapi_data)
-            if strapi_data.dig(:asideSections, :data)
-              strapi_data[:asideSections][:data].collect { _1[:attributes] }
+          def self.extract_aside_sections(strapi_data, param_name: :asideSections)
+            if strapi_data.dig(param_name, :data)
+              strapi_data[param_name][:data].collect { _1[:attributes] }
             else
               []
             end

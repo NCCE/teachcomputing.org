@@ -69,7 +69,8 @@ module Cms
                   "blocks.numbered-icon-list": ComponentParameterFactory.numbered_icon_list_parameters,
                   "blocks.split-horizontal-card": ComponentParameterFactory.split_horizontal_card_parameters,
                   "blocks.community-activity-list": ComponentParameterFactory.community_activity_list_parameters,
-                  "blocks.sticky-dashboard-bar": ComponentParameterFactory.sticky_dashboard_bar_parameters
+                  "blocks.sticky-dashboard-bar": ComponentParameterFactory.sticky_dashboard_bar_parameters,
+                  "blocks.enrolment-testimonial": ComponentParameterFactory.enrolment_testimonial_parameters
                 }
               }
             end

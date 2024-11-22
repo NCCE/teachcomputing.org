@@ -17,6 +17,7 @@ class Cms::CommunityActivityListComponent < ViewComponent::Base
       @started_activities = @achievements.collect { _1.activity }
       @activities = @programme_activity_group.activities - @started_activities
     else
+      @started_activities = []
       @activities = @programme_activity_group.activities
     end
   end
