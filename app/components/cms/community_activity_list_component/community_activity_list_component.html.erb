@@ -18,7 +18,7 @@
             <div class="community-activity-list__grid-activity-content">
               <h3 class="govuk-heading-s"><%= activity.title %></h3>
               <p class="govuk-body-s activity-content"><%= activity.description.html_safe %></p>
-              <%= link_to "Manage on Dashboard", primary_certificate_path, class: "govuk-button ncce-button--white" %>
+              <%= link_to "Manage on Dashboard", @programme.path, class: "govuk-button ncce-button--white" %>
             </div>
           </div>
         <% end %>
@@ -29,9 +29,7 @@
               <h3 class="govuk-heading-s"><%= activity.title %></h3>
               <p class="govuk-body-s activity-content"><%= activity.description.html_safe %></p>
               <% if @enrolled && !@started_activities.any? %>
-                <a class="govuk-button ncce-button--white" role="button">
-                  Choose Activity
-                </a>
+                <a class="govuk-button ncce-button--white" role="button">Choose Activity</a>
               <% end %>
             </div>
           </div>
