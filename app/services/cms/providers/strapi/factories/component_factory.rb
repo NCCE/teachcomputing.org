@@ -16,7 +16,8 @@ module Cms
             when "blocks.text-with-asides"
               DynamicComponents::TextWithAsides.new(
                 blocks: ModelFactory.to_content_block(strapi_data[:textContent], with_wrapper: false),
-                asides: extract_aside_sections(strapi_data)
+                asides: extract_aside_sections(strapi_data),
+                background_color: extract_color_name(strapi_data, :bkColor)
               )
             when "blocks.horizontal-card"
               to_horizontal_card(strapi_data)

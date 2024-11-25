@@ -1,4 +1,4 @@
-<%= render GovGridRowComponent.new do |row| %>
+<%= render GovGridRowComponent.new(background_color: @background_color) do |row| %>
   <%= row.with_column("two-thirds") do %>
     <%= render @blocks.render %>
   <% end %>

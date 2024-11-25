@@ -7,7 +7,8 @@ module Cms
             {
               populate: {
                 fields: ["textContent"],
-                asideSections: populate_fields("name")
+                asideSections: populate_fields("name"),
+                bkColor: populate_fields("name")
               }
             }
           end
