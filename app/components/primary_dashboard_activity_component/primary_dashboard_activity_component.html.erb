@@ -3,26 +3,46 @@
   data-controller="primary-dashboard-activity-component"
   data-primary-dashboard-activity-component-create-path-value="<%= achievements_path %>">
 
-  <h2 class="govuk-heading-s"><%= heading_text %></h2>
-  <div class="primary-dashboard-activity__activity" data-primary-dashboard-activity-component-target="activityDetails">
-    <% user_programme_activities.each do |upa| %>
-      <div class="primary-dashboard-activity__activity-details">
-        <div class="primary-dashboard-activity__activity-details-title">
-          <div>
-            <p class="govuk-body-m"><%= upa.activity.title %></p>
+  <% if user_programme_activities[:complete].present? %>
+    <div class="primary-dashboard-activity__activity" data-primary-dashboard-activity-component-target="activityDetails">
+      <% user_programme_activities[:complete].each do |upa| %>
+        <h2 class="govuk-heading-s">Your completed activity</h2>
+        <div class="primary-dashboard-activity__activity-details">
+          <div class="primary-dashboard-activity__activity-details-title">
+            <div>
+              <p class="govuk-body-m"><%= upa.activity.title %></p>
+            </div>
+            <div>
+              <%= image_pack_tag('media/images/icons/remove-activity-icon.svg') %>
+            </div>
           </div>
-          <div>
-            <%= image_pack_tag('media/images/icons/remove-activity-icon.svg') %>
-          </div>
+          <p class="govuk-body-s"><%= upa.activity.public_copy["description"].html_safe %></p>
         </div>
-        <p class="govuk-body-s"><%= upa.activity.public_copy["description"].html_safe %></p>
-        <%= link_to "Submit evidence >", "#", class: "govuk-button ncce-button button" %>
-      </div>
-    <% end %>
-  </div>
+      <% end %>
+    </div>
+  <% end %>
+  <% if user_programme_activities[:incomplete].present? %>
+    <div class="primary-dashboard-activity__activity" data-primary-dashboard-activity-component-target="activityDetails">
+      <h2 class="govuk-heading-s">Complete your chosen activity</h2>
+      <% user_programme_activities[:incomplete].each do |upa| %>
+        <div class="primary-dashboard-activity__activity-details">
+          <div class="primary-dashboard-activity__activity-details-title">
+            <div>
+              <p class="govuk-body-m"><%= upa.activity.title %></p>
+            </div>
+            <div>
+              <%= image_pack_tag('media/images/icons/remove-activity-icon.svg') %>
+            </div>
+          </div>
+          <p class="govuk-body-s"><%= upa.activity.public_copy["description"].html_safe %></p>
+          <%= link_to "Submit evidence >", "#", class: "govuk-button ncce-button button" %>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
   <div class="primary-dashboard-activity__selection-wrapper">
     <%= select_tag :activity, options_for_select(@programme_activities
-      .reject { |pa| user_programme_activities.map(&:activity_id).include?(pa.activity.id) }
+      .reject { |pa| user_programme_activities[:incomplete].map(&:activity_id).include?(pa.activity.id) }
       .map { |pa| [pa.activity.title, pa.activity.id] }),
       prompt: "Select from the list", class: "govuk-select",
       data: {
