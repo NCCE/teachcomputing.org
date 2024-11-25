@@ -2809,7 +2809,7 @@ Activity.find_or_initialize_by(stem_course_template_no: "7c213399-60a3-ef11-8a69
   activity.category = "face-to-face"
   activity.remote_delivered_cpd = false
   activity.provider = "stem-learning"
-  activity.credit = 60
+  activity.credit = 10
   activity.stem_activity_code = "CP237"
 
   activity.programmes = [cs_accelerator]
