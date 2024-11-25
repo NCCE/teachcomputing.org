@@ -11,4 +11,24 @@ class PrimaryDashboardProgrammeActivityGroupComponent < CmsWithAsidesComponent
       Activity.find(programme_activity.activity_id)
     end
   end
+
+  def user_programme_activities
+    user_achievements = @current_user.achievements
+
+    complete_activity_ids = user_achievements.select { |a| a.complete? }.map(&:activity_id)
+    incomplete_activity_ids = user_achievements.select { |a| !a.complete? }.map(&:activity_id)
+
+    {
+      complete: @programme_activities
+        .where(activity_id: complete_activity_ids)
+        .includes(:activity),
+      incomplete: @programme_activities
+        .where(activity_id: incomplete_activity_ids)
+        .includes(:activity)
+    }
+  end
+
+  def complete?
+    user_programme_activities[:complete].size >= @programme_activity_group.required_for_completion
+  end
 end
