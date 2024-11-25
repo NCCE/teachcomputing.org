@@ -17,8 +17,8 @@ RSpec.describe Badge, type: :model do
       end
 
       it "only contains badges where active is true" do
-        expect(described_class.active).to eq active_badges
-        expect(described_class.active).not_to eq inactive_badges
+        expect(described_class.active).to match_array(active_badges)
+        expect(described_class.active).not_to match_array(inactive_badges)
       end
     end
   end
