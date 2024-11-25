@@ -2802,3 +2802,15 @@ Activity.find_or_initialize_by(stem_course_template_no: "62f7c262-5491-ef11-8a6a
 
   activity.programmes = [secondary_certificate]
 end.save!
+
+Activity.find_or_initialize_by(stem_course_template_no: "7c213399-60a3-ef11-8a69-6045bd0ddfc9").tap do |activity|
+  activity.title = "Block based programming for KS3 computing"
+  activity.slug = "block-based-programming-for-ks3-computing"
+  activity.category = "face-to-face"
+  activity.remote_delivered_cpd = false
+  activity.provider = "stem-learning"
+  activity.credit = 60
+  activity.stem_activity_code = "CP237"
+
+  activity.programmes = [cs_accelerator]
+end.save!
