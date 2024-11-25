@@ -3,7 +3,7 @@
 class CmsHorizontalCardComponent < ViewComponent::Base
   delegate :cms_color_theme_class, to: :helpers
 
-  def initialize(title:, body_blocks:, image: nil, image_link: nil, color_theme: nil, icon_block: nil, spacing: nil)
+  def initialize(title:, body_blocks:, image: nil, image_link: nil, color_theme: nil, icon_block: nil, spacing: nil, external_title: nil)
     @title = title
     @body_blocks = body_blocks
     @image = image
@@ -11,6 +11,7 @@ class CmsHorizontalCardComponent < ViewComponent::Base
     @color_theme = color_theme
     @icon_block = icon_block
     @spacing = spacing&.downcase
+    @external_title = external_title
   end
 
   def padding

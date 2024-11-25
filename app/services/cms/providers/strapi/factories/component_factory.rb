@@ -96,7 +96,8 @@ module Cms
               image_link: strapi_data[:imageLink],
               color_theme: extract_color_name(strapi_data, :colorTheme),
               icon_block: icon_block(strapi_data[:iconBlock]),
-              spacing: strapi_data[:spacing]
+              spacing: strapi_data[:spacing],
+              external_title: strapi_data[:externalTitle]
             )
           end
 

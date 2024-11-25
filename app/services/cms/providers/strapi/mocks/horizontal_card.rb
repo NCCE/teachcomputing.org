@@ -12,6 +12,7 @@ module Cms
           attribute(:colorTheme) { nil }
           attribute(:iconBlock) { IconBlocks.generate_data }
           attribute(:spacing) { "First" }
+          attribute(:externalTitle) { nil }
         end
       end
     end
