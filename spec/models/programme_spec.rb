@@ -38,7 +38,7 @@ RSpec.describe Programme, type: :model do
       end
 
       it "contains only programmes that are enrollable" do
-        expect(described_class.enrollable).to eq programmes
+        expect(described_class.enrollable).to match_array(programmes)
         expect(described_class.enrollable).not_to include non_enrollable_programme
       end
     end
