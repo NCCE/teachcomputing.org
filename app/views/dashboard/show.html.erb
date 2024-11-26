@@ -22,9 +22,9 @@
 <% if @unenrolled_certificates.any? %>
   <%= render GovGridRowComponent.new(background_color: "light-grey", padding: {top: 5, bottom: 4}) do |row| %>
     <%= row.with_column("two-thirds") do %>
-      <% if @enrolled_certificates.any? && @unenrolled_certificates.any? %>
+      <% if @enrolled_certificates.any? %>
         <h1 class="govuk-heading-l govuk-!-margin-bottom-4">Choose your next certificate</h1>
-      <% elsif !@enrolled_certificates.any? %>
+      <% else %>
         <h1 class="govuk-heading-l govuk-!-margin-bottom-4">Choose your certificate</h1>
       <% end %>
       <% @unenrolled_certificates.each do |certificate| %>
