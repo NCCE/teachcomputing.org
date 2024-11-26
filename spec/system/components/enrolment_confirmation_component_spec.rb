@@ -5,12 +5,14 @@ RSpec.describe("Enrolment confirmation component system test", type: [:system, :
   let(:user) { create(:user) }
   let(:primary_certificate) { create(:primary_certificate) }
   let(:secondary_certificate) { create(:secondary_certificate) }
+  let(:pathway) { create(:pathway) }
 
   context "when the programme requires enrolment confirmation" do
     before do
       with_rendered_component_path(render_inline(EnrolmentConfirmationComponent.new(
         current_user: user,
-        programme: primary_certificate
+        programme: primary_certificate,
+        pathway:
       )), layout: "application") do |path|
         visit(path)
       end
