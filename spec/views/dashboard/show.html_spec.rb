@@ -123,6 +123,38 @@ RSpec.describe("dashboard/show", type: :view) do
     end
   end
 
+  context "when the user has enrolled on all certificates" do
+    before do
+      allow_any_instance_of(AuthenticationHelper).to receive(:current_user).and_return(user)
+      allow_any_instance_of(Programmes::CSAccelerator).to receive(:user_meets_completion_requirement?).with(user).and_return(true)
+
+      completed_programme_enrolment
+      user.reload
+
+      @enrolled_certificates = [
+        primary_certificate,
+        secondary_certificate,
+        i_belong,
+        a_level,
+        cs_accelerator
+      ]
+      @unenrolled_certificates = []
+
+      @incomplete_achievements = []
+      @completed_achievements = []
+      render
+    end
+
+    it "has enrolled certificates title" do
+      expect(rendered).to have_text("Enrolled certificates")
+    end
+
+    it "only shows enrolled certificate text" do
+      expect(rendered).to_not have_text("Choose your next certificate")
+      expect(rendered).to_not have_text("Choose your certificate")
+    end
+  end
+
   context "when the user has incomplete achievements" do
     before do
       allow_any_instance_of(AuthenticationHelper).to receive(:current_user).and_return(user)
