@@ -29,9 +29,7 @@
       <% end %>
     </div>
     <div class="dashboard-course-component__format">
-      <div class="dashboard-course-component__format--icon">
-        <span class="govuk-body <%= course_icon_class(@achievement.activity) %>"><%= t("shared.course_types.#{course_category(@achievement.activity)}") %></span>
-      </div>
+      <span class="govuk-body <%= course_icon_class(@achievement.activity) %>"><%= t("shared.course_types.#{course_category(@achievement.activity)}") %></span>
     </div>
   </div>
   <div class="dashboard-course-component__enrolled-date">
