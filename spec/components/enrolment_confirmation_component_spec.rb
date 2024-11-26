@@ -4,12 +4,14 @@ RSpec.describe EnrolmentConfirmationComponent, type: :component do
   let(:user) { create(:user) }
   let(:primary_certificate) { create(:primary_certificate) }
   let(:cs_accelerator) { create(:cs_accelerator) }
+  let(:pathway) { create(:pathway) }
 
   context "when no current user" do
     before do
       render_inline(described_class.new(
         programme: primary_certificate,
-        current_user: nil
+        current_user: nil,
+        pathway: nil
       ))
     end
 
@@ -26,7 +28,8 @@ RSpec.describe EnrolmentConfirmationComponent, type: :component do
     before do
       render_inline(described_class.new(
         programme: cs_accelerator,
-        current_user: user
+        current_user: user,
+        pathway:
       ))
     end
 
@@ -35,7 +38,7 @@ RSpec.describe EnrolmentConfirmationComponent, type: :component do
     end
 
     it "has an programme enrolment button" do
-      expect(page).to have_link("Enrol", href: cs_accelerator.enrol_path(user_programme_enrolment: {user_id: user.id, programme_id: cs_accelerator.id}))
+      expect(page).to have_link("Enrol", href: cs_accelerator.enrol_path(user_programme_enrolment: {user_id: user.id, programme_id: cs_accelerator.id, pathway_slug: pathway.slug}))
     end
   end
 
@@ -43,7 +46,8 @@ RSpec.describe EnrolmentConfirmationComponent, type: :component do
     before do
       render_inline(described_class.new(
         programme: primary_certificate,
-        current_user: user
+        current_user: user,
+        pathway:
       ))
     end
 
@@ -56,7 +60,7 @@ RSpec.describe EnrolmentConfirmationComponent, type: :component do
     end
 
     it "renders the enrollment confimation button" do
-      expect(page).to have_link("Confirm my enrolment", href: primary_certificate.enrol_path(user_programme_enrolment: {user_id: user.id, programme_id: primary_certificate.id}))
+      expect(page).to have_link("Confirm my enrolment", href: primary_certificate.enrol_path(user_programme_enrolment: {user_id: user.id, programme_id: primary_certificate.id, pathway_slug: pathway.slug}))
     end
   end
 
@@ -66,7 +70,8 @@ RSpec.describe EnrolmentConfirmationComponent, type: :component do
         programme: primary_certificate,
         current_user: user,
         button_text: "Click here to enrol",
-        full_width: false
+        full_width: false,
+        pathway:
       ))
     end
 
@@ -89,7 +94,8 @@ RSpec.describe EnrolmentConfirmationComponent, type: :component do
 
       render_inline(described_class.new(
         programme: cs_accelerator,
-        current_user: user
+        current_user: user,
+        pathway:
       ))
     end
 
@@ -108,7 +114,8 @@ RSpec.describe EnrolmentConfirmationComponent, type: :component do
 
       render_inline(described_class.new(
         programme: primary_certificate,
-        current_user: user
+        current_user: user,
+        pathway:
       ))
     end
 
