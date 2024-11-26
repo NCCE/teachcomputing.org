@@ -21,13 +21,11 @@
 
 <%= render GovGridRowComponent.new(background_color: "light-grey", padding: {top: 5, bottom: 4}) do |row| %>
   <%= row.with_column("two-thirds") do %>
-    <h1 class="govuk-heading-l govuk-!-margin-bottom-4">
-      <% if @enrolled_certificates.any? %>
-        Choose your next certificate
-      <% else %>
-        Choose your certificate
-      <% end %>
-    </h1>
+    <% if @enrolled_certificates.any? && @unenrolled_certificates.any? %>
+      <h1 class="govuk-heading-l govuk-!-margin-bottom-4">Choose your next certificate</h1>
+    <% elsif !@enrolled_certificates.any? %>
+      <h1 class="govuk-heading-l govuk-!-margin-bottom-4">Choose your certificate</h1>
+    <% end %>
     <% @unenrolled_certificates.each do |certificate| %>
       <%= render DashboardCertificateComponent.new(certificate:, button_text: "Find out more", button_color: "ncce-button--white") %>
     <% end %>
