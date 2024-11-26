@@ -101,7 +101,7 @@
                 <li><%= line.html_safe %></li>
               <% end %>
             </ol>
-            <%= render EnrolmentConfirmationComponent.new(current_user:, programme: Programme.primary_certificate) %>
+            <%= render EnrolmentConfirmationComponent.new(current_user:, programme: @programme, pathway: @pathway) %>
           <% end %>
         <% end %>
         <%= render PathwayImprovementsComponent.new(pathway: @pathway) %>
