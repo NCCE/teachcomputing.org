@@ -5,11 +5,12 @@ class EnrolmentConfirmationComponent < ViewComponent::Base
 
   delegate :auth_url, to: :helpers
 
-  def initialize(programme:, current_user:, full_width: true, button_text: "Enrol")
+  def initialize(programme:, current_user:, full_width: true, button_text: "Enrol", pathway: nil)
     @current_user = current_user
     @programme = programme
     @full_width = full_width
     @button_text = button_text
+    @pathway = pathway
   end
 
   def button_classes
