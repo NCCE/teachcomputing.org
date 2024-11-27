@@ -13,6 +13,8 @@ class ProgrammeActivityGrouping < ApplicationRecord
 
   store_accessor :web_copy, %i[course_requirements aside_slug subtitle], prefix: true
 
+  validates :cms_slug, uniqueness: true
+
   def user_complete?(user)
     users_completed(users: [user]).values.first
   end

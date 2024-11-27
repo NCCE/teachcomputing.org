@@ -22,6 +22,10 @@
       flex-direction: column;
       align-items: center;
 
+      .govuk-heading-s {
+        font-family: $font-family-heading;
+      }
+
       &--started {
         .activity-started {
           width: calc(100% - 30px);

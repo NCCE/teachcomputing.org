@@ -7,6 +7,7 @@ puts "Creating Programme Activity Groupings for Secondary"
 
 secondary.programme_activity_groupings.find_or_initialize_by(title: "All courses").becomes!(ProgrammeActivityGroupings::CreditCounted).tap do |group|
   group.sort_key = 2
+  group.cms_slug = "secondary-all-courses"
   group.required_for_completion = 1
   group.programme_id = secondary.id
   group.progress_bar_title = "Complete professional development"
@@ -28,6 +29,7 @@ secondary.programme_activity_groupings.find_by(title: "Develop computing in your
 secondary.programme_activity_groupings.find_or_initialize_by(title: "Make a positive impact on young people in computing").tap do |group|
   group.title = "Make a positive impact on young people in computing"
   group.sort_key = 3
+  group.cms_slug = "secondary-positive-impact"
   group.required_for_completion = 1
   group.programme_id = secondary.id
   group.community = true
@@ -60,6 +62,7 @@ end.save!
 
 secondary.programme_activity_groupings.find_or_initialize_by(title: "Support your professional community").tap do |group|
   group.title = "Support your professional community"
+  group.cms_slug = "secondary-support-community"
   group.sort_key = 4
   group.required_for_completion = 1
   group.programme_id = secondary.id

@@ -30,7 +30,7 @@ module Cms
             when "blocks.picture-card-section"
               to_card_wrapper(strapi_data, picture_card_block(strapi_data[:pictureCards]))
             when "blocks.numeric-cards-section"
-              to_card_wrapper(strapi_data, numeric_card_block(strapi_data[:numericCards]))
+              to_card_wrapper(strapi_data, numeric_card_block(strapi_data[:numericCards]), title_as_paragraph: true)
             when "blocks.full-width-banner"
               to_full_width_banner(strapi_data)
             when "blocks.full-width-text"
@@ -67,7 +67,7 @@ module Cms
           end
 
           def self.to_community_activity_list(strapi_data)
-            DynamicComponents::CommunityActivityList.new(
+            DynamicComponents::CommunityActivityGrid.new(
               title: strapi_data[:title],
               intro: ModelFactory.to_content_block(strapi_data[:intro], with_wrapper: false),
               programme_activity_group_slug: strapi_data[:programmeActivityGroupSlug]
@@ -165,12 +165,13 @@ module Cms
             strapi_data[key][:data][:attributes][:name] if strapi_data.dig(key, :data)
           end
 
-          def self.to_card_wrapper(strapi_data, cards_block)
+          def self.to_card_wrapper(strapi_data, cards_block, title_as_paragraph: false)
             DynamicComponents::CardWrapper.new(
               title: strapi_data[:sectionTitle],
               cards_block: cards_block,
               cards_per_row: strapi_data[:cardsPerRow],
-              background_color: extract_color_name(strapi_data, :bkColor)
+              background_color: extract_color_name(strapi_data, :bkColor),
+              title_as_paragraph:
             )
           end
 
