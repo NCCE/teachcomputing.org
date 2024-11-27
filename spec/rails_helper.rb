@@ -63,7 +63,6 @@ RSpec.configure do |config|
   config.include AchieverStubs
   config.include CredlyStubs
   config.include CurriculumStubs
-  config.include GhostStubs
   config.include StrapiStubs
   config.include Cms::Mocks
   config.include CachingHelpers

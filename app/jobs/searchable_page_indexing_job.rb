@@ -4,10 +4,6 @@ class SearchablePageIndexingJob < ApplicationJob
 
   def perform
     now = DateTime.now
-    SearchablePages::GhostPost.delete_all
-    SearchablePages::GhostPage.delete_all
-    SearchablePages::CmsSimplePage.delete_all
-
     SearchablePages::CmsBlog.delete_all
     blog_search_records = Cms::Collections::Blog.all(1, 1000)
     if blog_search_records.resources.any?

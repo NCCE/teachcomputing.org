@@ -10,13 +10,11 @@ RSpec.describe SearchablePageIndexingJob, type: :job do
       stub_strapi_get_empty_collection_entity("web-pages")
       stub_strapi_get_empty_collection_entity("enrichment-pages")
 
-      create_list(:searchable_pages_cms_simple_page, 2)
       create_list(:searchable_pages_cms_web_page, 5)
       create_list(:searchable_pages_cms_blog, 4)
       create_list(:searchable_pages_course, 7)
       create_list(:searchable_pages_site_page, 8)
 
-      expect(SearchablePages::CmsSimplePage.count).to eq 2
       expect(SearchablePages::CmsWebPage.count).to eq 5
       expect(SearchablePages::CmsBlog.count).to eq 4
       expect(SearchablePages::Course.count).to eq 7
@@ -27,14 +25,13 @@ RSpec.describe SearchablePageIndexingJob, type: :job do
 
       SearchablePageIndexingJob.perform_now
 
-      expect(SearchablePages::CmsSimplePage.count).to eq 0
       expect(SearchablePages::CmsWebPage.count).to eq 0
       expect(SearchablePages::CmsBlog.count).to eq 0
       expect(SearchablePages::Course.count).to eq 0
       expect(SearchablePages::SitePage.count).to eq 0
     end
 
-    it "should create searchable pages if they are pulled from ghost" do
+    it "should create searchable pages if they are pulled from strapi" do
       blogs = Array.new(4) { Cms::Mocks::Blog.generate_raw_data }
       blogs << Cms::Mocks::Blog.generate_raw_data(slug: "tech-for-success",
         excerpt: blog_excerpt,
