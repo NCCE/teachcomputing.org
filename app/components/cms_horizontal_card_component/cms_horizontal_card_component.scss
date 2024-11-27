@@ -1,4 +1,5 @@
 .horizontal-card-component {
+
   &__wrapper {
     display: flex;
     padding: 28px;
@@ -11,12 +12,28 @@
       flex-direction: column;
       align-items: start;
     }
+
+    &.i-belong-theme {
+      position: relative;
+      &::after {
+        content: "";
+        position: absolute;
+        height: 75px;
+        width: 60px;
+        top: 0px;
+        right: 15px;
+        background-image: url("../images/logos/i_belong_flag.svg");
+        background-size: 100% auto;
+        background-repeat: no-repeat;
+      }
+    }
   }
 
   &__content {
     flex: 2;
     margin-right: 16px;
   }
+
 
   &__image {
     flex: 1;

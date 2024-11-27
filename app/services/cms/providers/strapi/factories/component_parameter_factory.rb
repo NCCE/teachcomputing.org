@@ -7,7 +7,8 @@ module Cms
             {
               populate: {
                 fields: ["textContent"],
-                asideSections: populate_fields("name")
+                asideSections: populate_fields("name"),
+                bkColor: populate_fields("name")
               }
             }
           end
@@ -121,6 +122,25 @@ module Cms
 
           def self.image_params
             {populate: [:alternativeText]}
+          end
+
+          def self.content_block_text_block = populate_fields([:textContent])
+
+          def self.content_block_file_link
+            {
+              populate: {
+                file: {populate: {fields: [:alternativeText]}}
+              }
+            }
+          end
+
+          def self.content_block_linked_picture
+            {
+              populate: {
+                fields: [:link],
+                image: {populate: {fields: [:alternativeText]}}
+              }
+            }
           end
 
           def self.populate_fields(fields)

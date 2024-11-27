@@ -111,6 +111,10 @@ RSpec.describe CmsHorizontalCardComponent, type: :component do
     it "has a border left in standard colors" do
       expect(page).to have_css(".cms-color-theme__border--standard-left")
     end
+
+    it "adds the theme to the wrapper as a class" do
+      expect(page).to have_css(".horizontal-card-component__wrapper.standard-theme")
+    end
   end
 
   context "has an icon block" do
@@ -132,6 +136,39 @@ RSpec.describe CmsHorizontalCardComponent, type: :component do
 
     it "has the icon image" do
       expect(page).to have_css("img")
+    end
+  end
+
+  context "with spacing" do
+    # Cannot test the spacing rendered on the page, as the ! in the class name breaks Nokogiri
+    # Instead we will make sure that the padding method returns the correct values
+
+    context "first" do
+      before do
+        @instance = described_class.new(
+          title: "Page title",
+          body_blocks: Cms::Mocks::RichBlocks.as_model,
+          spacing: "first"
+        )
+      end
+
+      it "has the correct padding classes" do
+        expect(@instance.padding).to eq({bottom: 3, top: 7})
+      end
+    end
+
+    context "last" do
+      before do
+        @instance = described_class.new(
+          title: "Page title",
+          body_blocks: Cms::Mocks::RichBlocks.as_model,
+          spacing: "last"
+        )
+      end
+
+      it "has the correct padding classes" do
+        expect(@instance.padding).to eq({bottom: 7, top: 3})
+      end
     end
   end
 end

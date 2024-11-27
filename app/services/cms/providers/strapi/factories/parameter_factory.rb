@@ -39,6 +39,21 @@ module Cms
                 fields: [:title],
                 populate: {titleImage: {populate: [:alternativeText]}}
               }
+            elsif model_class == Models::Aside
+              {
+                fields: [:slug, :title, :showHeadingLine],
+                titleIcon: {populate: [:alternativeText]},
+                asideIcons: {
+                  populate: {iconImage: {populate: [:alternativeText]}}
+                },
+                content: {
+                  on: {
+                    "content-blocks.text-block": ComponentParameterFactory.content_block_text_block,
+                    "content-blocks.file-link": ComponentParameterFactory.content_block_file_link,
+                    "content-blocks.linked-picture": ComponentParameterFactory.content_block_linked_picture
+                  }
+                }
+              }
             elsif model_class == Models::DynamicZone
               {
                 on: {

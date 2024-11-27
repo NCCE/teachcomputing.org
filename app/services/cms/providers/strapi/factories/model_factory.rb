@@ -24,6 +24,7 @@ module Cms
             elsif model_class == Models::Aside
               model_class.new(
                 title: strapi_data[:title],
+                title_icon: ModelFactory.to_image(strapi_data, :titleIcon),
                 dynamic_content: Models::DynamicZone.new(
                   cms_models: strapi_data[:content].map { ComponentFactory.process_component(_1) }.compact
                 ),
@@ -34,7 +35,8 @@ module Cms
               model_class.new(
                 title: strapi_data[:title],
                 sub_text: strapi_data[:subText],
-                title_image: to_image(strapi_data, :titleImage)
+                title_image: to_image(strapi_data, :titleImage),
+                title_video_url: strapi_data[:titleVideoUrl]
               )
             elsif model_class == Models::BlogPreview
               to_blog_preview(strapi_data)
