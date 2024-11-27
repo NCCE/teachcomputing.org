@@ -3,7 +3,7 @@ module Cms
     module Strapi
       module Mocks
         module DynamicComponents
-          class CommunityActivityList < StrapiMock
+          class CommunityActivityGrid < StrapiMock
             strapi_component "blocks.community-activity-list"
 
             attribute(:title) { Faker::Lorem.sentence }

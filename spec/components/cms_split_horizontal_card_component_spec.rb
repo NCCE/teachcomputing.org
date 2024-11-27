@@ -14,7 +14,7 @@ RSpec.describe CmsSplitHorizontalCardComponent, type: :component do
   end
 
   it "should render component" do
-    expect(page).to have_css(".cms-split-horizontal-card")
+    expect(page).to have_css(".cms-split-horizontal-card-wrapper")
   end
 
   it "should render section title" do

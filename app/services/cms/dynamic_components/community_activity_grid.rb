@@ -1,6 +1,6 @@
 module Cms
   module DynamicComponents
-    class CommunityActivityList
+    class CommunityActivityGrid
       attr_accessor :title, :intro, :programme_activity_group_slug
 
       def initialize(title:, intro:, programme_activity_group_slug:)
@@ -10,7 +10,7 @@ module Cms
       end
 
       def render
-        CommunityActivityListComponent.new(title:, intro:, programme_activity_group_slug:)
+        CommunityActivityGridComponent.new(title:, intro:, programme_activity_group_slug:)
       end
     end
   end
