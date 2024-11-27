@@ -1,24 +1,25 @@
 # frozen_string_literal: true
 
-class Cms::CommunityActivityListComponent < ViewComponent::Base
+class Cms::CommunityActivityGridComponent < ViewComponent::Base
   delegate :current_user, to: :helpers
 
   def initialize(title:, intro:, programme_activity_group_slug:)
     @title = title
     @intro = intro
-    @programme_activity_group = ProgrammeActivityGrouping.includes(:programme).find_by(title: programme_activity_group_slug)
+    @programme_activity_group = ProgrammeActivityGrouping.includes(:programme).find_by(cms_slug: programme_activity_group_slug)
     @programme = @programme_activity_group.programme
   end
 
   def before_render
+    @active_activities = @programme_activity_group.programme_activities.includes(:activity).not_legacy.collect { _1.activity }
     @enrolled = @programme.user_enrolled?(current_user)
     if @enrolled
       @achievements = user_achievements
       @started_activities = @achievements.collect { _1.activity }
-      @activities = @programme_activity_group.activities - @started_activities
+      @activities = @active_activities - @started_activities
     else
       @started_activities = []
-      @activities = @programme_activity_group.activities
+      @activities = @active_activities
     end
   end
 

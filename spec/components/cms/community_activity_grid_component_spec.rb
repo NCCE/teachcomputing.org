@@ -2,9 +2,10 @@
 
 require "rails_helper"
 
-RSpec.describe Cms::CommunityActivityListComponent, type: :component do
+RSpec.describe Cms::CommunityActivityGridComponent, type: :component do
+  let(:cms_slug) { "cms-community-activity-list-test" }
   let(:programme) { create(:primary_certificate) }
-  let(:programme_activity_grouping) { create(:programme_activity_grouping, community: true, programme:) }
+  let(:programme_activity_grouping) { create(:programme_activity_grouping, community: true, programme:, cms_slug:) }
   let!(:activity1) { create(:activity, :community) }
   let!(:activity2) { create(:activity, :community) }
   let!(:activity_group_join1) { create(:programme_activity, activity: activity1, programme_activity_grouping:, programme:) }
@@ -20,7 +21,7 @@ RSpec.describe Cms::CommunityActivityListComponent, type: :component do
     before do
       allow_any_instance_of(AuthenticationHelper).to receive(:current_user).and_return(nil)
       render_inline(described_class.new(
-        programme_activity_group_slug: programme_activity_grouping.title,
+        programme_activity_group_slug: cms_slug,
         title: Faker::Lorem.sentence,
         intro: Cms::Mocks::RichBlocks.as_model
       ))
@@ -43,7 +44,7 @@ RSpec.describe Cms::CommunityActivityListComponent, type: :component do
     before do
       allow_any_instance_of(AuthenticationHelper).to receive(:current_user).and_return(unenrolled_user)
       render_inline(described_class.new(
-        programme_activity_group_slug: programme_activity_grouping.title,
+        programme_activity_group_slug: cms_slug,
         title: Faker::Lorem.sentence,
         intro: Cms::Mocks::RichBlocks.as_model
       ))
@@ -66,7 +67,7 @@ RSpec.describe Cms::CommunityActivityListComponent, type: :component do
     before do
       allow_any_instance_of(AuthenticationHelper).to receive(:current_user).and_return(enrolled_user)
       render_inline(described_class.new(
-        programme_activity_group_slug: programme_activity_grouping.title,
+        programme_activity_group_slug: cms_slug,
         title: Faker::Lorem.sentence,
         intro: Cms::Mocks::RichBlocks.as_model
       ))
@@ -91,7 +92,7 @@ RSpec.describe Cms::CommunityActivityListComponent, type: :component do
     before do
       allow_any_instance_of(AuthenticationHelper).to receive(:current_user).and_return(enrolled_user)
       render_inline(described_class.new(
-        programme_activity_group_slug: programme_activity_grouping.title,
+        programme_activity_group_slug: cms_slug,
         title: Faker::Lorem.sentence,
         intro: Cms::Mocks::RichBlocks.as_model
       ))
