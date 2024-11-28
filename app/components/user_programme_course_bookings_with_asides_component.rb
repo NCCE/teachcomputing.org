@@ -1,8 +1,9 @@
 # frozen_string_literal: true
 
 class UserProgrammeCourseBookingsWithAsidesComponent < CmsWithAsidesComponent
-  def initialize(courses:, programme:, aside_slug: nil)
+  def initialize(current_user:, courses:, programme:, aside_slug: nil)
     super(aside_sections: [{slug: aside_slug}])
+    @current_user = current_user
     @courses = courses
     @programme = programme
   end
