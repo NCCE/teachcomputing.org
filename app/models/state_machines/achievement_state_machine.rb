@@ -9,7 +9,7 @@ class StateMachines::AchievementStateMachine
   state :rejected
 
   transition from: :enrolled, to: %i[in_progress complete dropped drafted]
-  transition from: :drafted, to: %i[complete dropped]
+  transition from: :drafted, to: %i[enrolled complete dropped]
   transition from: :in_progress, to: %i[complete dropped]
   transition from: :dropped, to: %i[enrolled complete in_progress drafted]
   transition from: :complete, to: %i[rejected]

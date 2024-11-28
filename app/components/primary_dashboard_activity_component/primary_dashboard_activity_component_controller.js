@@ -2,7 +2,7 @@ import ApplicationController from "../../webpacker/javascript/controllers/applic
 
 export default class extends ApplicationController {
   static values = {
-    createPath: String,
+    achievementsPath: String,
     achievementId: String,
     activityId: String,
   }
@@ -19,7 +19,7 @@ export default class extends ApplicationController {
   submitActivitySelection(event) {
     event.preventDefault()
 
-    fetch(this.createPathValue, {
+    fetch(this.achievementsPathValue, {
         method: 'POST',
         headers: {
             'X-CSRF-Token': document.querySelector('meta[name=csrf-token]').content,
@@ -28,8 +28,26 @@ export default class extends ApplicationController {
         body: JSON.stringify({
             achievement: {
                 activity_id: this.activityIdValue
-            }
+            },
+            enrol: true
         })
+    })
+    .then(() => {
+        location.reload()
+    })
+  }
+
+  deleteActivitySelection(event) {
+    event.preventDefault()
+
+    this.deletePath = this.achievementsPathValue + "/" + event.currentTarget.dataset.achievementId
+
+    fetch(this.deletePath, {
+        method: 'DELETE',
+        headers: {
+            'X-CSRF-Token': document.querySelector('meta[name=csrf-token]').content,
+            'Content-Type': 'application/json'
+        },
     })
     .then(() => {
         location.reload()
