@@ -16,6 +16,7 @@ module Cms
       end
 
       def self.cache_expiry
+        1.minutes if Rails.env.staging?
         15.minutes
       end
 
