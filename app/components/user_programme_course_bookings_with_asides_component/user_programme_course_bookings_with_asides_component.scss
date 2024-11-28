@@ -2,6 +2,13 @@
   background-color: $white;
   padding: 20px;
 
+  &__header {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+
   &__course-wrapper {
     padding-bottom: 15px;
     border-bottom: 2px solid #F0F5F4;
