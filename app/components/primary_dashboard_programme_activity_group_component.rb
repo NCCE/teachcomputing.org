@@ -2,7 +2,13 @@
 
 class PrimaryDashboardProgrammeActivityGroupComponent < CmsWithAsidesComponent
   def initialize(title:, programme_activity_group:, current_user:, aside_slug: nil)
-    super(aside_sections: [{slug: aside_slug}])
+    aside_sections = if aside_slug.nil?
+      nil
+    else
+      [{slug: aside_slug}]
+    end
+
+    super(aside_sections:)
     @title = title
     @programme_activity_group = programme_activity_group
     @current_user = current_user
