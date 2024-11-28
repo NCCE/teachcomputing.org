@@ -1,21 +1,15 @@
 <div
   class="primary-dashboard-activity"
   data-controller="primary-dashboard-activity-component"
-  data-primary-dashboard-activity-component-create-path-value="<%= achievements_path %>">
+  data-primary-dashboard-activity-component-achievements-path-value="<%= achievements_path %>"
+  >
 
   <% if user_programme_activities[:complete].present? %>
     <div class="primary-dashboard-activity__activity" data-primary-dashboard-activity-component-target="activityDetails">
       <% user_programme_activities[:complete].each do |upa| %>
         <h2 class="govuk-heading-s">Your completed activity</h2>
         <div class="primary-dashboard-activity__activity-details">
-          <div class="primary-dashboard-activity__activity-details-title">
-            <div>
-              <p class="govuk-body-m"><%= upa.activity.title %></p>
-            </div>
-            <div>
-              <%= image_pack_tag('media/images/icons/remove-activity-icon.svg') %>
-            </div>
-          </div>
+          <p class="govuk-body-m"><%= upa.activity.title %></p>
           <p class="govuk-body-s"><%= upa.activity.public_copy["description"].html_safe %></p>
         </div>
       <% end %>
@@ -31,7 +25,11 @@
               <p class="govuk-body-m"><%= upa.activity.title %></p>
             </div>
             <div>
-              <%= image_pack_tag('media/images/icons/remove-activity-icon.svg') %>
+              <%= link_to image_pack_tag('media/images/icons/remove-activity-icon.svg'), "#",
+                data: {
+                  action: "primary-dashboard-activity-component#deleteActivitySelection",
+                  achievement_id: (@current_user.achievements.find { |a| a.activity_id == upa.activity_id }).id
+                  } %>
             </div>
           </div>
           <p class="govuk-body-s"><%= upa.activity.public_copy["description"].html_safe %></p>
