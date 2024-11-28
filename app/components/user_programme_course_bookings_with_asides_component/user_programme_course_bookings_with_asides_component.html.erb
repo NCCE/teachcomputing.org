@@ -1,7 +1,16 @@
 <%= render GovGridRowComponent.new(padding: {top: 0, bottom: 7}) do |row| %>
   <%= row.with_column("two-thirds") do %>
     <div class="user-programme-course-bookings-with-asides">
-      <h2 class="govuk-heading-m">Step one: CPD courses</h2>
+      <div class="user-programme-course-bookings-with-asides__header">
+        <% if @programme.programme_activity_groupings.first.user_complete?(@current_user) %>
+          <div>
+            <%= image_pack_tag('media/images/icons/activity-complete-icon.svg') %>
+          </div>
+        <% end %>
+        <div>
+          <h2 class="govuk-heading-m govuk-!-margin-bottom-0">Step one: CPD courses</h2>
+        </div>
+      </div>
 
       <% if @courses[:in_progress].present? %>
         <h2 class="govuk-heading-s">Booked courses</h2>
@@ -47,7 +56,7 @@
         </div>
       <% end %>
 
-      <% if !@courses[:in_progress].present? && !@courses[:completed].present? %>
+      <% if !@courses[:in_progress].present? && !@courses[:complete].present? %>
       <div class="user-programme-course-bookings-with-asides__footer">
           <div><h2 class="govuk-heading-s govuk-!-margin-0">Find a CPD course to get started</h2></div>
           <div><%= link_to 'Explore courses >', courses_path(certificate: @programme&.slug), class: "govuk-button button govuk-!-margin-0" %></div>
@@ -61,7 +70,7 @@
 
     </div>
   <% end %>
-  <% if @courses[:in_progress].present? || @courses[:completed].present? %>
+  <% if @courses[:in_progress].present? || @courses[:complete].present? %>
     <%= row.with_column("one-third") do %>
       <%= render_parent %>
     <% end %>

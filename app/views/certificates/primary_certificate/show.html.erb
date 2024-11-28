@@ -12,7 +12,7 @@
       <%= render CmsWithAsidesComponent.new(aside_sections: [{slug: "primary-certificate-need-help"}]) %>
     <% end %>
   <% end %>
-  <%= render UserProgrammeCourseBookingsWithAsidesComponent.new(courses: @user_courses, programme: Programme.primary_certificate, aside_slug: "primary-dashboard-cpd-section") %>
+  <%= render UserProgrammeCourseBookingsWithAsidesComponent.new(current_user: @current_user, courses: @user_courses, programme: Programme.primary_certificate, aside_slug: "primary-dashboard-cpd-section") %>
   <% @community_groups.each do |group| %>
     <%= render PrimaryDashboardProgrammeActivityGroupComponent.new(title: group.web_copy_subtitle, programme_activity_group: group, current_user: @current_user, aside_slug: group.web_copy_aside_slug) %>
   <% end %>
