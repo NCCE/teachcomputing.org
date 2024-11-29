@@ -1,13 +1,12 @@
 <div
   class="primary-dashboard-activity"
   data-controller="primary-dashboard-activity-component"
-  data-primary-dashboard-activity-component-achievements-path-value="<%= achievements_path %>"
-  >
+  data-primary-dashboard-activity-component-achievements-path-value="<%= achievements_path %>">
 
   <% if user_programme_activities[:complete].present? %>
     <div class="primary-dashboard-activity__activity" data-primary-dashboard-activity-component-target="activityDetails">
+      <h2 class="govuk-heading-s">Your completed <%= "activity".pluralize(user_programme_activities[:complete].count) %></h2>
       <% user_programme_activities[:complete].each do |upa| %>
-        <h2 class="govuk-heading-s">Your completed activity</h2>
         <div class="primary-dashboard-activity__activity-details">
           <p class="govuk-body-m"><%= upa.activity.title %></p>
           <p class="govuk-body-s"><%= upa.activity.public_copy["description"].html_safe %></p>
@@ -15,10 +14,12 @@
       <% end %>
     </div>
   <% end %>
+
   <% if user_programme_activities[:incomplete].present? %>
     <div class="primary-dashboard-activity__activity" data-primary-dashboard-activity-component-target="activityDetails">
-      <h2 class="govuk-heading-s">Complete your chosen activity</h2>
+      <h2 class="govuk-heading-s">Complete your chosen <%= "activity".pluralize(user_programme_activities[:incomplete].count) %></h2>
       <% user_programme_activities[:incomplete].each do |upa| %>
+        <% achievement = (@current_user.achievements.find { |a| a.activity_id == upa.activity_id }) %>
         <div class="primary-dashboard-activity__activity-details">
           <div class="primary-dashboard-activity__activity-details-title">
             <div>
@@ -28,24 +29,24 @@
               <%= link_to image_pack_tag('media/images/icons/remove-activity-icon.svg'), "#",
                 data: {
                   action: "primary-dashboard-activity-component#deleteActivitySelection",
-                  achievement_id: (@current_user.achievements.find { |a| a.activity_id == upa.activity_id }).id
+                  achievement_id: achievement.id
                   } %>
             </div>
           </div>
           <p class="govuk-body-s"><%= upa.activity.public_copy["description"].html_safe %></p>
-          <%= render CommunityEvidenceSubmissionModalComponent.new(activity: upa.activity) %>
+          <%= render CommunityEvidenceSubmissionModalComponent.new(activity: upa.activity, achievement: ) %>
         </div>
       <% end %>
     </div>
   <% end %>
+
   <div class="primary-dashboard-activity__selection-wrapper">
-    <%= select_tag :activity, options_for_select(@programme_activities
-      .reject { |pa| user_programme_activities[:incomplete].map(&:activity_id).include?(pa.activity.id) }
-      .map { |pa| [pa.activity.title, pa.activity.id] }),
-      prompt: "Select from the list", class: "govuk-select",
-      data: {
-        action: "change->primary-dashboard-activity-component#selectActivity"
-      } %>
+    <%= select_tag :activity, options_for_select(
+      @programme_activities.reject do |pa|
+        (user_programme_activities[:incomplete] + user_programme_activities[:complete])
+          .map(&:activity_id).include?(pa.activity.id)
+          end.map { |pa| [pa.activity.title, pa.activity.id] }
+    ), prompt: "Select from the list", class: "govuk-select", data: { action: "change->primary-dashboard-activity-component#selectActivity" } %>
     <%= link_to "Choose activity", "#", class: "govuk-button button button--inverted govuk-!-margin-0",
       data: { action: "primary-dashboard-activity-component#submitActivitySelection" } %>
   </div>

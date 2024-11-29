@@ -1,105 +1,127 @@
-<%= render ProgressComponent.new do |progress| %>
-  <%= render ModalComponent.new(
-    title: 'Submit evidence',
-    reopen_button_text: reopen_button_text,
-    show_corner_decoration: false,
-    class_name: 'community-evidence-submission-modal-component--modal',
-    reopen_button_class: achievement_rejected? ? 'ncce-button--white_black_border green-chevron' : "#{@button_class} ncce-button-chevron"
-  ) do |component| %>
-    <%= component.with_confirmation do %>
-      <%= render ModalComponent.new(
-        title: "Discard submitting evidence?",
-        show_corner_decoration: false,
-        class_name: "confirmation-modal",
-        z_index: 2000,
-      ) do |modal| %>
-        <%= modal.with_header do %>
-          <h1 class="govuk-heading-m">Discard submitting evidence?</h1>
+<div
+  class="community-evidence-submission-modal-component <%= @class_name %>"
+  data-controller="community-evidence-submission-modal-component"
+  data-community-evidence-submission-modal-component-create-path-value="<%= achievements_path %>"
+  data-community-evidence-submission-modal-component-update-path-value="<%= achievement_path(@achievement) if @achievement %>"
+  data-community-evidence-submission-modal-component-achievements-submit-path-value="<%= submit_achievements_path %>"
+  data-community-evidence-submission-modal-component-achievement-id-value="<%= @achievement&.id %>"
+  data-community-evidence-submission-modal-component-activity-id-value="<%= @activity.id %>"
+  data-community-evidence-submission-modal-component-minimum-evidence-length-value="<%= minimum_character_requirement %>"
+>
 
-          <div class="icon-close" data-action="click->modal#maybeToggle"></div>
-        <% end %>
-        <%= modal.with_body do %>
-          <p class="govuk-body-m">You can save as a draft to continue later.</p>
+  <% if achievement_rejected? %>
+    <div class="community-evidence-submission-modal-component__rejected">
+    <i class="icon-feedback"></i>
+      <span class="community-evidence-submission-modal-component__rejected-text govuk-body-s">
+        Please provide more evidence to this activity for review.
+      </span>
+    </div>
+  <% end %>
 
-          <div class="confirmation-modal__footer-actions">
-            <button class="govuk-button ncce-button--pink" data-action="modal#cascade">Exit without saving</button>
-            <button class="govuk-button button ncce-button--white" data-action="community-evidence-submission-modal-component#saveAsDraft">Save as draft</button>
-          </div>
-        <% end %>
-      <% end%>
-    <% end %>
 
-    <% component.with_header do %>
-      <h1 class="govuk-heading-m">Submit evidence</h1>
+  <%= render ProgressComponent.new do |progress| %>
+    <%= render ModalComponent.new(
+      title: 'Submit evidence',
+      reopen_button_text: reopen_button_text,
+      show_corner_decoration: false,
+      class_name: 'community-evidence-submission-modal-component--modal',
+      reopen_button_class: achievement_rejected? ? 'ncce-button--white_black_border green-chevron' : "#{@button_class} ncce-button-chevron"
+    ) do |component| %>
+      <%= component.with_confirmation do %>
+        <%= render ModalComponent.new(
+          title: "Discard submitting evidence?",
+          show_corner_decoration: false,
+          class_name: "confirmation-modal",
+          z_index: 2000,
+        ) do |modal| %>
+          <%= modal.with_header do %>
+            <h1 class="govuk-heading-m">Discard submitting evidence?</h1>
 
-      <%= progress.with_counter %>
-      <div class="icon-close" data-action="click->modal#maybeToggle"></div>
-    <% end %>
-    <% component.with_body do %>
-        <h3 class="govuk-heading-s"><%= @activity.title %></h3>
+            <div class="icon-close" data-action="click->modal#maybeToggle"></div>
+          <% end %>
+          <%= modal.with_body do %>
+            <p class="govuk-body-m">You can save as a draft to continue later.</p>
 
-        <% evidences = @activity.public_copy_evidence.presence || [{ "brief" => @activity.self_verification_info.presence || t(".evidence")}] %>
-        <% evidences.each_with_index do |evidence, index| %>
-          <%= progress.with_step do %>
-            <p class="govuk-body-s">
-              <%= evidence["brief"] %>
-              <% if evidence["bullets"].present? %>
-                <ul class="govuk-list govuk-list--bullet">
-                  <% evidence["bullets"].each do |bullet| %>
-                    <li class="govuk-body-s"><%= bullet %></li>
-                  <% end %>
-                </ul>
-              <% end %>
-            </p>
-            <textarea class="govuk-textarea govuk-!-margin-bottom-2" placeholder="Please provide us with evidence of the activity you delivered." data-community-evidence-submission-modal-component-target="textarea"><%= @achievement&.evidence&.[](index) %></textarea>
-            <div class="community-evidence-submission-modal-component__completion-count govuk-!-margin-bottom-1">
-              <span class="govuk-body-s" data-community-evidence-submission-modal-component-target="characterCountMessage"></span>
+            <div class="confirmation-modal__footer-actions">
+              <button class="govuk-button ncce-button--pink" data-action="modal#cascade">Exit without saving</button>
+              <button class="govuk-button button ncce-button--white govuk-!-margin-top-0" data-action="community-evidence-submission-modal-component#saveAsDraft">Save as draft</button>
             </div>
           <% end %>
-        <% end %>
+        <% end%>
+      <% end %>
 
-        <%= progress.with_warning_step do %>
-          <div class="comminity-activity-component__warning-text">
-            <span class="govuk-body-m" data-community-evidence-submission-modal-component-target="completionWarningMessage"></span>
-          </div>
-        <% end %>
+      <% component.with_header do %>
+        <h1 class="govuk-heading-m">Submit evidence</h1>
 
-        <div class="community-evidence-submission-modal-component__footer-actions">
-          <%= progress.with_back do %>
-            Previous
-          <% end %>
-          <%= progress.with_continue do %>
-            Next
-          <% end %>
-          <%= render ModalComponent.new(
-            title: "Are you sure you want to submit this evidence?",
-            class_name: "confirmation-modal",
-            show_corner_decoration: false,
-            z_index: 3000
-          ) do |modal| %>
-            <%= modal.with_reopen_button do %>
-              <%= progress.with_submit do %>
-                <div class="progress-component__submit-button-wrapper">
-                  <button class="govuk-button button save-draft button--inverted govuk-!-margin-bottom-0" data-action="click->community-evidence-submission-modal-component#saveAsDraft" data-community-evidence-submission-modal-component-target="saveDraftButton">Save draft</button>
-                  <button class="govuk-button button ncce-modal--reopen govuk-!-margin-bottom-0" data-community-evidence-submission-modal-component-target="submitButton" data-action="modal#toggle">Submit</button>
-                </div>
-              <% end %>
-            <% end %>
+        <%= progress.with_counter %>
+        <div class="icon-close" data-action="click->modal#maybeToggle"></div>
+      <% end %>
+      <% component.with_body do %>
+          <h3 class="govuk-heading-s"><%= @activity.title %></h3>
 
-            <%= modal.with_header do %>
-              <h2 class="govuk-heading-m govuk-!-margin-right-8"><%= modal.title %></h2>
-            <% end %>
-
-            <%= modal.with_body do %>
-              <p class="govuk-body-m">You will not be able to change or add to this evidence once submitted.</p>
-
-              <div class="confirmation-modal__footer-actions">
-                <button class="govuk-button button ncce-button--white" data-action="modal#toggle">Continue editing</button>
-                <button class="govuk-button button" data-action="community-evidence-submission-modal-component#submit">Submit evidence</button>
+          <% evidences = @activity.public_copy_evidence.presence || [{ "brief" => @activity.self_verification_info.presence || t(".evidence")}] %>
+          <% evidences.each_with_index do |evidence, index| %>
+            <%= progress.with_step do %>
+              <p class="govuk-body-s">
+                <%= evidence["brief"] %>
+                <% if evidence["bullets"].present? %>
+                  <ul class="govuk-list govuk-list--bullet">
+                    <% evidence["bullets"].each do |bullet| %>
+                      <li class="govuk-body-s"><%= bullet %></li>
+                    <% end %>
+                  </ul>
+                <% end %>
+              </p>
+              <textarea class="govuk-textarea govuk-!-margin-bottom-2" placeholder="Please provide us with evidence of the activity you delivered." data-community-evidence-submission-modal-component-target="textarea"><%= @achievement&.evidence&.[](index) %></textarea>
+              <div class="community-evidence-submission-modal-component__completion-count govuk-!-margin-bottom-1">
+                <span class="govuk-body-s" data-community-evidence-submission-modal-component-target="characterCountMessage"></span>
               </div>
             <% end %>
           <% end %>
-        </div>
+
+          <%= progress.with_warning_step do %>
+            <div class="comminity-activity-component__warning-text">
+              <span class="govuk-body-m" data-community-evidence-submission-modal-component-target="completionWarningMessage"></span>
+            </div>
+          <% end %>
+
+          <div class="community-evidence-submission-modal-component__footer-actions">
+            <%= progress.with_back do %>
+              Previous
+            <% end %>
+            <%= progress.with_continue do %>
+              Next
+            <% end %>
+            <%= render ModalComponent.new(
+              title: "Are you sure you want to submit this evidence?",
+              class_name: "confirmation-modal",
+              show_corner_decoration: false,
+              z_index: 3000
+            ) do |modal| %>
+              <%= modal.with_reopen_button do %>
+                <%= progress.with_submit do %>
+                  <div class="progress-component__submit-button-wrapper">
+                    <button class="govuk-button button save-draft button--inverted govuk-!-margin-bottom-0" data-action="click->community-evidence-submission-modal-component#saveAsDraft" data-community-evidence-submission-modal-component-target="saveDraftButton">Save draft</button>
+                    <button class="govuk-button button ncce-modal--reopen govuk-!-margin-bottom-0" data-community-evidence-submission-modal-component-target="submitButton" data-action="modal#toggle">Submit</button>
+                  </div>
+                <% end %>
+              <% end %>
+
+              <%= modal.with_header do %>
+                <h2 class="govuk-heading-m govuk-!-margin-right-8"><%= modal.title %></h2>
+              <% end %>
+
+              <%= modal.with_body do %>
+                <p class="govuk-body-m">You will not be able to change or add to this evidence once submitted.</p>
+
+                <div class="confirmation-modal__footer-actions">
+                  <button class="govuk-button button ncce-button--white govuk-!-margin-top-0" data-action="modal#toggle">Continue editing</button>
+                  <button class="govuk-button button" data-action="community-evidence-submission-modal-component#submit">Submit evidence</button>
+                </div>
+              <% end %>
+            <% end %>
+          </div>
+      <% end %>
     <% end %>
   <% end %>
-<% end %>
+</div>

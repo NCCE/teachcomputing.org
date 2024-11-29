@@ -1,6 +1,25 @@
+.community-evidence-submission-modal-component {
+
+  .community-evidence-submission-modal-component__content{
+    padding: 1.25rem 1.125rem;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .community-evidence-submission-modal-component__rejected {
+    background-color: $red;
+    padding: 1.25rem 1.125rem;
+
+    .community-evidence-submission-modal-component__rejected-text {
+      color: $white !important;
+    }
+
+  }
+}
+
 .community-evidence-submission-modal-component--modal {
   display: flex;
-  justify-content: flex-end;
+
 
   .ncce-modal {
     .ncce-modal--header {
