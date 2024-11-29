@@ -12,11 +12,9 @@
 // or the `imagePath` JavaScript helper below.
 
 import Rails from '@rails/ujs'
-import 'cookieconsent'
 
 // JS
 import '../javascript/controllers'
-import '../javascript/cookie_notice'
 import '../javascript/courses'
 import '../javascript/dropdown__expander'
 import '../javascript/js_enabled'
