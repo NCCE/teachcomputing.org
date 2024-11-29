@@ -6,7 +6,7 @@
 <div class="light-grey-bg">
   <%= render GovGridRowComponent.new(padding: {top: 5, bottom: 5}) do |row| %>
     <%= row.with_column("two-thirds") do %>
-      <%= render ProgressBarComponent.new(current_user, @programme) %>
+      <%= render ProgressBarComponent.new(current_user, @programme, top_padding: false) %>
     <% end %>
     <%= row.with_column("one-third") do %>
       <%= render CmsWithAsidesComponent.new(aside_sections: [{slug: "primary-certificate-need-help"}]) %>
