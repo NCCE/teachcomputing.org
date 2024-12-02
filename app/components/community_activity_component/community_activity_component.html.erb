@@ -1,13 +1,4 @@
-<div
-  class="community-activity-component <%= @class_name %>"
-  data-controller="community-activity-component"
-  data-community-activity-component-create-path-value="<%= achievements_path %>"
-  data-community-activity-component-update-path-value="<%= achievement_path(@achievement) if @achievement %>"
-  data-community-activity-component-achievements-submit-path-value="<%= submit_achievements_path %>"
-  data-community-activity-component-achievement-id-value="<%= @achievement&.id %>"
-  data-community-activity-component-activity-id-value="<%= @activity.id %>"
-  data-community-activity-component-minimum-evidence-length-value="<%= minimum_character_requirement %>"
->
+<div class="community-activity-component <%= @class_name %>">
   <% if achievement_rejected? %>
     <div class="community-activity-component__rejected">
     <i class="icon-feedback"></i>
@@ -16,66 +7,32 @@
       </span>
     </div>
   <% end %>
-
   <div class="community-activity-component__content">
-
     <div class="community-activity-component__objective">
       <div class="community-activity-component__objective-text">
         <span><%= @activity.title %></span>
       </div>
       <% if achievement_complete? %>
-        <div class="community_activity_component__completed_badge_container" >
-          <div class='community-activity-component__completed-badge'><%= t('.complete') %></div>
+        <div class="community-activity-component__completed_badge_container" >
+          <div class='community-activity-component__completed-badge'>Completed</div>
         </div>
       <% elsif @activity.coming_soon? %>
-        <%= button_to t('.coming_soon'),
+        <%= button_to "Coming soon",
           '#',
           class: 'govuk-button button community-activity-component__objective-button button--full-width',
           disabled: true
         %>
       <% elsif @activity.booking_programme_slug.present? %>
-        <%= link_to t('.book_button_text'),
+        <%= link_to "Book a course",
           courses_path(certificate: @activity.booking_programme_slug),
           class: 'govuk-button button community-activity-component__objective-button'
         %>
-      <% elsif @activity.evidence_not_required? %>
-        <div class="community-activity-component__objective-button-container">
-          <% if @activity.public_copy_submission_options.present? %>
-            <% @activity.public_copy_submission_options.each do |option| %>
-              <% if check_submission_option(option["slug"]) %>
-                <div class="community_activity_component__completed_badge_container">
-                  <div class='community-activity-component__completed-badge'><%= t('.complete') %></div>
-                </div>
-                <% if option["redownload"] %>
-                  <a href="<%= option["redirect"] %>" rel="noopener"
-                    class="govuk-body-s" target="_blank">Re-download <%= option["title"].downcase %></a>
-                <% end %>
-              <% else %>
-                <% if @achievement&.complete? %>
-                  <a href="<%= option["redirect"] %>" rel="noopener"
-                    class="govuk-button button <%= @button_class %>" target="_blank"><%= option["title"] %></a>
-                <% else %>
-                  <button class="govuk-button button <%= @button_class %>"
-                    data-action="click->community-activity-component#submit"
-                    data-community-activity-component-slug-param="<%= option["slug"] %>"
-                    data-community-activity-component-redirect-param="<%= option["redirect"] %>"
-                    >
-                      <%= option["title"] %>
-                  </button>
-                <% end %>
-              <% end %>
-            <% end %>
-          <% else %>
-            <button class="govuk-button button" data-action="click->community-activity-component#submit">Mark complete</button>
-          <% end %>
-        </div>
       <% else %>
-        <%= render CommunityEvidenceSubmissionModalComponent.new(activity: @activity) %>
+        <%= render CommunityEvidenceSubmissionModalComponent.new(activity: @activity, achievement: @achievement) %>
       <% end %>
     </div>
     <% if @activity.description.present? %>
       <div class="community-activity-component__description"><%= @activity.description.html_safe %></div>
     <% end %>
   </div>
-
 </div>
