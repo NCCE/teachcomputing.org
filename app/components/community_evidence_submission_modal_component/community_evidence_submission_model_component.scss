@@ -17,6 +17,33 @@
   }
 }
 
+.community-evidence-submission-modal-component__completed_badge_container {
+  display: flex;
+  width: 100%;
+  justify-content: flex-end;
+
+  @include govuk-media-query($from: tablet) {
+    text-align: right;
+    width: auto;
+  }
+}
+
+.community-evidence-submission-modal-component__objective-button-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: center;
+
+  @include govuk-media-query($from: tablet) {
+    flex: 0 1 250px;
+    align-items: flex-end;
+  }
+
+  .progress-component {
+    width: 100%;
+  }
+}
+
 .community-evidence-submission-modal-component--modal {
   display: flex;
 

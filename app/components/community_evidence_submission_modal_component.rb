@@ -39,4 +39,8 @@ class CommunityEvidenceSubmissionModalComponent < ViewComponent::Base
   def minimum_character_requirement
     @activity.programmes.collect(&:minimum_character_required_community_evidence).max
   end
+
+  def default_evidence_submission_text
+    "Encourage young people to develop important life skills through enrichment and engage with the wider community in practical, enjoyable, and meaningful ways"
+  end
 end
