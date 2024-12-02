@@ -21,6 +21,14 @@
       <% user_programme_activities[:incomplete].each do |upa| %>
         <% achievement = (@current_user.achievements.find { |a| a.activity_id == upa.activity_id }) %>
         <div class="primary-dashboard-activity__activity-details">
+          <% if achievement.in_state? :rejected %>
+            <div class="primary-dashboard-activity__selection-rejected">
+              <i class="icon-feedback"></i>
+              <span class="primary-dashboard-activity__selection-rejected-text govuk-body-s">
+                Please provide more evidence to this activity for review.
+              </span>
+            </div>
+          <% end %>
           <div class="primary-dashboard-activity__activity-details-title">
             <div>
               <p class="govuk-body-m"><%= upa.activity.title %></p>

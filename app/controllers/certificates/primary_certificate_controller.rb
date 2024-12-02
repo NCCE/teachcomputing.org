@@ -4,15 +4,11 @@ module Certificates
     before_action :authenticate_user!
     before_action :find_programme, only: %i[show complete pending]
     before_action :user_enrolled?, only: %i[show complete pending]
-    before_action :user_programme_enrolment_pending?, only: %i[show complete]
     after_action :discourage_caching
 
     def show
       @user_courses = user_courses
       @community_groups = @programme.programme_activity_groupings.community.order(:sort_key)
-
-      @badge_tracking_event_category = "Primary enrolled"
-      @badge_tracking_event_label = "Primary badge"
 
       assign_issued_badge_data
 
@@ -27,27 +23,6 @@ module Certificates
         in_progress: in_progress_achievements.belonging_to_programme(@programme),
         complete: complete_achievements.belonging_to_programme(@programme)
       }
-    end
-
-    def pending
-      return redirect_to complete_primary_certificate_path if user_enrolment.in_state?(:complete)
-
-      @complete_achievements = complete_achievements
-      @enrolment = user_enrolment
-
-      render :pending
-    end
-
-    def complete
-      return redirect_to primary_certificate_path unless @programme.user_completed?(current_user)
-
-      @badge_tracking_event_category = "Primary complete"
-      @badge_tracking_event_label = "Primary badge"
-      @complete_achievements = complete_achievements
-
-      assign_issued_badge_data
-
-      render :complete
     end
 
     private
@@ -72,32 +47,6 @@ module Certificates
 
     def user_enrolled?
       redirect_to primary_path unless @programme.user_enrolled?(current_user)
-    end
-
-    def user_programme_enrolment_pending?
-      redirect_to pending_primary_certificate_path if user_enrolment.in_state?(:pending)
-    end
-
-    def assign_achievements
-      @online_achievements = user_achievements(Activity::ONLINE_CATEGORY)
-      @face_to_face_achievements = user_achievements(Activity::FACE_TO_FACE_CATEGORY)
-      @community_achievements = user_achievements(Activity::COMMUNITY_CATEGORY)
-    end
-
-    def user_achievements(category)
-      current_user.achievements.belonging_to_programme(@programme)
-        .with_category(category)
-        .without_category(:action)
-        .not_in_state(:dropped)
-        .sort_complete_first
-    end
-
-    def complete_achievements
-      # Diagnostic may still exist for some users, so we must exclude it
-      current_user.achievements.belonging_to_programme(@programme)
-        .without_category(:action)
-        .without_category(:diagnostic)
-        .in_state(:complete)
     end
   end
 end
