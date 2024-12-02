@@ -2826,3 +2826,75 @@ Activity.find_or_initialize_by(stem_course_template_no: "7c213399-60a3-ef11-8a69
 
   activity.programmes = [cs_accelerator]
 end.save!
+
+Activity.find_or_initialize_by(stem_course_template_no: "bbef75fe-fdab-ef11-b8e8-6045bd0ddfc9").tap do |activity|
+  activity.title = "CQF support - Curriculum and Qualifications"
+  activity.slug = "cqf-support-curriculum-and-qualifications"
+  activity.category = "face-to-face"
+  activity.remote_delivered_cpd = true
+  activity.provider = "stem-learning"
+  activity.credit = 20
+  activity.stem_activity_code = "CZ116D"
+
+  activity.programmes = [primary_certificate, secondary_certificate]
+end.save!
+
+Activity.find_or_initialize_by(stem_course_template_no: "18f16765-04ac-ef11-b8e8-6045bd0ddfc9").tap do |activity|
+  activity.title = "CQF support - Teaching, Learning and Assessment"
+  activity.slug = "cqf-support-teaching-learning-and-assessment"
+  activity.category = "face-to-face"
+  activity.remote_delivered_cpd = true
+  activity.provider = "stem-learning"
+  activity.credit = 20
+  activity.stem_activity_code = "CZ117D"
+
+  activity.programmes = [primary_certificate, secondary_certificate]
+end.save!
+
+Activity.find_or_initialize_by(stem_course_template_no: "7234cb4b-05ac-ef11-b8e8-6045bd0ddfc9").tap do |activity|
+  activity.title = "CQF support - Staff development"
+  activity.slug = "cqf-support-staff-development"
+  activity.category = "face-to-face"
+  activity.remote_delivered_cpd = true
+  activity.provider = "stem-learning"
+  activity.credit = 20
+  activity.stem_activity_code = "CZ118D"
+
+  activity.programmes = [primary_certificate, secondary_certificate]
+end.save!
+
+Activity.find_or_initialize_by(stem_course_template_no: "6127fced-fbab-ef11-b8e9-6045bd0c7e50").tap do |activity|
+  activity.title = "CQF Support - Equality, diversity and inclusion"
+  activity.slug = "cqf-support-equality-diversity-and-inclusion"
+  activity.category = "face-to-face"
+  activity.remote_delivered_cpd = true
+  activity.provider = "stem-learning"
+  activity.credit = 20
+  activity.stem_activity_code = "CZ119D"
+
+  activity.programmes = [primary_certificate, secondary_certificate]
+end.save!
+
+Activity.find_or_initialize_by(stem_course_template_no: "8bd2375a-ffab-ef11-b8e8-6045bd0ddfc9").tap do |activity|
+  activity.title = "CQF support - Careers, enrichment and outreach"
+  activity.slug = "cqf-support-careers-enrichment-and-outreach"
+  activity.category = "face-to-face"
+  activity.remote_delivered_cpd = true
+  activity.provider = "stem-learning"
+  activity.credit = 20
+  activity.stem_activity_code = "CZ120D"
+
+  activity.programmes = [primary_certificate, secondary_certificate]
+end.save!
+
+Activity.find_or_initialize_by(stem_course_template_no: "865c73aa-06ac-ef11-b8e8-6045bd0ddfc9").tap do |activity|
+  activity.title = "CQF support - Impact and outcomes"
+  activity.slug = "cqf-support-impact-and-outcomes"
+  activity.category = "face-to-face"
+  activity.remote_delivered_cpd = true
+  activity.provider = "stem-learning"
+  activity.credit = 20
+  activity.stem_activity_code = "CZ121D"
+
+  activity.programmes = [primary_certificate, secondary_certificate]
+end.save!
