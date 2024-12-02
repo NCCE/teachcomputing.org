@@ -1184,6 +1184,7 @@ Activity.find_or_initialize_by(stem_course_template_no: "de77674a-51b2-eb11-8236
   activity.category = "face-to-face"
   activity.provider = "stem-learning"
   activity.stem_activity_code = "CP252"
+  activity.course_video_url = "https://www.youtube.com/watch?v=QEL1wB_6Pf4&list=PLwcV67XMdDdJT0TkvZo6cTDSR0uJgP3Ku"
 
   activity.programmes = [primary_certificate]
 end.save!
@@ -1926,7 +1927,9 @@ Activity.find_or_initialize_by(stem_course_template_no: "5178b539-29b0-ec11-983f
   activity.category = "face-to-face"
   activity.provider = "stem-learning"
   activity.stem_activity_code = "CP292"
-  activity.course_video_url = "https://www.youtube.com/watch?v=QEL1wB_6Pf4&list=PLwcV67XMdDdJT0TkvZo6cTDSR0uJgP3Ku"
+  activity.course_video_url = nil
+  # Course video was set on the wrong seed - setting back to nil and moved to CP252
+  # https://github.com/NCCE/teachcomputing.org-issues/issues/2914
 
   activity.programmes = [primary_certificate]
 end.save!
