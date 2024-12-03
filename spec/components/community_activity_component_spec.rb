@@ -74,6 +74,10 @@ RSpec.describe CommunityActivityComponent, type: :component do
         expect(page).not_to have_link("Book a course")
       end
 
+      it "renders the evidence submission component" do
+        expect(page).to have_css(".community-evidence-submission-modal-component")
+      end
+
       context "with an activity with no self verification info" do
         let(:activity) { create(:activity, :community, self_verification_info: nil, public_copy_evidence: nil) }
 
@@ -173,7 +177,7 @@ RSpec.describe CommunityActivityComponent, type: :component do
         end
 
         it "should have one completed badge" do
-          expect(page).to have_css(".community-activity-component__completed-badge", count: 1)
+          expect(page).to have_css(".community-evidence-submission-modal-component__completed-badge", count: 1)
         end
 
         it "should have redownload link" do
@@ -209,7 +213,7 @@ RSpec.describe CommunityActivityComponent, type: :component do
         end
 
         it "should have one completed badge" do
-          expect(page).to have_css(".community-activity-component__completed-badge", count: 1)
+          expect(page).to have_css(".community-evidence-submission-modal-component__completed-badge", count: 1)
         end
 
         it "should not have redownload link" do
