@@ -14,7 +14,7 @@
       </div>
       <% if achievement_complete? %>
         <div class="community-activity-component__completed_badge_container" >
-          <div class='community-activity-component__completed-badge'>Completed</div>
+          <div class="community-activity-component__completed-badge">Completed</div>
         </div>
       <% elsif @activity.coming_soon? %>
         <%= button_to "Coming soon",
@@ -28,7 +28,12 @@
           class: 'govuk-button button community-activity-component__objective-button'
         %>
       <% else %>
-        <%= render CommunityEvidenceSubmissionModalComponent.new(activity: @activity, achievement: @achievement) %>
+        <%= render CommunityEvidenceSubmissionModalComponent.new(
+          activity: @activity,
+          achievement: @achievement,
+          class_name: @class_name,
+          button_class: @button_class
+        ) %>
       <% end %>
     </div>
     <% if @activity.description.present? %>
