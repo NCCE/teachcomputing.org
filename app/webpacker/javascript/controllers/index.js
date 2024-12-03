@@ -10,15 +10,22 @@ const contextComponents = require.context("../../../components/", true, /_contro
 
 const componentDefinitions = definitionsFromContext(contextComponents)
 componentDefinitions.forEach(definition => {
-  // if you create a `components/foo_component/foo_component_controller.js` the
-  // default identifier will be `foo-component--foo-component`. this rewrites those
-  // identifiers to just `foo-component`
   const identifierParts = definition.identifier.split("--")
-  const isSelfNamed = identifierParts.every(x => x === identifierParts[0])
-  if (!isSelfNamed) return
+  if(identifierParts.length == 3) {
+    // To handle indentifiers in the sub folder (e.g. components/cms/**/*.js) this keeps the sub-domain
+    // and removes the self-named folder
+    definition.identifier = identifierParts[0] + "--" + identifierParts[2]
+  }else{
+    // if you create a `components/foo_component/foo_component_controller.js` the
+    // default identifier will be `foo-component--foo-component`. this rewrites those
+    // identifiers to just `foo-component`
+    const isSelfNamed = identifierParts.every(x => x === identifierParts[0])
+    if (!isSelfNamed) return
 
-  definition.identifier = identifierParts[0]
+    definition.identifier = identifierParts[0]
+  }
 })
+console.log(componentDefinitions)
 
 application.load(
   definitionsFromContext(context)

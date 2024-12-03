@@ -7,6 +7,7 @@ puts "Creating Programme Activity Groupings"
 
 i_belong.programme_activity_groupings.find_or_initialize_by(sort_key: 2).tap do |group|
   group.sort_key = 2
+  group.cms_slug = "i-belong-all-courses"
   group.required_for_completion = 1
   group.programme_id = i_belong.id
   group.progress_bar_title = "<strong>Complete</strong> a recommended course"
@@ -28,6 +29,7 @@ end.save!
 i_belong.programme_activity_groupings.find_or_initialize_by(sort_key: 3).tap do |group|
   group.title = "Access these resources to support you"
   group.sort_key = 3
+  group.cms_slug = "i-belong-access-resources"
   group.required_for_completion = 2
   group.programme_id = i_belong.id
   group.progress_bar_title = "<strong>Access</strong> resources to support you"
@@ -49,6 +51,7 @@ end.save!
 i_belong.programme_activity_groupings.find_or_initialize_by(sort_key: 4).tap do |group|
   group.title = "Increase girls' engagement by completing activities"
   group.web_copy_subtitle = "Complete at least one activity. Refer to your handbook for more detailed guidance and resources."
+  group.cms_slug = "i-belong-increase-engagement"
   group.sort_key = 4
   group.required_for_completion = 1
   group.programme_id = i_belong.id

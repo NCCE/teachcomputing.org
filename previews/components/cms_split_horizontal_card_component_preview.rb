@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-class CmsSplitHorizontialCardComponentPreview < ViewComponent::Preview
+class CmsSplitHorizontalCardComponentPreview < ViewComponent::Preview
   def default
-    render(CmsSplitHorizontialCardComponent.new(
+    render(CmsSplitHorizontalCardComponent.new(
       section_title: Faker::Lorem.sentence,
       card_content: Cms::Mocks::RichBlocks.as_model,
       aside_content: Cms::Mocks::RichBlocks.as_model,
