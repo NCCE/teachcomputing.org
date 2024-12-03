@@ -6,7 +6,6 @@ module Cms
           def self.text_with_asides_parameters
             {
               populate: {
-                fields: ["textContent"],
                 asideSections: populate_fields("name"),
                 bkColor: populate_fields("name")
               }
@@ -45,7 +44,6 @@ module Cms
           def self.question_and_answer_parameters
             {
               populate: {
-                fields: ["question", "answer"],
                 asideSections: populate_fields("slug"),
                 answerIcons: icon_block_parameters
               }
@@ -122,15 +120,30 @@ module Cms
 
           def self.community_activity_list_parameters = populate_fields([:title, :intro, :programmeActivityGroupSlug])
 
-          def self.sticky_dashboard_bar_parameters = populate_fields([:programmeSlug])
+          def self.sticky_dashboard_bar_parameters
+            {populate: {programme: populate_fields([:slug])}}
+          end
 
           def self.enrolment_testimonial_parameters
             {
               populate: {
-                fields: [:title],
                 testimonial: testimonial_parameters,
-                enrolledAside: populate_fields("slug"),
-                bkColor: populate_fields("name")
+                enrolledAside: populate_fields(:slug),
+                enrolAside: populate_fields(:slug),
+                bkColor: populate_fields(:name),
+                programme: populate_fields(:slug)
+              }
+            }
+          end
+
+          def self.enrolment_split_course_card_parameters
+            {
+              populate: {
+                enrolAside: populate_fields(:slug),
+                bkColor: populate_fields(:name),
+                colorTheme: populate_fields(:name),
+                programme: populate_fields(:slug),
+                asideIcon: image_params
               }
             }
           end
@@ -150,6 +163,15 @@ module Cms
               populate: {
                 fields: [:link],
                 image: {populate: {fields: [:alternativeText]}}
+              }
+            }
+          end
+
+          def self.content_block_enrol_button
+            {
+              populate: {
+                fields: [:buttonText],
+                programme: populate_fields([:slug])
               }
             }
           end

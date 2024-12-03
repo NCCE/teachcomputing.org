@@ -1,0 +1,17 @@
+<%= render Cms::SplitHorizontalCardWrapperComponent.new(
+  card_content: @card_content,
+  section_title: @section_title,
+  color_theme: @color_theme,
+  background_color: @background_color) do |comp| %>
+
+  <% if @enrolled %>
+    <% comp.with_aside_card_content do %>
+      <%= render SectionTitleWithIconComponent.new(text: @aside_title, icon: @aside_icon, text_size: :small) %>
+      <%= render @aside_content.render %>
+    <% end %>
+  <% else %>
+    <% comp.with_aside do %>
+      <%= render_parent %>
+    <% end %>
+  <% end %>
+<% end %>
