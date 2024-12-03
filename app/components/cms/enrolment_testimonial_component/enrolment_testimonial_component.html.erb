@@ -4,10 +4,6 @@
   <% end %>
 
   <%= row.with_column("one-third") do %>
-    <% if @enrolled %>
-      <%= render_parent %>
-    <% else %>
-      <p>Enrol Button</p>
-    <% end %>
+    <%= render_parent %>
   <% end %>
 <% end %>
