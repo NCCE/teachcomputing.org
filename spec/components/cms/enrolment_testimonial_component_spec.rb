@@ -10,10 +10,12 @@ RSpec.describe Cms::EnrolmentTestimonialComponent, type: :component do
     create(:user_programme_enrolment, user:, programme:)
     user
   }
-  let(:aside_slug) { [{slug: "enrolment-testimonial-logged-in-aside"}] }
+  let(:enrolled_aside_slug) { [{slug: "enrolment-testimonial-logged-in-aside"}] }
+  let(:enrol_aside_slug) { [{slug: "enrol-testimonial-aside"}] }
 
   before do
-    stub_strapi_aside_section(aside_slug.first[:slug])
+    stub_strapi_aside_section(enrolled_aside_slug.first[:slug], aside_data: {title: "I am enrolled"})
+    stub_strapi_aside_section(enrol_aside_slug.first[:slug], aside_data: {title: "Ready to enrol?"})
   end
 
   context "User not logged in" do
@@ -22,7 +24,8 @@ RSpec.describe Cms::EnrolmentTestimonialComponent, type: :component do
       render_inline(described_class.new(
         title: Faker::Lorem.sentence,
         testimonial: Cms::Mocks::Testimonial.as_model,
-        enrolled_aside: aside_slug,
+        enrolled_aside: enrolled_aside_slug,
+        enrol_aside: enrol_aside_slug,
         programme_slug: programme.slug,
         background_color: "purple"
       ))
@@ -32,8 +35,8 @@ RSpec.describe Cms::EnrolmentTestimonialComponent, type: :component do
       expect(page).to have_css(".cms-testimonial")
     end
 
-    it "should not render an aside" do
-      expect(page).not_to have_css(".aside-component")
+    it "should render correct aside" do
+      expect(page).to have_css(".aside-component__heading", text: "Ready to enrol?")
     end
   end
 
@@ -43,7 +46,8 @@ RSpec.describe Cms::EnrolmentTestimonialComponent, type: :component do
       render_inline(described_class.new(
         title: Faker::Lorem.sentence,
         testimonial: Cms::Mocks::Testimonial.as_model,
-        enrolled_aside: aside_slug,
+        enrolled_aside: enrolled_aside_slug,
+        enrol_aside: enrol_aside_slug,
         programme_slug: programme.slug,
         background_color: "purple"
       ))
@@ -54,7 +58,7 @@ RSpec.describe Cms::EnrolmentTestimonialComponent, type: :component do
     end
 
     it "should not render an aside" do
-      expect(page).not_to have_css(".aside-component")
+      expect(page).to have_css(".aside-component__heading", text: "Ready to enrol?")
     end
   end
 
@@ -64,7 +68,8 @@ RSpec.describe Cms::EnrolmentTestimonialComponent, type: :component do
       render_inline(described_class.new(
         title: Faker::Lorem.sentence,
         testimonial: Cms::Mocks::Testimonial.as_model,
-        enrolled_aside: aside_slug,
+        enrolled_aside: enrolled_aside_slug,
+        enrol_aside: enrol_aside_slug,
         programme_slug: programme.slug,
         background_color: "purple"
       ))
@@ -75,7 +80,7 @@ RSpec.describe Cms::EnrolmentTestimonialComponent, type: :component do
     end
 
     it "should render an aside" do
-      expect(page).to have_css(".aside-component")
+      expect(page).to have_css(".aside-component__heading", text: "I am enrolled")
     end
   end
 end

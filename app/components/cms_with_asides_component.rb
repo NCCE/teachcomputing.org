@@ -6,6 +6,7 @@ class CmsWithAsidesComponent < ViewComponent::Base
   def initialize(aside_sections:)
     @aside_sections = aside_sections
     @aside_models = []
+    @hidden_asides = []
 
     if @aside_sections
       @aside_models = @aside_sections.map do |aside|
@@ -21,5 +22,13 @@ class CmsWithAsidesComponent < ViewComponent::Base
         end
       end
     end
+  end
+
+  def not_hidden(aside)
+    !@hidden_asides.include?(aside[:id])
+  end
+
+  def hide_aside(slug)
+    @hidden_asides << slug
   end
 end

@@ -1,5 +1,5 @@
  <% @aside_models.each do |aside| %>
-  <% if aside[:model] %>
+  <% if aside[:model] && not_hidden(aside) %>
     <%= render aside[:model].render %>
   <% end %>
 <% end %>
