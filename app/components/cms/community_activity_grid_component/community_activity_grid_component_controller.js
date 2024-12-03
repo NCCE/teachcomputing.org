@@ -1,4 +1,4 @@
-import ApplicationController from "./application_controller";
+import ApplicationController from "../../../webpacker/javascript/controllers/application_controller";
 
 export default class extends ApplicationController {
   static values = {
@@ -6,7 +6,11 @@ export default class extends ApplicationController {
   }
   static targets = ["activityButton"]
 
-  selectActivity() {
+  connect() {
+    console.log("im here")
+  }
+
+  selectActivity(event) {
     fetch(this.createPathValue, {
       method: 'POST',
       headers: {
@@ -15,8 +19,7 @@ export default class extends ApplicationController {
       },
       body: JSON.stringify({
         achievement: {
-          evidence: this.textareaTargets.map(element => element.value),
-          activity_id: this.activityIdValue
+          activity_id: event.params.activityId
         }
       })
     }).then((response) => {

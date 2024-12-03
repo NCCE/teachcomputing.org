@@ -8,8 +8,8 @@
       <%= render @intro.render if @intro %>
 
       <div class="community-activity-list__grid"
-        data-controller="community-activity-grid-component"
-        data-community-activity-grid-component-create-path-value="<%= achievements_path %>">
+        data-controller="cms--community-activity-grid-component"
+        data-cms--community-activity-grid-component-create-path-value="<%= achievements_path %>">
 
         <% @started_activities.each do |activity| %>
           <div class="community-activity-list__grid-activity community-activity-list__grid-activity--started">
@@ -31,13 +31,13 @@
               <p class="govuk-body-s activity-content"><%= activity.description.html_safe %></p>
               <% if @enrolled && !@started_activities.any? %>
                 <a class="govuk-button ncce-button--white" role="button"
-                  data-community-activity-grid-component-target="activityButton"
-                  data-action="community-activity-grid-component#selectActivity">Choose Activity</a>
+                  data-cms--community-activity-grid-component-target="activityButton"
+                  data-cms--community-activity-grid-component-activity-id-param="<%= activity.id %>"
+                  data-action="cms--community-activity-grid-component#selectActivity">Choose Activity</a>
               <% end %>
             </div>
           </div>
         <% end %>
-
       </div>
     </div>
   <% end %>
