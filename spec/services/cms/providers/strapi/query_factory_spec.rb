@@ -15,11 +15,11 @@ RSpec.describe Cms::Providers::Strapi::Factories::QueryFactory do
 
   context "is not a blog" do
     it "has no featured tag" do
-      params = described_class.generate_parameters(Cms::Collections::SimplePage, featured: true)
+      params = described_class.generate_parameters(Cms::Collections::WebPage, featured: true)
       expect(params[:featured]).to eq(nil)
     end
     it "has no filter tag" do
-      params = described_class.generate_parameters(Cms::Collections::SimplePage, tag: "ai")
+      params = described_class.generate_parameters(Cms::Collections::WebPage, tag: "ai")
       expect(params[:blog_tags]).to eq(nil)
     end
   end

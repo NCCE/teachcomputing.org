@@ -3,7 +3,7 @@ require "rails_helper"
 RSpec.describe("courses/show", type: :view) do
   let(:cs_accelerator) { create(:cs_accelerator) }
   let(:course) { Achiever::Course::Template.all.first }
-  let(:activity) { create(:activity, :stem_learning, stem_activity_code: course.activity_code) }
+  let(:activity) { create(:activity, :stem_learning, :with_course_video, stem_activity_code: course.activity_code) }
 
   before do
     cs_accelerator
@@ -13,6 +13,7 @@ RSpec.describe("courses/show", type: :view) do
     activity
 
     assign(:course, course)
+    assign(:activity, activity)
     assign(:other_courses, [])
     assign(:age_groups, {})
     assign(:occurrences, [])
@@ -32,6 +33,10 @@ RSpec.describe("courses/show", type: :view) do
 
     it "the asides partial" do
       expect(rendered).to render_template(partial: "_aside-booking")
+    end
+
+    it "renders the video component" do
+      expect(rendered).to have_css("iframe")
     end
 
     it "a course summary" do

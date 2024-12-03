@@ -1,0 +1,16 @@
+<% content_for :content do -%>
+  <div>
+    <main id="main-content" class="<%= content_for?(:main_class) ? yield(:main_class) : nil %>">
+      <%= render 'components/flash' %>
+
+      <%= render GovGridRowComponent.new do |row| %>
+        <%= row.with_column("two-thirds") do %>
+          <%= yield %>
+        <% end %>
+      <% end %>
+
+    </main>
+  </div>
+<% end -%>
+
+<%= render 'layouts/base' %>

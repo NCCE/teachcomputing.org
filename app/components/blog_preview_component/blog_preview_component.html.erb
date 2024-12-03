@@ -1,19 +1,19 @@
-<div class="ncce-news-archive__item">
-  <div class="ncce-news-archive__item-image">
+<div class="blog-preview">
+  <div class="blog-preview__image">
     <% if @featured_image.present? %>
-      <%= cms_image(@featured_image.image, class: "ncce-news-and-updates__image") %>
+      <%= cms_image(@featured_image.image) %>
     <% else %>
-      <%= image_pack_tag 'media/images/blog/blog_cover_placeholder.png', class: 'ncce-news-and-updates__image' %>
+      <%= image_pack_tag 'media/images/blog/blog_cover_placeholder.png' %>
     <% end %>
   </div>
-  <div class="ncce-news-archive__item-content">
-    <div class="ncce-news-archive__item-title">
+  <div class="blog-preview__content">
+    <div class="blog-preview-title">
     <h3 class="govuk-heading-s"><%= link_to @title, cms_post_path(@slug), class: 'ncce-link ncce-link--heading' %></h3>
     </div>
-    <div class="ncce-news-archive__item-description">
+    <div class="blog-preview-description">
       <p class="govuk-body"><%= @excerpt %></p>
     </div>
-    <div class="ncce-news-archive__item-date">
+    <div class="blog-preview-date">
       <p class="govuk-body-s govuk-!-font-size-14"><%= @publish_date.strftime('%d %^B %Y') %></p>
     </div>
   </div>

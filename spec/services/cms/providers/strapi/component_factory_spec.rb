@@ -17,6 +17,14 @@ RSpec.describe Cms::Providers::Strapi::Factories::ComponentFactory do
     end
   end
 
+  context "LinkedPicture" do
+    it "should be created" do
+      strapi_data = Cms::Providers::Strapi::Mocks::LinkedPicture.generate_raw_data
+      model = described_class.process_component(strapi_data)
+      expect(model).to be_a Cms::DynamicComponents::LinkedPicture
+    end
+  end
+
   context "FullWidthBanner" do
     it "should be created" do
       strapi_data = Cms::Providers::Strapi::Mocks::FullWidthBanner.generate_raw_data
@@ -84,6 +92,28 @@ RSpec.describe Cms::Providers::Strapi::Factories::ComponentFactory do
         model = described_class.process_component(strapi_data)
         expect(model.cards_block).to all(be_a(Cms::DynamicComponents::ResourceCard))
       end
+    end
+
+    context "NumericCard" do
+      it "should create card wrapper" do
+        strapi_data = Cms::Providers::Strapi::Mocks::NumericCardSection.generate_raw_data
+        model = described_class.process_component(strapi_data)
+        expect(model).to be_a Cms::DynamicComponents::CardWrapper
+      end
+
+      it "creates correct card model" do
+        strapi_data = Cms::Providers::Strapi::Mocks::NumericCardSection.generate_raw_data
+        model = described_class.process_component(strapi_data)
+        expect(model.cards_block).to all(be_a(Cms::DynamicComponents::NumericCard))
+      end
+    end
+  end
+
+  context "TestimonialRow" do
+    it "should create testimonial row" do
+      strapi_data = Cms::Providers::Strapi::Mocks::TestimonialRow.generate_raw_data
+      model = described_class.process_component(strapi_data)
+      expect(model).to be_a Cms::DynamicComponents::TestimonialRow
     end
   end
 end

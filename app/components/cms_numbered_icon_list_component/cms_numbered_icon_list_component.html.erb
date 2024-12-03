@@ -1,0 +1,21 @@
+<%= render GovGridRowComponent.new(additional_classes: 'cms-numbered-icon-list-components') do |row| %>
+  <%= row.with_column("two-thirds") do %>
+    <div class="cms-numbered-icon-list__header">
+      <%= render SectionTitleWithIconComponent.new(text: @title, icon: @title_icon) %>
+    </div>
+
+    <div>
+      <ol class="numbered-points">
+        <% @points.each do |point| %>
+          <li>
+            <%= render point.render %>
+          </li>
+        <% end %>
+      </ol>
+    </div>
+
+  <% end %>
+  <%= row.with_column("one-third") do %>
+    <%= render_parent %>
+  <% end %>
+<% end %>

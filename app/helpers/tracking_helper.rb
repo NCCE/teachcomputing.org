@@ -17,8 +17,8 @@ module TrackingHelper
         courses_path => "Courses",
         cs_accelerator_certificate_path => "CSA enrolled",
         complete_cs_accelerator_certificate_path => "CSA Complete",
-        primary_early_careers_path => "ECT primary",
-        secondary_early_careers_path => "ECT secondary",
+        cms_page_path("primary-early-careers") => "ECT primary",
+        cms_page_path("secondary-early-careers") => "ECT secondary",
         pedagogy_path => "Pedagogy"
       }
 

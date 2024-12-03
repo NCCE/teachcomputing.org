@@ -38,10 +38,14 @@
 }
 
 .aside-component__cms-content {
-  p {
+  p, ul {
     @include govuk-font($size: 16);
-  }
 
+    li {
+      margin-bottom: 0px;
+    }
+  }
+  
   .button {
     width: 250px;
   }

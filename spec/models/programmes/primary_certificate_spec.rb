@@ -99,4 +99,10 @@ RSpec.describe Programmes::PrimaryCertificate do
       expect(programme.user_qualifies_for_credly_cpd_badge?(user)).to be true
     end
   end
+
+  describe "#enrolment_confirmation_required?" do
+    it "should return true" do
+      expect(programme.enrolment_confirmation_required?).to be true
+    end
+  end
 end

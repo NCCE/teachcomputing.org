@@ -38,7 +38,7 @@ RSpec.describe Programme, type: :model do
       end
 
       it "contains only programmes that are enrollable" do
-        expect(described_class.enrollable).to eq programmes
+        expect(described_class.enrollable).to match_array(programmes)
         expect(described_class.enrollable).not_to include non_enrollable_programme
       end
     end
@@ -371,6 +371,12 @@ RSpec.describe Programme, type: :model do
     end
   end
 
+  describe "#achivement_type" do
+    it "should return not implemented error" do
+      expect { generic_programme.achievement_type }.to raise_error(NotImplementedError)
+    end
+  end
+
   describe "#user_qualifies_for_credly_cpd_badge?" do
     it "should return true if the user has compelted a f2f achievement" do
       programme = create(:primary_certificate)
@@ -431,6 +437,14 @@ RSpec.describe Programme, type: :model do
       programme = create(:programme)
 
       expect(programme.minimum_character_required_community_evidence).to eq(0)
+    end
+  end
+
+  describe "#enrolment_confirmation_required?" do
+    it "should default to false" do
+      programme = create(:programme)
+
+      expect(programme.enrolment_confirmation_required?).to eq(false)
     end
   end
 end

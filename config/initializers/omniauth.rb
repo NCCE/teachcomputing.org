@@ -67,7 +67,8 @@ if ENV.fetch("BYPASS_OAUTH", false) == "true"
       achiever_contact_no: "89085e3f-d60e-eb11-a813-000d3a86f6ce",
       first_name: "Web",
       last_name: "Teach Computing",
-      email: "web@teachcomputing.org"
+      email: "web@teachcomputing.org",
+      stem_user_id: "864302"
     }
   )
 end

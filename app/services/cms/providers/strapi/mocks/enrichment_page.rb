@@ -3,8 +3,8 @@ module Cms
     module Strapi
       module Mocks
         class EnrichmentPage < StrapiMock
-          attribute(:pageTitle) { PageTitle.generate_raw_data }
-          attribute(:seo) { Seo.generate_raw_data }
+          attribute(:pageTitle) { PageTitle.generate_data }
+          attribute(:seo) { Seo.generate_data }
           attribute(:slug) { Faker::Internet.slug }
           attribute(:featuredSectionTitle) { Faker::Lorem.sentence }
           attribute(:allSectionTitle) { Faker::Lorem.sentence }
@@ -31,7 +31,7 @@ module Cms
           attribute(:name) { Faker::Lorem.word }
         end
 
-        class EnrichmentType < StrapiMock # For terms and age groups
+        class EnrichmentType < StrapiMock
           attribute(:name) { Faker::Lorem.word }
           attribute(:name) { Mocks::Image.generate_raw_data }
         end

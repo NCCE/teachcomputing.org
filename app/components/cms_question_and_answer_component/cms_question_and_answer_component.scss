@@ -30,7 +30,7 @@ $avatar_size: 32px;
       height: $avatar_size;
       width: $avatar_size;
       left: -$avatar_space;
-      bottom: 4px;
+      bottom: 24px;
 
       @include govuk-media-query($until: tablet) {
         top: -50px;
@@ -39,7 +39,6 @@ $avatar_size: 32px;
     }
 
     &-content {
-      @include govuk-font($size: 24, $weight: bold);
       padding: 20px 25px;
       box-shadow: 0px 0px 8px 0px #0000004D;
       border-radius: 5px;

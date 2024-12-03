@@ -70,7 +70,7 @@ module InactivityQueries
     objective_2 = i_belong.programme_objectives.second.activities.pluck(:id) # Access resources
     objective_3 = i_belong.programme_objectives.third.activities.pluck(:id) # Increase engagement
 
-    users_already_sent = User.joins(:sent_emails).where(sent_emails: {mailer_type: i_belong_only_one_section_completed_type})
+    users_already_sent = User.joins(:sent_emails).where(sent_emails: {mailer_type: i_belong_all_but_understanding_factors_type})
 
     user_achievements = Achievement
       .joins(user: :user_programme_enrolments)
@@ -93,7 +93,7 @@ module InactivityQueries
     objective_2 = i_belong.programme_objectives.second.activities.pluck(:id) # Access resources
     objective_3 = i_belong.programme_objectives.third.activities.pluck(:id) # Increase engagement
 
-    users_already_sent = User.joins(:sent_emails).where(sent_emails: {mailer_type: i_belong_only_one_section_completed_type})
+    users_already_sent = User.joins(:sent_emails).where(sent_emails: {mailer_type: i_belong_all_but_access_resources_type})
 
     user_achievements = Achievement
       .joins(user: :user_programme_enrolments)
@@ -116,7 +116,7 @@ module InactivityQueries
     objective_2 = i_belong.programme_objectives.second.activities.pluck(:id) # Access resources
     objective_3 = i_belong.programme_objectives.third.activities.pluck(:id) # Increase engagement
 
-    users_already_sent = User.joins(:sent_emails).where(sent_emails: {mailer_type: i_belong_only_one_section_completed_type})
+    users_already_sent = User.joins(:sent_emails).where(sent_emails: {mailer_type: i_belong_all_but_increase_engagement_type})
 
     user_achievements = Achievement
       .joins(user: :user_programme_enrolments)

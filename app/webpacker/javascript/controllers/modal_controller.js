@@ -6,24 +6,35 @@ export default class extends ApplicationController {
   // confirmation modal if there are any changes. when this value is false,
   // it will prevent the confirmation modal from appearing.
   // static values = { confirm: { type: Boolean, default: false } }
-  static values = { confirm: Boolean }
+  static values = { confirm: Boolean, modalId:String }
 
-  static targets = ['modal', 'confirmation']
+  static targets = ['modal', 'confirmation', 'topFocus', 'bottomFocus']
 
   connect() {
     this.onKeyDown = this.onKeyDown.bind(this)
     this.onClick = this.onClick.bind(this)
     this.toggle = this.toggle.bind(this)
+    this.jumpToTop = this.jumpToTop.bind(this)
 
     document.body.addEventListener("keydown", this.onKeyDown)
     this.modalTarget.addEventListener("click", this.onClick)
     this.element.addEventListener("toggle", this.toggle)
+
+    this.bottomFocusTarget.addEventListener("focus", this.jumpToTop)
+    this.topFocusTarget.addEventListener("focus", this.jumpToTop)
   }
 
   disconnect() {
     document.body.removeEventListener("keydown", this.onKeyDown)
     this.modalTarget.removeEventListener("click", this.onClick)
     this.element.removeEventListener("toggle", this.toggle)
+    this.bottomFocusTarget.removeEventListener("focus", this.jumpToTop)
+    this.topFocusTarget.removeEventListener("focus", this.jumpToTop)
+  }
+
+  // keep focus within the modal when tabbing through elements
+  jumpToTop() {
+    document.getElementById(this.modalIdValue).focus()
   }
 
   toggle() {

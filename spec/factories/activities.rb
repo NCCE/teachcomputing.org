@@ -139,4 +139,8 @@ FactoryBot.define do
   trait :online do
     category { "online" }
   end
+
+  trait :with_course_video do
+    course_video_url { "https://www.youtube.com/watch?v=6YLhMadoo6Y&list=PLwcV67XMdDdJT0TkvZo6cTDSR0uJgP3Ku" }
+  end
 end

@@ -5,16 +5,18 @@ module NavigationHelper
        children: [
          {text: "Subject lead toolkit", link: primary_teachers_path, label: "Subject lead toolkit"},
          {text: "Teacher certificate", link: primary_path, label: "Primary teacher certificate"},
-         {text: "Early career and trainee teachers", link: primary_early_careers_path, label: "Primary ECT"},
-         {text: "Senior leaders", link: primary_senior_leaders_path, label: "Primary SLT"},
-         {text: "Enrichment", link: primary_enrichment_path, label: "Enrichment"}
+         {text: "Enrichment", link: primary_enrichment_path, label: "Enrichment"},
+         {text: "Early career teachers", link: cms_page_path("primary-early-careers"), label: "Primary ECT"},
+         {text: "Trainee teachers", link: cms_page_path("primary-trainees"), label: "Primary Trainees"},
+         {text: "Senior leaders", link: primary_senior_leaders_path, label: "Primary SLT"}
        ]},
       {text: "Secondary",
        children: [
          {text: "Teacher toolkit", link: secondary_teachers_path, label: "Secondary teachers"},
          {text: "Teacher certification", link: secondary_certification_path, label: "Secondary teachers certification"},
          {text: "Enrichment", link: secondary_enrichment_path, label: "Enrichment"},
-         {text: "Early career and trainee teachers", link: secondary_early_careers_path, label: "Secondary ECT"},
+         {text: "Early career teachers", link: cms_page_path("secondary-early-careers"), label: "Secondary ECT"},
+         {text: "Trainee teachers", link: cms_page_path("secondary-trainees"), label: "Secondary Trainees"},
          {text: "Senior leaders", link: secondary_senior_leaders_path, label: "Secondary SLT"}
        ].compact},
       {text: "Training and support",
@@ -25,7 +27,7 @@ module NavigationHelper
          {text: "I Belong programme", link: about_i_belong_path, label: "i-belong"},
          {text: "GCSE Computer Science support", link: non_gcse_path, label: "GCSE support"},
          {text: "Computing Clusters", link: cms_page_path("computing-clusters"), label: "Computing clusters"},
-         {text: "School Trusts", link: school_trusts_path, label: "School trusts"}
+         {text: "School Trusts", link: cms_page_path("school-trusts"), label: "School trusts"}
        ]},
       {text: "Teaching resources",
        children: [

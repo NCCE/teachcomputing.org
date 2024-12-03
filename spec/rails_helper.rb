@@ -28,6 +28,7 @@ require "webmock/rspec"
 require "rspec/json_expectations"
 require "capybara/rspec"
 require "view_component/test_helpers"
+require "view_component/system_test_helpers"
 
 Dir[Rails.root.join("spec/support/**/*.rb")].each { |f| require f }
 
@@ -63,7 +64,6 @@ RSpec.configure do |config|
   config.include AchieverStubs
   config.include CredlyStubs
   config.include CurriculumStubs
-  config.include GhostStubs
   config.include StrapiStubs
   config.include Cms::Mocks
   config.include CachingHelpers
@@ -73,6 +73,14 @@ RSpec.configure do |config|
   config.include FeatureFlagHelper
   config.include ViewComponent::TestHelpers, type: :component
   config.include Capybara::RSpecMatchers, type: :component
+  config.include ViewComponent::SystemTestHelpers, type: :component_sys_test
+
+  # https://github.com/ViewComponent/view_component/issues/1630 - Overrrides the Capybara overwrite
+  config.before(:each, type: :component_sys_test) do
+    def page
+      Capybara.current_session
+    end
+  end
 
   config.before(:suite) do
     Webpacker.compile if Webpacker.instance.compiler.stale?

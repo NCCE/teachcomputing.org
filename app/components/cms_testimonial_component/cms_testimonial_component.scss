@@ -1,0 +1,51 @@
+
+.cms-testimonial {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 calc(100%/3);
+
+  &__quote {
+    flex: 1 1 auto;
+    padding: 20px;
+    box-shadow: 0px 0px 8px 0px #00000040;
+    border-radius: 10px;
+    background-color: white;
+  }
+
+  &__bio {
+    flex: 0 1 68px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+    margin-top: 10px;
+    margin-right: 12px;
+
+    &-avatar {
+      img {
+        width: 48px;
+        height: 48px;
+        border-radius: 48px;
+        object-position: center;
+        object-fit: cover;
+        border: 2px solid $orange;
+        margin: 10px 0;
+      }
+    }
+
+    &-content {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+
+      .name {
+        @include govuk-font($size: 16, $weight: bold);
+      }
+
+      .job-title {
+        @include govuk-font($size: 16);
+        color: $grey-storm;
+      }
+    }
+  }
+}

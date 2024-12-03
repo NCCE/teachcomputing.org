@@ -10,9 +10,13 @@
     </div>
   <% end %>
   <% if @title.present? %>
-    <h2 class="govuk-heading-s aside-component__heading">
-      <%= @title %>
-    </h2>
+    <% if @title_icon.present? %>
+      <%= render SectionTitleWithIconComponent.new(text: @title, icon: @title_icon, text_size: :small) %>
+    <% else %>
+      <h2 class="govuk-heading-s aside-component__heading">
+        <%= @title %>
+      </h2>
+    <% end %>
   <% elsif heading? %>
     <h2 class="govuk-heading-s aside-component__heading">
       <%= heading %>

@@ -51,7 +51,7 @@
         "ruby.lint": {
           "rubocop": true
         },
-        "ruby-spec-runner.rspecCommand": "rdebug-ide --skip_wait_for_start --host 0.0.0.0 --port 1235 -- bin/rspec"
+        "ruby-spec-runner.rspecCommand": "bundle exec rdebug-ide --skip_wait_for_start --host 0.0.0.0 --port 1235 -- bin/rspec"
       }
     }
   },

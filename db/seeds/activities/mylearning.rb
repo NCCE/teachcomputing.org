@@ -92,7 +92,7 @@ a.programmes << cs_accelerator unless a.programmes.include?(cs_accelerator)
 
 ########################################################################################################################
 
-a = Activity.find_or_create_by(stem_course_template_no: "f670dfa1-ce3d-ee11-bdf4-002248c6f783").tap do |activity|
+Activity.find_or_create_by(stem_course_template_no: "f670dfa1-ce3d-ee11-bdf4-002248c6f783").tap do |activity|
   activity.title = "Introduction to Encryption and Cryptography"
   activity.credit = 20
   activity.slug = "design-and-prototype-embedded-computer-systems"
@@ -100,9 +100,8 @@ a = Activity.find_or_create_by(stem_course_template_no: "f670dfa1-ce3d-ee11-bdf4
   activity.provider = "stem-learning"
   activity.stem_activity_code = "CO220"
   activity.always_on = false
-end
-
-a.programmes << cs_accelerator unless a.programmes.include?(cs_accelerator)
+  activity.programmes = [cs_accelerator]
+end.save!
 
 ########################################################################################################################
 
@@ -351,6 +350,21 @@ Activity.find_or_initialize_by(stem_course_template_no: "ded270cb-a4b6-ed11-b597
   activity.provider = "stem-learning"
   activity.stem_activity_code = "CO700"
   activity.always_on = false
+
+  activity.programmes = [primary_certificate, secondary_certificate]
+end.save!
+
+########################################################################################################################
+
+Activity.find_or_initialize_by(stem_course_template_no: "4bd30860-03ac-ef11-b8e8-6045bd0ddfc9").tap do |activity|
+  activity.title = "CQF support - Leadership and Vision"
+  activity.credit = 20
+  activity.slug = "cqf-support-leadership-and-vision"
+  activity.category = "online"
+  activity.self_certifiable = false
+  activity.provider = "stem-learning"
+  activity.stem_activity_code = "CZ115D"
+  activity.always_on = true
 
   activity.programmes = [primary_certificate, secondary_certificate]
 end.save!

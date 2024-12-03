@@ -18,6 +18,12 @@
   text-decoration: line-through;
 }
 
+.cms-rich-text-block-component {
+  p:last-child {
+    margin-bottom: 0px;
+  }
+}
+
 
 .cms-rich-text-block-component__text--code {
   p {

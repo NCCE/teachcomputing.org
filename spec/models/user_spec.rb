@@ -16,6 +16,16 @@ RSpec.describe User do
       stem_user_id: "id-stem-user"
     )
   end
+  let(:stem_info_blank_org) do
+    OmniAuth::AuthHash::InfoHash.new(
+      achiever_contact_no: "ca432eb9-9b34-46db-afbb-fbd1efa89e6b",
+      achiever_organisation_no: "",
+      email: "user2@example.com",
+      first_name: "Jane",
+      last_name: "Doe",
+      stem_user_id: "id-stem-user"
+    )
+  end
   let(:uid) { "id-stem-user" }
   let(:user) { described_class.from_auth(uid, stem_credentials, stem_info) }
 
@@ -123,6 +133,11 @@ RSpec.describe User do
 
     it "has the last sign in date set" do
       expect(user.last_sign_in_at).to be_today
+    end
+
+    it "if achiever_organisation_no is blank it get sets to nil" do
+      new_user = described_class.from_auth(uid, stem_credentials, stem_info_blank_org)
+      expect(new_user.stem_achiever_organisation_no).to be_nil
     end
   end
 

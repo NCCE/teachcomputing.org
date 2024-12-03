@@ -255,7 +255,7 @@ end
 
 a.programmes << cs_accelerator unless a.programmes.include?(cs_accelerator)
 
-a = Activity.find_or_create_by(stem_course_template_no: "43476cb7-6567-ea11-a811-000d3a86d7a3") do |activity|
+a = Activity.find_or_create_by(stem_course_template_no: "43476cb7-6567-ea11-a811-000d3a86d7a3").tap do |activity|
   activity.title = "Python programming constructs: sequencing, selection, iteration"
   activity.credit = 10
   activity.slug = "python-programming-constructs-sequencing-selection-iteration"
@@ -263,9 +263,11 @@ a = Activity.find_or_create_by(stem_course_template_no: "43476cb7-6567-ea11-a811
   activity.category = "face-to-face"
   activity.provider = "stem-learning"
   activity.stem_activity_code = "CP223"
+  activity.course_video_url = "https://www.youtube.com/watch?v=TPEh2GDQKp4&list=PLwcV67XMdDdJT0TkvZo6cTDSR0uJgP3Ku"
 end
 
 a.programmes << cs_accelerator unless a.programmes.include?(cs_accelerator)
+a.save!
 
 a = Activity.find_or_create_by(stem_course_template_no: "84568ccf-6767-ea11-a811-000d3a86d7a3") do |activity|
   activity.title = "Python programming: working with data"
@@ -291,7 +293,7 @@ end
 
 a.programmes << cs_accelerator unless a.programmes.include?(cs_accelerator)
 
-a = Activity.find_or_create_by(stem_course_template_no: "17d78590-4268-ea11-a811-000d3a86d7a3") do |activity|
+a = Activity.find_or_create_by(stem_course_template_no: "17d78590-4268-ea11-a811-000d3a86d7a3").tap do |activity|
   activity.title = "An introduction to computer systems, networking and security in GCSE computer science"
   activity.credit = 10
   activity.slug = "an-introduction-to-computer-systems-networking-and-security-in-gcse-computer-science"
@@ -299,9 +301,11 @@ a = Activity.find_or_create_by(stem_course_template_no: "17d78590-4268-ea11-a811
   activity.category = "face-to-face"
   activity.provider = "stem-learning"
   activity.stem_activity_code = "CP238"
+  activity.course_video_url = "https://www.youtube.com/watch?v=7gm60gQL_U4&list=PLwcV67XMdDdJT0TkvZo6cTDSR0uJgP3Ku"
 end
 
 a.programmes << cs_accelerator unless a.programmes.include?(cs_accelerator)
+a.save!
 
 a = Activity.find_or_create_by(stem_course_template_no: "07e76ffd-e17f-ea11-a811-000d3a86f6ce") do |activity|
   activity.title = "Representing algorithms using flowcharts and pseudocode"
@@ -461,7 +465,7 @@ end
 
 a.programmes << cs_accelerator unless a.programmes.include?(cs_accelerator)
 
-a = Activity.find_or_create_by(stem_course_template_no: "bd6497ad-4386-ea11-a811-000d3a86d545") do |activity|
+a = Activity.find_or_create_by(stem_course_template_no: "bd6497ad-4386-ea11-a811-000d3a86d545").tap do |activity|
   activity.title = "An introduction to computer systems, networking and security in GCSE computer science"
   activity.credit = 10
   activity.slug = "an-introduction-to-computer-systems-networking-and-security-in-gcse-computer-science-remote"
@@ -469,9 +473,11 @@ a = Activity.find_or_create_by(stem_course_template_no: "bd6497ad-4386-ea11-a811
   activity.category = "face-to-face"
   activity.provider = "stem-learning"
   activity.stem_activity_code = "CP438"
+  activity.course_video_url = "https://www.youtube.com/watch?v=Clg14KbHVEs&list=PLwcV67XMdDdJT0TkvZo6cTDSR0uJgP3Ku"
 end
 
 a.programmes << cs_accelerator unless a.programmes.include?(cs_accelerator)
+a.save!
 
 Activity.find_or_create_by(stem_course_template_no: "dbb7808c-b888-ea11-a811-000d3a86d545") do |activity|
   activity.title = "Key Stage 3 computing for the non-specialist teacher"
@@ -577,7 +583,7 @@ end
 
 a.programmes << cs_accelerator unless a.programmes.include?(cs_accelerator)
 
-Activity.find_or_create_by(stem_course_template_no: "34ff2768-a7fc-ea11-a813-000d3a86d545") do |activity|
+Activity.find_or_create_by(stem_course_template_no: "34ff2768-a7fc-ea11-a813-000d3a86d545").tap do |activity|
   activity.title = "Primary computing for all - face to face"
   activity.credit = 80
   activity.slug = "outstanding-primary-computing-for-all-face-to-face"
@@ -597,6 +603,7 @@ Activity.find_or_initialize_by(stem_course_template_no: "e3c14378-3015-eb11-a813
   activity.category = "face-to-face"
   activity.provider = "stem-learning"
   activity.stem_activity_code = "CP008"
+  activity.course_video_url = "https://www.youtube.com/watch?v=koCjlbZjJQE&list=PLwcV67XMdDdJT0TkvZo6cTDSR0uJgP3Ku"
 
   activity.programmes = [primary_certificate]
 end.save!
@@ -716,6 +723,7 @@ Activity.find_or_initialize_by(stem_course_template_no: "11f58c3f-3341-eb11-a813
   activity.category = "face-to-face"
   activity.provider = "stem-learning"
   activity.stem_activity_code = "CP007"
+  activity.course_video_url = "https://www.youtube.com/watch?v=-fTboqiyjxk&list=PLwcV67XMdDdJT0TkvZo6cTDSR0uJgP3Ku"
 
   activity.programmes = [primary_certificate]
 end.save!
@@ -1059,6 +1067,7 @@ Activity.find_or_initialize_by(stem_course_template_no: "b9af812f-4b8d-eb11-b1ac
   activity.provider = "stem-learning"
   activity.stem_activity_code = "CP413"
   activity.remote_delivered_cpd = false
+  activity.course_video_url = "https://www.youtube.com/watch?v=oshdzHTq1TY&list=PLwcV67XMdDdJT0TkvZo6cTDSR0uJgP3Ku"
 
   activity.programmes = [secondary_certificate]
 end.save!
@@ -1175,6 +1184,7 @@ Activity.find_or_initialize_by(stem_course_template_no: "de77674a-51b2-eb11-8236
   activity.category = "face-to-face"
   activity.provider = "stem-learning"
   activity.stem_activity_code = "CP252"
+  activity.course_video_url = "https://www.youtube.com/watch?v=QEL1wB_6Pf4&list=PLwcV67XMdDdJT0TkvZo6cTDSR0uJgP3Ku"
 
   activity.programmes = [primary_certificate]
 end.save!
@@ -1199,6 +1209,7 @@ Activity.find_or_initialize_by(stem_course_template_no: "07ddd6da-55b2-eb11-8236
   activity.category = "face-to-face"
   activity.provider = "stem-learning"
   activity.stem_activity_code = "CP253"
+  activity.course_video_url = "https://www.youtube.com/watch?v=He2JVDJrBz8&list=PLwcV67XMdDdJT0TkvZo6cTDSR0uJgP3Ku"
 
   activity.programmes = [secondary_certificate]
 end.save!
@@ -1916,6 +1927,9 @@ Activity.find_or_initialize_by(stem_course_template_no: "5178b539-29b0-ec11-983f
   activity.category = "face-to-face"
   activity.provider = "stem-learning"
   activity.stem_activity_code = "CP292"
+  activity.course_video_url = nil
+  # Course video was set on the wrong seed - setting back to nil and moved to CP252
+  # https://github.com/NCCE/teachcomputing.org-issues/issues/2914
 
   activity.programmes = [primary_certificate]
 end.save!
@@ -1941,6 +1955,7 @@ Activity.find_or_initialize_by(stem_course_template_no: "5be69f65-60c1-ec11-983e
   activity.provider = "stem-learning"
   activity.stem_activity_code = "CP444"
   activity.remote_delivered_cpd = true
+  activity.course_video_url = "https://www.youtube.com/watch?v=6YLhMadoo6Y&list=PLwcV67XMdDdJT0TkvZo6cTDSR0uJgP3Ku"
 
   activity.programmes = [secondary_certificate]
 end.save!
@@ -2789,4 +2804,100 @@ Activity.find_or_initialize_by(stem_course_template_no: "2e99cea4-2e53-ef11-bfe3
   activity.always_on = false
 
   activity.programmes = [secondary_certificate]
+end.save!
+
+Activity.find_or_initialize_by(stem_course_template_no: "62f7c262-5491-ef11-8a6a-002248c7b0d4").tap do |activity|
+  activity.title = "Introduction to the A level NEA project"
+  activity.slug = "introduction-to-the-a-level-nea-project"
+  activity.category = "face-to-face"
+  activity.remote_delivered_cpd = true
+  activity.provider = "stem-learning"
+  activity.credit = 30
+  activity.stem_activity_code = "CP509"
+
+  activity.programmes = [secondary_certificate]
+end.save!
+
+Activity.find_or_initialize_by(stem_course_template_no: "7c213399-60a3-ef11-8a69-6045bd0ddfc9").tap do |activity|
+  activity.title = "Block based programming for KS3 computing"
+  activity.slug = "block-based-programming-for-ks3-computing"
+  activity.category = "face-to-face"
+  activity.remote_delivered_cpd = false
+  activity.provider = "stem-learning"
+  activity.credit = 10
+  activity.stem_activity_code = "CP237"
+
+  activity.programmes = [cs_accelerator]
+end.save!
+
+Activity.find_or_initialize_by(stem_course_template_no: "bbef75fe-fdab-ef11-b8e8-6045bd0ddfc9").tap do |activity|
+  activity.title = "CQF support - Curriculum and Qualifications"
+  activity.slug = "cqf-support-curriculum-and-qualifications"
+  activity.category = "face-to-face"
+  activity.remote_delivered_cpd = true
+  activity.provider = "stem-learning"
+  activity.credit = 20
+  activity.stem_activity_code = "CZ116D"
+
+  activity.programmes = [primary_certificate, secondary_certificate]
+end.save!
+
+Activity.find_or_initialize_by(stem_course_template_no: "18f16765-04ac-ef11-b8e8-6045bd0ddfc9").tap do |activity|
+  activity.title = "CQF support - Teaching, Learning and Assessment"
+  activity.slug = "cqf-support-teaching-learning-and-assessment"
+  activity.category = "face-to-face"
+  activity.remote_delivered_cpd = true
+  activity.provider = "stem-learning"
+  activity.credit = 20
+  activity.stem_activity_code = "CZ117D"
+
+  activity.programmes = [primary_certificate, secondary_certificate]
+end.save!
+
+Activity.find_or_initialize_by(stem_course_template_no: "7234cb4b-05ac-ef11-b8e8-6045bd0ddfc9").tap do |activity|
+  activity.title = "CQF support - Staff development"
+  activity.slug = "cqf-support-staff-development"
+  activity.category = "face-to-face"
+  activity.remote_delivered_cpd = true
+  activity.provider = "stem-learning"
+  activity.credit = 20
+  activity.stem_activity_code = "CZ118D"
+
+  activity.programmes = [primary_certificate, secondary_certificate]
+end.save!
+
+Activity.find_or_initialize_by(stem_course_template_no: "6127fced-fbab-ef11-b8e9-6045bd0c7e50").tap do |activity|
+  activity.title = "CQF Support - Equality, diversity and inclusion"
+  activity.slug = "cqf-support-equality-diversity-and-inclusion"
+  activity.category = "face-to-face"
+  activity.remote_delivered_cpd = true
+  activity.provider = "stem-learning"
+  activity.credit = 20
+  activity.stem_activity_code = "CZ119D"
+
+  activity.programmes = [primary_certificate, secondary_certificate]
+end.save!
+
+Activity.find_or_initialize_by(stem_course_template_no: "8bd2375a-ffab-ef11-b8e8-6045bd0ddfc9").tap do |activity|
+  activity.title = "CQF support - Careers, enrichment and outreach"
+  activity.slug = "cqf-support-careers-enrichment-and-outreach"
+  activity.category = "face-to-face"
+  activity.remote_delivered_cpd = true
+  activity.provider = "stem-learning"
+  activity.credit = 20
+  activity.stem_activity_code = "CZ120D"
+
+  activity.programmes = [primary_certificate, secondary_certificate]
+end.save!
+
+Activity.find_or_initialize_by(stem_course_template_no: "865c73aa-06ac-ef11-b8e8-6045bd0ddfc9").tap do |activity|
+  activity.title = "CQF support - Impact and outcomes"
+  activity.slug = "cqf-support-impact-and-outcomes"
+  activity.category = "face-to-face"
+  activity.remote_delivered_cpd = true
+  activity.provider = "stem-learning"
+  activity.credit = 20
+  activity.stem_activity_code = "CZ121D"
+
+  activity.programmes = [primary_certificate, secondary_certificate]
 end.save!

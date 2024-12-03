@@ -5,7 +5,7 @@ describe "CMS Page routes" do
     expect(get("/qwerty/refresh"))
       .to route_to(
         controller: "cms",
-        action: "clear_page_cache",
+        action: "web_page_refresh",
         page_slug: "qwerty"
       )
   end

@@ -5,14 +5,12 @@ module Cms
         module ParameterFactory
           def self.generate_parameters(model_class)
             if model_class == Cms::Models::Seo
-              {populate: {featuredImage: {populate: [:alternativeText]}}}
+              {
+                populate: {featuredImage: {populate: [:alternativeText]}},
+                fields: [:title, :description]
+              }
             elsif model_class == Cms::Models::FeaturedImage
               {populate: [:alternativeText, :caption]}
-            elsif model_class == Cms::Models::SimplePagePreview
-              {
-                populate: {seo: {populate: [:description]}},
-                fields: [:title, :slug, :publishedAt, :createdAt, :updatedAt]
-              }
             elsif model_class == Cms::Models::EnrichmentList
               {
                 populate: {
@@ -31,9 +29,30 @@ module Cms
                   publishDate: {"$lt": DateTime.now.strftime}
                 }
               }
+            elsif model_class == Models::WebPagePreview
+              {
+                populate: {seo: {fields: [:title, :description]}},
+                fields: [:slug, :publishedAt, :createdAt, :updatedAt]
+              }
             elsif model_class == Models::PageTitle
               {
-                populate: [:title]
+                fields: [:title],
+                populate: {titleImage: {populate: [:alternativeText]}}
+              }
+            elsif model_class == Models::Aside
+              {
+                fields: [:slug, :title, :showHeadingLine],
+                titleIcon: {populate: [:alternativeText]},
+                asideIcons: {
+                  populate: {iconImage: {populate: [:alternativeText]}}
+                },
+                content: {
+                  on: {
+                    "content-blocks.text-block": ComponentParameterFactory.content_block_text_block,
+                    "content-blocks.file-link": ComponentParameterFactory.content_block_file_link,
+                    "content-blocks.linked-picture": ComponentParameterFactory.content_block_linked_picture
+                  }
+                }
               }
             elsif model_class == Models::DynamicZone
               {
@@ -41,10 +60,14 @@ module Cms
                   "blocks.text-with-asides": ComponentParameterFactory.text_with_asides_parameters,
                   "blocks.resource-card-section": ComponentParameterFactory.card_wrapper_parameters,
                   "blocks.picture-card-section": ComponentParameterFactory.card_wrapper_parameters,
+                  "blocks.numeric-cards-section": ComponentParameterFactory.card_wrapper_parameters,
                   "blocks.horizontal-card": ComponentParameterFactory.horizontal_card_parameters,
                   "blocks.question-and-answer": ComponentParameterFactory.question_and_answer_parameters,
                   "blocks.full-width-banner": ComponentParameterFactory.full_width_banner_parameters,
-                  "blocks.full-width-text": ComponentParameterFactory.text_block_parameters
+                  "blocks.full-width-text": ComponentParameterFactory.text_block_parameters,
+                  "blocks.testimonial-row": ComponentParameterFactory.testimonial_row_parameters,
+                  "blocks.numbered-icon-list": ComponentParameterFactory.numbered_icon_list_parameters,
+                  "blocks.split-horizontal-card": ComponentParameterFactory.split_horizontal_card_parameters
                 }
               }
             end
