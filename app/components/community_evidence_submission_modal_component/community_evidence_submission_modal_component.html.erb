@@ -15,7 +15,7 @@
         <% @activity.public_copy_submission_options.each do |option| %>
           <% if check_submission_option(option["slug"]) %>
             <div class="community-evidence-submission-modal-component__completed_badge_container">
-              <div class='community-evidence-submission-modal-component__completed-badge'>Completed</div>
+              <div class="community-evidence-submission-modal-component__completed-badge">Completed</div>
             </div>
             <% if option["redownload"] %>
               <a href="<%= option["redirect"] %>" rel="noopener"
