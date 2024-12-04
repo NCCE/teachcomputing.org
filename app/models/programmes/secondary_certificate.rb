@@ -68,5 +68,9 @@ module Programmes
     def enrolment_confirmation_required?
       false
     end
+
+    def certificate_path
+      certificate_secondary_certificate_path
+    end
   end
 end
