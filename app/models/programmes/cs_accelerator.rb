@@ -135,5 +135,9 @@ module Programmes
     def enrolment_confirmation_required?
       false
     end
+
+    def certificate_path
+      certificate_cs_accelerator_certificate_path
+    end
   end
 end
