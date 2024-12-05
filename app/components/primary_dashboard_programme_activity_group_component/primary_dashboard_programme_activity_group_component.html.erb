@@ -11,7 +11,11 @@
           <h2 class="govuk-heading-m govuk-!-margin-bottom-0"><%= @title %></h2>
         </div>
       </div>
-      <%= render PrimaryDashboardActivityComponent.new(programme_activities: @programme_activities, current_user: @current_user, programme_activity_group: @programme_activity_group) %>
+      <%= render PrimaryDashboardActivityComponent.new(
+        programme_activities: @programme_activities,
+        programme_activity_group: @programme_activity_group,
+        user_programme_activities:
+        ) %>
     </div>
   <% end %>
   <%= row.with_column("one-third") do %>

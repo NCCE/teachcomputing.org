@@ -2,7 +2,7 @@
   <%= row.with_column("two-thirds") do %>
     <div class="user-programme-course-bookings-with-asides">
       <div class="user-programme-course-bookings-with-asides__header">
-        <% if @programme.programme_activity_groupings.first.user_complete?(@current_user) %>
+        <% if @programme.programme_activity_groupings.not_community.first.user_complete?(@current_user) %>
           <div>
             <%= image_pack_tag('media/images/icons/activity-complete-icon.svg') %>
           </div>
@@ -59,20 +59,21 @@
       <% if !@courses[:in_progress].present? && !@courses[:complete].present? %>
       <div class="user-programme-course-bookings-with-asides__footer">
           <div><h2 class="govuk-heading-s govuk-!-margin-0">Find a CPD course to get started</h2></div>
-          <div><%= link_to 'Explore courses >', courses_path(certificate: @programme&.slug), class: "govuk-button button govuk-!-margin-0" %></div>
+          <div><%= link_to 'Explore courses', courses_path(certificate: @programme&.slug), class: "govuk-button button ncce-button-chevron govuk-!-margin-0" %></div>
         </div>
       <% else %>
         <div class="user-programme-course-bookings-with-asides__footer">
           <div><h2 class="govuk-heading-s govuk-!-margin-0">Discover more courses</h2></div>
-          <div><%= link_to 'Explore courses >', courses_path(certificate: @programme&.slug), class: "govuk-button button button--inverted govuk-!-margin-0" %></div>
+          <div><%= link_to 'Explore courses ', courses_path(certificate: @programme&.slug), class: "govuk-button button ncce-button-chevron button--inverted govuk-!-margin-0" %></div>
         </div>
       <% end %>
 
     </div>
   <% end %>
-  <% if @courses[:in_progress].present? || @courses[:complete].present? %>
-    <%= row.with_column("one-third") do %>
-      <%= render_parent %>
+
+  <%= row.with_column("one-third") do %>
+    <% if @courses[:in_progress].present? || @courses[:complete].present? %>
+        <%= render_parent %>
     <% end %>
   <% end %>
 <% end %>

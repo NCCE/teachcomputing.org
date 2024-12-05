@@ -7,22 +7,11 @@ module Certificates
     after_action :discourage_caching
 
     def show
-      @user_courses = user_courses
       @community_groups = @programme.programme_activity_groupings.community.order(:sort_key)
 
       assign_issued_badge_data
 
       render :show
-    end
-
-    def user_courses
-      in_progress_achievements = current_user.achievements.in_state(:in_progress, :enrolled).with_courses.order("created_at DESC")
-      complete_achievements = current_user.achievements.in_state(:complete).with_courses.order("created_at DESC")
-
-      {
-        in_progress: in_progress_achievements.belonging_to_programme(@programme),
-        complete: complete_achievements.belonging_to_programme(@programme)
-      }
     end
 
     private

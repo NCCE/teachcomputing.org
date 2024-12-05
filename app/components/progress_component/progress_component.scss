@@ -33,4 +33,8 @@
     display: block;
     background-position: top right;
   }
+
+  .progress-component__counter {
+    @include govuk-font($size: 16);
+  }
 }

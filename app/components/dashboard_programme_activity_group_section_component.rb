@@ -2,7 +2,13 @@
 
 class DashboardProgrammeActivityGroupSectionComponent < CmsWithAsidesComponent
   def initialize(anchor_id:, title: nil, completed: false, aside_slug: nil, subtitle: nil)
-    super(aside_sections: [{slug: aside_slug}])
+    aside_sections = if aside_slug.nil?
+      nil
+    else
+      [{slug: aside_slug}]
+    end
+
+    super(aside_sections:)
     @title = title
     @subtitle = subtitle
     @completed = completed

@@ -1,8 +1,7 @@
 class CommunityEvidenceSubmissionModalComponent < ViewComponent::Base
-  def initialize(activity:, achievement: nil, class_name: nil, button_class: nil)
+  def initialize(activity:, achievement: nil, button_class: nil)
     @activity = activity
     @achievement = achievement
-    @class_name = class_name
     @button_class = button_class
   end
 
