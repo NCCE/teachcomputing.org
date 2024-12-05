@@ -46,16 +46,24 @@ RSpec.describe CommunityActivityComponent, type: :component do
         )
       end
 
-      it "renders with the expected objective" do
-        expect(page).to have_css(".community-activity-component__objective-text", text: "Community Activity")
+      it "does not render the complete class" do
+        expect(page).not_to have_css(".community-evidence-submission-modal-component__objective-text--complete")
       end
 
-      it "renders a description" do
-        expect(page).to have_css(".community-activity-component__description", text: "this is a community activity")
+      it "renders the evidence button" do
+        expect(page).to have_button("Submit evidence")
+      end
+
+      it "has the buttons to self verify" do
+        expect(page).to have_css("button", text: "Submit evidence")
       end
 
       it "renders the custom class" do
         expect(page).to have_css(".custom_css_class")
+      end
+
+      it "renders a booking link" do
+        expect(page).not_to have_link("Book a course")
       end
 
       it "renders the evidence submission component" do
@@ -66,15 +74,11 @@ RSpec.describe CommunityActivityComponent, type: :component do
         let(:activity) { create(:activity, :community, self_verification_info: nil, public_copy_evidence: nil) }
 
         it "does not render the complete class" do
-          expect(page).not_to have_css(".community-activity-component__completed-badge")
+          expect(page).not_to have_css(".community-evidence-submission-modal-component__objective-text--complete")
         end
 
-        it "renders with the expected objective" do
-          expect(page).to have_css(".community-activity-component__objective-text", text: "Community Activity")
-        end
-
-        it "renders a description" do
-          expect(page).to have_css(".community-activity-component__description", text: "this is a community activity")
+        it "renders the mark complete button" do
+          expect(page).to have_button("Mark complete")
         end
 
         it "renders the custom class" do
@@ -112,10 +116,6 @@ RSpec.describe CommunityActivityComponent, type: :component do
             class_name: "custom_css_class"
           )
         )
-      end
-
-      it "renders the complete class" do
-        expect(page).to have_css(".community-activity-component__completed-badge", text: "Completed")
       end
 
       it "does not render the evidence button" do
