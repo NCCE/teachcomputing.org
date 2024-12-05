@@ -8,8 +8,15 @@
       <h2 class="govuk-heading-s">Your completed <%= "activity".pluralize(@user_programme_activities[:complete].count) %></h2>
       <% @user_programme_activities[:complete].each do |upa| %>
         <div class="primary-dashboard-activity__activity-details">
-          <p class="govuk-body-m"><%= upa.activity.title %></p>
-          <p class="govuk-body-s"><%= upa.activity.public_copy["description"].html_safe %></p>
+          <div class="primary-dashboard-activity__activity-details-header">
+            <div>
+              <%= image_pack_tag('media/images/icons/tick-green-dark.svg') %>
+            </div>
+            <div>
+              <p class="govuk-body-m govuk-!-margin-bottom-0"><%= upa.activity.title %></p>
+            </div>
+          </div>
+          <p class="govuk-body-s primary-dashboard-activity__activity-details-description"><%= upa.activity.public_copy["description"].html_safe %></p>
         </div>
       <% end %>
     </div>
@@ -49,7 +56,6 @@
   <% end %>
 
   <div class="primary-dashboard-activity__selection-wrapper">
-    <% byebug %>
     <%= select_tag :activity, options_for_select(
       @programme_activities.reject do |pa|
         (@user_programme_activities[:incomplete] + @user_programme_activities[:complete])
