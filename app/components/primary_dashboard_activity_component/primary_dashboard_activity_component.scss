@@ -6,6 +6,10 @@
     .govuk-button {
       white-space: nowrap;
     }
+
+    @include govuk-media-query($until: desktop) {
+      flex-direction: column;
+    }
   }
 
   &__activity {
@@ -29,12 +33,6 @@
         justify-content: space-between;
         gap: 20px;
       }
-    }
-  }
-
-  &__selection-wrapper {
-    @include govuk-media-query($until: desktop) {
-      flex-direction: column;
     }
   }
 
