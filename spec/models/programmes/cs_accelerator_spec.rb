@@ -520,4 +520,16 @@ RSpec.describe Programmes::CSAccelerator do
       expect(programme.auto_enrollable?).to be true
     end
   end
+
+  describe "#enrolment_confirmation_required?" do
+    it "should return false" do
+      expect(programme.enrolment_confirmation_required?).to be false
+    end
+  end
+
+  describe "#certificate_path" do
+    it "should return its certificate path" do
+      expect(programme.certificate_path).to eq "/certificate/subject-knowledge/view-certificate"
+    end
+  end
 end

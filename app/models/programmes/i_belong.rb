@@ -60,7 +60,7 @@ module Programmes
     end
 
     def certificate_path
-      certificate_i_belong_certificate_path
+      certificate_i_belong_path
     end
   end
 end

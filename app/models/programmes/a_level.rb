@@ -44,7 +44,7 @@ module Programmes
     end
 
     def certificate_path
-      certificate_a_level_certificate_path
+      certificate_a_level_path
     end
   end
 end

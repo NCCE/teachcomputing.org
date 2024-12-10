@@ -38,10 +38,6 @@ module Programmes
       true
     end
 
-    def enrichment_enabled?
-      true
-    end
-
     def send_pending_mail?
       true
     end

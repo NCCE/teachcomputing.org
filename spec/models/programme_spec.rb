@@ -345,14 +345,6 @@ RSpec.describe Programme, type: :model do
     end
   end
 
-  describe "#enrichment_enabled?" do
-    let(:programme) { create(:programme) }
-
-    it "should return false" do
-      expect(programme.enrichment_enabled?).to be false
-    end
-  end
-
   describe "#certificate_name" do
     it "should return not implemented error" do
       expect { generic_programme.certificate_name }.to raise_error(NotImplementedError)

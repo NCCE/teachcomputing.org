@@ -24,6 +24,12 @@ RSpec.describe Programmes::ALevel do
     end
   end
 
+  describe "#enrolment_confirmation_required?" do
+    it "should return false" do
+      expect(subject.enrolment_confirmation_required?).to be false
+    end
+  end
+
   describe "#enrol_path" do
     it "returns the path for the enrol" do
       expect(subject.enrol_path(user_programme_enrolment: {user_id: "user_id",
@@ -50,6 +56,12 @@ RSpec.describe Programmes::ALevel do
 
       expect(subject.programme_objectives.first).to be_a ProgrammeObjectives::AssessmentPassRequired
       expect(subject.programme_objectives[1..]).to match_array(pags)
+    end
+  end
+
+  describe "#certificate_path" do
+    it "should return its certificate path" do
+      expect(subject.certificate_path).to eq "/certificate/a-level-certificate/view-certificate"
     end
   end
 end

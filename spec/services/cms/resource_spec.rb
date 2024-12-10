@@ -99,8 +99,12 @@ RSpec.describe Cms::Resource do
           end
         end
 
-        it "calling all gets collection object" do
+        before do
           stub_strapi_get_collection_entity("cms-collection-resource-test")
+          stub_strapi_get_single_blog_post("cms-collection-resource-test/test-post")
+        end
+
+        it "calling all gets collection object" do
           response = collection_class.all(1, 10)
           expect(response).to be_a Cms::Collection
         end
@@ -109,17 +113,52 @@ RSpec.describe Cms::Resource do
           expect(collection_class.collection_attribute_mappings).to be_a Array
         end
 
+        describe "#param_name" do
+          it "should use key as param_name" do
+            expect(collection_class.param_name({key: :title, model: Cms::Models::SimpleTitle})).to eq(:title)
+          end
+
+          it "should use param_name as name when specified" do
+            expect(collection_class.param_name({key: :title, model: Cms::Models::SimpleTitle, param_name: :something})).to eq(:something)
+          end
+        end
+
+        describe "#param_indexes" do
+          it "should include key" do
+            expect(collection_class.param_indexes).to have_key(:title)
+          end
+
+          it "should set correct index" do
+            expect(collection_class.param_indexes[:title]).to eq(0)
+          end
+        end
+
         it "calling collection_view should create component" do
-          stub_strapi_get_collection_entity("cms-collection-resource-test")
           response = collection_class.all(1, 10)
           resource = response.resources.first
           expect(resource.data_models.first).to be_a Cms::Models::SimpleTitle
         end
 
         it "calling get should return single record" do
-          stub_strapi_get_single_blog_post("cms-collection-resource-test/test-post")
           response = collection_class.get("test-post")
           expect(response).to be_a described_class
+        end
+
+        it "should raise error for search_record" do
+          response = collection_class.get("test-post")
+          expect {
+            response.to_search_record(DateTime.now)
+          }.to raise_exception(NotImplementedError)
+        end
+
+        it "should respond_to mapping key" do
+          response = collection_class.get("test-post")
+          expect(response).to respond_to(:title)
+        end
+
+        it "should respond data model for mapping key" do
+          response = collection_class.get("test-post")
+          expect(response.title).to be_a Cms::Models::SimpleTitle
         end
 
         context "should cache results" do

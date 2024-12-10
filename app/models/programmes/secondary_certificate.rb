@@ -38,10 +38,6 @@ module Programmes
       true
     end
 
-    def enrichment_enabled?
-      true
-    end
-
     def programme_objectives
       [
         ProgrammeObjectives::ProgrammeCompletionRequired.new(
