@@ -2,7 +2,7 @@ require "rails_helper"
 
 RSpec.describe UserProgrammeCourseBookingsWithAsidesComponent, type: :component do
   let(:user) { create(:user) }
-  let(:activity) { create(:activity, stem_activity_code: "CP100") }
+  let(:activity) { create(:activity, stem_activity_code: "CP100", category: :online) }
   let(:activity_two) { create(:activity, stem_activity_code: "CP228") }
   let(:programme) { create(:primary_certificate) }
   let(:achievement) { create(:achievement, user:) }
@@ -119,12 +119,16 @@ RSpec.describe UserProgrammeCourseBookingsWithAsidesComponent, type: :component 
       expect(page).to have_css(".aside-component")
     end
 
+    it "renders the online course icon" do
+      expect(page).to have_css(".icon-online")
+    end
+
     it "renders the completed tick image" do
       expect(page).to have_css("img[src*='activity-complete-icon']")
     end
   end
 
-  context "with completed and in progress courses" do
+  context "with completed and in progress courses and no aside" do
     before do
       allow_any_instance_of(AuthenticationHelper).to receive(:current_user).and_return(user)
       allow_any_instance_of(ProgrammeActivityGrouping).to receive(:user_complete?).and_return(true)
@@ -134,12 +138,11 @@ RSpec.describe UserProgrammeCourseBookingsWithAsidesComponent, type: :component 
 
       stub_course_templates
       stub_duration_units
-      stub_strapi_aside_section("test-aside")
 
       render_inline(
         described_class.new(
           programme: programme,
-          aside_slug: "test-aside"
+          aside_slug: nil
         )
       )
     end
@@ -154,11 +157,19 @@ RSpec.describe UserProgrammeCourseBookingsWithAsidesComponent, type: :component 
     end
 
     it "renders the aside" do
-      expect(page).to have_css(".aside-component")
+      expect(page).to_not have_css(".aside-component")
     end
 
     it "renders the completed tick image" do
       expect(page).to have_css("img[src*='activity-complete-icon']")
+    end
+
+    it "does not render the aside component" do
+      expect(page).to_not have_css(".aside-component")
+    end
+
+    it "renders the face to face icon" do
+      expect(page).to have_css(".icon-map-pin")
     end
   end
 end
