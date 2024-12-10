@@ -1,7 +1,7 @@
 <%= render GovGridRowComponent.new(padding: {top: 0, bottom: 7}) do |row| %>
   <%= row.with_column("two-thirds") do %>
-    <div class="user-programme-activities-with-asides">
-      <div class="user-programme-activities-with-asides__header">
+    <div class="primary-dashboard-programme-community-activity-group-component">
+      <div class="primary-dashboard-programme-community-activity-group-component__header">
         <% if complete? %>
           <div>
             <%= image_pack_tag('media/images/icons/activity-complete-icon.svg') %>
@@ -11,8 +11,7 @@
           <h2 class="govuk-heading-m govuk-!-margin-bottom-0"><%= @title %></h2>
         </div>
       </div>
-      <%= render PrimaryDashboardActivityComponent.new(
-        programme_activities: @programme_activities,
+      <%= render PrimaryDashboardCommunityActivityComponent.new(
         programme_activity_group: @programme_activity_group,
         user_programme_activities:
         ) %>

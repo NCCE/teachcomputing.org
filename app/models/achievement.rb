@@ -47,6 +47,7 @@ class Achievement < ApplicationRecord
 
   scope :belonging_to_programme, ->(programme) { joins(activity: {programme_activities: :programme}).where(activities: {programme_activities: {programme:}}) }
   scope :belonging_to_pathway, ->(pathway) { joins(activity: {pathway_activities: :pathway}).where(activities: {pathway_activities: {pathway:}}) }
+  scope :belonging_to_programme_activity_grouping, ->(programme_activity_grouping) { joins(activity: {programme_activities: :programme_activity_grouping}).where(activities: {programme_activities: {programme_activity_grouping:}}) }
 
   def state_machine
     @state_machine ||= StateMachines::AchievementStateMachine.new(self, transition_class: AchievementTransition)
