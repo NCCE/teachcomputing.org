@@ -44,7 +44,13 @@
 .icon-blank-circle {
   @include icon('../images/icons/circle.svg');
   background-size: 32px;
-  padding-left: 40px;
+  padding: 0;
+}
+
+.icon-pending-circle {
+  @include icon('../images/icons/icon-pending-circle.svg');
+  background-size: 32px;
+  padding: 0;
 }
 
 .icon-ticked-circle {
@@ -71,7 +77,7 @@
 
 .icon-dotted-line {
   @include icon('../images/icons/vertical_dotted_line.svg');
-  height: 45px;
+  height: 32px;
   background-size: 3.5px;
   margin-left: 13px;
 
@@ -79,9 +85,11 @@
     @include icon('../images/icons/progress_bar_line.svg');
     background-size: 60px;
     width: 60px;
-    height: 48px;
+    height: 32px;
     padding-left: 0px;
     margin-left: 0px;
+    background-repeat: repeat-x;
+    background-position-y: 15px;
   }
 }
 
