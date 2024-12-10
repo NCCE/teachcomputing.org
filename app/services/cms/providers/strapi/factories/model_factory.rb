@@ -15,10 +15,17 @@ module Cms
               to_seo(strapi_data)
             elsif model_class == Models::Slug
               model_class.new(slug: strapi_data[:slug])
+            elsif model_class == Models::TextField
+              model_class.new(value: strapi_data)
             elsif model_class == Models::FeaturedImage
               to_featured_image(strapi_data[:data][:attributes]) if strapi_data[:data]
             elsif model_class == Models::TextBlock
-              to_content_block(strapi_data)
+              with_wrapper = if mapping.key?(:with_wrapper)
+                mapping[:with_wrapper]
+              else
+                true
+              end
+              to_content_block(strapi_data, with_wrapper:)
             elsif model_class == Models::SimpleTitle
               model_class.new(title: strapi_data)
             elsif model_class == Models::Aside

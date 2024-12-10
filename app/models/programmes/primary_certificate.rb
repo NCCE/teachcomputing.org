@@ -38,10 +38,6 @@ module Programmes
       true
     end
 
-    def enrichment_enabled?
-      true
-    end
-
     def send_pending_mail?
       true
     end
@@ -56,6 +52,10 @@ module Programmes
 
     def enrolment_confirmation_required?
       true
+    end
+
+    def certificate_path
+      certificate_primary_certificate_path
     end
   end
 end
