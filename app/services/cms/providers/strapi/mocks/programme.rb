@@ -5,9 +5,9 @@ module Cms
         class Programme < StrapiMock
           attribute(:slug) { Faker::Internet.slug }
           attribute(:statusPendingTitle) { Faker::Internet.slug }
-          attribute(:statusPendingText) { TextBlock.generate_raw_data }
+          attribute(:statusPendingText) { RichBlocks.generate_data }
           attribute(:statusCompletedTitle) { Faker::Internet.slug }
-          attribute(:statusCompletedText) { TextBlock.generate_raw_data }
+          attribute(:statusCompletedText) { RichBlocks.generate_data }
         end
       end
     end
