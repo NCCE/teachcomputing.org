@@ -35,6 +35,6 @@ RSpec.describe("certificates/primary_certificate/show", type: :view) do
   end
 
   it "renders the user programme activities components" do
-    expect(rendered).to have_css(".user-programme-activities-with-asides", count: 2)
+    expect(rendered).to have_css(".primary-dashboard-programme-community-activity-group-component", count: 2)
   end
 end
