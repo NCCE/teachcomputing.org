@@ -9,7 +9,7 @@ primary_certificate.programme_activity_groupings.find_or_initialize_by(title: "A
   group.sort_key = 2
   group.required_for_completion = 1
   group.programme_id = primary_certificate.id
-  group.progress_bar_title = "Complete professional development"
+  group.progress_bar_title = "Book required CPD"
   group.web_copy_course_requirements = "Complete one full day face-to-face, remote or online course, or a combination of short courses that amounts to 6+ hours of professional development."
   group.required_credit_count = 50
 
@@ -28,7 +28,7 @@ primary_certificate.programme_activity_groupings.find_or_initialize_by(title: "D
   group.required_for_completion = 1
   group.programme_id = primary_certificate.id
   group.community = true
-  group.progress_bar_title = "Develop your teaching practice"
+  group.progress_bar_title = "Put into practice"
   group.web_copy_course_requirements = "Choose at least one activity"
 
   group.save!
@@ -58,7 +58,7 @@ primary_certificate.programme_activity_groupings.find_or_initialize_by(title: "D
   group.required_for_completion = 1
   group.programme_id = primary_certificate.id
   group.community = true
-  group.progress_bar_title = "Develop computing in your community"
+  group.progress_bar_title = "Share with others"
   group.web_copy_course_requirements = "Choose at least one activity"
 
   group.save!
