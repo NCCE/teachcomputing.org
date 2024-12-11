@@ -4,12 +4,15 @@ RSpec.describe UserProgrammeCourseBookingsWithAsidesComponent, type: :component 
   let(:user) { create(:user) }
   let(:activity) { create(:activity, stem_activity_code: "CP100", category: :online) }
   let(:activity_two) { create(:activity, stem_activity_code: "CP228") }
+  let(:activity_three) { create(:activity, stem_activity_code: "CP101", remote_delivered_cpd: true) }
   let(:programme) { create(:primary_certificate) }
   let(:achievement) { create(:achievement, user:) }
   let!(:courses) { create_list(:programme_activity_grouping, 2, :with_activities, sort_key: 2, community: false, programme:) }
   let!(:programme_activity) { create(:programme_activity, programme:, activity:, programme_activity_grouping: courses.first) }
   let!(:programme_activity_two) { create(:programme_activity, programme:, activity: activity_two, programme_activity_grouping: courses.first) }
+  let!(:programme_activity_three) { create(:programme_activity, programme:, activity: activity_three, programme_activity_grouping: courses.first) }
   let(:user_achievement) { create(:achievement, user:, activity:) }
+  let(:remote_achievement) { create(:achievement, user:, activity: activity_three) }
   let(:completed_user_achievement) { create(:completed_achievement, user:, activity: activity_two) }
 
   context "with no user courses" do
@@ -133,7 +136,7 @@ RSpec.describe UserProgrammeCourseBookingsWithAsidesComponent, type: :component 
       allow_any_instance_of(AuthenticationHelper).to receive(:current_user).and_return(user)
       allow_any_instance_of(ProgrammeActivityGrouping).to receive(:user_complete?).and_return(true)
 
-      user_achievement
+      remote_achievement
       completed_user_achievement
 
       stub_course_templates
@@ -169,7 +172,7 @@ RSpec.describe UserProgrammeCourseBookingsWithAsidesComponent, type: :component 
     end
 
     it "renders the face to face icon" do
-      expect(page).to have_css(".icon-map-pin")
+      expect(page).to have_css(".icon-remote")
     end
   end
 end
