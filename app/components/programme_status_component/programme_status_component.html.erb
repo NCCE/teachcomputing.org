@@ -3,7 +3,9 @@
   <%= row.with_column("two-thirds") do %>
     <div class="programme-status-wrapper__title-row">
       <h2 class="govuk-heading-m"><%= title %></h2>
-      <%= image_pack_tag "media/images/icons/programme_completed_icon.svg" %>
+      <% if @user_programme_enrolment.in_state?(:complete) %>
+        <%= image_pack_tag "media/images/icons/programme_completed_icon.svg" %>
+      <% end %>
       </div>
     <%= render content.render %>
   <% end %>
