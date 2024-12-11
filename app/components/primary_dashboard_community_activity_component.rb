@@ -22,11 +22,11 @@ class PrimaryDashboardCommunityActivityComponent < CmsWithAsidesComponent
 
   def available_activities
     @available_activities ||= @programme_activities.reject do |pa|
-      existing_activity_ids.include?(pa.activity.id)
+      chosen_activity_ids.include?(pa.activity.id)
     end
   end
 
-  def existing_activity_ids
+  def chosen_activity_ids
     (@user_programme_activities[:incomplete] + @user_programme_activities[:complete])
       .map(&:activity_id)
   end

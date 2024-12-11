@@ -16,7 +16,7 @@
               <p class="govuk-body-m govuk-!-margin-bottom-0"><%= upa.activity.title %></p>
             </div>
           </div>
-          <p class="govuk-body-s primary-dashboard-community-activity__activity-details-description"><%= upa.activity.public_copy["description"].html_safe %></p>
+          <p class="govuk-body-s primary-dashboard-community-activity__activity-details-description"><%= upa.activity.public_copy_description.html_safe %></p>
         </div>
       <% end %>
     </div>
@@ -48,7 +48,7 @@
                   } %>
             </div>
           </div>
-          <p class="govuk-body-s"><%= upa.activity.public_copy["description"].html_safe %></p>
+          <p class="govuk-body-s"><%= upa.activity.public_copy_description.html_safe %></p>
           <%= render CommunityEvidenceSubmissionModalComponent.new(activity: upa.activity, achievement: ) %>
         </div>
       <% end %>
