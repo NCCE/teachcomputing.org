@@ -89,4 +89,9 @@ export default class extends ApplicationController {
       this.maybeToggle()
     }
   }
+
+  openWithText({detail: {content}}){
+    console.log(content);
+    this.toggle();
+  }
 }

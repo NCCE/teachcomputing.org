@@ -4,7 +4,7 @@ export default class extends ApplicationController {
   static values = {
     createPath: String,
   }
-  static targets = ["activityButton"]
+  static targets = ["activityButton", "activityTitle"]
 
   connect() {
     console.log("im here")
@@ -23,7 +23,8 @@ export default class extends ApplicationController {
         }
       })
     }).then((response) => {
-      location.reload()
+      this.activityTitleTarget.innerText = event.params.activityTitle;
+      this.dispatch("selected", {detail: {content: "ello"}})
     })
   }
 }
