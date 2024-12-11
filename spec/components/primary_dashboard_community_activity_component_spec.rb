@@ -34,6 +34,10 @@ RSpec.describe PrimaryDashboardCommunityActivityComponent, type: :component do
       expect(page).to_not have_css("h2", text: "Your completed activity")
       expect(page).to_not have_css("h2", text: "Complete your chosen activity")
     end
+
+    it "renders the choose at least one activity heading" do
+      expect(page).to have_css("h2", text: "Complete at least one activity")
+    end
   end
 
   context "with only in progress activity" do
@@ -145,6 +149,10 @@ RSpec.describe PrimaryDashboardCommunityActivityComponent, type: :component do
 
     it "renders the chose activity button" do
       expect(page).to have_css("a", text: "Choose activity")
+    end
+
+    it "does not render the choose at least one activity heading" do
+      expect(page).to_not have_css("h2", text: "Complete at least one activity")
     end
   end
 

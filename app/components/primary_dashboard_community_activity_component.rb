@@ -14,10 +14,6 @@ class PrimaryDashboardCommunityActivityComponent < CmsWithAsidesComponent
     @current_user = current_user
   end
 
-  def heading_text
-    user_programme_activities.present? ? "Complete your chosen activity" : "Complete at least one activity"
-  end
-
   private
 
   def available_activities

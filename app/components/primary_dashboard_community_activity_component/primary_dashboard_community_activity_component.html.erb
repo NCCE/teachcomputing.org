@@ -3,6 +3,10 @@
   data-controller="primary-dashboard-community-activity-component"
   data-primary-dashboard-community-activity-component-achievements-path-value="<%= achievements_path %>">
 
+  <% if @user_programme_activities[:complete].blank? && @user_programme_activities[:incomplete].blank? %>
+    <h2 class="govuk-heading-s">Complete at least one activity</h2>
+  <% end %>
+
   <% if @user_programme_activities[:complete].present? %>
     <div class="primary-dashboard-community-activity__activity" data-primary-dashboard-community-activity-component-target="activityDetails">
       <h2 class="govuk-heading-s">Your completed <%= "activity".pluralize(@user_programme_activities[:complete].count) %></h2>
