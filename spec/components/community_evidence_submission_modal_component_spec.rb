@@ -1,10 +1,8 @@
 require "rails_helper"
 
-RSpec.describe CommunityActivityComponent, type: :component do
+RSpec.describe CommunityEvidenceSubmissionModalComponent, type: :component do
   let(:activity) { create(:activity, :community) }
-  let(:bookable_community_activity) { create(:activity, :community_bookable) }
   let(:incomplete_achievement) { create(:achievement, :community) }
-  let(:completed_achievement) { create(:completed_achievement) }
   let(:activity_with_options) {
     create(:activity, :community_no_evidence, public_copy_submission_options: [
       {
@@ -40,8 +38,7 @@ RSpec.describe CommunityActivityComponent, type: :component do
         render_inline(
           described_class.new(
             achievement: incomplete_achievement,
-            activity:,
-            class_name: "custom_css_class"
+            activity:
           )
         )
       end
@@ -56,10 +53,6 @@ RSpec.describe CommunityActivityComponent, type: :component do
 
       it "has the buttons to self verify" do
         expect(page).to have_css("button", text: "Submit evidence")
-      end
-
-      it "renders the custom class" do
-        expect(page).to have_css(".custom_css_class")
       end
 
       it "renders a booking link" do
@@ -81,45 +74,9 @@ RSpec.describe CommunityActivityComponent, type: :component do
           expect(page).to have_button("Mark complete")
         end
 
-        it "renders the custom class" do
-          expect(page).to have_css(".custom_css_class")
-        end
-
         it "renders a booking link" do
           expect(page).not_to have_link("Book a course")
         end
-      end
-    end
-
-    describe "with a booking_programme_slug" do
-      before do
-        render_inline(
-          described_class.new(
-            achievement: incomplete_achievement,
-            activity: bookable_community_activity,
-            class_name: "custom_css_class"
-          )
-        )
-      end
-
-      it "renders a booking link" do
-        expect(page).to have_link("Book a course", href: "/courses?certificate=subject-knowledge")
-      end
-    end
-
-    describe "with a completed achievement" do
-      before do
-        render_inline(
-          described_class.new(
-            achievement: completed_achievement,
-            activity: activity,
-            class_name: "custom_css_class"
-          )
-        )
-      end
-
-      it "does not render the evidence button" do
-        expect(page).not_to have_button("Submit evidence")
       end
     end
   end
