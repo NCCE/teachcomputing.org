@@ -9,9 +9,6 @@ export default class extends ApplicationController {
 
   static targets = ["activityDetails", "activity"];
 
-  connect(){
-  }
-
   selectActivity(event) {
     this.activityIdValue = event.target.value;
   }
