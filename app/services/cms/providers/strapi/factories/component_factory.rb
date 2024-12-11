@@ -92,7 +92,7 @@ module Cms
             DynamicComponents::CommunityActivityGrid.new(
               title: strapi_data[:title],
               intro: ModelFactory.to_content_block(strapi_data[:intro], with_wrapper: false),
-              programme_activity_group_slug: strapi_data[:programmeActivityGroupSlug]
+              programme_activity_group_slug: strapi_data[:group][:data][:attributes][:slug]
             )
           end
 

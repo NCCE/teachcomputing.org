@@ -1,6 +1,21 @@
 
-.community-activity-list {
+.community-activity-grid {
   margin-bottom: 20px;
+
+  &__modal-content {
+    padding-top: 1.5rem;
+
+    .button-container {
+      width: 100%;
+      text-align: center;
+
+      .button {
+        width: 70%;
+        margin-top: 15px;
+        margin-bottom: 0px;
+      }
+    }
+  }
 
   &__grid {
     display: grid;

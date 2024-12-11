@@ -8,7 +8,7 @@ module Cms
 
             attribute(:title) { Faker::Lorem.sentence }
             attribute(:intro) { RichBlocks.generate_data }
-            attribute(:programmeActivityGroupSlug) { "primary-certificate" }
+            attribute(:group) { {data: {attributes: {slug: "group-slug"}}} }
           end
         end
       end

@@ -3,7 +3,7 @@
 require "rails_helper"
 
 RSpec.describe Cms::CommunityActivityGridComponent, type: :component do
-  let(:cms_slug) { "cms-community-activity-list-test" }
+  let(:cms_slug) { "cms-community-activity-grid-test" }
   let(:programme) { create(:primary_certificate) }
   let(:programme_activity_grouping) { create(:programme_activity_grouping, community: true, programme:, cms_slug:) }
   let!(:activity1) { create(:activity, :community) }
@@ -28,15 +28,15 @@ RSpec.describe Cms::CommunityActivityGridComponent, type: :component do
     end
 
     it "should render grid" do
-      expect(page).to have_css(".community-activity-list__grid")
+      expect(page).to have_css(".community-activity-grid__grid")
     end
 
     it "should render activities" do
-      expect(page).to have_css(".community-activity-list__grid-activity", count: 2)
+      expect(page).to have_css(".community-activity-grid__grid-activity", count: 2)
     end
 
     it "should not have buttons" do
-      expect(page).not_to have_css(".govuk-button")
+      expect(page).not_to have_css(".community-activity-grid__grid-activity .govuk-button")
     end
   end
 
@@ -51,15 +51,15 @@ RSpec.describe Cms::CommunityActivityGridComponent, type: :component do
     end
 
     it "should render grid" do
-      expect(page).to have_css(".community-activity-list__grid")
+      expect(page).to have_css(".community-activity-grid__grid")
     end
 
     it "should render activities" do
-      expect(page).to have_css(".community-activity-list__grid-activity", count: 2)
+      expect(page).to have_css(".community-activity-grid__grid-activity", count: 2)
     end
 
     it "should not have buttons" do
-      expect(page).not_to have_css(".govuk-button")
+      expect(page).not_to have_css(".community-activity-grid__grid-activity .govuk-button")
     end
   end
 
@@ -74,11 +74,11 @@ RSpec.describe Cms::CommunityActivityGridComponent, type: :component do
     end
 
     it "should render grid" do
-      expect(page).to have_css(".community-activity-list__grid")
+      expect(page).to have_css(".community-activity-grid__grid")
     end
 
     it "should render activities" do
-      expect(page).to have_css(".community-activity-list__grid-activity", count: 2)
+      expect(page).to have_css(".community-activity-grid__grid-activity", count: 2)
     end
 
     it "should have choose activity buttons" do
@@ -99,11 +99,11 @@ RSpec.describe Cms::CommunityActivityGridComponent, type: :component do
     end
 
     it "should render grid" do
-      expect(page).to have_css(".community-activity-list__grid")
+      expect(page).to have_css(".community-activity-grid__grid")
     end
 
     it "should render activities" do
-      expect(page).to have_css(".community-activity-list__grid-activity", count: 2)
+      expect(page).to have_css(".community-activity-grid__grid-activity", count: 2)
     end
 
     it "should show added label" do

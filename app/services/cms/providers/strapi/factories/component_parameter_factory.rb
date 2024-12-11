@@ -118,7 +118,13 @@ module Cms
             }
           end
 
-          def self.community_activity_list_parameters = populate_fields([:title, :intro, :programmeActivityGroupSlug])
+          def self.community_activity_list_parameters
+            {
+              populate: {
+                group: populate_fields(:slug)
+              }
+            }
+          end
 
           def self.sticky_dashboard_bar_parameters
             {populate: {programme: populate_fields([:slug])}}
