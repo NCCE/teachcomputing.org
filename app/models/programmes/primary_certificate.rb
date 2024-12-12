@@ -57,5 +57,9 @@ module Programmes
     def enrolment_confirmation_required?
       true
     end
+
+    def show_enrolment_on_progress_bar?
+      true
+    end
   end
 end

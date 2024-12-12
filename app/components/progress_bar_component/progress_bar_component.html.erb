@@ -4,14 +4,16 @@
       <h2 class="govuk-heading-m">Progress bar<h2>
       <p class="govuk-body">The key steps to earn your <%= @programme.title %> certificate</p>
       <div class="progress-bar-component__objectives-wrapper">
-        <div class="progress-bar-component__objective">
-          <div class="progress-bar-component__objective--icon <%= user_enrolled_class %>">
+        <% if @programme.show_enrolment_on_progress_bar? %>
+          <div class="progress-bar-component__objective">
+            <div class="progress-bar-component__objective--icon <%= user_enrolled_class %>">
+            </div>
+            <div class="progress-bar-component__objective--text">
+              <p class="govuk-body-s govuk-!-margin-0">Enrol</p>
+            </div>
           </div>
-          <div class="progress-bar-component__objective--text">
-            <p class="govuk-body-s govuk-!-margin-0">Enrol</p>
-          </div>
-        </div>
         <div class="progress-bar-component--dotted-line icon-dotted-line"></div>
+        <% end %>
         <% @programme_objectives.each_with_index do |programme_objective, index| %>
           <% if programme_objective.multi_stage_group? %>
             <div class="progress-bar-component__objective">
