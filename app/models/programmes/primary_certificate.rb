@@ -54,6 +54,10 @@ module Programmes
       true
     end
 
+    def show_enrolment_on_progress_bar?
+      true
+    end
+
     def certificate_path
       certificate_primary_certificate_path
     end
