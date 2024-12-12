@@ -11,7 +11,7 @@ class ProgrammeActivityGrouping < ApplicationRecord
   scope :community, -> { where(community: true) }
   scope :not_community, -> { where(community: false) }
 
-  store_accessor :web_copy, %i[course_requirements aside_slug subtitle], prefix: true
+  store_accessor :web_copy, %i[course_requirements aside_slug subtitle step_number], prefix: true
 
   validates :cms_slug, uniqueness: true
 

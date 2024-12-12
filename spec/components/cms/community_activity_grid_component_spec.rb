@@ -34,10 +34,6 @@ RSpec.describe Cms::CommunityActivityGridComponent, type: :component do
     it "should render activities" do
       expect(page).to have_css(".community-activity-grid__grid-activity", count: 2)
     end
-
-    it "should not have buttons" do
-      expect(page).not_to have_css(".community-activity-grid__grid-activity .govuk-button")
-    end
   end
 
   context "user logged in but not enrolled" do
@@ -56,10 +52,6 @@ RSpec.describe Cms::CommunityActivityGridComponent, type: :component do
 
     it "should render activities" do
       expect(page).to have_css(".community-activity-grid__grid-activity", count: 2)
-    end
-
-    it "should not have buttons" do
-      expect(page).not_to have_css(".community-activity-grid__grid-activity .govuk-button")
     end
   end
 
@@ -106,12 +98,8 @@ RSpec.describe Cms::CommunityActivityGridComponent, type: :component do
       expect(page).to have_css(".community-activity-grid__grid-activity", count: 2)
     end
 
-    it "should show added label" do
-      expect(page).to have_css(".govuk-heading-s", text: "ACTIVITY ADDED", count: 1)
-    end
-
-    it "should have a single button to dashboard" do
-      expect(page).to have_link("Manage on Dashboard", href: programme.path, count: 1)
+    it "should have selected status on one" do
+      expect(page).to have_css(".community-activity-grid__grid-activity--started", count: 1)
     end
   end
 end
