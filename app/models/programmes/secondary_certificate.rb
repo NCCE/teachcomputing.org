@@ -43,7 +43,8 @@ module Programmes
         ProgrammeObjectives::ProgrammeCompletionRequired.new(
           required_programme: Programme.cs_accelerator,
           progress_bar_title: "Complete the KS3 and GCSE computer science subject knowledge",
-          progress_bar_path: cs_accelerator_path
+          progress_bar_path: cs_accelerator_path,
+          multi_stage_group: false
         ),
         *programme_activity_groupings.includes(:programme_activities).order(:sort_key)
       ]
