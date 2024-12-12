@@ -26,10 +26,6 @@ class ProgressBarComponent < ViewComponent::Base
 
   private
 
-  def programme_objectives
-    @current_user.achievements.with_courses.belonging_to_programme(@programme)
-  end
-
   def user_enrolled_class
     if @programme.user_enrolled?(@current_user)
       "icon-ticked-circle"

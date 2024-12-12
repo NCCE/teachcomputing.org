@@ -127,6 +127,10 @@ module Programmes
       false
     end
 
+    def show_enrolment_on_progress_bar?
+      false
+    end
+
     def certificate_path
       certificate_cs_accelerator_certificate_path
     end
