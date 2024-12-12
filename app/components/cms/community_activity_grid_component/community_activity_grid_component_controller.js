@@ -3,14 +3,13 @@ import ApplicationController from "../../../webpacker/javascript/controllers/app
 export default class extends ApplicationController {
   static values = {
     createPath: String,
+    slug: String
   }
-  static targets = ["activityButton", "activityTitle"]
-
-  connect() {
-    console.log("im here")
-  }
+  static targets = ["activityButton", "activityTitle", "activityBox", "activityGrid"];
 
   selectActivity(event) {
+    console.log(event);
+    const activityId = event.params.activityId;
     fetch(this.createPathValue, {
       method: 'POST',
       headers: {
@@ -19,12 +18,22 @@ export default class extends ApplicationController {
       },
       body: JSON.stringify({
         achievement: {
-          activity_id: event.params.activityId
+          activity_id: activityId
         }
       })
     }).then((response) => {
       this.activityTitleTarget.innerText = event.params.activityTitle;
-      this.dispatch("selected", {detail: {content: "ello"}})
+      this.dispatch("selected", {detail: {key: this.slugValue}}); 
+      const box = this.findActivityBox(activityId);
+      if(box){
+        box.classList.add("community-activity-grid__grid-activity--started");
+        this.element.classList.add("community-activity-grid--chosen")
+        this.activityGridTarget.prepend(box);
+      }
     })
+  }
+
+  findActivityBox(id){
+    return this.activityBoxTargets.find(element => element.dataset.id == id)
   }
 }
