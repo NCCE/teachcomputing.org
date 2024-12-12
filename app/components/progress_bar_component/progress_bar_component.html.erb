@@ -13,18 +13,16 @@
         </div>
         <div class="progress-bar-component--dotted-line icon-dotted-line"></div>
         <% @programme_objectives.each_with_index do |programme_objective, index| %>
-          <% if programme_objective.sort_key == 2 %>
+          <% if programme_objective.multi_stage_group? %>
             <div class="progress-bar-component__objective">
-              <div class="progress-bar-component__objective--icon <%= course_status_class(:in_progress) %>"></div>
+              <div class="progress-bar-component__objective--icon <%= programme_objective.course_status_class(current_user, state:[:in_progress, :enrolled]) %>"></div>
               <div class="progress-bar-component__objective--text">
-                <p class="govuk-body-s govuk-!-margin-0"><%= programme_objective.progress_bar_title %></p>
+                <p class="govuk-body-s govuk-!-margin-0">Book required CPD</p>
               </div>
             </div>
-            <% unless index == @programme_objectives.size - 1 %>
-              <div class="progress-bar-component--dotted-line icon-dotted-line"></div>
-            <% end %>
+            <div class="progress-bar-component--dotted-line icon-dotted-line"></div>
             <div class="progress-bar-component__objective">
-              <div class="progress-bar-component__objective--icon <%= course_status_class(:complete) %>"></div>
+              <div class="progress-bar-component__objective--icon <%= programme_objective.course_status_class(current_user, state:[:complete]) %>"></div>
               <div class="progress-bar-component__objective--text">
                 <p class="govuk-body-s govuk-!-margin-0">Attend required CPD</p>
               </div>
