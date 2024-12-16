@@ -3,9 +3,12 @@ require "rails_helper"
 RSpec.describe PrimaryDashboardCommunityActivityComponent, type: :component do
   let(:user) { create(:user) }
   let(:programme) { create(:primary_certificate) }
+  let(:activity) { create(:activity) }
   let(:in_progress_activity) { create(:activity, public_copy_description: "Community activity") }
   let(:complete_activity) { create(:activity, public_copy_description: "Community activity") }
-  let(:programme_activity_group) { create(:programme_activity_grouping, :with_activities, community: true, programme:) }
+
+  let(:programme_activities) { create_list(:programme_activity, 4) }
+  let(:programme_activity_group) { create(:programme_activity_grouping, programme_activities:, community: true, programme:) }
 
   let!(:achievement) { create(:in_progress_achievement, activity: in_progress_activity) }
   let!(:completed_achievement) { create(:completed_achievement, activity: complete_activity) }
@@ -14,14 +17,11 @@ RSpec.describe PrimaryDashboardCommunityActivityComponent, type: :component do
   context "with no activities" do
     before do
       allow_any_instance_of(AuthenticationHelper).to receive(:current_user).and_return(user)
-
       render_inline(
         described_class.new(
           programme_activity_group:,
-          user_programme_activities: {
-            complete: [],
-            incomplete: []
-          }
+          completed_activities: [],
+          incomplete_activities: []
         )
       )
     end
@@ -35,8 +35,20 @@ RSpec.describe PrimaryDashboardCommunityActivityComponent, type: :component do
       expect(page).to_not have_css("h2", text: "Complete your chosen activity")
     end
 
-    it "renders the choose at least one activity heading" do
+    it "renders the no activities heading" do
       expect(page).to have_css("h2", text: "Complete at least one activity")
+    end
+
+    it "renders the activity select dropdown" do
+      expect(page).to have_select("activity")
+    end
+
+    it "has the correct count of activities in the select" do
+      expect(page).to have_css("select[name='activity'] option", count: 5)
+    end
+
+    it "renders the activity select button in white" do
+      expect(page).to have_css(".button--inverted")
     end
   end
 
@@ -48,10 +60,8 @@ RSpec.describe PrimaryDashboardCommunityActivityComponent, type: :component do
       render_inline(
         described_class.new(
           programme_activity_group:,
-          user_programme_activities: {
-            complete: [],
-            incomplete: [achievement]
-          }
+          completed_activities: [],
+          incomplete_activities: [achievement]
         )
       )
     end
@@ -77,10 +87,8 @@ RSpec.describe PrimaryDashboardCommunityActivityComponent, type: :component do
       render_inline(
         described_class.new(
           programme_activity_group:,
-          user_programme_activities: {
-            complete: [completed_achievement],
-            incomplete: []
-          }
+          completed_activities: [completed_achievement],
+          incomplete_activities: []
         )
       )
     end
@@ -106,10 +114,8 @@ RSpec.describe PrimaryDashboardCommunityActivityComponent, type: :component do
       render_inline(
         described_class.new(
           programme_activity_group:,
-          user_programme_activities: {
-            complete: [completed_achievement],
-            incomplete: [achievement]
-          }
+          completed_activities: [completed_achievement],
+          incomplete_activities: [achievement]
         )
       )
     end
@@ -166,10 +172,8 @@ RSpec.describe PrimaryDashboardCommunityActivityComponent, type: :component do
       render_inline(
         described_class.new(
           programme_activity_group:,
-          user_programme_activities: {
-            complete: [],
-            incomplete: multiple_achievements
-          }
+          completed_activities: [],
+          incomplete_activities: multiple_achievements
         )
       )
     end
