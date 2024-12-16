@@ -38,10 +38,6 @@ module Programmes
       true
     end
 
-    def enrichment_enabled?
-      true
-    end
-
     def programme_objectives
       [
         ProgrammeObjectives::ProgrammeCompletionRequired.new(
@@ -67,6 +63,10 @@ module Programmes
 
     def enrolment_confirmation_required?
       false
+    end
+
+    def certificate_path
+      certificate_secondary_certificate_path
     end
   end
 end

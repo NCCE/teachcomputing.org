@@ -151,10 +151,6 @@ class Programme < ApplicationRecord
     true
   end
 
-  def enrichment_enabled?
-    false
-  end
-
   def programme_objectives
     programme_activity_groupings.includes(:programme_activities).order(:sort_key)
   end

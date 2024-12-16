@@ -111,4 +111,16 @@ RSpec.describe Programmes::SecondaryCertificate do
       expect(secondary_certificate.auto_enrollable?).to be true
     end
   end
+
+  describe "#enrolment_confirmation_required?" do
+    it "should return false" do
+      expect(secondary_certificate.enrolment_confirmation_required?).to be false
+    end
+  end
+
+  describe "#certificate_path" do
+    it "should return its certificate path" do
+      expect(secondary_certificate.certificate_path).to eq "/certificate/secondary-certificate/view-certificate"
+    end
+  end
 end
