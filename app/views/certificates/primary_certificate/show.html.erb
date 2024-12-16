@@ -3,17 +3,15 @@
 
 <%= render CmsPageTitleComponent.new(title: "Your Teach primary computing certificate progress") %>
 
-<div class="light-grey-bg">
-  <%= render GovGridRowComponent.new(padding: {top: 5, bottom: 5}) do |row| %>
-    <%= row.with_column("two-thirds") do %>
-      <%= render ProgressBarComponent.new(current_user, @programme, top_padding: false) %>
-    <% end %>
-    <%= row.with_column("one-third") do %>
-      <%= render CmsWithAsidesComponent.new(aside_sections: [{slug: "primary-certificate-need-help"}]) %>
-    <% end %>
+<%= render GovGridRowComponent.new(background_color: "light-grey", padding: {top: 5, bottom: 5}) do |row| %>
+  <%= row.with_column("two-thirds") do %>
+    <%= render ProgressBarComponent.new(current_user, @programme, top_padding: false) %>
   <% end %>
-  <%= render UserProgrammeCourseBookingsWithAsidesComponent.new(programme: @programme, aside_slug: "primary-dashboard-cpd-section") %>
-  <% @community_groups.each do |group| %>
-    <%= render PrimaryDashboardProgrammeCommunityActivityGroupComponent.new(title: group.web_copy_subtitle, programme_activity_group: group, current_user: @current_user, aside_slug: group.web_copy_aside_slug) %>
+  <%= row.with_column("one-third") do %>
+    <%= render CmsWithAsidesComponent.new(aside_sections: [{slug: "primary-certificate-need-help"}]) %>
   <% end %>
-</div>
+<% end %>
+<%= render UserProgrammeCourseBookingsWithAsidesComponent.new(programme: @programme, aside_slug: "primary-dashboard-cpd-section") %>
+<% @community_groups.each do |group| %>
+  <%= render PrimaryDashboardProgrammeCommunityActivityGroupComponent.new(programme_activity_group: group, current_user: @current_user) %>
+<% end %>

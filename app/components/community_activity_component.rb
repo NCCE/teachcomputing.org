@@ -7,17 +7,4 @@ class CommunityActivityComponent < ViewComponent::Base
     @class_name = class_name
     @button_class = button_class
   end
-
-  def achievement_complete?
-    return unless @achievement
-
-    return false if @activity.public_copy_submission_options
-    @achievement.in_state?(:complete)
-  end
-
-  def achievement_rejected?
-    return unless @achievement
-
-    @achievement.in_state? :rejected
-  end
 end

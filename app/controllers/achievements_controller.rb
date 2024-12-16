@@ -5,12 +5,13 @@ class AchievementsController < ApplicationController
   def create
     @achievement = current_user.achievements.build(achievement_params)
 
-    if @achievement.save && @achievement.transition_to(:drafted)
+    if @achievement.save
       if params[:enrol]
         @achievement.transition_to(:enrolled)
         flash[:notice] = "'#{@achievement.activity.title}' has been added to your activity list"
       else
         flash[:notice] = "'#{@achievement.activity.title}' progress has been saved"
+        @achievement.transition_to(:drafted)
       end
 
       render json: {}, status: 200

@@ -16,15 +16,20 @@ class UserProgrammeCourseBookingsWithAsidesComponent < CmsWithAsidesComponent
 
   def before_render
     @current_user = current_user
+  end
 
-    in_progress_achievements = current_user.achievements.in_state(:in_progress, :enrolled).with_courses.order("created_at DESC")
-    complete_achievements = current_user.achievements.in_state(:complete).with_courses.order("created_at DESC")
+  def in_progress_courses
+    @current_user.achievements
+      .in_state(:in_progress, :enrolled)
+      .with_courses.order("created_at DESC")
+      .belonging_to_programme(@programme)
+  end
 
-    @courses =
-      {
-        in_progress: in_progress_achievements.belonging_to_programme(@programme),
-        complete: complete_achievements.belonging_to_programme(@programme)
-      }
+  def completed_courses
+    @current_user.achievements
+      .in_state(:complete)
+      .with_courses.order("created_at DESC")
+      .belonging_to_programme(@programme)
   end
 
   def course_icon_class(activity)
@@ -40,7 +45,11 @@ class UserProgrammeCourseBookingsWithAsidesComponent < CmsWithAsidesComponent
     end
   end
 
-  def course_duration(course)
+  def course_grouping
+    @programme.programme_activity_groupings.not_community.first
+  end
+
+  def course_instance(course)
     Achiever::Course::Template.maybe_find_by_activity_code(course.activity.stem_activity_code) if course.activity.stem_activity_code.present?
   end
 end
