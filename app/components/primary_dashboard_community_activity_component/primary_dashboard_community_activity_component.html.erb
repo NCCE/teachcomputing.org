@@ -3,14 +3,14 @@
   data-controller="primary-dashboard-community-activity-component"
   data-primary-dashboard-community-activity-component-achievements-path-value="<%= achievements_path %>">
 
-  <% if @user_programme_activities[:complete].blank? && @user_programme_activities[:incomplete].blank? %>
+  <% if @completed_activities.blank? && @incomplete_activities.blank? %>
     <h2 class="govuk-heading-s">Complete at least one activity</h2>
   <% end %>
 
-  <% if @user_programme_activities[:complete].present? %>
+  <% if @completed_activities.present? %>
     <div class="primary-dashboard-community-activity__activity" data-primary-dashboard-community-activity-component-target="activityDetails">
-      <h2 class="govuk-heading-s">Your completed <%= "activity".pluralize(@user_programme_activities[:complete].count) %></h2>
-      <% @user_programme_activities[:complete].each do |upa| %>
+      <h2 class="govuk-heading-s">Your completed <%= "activity".pluralize(@completed_activities.count) %></h2>
+      <% @completed_activities.each do |upa| %>
         <div class="primary-dashboard-community-activity__activity-details">
           <div class="primary-dashboard-community-activity__activity-details-header">
             <div>
@@ -26,10 +26,10 @@
     </div>
   <% end %>
 
-  <% if @user_programme_activities[:incomplete].present? %>
+  <% if @incomplete_activities.present? %>
     <div class="primary-dashboard-community-activity__activity" data-primary-dashboard-community-activity-component-target="activityDetails">
-      <h2 class="govuk-heading-s">Complete your chosen <%= "activity".pluralize(@user_programme_activities[:incomplete].count) %></h2>
-      <% @user_programme_activities[:incomplete].each do |upa| %>
+      <h2 class="govuk-heading-s">Complete your chosen <%= "activity".pluralize(@incomplete_activities.count) %></h2>
+      <% @incomplete_activities.each do |upa| %>
         <% achievement = (@current_user.achievements.find { |a| a.activity_id == upa.activity_id }) %>
         <div class="primary-dashboard-community-activity__activity-details">
           <% if achievement.in_state? :rejected %>
