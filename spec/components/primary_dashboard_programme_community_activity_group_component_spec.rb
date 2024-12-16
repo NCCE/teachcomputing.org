@@ -3,8 +3,9 @@ require "rails_helper"
 RSpec.describe PrimaryDashboardProgrammeCommunityActivityGroupComponent, type: :component do
   let(:user) { create(:user) }
   let(:programme) { create(:primary_certificate) }
-  let(:programme_activity_group) { create(:programme_activity_grouping, :with_activities, community: true, programme:) }
-  let(:complete_programme_activity_group) { create(:programme_activity_grouping, required_for_completion: 0) }
+  let(:programme_activity_group) { create(:programme_activity_grouping, programme:, web_copy: {subtitle: "Title"}) }
+  let(:programme_activity_group_with_aside) { create(:programme_activity_grouping, programme:, web_copy: {subtitle: "Title", aside_slug: "test-aside"}) }
+  let(:complete_programme_activity_group) { create(:programme_activity_grouping, required_for_completion: 0, web_copy: {subtitle: "Title"}) }
 
   context "when group is not complete" do
     before do
@@ -12,10 +13,8 @@ RSpec.describe PrimaryDashboardProgrammeCommunityActivityGroupComponent, type: :
 
       render_inline(
         described_class.new(
-          title: "Title",
           programme_activity_group:,
-          current_user: user,
-          aside_slug: nil
+          current_user: user
         )
       )
     end
@@ -41,10 +40,8 @@ RSpec.describe PrimaryDashboardProgrammeCommunityActivityGroupComponent, type: :
 
       render_inline(
         described_class.new(
-          title: "Title",
-          programme_activity_group:,
-          current_user: user,
-          aside_slug: "test-aside"
+          programme_activity_group: programme_activity_group_with_aside,
+          current_user: user
         )
       )
     end
@@ -62,10 +59,8 @@ RSpec.describe PrimaryDashboardProgrammeCommunityActivityGroupComponent, type: :
 
       render_inline(
         described_class.new(
-          title: "Title",
           programme_activity_group: complete_programme_activity_group,
-          current_user: user,
-          aside_slug: "test-aside"
+          current_user: user
         )
       )
     end
