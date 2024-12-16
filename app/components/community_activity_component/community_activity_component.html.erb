@@ -1,5 +1,5 @@
 <div class="community-activity-component <%= @class_name %>">
-  <% if achievement_rejected? %>
+  <% if @achievement&.rejected? %>
     <div class="community-activity-component__rejected">
     <i class="icon-feedback"></i>
       <span class="community-activity-component__rejected-text govuk-body-s">
@@ -12,7 +12,7 @@
       <div class="community-activity-component__objective-text">
         <span><%= @activity.title %></span>
       </div>
-      <% if achievement_complete? %>
+      <% if @achievement&.community_achievement_complete? %>
         <div class="community-activity-component__completed_badge_container" >
           <div class="community-activity-component__completed-badge">Completed</div>
         </div>

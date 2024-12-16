@@ -24,6 +24,13 @@
     &-category {
       margin-right: 20px;
     }
+
+    &-instance {
+      .icon-clock {
+        background-size: 16px 16px;
+      }
+    }
+
   }
 
   &__footer {

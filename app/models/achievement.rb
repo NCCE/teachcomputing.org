@@ -86,6 +86,10 @@ class Achievement < ApplicationRecord
     in_state?(:drafted)
   end
 
+  def rejected?
+    in_state?(:rejected)
+  end
+
   def adequate_evidence_provided?
     activity.public_copy_evidence.blank? ||
       evidence.present? ||
@@ -99,6 +103,12 @@ class Achievement < ApplicationRecord
     metadata[:supporting_evidence_url] = supporting_evidence.presence
 
     transition_to(:complete, metadata)
+  end
+
+  def community_achievement_complete?
+    return false if activity.public_copy_submission_options
+
+    in_state?(:complete)
   end
 
   def self.initial_state

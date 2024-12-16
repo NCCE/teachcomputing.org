@@ -3,9 +3,10 @@
 class PrimaryDashboardCommunityActivityComponent < CmsWithAsidesComponent
   delegate :current_user, to: :helpers
 
-  def initialize(programme_activity_group:, user_programme_activities:)
+  def initialize(programme_activity_group:, completed_activities:, incomplete_activities:)
     @programme_activity_group = programme_activity_group
-    @user_programme_activities = user_programme_activities
+    @completed_activities = completed_activities
+    @incomplete_activities = incomplete_activities
 
     @programme_activities = @programme_activity_group.programme_activities.not_legacy.includes(:activity)
   end
@@ -23,7 +24,7 @@ class PrimaryDashboardCommunityActivityComponent < CmsWithAsidesComponent
   end
 
   def chosen_activity_ids
-    (@user_programme_activities[:incomplete] + @user_programme_activities[:complete])
+    (@completed_activities + @incomplete_activities)
       .map(&:activity_id)
   end
 end
