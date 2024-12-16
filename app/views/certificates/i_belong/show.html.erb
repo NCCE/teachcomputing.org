@@ -3,7 +3,7 @@
 <%= render 'pages/certification/hero', sub_header_disabled: true, display_i_belong_flag: true %>
 
 <div class="ncce-programmes-activity">
-  <%= render ProgressBarComponent.new(current_user, @programme, title: t('.progress.title'), body: t('.progress.body'), steps_to_accreditation: false) %>
+  <%= render ProgressBarComponent.new(current_user, @programme, title: t('.progress.title'), body: t('.progress.body')) %>
   <div class="govuk-width-container">
       <%= render 'achievement_list' %>
   </div>

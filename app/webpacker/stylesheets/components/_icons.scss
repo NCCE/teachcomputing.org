@@ -81,7 +81,7 @@
   background-size: 3.5px;
   margin-left: 13px;
 
-  @include govuk-media-query($from: desktop) {
+  @include govuk-media-query($from: tablet) {
     @include icon('../images/icons/progress_bar_line.svg');
     background-size: 60px;
     width: 60px;
