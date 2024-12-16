@@ -13,7 +13,7 @@
     <% if @user_programme_enrolment.in_state?(:complete) %>
       <div class="programme-status-wrapper__button-container">
         <%= link_to 'Download your certificate', @user_programme_enrolment.programme.certificate_path, 
-          class: 'govuk-button button', role: 'button', draggable: 'false' %></p>
+          class: 'govuk-button button', role: 'button' %></p>
       </div>
     <% end %>
   <% end %>
