@@ -1,5 +1,5 @@
 <%= render GovGridRowComponent.new do |row|  %>
-  <%= row.with_column("two-thirds") do %>
+  <%= row.with_column(@programme.show_enrolment_on_progress_bar? ? "two-thirds" : "full") do %>
     <div class="progress-bar-component">
       <h2 class="govuk-heading-m">Progress bar<h2>
       <p class="govuk-body">The key steps to earn your <%= @programme.title %> certificate</p>
@@ -33,7 +33,7 @@
             <div class="progress-bar-component__objective">
               <div class="progress-bar-component__objective--icon icon-blank-circle"></div>
               <div class="progress-bar-component__objective--text">
-                <p class="govuk-body-s govuk-!-margin-0"><%= programme_objective.progress_bar_title %></p>
+                <p class="govuk-body-s govuk-!-margin-0"><%= programme_objective.progress_bar_title.html_safe %></p>
               </div>
             </div>
           <% end %>
@@ -44,42 +44,9 @@
       </div>
     </div>
   <% end %>
-  <%= row.with_column("one-third") do %>
-    <p>Aside</p>
+  <% if @programme.show_enrolment_on_progress_bar? %>
+    <%= row.with_column("one-third") do %>
+      <p>Aside</p>
+    <% end %>
   <% end %>
 <% end %>
-
-<!--
-<div class="govuk-width-container govuk-!-padding-top-3">
-  <div class="hero__heading-wrapper--full-width govuk-body progress-bar-component">
-    <h4>
-      <strong><%= @title.presence || 'Your certificate progress' %></strong>
-    </h4>
-    <p class="govuk-body-s ncce-progress-section--description">
-    <strong>
-      <% if @body.present? %>
-        <%= @body %>
-      <% else %>
-        Complete the below training and activities to receive your <%= @programme.title %> certificate.
-        You can complete these at your own pace and in any order.
-      <% end %>
-    </strong>
-    </p>
-    <% if @steps_to_accreditation %>
-      <p class="govuk-body-s">Choose your first step to certification:</p>
-    <% end %>
-    <div class="ncce-progress-section">
-      <% @programme_objectives.each_with_index do |programme_objective, index| %>
-        <% class_name = programme_objective&.user_complete?(@current_user) ? "icon-ticked-circle" : "icon-blank-circle" %>
-        <a href="<%= programme_objective.progress_bar_path %>" class="<%= class_name %> ncce-link ncce-progress-section--text">
-          <span><%= programme_objective.progress_bar_title.html_safe %></span>
-        </a>
-
-        <% unless index == @programme_objectives.size - 1 %>
-          <div class="icon-dotted-line"></div>
-        <% end %>
-      <% end %>
-    </div>
-  </div>
-</div>
--->
