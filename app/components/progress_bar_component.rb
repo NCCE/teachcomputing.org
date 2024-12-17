@@ -15,6 +15,14 @@ class ProgressBarComponent < ViewComponent::Base
 
   private
 
+  def wide_objective_text_class
+    if @programme.show_enrolment_on_progress_bar?
+      "progress-bar-component__objective--text"
+    else
+      "progress-bar-component__objective--text-wide"
+    end
+  end
+
   def user_enrolled_class
     if @programme.user_enrolled?(@current_user)
       "icon-ticked-circle"
