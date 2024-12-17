@@ -19,7 +19,8 @@ export default class extends ApplicationController {
       body: JSON.stringify({
         achievement: {
           activity_id: activityId
-        }
+        },
+        enrol: true
       })
     }).then((response) => {
       this.activityTitleTarget.innerText = event.params.activityTitle;
