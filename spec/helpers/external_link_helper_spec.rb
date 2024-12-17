@@ -49,6 +49,7 @@ RSpec.describe ExternalLinkHelper do
     gender_insights_in_computing_url
     ncce_student_events_url
     i_belong_press_release_pack_url
+    stem_primary_ambassadors_url
   ].each do |external_link_method|
     describe "##{external_link_method}" do
       it "should return a string" do
