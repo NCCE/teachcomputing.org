@@ -27,13 +27,12 @@
           courses_path(certificate: @activity.booking_programme_slug),
           class: 'govuk-button button community-activity-component__objective-button'
         %>
-      <% else %>
-        <%= render CommunityEvidenceSubmissionModalComponent.new(
-          activity: @activity,
-          achievement: @achievement,
-          button_class: @button_class
-        ) %>
       <% end %>
+      <%= render CommunityEvidenceSubmissionModalComponent.new(
+        activity: @activity,
+        achievement: @achievement,
+        button_class: @button_class
+      ) %>
     </div>
     <% if @activity.description.present? %>
       <div class="community-activity-component__description"><%= @activity.description.html_safe %></div>
