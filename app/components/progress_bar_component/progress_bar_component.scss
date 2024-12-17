@@ -39,7 +39,19 @@
       margin-top: 5px;
       text-align: center;
       overflow: visible;
-      width: calc(100% + 80px);
+
+      &-wide {
+        margin-top: 5px;
+        text-align: center;
+        overflow: visible;
+        width: calc(100% + 120px);
+
+        @include govuk-media-query($until: tablet) {
+          margin: 0;
+          text-align: start;
+          width: 80%;
+        }
+      }
 
       @include govuk-media-query($until: tablet) {
         margin: 0;
