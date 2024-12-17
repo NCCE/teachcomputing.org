@@ -11,31 +11,60 @@ RSpec.describe AchievementsController do
 
   describe "POST #create" do
     context "with valid params" do
-      let(:evidence) { ["hello world"] }
+      context "for draft" do
+        let(:evidence) { ["hello world"] }
 
-      before do
-        post achievements_path, params: {
-          achievement: {
-            activity_id: activity.id,
-            evidence:
+        before do
+          post achievements_path, params: {
+            achievement: {
+              activity_id: activity.id,
+              evidence:
+            }
           }
-        }
+        end
+
+        it "returns a 200 status code" do
+          expect(response).to have_http_status(:success)
+        end
+
+        it "sets the success flash" do
+          expect(flash[:notice].present?).to be true
+        end
+
+        it "creates an achievement for the activity" do
+          expect(user.achievements.first.activity).to eq activity
+        end
+
+        it "creates an achievement with status drafted" do
+          expect(user.achievements.first.drafted?).to be true
+        end
       end
 
-      it "returns a 200 status code" do
-        expect(response).to have_http_status(:success)
-      end
+      context "for enrolled" do
+        before do
+          post achievements_path, params: {
+            achievement: {
+              activity_id: activity.id
+            },
+            enrol: true
+          }
+        end
 
-      it "sets the success flash" do
-        expect(flash[:notice].present?).to be true
-      end
+        it "returns a 200 status code" do
+          expect(response).to have_http_status(:success)
+        end
 
-      it "creates an achievement for the activity" do
-        expect(user.achievements.first.activity).to eq activity
-      end
+        it "sets the success flash" do
+          expect(flash[:notice].present?).to be true
+        end
 
-      it "creates an achievement with status drafted" do
-        expect(user.achievements.first.drafted?).to be true
+        it "creates an achievement for the activity" do
+          expect(user.achievements.first.activity).to eq activity
+        end
+
+        it "creates an achievement with status enrolled" do
+          expect(user.achievements.first.in_state?(:enrolled)).to be true
+        end
       end
     end
 

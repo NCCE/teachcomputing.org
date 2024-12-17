@@ -2,7 +2,8 @@ require "rails_helper"
 
 RSpec.describe CommunityEvidenceSubmissionModalComponent, type: :component do
   let(:activity) { create(:activity, :community) }
-  let(:incomplete_achievement) { create(:achievement, :community) }
+  let(:incomplete_achievement) { create(:achievement, :community, activity:) }
+  let(:completed_achievement) { create(:completed_achievement, activity:) }
   let(:activity_with_options) {
     create(:activity, :community_no_evidence, public_copy_submission_options: [
       {
@@ -19,7 +20,7 @@ RSpec.describe CommunityEvidenceSubmissionModalComponent, type: :component do
       }
     ])
   }
-  let(:completed_option_achievement) { create(:completed_achievement, submission_option: "option-2") }
+  let(:completed_option_achievement) { create(:completed_achievement, activity: activity_with_options, submission_option: "option-2") }
   let(:activity_with_no_redownload) {
     create(:activity, :community_no_evidence, public_copy_submission_options: [
       {
@@ -30,7 +31,7 @@ RSpec.describe CommunityEvidenceSubmissionModalComponent, type: :component do
       }
     ])
   }
-  let(:completed_no_redownload_achievement) { create(:completed_achievement, submission_option: "no-redownload") }
+  let(:completed_no_redownload_achievement) { create(:completed_achievement, activity: activity_with_no_redownload, submission_option: "no-redownload") }
 
   describe "with standard activity" do
     describe "with an incomplete achievement" do
@@ -77,6 +78,21 @@ RSpec.describe CommunityEvidenceSubmissionModalComponent, type: :component do
         it "renders a booking link" do
           expect(page).not_to have_link("Book a course")
         end
+      end
+    end
+
+    describe "with a completed achievement" do
+      before do
+        render_inline(
+          described_class.new(
+            achievement: completed_achievement,
+            activity: activity
+          )
+        )
+      end
+
+      it "does not render the evidence button" do
+        expect(page).not_to have_button("Submit evidence")
       end
     end
   end
