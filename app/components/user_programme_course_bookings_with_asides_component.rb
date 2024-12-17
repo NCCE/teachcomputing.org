@@ -18,6 +18,13 @@ class UserProgrammeCourseBookingsWithAsidesComponent < CmsWithAsidesComponent
     @current_user = current_user
   end
 
+  private
+
+  def course_sections
+    [{title: "Booked courses", courses: in_progress_courses},
+      {title: "Completed courses", courses: completed_courses}]
+  end
+
   def in_progress_courses
     @current_user.achievements
       .in_state(:in_progress, :enrolled)
