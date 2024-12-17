@@ -71,7 +71,6 @@ primary_certificate.programme_activity_groupings.find_or_initialize_by(title: "D
   activities = [
     {slug: "share-tips-on-using-an-ncce-resource-in-your-classroom-with-colleagues-on-stem-community", legacy: false},
     {slug: "gain-accreditation-as-a-professional-development-leader", legacy: false},
-    {slug: "support-other-teachers-and-earn-a-stem-community-participation-badge", legacy: false},
     {slug: "run-an-enrichment-activity-in-your-classroom", legacy: false},
     {slug: "support-other-teachers-and-earn-a-stem-community-participation-badge", legacy: false},
     {slug: "undertake-the-initial-assessment-of-your-school-using-computing-quality-framework", legacy: false},
