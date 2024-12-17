@@ -81,7 +81,7 @@
                         <%= link_to strip_tags(programme_activity.activity.title), programme_activity.activity.public_copy_title_url, class: 'ncce-link govuk-heading-s' %>
                       </p>
                       <p class="govuk-body-s">
-                        <%= sanitize programme_activity.activity.description %>
+                        <%= sanitize programme_activity.activity.public_copy_description %>
                       </p>
                     </div>
                   <% end %>
