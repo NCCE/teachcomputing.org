@@ -54,7 +54,7 @@ module Programmes
       true
     end
 
-    def show_enrolment_on_progress_bar?
+    def show_extra_objectives_on_progress_bar?
       true
     end
 
