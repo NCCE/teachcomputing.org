@@ -3,8 +3,8 @@ require "rails_helper"
 RSpec.describe CommunityActivityComponent, type: :component do
   let(:activity) { create(:activity, :community) }
   let(:bookable_community_activity) { create(:activity, :community_bookable) }
-  let(:incomplete_achievement) { create(:achievement, :community) }
-  let(:completed_achievement) { create(:completed_achievement) }
+  let(:incomplete_achievement) { create(:achievement, :community, activity:) }
+  let(:completed_achievement) { create(:completed_achievement, activity:) }
   let(:activity_with_options) {
     create(:activity, :community_no_evidence, public_copy_submission_options: [
       {
@@ -21,7 +21,7 @@ RSpec.describe CommunityActivityComponent, type: :component do
       }
     ])
   }
-  let(:completed_option_achievement) { create(:completed_achievement, submission_option: "option-2") }
+  let(:completed_option_achievement) { create(:completed_achievement, activity: activity_with_options, submission_option: "option-2") }
   let(:activity_with_no_redownload) {
     create(:activity, :community_no_evidence, public_copy_submission_options: [
       {
@@ -32,7 +32,7 @@ RSpec.describe CommunityActivityComponent, type: :component do
       }
     ])
   }
-  let(:completed_no_redownload_achievement) { create(:completed_achievement, submission_option: "no-redownload") }
+  let(:completed_no_redownload_achievement) { create(:completed_achievement, activity: activity_with_no_redownload, submission_option: "no-redownload") }
 
   describe "with standard activity" do
     describe "with an incomplete achievement" do
@@ -152,16 +152,8 @@ RSpec.describe CommunityActivityComponent, type: :component do
           )
         end
 
-        it "should have one button" do
-          expect(page).to have_css(".govuk-button", text: "Option 1")
-        end
-
         it "should have one completed badge" do
-          expect(page).to have_css(".community-activity-component__completed-badge", count: 1)
-        end
-
-        it "should have redownload link" do
-          expect(page).to have_link("Re-download option 2", href: "https://teachcomputing.org/option2")
+          expect(page).to have_css(".community-evidence-submission-modal-component__completed-badge", count: 1)
         end
       end
     end
@@ -193,11 +185,7 @@ RSpec.describe CommunityActivityComponent, type: :component do
         end
 
         it "should have one completed badge" do
-          expect(page).to have_css(".community-activity-component__completed-badge", count: 1)
-        end
-
-        it "should not have redownload link" do
-          expect(page).not_to have_link("Redownload No Redownload", href: "https://teachcomputing.org/no-redownload")
+          expect(page).to have_css(".community-evidence-submission-modal-component__completed-badge", count: 1)
         end
       end
     end

@@ -5,6 +5,10 @@ class CommunityEvidenceSubmissionModalComponent < ViewComponent::Base
     @button_class = button_class
   end
 
+  def render?
+    !@achievement&.community_achievement_complete?
+  end
+
   def reopen_button_text
     return "Add more evidence" if @achievement&.rejected?
     @achievement&.evidence.present? ? "Continue editing" : "Submit evidence"
