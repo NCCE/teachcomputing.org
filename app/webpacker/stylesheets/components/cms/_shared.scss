@@ -48,3 +48,31 @@
   }
   
 }
+
+.cms-icon-row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 5px;
+
+  .cms-image {
+    max-width: 50px;
+    display: flex;
+    justify-content: center;
+
+    img {
+      width: 100%;
+      height: auto;
+      margin-bottom: 0px;
+      box-shadow: none;
+    }
+  }
+  
+}
+
+.cms-dynamic-zone--bottom-padding {
+
+  .tc-gov-grid-wrapper:last-child {
+    padding-bottom: 40px;
+  }
+}
