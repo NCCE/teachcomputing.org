@@ -256,10 +256,22 @@ Activity.find_or_initialize_by(slug: "raise-aspirations-with-a-stem-ambassador-v
   activity.category = "community"
   activity.provider = "stem-learning"
   activity.self_certifiable = true
-  activity.description = "<a href='#{stem_ambassadors_url}'>Arrange an in-person or online visit</a> for your classroom to help pupils understand real-world applications of computing and raise their career aspirations."
+  activity.description = "<a href='#{stem_primary_ambassadors_url}'>Arrange an in-person or online visit</a> for your classroom to help pupils understand real-world applications of computing and raise their career aspirations."
   activity.public_copy_description = "Arrange a visit for your school to help pupils understand real-world applications of computing and raise their career aspirations through engaging activities."
-  activity.public_copy_title_url = "https://www.stem.org.uk/stem-ambassadors"
-  activity.self_verification_info = "Add the date(s) and who the visit was aimed at. What was the activity? How many Computing Ambassadors attended, what their names were and which companies/universities etc. were they from? What topics were covered? What was the impact of the visit on your students? Share an example of student voice/comment if possible."
+  activity.public_copy_title_url = stem_primary_ambassadors_url
+  activity.self_verification_info = nil
+  activity.public_copy_evidence = [
+    {
+      brief: "Evidence guidance:",
+      bullets: [
+        "Add the date(s) and who the visit was aimed at. Include the age range of students involved.",
+        "What was the activity?",
+        "What topics were covered?",
+        "How many Computing Ambassadors attended, what their names were and which companies/universities etc. were they from?",
+        "What was the impact of the visit on your students? Share an example of student voice/comment if possible."
+      ]
+    }
+  ]
 end.save!
 
 Activity.find_or_initialize_by(slug: "participate-fully-in-an-ncce-curriculum-enrichment-oppertunity").tap do |activity|
@@ -285,7 +297,16 @@ Activity.find_or_initialize_by(slug: "participate-fully-in-an-ncce-curriculum-en
   activity.description = "Explore NCCE and partner <a href='https://teachcomputing.org/primary-enrichment'>enrichment resources</a> to enable you to plan an enrichment activity in your classroom."
   activity.public_copy_description = "Participate in a webinar or explore our partner enrichment resources to enable you to run an enrichment activity in your classroom."
   activity.public_copy_title_url = "http://www.teachcomputing.org/primary-enrichment"
-  activity.self_verification_info = "What enrichment activity are you going to run in your classroom? When are you planning it for? Explain how this activity will enrich pupils' experience of the computing curriculum."
+  activity.self_verification_info = nil
+  activity.public_copy_evidence = [{
+    brief: "Evidence guidance:",
+    bullets: [
+      "Describe the enrichment activity are you going to run in your classroom.",
+      "When are you planning it for?",
+      "What year group is this activity intended for?",
+      "Explain how this activity will enrich pupils' experience of the computing curriculum."
+    ]
+  }]
 end.save!
 
 Activity.find_or_initialize_by(slug: "implement-your-professional-development-in-the-classroom-and-evaluate-via-the-impact-toolkit").tap do |activity|
@@ -298,7 +319,13 @@ Activity.find_or_initialize_by(slug: "implement-your-professional-development-in
   activity.description = "Think about not only your actions but also <a href='#{impact_toolkit_url}'>collecting evidence</a> of how the changes you make impact you, your colleagues, and your students."
   activity.public_copy_description = "Think about not only your actions but also collecting evidence of how the changes you make impact you, your colleagues, and your students."
   activity.public_copy_title_url = "https://www.stem.org.uk/about-us/impact-and-evaluation/impact-toolkit"
-  activity.self_verification_info = "Add information on how you’ve implemented what you learnt from CPD into your classroom and how you used the Impact Toolkit to evaluate your learning."
+  activity.self_verification_info = nil
+  activity.public_copy_evidence = [{
+    brief: "Evidence guidance:",
+    bullets: [
+      "Add information on how you’ve implemented what you learnt from CPD into your classroom and how you used the Impact Toolkit to evaluate your learning."
+    ]
+  }]
 end.save!
 
 Activity.find_or_initialize_by(slug: "download-and-use-the-ncce-teaching-and-assessment-resources-in-your-classroom").tap do |activity|
@@ -311,7 +338,14 @@ Activity.find_or_initialize_by(slug: "download-and-use-the-ncce-teaching-and-ass
   activity.description = 'Download and use a <a href="https://teachcomputing.org/curriculum">Teach Computing Curriculum resource</a>, then reflect on how you used and adapted it in the classroom.'
   activity.public_copy_description = "Download and use a Teach Computing Curriculum resource, then reflect on how you used and adapted it in the classroom."
   activity.public_copy_title_url = "https://teachcomputing.org/curriculum"
-  activity.self_verification_info = "Include the unit and lesson name of the recourse(s) that you have used. Include a link to the resource(s) on the Teach Computing website if possible."
+  activity.self_verification_info = nil
+  activity.public_copy_evidence = [{
+    brief: "Evidence guidance:",
+    bullets: [
+      "Reflect on the use of the <a href='https://teachcomputing.org/curriculum'>Teach Computing Curriculum resource(s)</a>, including which year group you taught and when.",
+      "Include the unit, lesson and name of the resource(s) that you used. Include a link to the resource(s) on the Teach Computing website if possible."
+    ]
+  }]
 end.save!
 
 Activity.find_or_initialize_by(slug: "share-tips-on-using-an-ncce-resource-in-your-classroom-with-colleagues-on-stem-community").tap do |activity|
@@ -324,7 +358,13 @@ Activity.find_or_initialize_by(slug: "share-tips-on-using-an-ncce-resource-in-yo
   activity.description = "By joining <a href='#{stem_community_url}'>STEM Community</a> you’ll meet other teachers in similar roles and be able to share ideas, resources and insights."
   activity.public_copy_description = "By joining STEM Community you’ll meet other teachers in similar roles and be able to share ideas, resources and insights."
   activity.public_copy_title_url = "https://community.stem.org.uk/home"
-  activity.self_verification_info = "Share a link(s) to where you have contributed to the discussion(s) on the STEM Community about using a NCCE resource(s). You can also contribute to the existing <a href='#{primary_evidence_stem_community_url}'>primary certificate evidence thread</a>."
+  activity.self_verification_info = nil
+  activity.public_copy_evidence = [{
+    brief: "Evidence guidance:",
+    bullets: [
+      "Share a link(s) to where you have contributed to the discussion(s) on the STEM Community about using a NCCE resource(s). You can also contribute to the existing <a href='#{primary_evidence_stem_community_url}'>primary certificate evidence thread</a>."
+    ]
+  }]
 end.save!
 
 Activity.find_or_initialize_by(slug: "support-other-teachers-and-earn-a-stem-community-participation-badge-secondary").tap do |activity|
@@ -347,10 +387,18 @@ Activity.find_or_initialize_by(slug: "support-other-teachers-and-earn-a-stem-com
   activity.category = "community"
   activity.provider = "stem-learning"
   activity.self_certifiable = true
-  activity.description = "You’ll earn points for your posts and comments on the <a href=\"#{primary_stem_community_url}\">STEM Community</a>. Your points add up, and over time you will be <a href=\"#{stem_community_points_help_url}\">rewarded with badges</a> in recognition of your activity and participation in the community."
+  activity.description = "By joining <a href='#{stem_community_url}'>STEM Community</a> you’ll meet other teachers in similar roles and be able to share ideas, resources and insights. You’ll earn points for your posts and comments on the <a href='#{stem_community_url}'>STEM Community</a>. Your points add up, and over time you will be <a href='#{stem_community_points_help_url}'>rewarded with badges</a> in recognition of your activity and participation in the community."
   activity.public_copy_description = "You’ll earn points for your activities on the STEM Community. Your points add up, and over time you will be rewarded with badges in recognition of your activity and participation in the community."
   activity.public_copy_title_url = "https://community.stem.org.uk/helpfaqs/points"
-  activity.self_verification_info = "What is the highest STEM Community participation badge you have earned? Describe the engagement activities you did to earn a badge."
+  activity.self_verification_info = nil
+  activity.public_copy_evidence = [{
+    brief: "Evidence guidance:",
+    bullets: [
+      "What is the highest STEM Community participation badge you have earned? You can find your badge in your account details under the ‘Awards’ section.",
+      "Describe the engagement activities you did to earn a badge.",
+      "Include a link to a sharing folder with a screenshot of your STEM Community badge. Please make sure it is open for viewing by anybody with the correct link."
+    ]
+  }]
 end.save!
 
 Activity.find_or_initialize_by(slug: "run-or-support-a-code-club-in-your-school").tap do |activity|
@@ -376,13 +424,16 @@ Activity.find_or_initialize_by(slug: "run-an-enrichment-activity-in-your-classro
   activity.description = "Enrich the curriculum by running a computing <a href='https://teachcomputing.org/primary-enrichment'>enrichment activity</a> in your school, such as a computing-themed club, a computing day or week at your school etc."
   activity.public_copy_description = "Enrich the curriculum with fun and engaging activities, bringing computing learning to life for your pupils."
   activity.public_copy_title_url = "https://teachcomputing.org/primary-enrichment"
-  activity.self_verification_info = "Add the date(s) and any other details of the enrichment activity that you have ran with pupils in your classroom.<br/>What was the activity? What was the age range of pupils involved?<br/>What did they learn? What was the impact of the activity? If possible, include feedback from the pupils, and any links to websites, news articles etc."
+  activity.self_verification_info = nil
   activity.public_copy_evidence = [
     {
+      brief: "Evidence guidance:",
       bullets: [
         "Add the date(s) and any other details of the enrichment activity that you have ran with pupils in your classroom.",
-        "What was the activity? What was the age range of pupils involved?",
-        "What did they learn? What was the impact of the activity? If possible, include feedback from the pupils, and any links to websites, news articles etc."
+        "What was the activity?",
+        "What was the age range of pupils involved?",
+        "What did they learn?",
+        "What was the impact of the activity? If possible, include feedback from the pupils, and any links to websites, news articles etc."
       ]
     }
   ]
@@ -641,18 +692,22 @@ Activity.find_or_initialize_by(slug: "start-or-deliver-a-computing-related-club"
 end.save!
 
 Activity.find_or_initialize_by(slug: "gain-accreditation-as-a-professional-development-leader").tap do |activity|
-  activity.title = "Gain accreditation as a professional development leader"
+  activity.title = "Gain <a href='#{leading_professional_development_url}'>accreditation</a> as a professional development leader"
   activity.credit = 10
   activity.slug = "gain-accreditation-as-a-professional-development-leader"
   activity.category = "community"
   activity.provider = "stem-learning"
   activity.self_certifiable = true
-  activity.description = "Reflect on what makes CPD effective and how its impact can be evaluated as well as the strategies and tools you’ll need when <a href='#{leading_professional_development_url}'>leading learning with teachers</a>."
+  activity.description = "Reflect on what makes CPD effective and how its impact can be evaluated as well as the strategies and tools you’ll need when <a href='#{leading_professional_development_url}'>leading learning</a> with teachers."
   activity.public_copy_description = "Explore what makes CPD effective and how its impact can be evaluated as well as the strategies and tools you’ll need when leading learning with adults."
   activity.public_copy_title_url = "https://www.stem.org.uk/professional-development-leaders"
   activity.self_verification_info = "Include the title of the specific accreditation that you have gained."
   activity.public_copy_evidence = [
-    brief: "Reflect on what makes CPD effective and how its impact can be evaluated as well as the strategies and tools you’ll need when <a href='#{leading_professional_development_url}'>leading learning</a> with teachers. Include the title of the specific accreditation that you have gained."
+    brief: "Evidence guidance:",
+    bullets: [
+      "Reflect on what makes CPD effective and how its impact can be evaluated as well as the strategies and tools you’ll need when <a href='#{leading_professional_development_url}'>leading learning</a> with teachers.",
+      "Include the title of the specific <a href='#{leading_professional_development_url}'>accreditation</a> that you have gained."
+    ]
   ]
 end.save!
 
@@ -669,9 +724,10 @@ Activity.find_or_initialize_by(slug: "undertake-the-initial-assessment-of-your-s
   activity.self_verification_info = "How were you involved in the initial assessment?<br/>Include your average level across all dimensions of the CQF or a link to a sharing folder with a screenshot of your school’s initial assessment graph. Make sure the viewing permissions are open to anyone with the link."
   activity.public_copy_evidence = [
     {
+      brief: "Evidence Guidance:",
       bullets: [
         "How were you involved in the initial assessment?",
-        "Include your average level across all dimensions of the CQF or a link to a sharing folder with a screenshot of your school’s initial assessment graph. Make sure the viewing permissions are open to anyone with the link."
+        "Include your average level across all benchmarks of the CQF. You can also add a link to a sharing folder with a screenshot of your school’s initial assessment graph. Make sure the viewing permissions are open to anyone with the link."
       ]
     }
   ]
@@ -684,12 +740,13 @@ Activity.find_or_initialize_by(slug: "work-with-your-local-computing-hub-to-deve
   activity.category = "community"
   activity.provider = "stem-learning"
   activity.self_certifiable = true
-  activity.description = '<a href="https://forms.office.com/pages/responsepage.aspx?id=8MSlGfdLSE2oGxZmua5L9VL53rMMyRtKnHXwxiNRaSRUMDcwVElaTFBFWlY0QkI2M1lZVzNBQktYUCQlQCN0PWcu">Computing Hubs support</a> school’s in the area with their journey in developing the computing curriculum.'
+  activity.description = "<a href='/hubs'>Computing Hubs</a> support local schools with their journey in developing the computing curriculum using a free <a href='#{computing_quality_framework_url}'>Computing Quality Framework</a> tool. Your local Hub will work with you to identify your computing needs and provide a targeted programme of support. "
   activity.public_copy_description = "Computing Hubs support school’s in the area with their journey in developing the computing curriculum."
   activity.public_copy_title_url = "https://forms.office.com/pages/responsepage.aspx?id=8MSlGfdLSE2oGxZmua5L9VL53rMMyRtKnHXwxiNRaSRUMDcwVElaTFBFWlY0QkI2M1lZVzNBQktYUCQlQCN0PWcu"
-  activity.self_verification_info = "Review your <a href='#{computing_quality_framework_url}'>school’s progress</a> in developing an exemplary computing provision and work towards achieving the <a href='#{computing_quality_mark_url}'>Computing Quality Mark</a>.<br/>What is your current average level across all dimensions of the CQF? Outline the improvement actions required to achieve the next level in your action plan."
+  activity.self_verification_info = nil
   activity.public_copy_evidence = [
     {
+      brief: "Evidence guidance",
       bullets: [
         "Review your <a href='#{computing_quality_framework_url}'>school’s progress</a> in developing an exemplary computing provision and work towards achieving the <a href='#{computing_quality_mark_url}'>Computing Quality Mark</a>.",
         "What is your current average level across all dimensions of the CQF? Outline the improvement actions required to achieve the next level in your action plan."
@@ -705,10 +762,16 @@ Activity.find_or_initialize_by(slug: "lead-your-school-into-a-computing-cluster-
   activity.category = "community"
   activity.provider = "stem-learning"
   activity.self_certifiable = true
-  activity.description = '<a href="https://teachcomputing.org/computing-clusters">Join a group of 3-6 eligible schools</a>, which receive targeted support in professional learning to make progress within the <a href="https://teachcomputing.org/computing-clusters">Computing Quality Framework</a> over a 12-month period'
+  activity.description = "<a href='/computing-clusters'>Join a group of 3-6 eligible schools</a>, which receive targeted support in professional learning to make progress within the <a href='#{computing_quality_framework_url}'>Computing Quality Framework</a> over a 12-month period. "
   activity.public_copy_description = "Join a group of 3-6 eligible schools, which receive targeted support in professional learning to make progress within the Computing Quality Framework over a 12-month period."
   activity.public_copy_title_url = "https://teachcomputing.org/computing-clusters"
-  activity.self_verification_info = "Please provide us with evidence of joining. Include the name of your school and your Cluster advisor."
+  activity.self_verification_info = nil
+  activity.public_copy_evidence = [{
+    brief: "Evidence guidance",
+    bullets: [
+      "Please provide us with evidence of joining. Include the name of your school and your Cluster advisor."
+    ]
+  }]
 end.save!
 
 Activity.find_or_initialize_by(slug: "join-and-present-at-your-local-computing-at-school-community").tap do |activity|
@@ -718,10 +781,16 @@ Activity.find_or_initialize_by(slug: "join-and-present-at-your-local-computing-a
   activity.category = "community"
   activity.provider = "stem-learning"
   activity.self_certifiable = true
-  activity.description = "Computing at School <a href='#{cas_communities_url}'>(CAS) Communities</a> are a great way to connect with other teachers, share resources, join discussions in the forums or share something you've created. Join a local event and offer your insights, ideas and expertise to colleagues."
+  activity.description = "<a href='#{cas_communities_url}'>Computing at School</a> (CAS) Communities are a great way to connect with other teachers, share resources, join discussions in the forums or share something you've created. Join a local event and offer your insights, ideas and expertise to colleagues."
   activity.public_copy_description = "CAS Communities are the hearts, hands, and minds of Computing at School activity across the UK. Join a local event and offer your insights, ideas and expertise to colleagues."
   activity.public_copy_title_url = "https://www.computingatschool.org.uk/cas-communities"
-  activity.self_verification_info = "Add information on what CAS community you’ve joined, what community meeting(s) you have participated in and elaborate on your presentation."
+  activity.self_verification_info = nil
+  activity.public_copy_evidence = [{
+    brief: "Evidence guidance",
+    bullets: [
+      "Add information on what CAS community you’ve joined, what community meeting(s) you have participated in and elaborate on your presentation."
+    ]
+  }]
 end.save!
 
 Activity.find_or_initialize_by(slug: "join-the-ib-encouraging-girls-into-cs-programme-and-become-an-ibc").tap do |activity|
@@ -796,10 +865,18 @@ Activity.find_or_initialize_by(slug: "become-an-i-belong-champion-primary").tap 
   activity.category = "community"
   activity.provider = "stem-learning"
   activity.self_certifiable = true
-  activity.description = "Lead your school, and others, in creating the right conditions for more girls to succeed in computing. Complete the <a href='https://teachcomputing.org/courses/CP409/empowering-girls-in-key-stage-2-computing'>Empowering girls in key stage 2 computing</a> course, learn about the whole programme and claim your digital badge to become a Champion... then encourage more people to join the mission!"
+  activity.description = "Lead your school, and others, in creating the right conditions for more girls to succeed in computing. Become an <a href='/i-belong'>I Belong Champion</a> to showcase your passion for inclusion and advocate for and create a sense of belonging for girls in computer science. Complete the <a href='https://teachcomputing.org/courses/CP409/empowering-girls-in-key-stage-2-computing'>Empowering girls in key stage 2 computing</a> course, learn about the whole programme and claim your digital badge to become a Champion... then encourage more people to join the mission!"
   activity.public_copy_description = "Lead your school, and others, in creating the right conditions for more girls to succeed in computing. Complete the <a href='https://teachcomputing.org/courses/CP409/empowering-girls-in-key-stage-2-computing'>Empowering girls in key stage 2 computing</a> course, learn about the whole programme and claim your digital badge to become a Champion... then encourage more people to join the mission!"
   activity.public_copy_title_url = "https://teachcomputing.org/i-belong"
-  activity.self_verification_info = "Tell us how you have supported colleagues in your school to become aware of the I Belong programme for KS2."
+  activity.self_verification_info = nil
+  activity.public_copy_evidence = [{
+    brief: "Evidence guidance",
+    bullets: [
+      "Tell us how you have supported colleagues in your school to become aware of the I Belong programme for KS2.",
+      "Tell us how you have spread the word to help other teachers access the I Belong programme. You may have shared information with not only your teaching colleagues, but also school trusts, local computing communities and social media.",
+      "Add links to an online news story, blogpost or social media post where you have encouraged others to join."
+    ]
+  }]
 end.save!
 
 Activity.find_or_initialize_by(slug: "complete-the-i-belong-programme-as-a-school").tap do |activity|
@@ -825,5 +902,12 @@ Activity.find_or_initialize_by(slug: "complete-the-i-belong-programme-as-a-schoo
   activity.description = "Once you’ve completed the short, remote course <a href='https://teachcomputing.org/courses/CP409/encouraging-girls-into-gcse-computer-science-remote-short-course'>‘Empowering girls in key stage 2 computing’</a> you’ll be ready to bring enrichment activities, role models and inclusive teaching practices to your school. The I Belong <a href='#{i_belong_primary_handbook_url}'>handbook</a> contains everything you need to know to reach this goal."
   activity.public_copy_description = "Once you’ve completed the short, remote course <a href='https://teachcomputing.org/courses/CP409/encouraging-girls-into-gcse-computer-science-remote-short-course'>‘Empowering girls in key stage 2 computing’</a> you’ll be ready to bring enrichment activities, role models and inclusive teaching practices to your school. The I Belong <a href='#{i_belong_primary_handbook_url}'>handbook</a> contains everything you need to know to reach this goal."
   activity.public_copy_title_url = "https://teachcomputing.org/i-belong"
-  activity.self_verification_info = "Add information about positive impacts that you have observed since completing the programme, such as an increased interest in computing activities, positive interactions with parents, or a wider diversity in club attendance."
+  activity.self_verification_info = nil
+  activity.public_copy_evidence = [{
+    brief: "Evidence guidance:",
+    bullets: [
+      "How were you involved in the completion of the I Belong programme? What did you do to increase girls’ engagement?",
+      "Add information about positive impacts that you have observed since completing the programme, such as an increased interest in computing activities, positive interactions with parents, or a wider diversity in club attendance."
+    ]
+  }]
 end.save!

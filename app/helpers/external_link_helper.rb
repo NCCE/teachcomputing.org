@@ -139,6 +139,10 @@ module ExternalLinkHelper
     "https://www.stem.org.uk/stem-ambassadors"
   end
 
+  def stem_primary_ambassadors_url
+    "https://www.stem.org.uk/primary/stem-ambassadors"
+  end
+
   def computing_ambassadors_url
     "https://www.stem.org.uk/stem-ambassadors/computing-ambassadors"
   end
