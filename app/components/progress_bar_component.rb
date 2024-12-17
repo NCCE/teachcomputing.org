@@ -15,11 +15,11 @@ class ProgressBarComponent < ViewComponent::Base
 
   private
 
-  def wide_objective_text_class
+  def content_spacing_class(class_name)
     if @programme.show_enrolment_on_progress_bar?
-      "progress-bar-component__objective--text"
+      class_name + "-primary"
     else
-      "progress-bar-component__objective--text-wide"
+      class_name
     end
   end
 
