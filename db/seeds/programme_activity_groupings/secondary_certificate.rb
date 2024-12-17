@@ -43,14 +43,14 @@ secondary.programme_activity_groupings.find_or_initialize_by(title: "Make a posi
     {slug: "implement-your-professional-development-in-the-classroom-and-evaluate-via-the-impact-toolkit", legacy: false},
     {slug: "download-and-use-isaac-computer-science-classroom-resources-and-displays", legacy: false},
     {slug: "download-and-use-the-ncce-teaching-and-assessment-resources-in-your-classroom", legacy: false},
-    {slug: "join-the-ib-encouraging-girls-into-cs-programme-and-become-an-ibc", legacy: false},
     {slug: "complete-the-i-belong-programme-as-a-school", legacy: false},
 
     # Legacy activities
     {slug: "provide-feedback-on-our-curriculum-resources", legacy: true},
     {slug: "provide-feedback-on-a-cas-resource", legacy: true},
     {slug: "complete-a-cs-accelerator-course", legacy: true},
-    {slug: "contribute-to-online-discussion-secondary", legacy: true}
+    {slug: "contribute-to-online-discussion-secondary", legacy: true},
+    {slug: "join-the-ib-encouraging-girls-into-cs-programme-and-become-an-ibc", legacy: true}
   ]
 
   activities.each_with_index do |activity, index|
@@ -77,11 +77,11 @@ secondary.programme_activity_groupings.find_or_initialize_by(title: "Support you
     {slug: "lead-your-school-into-a-computing-cluster-and-develop-an-action-plan-with-a-cluster-advisor", legacy: false},
     {slug: "join-and-present-at-your-local-computing-at-school-community", legacy: false},
     {slug: "become-an-i-belong-champion", legacy: false},
-    {slug: "gain-accreditation-as-an-i-belong-champion", legacy: false},
     {slug: "undertake-the-initial-assessment-of-your-school-using-computing-quality-framework", legacy: false},
     {slug: "support-other-teachers-and-earn-a-stem-community-participation-badge-secondary", legacy: false},
 
     # Legacy activities
+    {slug: "gain-accreditation-as-an-i-belong-champion", legacy: true},
     {slug: "support-other-teachers-and-earn-a-stem-community-participation-badge", legacy: true},
     {slug: "provide-feedback-on-our-curriculum-resources", legacy: true},
     {slug: "provide-feedback-on-a-cas-resource", legacy: true},
