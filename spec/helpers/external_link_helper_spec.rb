@@ -34,6 +34,7 @@ RSpec.describe ExternalLinkHelper do
     gcse_and_ks3_handbook_url
     i_belong_action_plan_url
     stem_ambassadors_url
+    stem_secondary_ambassadors_url
     computing_ambassadors_url
     computing_quality_framework_url
     sme_support_form_url
@@ -49,6 +50,15 @@ RSpec.describe ExternalLinkHelper do
     gender_insights_in_computing_url
     ncce_student_events_url
     i_belong_press_release_pack_url
+    isaac_url
+    isaac_journey_gallery_url
+    isaac_journey_careers_url
+    i_am_computer_scientist_url
+    ncce_eventbrite_url
+    impact_toolkit_url
+    leading_professional_development_url
+    cas_communities_url
+    local_hub_professional_development_form_url
     stem_primary_ambassadors_url
   ].each do |external_link_method|
     describe "##{external_link_method}" do
