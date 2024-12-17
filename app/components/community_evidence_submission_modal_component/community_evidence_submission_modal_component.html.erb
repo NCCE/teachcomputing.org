@@ -81,7 +81,7 @@
         <% component.with_body do %>
             <h3 class="govuk-heading-s"><%= @activity.title %></h3>
 
-            <% evidences = @activity.public_copy_evidence.presence || [{ "brief" => @activity.self_verification_info.presence || default_evidence_submission_text }] %>
+            <% evidences = @activity.public_copy_evidence.presence || [{ "brief" => @activity.self_verification_info.presence }] %>
             <% evidences.each_with_index do |evidence, index| %>
               <%= progress.with_step do %>
                 <p class="govuk-body-s">
