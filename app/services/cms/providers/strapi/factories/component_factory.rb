@@ -18,6 +18,12 @@ module Cms
               to_file(file_data) if file_data
             when "content-blocks.linked-picture"
               DynamicComponents::LinkedPicture.new(image: ModelFactory.to_image(strapi_data, :image), link: strapi_data[:link])
+            when "content-blocks.link-with-icon"
+              DynamicComponents::LinkWithIcon.new(
+                url: strapi_data[:url],
+                link_text: strapi_data[:linkText],
+                icon: ModelFactory.to_image(strapi_data, :icon, default_size: :small)
+              )
             when "blocks.text-with-asides"
               DynamicComponents::TextWithAsides.new(
                 blocks: ModelFactory.to_content_block(strapi_data[:textContent], with_wrapper: false),

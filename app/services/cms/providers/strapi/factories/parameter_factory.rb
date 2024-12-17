@@ -51,7 +51,8 @@ module Cms
                     "content-blocks.text-block": ComponentParameterFactory.content_block_text_block,
                     "content-blocks.file-link": ComponentParameterFactory.content_block_file_link,
                     "content-blocks.linked-picture": ComponentParameterFactory.content_block_linked_picture,
-                    "content-blocks.enrol-button": ComponentParameterFactory.content_block_enrol_button
+                    "content-blocks.enrol-button": ComponentParameterFactory.content_block_enrol_button,
+                    "content-blocks.link-with-icon": ComponentParameterFactory.content_block_link_with_icon
                   }
                 }
               }

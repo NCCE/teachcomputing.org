@@ -173,6 +173,14 @@ module Cms
             }
           end
 
+          def self.content_block_link_with_icon
+            {
+              populate: {
+                icon: {populate: {fields: [:alternativeText]}}
+              }
+            }
+          end
+
           def self.content_block_enrol_button
             {
               populate: {
