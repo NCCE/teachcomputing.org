@@ -1,7 +1,14 @@
-class ProgressBarComponent < ViewComponent::Base
+class ProgressBarComponent < CmsWithAsidesComponent
   delegate :current_user, to: :helpers
 
-  def initialize(current_user, programme, title: nil, body: nil)
+  def initialize(current_user, programme, aside_slug: nil, title: nil, body: nil)
+    aside_sections = if aside_slug.nil?
+      nil
+    else
+      [{slug: aside_slug}]
+    end
+
+    super(aside_sections:)
     @programme = programme
     @title = title
     @body = body
@@ -16,7 +23,7 @@ class ProgressBarComponent < ViewComponent::Base
   private
 
   def content_spacing_class(class_name)
-    if @programme.show_enrolment_on_progress_bar?
+    if @programme.show_extra_objectives_on_progress_bar?
       class_name + "-primary"
     else
       class_name
