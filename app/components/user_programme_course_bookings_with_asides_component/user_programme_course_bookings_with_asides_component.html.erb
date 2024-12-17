@@ -12,11 +12,7 @@
         </div>
       </div>
 
-      <% [
-            { title: 'Booked courses', courses: in_progress_courses },
-            { title: 'Completed courses', courses: completed_courses }
-         ].each do |section| %>
-
+      <% course_sections.each do |section| %>
         <% if section[:courses].present? %>
           <h2 class="govuk-heading-s"><%= section[:title] %></h2>
           <div class="user-programme-course-bookings-with-asides__course-wrapper govuk-body">
@@ -51,7 +47,6 @@
           <div><%= link_to 'Explore courses ', courses_path(certificate: @programme&.slug), class: "govuk-button button ncce-button-chevron button--inverted govuk-!-margin-0" %></div>
         </div>
       <% end %>
-
     </div>
   <% end %>
 
