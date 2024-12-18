@@ -10,7 +10,7 @@
   <div class="community-activity-component__content">
     <div class="community-activity-component__objective">
       <div class="community-activity-component__objective-text">
-        <span><%= @activity.title %></span>
+        <span><%= sanitize @activity.title %></span>
       </div>
       <% if @achievement&.community_achievement_complete? %>
         <div class="community-activity-component__completed_badge_container" >
