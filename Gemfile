@@ -17,7 +17,7 @@ gem "combine_pdf", ">= 1.0.18"
 gem "connection_pool"
 gem "dalli"
 gem "enumerize"
-gem "faraday", "~> 1.0", require: false # Graphlient requires faraday v1
+gem "faraday", "~> 1.10", require: false # Graphlient requires faraday v1
 gem "fog-aws"
 gem "geocoder", ">= 1.6.6"
 gem "graphlient", "= 0.6.0" # v0.7 causes issues with stubbed requests https://github.com/ashkan18/graphlient/issues/100
