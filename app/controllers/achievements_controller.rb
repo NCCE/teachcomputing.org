@@ -10,8 +10,8 @@ class AchievementsController < ApplicationController
         @achievement.transition_to(:enrolled)
         flash[:notice] = "'#{@achievement.activity.title}' has been added to your activity list"
       else
-        flash[:notice] = "'#{@achievement.activity.title}' progress has been saved"
         @achievement.transition_to(:drafted)
+        flash[:notice] = "'#{@achievement.activity.title}' progress has been saved"
       end
 
       render json: {}, status: 200

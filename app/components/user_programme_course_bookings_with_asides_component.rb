@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class UserProgrammeCourseBookingsWithAsidesComponent < CmsWithAsidesComponent
-  delegate :current_user, to: :helpers
+  delegate :current_user, :activity_icon_class, to: :helpers
 
   def initialize(programme:, aside_slug: nil)
     aside_sections = if aside_slug.nil?
@@ -37,19 +37,6 @@ class UserProgrammeCourseBookingsWithAsidesComponent < CmsWithAsidesComponent
       .in_state(:complete)
       .with_courses.order("created_at DESC")
       .belonging_to_programme(@programme)
-  end
-
-  def course_icon_class(activity)
-    case activity.category.to_sym
-    when :online
-      "icon-online"
-    else
-      if activity.remote_delivered_cpd
-        "icon-remote"
-      else
-        "icon-map-pin"
-      end
-    end
   end
 
   def course_grouping

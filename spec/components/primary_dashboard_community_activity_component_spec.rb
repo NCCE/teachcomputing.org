@@ -10,7 +10,20 @@ RSpec.describe PrimaryDashboardCommunityActivityComponent, type: :component do
   let(:programme_activities) { create_list(:programme_activity, 4) }
   let(:programme_activity_group) { create(:programme_activity_grouping, programme_activities:, community: true, programme:) }
 
-  let!(:achievement) { create(:in_progress_achievement, activity: in_progress_activity) }
+  let(:in_progress_programme_activity) { create(:programme_activity, programme:, activity: in_progress_activity) }
+  let(:in_progress_programme_activity_group) { create(:programme_activity_grouping, programme_activities: [in_progress_programme_activity], programme:) }
+
+  let(:completed_programme_activity) { create(:programme_activity, programme:, activity: complete_activity) }
+  let(:completed_programme_activity_group) { create(:programme_activity_grouping, programme_activities: [completed_programme_activity], programme:) }
+
+  let(:multiple_programme_activities) { create_list(:programme_activity, 4, activity: in_progress_activity) }
+  let(:multiple_programme_activity_group) { create(:programme_activity_grouping, programme_activities: multiple_programme_activities, programme:) }
+
+  let(:completed_and_in_progress_programme_activity_group) {
+    create(:programme_activity_grouping, programme_activities: [completed_programme_activity, in_progress_programme_activity], programme:)
+  }
+
+  let!(:achievement) { create(:in_progress_achievement, activity: in_progress_activity, user:) }
   let!(:completed_achievement) { create(:completed_achievement, activity: complete_activity) }
   let!(:multiple_achievements) { create_list(:in_progress_achievement, 3, activity: in_progress_activity) }
 
@@ -19,9 +32,7 @@ RSpec.describe PrimaryDashboardCommunityActivityComponent, type: :component do
       allow_any_instance_of(AuthenticationHelper).to receive(:current_user).and_return(user)
       render_inline(
         described_class.new(
-          programme_activity_group:,
-          completed_activities: [],
-          incomplete_activities: []
+          programme_activity_group:
         )
       )
     end
@@ -59,9 +70,7 @@ RSpec.describe PrimaryDashboardCommunityActivityComponent, type: :component do
 
       render_inline(
         described_class.new(
-          programme_activity_group:,
-          completed_activities: [],
-          incomplete_activities: [achievement]
+          programme_activity_group: in_progress_programme_activity_group
         )
       )
     end
@@ -86,9 +95,7 @@ RSpec.describe PrimaryDashboardCommunityActivityComponent, type: :component do
 
       render_inline(
         described_class.new(
-          programme_activity_group:,
-          completed_activities: [completed_achievement],
-          incomplete_activities: []
+          programme_activity_group: completed_programme_activity_group
         )
       )
     end
@@ -113,9 +120,7 @@ RSpec.describe PrimaryDashboardCommunityActivityComponent, type: :component do
 
       render_inline(
         described_class.new(
-          programme_activity_group:,
-          completed_activities: [completed_achievement],
-          incomplete_activities: [achievement]
+          programme_activity_group: completed_and_in_progress_programme_activity_group
         )
       )
     end
@@ -171,15 +176,13 @@ RSpec.describe PrimaryDashboardCommunityActivityComponent, type: :component do
 
       render_inline(
         described_class.new(
-          programme_activity_group:,
-          completed_activities: [],
-          incomplete_activities: multiple_achievements
+          programme_activity_group: multiple_programme_activity_group
         )
       )
     end
 
     it "renders three activities" do
-      expect(page).to have_css(".primary-dashboard-community-activity__activity-details", count: 3)
+      expect(page).to have_css(".primary-dashboard-community-activity__activity-details", count: 4)
     end
   end
 end

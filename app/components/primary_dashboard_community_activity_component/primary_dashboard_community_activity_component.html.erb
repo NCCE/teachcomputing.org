@@ -3,14 +3,14 @@
   data-controller="primary-dashboard-community-activity-component"
   data-primary-dashboard-community-activity-component-achievements-path-value="<%= achievements_path %>">
 
-  <% if @completed_activities.blank? && @incomplete_activities.blank? %>
+  <% if completed_activities.blank? && incomplete_activities.blank? %>
     <h2 class="govuk-heading-s">Complete at least one activity</h2>
   <% end %>
 
-  <% if @completed_activities.present? %>
+  <% if completed_activities.present? %>
     <div class="primary-dashboard-community-activity__activity" data-primary-dashboard-community-activity-component-target="activityDetails">
-      <h2 class="govuk-heading-s">Your completed <%= "activity".pluralize(@completed_activities.count) %></h2>
-      <% @completed_activities.each do |upa| %>
+      <h2 class="govuk-heading-s">Your completed <%= "activity".pluralize(completed_activities.count) %></h2>
+      <% completed_activities.each do |upa| %>
         <div class="primary-dashboard-community-activity__activity-details">
           <div class="primary-dashboard-community-activity__activity-details-header">
             <div>
@@ -26,13 +26,12 @@
     </div>
   <% end %>
 
-  <% if @incomplete_activities.present? %>
+  <% if incomplete_activities.present? %>
     <div class="primary-dashboard-community-activity__activity" data-primary-dashboard-community-activity-component-target="activityDetails">
-      <h2 class="govuk-heading-s">Complete your chosen <%= "activity".pluralize(@incomplete_activities.count) %></h2>
-      <% @incomplete_activities.each do |upa| %>
-        <% achievement = (@current_user.achievements.find { |a| a.activity_id == upa.activity_id }) %>
+      <h2 class="govuk-heading-s">Complete your chosen <%= "activity".pluralize(incomplete_activities.count) %></h2>
+      <% incomplete_activities.each do |upa| %>
         <div class="primary-dashboard-community-activity__activity-details">
-          <% if achievement.in_state? :rejected %>
+          <% if upa.in_state? :rejected %>
             <div class="primary-dashboard-community-activity__selection-rejected">
               <i class="icon-feedback"></i>
               <span class="primary-dashboard-community-activity__selection-rejected-text govuk-body-s">
@@ -48,12 +47,12 @@
               <%= link_to image_pack_tag('media/images/icons/remove-activity-icon.svg'), "#",
                 data: {
                   action: "primary-dashboard-community-activity-component#deleteActivitySelection",
-                  achievement_id: achievement.id
+                  achievement_id: upa.id
                   } %>
             </div>
           </div>
           <p class="govuk-body-s"><%= upa.activity.public_copy_description.html_safe %></p>
-          <%= render CommunityEvidenceSubmissionModalComponent.new(activity: upa.activity, achievement: ) %>
+          <%= render CommunityEvidenceSubmissionModalComponent.new(activity: upa.activity, achievement: upa) %>
         </div>
       <% end %>
     </div>
