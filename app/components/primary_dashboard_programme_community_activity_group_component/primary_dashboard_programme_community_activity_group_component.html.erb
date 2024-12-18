@@ -2,7 +2,7 @@
   <%= row.with_column("two-thirds") do %>
     <div class="primary-dashboard-programme-community-activity-group-component">
       <div class="primary-dashboard-programme-community-activity-group-component__header">
-        <% if complete? %>
+        <% if @programme_activity_group.user_complete?(@current_user) %>
           <div>
             <%= image_pack_tag('media/images/icons/activity-complete-icon.svg') %>
           </div>
@@ -11,11 +11,7 @@
           <h2 class="govuk-heading-m govuk-!-margin-bottom-0"><%= @programme_activity_group.web_copy_subtitle %></h2>
         </div>
       </div>
-      <%= render PrimaryDashboardCommunityActivityComponent.new(
-        programme_activity_group: @programme_activity_group,
-        completed_activities:,
-        incomplete_activities:
-        ) %>
+      <%= render PrimaryDashboardCommunityActivityComponent.new(programme_activity_group: @programme_activity_group) %>
     </div>
   <% end %>
   <%= row.with_column("one-third") do %>
