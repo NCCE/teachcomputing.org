@@ -19,7 +19,7 @@ RSpec.describe("pages/get-involved", type: :view) do
 
   it "has an ambassador section" do
     expect(rendered).to have_css(".govuk-heading-m", text: "Become a volunteer and then shout about it!")
-    expect(rendered).to have_link("STEM Ambassador", href: stem_ambassadors_url)
+    expect(rendered).to have_link("STEM Ambassador", href: computing_ambassadors_url)
   end
 
   it "has a governor section" do
