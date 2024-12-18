@@ -250,15 +250,15 @@ Activity.find_or_create_by(slug: "complete-a-cs-accelerator-course") do |activit
 end
 
 Activity.find_or_initialize_by(slug: "raise-aspirations-with-a-stem-ambassador-visit").tap do |activity|
-  activity.title = "Raise aspirations with a Computing Ambassador visit"
+  activity.title = "Raise aspirations with a Stem Ambassador visit"
   activity.credit = 10
   activity.slug = "raise-aspirations-with-a-stem-ambassador-visit"
   activity.category = "community"
   activity.provider = "stem-learning"
   activity.self_certifiable = true
-  activity.description = "<a href='#{stem_secondary_ambassadors_url}'>Arrange an in-person or online visit</a> for your classroom to help pupils understand real-world applications of computing and raise their career aspirations."
-  activity.public_copy_description = "<a href='#{stem_secondary_ambassadors_url}'>Arrange an in-person or online visit</a> for your classroom to help pupils understand real-world applications of computing and raise their career aspirations."
-  activity.public_copy_title_url = stem_secondary_ambassadors_url
+  activity.description = "<a href='#{stem_ambassadors_url}'>Arrange an in-person or online visit</a> for your classroom to help pupils understand real-world applications of computing and raise their career aspirations."
+  activity.public_copy_description = "<a href='#{stem_ambassadors_url}'>Arrange an in-person or online visit</a> for your classroom to help pupils understand real-world applications of computing and raise their career aspirations."
+  activity.public_copy_title_url = stem_ambassadors_url
   activity.self_verification_info = nil
   activity.public_copy_evidence = [{
     brief: "Evidence guidance:",
@@ -266,7 +266,7 @@ Activity.find_or_initialize_by(slug: "raise-aspirations-with-a-stem-ambassador-v
       "Add the date(s) and who the visit was aimed at. Include the age range of students involved.",
       "What was the activity?",
       "What topics were covered?",
-      "How many Computing Ambassadors attended, what their names were and which companies/universities etc. were they from?",
+      "How many STEM Ambassadors attended, what their names were and which companies/universities etc. were they from?",
       "What was the impact of the visit on your students? Share an example of student voice/comment if possible."
     ]
   }]
