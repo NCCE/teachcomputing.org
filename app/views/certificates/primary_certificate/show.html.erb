@@ -3,6 +3,8 @@
 
 <%= render CmsPageTitleComponent.new(title: "Your Teach primary computing certificate progress") %>
 
+<%= render ProgrammeStatusComponent.new(user_programme_enrolment: @user_enrolment) %>
+
 <%= render GovGridRowComponent.new(background_color: "light-grey", padding: {top: 5, bottom: 5}) do |row| %>
   <%= row.with_column("two-thirds") do %>
     <%= render ProgressBarComponent.new(current_user, @programme, top_padding: false) %>

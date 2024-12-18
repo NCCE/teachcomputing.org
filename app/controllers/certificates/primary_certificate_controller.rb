@@ -2,14 +2,15 @@ module Certificates
   class PrimaryCertificateController < ApplicationController
     layout "full-width"
     before_action :authenticate_user!
-    before_action :find_programme, only: %i[show complete pending]
-    before_action :user_enrolled?, only: %i[show complete pending]
+    before_action :find_programme, only: %i[show]
+    before_action :user_enrolled?, only: %i[show]
     after_action :discourage_caching
 
     def show
       @community_groups = @programme.programme_activity_groupings.community.order(:sort_key)
 
       assign_issued_badge_data
+      user_enrolment
 
       render :show
     end
@@ -35,7 +36,7 @@ module Certificates
     end
 
     def user_enrolled?
-      redirect_to primary_path unless @programme.user_enrolled?(current_user)
+      redirect_to cms_page_path("primary-certificate") unless @programme.user_enrolled?(current_user)
     end
   end
 end
