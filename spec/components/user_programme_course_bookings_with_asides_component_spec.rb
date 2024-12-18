@@ -4,7 +4,7 @@ RSpec.describe UserProgrammeCourseBookingsWithAsidesComponent, type: :component 
   let(:user) { create(:user) }
   let(:activity) { create(:activity, stem_activity_code: "CP199", category: :online) }
   let(:activity_two) { create(:activity, stem_activity_code: "CP228") }
-  let(:activity_three) { create(:activity, stem_activity_code: "CP101", remote_delivered_cpd: true) }
+  let(:activity_three) { create(:activity, stem_activity_code: "CS101", remote_delivered_cpd: true) }
   let(:programme) { create(:primary_certificate) }
   let(:achievement) { create(:achievement, user:) }
   let!(:courses) { create_list(:programme_activity_grouping, 2, :with_activities, sort_key: 2, community: false, programme:) }
