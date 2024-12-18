@@ -20,7 +20,7 @@
             <%= link_to course.activity.title, course_path(id: course.activity.stem_activity_code, name: course.activity.slug), class: 'govuk-heading-s govuk-!-margin-bottom-0 ncce-link govuk-link--no-underline' if course.activity.stem_activity_code %>
               <div class="user-programme-course-bookings-with-asides__course-details">
                 <div class="user-programme-course-bookings-with-asides__course-icon">
-                  <span class="govuk-body-s <%= course_icon_class(course.activity) %>"></span>
+                  <span class="govuk-body-s <%= activity_icon_class(course.activity) %>"></span>
                 </div>
                 <div class="user-programme-course-bookings-with-asides__course-category">
                   <span class="govuk-body-s"><%= t("shared.course_types.#{course.activity.category}") %></span>
