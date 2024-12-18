@@ -3,7 +3,7 @@
 class PrimaryDashboardProgrammeCommunityActivityGroupComponent < CmsWithAsidesComponent
   delegate :current_user, to: :helpers
 
-  def initialize(programme_activity_group:, current_user:)
+  def initialize(programme_activity_group:)
     aside_sections = if programme_activity_group.web_copy_aside_slug.nil?
       nil
     else

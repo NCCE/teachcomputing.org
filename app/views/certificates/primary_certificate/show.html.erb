@@ -13,5 +13,5 @@
 <% end %>
 <%= render UserProgrammeCourseBookingsWithAsidesComponent.new(programme: @programme, aside_slug: "primary-dashboard-cpd-section") %>
 <% @community_groups.each do |group| %>
-  <%= render PrimaryDashboardProgrammeCommunityActivityGroupComponent.new(programme_activity_group: group, current_user: @current_user) %>
+  <%= render PrimaryDashboardProgrammeCommunityActivityGroupComponent.new(programme_activity_group: group) %>
 <% end %>
