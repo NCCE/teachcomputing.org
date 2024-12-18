@@ -14,6 +14,7 @@ RSpec.describe("certificates/primary_certificate/show", type: :view) do
 
   before do
     assign(:programme, primary_certificate)
+    stub_strapi_aside_section("primary-certificate-progress-bar-aside")
   end
 
   describe "when the user has a pathway" do
