@@ -1,4 +1,4 @@
-<%= render GovGridRowComponent.new do |row|  %>
+<%= render GovGridRowComponent.new(padding: {bottom: 0}) do |row|  %>
   <%= row.with_column(@programme.show_extra_objectives_on_progress_bar? ? "two-thirds" : "full") do %>
     <div class="progress-bar-component">
       <h2 class="govuk-heading-m"><%= @title.presence || 'Progress bar' %></h2>
