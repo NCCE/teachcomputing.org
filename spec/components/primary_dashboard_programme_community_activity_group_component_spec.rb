@@ -13,8 +13,7 @@ RSpec.describe PrimaryDashboardProgrammeCommunityActivityGroupComponent, type: :
 
       render_inline(
         described_class.new(
-          programme_activity_group:,
-          current_user: user
+          programme_activity_group:
         )
       )
     end
@@ -40,8 +39,7 @@ RSpec.describe PrimaryDashboardProgrammeCommunityActivityGroupComponent, type: :
 
       render_inline(
         described_class.new(
-          programme_activity_group: programme_activity_group_with_aside,
-          current_user: user
+          programme_activity_group: programme_activity_group_with_aside
         )
       )
     end
@@ -59,8 +57,7 @@ RSpec.describe PrimaryDashboardProgrammeCommunityActivityGroupComponent, type: :
 
       render_inline(
         described_class.new(
-          programme_activity_group: complete_programme_activity_group,
-          current_user: user
+          programme_activity_group: complete_programme_activity_group
         )
       )
     end
