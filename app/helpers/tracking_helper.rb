@@ -9,7 +9,7 @@ module TrackingHelper
         gender_balance_path => "GBIC",
         hubs_path => "Hubs",
         impact_path => "Impact",
-        primary_path => "Primary unenrolled",
+        cms_page_path("primary-certificate") => "Primary unenrolled",
         primary_certificate_path => "Primary enrolled",
         secondary_path => "Secondary unenrolled",
         secondary_certificate_path => "Secondary enrolled",
