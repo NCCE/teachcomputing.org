@@ -11,6 +11,7 @@ RSpec.describe("certificates/primary_certificate/show", type: :view) do
 
   before do
     assign(:programme, primary_certificate)
+    stub_strapi_aside_section("primary-certificate-progress-bar-aside")
     assign(:current_user, user)
     assign(:user_courses, user_courses)
     assign(:community_groups, community_groups)
