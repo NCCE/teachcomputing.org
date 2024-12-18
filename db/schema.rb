@@ -473,6 +473,7 @@ ActiveRecord::Schema.define(version: 2024_12_19_151246) do
     t.text "future_learn_organisation_memberships", default: [], array: true
     t.boolean "forgotten", default: false
     t.string "school_name"
+    t.string "auth0_id"
     t.index ["stem_user_id"], name: "index_users_on_stem_user_id", unique: true
     t.index ["teacher_reference_number"], name: "index_users_on_teacher_reference_number", unique: true
   end
