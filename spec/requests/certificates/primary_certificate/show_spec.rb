@@ -25,6 +25,8 @@ RSpec.describe Certificates::PrimaryCertificateController do
         allow_any_instance_of(ProgrammeActivityGrouping).to receive(:user_complete?).and_return(true)
         allow_any_instance_of(AuthenticationHelper)
           .to receive(:current_user).and_return(user)
+
+        stub_strapi_aside_section("primary-certificate-progress-bar-aside")
       end
 
       context "when user is not enrolled" do
@@ -54,6 +56,7 @@ RSpec.describe Certificates::PrimaryCertificateController do
         stub_issued_badges(user.id)
         online_discussion_grouping
         allow_any_instance_of(ProgrammeActivityGrouping).to receive(:user_complete?).and_return(true)
+        stub_strapi_aside_section("primary-certificate-progress-bar-aside")
         allow_any_instance_of(AuthenticationHelper)
           .to receive(:current_user).and_return(user)
         get primary_certificate_path
@@ -71,6 +74,7 @@ RSpec.describe Certificates::PrimaryCertificateController do
         stub_issued_badges_failure(user.id)
         online_discussion_grouping
         allow_any_instance_of(ProgrammeActivityGrouping).to receive(:user_complete?).and_return(true)
+        stub_strapi_aside_section("primary-certificate-progress-bar-aside")
         allow_any_instance_of(AuthenticationHelper)
           .to receive(:current_user).and_return(user)
         get primary_certificate_path
