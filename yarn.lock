@@ -1811,6 +1811,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/trusted-types@npm:^2.0.7":
+  version: 2.0.7
+  resolution: "@types/trusted-types@npm:2.0.7"
+  checksum: 8e4202766a65877efcf5d5a41b7dd458480b36195e580a3b1085ad21e948bc417d55d6f8af1fd2a7ad008015d4117d5fdfe432731157da3c68678487174e4ba3
+  languageName: node
+  linkType: hard
+
 "@webassemblyjs/ast@npm:1.9.0":
   version: 1.9.0
   resolution: "@webassemblyjs/ast@npm:1.9.0"
@@ -4240,6 +4247,18 @@ __metadata:
   version: 2.3.0
   resolution: "domelementtype@npm:2.3.0"
   checksum: ee837a318ff702622f383409d1f5b25dd1024b692ef64d3096ff702e26339f8e345820f29a68bcdcea8cfee3531776b3382651232fbeae95612d6f0a75efb4f6
+  languageName: node
+  linkType: hard
+
+"dompurify@npm:^3.2.3":
+  version: 3.2.3
+  resolution: "dompurify@npm:3.2.3"
+  dependencies:
+    "@types/trusted-types": ^2.0.7
+  dependenciesMeta:
+    "@types/trusted-types":
+      optional: true
+  checksum: cd66ae8b22e1cfe5bc207b95fc119ce62f9a56eb313a9a1af6262d789d84e7bd27e29f26ed80110d108670dacb9527cb96ddf48a1da89126a37ec8b48702279a
   languageName: node
   linkType: hard
 
@@ -11590,9 +11609,11 @@ __metadata:
   linkType: hard
 
 "trix@npm:^2.1":
-  version: 2.1.5
-  resolution: "trix@npm:2.1.5"
-  checksum: 34b6108d8ade9a90e25b7185d1518da1c54c91298b9d0b21beb1c37775977efda57f4473c344da81a39e747706315967fe9c919092fd3bec2b2dd6660419b3cc
+  version: 2.1.11
+  resolution: "trix@npm:2.1.11"
+  dependencies:
+    dompurify: ^3.2.3
+  checksum: 1344c8e358b2277039e2a0038c4d0af473687fa5ae2949401e31c9a7e7efd9dec9bd2932f70e5fb6eda1b94f9bb46c572c265c440e427ff8cc6e8e5941982125
   languageName: node
   linkType: hard
 
