@@ -231,7 +231,7 @@ GEM
       railties (>= 5.0.0)
     faker (3.2.1)
       i18n (>= 1.8.11, < 2)
-    faraday (1.10.3)
+    faraday (1.10.4)
       faraday-em_http (~> 1.0)
       faraday-em_synchrony (~> 1.0)
       faraday-excon (~> 1.1)
@@ -247,9 +247,9 @@ GEM
     faraday-em_synchrony (1.0.0)
     faraday-excon (1.1.0)
     faraday-httpclient (1.0.1)
-    faraday-multipart (1.0.4)
-      multipart-post (~> 2)
-    faraday-net_http (1.0.1)
+    faraday-multipart (1.1.0)
+      multipart-post (~> 2.0)
+    faraday-net_http (1.0.2)
     faraday-net_http_persistent (1.2.0)
     faraday-patron (1.0.0)
     faraday-rack (1.0.0)
@@ -371,7 +371,7 @@ GEM
     msgpack (1.7.2)
     multi_json (1.15.0)
     multi_xml (0.6.0)
-    multipart-post (2.3.0)
+    multipart-post (2.4.1)
     nenv (0.3.0)
     net-imap (0.3.7)
       date
@@ -742,7 +742,7 @@ DEPENDENCIES
   erb_lint
   factory_bot_rails
   faker
-  faraday (~> 1.0)
+  faraday (~> 1.10)
   fog-aws
   geocoder (>= 1.6.6)
   graphlient (= 0.6.0)
