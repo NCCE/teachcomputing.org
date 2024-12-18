@@ -1,7 +1,7 @@
 class ProgressBarComponent < CmsWithAsidesComponent
   delegate :current_user, to: :helpers
 
-  def initialize(current_user, programme, aside_slug: nil, title: nil, body: nil)
+  def initialize(programme:, aside_slug: nil, title: nil, body: nil)
     aside_sections = if aside_slug.nil?
       nil
     else
