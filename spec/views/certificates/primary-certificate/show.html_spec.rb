@@ -4,6 +4,8 @@ RSpec.describe("certificates/primary_certificate/show", type: :view) do
   let(:user) { create(:user) }
   let(:primary_certificate) { create(:primary_certificate) }
 
+  let(:user_programme_enrolment) { create(:user_programme_enrolment, user:, programme: primary_certificate) }
+
   let(:user_courses) { create_list(:programme_activity_grouping, 2, :with_activities, sort_key: 4, community: false, programme: primary_certificate) }
   let(:community_groups) { create_list(:programme_activity_grouping, 2, :with_activities, sort_key: 4, community: true, programme: primary_certificate) }
 
@@ -12,10 +14,12 @@ RSpec.describe("certificates/primary_certificate/show", type: :view) do
     assign(:current_user, user)
     assign(:user_courses, user_courses)
     assign(:community_groups, community_groups)
+    assign(:user_enrolment, user_programme_enrolment)
 
     allow_any_instance_of(AuthenticationHelper)
       .to receive(:current_user).and_return(user)
 
+    stub_strapi_programme("primary-certificate")
     stub_strapi_aside_section("primary-certificate-need-help")
     stub_strapi_aside_section("primary-dashboard-cpd-section")
 

@@ -16,6 +16,7 @@ RSpec.describe Certificates::PrimaryCertificateController do
 
   describe "#show" do
     before do
+      stub_strapi_programme("primary-certificate")
       stub_strapi_aside_section("primary-certificate-need-help")
       stub_strapi_aside_section("primary-dashboard-cpd-section")
     end
@@ -31,7 +32,7 @@ RSpec.describe Certificates::PrimaryCertificateController do
           programme
 
           get primary_certificate_path
-          expect(response).to redirect_to(primary_path)
+          expect(response).to redirect_to("/primary-certificate")
         end
       end
 
