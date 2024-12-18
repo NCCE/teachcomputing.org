@@ -16,7 +16,7 @@ class ProgrammeActivityGroupings::CreditCounted < ProgrammeActivityGrouping
     end.to_h
   end
 
-  def course_status_class(current_user, state: [:enrolled, :in_progress])
+  def course_status_class(current_user, state: [])
     completed_achievements = current_user.achievements
       .with_courses
       .in_state(*state)
