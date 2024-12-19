@@ -31,6 +31,21 @@ class ProgrammeActivityGrouping < ApplicationRecord
     "##{id}"
   end
 
+  def multi_stage_objectives
+    if multi_stage_group?
+      [
+        {
+          title: "Book required CPD",
+          state: :enrolled
+        },
+        {
+          title: "Attend required CPD",
+          state: :complete
+        }
+      ]
+    end
+  end
+
   # completion counted
   def users_completed(users:)
     users_achievement_activity_ids = fetch_users_achievement_activity_ids(users:)

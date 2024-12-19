@@ -16,22 +16,18 @@ class ProgressBarComponent < CmsWithAsidesComponent
     @programme_objectives = programme.programme_objectives_displayed_in_progress_bar
   end
 
-  def before_render
-    @current_user = current_user
-  end
-
   private
 
   def content_spacing_class(class_name)
     if @programme.show_extra_objectives_on_progress_bar?
-      class_name + "-primary"
+      class_name + "-extra-objective-spacing"
     else
       class_name
     end
   end
 
   def user_enrolled_class
-    if @programme.user_enrolled?(@current_user)
+    if @programme.user_enrolled?(current_user)
       "icon-ticked-circle"
     else
       "icon-blank-circle"
@@ -41,26 +37,15 @@ class ProgressBarComponent < CmsWithAsidesComponent
   def course_bookings_status_class(objective, state)
     current_state = objective.course_credit_state(current_user, state)
 
-    case current_state
-    when "required_credits"
+    icon_class = case current_state
+    when :required_credits
       "icon-ticked-circle"
-    when "missing_credits"
+    when :missing_credits
       "icon-pending-circle"
     else
       "icon-blank-circle"
     end
-  end
 
-  def multi_stage_objectives
-    [
-      {
-        title: "Book required CPD",
-        state: :enrolled
-      },
-      {
-        title: "Attend required CPD",
-        state: :complete
-      }
-    ]
+    "progress-bar-component__objective--icon #{icon_class}"
   end
 end
