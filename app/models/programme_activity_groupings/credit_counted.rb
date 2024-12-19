@@ -26,11 +26,11 @@ class ProgrammeActivityGroupings::CreditCounted < ProgrammeActivityGrouping
     total_credits = achievements.sum("activities.credit")
 
     if total_credits >= required_credit_count
-      "required_credits"
+      :required_credits
     elsif achievements.any?
-      "missing_credits"
+      :missing_credits
     else
-      "no_credits"
+      :no_credits
     end
   end
 end

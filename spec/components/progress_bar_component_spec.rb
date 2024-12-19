@@ -86,7 +86,7 @@ RSpec.describe ProgressBarComponent, type: :component do
       end
 
       it "has primary spacing class" do
-        expect(page).to have_css(".progress-bar-component__objectives-wrapper-primary")
+        expect(page).to have_css(".progress-bar-component__objectives-wrapper-extra-objective-spacing")
       end
 
       it "renders an aside" do
@@ -95,7 +95,7 @@ RSpec.describe ProgressBarComponent, type: :component do
     end
 
     context "with booked cpd" do
-      let(:in_progress_achievement) { create(:in_progress_achievement, activity: activity_not_enough_credits) }
+      let(:in_progress_achievement) { create(:achievement, activity: activity_not_enough_credits) }
       context "with not enough credits" do
         let(:not_enough_credits_programme_activity) {
           create(:programme_activity,
@@ -130,7 +130,7 @@ RSpec.describe ProgressBarComponent, type: :component do
             programme: primary_certificate,
             activity: activity_enough_credits)
         }
-        let(:in_progress_achievement) { create(:in_progress_achievement, activity: activity_enough_credits) }
+        let(:in_progress_achievement) { create(:achievement, activity: activity_enough_credits) }
 
         before do
           allow_any_instance_of(AuthenticationHelper).to receive(:current_user).and_return(user)
@@ -228,7 +228,7 @@ RSpec.describe ProgressBarComponent, type: :component do
       }
 
       let(:completed_achievement) { create(:completed_achievement, activity: activity_enough_credits) }
-      let(:in_progress_achievement) { create(:in_progress_achievement, activity: activity_two) }
+      let(:in_progress_achievement) { create(:achievement, activity: activity_two) }
 
       before do
         allow_any_instance_of(AuthenticationHelper).to receive(:current_user).and_return(user)
@@ -269,7 +269,7 @@ RSpec.describe ProgressBarComponent, type: :component do
       end
 
       it "does not have primary spacing class" do
-        expect(page).not_to have_css(".progress-bar-component__objectives-wrapper-primary")
+        expect(page).not_to have_css(".progress-bar-component__objectives-wrapper-extra-objective-spacing")
       end
     end
 
