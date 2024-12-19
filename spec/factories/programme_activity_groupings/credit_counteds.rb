@@ -4,6 +4,7 @@ FactoryBot.define do
     required_for_completion { 1 }
     sort_key { 1 }
     programme
+    sequence(:cms_slug) { |n| "programme-activity-grouping-credited-#{n}" }
 
     trait :progress_bar_title do
       progress_bar_title { "Progress Bar Title" }

@@ -6,7 +6,7 @@ export default class extends ApplicationController {
   // confirmation modal if there are any changes. when this value is false,
   // it will prevent the confirmation modal from appearing.
   // static values = { confirm: { type: Boolean, default: false } }
-  static values = { confirm: Boolean, modalId:String }
+  static values = { confirm: Boolean, modalId: String, openKey: String }
 
   static targets = ['modal', 'confirmation', 'topFocus', 'bottomFocus']
 
@@ -87,6 +87,12 @@ export default class extends ApplicationController {
     if (topmost === this.modalTarget) {
       event.stopImmediatePropagation()
       this.maybeToggle()
+    }
+  }
+
+  openWithText({detail: {key}}){
+    if(this.openKeyValue == key) {
+      this.toggle();
     }
   }
 }

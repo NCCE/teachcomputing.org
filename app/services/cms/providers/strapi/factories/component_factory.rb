@@ -8,11 +8,22 @@ module Cms
             case component_name
             when "content-blocks.text-block"
               ModelFactory.to_content_block(strapi_data[:textContent], with_wrapper: false)
+            when "content-blocks.enrol-button"
+              DynamicComponents::EnrolButton.new(
+                button_text: strapi_data[:buttonText],
+                programme_slug: strapi_data[:programme][:data][:attributes][:slug]
+              )
             when "content-blocks.file-link"
               file_data = strapi_data.dig(:file, :data) ? strapi_data[:file][:data][:attributes] : nil
               to_file(file_data) if file_data
             when "content-blocks.linked-picture"
               DynamicComponents::LinkedPicture.new(image: ModelFactory.to_image(strapi_data, :image), link: strapi_data[:link])
+            when "content-blocks.link-with-icon"
+              DynamicComponents::LinkWithIcon.new(
+                url: strapi_data[:url],
+                link_text: strapi_data[:linkText],
+                icon: ModelFactory.to_image(strapi_data, :icon, default_size: :small)
+              )
             when "blocks.text-with-asides"
               DynamicComponents::TextWithAsides.new(
                 blocks: ModelFactory.to_content_block(strapi_data[:textContent], with_wrapper: false),
@@ -30,7 +41,7 @@ module Cms
             when "blocks.picture-card-section"
               to_card_wrapper(strapi_data, picture_card_block(strapi_data[:pictureCards]))
             when "blocks.numeric-cards-section"
-              to_card_wrapper(strapi_data, numeric_card_block(strapi_data[:numericCards]))
+              to_card_wrapper(strapi_data, numeric_card_block(strapi_data[:numericCards]), title_as_paragraph: true)
             when "blocks.full-width-banner"
               to_full_width_banner(strapi_data)
             when "blocks.full-width-text"
@@ -47,7 +58,48 @@ module Cms
               to_numbered_icon_list(strapi_data)
             when "blocks.split-horizontal-card"
               to_split_horizontal_card(strapi_data)
+            when "blocks.community-activity-list"
+              to_community_activity_list(strapi_data)
+            when "blocks.sticky-dashboard-bar"
+              DynamicComponents::StickyDashboardBar.new(programme_slug: strapi_data[:programme][:data][:attributes][:slug])
+            when "blocks.enrolment-testimonial"
+              to_enrolment_testimonial(strapi_data)
+            when "blocks.enrolment-split-course-card"
+              to_enrolment_split_course_card(strapi_data)
             end
+          end
+
+          def self.to_enrolment_split_course_card(strapi_data)
+            DynamicComponents::EnrolmentSplitCourseCard.new(
+              card_content: ModelFactory.to_content_block(strapi_data[:cardContent], with_wrapper: false),
+              aside_content: ModelFactory.to_content_block(strapi_data[:asideContent], with_wrapper: false),
+              enrol_aside: extract_aside_sections(strapi_data, param_name: :enrolAside),
+              section_title: strapi_data[:sectionTitle],
+              background_color: extract_color_name(strapi_data, :bkColor),
+              color_theme: extract_color_name(strapi_data, :colorTheme),
+              aside_title: strapi_data[:asideTitle],
+              aside_icon: ModelFactory.to_image(strapi_data, :asideIcon),
+              programme_slug: strapi_data[:programme][:data][:attributes][:slug]
+            )
+          end
+
+          def self.to_enrolment_testimonial(strapi_data)
+            DynamicComponents::EnrolmentTestimonial.new(
+              title: strapi_data[:title],
+              testimonial: to_testimonial(strapi_data[:testimonial]),
+              enrolled_aside: extract_aside_sections(strapi_data, param_name: :enrolledAside),
+              enrol_aside: extract_aside_sections(strapi_data, param_name: :enrolAside),
+              background_color: extract_color_name(strapi_data, :bkColor),
+              programme_slug: strapi_data[:programme][:data][:attributes][:slug]
+            )
+          end
+
+          def self.to_community_activity_list(strapi_data)
+            DynamicComponents::CommunityActivityGrid.new(
+              title: strapi_data[:title],
+              intro: ModelFactory.to_content_block(strapi_data[:intro], with_wrapper: false),
+              programme_activity_group_slug: strapi_data[:group][:data][:attributes][:slug]
+            )
           end
 
           def self.to_split_horizontal_card(strapi_data)
@@ -129,9 +181,9 @@ module Cms
             )
           end
 
-          def self.extract_aside_sections(strapi_data)
-            if strapi_data.dig(:asideSections, :data)
-              strapi_data[:asideSections][:data].collect { _1[:attributes] }
+          def self.extract_aside_sections(strapi_data, param_name: :asideSections)
+            if strapi_data.dig(param_name, :data)
+              Array.wrap(strapi_data[param_name][:data]).collect { _1[:attributes] }
             else
               []
             end
@@ -141,12 +193,13 @@ module Cms
             strapi_data[key][:data][:attributes][:name] if strapi_data.dig(key, :data)
           end
 
-          def self.to_card_wrapper(strapi_data, cards_block)
+          def self.to_card_wrapper(strapi_data, cards_block, title_as_paragraph: false)
             DynamicComponents::CardWrapper.new(
               title: strapi_data[:sectionTitle],
               cards_block: cards_block,
               cards_per_row: strapi_data[:cardsPerRow],
-              background_color: extract_color_name(strapi_data, :bkColor)
+              background_color: extract_color_name(strapi_data, :bkColor),
+              title_as_paragraph:
             )
           end
 

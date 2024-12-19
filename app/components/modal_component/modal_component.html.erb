@@ -1,4 +1,4 @@
-<div data-controller="modal" data-modal-confirm-value="true" data-modal-modal-id-value="<%= modal_id %>" class="<%= class_name %>">
+<%= content_tag :div, data:, class: class_name do %>
   <% if reopen_button %>
     <%= reopen_button %>
   <% elsif reopen_button_text.present? %>
@@ -29,4 +29,4 @@
     </div>
     <div tabindex="0" data-modal-target="bottomFocus" aria-hidden="true"></div>
   </div>
-</div>
+<% end %>

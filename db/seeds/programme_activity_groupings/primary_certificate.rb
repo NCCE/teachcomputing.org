@@ -7,6 +7,7 @@ puts "Creating Programme Activity Groupings for Primary certificate"
 
 primary_certificate.programme_activity_groupings.find_or_initialize_by(title: "All courses").becomes!(ProgrammeActivityGroupings::CreditCounted).tap do |group|
   group.sort_key = 2
+  group.cms_slug = "primary-all-courses"
   group.required_for_completion = 1
   group.programme_id = primary_certificate.id
   group.progress_bar_title = "Complete professional development"
@@ -25,11 +26,13 @@ ProgrammeActivityGrouping.find_by(title: "Contribute to an online discussion")&.
 
 primary_certificate.programme_activity_groupings.find_or_initialize_by(title: "Develop your teaching practice").tap do |group|
   group.sort_key = 3
+  group.cms_slug = "primary-develop-practice"
   group.required_for_completion = 1
   group.programme_id = primary_certificate.id
   group.community = true
   group.progress_bar_title = "Develop your teaching practice"
   group.web_copy_course_requirements = "Choose at least one activity"
+  group.web_copy_step_number = "two"
   group.web_copy_aside_slug = "primary-dashboard-step-2-section"
   group.web_copy_subtitle = "Step two: Putting it into practice"
 
@@ -57,11 +60,13 @@ end.save!
 
 primary_certificate.programme_activity_groupings.find_or_initialize_by(title: "Develop computing in your community").tap do |group|
   group.sort_key = 4
+  group.cms_slug = "primary-develop-community"
   group.required_for_completion = 1
   group.programme_id = primary_certificate.id
   group.community = true
   group.progress_bar_title = "Develop computing in your community"
   group.web_copy_course_requirements = "Choose at least one activity"
+  group.web_copy_step_number = "three"
   group.web_copy_subtitle = "Step three: Sharing with others"
 
   group.save!

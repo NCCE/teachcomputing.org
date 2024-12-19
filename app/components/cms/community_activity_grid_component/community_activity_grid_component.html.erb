@@ -1,0 +1,62 @@
+<%= render GovGridRowComponent.new(additional_classes: "community-activity-grid-wrapper") do |row| %>
+  <%= row.with_column(:full) do %>
+    <div class="community-activity-grid">
+      <% if @title %>
+        <h2 class="govuk-heading-m"><%= @title %></h2>
+      <% end %>
+
+      <%= render @intro.render if @intro %>
+
+      <div data-controller="cms--community-activity-grid-component"
+        data-cms--community-activity-grid-component-create-path-value="<%= achievements_path %>"
+        data-cms--community-activity-grid-component-slug-value="<%= @programme_activity_group.cms_slug %>">
+        <%= render ModalComponent.new(title: "Activity added to dashboard",
+          show_corner_decoration: false,
+          data: { 
+            action: "cms--community-activity-grid-component:selected@window->modal#openWithText",
+            modal_open_key_value: @programme_activity_group.cms_slug
+          }) do |modal| %> 
+          <%= modal.with_body do %>
+            <div class="community-activity-grid__modal-content">
+              <h3 class="govuk-heading-s" data-cms--community-activity-grid-component-target="activityTitle"></h3>
+              <p class="govuk-body-m">
+                Complete this activity to achieve Step <%= @programme_activity_group.web_copy_step_number %> of the <%= @programme.title %> 
+              </p>
+              <div class="button-container">
+                <%= link_to "Visit my dashboard", @programme.path, class: "govuk-button button" %>
+              </div>
+            </div>
+          <% end %>
+        <% end %>
+        <div class="community-activity-grid__grid" data-cms--community-activity-grid-component-target="activityGrid">
+          <% @all_activities.each do |activity, started| %>
+            <%= content_tag :div, class: activity_classes(started),
+              data: {
+                cms__community_activity_grid_component_target: :activityBox,
+                id: activity.id
+              } do %>
+              <div class="activity-started">
+                <span class="govuk-heading-s">ACTIVITY ADDED</span>
+              </div>
+              <div class="community-activity-grid__grid-activity-content">
+                <h3 class="govuk-heading-s"><%= sanitize activity.title %></h3>
+                <p class="govuk-body-s activity-content"><%= activity.description.html_safe %></p>
+                <% if @enrolled && !@started_activities.any? %>
+                  <%= button_tag "Choose Activity", class: "choose-btn govuk-button ncce-button--white",
+                    data: {
+                      cms__community_activity_grid_component_target: :activityButton,
+                      cms__community_activity_grid_component_activity_title_param: activity.title,
+                      cms__community_activity_grid_component_activity_id_param: activity.id,
+                      action: "cms--community-activity-grid-component#selectActivity"
+                    }
+                    %>
+                <% end %>
+                <%= link_to "Manage on Dashboard", @programme.path, class: "manage-btn govuk-button ncce-button--white" %>
+              </div>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+<% end %>
