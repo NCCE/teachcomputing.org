@@ -12,6 +12,10 @@ module Certificates
       assign_issued_badge_data
       user_enrolment
 
+      @status_message = if @user_enrolment.in_state?(:complete) || @user_enrolment.in_state?(:pending)
+        "Certificate completed"
+      end
+
       render :show
     end
 
