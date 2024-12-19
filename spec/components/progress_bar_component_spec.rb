@@ -2,27 +2,60 @@ require "rails_helper"
 
 RSpec.describe ProgressBarComponent, type: :component do
   let(:user) { create(:user) }
-  let(:primary_certificate) { create(:primary_certificate) }
+
   let(:activity_not_enough_credits) { create(:activity, credit: 10) }
   let(:activity_enough_credits) { create(:activity, credit: 100) }
 
+  let(:primary_certificate) { create(:primary_certificate) }
+  let(:secondary_certificate) { create(:secondary_certificate) }
+
   let!(:primary_programme_activity_groupings) do
-    create_list(:programme_activity_groupings_credit_counted, 3, programme: primary_certificate).tap do |groupings|
-      groupings[0].update(progress_bar_title: "Attend required CPD", multi_stage_group: true, required_credit_count: 50)
-      groupings[1].update(progress_bar_title: "Put into practice")
-      groupings[2].update(progress_bar_title: "Share with others")
-    end
+    [
+      create(:programme_activity_groupings_credit_counted,
+        programme: primary_certificate,
+        progress_bar_title: "Attend required CPD",
+        multi_stage_group: true,
+        required_credit_count: 50),
+      create(:programme_activity_grouping,
+        programme: primary_certificate,
+        progress_bar_title: "Put into practice"),
+      create(:programme_activity_grouping,
+        programme: primary_certificate,
+        progress_bar_title: "Share with others")
+    ]
   end
 
+  let!(:secondary_programme_activity_groupings) { create_list(:programme_activity_grouping, 3, programme: secondary_certificate) }
+
   describe "with primary certificate" do
-    context "with no objectives" do
+    context "when not enrolled" do
       before do
         allow_any_instance_of(AuthenticationHelper).to receive(:current_user).and_return(user)
-        allow(primary_certificate).to receive(:user_enrolled?).with(user).and_return(true)
+        allow(primary_certificate).to receive(:user_enrolled?).with(user).and_return(nil)
+        stub_strapi_aside_section("test-aside")
 
         render_inline(
           described_class.new(
             programme: primary_certificate
+          )
+        )
+      end
+
+      it "renders all objectives as not complete" do
+        expect(page).to have_css(".icon-blank-circle", count: 5)
+      end
+    end
+
+    context "with no objectives" do
+      before do
+        allow_any_instance_of(AuthenticationHelper).to receive(:current_user).and_return(user)
+        allow(primary_certificate).to receive(:user_enrolled?).with(user).and_return(true)
+        stub_strapi_aside_section("test-aside")
+
+        render_inline(
+          described_class.new(
+            programme: primary_certificate,
+            aside_slug: "test-aside"
           )
         )
       end
@@ -54,6 +87,10 @@ RSpec.describe ProgressBarComponent, type: :component do
 
       it "has primary spacing class" do
         expect(page).to have_css(".progress-bar-component__objectives-wrapper-primary")
+      end
+
+      it "renders an aside" do
+        expect(page).to have_css(".aside-component")
       end
     end
 
@@ -211,6 +248,50 @@ RSpec.describe ProgressBarComponent, type: :component do
         expect(page).to have_css(".icon-ticked-circle", count: 3)
         expect(page).to_not have_css(".icon-pending-circle")
         expect(page).to have_css(".icon-blank-circle", count: 2)
+      end
+    end
+  end
+
+  describe "with not primary certificate" do
+    context "with secondary certificate" do
+      before do
+        allow_any_instance_of(AuthenticationHelper).to receive(:current_user).and_return(user)
+
+        render_inline(
+          described_class.new(
+            programme: secondary_certificate
+          )
+        )
+      end
+
+      it "renders the objectives" do
+        expect(page).to have_css(".progress-bar-component__objective", count: 4)
+      end
+
+      it "does not have primary spacing class" do
+        expect(page).not_to have_css(".progress-bar-component__objectives-wrapper-primary")
+      end
+    end
+
+    context "with title and body" do
+      before do
+        allow_any_instance_of(AuthenticationHelper).to receive(:current_user).and_return(user)
+
+        render_inline(
+          described_class.new(
+            programme: secondary_certificate,
+            title: "Custom title",
+            body: "Body text"
+          )
+        )
+      end
+
+      it "renders the title text" do
+        expect(page).to have_css("h2", text: "Custom title")
+      end
+
+      it "renders the body text" do
+        expect(page).to have_css("p", text: "Body text")
       end
     end
   end

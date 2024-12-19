@@ -37,4 +37,30 @@ class ProgressBarComponent < CmsWithAsidesComponent
       "icon-blank-circle"
     end
   end
+
+  def course_bookings_status_class(objective, state)
+    current_state = objective.course_credit_state(current_user, state)
+
+    case current_state
+    when "required_credits"
+      "icon-ticked-circle"
+    when "missing_credits"
+      "icon-pending-circle"
+    else
+      "icon-blank-circle"
+    end
+  end
+
+  def multi_stage_objectives
+    [
+      {
+        title: "Book required CPD",
+        state: :enrolled
+      },
+      {
+        title: "Attend required CPD",
+        state: :complete
+      }
+    ]
+  end
 end
