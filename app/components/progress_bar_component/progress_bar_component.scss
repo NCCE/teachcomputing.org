@@ -9,7 +9,7 @@
     margin: auto;
     gap: 8px;
 
-    &-primary {
+    &-extra-objective-spacing {
       display: flex;
       justify-content: space-evenly;
       width: 95%;
@@ -22,7 +22,7 @@
       width: 100%;
       gap: 0;
 
-      &-primary {
+      &-extra-objective-spacing {
         flex-direction: column;
         width: 100%;
         gap: 0;
@@ -60,7 +60,7 @@
         width: 80%;
       }
 
-      &-primary {
+      &-extra-objective-spacing {
         margin-top: 5px;
         text-align: center;
         overflow: visible;
