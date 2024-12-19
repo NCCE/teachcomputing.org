@@ -16,21 +16,21 @@ class ProgrammeActivityGroupings::CreditCounted < ProgrammeActivityGrouping
     end.to_h
   end
 
-  def course_status_class(current_user, state: [])
-    completed_achievements = current_user.achievements
+  def course_credit_state(current_user, state)
+    achievements = current_user.achievements
       .with_courses
-      .in_state(*state)
+      .in_state(state)
       .belonging_to_programme(programme)
       .joins(:activity)
 
-    total_credits = completed_achievements.sum("activities.credit")
+    total_credits = achievements.sum("activities.credit")
 
     if total_credits >= required_credit_count
-      "icon-ticked-circle"
-    elsif completed_achievements.any?
-      "icon-pending-circle"
+      "required_credits"
+    elsif achievements.any?
+      "missing_credits"
     else
-      "icon-blank-circle"
+      "no_credits"
     end
   end
 end
