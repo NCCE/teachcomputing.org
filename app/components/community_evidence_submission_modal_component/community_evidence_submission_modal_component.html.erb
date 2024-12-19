@@ -79,17 +79,17 @@
           <div class="icon-close" data-action="click->modal#maybeToggle"></div>
         <% end %>
         <% component.with_body do %>
-            <h3 class="govuk-heading-s"><%= @activity.title %></h3>
+            <h3 class="govuk-heading-s"><%= sanitize @activity.title %></h3>
 
             <% evidences = @activity.public_copy_evidence.presence || [{ "brief" => @activity.self_verification_info.presence }] %>
             <% evidences.each_with_index do |evidence, index| %>
               <%= progress.with_step do %>
                 <p class="govuk-body-s">
-                  <%= evidence["brief"] %>
+                  <%= sanitize evidence["brief"] %>
                   <% if evidence["bullets"].present? %>
                     <ul class="govuk-list govuk-list--bullet">
                       <% evidence["bullets"].each do |bullet| %>
-                        <li class="govuk-body-s"><%= bullet %></li>
+                        <li class="govuk-body-s"><%= sanitize bullet %></li>
                       <% end %>
                     </ul>
                   <% end %>

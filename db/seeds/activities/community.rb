@@ -742,8 +742,8 @@ Activity.find_or_initialize_by(slug: "undertake-the-initial-assessment-of-your-s
   activity.category = "community"
   activity.provider = "stem-learning"
   activity.self_certifiable = true
-  activity.description = "Review your <a href='#{computing_quality_framework_url}'>school’s progress</a> in developing an exemplary computing curriculum and work towards achieving the <a href='#{computing_quality_framework_url}'Computing Quality Mark.</a>"
-  activity.public_copy_description = "Review your <a href='#{computing_quality_framework_url}'>school’s progress</a> in developing an exemplary computing curriculum and work towards achieving the <a href='#{computing_quality_framework_url}'Computing Quality Mark.</a>"
+  activity.description = "Review your <a href='#{computing_quality_framework_url}'>school’s progress</a> in developing an exemplary computing curriculum and work towards achieving the <a href='#{computing_quality_framework_url}'>Computing Quality Mark.</a>"
+  activity.public_copy_description = "Review your <a href='#{computing_quality_framework_url}'>school’s progress</a> in developing an exemplary computing curriculum and work towards achieving the <a href='#{computing_quality_framework_url}'>Computing Quality Mark.</a>"
   activity.public_copy_title_url = computing_quality_framework_url
   activity.self_verification_info = nil
   activity.public_copy_evidence = [{
