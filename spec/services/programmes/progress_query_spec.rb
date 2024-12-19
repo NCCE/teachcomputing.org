@@ -35,7 +35,7 @@ RSpec.describe Programmes::ProgressQuery do
   }
 
   let(:other_programme) { create(:programme) }
-  let!(:other_course_group) { create(:programme_activity_groupings_credit_counted, programme: other_programme) }
+  let!(:other_course_group) { create(:programme_activity_groupings_credit_counted, programme: other_programme, metadata: {required_credit_count: 10}) }
   let!(:other_activity) {
     act = create(:activity)
     create(:programme_activity, activity: act, programme_activity_grouping: other_course_group, programme: other_programme)
@@ -45,6 +45,13 @@ RSpec.describe Programmes::ProgressQuery do
   let!(:other_community_activity_1) {
     act = create(:activity)
     create(:programme_activity, activity: act, programme_activity_grouping: other_community_group_1, programme: other_programme)
+    act
+  }
+
+  let!(:course_activity_in_multiple_programmes) {
+    act = create(:activity, credit: 20)
+    create(:programme_activity, activity: act, programme_activity_grouping: other_course_group, programme: other_programme)
+    create(:programme_activity, activity: act, programme_activity_grouping: course_group, programme: programme)
     act
   }
 
@@ -102,7 +109,7 @@ RSpec.describe Programmes::ProgressQuery do
     end
 
     it "should default to active range for non matching key" do
-      active_range = described_class.new(programme, :non_sense, true).dates_by_state
+      active_range = described_class.new(programme, :unknown_key, true).dates_by_state
       expect(active_range.first.to_date).to eq(DateTime.now.months_ago(4).to_date)
       expect(active_range.last.to_date).to eq(DateTime.now.to_date)
     end
@@ -119,6 +126,14 @@ RSpec.describe Programmes::ProgressQuery do
         active_achievement(user, community_activity_1b)
       }
       let!(:user_4) { active_achievement(enrolled_user, course_20c) }
+      let!(:user_with_activity_in_multiple) {
+        user = active_achievement(enrolled_user, course_activity_in_multiple_programmes)
+        create(:user_programme_enrolment, user:, programme: other_programme)
+        user
+      }
+      let!(:user_with_activity_in_multiple_but_no_enrolment_to_other) {
+        active_achievement(enrolled_user, course_activity_in_multiple_programmes)
+      }
       let!(:user_lapsing) { lapsing_achievement(enrolled_user, community_activity_1) }
       let!(:user_lapsed) { lapsed_achievement(enrolled_user, community_activity_1) }
       let!(:no_match_user) { active_achievement(unenrolled_user, community_activity_1) }
@@ -126,10 +141,15 @@ RSpec.describe Programmes::ProgressQuery do
       context "with no groups" do
         it "shoud return correct users" do
           result = described_class.new(programme, :active, true).call
-          expect(result).to contain_exactly(user_1, user_2, user_3, user_4)
+          expect(result).to contain_exactly(user_1, user_2, user_3, user_4, user_with_activity_in_multiple, user_with_activity_in_multiple_but_no_enrolment_to_other)
           expect(result).not_to include no_match_user
           expect(result).not_to include user_lapsing
           expect(result).not_to include user_lapsed
+        end
+
+        it "shoud return correct users for other_programme" do
+          result = described_class.new(other_programme, :active, true).call
+          expect(result).to contain_exactly(user_with_activity_in_multiple)
         end
       end
 
@@ -142,6 +162,7 @@ RSpec.describe Programmes::ProgressQuery do
           expect(result).not_to include no_match_user
           expect(result).not_to include user_lapsing
           expect(result).not_to include user_lapsed
+          expect(result).not_to include user_with_activity_in_multiple
         end
 
         context "with credits" do
@@ -151,7 +172,13 @@ RSpec.describe Programmes::ProgressQuery do
           end
           it "should include users with enough credits" do
             result = described_class.new(programme, :active, true, [course_group]).call
-            expect(result).to contain_exactly(user_4)
+            expect(result).to contain_exactly(user_4, user_with_activity_in_multiple, user_with_activity_in_multiple_but_no_enrolment_to_other)
+          end
+
+          it "should include users with enough credits from other programme" do
+            result = described_class.new(other_programme, :active, true, [other_course_group]).call
+            expect(result).to contain_exactly(user_with_activity_in_multiple)
+            expect(result).not_to include(user_with_activity_in_multiple_but_no_enrolment_to_other)
           end
         end
       end
