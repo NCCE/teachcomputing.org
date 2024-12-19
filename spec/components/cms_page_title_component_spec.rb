@@ -19,6 +19,10 @@ RSpec.describe CmsPageTitleComponent, type: :component do
     it "doesnt render the media section when non present" do
       expect(page).not_to have_css(".page-title__media")
     end
+
+    it "doesnt render status_message container when non present" do
+      expect(page).not_to have_css(".page-title__status-message")
+    end
   end
 
   context "With Media" do
@@ -62,6 +66,20 @@ RSpec.describe CmsPageTitleComponent, type: :component do
 
     it "does not render the image when video given" do
       expect(page).not_to have_css(".cms-image img")
+    end
+  end
+
+  context "With status message" do
+    before do
+      render_inline(described_class.new(title: "Page title", status_message: "You completed"))
+    end
+
+    it "renders the title" do
+      expect(page).to have_text("Page title")
+    end
+
+    it "render status_message container" do
+      expect(page).to have_css(".page-title__status-message", text: "You completed")
     end
   end
 end
