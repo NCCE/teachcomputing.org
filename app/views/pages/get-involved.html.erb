@@ -24,7 +24,7 @@
     title_css: "govuk-heading-m",
     title_link: nil,
     text_blocks: [
-      t(".ambassador.body_1", redirect_link: link_to("STEM Ambassador", stem_ambassadors_url)).html_safe,
+      t(".ambassador.body_1", redirect_link: link_to("STEM Ambassador", computing_ambassadors_url)).html_safe,
       t(".ambassador.body_2")
     ],
     text_css: "govuk-body-s",
@@ -35,7 +35,7 @@
     padding: 5,
     button: {
       text: t(".ambassador.link.title"),
-      link: stem_ambassadors_url,
+      link: computing_ambassadors_url,
       class: "govuk-button button get-involved_ambassador-button bordered-card__get-involved-button bordered-card__external-button",
       event_action: "click",
       event_category: t(".ambassador.link.event_category"),
@@ -180,7 +180,7 @@
             <h2 class="govuk-heading-m"><%= t(".join_us.heading") %></h2>
 
             <p class="govuk-body-m"><%= t(".join_us.body_1") %></p>
-            <p class="govuk-body-m"><%= t(".join_us.body_2_html", ambassador_link: link_to('Computing Ambassadors', stem_ambassadors_url)) %></p>
+            <p class="govuk-body-m"><%= t(".join_us.body_2_html", ambassador_link: link_to('Computing Ambassadors', computing_ambassadors_url)) %></p>
           </div>
         </div>
       </div>

@@ -1,0 +1,68 @@
+<div
+  class="primary-dashboard-community-activity"
+  data-controller="primary-dashboard-community-activity-component"
+  data-primary-dashboard-community-activity-component-achievements-path-value="<%= achievements_path %>">
+
+  <% if completed_activities.blank? && incomplete_activities.blank? %>
+    <h2 class="govuk-heading-s">Complete at least one activity</h2>
+  <% end %>
+
+  <% if completed_activities.present? %>
+    <div class="primary-dashboard-community-activity__activity" data-primary-dashboard-community-activity-component-target="activityDetails">
+      <h2 class="govuk-heading-s">Your completed <%= "activity".pluralize(completed_activities.count) %></h2>
+      <% completed_activities.each do |upa| %>
+        <div class="primary-dashboard-community-activity__activity-details">
+          <div class="primary-dashboard-community-activity__activity-details-header">
+            <div>
+              <%= image_pack_tag('media/images/icons/tick-green-dark.svg') %>
+            </div>
+            <div>
+              <p class="govuk-body-m govuk-!-margin-bottom-0"><%= strip_tags(upa.activity.title) %></p>
+            </div>
+          </div>
+          <p class="govuk-body-s primary-dashboard-community-activity__activity-details-description"><%= upa.activity.public_copy_description.html_safe %></p>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+
+  <% if incomplete_activities.present? %>
+    <div class="primary-dashboard-community-activity__activity" data-primary-dashboard-community-activity-component-target="activityDetails">
+      <h2 class="govuk-heading-s">Complete your chosen <%= "activity".pluralize(incomplete_activities.count) %></h2>
+      <% incomplete_activities.each do |upa| %>
+        <div class="primary-dashboard-community-activity__activity-details">
+          <% if upa.in_state? :rejected %>
+            <div class="primary-dashboard-community-activity__selection-rejected">
+              <i class="icon-feedback"></i>
+              <span class="primary-dashboard-community-activity__selection-rejected-text govuk-body-s">
+                Please provide more evidence to this activity for review.
+              </span>
+            </div>
+          <% end %>
+          <div class="primary-dashboard-community-activity__activity-details-title">
+            <div>
+              <p class="govuk-body-m"><%= strip_tags(upa.activity.title) %></p>
+            </div>
+            <div>
+              <%= link_to image_pack_tag('media/images/icons/remove-activity-icon.svg'), "#",
+                data: {
+                  action: "primary-dashboard-community-activity-component#deleteActivitySelection",
+                  achievement_id: upa.id
+                  } %>
+            </div>
+          </div>
+          <p class="govuk-body-s"><%= upa.activity.public_copy_description.html_safe %></p>
+          <%= render CommunityEvidenceSubmissionModalComponent.new(activity: upa.activity, achievement: upa) %>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+
+  <div class="primary-dashboard-community-activity__selection-wrapper">
+    <%= select_tag :activity, options_for_select(
+      available_activities.map { |pa| [strip_tags(pa.activity.title), pa.activity.id ]}
+    ), prompt: "Select from the list", class: "govuk-select", data: { action: "change->primary-dashboard-community-activity-component#selectActivity" } %>
+    <%= link_to "Choose activity", "#", class: "govuk-button button button--inverted govuk-!-margin-0",
+      data: { action: "primary-dashboard-community-activity-component#submitActivitySelection" } %>
+  </div>
+</div>

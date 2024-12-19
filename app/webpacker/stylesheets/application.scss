@@ -5,6 +5,7 @@
 @import 'govuk-frontend/dist/govuk/index';
 
 // import NCCE settings
+@import 'settings/_mixins.scss';
 @import 'settings/_links.scss';
 @import 'settings/_section-breaks.scss';
 @import 'settings/_typography.scss';

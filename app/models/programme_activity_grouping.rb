@@ -11,25 +11,12 @@ class ProgrammeActivityGrouping < ApplicationRecord
   scope :community, -> { where(community: true) }
   scope :not_community, -> { where(community: false) }
 
-  store_accessor :web_copy, %i[course_requirements aside_slug subtitle], prefix: true
+  store_accessor :web_copy, %i[course_requirements aside_slug subtitle step_number], prefix: true
+
+  validates :cms_slug, uniqueness: true
 
   def user_complete?(user)
     users_completed(users: [user]).values.first
-  end
-
-  def formatted_title
-    output = title.dup
-
-    completable_activity_count = programme_activities.includes(:activity).where(activity: {coming_soon: false}).count
-
-    if required_for_completion != completable_activity_count
-      output << " by completing "
-      output << content_tag(:strong, "at least #{required_for_completion.humanize}")
-      output << " "
-      output << "activity".pluralize(required_for_completion)
-    end
-
-    output.html_safe
   end
 
   def objective_displayed_in_progress_bar?

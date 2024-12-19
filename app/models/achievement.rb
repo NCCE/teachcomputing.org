@@ -47,6 +47,7 @@ class Achievement < ApplicationRecord
 
   scope :belonging_to_programme, ->(programme) { joins(activity: {programme_activities: :programme}).where(activities: {programme_activities: {programme:}}) }
   scope :belonging_to_pathway, ->(pathway) { joins(activity: {pathway_activities: :pathway}).where(activities: {pathway_activities: {pathway:}}) }
+  scope :belonging_to_programme_activity_grouping, ->(programme_activity_grouping) { joins(activity: {programme_activities: :programme_activity_grouping}).where(activities: {programme_activities: {programme_activity_grouping:}}) }
 
   def state_machine
     @state_machine ||= StateMachines::AchievementStateMachine.new(self, transition_class: AchievementTransition)
@@ -85,6 +86,10 @@ class Achievement < ApplicationRecord
     in_state?(:drafted)
   end
 
+  def rejected?
+    in_state?(:rejected)
+  end
+
   def adequate_evidence_provided?
     activity.public_copy_evidence.blank? ||
       evidence.present? ||
@@ -98,6 +103,12 @@ class Achievement < ApplicationRecord
     metadata[:supporting_evidence_url] = supporting_evidence.presence
 
     transition_to(:complete, metadata)
+  end
+
+  def community_achievement_complete?
+    return false if activity.public_copy_submission_options
+
+    in_state?(:complete)
   end
 
   def self.initial_state

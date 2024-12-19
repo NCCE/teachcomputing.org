@@ -79,8 +79,8 @@ module StrapiStubs
     ))
   end
 
-  def stub_strapi_aside_section(key)
-    stub_request(:get, /^https:\/\/strapi.teachcomputing.org\/api\/aside-sections\/#{key}/).to_return_json(body: to_strapi_data_structure(Cms::Mocks::AsideSection.generate_data(slug: key)))
+  def stub_strapi_aside_section(key, aside_data: {})
+    stub_request(:get, /^https:\/\/strapi.teachcomputing.org\/api\/aside-sections\/#{key}/).to_return_json(body: to_strapi_data_structure(Cms::Mocks::AsideSection.generate_data(slug: key, **aside_data)))
   end
 
   def stub_strapi_aside_section_missing(key)

@@ -9,8 +9,8 @@ RSpec.describe("Enrolment confirmation component system test", type: [:system, :
 
   context "when the programme requires enrolment confirmation" do
     before do
+      allow_any_instance_of(AuthenticationHelper).to receive(:current_user).and_return(user)
       with_rendered_component_path(render_inline(EnrolmentConfirmationComponent.new(
-        current_user: user,
         programme: primary_certificate,
         pathway:
       )), layout: "application") do |path|

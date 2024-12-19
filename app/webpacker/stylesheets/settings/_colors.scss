@@ -23,6 +23,7 @@ $jaffa: #f47c31;
 $karry: #ffe7d2;
 $lavender-light: #e6e5f3;
 $lilly-white: #ebebeb;
+$off-white: #FAFCFC;
 $light-blue: #E4F8FF;
 $mid-gray: #5c5d6d;
 $pink: #de01a5;
@@ -108,6 +109,9 @@ $i-belong-cert-color: $orange;
   background-color: $lime-green;
 }
 
+.off-white-bg {
+  background-color: $off-white;
+}
 
 .tapestry-bg {
   background-color: $tapestry;
