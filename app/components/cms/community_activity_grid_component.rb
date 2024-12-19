@@ -3,10 +3,10 @@
 class Cms::CommunityActivityGridComponent < ViewComponent::Base
   delegate :current_user, to: :helpers
 
-  def initialize(title:, intro:, programme_activity_group_slug:)
+  def initialize(programme_activity_group_slug:, title: nil, intro: nil)
+    @programme_activity_group = ProgrammeActivityGrouping.includes(:programme).find_by(cms_slug: programme_activity_group_slug)
     @title = title
     @intro = intro
-    @programme_activity_group = ProgrammeActivityGrouping.includes(:programme).find_by(cms_slug: programme_activity_group_slug)
     @programme = @programme_activity_group.programme
   end
 
