@@ -15,7 +15,17 @@ RSpec.describe ProgressBarComponent, type: :component do
         programme: primary_certificate,
         progress_bar_title: "Attend required CPD",
         multi_stage_group: true,
-        required_credit_count: 50),
+        required_credit_count: 50,
+        objectives_progress_bar_stages: [
+          {
+            title: "Book required CPD",
+            state: :enrolled
+          },
+          {
+            title: "Attend required CPD",
+            state: :complete
+          }
+        ]),
       create(:programme_activity_grouping,
         programme: primary_certificate,
         progress_bar_title: "Put into practice"),
