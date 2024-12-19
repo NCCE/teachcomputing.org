@@ -28,15 +28,17 @@ class UserProgrammeCourseBookingsWithAsidesComponent < CmsWithAsidesComponent
   def in_progress_courses
     @current_user.achievements
       .in_state(:in_progress, :enrolled)
-      .with_courses.order("created_at DESC")
+      .with_courses.order("achievements.created_at DESC")
       .belonging_to_programme(@programme)
+      .includes([:activity])
   end
 
   def completed_courses
     @current_user.achievements
       .in_state(:complete)
-      .with_courses.order("created_at DESC")
+      .with_courses.order("achievements.created_at DESC")
       .belonging_to_programme(@programme)
+      .includes([:activity])
   end
 
   def course_grouping
