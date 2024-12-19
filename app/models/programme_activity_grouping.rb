@@ -12,6 +12,7 @@ class ProgrammeActivityGrouping < ApplicationRecord
   scope :not_community, -> { where(community: false) }
 
   store_accessor :web_copy, %i[course_requirements aside_slug subtitle step_number], prefix: true
+  store_accessor :objectives, %i[progress_bar_stages], prefix: true
 
   validates :cms_slug, uniqueness: true
 
@@ -32,18 +33,7 @@ class ProgrammeActivityGrouping < ApplicationRecord
   end
 
   def multi_stage_objectives
-    if multi_stage_group?
-      [
-        {
-          title: "Book required CPD",
-          state: :enrolled
-        },
-        {
-          title: "Attend required CPD",
-          state: :complete
-        }
-      ]
-    end
+    objectives_progress_bar_stages
   end
 
   # completion counted

@@ -28,9 +28,9 @@
           <% if programme_objective.multi_stage_group? %>
             <% programme_objective.multi_stage_objectives.each_with_index do |objective, index| %>
               <div class="progress-bar-component__objective">
-                <div class="<%= course_bookings_status_class(programme_objective, objective[:state]) %>"></div>
+                <div class="<%= course_bookings_status_class(programme_objective, objective["state"]) %>"></div>
                 <div class="<%= content_spacing_class("progress-bar-component__objective--text") %>">
-                  <p class="govuk-body-s govuk-!-margin-0"><%= objective[:title] %></p>
+                  <p class="govuk-body-s govuk-!-margin-0"><%= objective["title"] %></p>
                 </div>
               </div>
               <% unless index == programme_objective.multi_stage_objectives.size - 1 %>

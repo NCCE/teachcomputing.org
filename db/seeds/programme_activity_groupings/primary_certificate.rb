@@ -14,6 +14,16 @@ primary_certificate.programme_activity_groupings.find_or_initialize_by(title: "A
   group.web_copy_course_requirements = "Complete one full day face-to-face, remote or online course, or a combination of short courses that amounts to 6+ hours of professional development."
   group.required_credit_count = 50
   group.multi_stage_group = true
+  group.objectives_progress_bar_stages = [
+    {
+      title: "Book required CPD",
+      state: :enrolled
+    },
+    {
+      title: "Attend required CPD",
+      state: :complete
+    }
+  ]
 
   group.save!
 
