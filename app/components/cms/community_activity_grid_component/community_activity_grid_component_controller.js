@@ -8,7 +8,6 @@ export default class extends ApplicationController {
   static targets = ["activityButton", "activityTitle", "activityBox", "activityGrid"];
 
   selectActivity(event) {
-    console.log(event);
     const activityId = event.params.activityId;
     fetch(this.createPathValue, {
       method: 'POST',

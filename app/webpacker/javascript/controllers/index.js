@@ -25,7 +25,6 @@ componentDefinitions.forEach(definition => {
     definition.identifier = identifierParts[0]
   }
 })
-console.log(componentDefinitions)
 
 application.load(
   definitionsFromContext(context)
