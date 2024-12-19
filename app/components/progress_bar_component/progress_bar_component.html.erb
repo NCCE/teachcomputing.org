@@ -21,23 +21,22 @@
               <p class="govuk-body-s govuk-!-margin-0">Enrol</p>
             </div>
           </div>
-        <div class="progress-bar-component--dotted-line icon-dotted-line"></div>
+          <div class="progress-bar-component--dotted-line icon-dotted-line"></div>
         <% end %>
+
         <% @programme_objectives.each_with_index do |programme_objective, index| %>
           <% if programme_objective.multi_stage_group? %>
-            <div class="progress-bar-component__objective">
-              <div class="progress-bar-component__objective--icon <%= programme_objective.course_status_class(current_user, state:[:in_progress, :enrolled]) %>"></div>
-              <div class="<%= content_spacing_class("progress-bar-component__objective--text") %>">
-                <p class="govuk-body-s govuk-!-margin-0">Book required CPD</p>
+            <% multi_stage_objectives.each_with_index do |objective, index| %>
+              <div class="progress-bar-component__objective">
+                <div class="progress-bar-component__objective--icon <%= course_bookings_status_class(programme_objective, objective[:state]) %>"></div>
+                <div class="<%= content_spacing_class("progress-bar-component__objective--text") %>">
+                  <p class="govuk-body-s govuk-!-margin-0"><%= objective[:title] %></p>
+                </div>
               </div>
-            </div>
-            <div class="progress-bar-component--dotted-line icon-dotted-line"></div>
-            <div class="progress-bar-component__objective">
-              <div class="progress-bar-component__objective--icon <%= programme_objective.course_status_class(current_user, state:[:complete]) %>"></div>
-              <div class="<%= content_spacing_class("progress-bar-component__objective--text") %>">
-                <p class="govuk-body-s govuk-!-margin-0">Attend required CPD</p>
-              </div>
-            </div>
+              <% unless index == multi_stage_objectives.size - 1 %>
+                <div class="progress-bar-component--dotted-line icon-dotted-line"></div>
+              <% end %>
+            <% end %>
           <% else %>
             <div class="progress-bar-component__objective">
               <div class="progress-bar-component__objective--icon icon-blank-circle"></div>
