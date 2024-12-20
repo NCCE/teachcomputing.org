@@ -71,8 +71,8 @@ RSpec.describe Programmes::PrimaryCertificate do
   end
 
   describe "#pathways?" do
-    it "should return true" do
-      expect(programme.pathways?).to be true
+    it "should return false" do
+      expect(programme.pathways?).to be false
     end
   end
 
