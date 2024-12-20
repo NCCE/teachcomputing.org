@@ -1,0 +1,34 @@
+<header class="main-content__header">
+  <h1 class="main-content__page-title">
+    Programme Report: <%= @programme.title %> 
+  </h1>
+</header>
+
+<section class="main-content__body">
+
+  <%= form_with(url: report_results_admin_reports_path(programme_id: @programme.id), local: true) do |form| %>
+    <%= fields_for :query do |qform| %> 
+      <div>
+        <%= qform.label :enrolled %>
+        <%= qform.check_box :enrolled %>
+      </div>
+
+      <div>
+        <%= qform.label :state %>
+        <%= qform.select :state, [:active, :lapsing, :lapsed] %>
+      </div>
+
+      <% @programme.programme_activity_groupings.order(:sort_key).each do |group| %>
+        <div>
+          <%= form.label group.title %>
+          <%= form.check_box "query[programme_activity_groupings][]", {}, group.id, nil %>
+        </div>
+      <% end %>
+    <% end %>
+
+    <%= form.submit "Run Query" %>
+
+  <% end %>
+
+
+</section>

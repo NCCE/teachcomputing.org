@@ -15,11 +15,11 @@ class DashboardController < ApplicationController
   private
 
   def incomplete_achievements
-    current_user.achievements.not_in_state(:dropped, :complete).with_courses.order("created_at DESC")
+    current_user.achievements.not_in_state(:dropped, :complete).with_courses.order("achievements.created_at DESC").includes([activity: :programmes])
   end
 
   def completed_achievements
-    current_user.achievements.in_state(:complete).with_courses.order("updated_at DESC")
+    current_user.achievements.in_state(:complete).with_courses.order("achievements.updated_at DESC").includes([activity: :programmes])
   end
 
   def enrolments
