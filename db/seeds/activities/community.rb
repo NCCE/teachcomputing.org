@@ -250,7 +250,7 @@ Activity.find_or_create_by(slug: "complete-a-cs-accelerator-course") do |activit
 end
 
 Activity.find_or_initialize_by(slug: "raise-aspirations-with-a-stem-ambassador-visit").tap do |activity|
-  activity.title = "Raise aspirations with a Stem Ambassador visit"
+  activity.title = "Raise aspirations with a STEM Ambassador visit"
   activity.credit = 10
   activity.slug = "raise-aspirations-with-a-stem-ambassador-visit"
   activity.category = "community"
@@ -302,7 +302,7 @@ Activity.find_or_initialize_by(slug: "participate-fully-in-an-ncce-curriculum-en
   activity.provider = "stem-learning"
   activity.self_certifiable = true
   activity.description = "Explore NCCE and partner <a href='https://teachcomputing.org/primary-enrichment'>enrichment resources</a> to enable you to plan an enrichment activity in your classroom."
-  activity.public_copy_description = "Participate in a webinar or explore our partner enrichment resources to enable you to run an enrichment activity in your classroom."
+  activity.public_copy_description = "Explore NCCE and partner <a href='https://teachcomputing.org/primary-enrichment'>enrichment resources</a> to enable you to plan an enrichment activity in your classroom."
   activity.public_copy_title_url = "http://www.teachcomputing.org/primary-enrichment"
   activity.self_verification_info = nil
   activity.public_copy_evidence = [{
@@ -372,7 +372,7 @@ Activity.find_or_initialize_by(slug: "share-tips-on-using-an-ncce-resource-in-yo
   activity.provider = "stem-learning"
   activity.self_certifiable = true
   activity.description = "By joining <a href='#{stem_community_url}'>STEM Community</a> you’ll meet other teachers in similar roles and be able to share ideas, resources and insights."
-  activity.public_copy_description = "By joining STEM Community you’ll meet other teachers in similar roles and be able to share ideas, resources and insights."
+  activity.public_copy_description = "By joining <a href='#{stem_community_url}'>STEM Community</a> you’ll meet other teachers in similar roles and be able to share ideas, resources and insights."
   activity.public_copy_title_url = "https://community.stem.org.uk/home"
   activity.self_verification_info = nil
   activity.public_copy_evidence = [{
@@ -412,7 +412,7 @@ Activity.find_or_initialize_by(slug: "support-other-teachers-and-earn-a-stem-com
   activity.provider = "stem-learning"
   activity.self_certifiable = true
   activity.description = "By joining <a href='#{stem_community_url}'>STEM Community</a> you’ll meet other teachers in similar roles and be able to share ideas, resources and insights. You’ll earn points for your posts and comments on the <a href='#{stem_community_url}'>STEM Community</a>. Your points add up, and over time you will be <a href='#{stem_community_points_help_url}'>rewarded with badges</a> in recognition of your activity and participation in the community."
-  activity.public_copy_description = "You’ll earn points for your activities on the STEM Community. Your points add up, and over time you will be rewarded with badges in recognition of your activity and participation in the community."
+  activity.public_copy_description = "By joining <a href='#{stem_community_url}'>STEM Community</a> you’ll meet other teachers in similar roles and be able to share ideas, resources and insights. You’ll earn points for your posts and comments on the <a href='#{stem_community_url}'>STEM Community</a>. Your points add up, and over time you will be <a href='#{stem_community_points_help_url}'>rewarded with badges</a> in recognition of your activity and participation in the community."
   activity.public_copy_title_url = "https://community.stem.org.uk/helpfaqs/points"
   activity.self_verification_info = nil
   activity.public_copy_evidence = [{
@@ -446,7 +446,7 @@ Activity.find_or_initialize_by(slug: "run-an-enrichment-activity-in-your-classro
   activity.provider = "stem-learning"
   activity.self_certifiable = true
   activity.description = "Enrich the curriculum by running a computing <a href='https://teachcomputing.org/primary-enrichment'>enrichment activity</a> in your school, such as a computing-themed club, a computing day or week at your school etc."
-  activity.public_copy_description = "Enrich the curriculum with fun and engaging activities, bringing computing learning to life for your pupils."
+  activity.public_copy_description = "Enrich the curriculum by running a computing <a href='https://teachcomputing.org/primary-enrichment'>enrichment activity</a> in your school, such as a computing-themed club, a computing day or week at your school etc."
   activity.public_copy_title_url = "https://teachcomputing.org/primary-enrichment"
   activity.self_verification_info = nil
   activity.public_copy_evidence = [
@@ -912,7 +912,7 @@ Activity.find_or_initialize_by(slug: "become-an-i-belong-champion-primary").tap 
   activity.provider = "stem-learning"
   activity.self_certifiable = true
   activity.description = "Lead your school, and others, in creating the right conditions for more girls to succeed in computing. Become an <a href='/i-belong'>I Belong Champion</a> to showcase your passion for inclusion and advocate for and create a sense of belonging for girls in computer science. Complete the <a href='https://teachcomputing.org/courses/CP409/empowering-girls-in-key-stage-2-computing'>Empowering girls in key stage 2 computing</a> course, learn about the whole programme and claim your digital badge to become a Champion... then encourage more people to join the mission!"
-  activity.public_copy_description = "Lead your school, and others, in creating the right conditions for more girls to succeed in computing. Complete the <a href='https://teachcomputing.org/courses/CP409/empowering-girls-in-key-stage-2-computing'>Empowering girls in key stage 2 computing</a> course, learn about the whole programme and claim your digital badge to become a Champion... then encourage more people to join the mission!"
+  activity.public_copy_description = "Lead your school, and others, in creating the right conditions for more girls to succeed in computing. Become an <a href='/i-belong'>I Belong Champion</a> to showcase your passion for inclusion and advocate for and create a sense of belonging for girls in computer science. Complete the <a href='https://teachcomputing.org/courses/CP409/empowering-girls-in-key-stage-2-computing'>Empowering girls in key stage 2 computing</a> course, learn about the whole programme and claim your digital badge to become a Champion... then encourage more people to join the mission!"
   activity.public_copy_title_url = "https://teachcomputing.org/i-belong"
   activity.self_verification_info = nil
   activity.public_copy_evidence = [{
@@ -952,8 +952,8 @@ Activity.find_or_initialize_by(slug: "complete-the-i-belong-programme-as-a-schoo
   activity.category = "community"
   activity.provider = "stem-learning"
   activity.self_certifiable = true
-  activity.description = "Once you’ve completed the short, remote course <a href='https://teachcomputing.org/courses/CP409/encouraging-girls-into-gcse-computer-science-remote-short-course'>‘Empowering girls in key stage 2 computing’</a> you’ll be ready to bring enrichment activities, role models and inclusive teaching practices to your school. The I Belong <a href='#{i_belong_primary_handbook_url}'>handbook</a> contains everything you need to know to reach this goal."
-  activity.public_copy_description = "Once you’ve completed the short, remote course <a href='https://teachcomputing.org/courses/CP409/encouraging-girls-into-gcse-computer-science-remote-short-course'>‘Empowering girls in key stage 2 computing’</a> you’ll be ready to bring enrichment activities, role models and inclusive teaching practices to your school. The I Belong <a href='#{i_belong_primary_handbook_url}'>handbook</a> contains everything you need to know to reach this goal."
+  activity.description = "Once you’ve completed the short, remote course <a href='https://teachcomputing.org/courses/CP409/encouraging-girls-into-gcse-computer-science-remote-short-course'>‘Empowering girls in key stage 2 computing’</a> you’ll be ready to bring enrichment activities, role models and inclusive teaching practices to your school. The I Belong handbook contains everything you need to know to reach this goal."
+  activity.public_copy_description = "Once you’ve completed the short, remote course <a href='https://teachcomputing.org/courses/CP409/encouraging-girls-into-gcse-computer-science-remote-short-course'>‘Empowering girls in key stage 2 computing’</a> you’ll be ready to bring enrichment activities, role models and inclusive teaching practices to your school. The I Belong handbook contains everything you need to know to reach this goal."
   activity.public_copy_title_url = "https://teachcomputing.org/i-belong"
   activity.self_verification_info = nil
   activity.public_copy_evidence = [{

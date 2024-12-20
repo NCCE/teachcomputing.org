@@ -268,7 +268,6 @@ programme.pathways.find_or_initialize_by(slug: "developing-teachers").tap do |pa
     # Support your lcal professional community
     "gain-accreditation-as-a-professional-development-leader",
     "support-other-teachers-and-earn-a-stem-community-participation-badge-secondary",
-    "gain-accreditation-as-an-i-belong-champion",
     "work-with-local-business-and-industry-to-inspire-inclusive-computing"
   ]
 
@@ -276,7 +275,9 @@ programme.pathways.find_or_initialize_by(slug: "developing-teachers").tap do |pa
     maybe_attach_activity_to_pathway(pathway, slug: activity)
   end
 
-  remove_activities = []
+  remove_activities = [
+    "gain-accreditation-as-an-i-belong-champion"
+  ]
 
   remove_activities.each do |activity|
     maybe_detach_activity_from_pathway(pathway, slug: activity)
