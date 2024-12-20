@@ -20,6 +20,10 @@
 
     .numeric-card__title {
       flex: 1 1 auto;
+
+      .govuk-heading-m {
+        font-size: 22.4px;
+      }
     }
   }
 

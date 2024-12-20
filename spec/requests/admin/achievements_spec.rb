@@ -150,9 +150,10 @@ RSpec.describe "Admin::AchievementsController" do
 
     describe "GET #new" do
       it "should not route" do
+        stub_strapi_web_page_not_found("admin_achievement_new") # Temp fix
         expect {
           get "/admin/achievement/new"
-        }.to raise_error(ActionController::RoutingError)
+        }.to raise_error(ActiveRecord::RecordNotFound)
       end
     end
 

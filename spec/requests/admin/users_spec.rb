@@ -117,7 +117,7 @@ RSpec.describe Admin::UsersController do
       it "should not route" do
         expect {
           get "/admin/users/#{user.id}/generate_assessement_attempt"
-        }.to raise_error(ActionController::RoutingError)
+        }.to raise_error(ActiveRecord::RecordNotFound)
       end
     end
 

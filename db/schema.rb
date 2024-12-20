@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2024_11_01_083738) do
+ActiveRecord::Schema.define(version: 2024_11_26_112120) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -317,6 +317,8 @@ ActiveRecord::Schema.define(version: 2024_11_01_083738) do
     t.jsonb "web_copy"
     t.jsonb "metadata"
     t.string "type"
+    t.string "cms_slug"
+    t.index ["cms_slug"], name: "index_programme_activity_groupings_on_cms_slug", unique: true
     t.index ["programme_id"], name: "index_programme_activity_groupings_on_programme_id"
   end
 

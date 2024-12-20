@@ -11,7 +11,7 @@ module Cms
           attribute(:asideTitle) { Faker::Lorem.sentence }
           attribute(:sectionTitle) { Faker::Lorem.sentence }
           attribute(:colorTheme) { ColorScheme.generate_data(name: "standard") }
-          attribute(:backgroundColor) { ColorScheme.generate_data(name: "light_grey") }
+          attribute(:backgroundColor) { ColorScheme.generate_data(name: "light-grey") }
         end
       end
     end

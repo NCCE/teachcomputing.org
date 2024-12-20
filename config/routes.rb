@@ -63,8 +63,8 @@ Rails.application.routes.draw do
 
   namespace "certificates", path: "certificate", as: "" do
     resource "primary_certificate", controller: "primary_certificate", path: "primary-certificate", only: %i[show] do
-      get "/complete", action: :complete, as: :complete
-      get "/pending", action: :pending, as: :pending
+      get "/complete", to: redirect("/certificate/primary-certificate")
+      get "/pending", to: redirect("/certificate/primary-certificate")
       get "/view-certificate", action: :show, controller: "certificate", as: :certificate,
         defaults: {slug: "primary-certificate"}
       post "/enrol", action: :create, controller: "/user_programme_enrolments", as: :enrol
@@ -206,8 +206,8 @@ Rails.application.routes.draw do
   get "/maintenance", to: "pages#page", as: :maintenance, defaults: {page_slug: "maintenance"}
   get "/contributing-partners", to: redirect("/get-involved")
 
-  get "/primary-certificate", to: "pages#static_programme_page", as: :primary,
-    defaults: {page_slug: "primary-certificate"}
+  # get "/primary-certificate", to: "pages#static_programme_page", as: :primary,
+  #  defaults: {page_slug: "primary-certificate"}
   get "/primary-certificate/courses", action: :primary_courses, controller: "courses", as: :primary_courses
 
   get "/primary-teachers", to: "pages#page", as: :primary_teachers,
@@ -249,6 +249,5 @@ Rails.application.routes.draw do
   get "/blog", to: "cms#blog", as: :cms_posts
   get "/blog/articles", to: redirect(path: "/blog")
   get "/blog/:page_slug", to: "cms#blog_resource", as: :cms_post
-  get "/test-web/:page_slug", to: "cms#web_page_resource", as: :cms_web_page if Rails.env.development?
-  get "/:page_slug", to: "cms#web_page_resource", as: :cms_page
+  get "/*page_slug", to: "cms#web_page_resource", as: :cms_page
 end

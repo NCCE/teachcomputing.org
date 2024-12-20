@@ -4,7 +4,7 @@ module NavigationHelper
       {text: "Primary",
        children: [
          {text: "Subject lead toolkit", link: primary_teachers_path, label: "Subject lead toolkit"},
-         {text: "Teacher certificate", link: primary_path, label: "Primary teacher certificate"},
+         {text: "Teacher certificate", link: cms_page_path("primary-certificate"), label: "Primary teacher certificate"},
          {text: "Enrichment", link: primary_enrichment_path, label: "Enrichment"},
          {text: "Early career teachers", link: cms_page_path("primary-early-careers"), label: "Primary ECT"},
          {text: "Trainee teachers", link: cms_page_path("primary-trainees"), label: "Primary Trainees"},

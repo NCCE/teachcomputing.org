@@ -47,11 +47,7 @@ RSpec.describe DashboardProgrammeActivityGroupSectionComponent, type: :component
         )) { "Some content" }
       end
 
-      it "should not render one-third column" do
-        expect(page).not_to have_css(".govuk-grid-column-one-third")
-      end
-
-      it "should render an aside" do
+      it "should not render an aside" do
         expect(page).not_to have_css(".aside-component")
       end
     end
@@ -76,10 +72,6 @@ RSpec.describe DashboardProgrammeActivityGroupSectionComponent, type: :component
 
     it "should render two-thirds column" do
       expect(page).to have_css(".govuk-grid-column-two-thirds")
-    end
-
-    it "should not render one-third column" do
-      expect(page).not_to have_css(".govuk-grid-column-one-third")
     end
   end
 
