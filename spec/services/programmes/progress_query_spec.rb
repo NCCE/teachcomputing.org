@@ -199,11 +199,20 @@ RSpec.describe Programmes::ProgressQuery do
     context "unenrolled" do
       let!(:user_1) { active_achievement(enrolled_user, course) }
       let!(:not_enrolled_user) { active_achievement(unenrolled_user, community_activity_1) }
+      let!(:user_with_activity_in_multiple_not_enrolled_programme) {
+        active_achievement(unenrolled_user, course_activity_in_multiple_programmes)
+      }
+      let!(:user_with_activity_in_multiple_and_enrolled_programme) {
+        user = active_achievement(enrolled_user, course_activity_in_multiple_programmes)
+        create(:user_programme_enrolment, user:, programme: other_programme)
+        user
+      }
 
       it "with no groups" do
         result = described_class.new(programme, :active, false).call
-        expect(result).to contain_exactly(not_enrolled_user)
+        expect(result).to contain_exactly(not_enrolled_user, user_with_activity_in_multiple_not_enrolled_programme)
         expect(result).not_to include user_1
+        expect(result).not_to include user_with_activity_in_multiple_and_enrolled_programme
       end
     end
   end

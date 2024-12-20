@@ -22,7 +22,7 @@ module Programmes
             achievements: {created_at: dates_by_state}
           )
           .where.not(
-            user_programme_enrolments: {programme: @programme}
+            id: UserProgrammeEnrolment.select(:user_id).where(programme: @programme)
           )
       end
       if @completed_groups.any?
