@@ -2,7 +2,11 @@ require "administrate/field/base"
 
 class ValidStatePickerField < Administrate::Field::Base
   def valid_states_for_change
-    resource.allowed_transitions
+    if resource.new_record?
+      resource.state_machine.class.states
+    else
+      resource.allowed_transitions
+    end
   end
 
   def name
