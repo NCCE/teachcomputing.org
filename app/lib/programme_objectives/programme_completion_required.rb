@@ -20,6 +20,10 @@ class ProgrammeObjectives::ProgrammeCompletionRequired
     false
   end
 
+  def multi_stage_group?
+    false
+  end
+
   private
 
   attr_reader :required_programme

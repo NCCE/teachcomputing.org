@@ -65,6 +65,10 @@ module Programmes
       false
     end
 
+    def show_extra_objectives_on_progress_bar?
+      false
+    end
+
     def certificate_path
       certificate_secondary_certificate_path
     end

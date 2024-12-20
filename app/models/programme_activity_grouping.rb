@@ -12,6 +12,7 @@ class ProgrammeActivityGrouping < ApplicationRecord
   scope :not_community, -> { where(community: false) }
 
   store_accessor :web_copy, %i[course_requirements aside_slug subtitle step_number], prefix: true
+  store_accessor :objectives, %i[progress_bar_stages], prefix: true
 
   validates :cms_slug, uniqueness: true
 
@@ -29,6 +30,10 @@ class ProgrammeActivityGrouping < ApplicationRecord
 
   def progress_bar_path
     "##{id}"
+  end
+
+  def multi_stage_objectives
+    objectives_progress_bar_stages
   end
 
   # completion counted
