@@ -35,7 +35,7 @@ module Programmes
     end
 
     def pathways?
-      true
+      false
     end
 
     def send_pending_mail?
