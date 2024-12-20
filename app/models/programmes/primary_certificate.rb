@@ -19,7 +19,7 @@ module Programmes
     end
 
     def public_path
-      primary_path
+      cms_page_path("primary-certificate")
     end
 
     def enrol_path(opts = {})
@@ -35,7 +35,7 @@ module Programmes
     end
 
     def pathways?
-      true
+      false
     end
 
     def send_pending_mail?

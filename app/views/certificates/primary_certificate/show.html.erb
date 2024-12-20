@@ -1,7 +1,9 @@
 <% meta_tag :title, t('.page_title') %>
 <% meta_tag :url, request.original_url %>
 
-<%= render CmsPageTitleComponent.new(title: "Your Teach primary computing certificate progress") %>
+<%= render CmsPageTitleComponent.new(title: "Your Teach primary computing certificate progress", status_message: @status_message) %>
+
+<%= render ProgrammeStatusComponent.new(user_programme_enrolment: @user_enrolment) %>
 
 <%= render GovGridRowComponent.new(background_color: "light-grey", padding: {top: 5, bottom: 5}) do |row| %>
   <%= row.with_column("two-thirds") do %>
