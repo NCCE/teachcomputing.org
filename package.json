@@ -17,7 +17,7 @@
     "ansi-html-community": "0.0.8",
     "channels": "^0.0.4",
     "cookieconsent": "^3.1.0",
-    "core-js": "^3.12.0",
+    "core-js": "^3.39.0",
     "dotenv-webpack": "^8.0.1",
     "flatpickr": "^4.6.9",
     "govuk-frontend": "5.4.0",

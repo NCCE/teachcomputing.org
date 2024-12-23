@@ -3542,10 +3542,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-"core-js@npm:^3.12.0, core-js@npm:^3.16.2":
+"core-js@npm:^3.16.2":
   version: 3.26.0
   resolution: "core-js@npm:3.26.0"
   checksum: 0149eb9d3909fde9c17626af3a6e625c326e8598d0bb5e6c5b48a18e5fcd4eaf48d4964d873667d8148542ff590fb98eb3f93618da114ca54999d6bc0349734b
+  languageName: node
+  linkType: hard
+
+"core-js@npm:^3.39.0":
+  version: 3.39.0
+  resolution: "core-js@npm:3.39.0"
+  checksum: 7a3670e9a2a89e0a049daa288d742d09f6e16d27a8945c5e2ef6fc45dc57e5c4bc5db589da05947486f54ae978d14cf27bd3fb1db0b9907000a611e8af37355b
   languageName: node
   linkType: hard
 
@@ -7799,7 +7806,7 @@ __metadata:
     ansi-html-community: 0.0.8
     channels: ^0.0.4
     cookieconsent: ^3.1.0
-    core-js: ^3.12.0
+    core-js: ^3.39.0
     dotenv-webpack: ^8.0.1
     eslint: ^7.25
     eslint-config-prettier: ^8.3.0
