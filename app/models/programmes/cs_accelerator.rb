@@ -50,16 +50,7 @@ module Programmes
       enrolment = user.user_programme_enrolments.find_by(programme_id: id)
       return false if enrolment.nil? || enrolment.in_state?(:complete, :unenrolled)
 
-      return false unless in_notifiable_period?(user)
-
       enough_activities_for_test?(user)
-    end
-
-    def in_notifiable_period?(user)
-      enrolment = user.user_programme_enrolments.find_by(programme_id: id)
-      notifiable_date_range = 48.hours.ago..Time.current
-
-      notifiable_date_range.cover?(enrolment.last_enrolled_at)
     end
 
     def notification_link
