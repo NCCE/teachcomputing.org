@@ -114,7 +114,7 @@ RSpec.describe("courses/_courses-details", type: :view) do
     end
 
     it "displays the time" do
-      expect(rendered).to have_css(".icon-clock", text: "Approximately 8 hours of self-study")
+      expect(rendered).to have_css(".icon-clock", text: "4 weeks")
     end
 
     it "does not display occurrences" do
