@@ -9,10 +9,11 @@ RSpec.describe Cms::CardWrapperComponent, type: :component do
     })
   end
 
-  context "with one card and no title" do
+  context "with one card and no title and no sub text" do
     before do
       render_inline(described_class.new(
         title: nil,
+        sub_text: nil,
         cards_per_row: 3,
         cards_block: resource_cards(1).cards_block
       ))
@@ -24,6 +25,10 @@ RSpec.describe Cms::CardWrapperComponent, type: :component do
 
     it "does not render a title" do
       expect(page).to have_css(".govuk-heading-m", count: 1)
+    end
+
+    it "does not render the sub text" do
+      expect(page).to have_css(".govuk-body-m", count: 1)
     end
   end
 
@@ -41,10 +46,11 @@ RSpec.describe Cms::CardWrapperComponent, type: :component do
     end
   end
 
-  context "with a title and background color" do
+  context "with a title and sub text background color" do
     before do
       render_inline(described_class.new(
         title: "Section Title",
+        sub_text: "Sub text",
         cards_per_row: 3,
         cards_block: resource_cards(1).cards_block,
         background_color: "light-grey"
@@ -53,6 +59,10 @@ RSpec.describe Cms::CardWrapperComponent, type: :component do
 
     it "has a title" do
       expect(page).to have_text("Section Title")
+    end
+
+    it "has the sub text" do
+      expect(page).to have_text("Sub text")
     end
 
     it "has a background color" do
