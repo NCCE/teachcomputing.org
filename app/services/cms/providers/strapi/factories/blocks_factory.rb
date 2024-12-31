@@ -115,6 +115,7 @@ module Cms
           def self.to_card_wrapper(strapi_data, cards_block, title_as_paragraph: false)
             DynamicComponents::CardWrapper.new(
               title: strapi_data[:sectionTitle],
+              sub_text: strapi_data[:subText],
               cards_block: cards_block,
               cards_per_row: strapi_data[:cardsPerRow],
               background_color: extract_color_name(strapi_data, :bkColor),
