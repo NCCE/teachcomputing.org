@@ -3,6 +3,9 @@
     <% if @title %>
       <h2 class="govuk-heading-m"><%= @title %></h2>
     <% end %>
+    <% if @sub_text %>
+      <p class="govuk-body-m"><%= @sub_text %></p>
+    <% end %>
     <div class="cms-card-wrapper__grid" style="<%= cards_per_row %>">
       <% @cards_block.each do |card| %>
         <div class="cms-card-wrapper__card">
