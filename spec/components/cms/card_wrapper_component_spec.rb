@@ -46,7 +46,7 @@ RSpec.describe Cms::CardWrapperComponent, type: :component do
     end
   end
 
-  context "with a title and sub text background color" do
+  context "with a title and sub text and background color" do
     before do
       render_inline(described_class.new(
         title: "Section Title",
