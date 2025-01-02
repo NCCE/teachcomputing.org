@@ -37,7 +37,6 @@ RSpec.describe ExternalLinkHelper do
     stem_secondary_ambassadors_url
     computing_ambassadors_url
     computing_quality_framework_url
-    sme_support_form_url
     school_trusts_form_url
     hubs_local_support_form_url
     i_belong_student_survey_url

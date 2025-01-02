@@ -114,4 +114,12 @@ describe ApplicationHelper do
       expect(helper.govuk_margin_classes({all: 5})).to eq(["govuk-!-margin-5"])
     end
   end
+
+  describe "#dark_background?" do
+    it "should return true with dark background" do
+      background_color = "purple"
+
+      expect(helper.dark_background?(background_color)).to eq(true)
+    end
+  end
 end
