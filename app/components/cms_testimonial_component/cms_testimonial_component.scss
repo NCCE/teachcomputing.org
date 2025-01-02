@@ -46,6 +46,11 @@
         @include govuk-font($size: 16);
         color: $grey-storm;
       }
+
+      .job-title--light {
+        @include govuk-font($size: 16);
+        color: $white;
+      }
     }
   }
 }
