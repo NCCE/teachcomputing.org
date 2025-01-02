@@ -8,7 +8,7 @@
   <%= link_to "Back", by_programme_admin_reports_path(programme_id: @programme.id) %>
   <% if @users %>
     <h1>Results</h1>
-    <h2>Matching users: <%= @users.count %></h2>
+    <h2>Matching users: <%= @users.uniq.count %></h2>
 
     <table>
       <thead>
@@ -19,7 +19,7 @@
       <tbody>
         <% @users.each do |user| %>
           <tr>
-            <td><%= user.email %></td>
+            <td><%= link_to user.email, admin_user_path(user)  %></td>
           </tr>
         <% end %>
       </tbody>
