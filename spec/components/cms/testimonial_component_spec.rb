@@ -32,4 +32,20 @@ RSpec.describe Cms::TestimonialComponent, type: :component do
   it "should render the quote text" do
     expect(page).to have_css(".cms-rich-text-block-component")
   end
+
+  context "with dark background color" do
+    before do
+      render_inline(described_class.new(
+        name:,
+        job_title:,
+        avatar:,
+        quote:,
+        background_color: "purple"
+      ))
+    end
+
+    it "should have the light job title class" do
+      expect(page).to have_css(".job-title--light")
+    end
+  end
 end
