@@ -36,6 +36,7 @@ module Cms
           achievement = achievements.last
           merges += [
             ["{last_cpd_completed_ago}", time_diff_words(achievement.updated_at)],
+            ["{last_cpd_completed_year}", "in #{achievement.updated_at.year}"],
             ["{last_cpd_title}", achievement.activity.title]
           ]
         end
