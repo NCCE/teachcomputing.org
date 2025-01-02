@@ -50,6 +50,7 @@ class AchievementDashboard < BaseDashboard
     activity
     user
     current_state
+    updated_at
   ].freeze
 
   # COLLECTION_FILTERS

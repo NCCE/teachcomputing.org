@@ -13,13 +13,13 @@ module Programmes
           .where(
             user_programme_enrolments: {programme: @programme},
             programme_activities: {programme: @programme, legacy: false},
-            achievements: {created_at: dates_by_state}
+            achievements: {updated_at: dates_by_state}
           )
       else
         User.joins(:user_programme_enrolments, achievements: {activity: :programme_activities})
           .where(
             programme_activities: {programme: @programme, legacy: false},
-            achievements: {created_at: dates_by_state}
+            achievements: {updated_at: dates_by_state}
           )
           .where.not(
             id: UserProgrammeEnrolment.select(:user_id).where(programme: @programme)

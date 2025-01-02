@@ -6,8 +6,11 @@
 
 <section class="main-content__body">
 
-  <% @programmes.each do |programme| %>
-    <%= link_to programme.title, by_programme_admin_reports_path(programme_id: programme.id) %>
-  <% end %>
+  <h1>User Activity Report</h1>
+  <ul>
+    <% @programmes.each do |programme| %>
+      <li><%= link_to programme.title, by_programme_admin_reports_path(programme_id: programme.id) %></li>
+    <% end %>
+  </ul>
 
 </section>
