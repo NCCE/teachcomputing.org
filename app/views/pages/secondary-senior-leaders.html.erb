@@ -3,7 +3,7 @@
 <% meta_tag :url, request.original_url %>
 
 <%# Hero: Support for primary senior leaders %>
-<%= render 'components/hero', 
+<%= render 'components/hero',
   hero_title: t('.hero.title'),
   subtitle: t('.hero.subtitle'),
   colour: 'lime-green-bg', full_width: true %>
@@ -44,12 +44,12 @@
         <div class="govuk-grid-column-two-thirds senior-leaders">
 
           <%= render partial: 'pages/computing_quality_framework' %>
-         
+
         </div>
         <div class="govuk-grid-column-one-third">
           <%= render AsideComponent.new(
             title: "Not currently offering GCSE Computer Science?",
-            text: "We have additional funding and subject matter expert support available to schools and colleges with an ambition to add GCSE Computer Science as an option to their students. #{link_to 'Find out more', non_gcse_url, class: "govuk-button ncce-button--white senior-aside-button govuk-!-margin-top-3"}".html_safe
+            text: "We have additional funding and subject matter expert support available to schools and colleges with an ambition to add GCSE Computer Science as an option to their students. #{link_to 'Find out more', cms_page_path("gcse-cs-support"), class: "govuk-button ncce-button--white senior-aside-button govuk-!-margin-top-3"}".html_safe
           ) %>
 
           <%= render AsideComponent.new(
@@ -141,7 +141,7 @@
               {
                 class_name: 'bordered-card--secondary-cert',
                 title: t('.resources.cards.enrichment.title'),
-                text: t('.resources.cards.enrichment.text.html', 
+                text: t('.resources.cards.enrichment.text.html',
                   teaching_link: link_to('Teaching secondary computing certificate', secondary_certificate_url)),
                 link: {
                   link_title: t('.resources.cards.enrichment.link.title'),

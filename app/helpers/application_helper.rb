@@ -65,4 +65,8 @@ module ApplicationHelper
     classes << "govuk-!-#{type}-#{options[:all]}" unless options[:all].nil?
     classes
   end
+
+  def dark_background?(background_color)
+    %w[purple].include?(background_color)
+  end
 end
