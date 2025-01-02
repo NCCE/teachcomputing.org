@@ -1,7 +1,7 @@
 module Cms
   module Models
     class EmailTemplate
-      attr_accessor :slug, :subject, :email_content, :programme
+      attr_accessor :slug, :email_content, :programme
 
       def initialize(slug:, subject:, email_content:, programme_slug:)
         @slug = slug
@@ -9,6 +9,10 @@ module Cms
         @email_content = email_content
         @programme_slug = programme_slug
         @programme = Programme.find_by(slug: @programme_slug)
+      end
+
+      def subject(user)
+        merge_content(@subject, user)
       end
 
       def process_blocks(blocks, user)

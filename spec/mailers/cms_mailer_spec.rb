@@ -9,6 +9,7 @@ RSpec.describe CmsMailer, type: :mailer do
   let!(:achievement) { create(:completed_achievement, activity:, user:) }
   let(:subject) { "I am a test email" }
   let(:slug) { "test-email-slug" }
+  let(:slug_with_merge_subject) { "test-email-subject-merge" }
   let(:email_content) {
     [
       Cms::Mocks::EmailComponents::Text.generate_raw_data(
@@ -56,13 +57,24 @@ RSpec.describe CmsMailer, type: :mailer do
       email_content:
     )
   }
+  let(:email_template_merge_subject) {
+    Cms::Mocks::EmailTemplate.generate_raw_data(
+      subject: "Congrats {first_name} you did {last_cpd_title}",
+      slug: slug_with_merge_subject,
+      email_content:
+    )
+  }
 
   before do
     stub_strapi_email_template(slug, email_template:)
-    @mail = CmsMailer.with(user_id: user.id, template_slug: slug).send_template
+    stub_strapi_email_template(slug_with_merge_subject, email_template: email_template_merge_subject)
   end
 
   describe "send_template" do
+    before do
+      @mail = CmsMailer.with(user_id: user.id, template_slug: slug).send_template
+    end
+
     it "renders the headers" do
       expect(@mail.subject).to include(subject)
       expect(@mail.to).to eq([user.email])
@@ -130,6 +142,18 @@ RSpec.describe CmsMailer, type: :mailer do
       it "renders activity title in text_body" do
         expect(@future_mail.text_part.body).to include("You completed #{second_activity.title}")
       end
+    end
+  end
+
+  describe "send_template with merged subject" do
+    before do
+      @mail = CmsMailer.with(user_id: user.id, template_slug: slug_with_merge_subject).send_template
+    end
+
+    it "renders the headers" do
+      expect(@mail.subject).to include("Congrats #{user.first_name} you did #{activity.title}")
+      expect(@mail.to).to eq([user.email])
+      expect(@mail.from).to eq(["noreply@teachcomputing.org"])
     end
   end
 end
