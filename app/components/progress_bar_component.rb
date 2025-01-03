@@ -20,19 +20,15 @@ class ProgressBarComponent < CmsWithAsidesComponent
   private
 
   def content_spacing_class(class_name)
-    if @programme.show_extra_objectives_on_progress_bar?
-      class_name + "-extra-objective-spacing"
-    else
-      class_name
-    end
+    return class_name unless @programme.show_extra_objectives_on_progress_bar?
+
+    "#{class_name}-extra-objective-spacing"
   end
 
   def user_enrolled_class
-    if @programme.user_enrolled?(current_user)
-      "icon-ticked-circle"
-    else
-      "icon-blank-circle"
-    end
+    return "icon-ticked-circle" if @programme.user_enrolled?(current_user)
+
+    "icon-blank-circle"
   end
 
   def course_bookings_status_class(objective, state)
@@ -48,5 +44,15 @@ class ProgressBarComponent < CmsWithAsidesComponent
     end
 
     "progress-bar-component__objective--icon #{icon_class}"
+  end
+
+  def programme_objective_status_class(objective)
+    classes = "progress-bar-component__objective--icon"
+    classes << if objective.user_complete?(current_user)
+      " icon-ticked-circle"
+    else
+      " icon-blank-circle"
+    end
+    classes
   end
 end
