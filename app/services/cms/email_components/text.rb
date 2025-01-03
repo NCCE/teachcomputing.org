@@ -1,6 +1,6 @@
 module Cms
   module EmailComponents
-    class Text
+    class Text < BaseComponent
       attr_accessor :blocks
 
       def initialize(blocks:)

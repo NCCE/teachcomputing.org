@@ -1,6 +1,6 @@
 module Cms
   module EmailComponents
-    class CourseList
+    class CourseList < BaseComponent
       attr_accessor :section_title, :courses, :remove_on_match
 
       def initialize(section_title:, courses:, remove_on_match:)
@@ -25,7 +25,7 @@ module Cms
 
       def has_match?(email_template, user)
         latest_cpd = user.sorted_completed_cpd_achievements_by(programme: email_template.programme).last&.activity
-        @courses.select { _1.activity == latest_cpd }.any?
+        @courses.select { _1.activity.id == latest_cpd.id }.any?
       end
 
       def render?(email_template, user)
@@ -34,11 +34,11 @@ module Cms
       end
 
       def render(email_template, user)
-        Cms::EmailCourseListComponent.new(courses: activity_list(email_template, user), section_title:) if render?(email_template, user)
+        Cms::EmailCourseListComponent.new(courses: activity_list(email_template, user), section_title:)
       end
 
       def render_text(email_template, user)
-        CourseListText.new(activity_list(email_template, user), section_title:) if render?(email_template, user)
+        CourseListText.new(activity_list(email_template, user), section_title:)
       end
     end
 
