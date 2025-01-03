@@ -1,6 +1,6 @@
 module Cms
   module EmailComponents
-    class Cta
+    class Cta < BaseComponent
       attr_accessor :text, :link
 
       def initialize(text:, link:)
