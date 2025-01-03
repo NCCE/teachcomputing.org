@@ -36,6 +36,7 @@ Rails.application.routes.draw do
     end
     resources :assessment_attempts, only: %i[index show]
     resources :assessment_attempt_transitions
+    resources :sent_emails, only: %i[index show]
   end
 
   namespace :api do
