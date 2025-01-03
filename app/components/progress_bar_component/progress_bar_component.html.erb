@@ -39,7 +39,7 @@
             <% end %>
           <% else %>
             <div class="progress-bar-component__objective">
-              <div class="progress-bar-component__objective--icon icon-blank-circle"></div>
+              <div class="<%= programme_objective_status_class(programme_objective) %>"></div>
               <div class="<%= content_spacing_class("progress-bar-component__objective--text") %>">
                 <% if @programme.show_extra_objectives_on_progress_bar? %>
                   <p class="govuk-body-s govuk-!-margin-0"><%= programme_objective.progress_bar_title.html_safe %></p>
