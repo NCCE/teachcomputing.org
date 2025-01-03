@@ -112,12 +112,8 @@ RSpec.describe Cms::EmailComponents::CourseList do
         create(:completed_achievement, user:, activity: activity1)
       }
 
-      it "should render as nil" do
-        expect(@course_list_with_remove.render(email_template, user)).to be_nil
-      end
-
-      it "should render text as nil" do
-        expect(@course_list_with_remove.render_text(email_template, user)).to be_nil
+      it "should return false for render?" do
+        expect(@course_list_with_remove.render?(email_template, user)).to be false
       end
     end
   end
