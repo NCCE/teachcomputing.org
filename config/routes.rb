@@ -42,6 +42,7 @@ Rails.application.routes.draw do
         post :report_results
       end
     end
+    resources :sent_emails, only: %i[index show]
   end
 
   namespace :api do

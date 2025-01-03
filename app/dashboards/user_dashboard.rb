@@ -26,7 +26,8 @@ class UserDashboard < BaseDashboard
     stem_achiever_organisation_no: Field::String,
     future_learn_organisation_memberships: Field::Text,
     forgotten: Field::Boolean,
-    audits: Field::HasMany.with_options(sort_by: "created_at", direction: "desc")
+    audits: Field::HasMany.with_options(sort_by: "created_at", direction: "desc"),
+    sent_emails: Field::HasMany.with_options(sort_by: "created_at", direction: "desc")
   }.freeze
 
   # COLLECTION_ATTRIBUTES
@@ -59,6 +60,7 @@ class UserDashboard < BaseDashboard
     achievements
     teacher_reference_number
     assessment_attempts
+    sent_emails
   ].freeze
 
   # FORM_ATTRIBUTES
