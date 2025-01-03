@@ -8,6 +8,7 @@ RSpec.describe ProgressBarComponent, type: :component do
 
   let(:primary_certificate) { create(:primary_certificate) }
   let(:secondary_certificate) { create(:secondary_certificate) }
+  let!(:cs_accelerator) { create(:cs_accelerator) }
 
   let!(:primary_programme_activity_groupings) do
     [
