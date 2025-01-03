@@ -7,10 +7,11 @@ RSpec.describe("Primary certificate page") do
   let!(:community_programme_activity_grouping) { create(:programme_activity_grouping, programme:, community: true) }
   let!(:user_programme_enrolment) { create(:user_programme_enrolment, user:, programme:) }
 
-  let(:activities) { create_list(:activity, 3, :community) }
+  let(:activities) { create_list(:activity, 3, :community, public_copy_description: "Activity description") }
 
   before do
     allow_any_instance_of(AuthenticationHelper).to receive(:current_user).and_return(user)
+    allow_any_instance_of(ActionController::Base).to receive(:protect_against_forgery?).and_return(true)
 
     mock_data = Cms::Mocks::Programme.generate_raw_data(slug: programme.slug)
     stub_strapi_programme(programme.slug, programme: mock_data)
@@ -26,18 +27,26 @@ RSpec.describe("Primary certificate page") do
     end
   end
 
-  it "creates a user achievement when activity is selected" do
+  it "adds the selected activity to the dashboard from the select" do
     activity = programme.programme_activity_groupings.community.first.activities.first
     visit primary_certificate_path
 
-    expect {
-      select activity.title, from: "activity"
-      sleep 1
-      click_on "Choose activity"
-      sleep 5
-    }.to change { user.reload.achievements.count }.by(1)
+    select activity.title, from: "activity"
+    click_on "Choose activity"
 
-    latest_achievement = user.achievements.last
-    expect(latest_achievement.activity_id).to eq(activity.id)
+    expect(page).to have_css(".primary-dashboard-community-activity__activity-details")
+    expect(page).to have_text(activity.title)
+    expect(page).to have_text(activity.public_copy_description)
+  end
+
+  it "removes the chosen activity when discard image is clicked" do
+    create(:achievement, user:, activity: programme.programme_activity_groupings.community.first.activities.first)
+    visit primary_certificate_path
+
+    within ".primary-dashboard-community-activity__activity-details-title" do
+      find("a").click
+    end
+
+    expect(page).to_not have_css(".primary-dashboard-community-activity__activity-details")
   end
 end
