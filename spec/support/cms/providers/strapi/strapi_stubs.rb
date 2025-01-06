@@ -162,7 +162,7 @@ module StrapiStubs
     end
   end
 
-  def stub_strapi_email_template(key, email_template: Cms::Mock::EmailTemplate.generate_raw_data)
+  def stub_strapi_email_template(key, email_template: Cms::Mocks::EmailTemplate.generate_raw_data)
     stub_request(:get, /^https:\/\/strapi.teachcomputing.org\/api\/email-templates\/#{key}/).to_return_json(body: {data: email_template})
   end
 
