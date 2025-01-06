@@ -1,14 +1,17 @@
 module Cms
   module Models
     class EmailTemplate
-      attr_accessor :slug, :email_content, :programme
+      attr_accessor :slug, :email_content, :programme, :completed_programme_activity_groups, :activity_state
 
-      def initialize(slug:, subject:, email_content:, programme_slug:)
+      def initialize(slug:, subject:, email_content:, programme_slug:, completed_programme_activity_group_slugs:, activity_state:)
         @slug = slug
         @subject = subject
         @email_content = email_content
         @programme_slug = programme_slug
         @programme = Programme.find_by(slug: @programme_slug)
+        @completed_programme_activity_group_slugs = completed_programme_activity_group_slugs
+        @completed_programme_activity_groups = completed_programme_activity_group_slugs.each { ProgrammeActivityGrouping.find_by(cms_slug: _1) }
+        @activity_state = activity_state
       end
 
       def subject(user)

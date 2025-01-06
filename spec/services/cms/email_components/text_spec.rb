@@ -8,7 +8,9 @@ RSpec.describe Cms::EmailComponents::Text do
       slug: "test",
       subject: "Test email",
       email_content: Cms::Mocks::RichBlocks.generate_data,
-      programme_slug: programme.slug
+      programme_slug: programme.slug,
+      completed_programme_activity_group_slugs: [],
+      activity_state: :active
     )
   }
 
