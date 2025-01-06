@@ -7,12 +7,8 @@ module Cms
 
       def self.resource_attribute_mappings
         [
-          {model: Cms::Models::EmailTemplate, key: nil}
+          {model: Cms::Models::EmailTemplate, key: nil, param_name: :template}
         ]
-      end
-
-      def template
-        data_models[0]
       end
 
       def self.cache_expiry
