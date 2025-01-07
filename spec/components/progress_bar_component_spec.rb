@@ -261,6 +261,47 @@ RSpec.describe ProgressBarComponent, type: :component do
         expect(page).to have_css(".icon-blank-circle", count: 2)
       end
     end
+
+    context "with completed community achievements" do
+      let(:community_activity_one) { create(:activity, :community) }
+      let(:community_activity_two) { create(:activity, :community) }
+
+      let(:community_programme_activity_one) {
+        create(:programme_activity,
+          programme: primary_certificate,
+          activity: community_activity_one)
+      }
+      let(:community_programme_activity_two) {
+        create(:programme_activity,
+          programme: primary_certificate,
+          activity: community_activity_two)
+      }
+
+      let(:completed_community_achievement_one) { create(:completed_achievement, :community, activity: community_activity_one) }
+      let(:completed_community_achievement_two) { create(:completed_achievement, :community, activity: community_activity_two) }
+
+      before do
+        allow_any_instance_of(AuthenticationHelper).to receive(:current_user).and_return(user)
+        allow(primary_certificate).to receive(:user_enrolled?).with(user).and_return(true)
+        stub_strapi_aside_section("test-aside")
+
+        primary_programme_activity_groupings[1].programme_activities << community_programme_activity_one
+        primary_programme_activity_groupings[2].programme_activities << community_programme_activity_two
+        user.achievements << completed_community_achievement_one << completed_community_achievement_two
+
+        render_inline(
+          described_class.new(
+            programme: primary_certificate
+          )
+        )
+      end
+
+      it "renders the correct icon status images" do
+        expect(page).to have_css(".icon-ticked-circle", count: 3)
+        expect(page).to_not have_css(".icon-pending-circle")
+        expect(page).to have_css(".icon-blank-circle", count: 2)
+      end
+    end
   end
 
   describe "with not primary certificate" do
@@ -303,6 +344,10 @@ RSpec.describe ProgressBarComponent, type: :component do
 
       it "renders the body text" do
         expect(page).to have_css("p", text: "Body text")
+      end
+
+      it "renders the programme completion required objective" do
+        expect(page).to have_text("Complete the KS3 and GCSE computer science subject knowledge")
       end
     end
   end
