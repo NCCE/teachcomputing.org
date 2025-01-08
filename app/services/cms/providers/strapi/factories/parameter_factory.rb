@@ -9,6 +9,10 @@ module Cms
                 populate: {featuredImage: {populate: [:alternativeText]}},
                 fields: [:title, :description]
               }
+            elsif model_class == Cms::Models::Slug
+              {
+                populate: [:slug]
+              }
             elsif model_class == Cms::Models::FeaturedImage
               {populate: [:alternativeText, :caption]}
             elsif model_class == Cms::Models::EnrichmentList
