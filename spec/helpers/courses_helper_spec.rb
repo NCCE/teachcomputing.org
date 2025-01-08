@@ -5,6 +5,7 @@ describe CoursesHelper, type: :helper do
   let(:activity) { create(:activity) }
   let(:activity_two) { create(:activity) }
   let(:achievement) { create(:achievement, user_id: user.id, activity_id: activity.id) }
+  let(:course_template) { Achiever::Course::Template.find_by_activity_code("CP428") }
 
   let(:courses) do
     (0..10).map do |i|
@@ -360,6 +361,14 @@ describe CoursesHelper, type: :helper do
 
     it "renders the correct copy for Primary" do
       expect(helper.certificate_card_summary(build(:primary_certificate))).to eq("This course is part of Teach primary computing")
+    end
+  end
+
+  describe "#course_duration_text" do
+    it "renders the correct duration text" do
+      stub_course_templates
+      stub_duration_units
+      expect(helper.course_duration_text(course_template)).to eq("5 hours")
     end
   end
 end
