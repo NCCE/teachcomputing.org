@@ -2,4 +2,8 @@
   display: flex;
   flex-direction: row;
   gap: 30px;
+
+  @include govuk-media-query($until: tablet) {
+    flex-direction: column;
+  }
 }
