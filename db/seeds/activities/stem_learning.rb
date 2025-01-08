@@ -2915,3 +2915,16 @@ Activity.find_or_initialize_by(stem_course_template_no: "4bd30860-03ac-ef11-b8e8
 
   activity.programmes = [primary_certificate, secondary_certificate]
 end.save!
+
+Activity.find_or_initialize_by(stem_course_template_no: "8c0a514a-ffcc-ef11-b8e8-6045bd0ddfc9").tap do |activity|
+  activity.title = "Advanced Data Structures for A-Level Computer Science"
+  activity.slug = "advanced-data-structures-for-a-level-computer-science"
+  activity.category = "face-to-face"
+  activity.remote_delivered_cpd = true
+  activity.provider = "stem-learning"
+  activity.stem_activity_code = "CP522"
+  activity.credit = 50
+  activity.always_on = false
+
+  activity.programmes = [secondary_certificate]
+end.save!
