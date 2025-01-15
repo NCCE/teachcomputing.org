@@ -25,10 +25,15 @@ class ProgressBarComponent < CmsWithAsidesComponent
     "#{class_name}-extra-objective-spacing"
   end
 
-  def user_enrolled_class
-    return "icon-ticked-circle" if @programme.user_enrolled?(current_user)
+  # Icon status classes
+  ICON_BLANK_CIRCLE_CLASS = "icon-blank-circle"
+  ICON_TICKED_CIRCLE_CLASS = "icon-ticked-circle"
+  ICON_PENDING_CIRCLE_CLASS = "icon-pending-circle"
 
-    "icon-blank-circle"
+  def user_enrolled_class
+    return ICON_TICKED_CIRCLE_CLASS if @programme.user_enrolled?(current_user)
+
+    ICON_BLANK_CIRCLE_CLASS
   end
 
   def course_bookings_status_class(objective, state)
@@ -36,11 +41,11 @@ class ProgressBarComponent < CmsWithAsidesComponent
 
     icon_class = case current_state
     when :required_credits
-      "icon-ticked-circle"
+      ICON_TICKED_CIRCLE_CLASS
     when :missing_credits
-      "icon-pending-circle"
+      ICON_PENDING_CIRCLE_CLASS
     else
-      "icon-blank-circle"
+      ICON_BLANK_CIRCLE_CLASS
     end
 
     "progress-bar-component__objective--icon #{icon_class}"
@@ -49,9 +54,9 @@ class ProgressBarComponent < CmsWithAsidesComponent
   def programme_objective_status_class(objective)
     classes = ["progress-bar-component__objective--icon"]
     classes << if objective.user_complete?(current_user)
-      "icon-ticked-circle"
+      ICON_TICKED_CIRCLE_CLASS
     else
-      "icon-blank-circle"
+      ICON_BLANK_CIRCLE_CLASS
     end
     classes.join(" ")
   end
