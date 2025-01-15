@@ -47,12 +47,12 @@ class ProgressBarComponent < CmsWithAsidesComponent
   end
 
   def programme_objective_status_class(objective)
-    classes = "progress-bar-component__objective--icon"
+    classes = ["progress-bar-component__objective--icon"]
     classes << if objective.user_complete?(current_user)
-      " icon-ticked-circle"
+      "icon-ticked-circle"
     else
-      " icon-blank-circle"
+      "icon-blank-circle"
     end
-    classes
+    classes.join(" ")
   end
 end
