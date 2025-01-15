@@ -2,7 +2,7 @@ require "rails_helper"
 
 RSpec.describe Cms::DynamicComponents::NcceButton do
   before do
-    @button = Cms::Providers::Strapi::Factories::ComponentFactory.to_ncce_button(Cms::Mocks::NcceButton.generate_data)
+    @button = Cms::Providers::Strapi::Factories::ComponentFactory.process_component(Cms::Mocks::NcceButton.generate_raw_data)
   end
 
   it "should render as CmsNcceButtonComponent" do
