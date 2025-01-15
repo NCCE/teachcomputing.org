@@ -8,16 +8,6 @@ module Cms
           end
 
           module ClassMethods
-            def as_image(image_data, default_size = :medium)
-              Models::Image.new(
-                url: image_data[:url],
-                alt: image_data[:alternativeText],
-                caption: image_data[:caption],
-                formats: image_data[:formats],
-                default_size:
-              )
-            end
-
             def extract_aside_sections(strapi_data)
               if strapi_data.dig(:asideSections, :data)
                 strapi_data[:asideSections][:data].collect { _1[:attributes] }
@@ -28,6 +18,16 @@ module Cms
 
             def extract_color_name(strapi_data, key)
               strapi_data[key][:data][:attributes][:name] if strapi_data.dig(key, :data)
+            end
+
+            def as_image(image_data, default_size = :medium)
+              Models::Image.new(
+                url: image_data[:url],
+                alt: image_data[:alternativeText],
+                caption: image_data[:caption],
+                formats: image_data[:formats],
+                default_size:
+              )
             end
 
             def to_content_block(data, with_wrapper: true, **options)
@@ -58,7 +58,7 @@ module Cms
               DynamicComponents::NcceButton.new(title: strapi_data[:title], link: strapi_data[:link], color: strapi_data[:buttonTheme])
             end
 
-            def icon(icon_data)
+            def to_icon(icon_data)
               DynamicComponents::Icon.new(
                 text: icon_data[:iconText],
                 image: to_image(icon_data, :iconImage, default_size: :small)
