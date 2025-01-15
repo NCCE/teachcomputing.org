@@ -3,6 +3,8 @@ module Cms
     module Strapi
       module Factories
         module ModelFactory
+          include BaseFactory
+
           def self.process_model(mapping, all_data)
             model_class = mapping[:model]
             key = mapping[:key].presence
@@ -36,7 +38,7 @@ module Cms
                   cms_models: strapi_data[:content].map { ComponentFactory.process_component(_1) }.compact
                 ),
                 show_heading_line: strapi_data[:showHeadingLine],
-                aside_icons: ComponentFactory.icon_block(strapi_data[:asideIcons])
+                aside_icons: BlocksFactory.to_icon_block(strapi_data[:asideIcons])
               )
             elsif model_class == Models::PageTitle
               model_class.new(
@@ -112,14 +114,6 @@ module Cms
             )
           end
 
-          def self.to_content_block(data, with_wrapper: true, **options)
-            data.map! do |block|
-              block[:image] = as_image(block[:image], :medium) if block[:type] == "image"
-              block
-            end
-            Models::TextBlock.new(blocks: data, with_wrapper:, **options)
-          end
-
           def self.to_featured_image(image_data, size = :large)
             Models::FeaturedImage.new(
               url: image_data[:url],
@@ -127,23 +121,6 @@ module Cms
               caption: image_data[:caption],
               formats: image_data[:formats],
               size:
-            )
-          end
-
-          def self.to_image(strapi_data, image_key, default_size: :medium)
-            if strapi_data.dig(image_key, :data)
-              image_data = strapi_data[image_key][:data][:attributes]
-              as_image(image_data, default_size)
-            end
-          end
-
-          def self.as_image(image_data, default_size = :medium)
-            Models::Image.new(
-              url: image_data[:url],
-              alt: image_data[:alternativeText],
-              caption: image_data[:caption],
-              formats: image_data[:formats],
-              default_size:
             )
           end
         end
