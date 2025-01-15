@@ -1,52 +1,93 @@
 .community-evidence-submission-modal-component {
-
-  .community-evidence-submission-modal-component__content{
-    padding: 1.25rem 1.125rem;
-    display: flex;
-    flex-direction: column;
-  }
-
-  .community-evidence-submission-modal-component__rejected {
-    background-color: $red;
-    padding: 1.25rem 1.125rem;
-
-    .community-evidence-submission-modal-component__rejected-text {
-      color: $white !important;
-    }
-
-  }
-}
-
-.community-evidence-submission-modal-component__completed_badge_container {
   display: flex;
-  width: 100%;
-  justify-content: flex-end;
 
-  @include govuk-media-query($from: tablet) {
-    text-align: right;
-    width: auto;
-  }
-}
-
-.community-evidence-submission-modal-component__objective-button-container {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  align-items: center;
-
-  @include govuk-media-query($from: tablet) {
-    flex: 0 1 250px;
-    align-items: flex-end;
+  @include govuk-media-query($until: tablet) {
+    width: 100%;
   }
 
   .progress-component {
     width: 100%;
   }
+
+  &__content{
+    padding: 1.25rem 1.125rem;
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__rejected {
+    background-color: $red;
+    padding: 1.25rem 1.125rem;
+
+    &-text {
+      color: $white !important;
+    }
+  }
+
+  &__completed-badge {
+    border: solid 2px #E6A614;
+    width: auto;
+    font-weight: bold;
+    font-size: 0.9em;
+    text-align: center;
+    padding: 2px 8px;
+    display: inline-block;
+
+    @include govuk-media-query($until: tablet) {
+      margin-bottom: 1rem;
+      width: 99%;
+      padding: 2px 0;
+    }
+
+    &-container {
+      display: flex;
+      width: 100%;
+      justify-content: flex-end;
+
+      @include govuk-media-query($from: tablet) {
+        text-align: right;
+        width: 100%;
+      }
+    }
+  }
+
+  &__objective-button-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+
+    @include govuk-media-query($from: tablet) {
+      flex: 0 1 250px;
+      align-items: flex-end;
+    }
+  }
+}
+
+.i-belong-dashboard {
+  border-bottom: 2px solid $ncce-grey;
+
+  .govuk-button {
+    padding: 10px 0;
+    margin-bottom: 10px;
+
+    @include govuk-media-query($from: tablet) {
+      width: 200px;
+    }
+  }
+
+  .community-evidence-submission-modal-component {
+    &__completed-badge {
+      padding: 10px 0;
+      display: inline-block;
+      margin-bottom: 1rem;
+      min-width: 196px;
+    }
+  }
 }
 
 .community-evidence-submission-modal-component--modal {
   display: flex;
-
 
   .ncce-modal {
     .ncce-modal--header {
@@ -65,52 +106,54 @@
       }
     }
 
-    .community-evidence-submission-modal-component__footer-actions {
-      display: grid;
-      grid-template-columns: 0.25fr 1fr;
-      align-items: center;
-      margin-top: 10px;
+    .community-evidence-submission-modal-component {
+      &__footer-actions {
+        display: grid;
+        grid-template-columns: 0.25fr 1fr;
+        align-items: center;
+        margin-top: 10px;
 
-      .progress-component__back {
-        grid-column: 1;
-        justify-self: start;
-      }
+        .progress-component__back {
+          grid-column: 1;
+          justify-self: start;
+        }
 
-      .progress-component__continue, :has(.progress-component__submit) {
-        grid-column: 2;
-        justify-self: end;
-      }
+        .progress-component__continue, :has(.progress-component__submit) {
+          grid-column: 2;
+          justify-self: end;
+        }
 
-      .progress-component__submit{
-        &-button-wrapper {
-          display: grid;
-          grid-template-columns: 1fr 1fr;
-          align-items: center;
-          grid-gap: 0 10px;
+        .progress-component__submit{
+          &-button-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            align-items: center;
+            grid-gap: 0 10px;
 
-          .save-draft {
-            grid-column: 1;
-            padding-left: 10px;
-            padding-right: 10px;
-          }
+            .save-draft {
+              grid-column: 1;
+              padding-left: 10px;
+              padding-right: 10px;
+            }
 
-          .ncce-modal--reopen {
-            grid-column: 2;
+            .ncce-modal--reopen {
+              grid-column: 2;
+            }
           }
         }
       }
-    }
 
-    .community-evidence-submission-modal-component__warning-text .govuk-body-m {
-      color: $red;
-    }
+      &__warning-text .govuk-body-m {
+        color: $red;
+      }
 
-    .community-evidence-submission-modal-component__section-link {
-    color: $hyper-link-blue;
+      &__section-link {
+        color: $hyper-link-blue;
 
-      &:hover {
-        color: $grey-dark-x;
-        cursor: pointer;
+        &:hover {
+          color: $grey-dark-x;
+          cursor: pointer;
+        }
       }
     }
 
