@@ -4,7 +4,7 @@ module Cms
       module Mocks
         class IconBlocks
           def self.as_model(icon_count: 1)
-            Factories::ComponentFactory.icon_block(generate_data(icon_count:))
+            Factories::BlocksFactory.to_icon_block(generate_data(icon_count:))
           end
 
           def self.generate_data(icon_count: 1)
@@ -14,7 +14,7 @@ module Cms
 
         class Icon
           def self.as_model
-            Factories::ComponentFactory.icon(generate_data)
+            Factories::BlocksFactory.icon(generate_data)
           end
 
           def self.generate_data
