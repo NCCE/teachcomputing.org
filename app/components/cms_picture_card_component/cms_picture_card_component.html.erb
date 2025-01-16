@@ -1,6 +1,6 @@
 <div class="cms-picture-card">
   <%= content_tag :div, class: image_classes do %>
-    <%= render CmsImageComponent.new(@image, show_caption: false, link: @link) %>
+    <%= render Cms::ImageComponent.new(@image, show_caption: false, link: @link) %>
   <% end %>
   <div class="cms-picture-card__title">
     <h2 class="govuk-heading-m"><%= link_to_if @link, @title, @link, class: "cms-picture-card__link" %></h2>

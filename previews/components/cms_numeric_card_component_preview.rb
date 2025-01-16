@@ -6,7 +6,7 @@ class CmsNumericCardComponentPreview < ViewComponent::Preview
       number_of_cards: 3
     )
 
-    render(CmsCardWrapperComponent.new(
+    render(Cms::CardWrapperComponent.new(
       title: card_section.title,
       cards_block: card_section.cards_block,
       background_color: "light-grey",

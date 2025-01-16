@@ -7,6 +7,6 @@ RSpec.describe Cms::DynamicComponents::CardWrapper do
   end
 
   it "should render as CmsCardWrapperComponent" do
-    expect(@card_wrapper.render).to be_a(CmsCardWrapperComponent)
+    expect(@card_wrapper.render).to be_a(Cms::CardWrapperComponent)
   end
 end

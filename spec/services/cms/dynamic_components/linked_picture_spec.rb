@@ -6,6 +6,6 @@ RSpec.describe Cms::DynamicComponents::LinkedPicture do
   end
 
   it "should render as CmsNcceButtonComponent" do
-    expect(@linked_picture.render).to be_a(CmsImageComponent)
+    expect(@linked_picture.render).to be_a(Cms::ImageComponent)
   end
 end

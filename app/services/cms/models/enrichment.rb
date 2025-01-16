@@ -16,7 +16,7 @@ module Cms
       end
 
       def render
-        CmsEnrichmentComponent.new(
+        Cms::EnrichmentComponent.new(
           title:,
           details:,
           link:,

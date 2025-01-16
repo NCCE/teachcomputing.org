@@ -8,7 +8,7 @@ class CmsResourceCardComponentPreview < ViewComponent::Preview
       button_link: "https://www.example.com/"
     )
 
-    render(CmsCardWrapperComponent.new(
+    render(CardWrapperComponent.new(
       title: card_section.title,
       cards_block: card_section.cards_block,
       background_color: "light-grey",
@@ -21,7 +21,7 @@ class CmsResourceCardComponentPreview < ViewComponent::Preview
       number_of_cards: 2
     )
 
-    render(CmsCardWrapperComponent.new(
+    render(CardWrapperComponent.new(
       title: card_section.title,
       cards_block: card_section.cards_block,
       background_color: card_section.background_color,
@@ -38,7 +38,7 @@ class CmsResourceCardComponentPreview < ViewComponent::Preview
       icon: {data: Cms::Mocks::Image.generate_raw_data}
     )
 
-    render(CmsCardWrapperComponent.new(
+    render(CardWrapperComponent.new(
       title: card_section.title,
       cards_block: card_section.cards_block,
       background_color: nil,

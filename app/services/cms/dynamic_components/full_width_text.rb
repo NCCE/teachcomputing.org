@@ -10,7 +10,7 @@ module Cms
       end
 
       def render
-        CmsFullWidthTextBlockComponent.new(blocks:, background_color:, show_bottom_border:)
+        Cms::FullWidthTextBlockComponent.new(blocks:, background_color:, show_bottom_border:)
       end
     end
   end
