@@ -5,7 +5,7 @@
       <div class="ncce-feat__grid">
         <% if @main_feature%>
           <div class="ncce-feat__main">
-              <%= render CmsImageComponent.new(@main_feature.featured_image.image, show_caption: false) %>
+              <%= render Cms::ImageComponent.new(@main_feature.featured_image.image, show_caption: false) %>
               <p class="govuk-body ncce-feat__date"><%= published_date(@main_feature.publish_date) %></p>
               <p class="govuk-heading-s ncce-feat__heading"><%= link_to @main_feature.title, cms_post_path(@main_feature.slug), class: 'ncce-link', data: { event_action: 'click', event_category: 'Homepage', event_label: 'News' } %></p>
               <p class="govuk-body ncce-feat__excerpt"><%= @main_feature.excerpt %></p>

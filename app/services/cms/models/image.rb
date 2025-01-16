@@ -21,7 +21,7 @@ module Cms
       end
 
       def render
-        CmsImageComponent.new(self)
+        Cms::ImageComponent.new(self)
       end
     end
   end

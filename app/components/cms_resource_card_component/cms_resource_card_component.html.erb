@@ -4,7 +4,7 @@
       <h2 class="govuk-heading-m"><%= @title %></h1>
     </div>
     <div class="cms-resource-card__top-content-image">
-      <%= render CmsImageComponent.new(@icon) if @icon %>
+      <%= render Cms::ImageComponent.new(@icon) if @icon %>
     </div>
   </div>
   <div class="cms-resource-card__body-text">

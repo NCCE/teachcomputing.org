@@ -4,7 +4,7 @@ class CmsPictureCardComponentPreview < ViewComponent::Preview
   def default
     card_section = Cms::Mocks::PictureCardSection.as_model(number_of_cards: 3)
 
-    render(CmsCardWrapperComponent.new(
+    render(Cms::CardWrapperComponent.new(
       title: card_section.title,
       cards_block: card_section.cards_block,
       background_color: nil,
@@ -15,7 +15,7 @@ class CmsPictureCardComponentPreview < ViewComponent::Preview
   def two_cards_per_row
     card_section = Cms::Mocks::PictureCardSection.as_model(number_of_cards: 4)
 
-    render(CmsCardWrapperComponent.new(
+    render(Cms::CardWrapperComponent.new(
       title: card_section.title,
       cards_block: card_section.cards_block,
       background_color: "light-grey",
@@ -26,7 +26,7 @@ class CmsPictureCardComponentPreview < ViewComponent::Preview
   def with_color_theme
     card_section = Cms::Mocks::PictureCardSection.as_model(number_of_cards: 3, color_scheme: "standard")
 
-    render(CmsCardWrapperComponent.new(
+    render(Cms::CardWrapperComponent.new(
       title: card_section.title,
       cards_block: card_section.cards_block,
       background_color: nil,

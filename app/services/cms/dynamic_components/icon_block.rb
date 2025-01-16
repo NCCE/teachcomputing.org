@@ -8,7 +8,7 @@ module Cms
       end
 
       def render
-        CmsIconBlockComponent.new(icons:)
+        Cms::IconBlockComponent.new(icons:)
       end
     end
 

@@ -24,7 +24,7 @@
           </div>
         <% elsif @title_image %>
           <div class="page-title__media">
-            <%= render CmsImageComponent.new(@title_image, show_caption: false) %> 
+            <%= render Cms::ImageComponent.new(@title_image, show_caption: false) %>
           </div>
         <% end %>
       </div>

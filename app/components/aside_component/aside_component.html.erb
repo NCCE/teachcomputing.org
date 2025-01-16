@@ -44,6 +44,6 @@
     </p>
   <% end %>
   <% if @aside_icons %>
-    <%= render CmsIconBlockComponent.new(icons: @aside_icons.icons) %>
+    <%= render Cms::IconBlockComponent.new(icons: @aside_icons.icons) %>
   <% end %>
 </div>
