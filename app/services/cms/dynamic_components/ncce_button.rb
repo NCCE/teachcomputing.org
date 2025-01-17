@@ -10,7 +10,7 @@ module Cms
       end
 
       def render
-        CmsNcceButtonComponent.new(title:, link:, color:)
+        Cms::NcceButtonComponent.new(title:, link:, color:)
       end
     end
   end

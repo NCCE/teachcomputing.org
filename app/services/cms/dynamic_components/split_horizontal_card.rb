@@ -14,7 +14,7 @@ module Cms
       end
 
       def render
-        CmsSplitHorizontalCardComponent.new(
+        Cms::SplitHorizontalCardComponent.new(
           card_content:,
           aside_content:,
           aside_icon:,

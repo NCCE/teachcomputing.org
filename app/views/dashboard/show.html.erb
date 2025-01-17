@@ -1,6 +1,6 @@
 <% meta_tag :title, 'Your progress - Teach Computing' %>
 
-<%= render CmsPageTitleComponent.new(title: "Progress overview") %>
+<%= render Cms::PageTitleComponent.new(title: "Progress overview") %>
 
 <% if @enrolled_certificates.any? %>
   <%= render GovGridRowComponent.new(background_color: "light-grey", padding: {top: 7, bottom: 1}) do |row| %>

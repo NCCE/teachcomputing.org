@@ -6,6 +6,6 @@ RSpec.describe Cms::DynamicComponents::NcceButton do
   end
 
   it "should render as CmsNcceButtonComponent" do
-    expect(@button.render).to be_a(CmsNcceButtonComponent)
+    expect(@button.render).to be_a(Cms::NcceButtonComponent)
   end
 end

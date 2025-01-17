@@ -6,6 +6,6 @@ RSpec.describe Cms::DynamicComponents::NumberedIconList do
   end
 
   it "should render as CmsNumberedIconListComponent" do
-    expect(@icon_list.render).to be_a(CmsNumberedIconListComponent)
+    expect(@icon_list.render).to be_a(Cms::NumberedIconListComponent)
   end
 end

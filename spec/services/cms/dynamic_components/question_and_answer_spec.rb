@@ -8,6 +8,6 @@ RSpec.describe Cms::DynamicComponents::QuestionAndAnswer do
   end
 
   it "should render as CmsQuestionAndAnswerComponent" do
-    expect(@qa_component.render).to be_a(CmsQuestionAndAnswerComponent)
+    expect(@qa_component.render).to be_a(Cms::QuestionAndAnswerComponent)
   end
 end
