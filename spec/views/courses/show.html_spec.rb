@@ -19,7 +19,7 @@ RSpec.describe("courses/show", type: :view) do
     assign(:occurrences, [])
     assign(:programmes, Programme.enrollable)
 
-    stub_template "courses/_aside-booking": ""
+    stub_template("courses/_aside-booking.html.erb" => "")
   end
 
   describe "renders" do
