@@ -1,7 +1,7 @@
 module Cms
   module Providers
     module Strapi
-      class Client
+      class Client < BaseClient
         def initialize
           @connection = Connection.api
         end
@@ -25,14 +25,7 @@ module Cms
 
           raise ActiveRecord::RecordNotFound unless response.status == 200
 
-          body = JSON.parse(response.body, symbolize_names: true)
-          {
-            resources: body[:data].map { map_collection(collection_class, _1) },
-            page: body[:meta][:pagination][:page],
-            page_size: body[:meta][:pagination][:pageSize],
-            page_number: body[:meta][:pagination][:pageCount],
-            total_records: body[:meta][:pagination][:total]
-          }
+          to_paginated_response(collection_class, JSON.parse(response.body, symbolize_names: true))
         end
 
         def one(resource_class, resource_id = nil, preview: false, preview_key: nil)
@@ -74,38 +67,6 @@ module Cms
           # convert preview param into strapi compliant version
           populate_params[0] = :versions if preview
           populate_params
-        end
-
-        def map_collection(collection_class, data)
-          to_resource(data[:id], data[:attributes], collection_class.collection_attribute_mappings.map { process_model(_1, data[:attributes]) })
-        end
-
-        def map_resource(resource_class, data, has_preview = false, preview_key = nil)
-          attributes = if has_preview && data[:attributes].has_key?(:versions) # deal with the fact plugin doesnt return versions for some models
-            versions = data[:attributes][:versions][:data]
-            version_to_show = versions.find { _1[:attributes][:versionNumber].to_s == preview_key } || versions.last
-            version_to_show[:attributes]
-          else
-            data[:attributes]
-          end
-
-          raise ActiveRecord::RecordNotFound if !has_preview && attributes[:publishedAt].blank?
-
-          to_resource(data[:id], attributes, resource_class.resource_attribute_mappings.map { process_model(_1, attributes) }, preview: has_preview)
-        end
-
-        def process_model(mapping, attributes)
-          Factories::ModelFactory.process_model(mapping, attributes)
-        end
-
-        def to_resource(id, attributes, data_models, preview: false)
-          {
-            id:,
-            data_models: data_models.compact, # remove any nil data models
-            created_at: attributes[:createdAt],
-            updated_at: attributes[:updatedAt],
-            published_at: preview ? DateTime.now.to_s : attributes[:publishedAt]
-          }
         end
       end
     end

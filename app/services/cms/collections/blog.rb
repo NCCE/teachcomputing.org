@@ -35,9 +35,9 @@ module Cms
         15.minutes
       end
 
-      def self.resource_key
-        "blogs"
-      end
+      def self.resource_key = "blogs"
+
+      def self.graphql_key = "blogs"
 
       def self.query_keys
         [:tag]
