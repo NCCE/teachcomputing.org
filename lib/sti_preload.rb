@@ -28,7 +28,7 @@ module StiPreload
 
         types_in_db.each do |type|
           logger.debug("Preloading STI type #{type}")
-          type.constantize
+          type.safe_constantize
         end
 
         self.preloaded = true
