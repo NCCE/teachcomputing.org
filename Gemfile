@@ -14,7 +14,7 @@ gem "aws-sdk-s3", require: false
 gem "bootsnap", ">= 1.5.1", require: false
 gem "cloudflare-rails", "~> 5.0.1"
 gem "combine_pdf", ">= 1.0.18"
-# gem 'concurrent-ruby', '1.3.4'
+gem "concurrent-ruby", "1.3.4"
 gem "connection_pool"
 gem "dalli"
 gem "enumerize"
