@@ -116,7 +116,14 @@ module Cms
     private_class_method def self.client
       case Rails.application.config.cms_provider
       when "strapi"
-        Providers::Strapi::Client.new
+        case Rails.application.config.strapi_connection_type
+        when "rest"
+          Providers::Strapi::Client.new
+        when "graphql"
+          Providers::Strapi::GraphqlClient.new
+        else
+          Providers::Strapi::Client.new
+        end
       else
         raise Errors::NoCmsProviderDefined
       end

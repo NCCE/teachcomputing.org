@@ -1,4 +1,6 @@
 module StrapiStubs
+  GRAPH_SCHEMA = File.new("spec/support/cms/providers/strapi/schema.json").read.freeze
+
   def stub_strapi_get_single_entity(resource_key)
     json_response = File.new("spec/support/cms/providers/strapi/single_type_response.json")
     stub_request(:get, /^https:\/\/strapi.teachcomputing.org\/api\/#{resource_key}?/).to_return(body: json_response)
@@ -113,6 +115,24 @@ module StrapiStubs
 
   def stub_strapi_programme(key, programme: Cms::Mocks::Programme.generate_raw_data)
     stub_request(:get, /^https:\/\/strapi.teachcomputing.org\/api\/programmes\/#{key}/).to_return_json(body: {data: programme})
+  end
+
+  def stub_strapi_graphql_query(resource_name, record)
+    response = {}
+    response[resource_name] = {data: Array.wrap(record)}
+    stub_request(:post, /^https:\/\/strapi.teachcomputing.org\/graphql/).to_return_json(body: {data: response})
+  end
+
+  def stub_strapi_graphql_collection_query(resource_name, records)
+    response = {}
+    response[resource_name] = to_strapi_collection(records)
+    stub_request(:post, /^https:\/\/strapi.teachcomputing.org\/graphql/).to_return_json(body: {data: response})
+  end
+
+  def stub_strapi_graphql_query_missing(resource_name)
+    response = {}
+    response[resource_name] = {data: []}
+    stub_request(:post, /^https:\/\/strapi.teachcomputing.org\/graphql/).to_return_json(body: {data: response})
   end
 
   private
