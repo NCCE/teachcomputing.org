@@ -6,6 +6,6 @@ RSpec.describe Cms::DynamicComponents::SplitHorizontalCard do
   end
 
   it "should render as CmsSplitHorizontalCardComponent" do
-    expect(@card.render).to be_a(CmsSplitHorizontalCardComponent)
+    expect(@card.render).to be_a(Cms::SplitHorizontalCardComponent)
   end
 end

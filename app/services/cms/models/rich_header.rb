@@ -23,7 +23,7 @@ module Cms
       end
 
       def render
-        CmsRichTextBlockComponent.new(blocks: Array.wrap(@content), with_wrapper: false)
+        Cms::RichTextBlockComponent.new(blocks: Array.wrap(@content), with_wrapper: false)
       end
     end
   end

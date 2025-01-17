@@ -13,7 +13,7 @@ module Cms
       end
 
       def render
-        CmsQuestionAndAnswerComponent.new(question:, answer:, aside_sections:, answer_icon_block:, aside_alignment:, show_background_triangle:)
+        Cms::QuestionAndAnswerComponent.new(question:, answer:, aside_sections:, answer_icon_block:, aside_alignment:, show_background_triangle:)
       end
     end
   end

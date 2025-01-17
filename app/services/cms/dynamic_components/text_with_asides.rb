@@ -10,7 +10,7 @@ module Cms
       end
 
       def render
-        CmsTextWithAsidesComponent.new(blocks:, asides:, background_color:)
+        Cms::TextWithAsidesComponent.new(blocks:, asides:, background_color:)
       end
     end
   end

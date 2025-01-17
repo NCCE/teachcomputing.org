@@ -11,7 +11,7 @@ module Cms
       end
 
       def render
-        CmsTestimonialComponent.new(name:, job_title:, avatar:, quote:)
+        Cms::TestimonialComponent.new(name:, job_title:, avatar:, quote:)
       end
     end
   end
