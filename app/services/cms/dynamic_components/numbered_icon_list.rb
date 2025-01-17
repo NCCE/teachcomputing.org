@@ -11,7 +11,7 @@ module Cms
       end
 
       def render
-        CmsNumberedIconListComponent.new(title:, title_icon:, points:, aside_sections:)
+        Cms::NumberedIconListComponent.new(title:, title_icon:, points:, aside_sections:)
       end
     end
   end

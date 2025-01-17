@@ -10,7 +10,7 @@ module Cms
       end
 
       def render
-        CmsTestimonialRowComponent.new(title:, testimonials:, background_color:)
+        Cms::TestimonialRowComponent.new(title:, testimonials:, background_color:)
       end
     end
   end

@@ -6,6 +6,6 @@ RSpec.describe Cms::DynamicComponents::NumericCard do
   end
 
   it "should render as CmsNumericCardComponent" do
-    expect(@numeric_card.render).to be_a(CmsNumericCardComponent)
+    expect(@numeric_card.render).to be_a(Cms::NumericCardComponent)
   end
 end

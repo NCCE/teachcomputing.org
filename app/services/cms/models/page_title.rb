@@ -11,7 +11,7 @@ module Cms
       end
 
       def render
-        CmsPageTitleComponent.new(title:, sub_text:, title_image:, title_video_url:)
+        Cms::PageTitleComponent.new(title:, sub_text:, title_image:, title_video_url:)
       end
     end
   end
