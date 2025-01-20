@@ -1,6 +1,6 @@
-import ApplicationController from "../../webpacker/javascript/controllers/application_controller"
+import ApplicationController from "../../../webpacker/javascript/controllers/application_controller"
 
-export default class EnrichmentListComponentController extends ApplicationController {
+export default class CmsEnrichmentListComponentController extends ApplicationController {
 
   static targets = ["termSelect", "ageGroupSelect", "typeSelect", "enrichment", "filterCount", "filterWrapper"];
 
