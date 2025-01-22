@@ -1,5 +1,3 @@
-require "sti_preload"
-
 class EnrichmentGrouping < ApplicationRecord
 
   belongs_to :programme

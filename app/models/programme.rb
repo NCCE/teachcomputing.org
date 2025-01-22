@@ -1,5 +1,3 @@
-require "sti_preload"
-
 class Programme < ApplicationRecord
   include Rails.application.routes.url_helpers
 
