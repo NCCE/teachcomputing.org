@@ -25,6 +25,17 @@
   }
 
   &__completed-badge {
+    &-container {
+      display: flex;
+      width: 100%;
+      justify-content: flex-end;
+
+      @include govuk-media-query($from: tablet) {
+        text-align: right;
+        width: 100%;
+      }
+    }
+
     border: solid 2px #E6A614;
     width: auto;
     font-weight: bold;
@@ -37,17 +48,6 @@
       margin-bottom: 1rem;
       width: 99%;
       padding: 2px 0;
-    }
-
-    &-container {
-      display: flex;
-      width: 100%;
-      justify-content: flex-end;
-
-      @include govuk-media-query($from: tablet) {
-        text-align: right;
-        width: 100%;
-      }
     }
   }
 

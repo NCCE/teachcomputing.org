@@ -1,4 +1,9 @@
 class ProgressBarComponent < CmsWithAsidesComponent
+  # Icon status classes
+  ICON_BLANK_CIRCLE_CLASS = "icon-blank-circle".freeze
+  ICON_TICKED_CIRCLE_CLASS = "icon-ticked-circle".freeze
+  ICON_PENDING_CIRCLE_CLASS = "icon-pending-circle".freeze
+
   delegate :current_user, to: :helpers
 
   def initialize(programme:, aside_slug: nil, title: nil, body: nil, background_color: "light-grey")
@@ -24,11 +29,6 @@ class ProgressBarComponent < CmsWithAsidesComponent
 
     "#{class_name}-extra-objective-spacing"
   end
-
-  # Icon status classes
-  ICON_BLANK_CIRCLE_CLASS = "icon-blank-circle"
-  ICON_TICKED_CIRCLE_CLASS = "icon-ticked-circle"
-  ICON_PENDING_CIRCLE_CLASS = "icon-pending-circle"
 
   def user_enrolled_class
     return ICON_TICKED_CIRCLE_CLASS if @programme.user_enrolled?(current_user)
