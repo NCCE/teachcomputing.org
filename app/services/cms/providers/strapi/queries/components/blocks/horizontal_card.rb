@@ -5,16 +5,16 @@ module Cms
         module Components
           module Blocks
             class HorizontalCard < BaseComponentQuery
-              def self.fields
-                super("ComponentBlocksHorizontalCard",
-                  <<~GRAPHQL.freeze
-                    hozcard_title: title
-                    textContent
-                    imageLink
-                    externalTitle
-                    spacing
-                  GRAPHQL
-                )
+              def self.name = "ComponentBlocksHorizontalCard"
+
+              def self.base_fields
+                <<~GRAPHQL.freeze
+                  hozcard_title: title
+                  hozcar_textContent: textContent
+                  imageLink
+                  externalTitle
+                  spacing
+                GRAPHQL
               end
             end
           end

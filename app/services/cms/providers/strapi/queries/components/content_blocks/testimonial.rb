@@ -4,13 +4,15 @@ module Cms
       module Queries
         module Components
           module ContentBlocks
-            class LinkedPicture < BaseComponentQuery
-              def self.name = "ComponentContentBlocksLinkedPicture"
+            class Testimonial < BaseComponentQuery
+              def self.name = "ComponentContentBlocksTestimonial"
 
               def self.base_fields
                 <<~GRAPHQL.freeze
-                  #{SharedFields.image_fields(:image)}
-                  link
+                  quote
+                  #{SharedFields.image_fields(:avatar)}
+                  name
+                  jobTitle
                 GRAPHQL
               end
             end

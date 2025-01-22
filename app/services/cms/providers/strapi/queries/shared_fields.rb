@@ -3,6 +3,18 @@ module Cms
     module Strapi
       module Queries
         module SharedFields
+          def self.programme_slug(name = "programme")
+            <<~GRAPHQL.freeze
+              #{name} {
+                data {
+                  attributes {
+                    slug
+                  }
+                }
+              }
+            GRAPHQL
+          end
+
           def self.icon_block(name)
             <<~GRAPHQL.freeze
               #{name} {

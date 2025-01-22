@@ -4,14 +4,15 @@ module Cms
       module Queries
         module Components
           module Blocks
-            class FullWidthText < BaseComponentQuery
-              def self.name = "ComponentBlocksFullWidthText"
+            class PageTitle < BaseComponentQuery
+              def self.name = "ComponentBlocksPageTitlte"
 
               def self.base_fields
                 <<~GRAPHQL.freeze
-                  fwt_textContent: textContent
-                  showBottomBorder
-                  #{SharedFields.color_theme(:backgroundColor)}
+                  title
+                  subText
+                  titleVideoUrl
+                  #{SharedFields.image_fields("titleImage")}
                 GRAPHQL
               end
             end

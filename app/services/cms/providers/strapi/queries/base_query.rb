@@ -9,7 +9,7 @@ module Cms
             [Models::BlogPreview, BlogPreview],
             [Models::FeaturedImage, FeaturedImage],
             [Models::Slug, Slug],
-            [Models::PageTitle, PageTitle],
+            [Models::PageTitle, Components::Blocks::PageTitle],
             [Models::SimpleTitle, SimpleField],
             [Models::TextBlock, SimpleField],
             [Models::Seo, Seo],
@@ -31,7 +31,7 @@ module Cms
             fields = []
             @collection_class.collection_attribute_mappings.each do |mapping|
               query_map = find_query_map(mapping[:model])
-              fields << query_map[1].fields(mapping[:key]) if query_map
+              fields << query_map[1].embed(mapping[:key]) if query_map
             end
             fields
           end
@@ -40,7 +40,7 @@ module Cms
             fields = []
             @collection_class.resource_attribute_mappings.each do |mapping|
               query_map = find_query_map(mapping[:model])
-              fields << query_map[1].fields(mapping[:key]) if query_map
+              fields << query_map[1].embed(mapping[:key]) if query_map
             end
             fields
           end

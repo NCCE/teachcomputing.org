@@ -4,12 +4,17 @@ module Cms
       module Queries
         module Components
           module ContentBlocks
-            class TextBlock < BaseComponentQuery
-              def self.name = "ComponentContentBlocksTextBlock"
+            class ResourceCard < BaseComponentQuery
+              def self.name = "ComponentContentBlocksResourceCard"
 
               def self.base_fields
                 <<~GRAPHQL.freeze
+                  title
+                  #{SharedFields.image_fields(:icon)}
+                  #{SharedFields.color_theme(:colorTheme)}
                   textContent
+                  buttonText
+                  buttonLink
                 GRAPHQL
               end
             end
