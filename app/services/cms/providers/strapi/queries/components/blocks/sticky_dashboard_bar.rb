@@ -4,14 +4,12 @@ module Cms
       module Queries
         module Components
           module Blocks
-            class FullWidthText < BaseComponentQuery
-              def self.name = "ComponentBlocksFullWidthText"
+            class StickyDashboardBar < BaseComponentQuery
+              def self.name = "ComponentBlocksStickyDashboardBar"
 
               def self.base_fields
                 <<~GRAPHQL.freeze
-                  fwt_textContent: textContent
-                  showBottomBorder
-                  #{SharedFields.color_theme(:backgroundColor)}
+                  #{SharedFields.programme_slug}
                 GRAPHQL
               end
             end

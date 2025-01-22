@@ -4,13 +4,12 @@ module Cms
       module Queries
         module Components
           module ContentBlocks
-            class LinkedPicture < BaseComponentQuery
-              def self.name = "ComponentContentBlocksLinkedPicture"
+            class FileLink < BaseComponentQuery
+              def self.name = "ComponentContentBlocksFileLink"
 
               def self.base_fields
                 <<~GRAPHQL.freeze
-                  #{SharedFields.image_fields(:image)}
-                  link
+                  #{SharedFields.image_fields(:file)}
                 GRAPHQL
               end
             end

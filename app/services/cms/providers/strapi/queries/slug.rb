@@ -3,7 +3,7 @@ module Cms
     module Strapi
       module Queries
         class Slug
-          def self.fields(_name)
+          def self.embed(_name)
             <<~GRAPHQL.freeze
               slug
             GRAPHQL

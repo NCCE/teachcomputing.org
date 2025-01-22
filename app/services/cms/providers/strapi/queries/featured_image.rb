@@ -3,7 +3,7 @@ module Cms
     module Strapi
       module Queries
         class FeaturedImage
-          def self.fields(name)
+          def self.embed(name)
             <<~GRAPHQL.freeze
               #{SharedFields.image_fields(name)}
             GRAPHQL

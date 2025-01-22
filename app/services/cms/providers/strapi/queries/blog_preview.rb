@@ -3,7 +3,7 @@ module Cms
     module Strapi
       module Queries
         class BlogPreview
-          def self.fields(_name)
+          def self.embed(_name)
             <<~GRAPHQL.freeze
               #{SharedFields.image_fields("featuredImage")}
               title

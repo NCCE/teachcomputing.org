@@ -4,15 +4,16 @@ module Cms
       module Queries
         module Components
           module Blocks
-            class PictureCardSection < BaseComponentQuery
-              def self.name = "ComponentBlocksPictureCardSection"
+            class ResourceCardSection < BaseComponentQuery
+              def self.name = "ComponentBlocksResourceCardSection"
 
               def self.base_fields
                 <<~GRAPHQL.freeze
+                  #{ContentBlocks::ResourceCard.embed(:resourceCards)}
                   sectionTitle
                   cardsPerRow
                   #{SharedFields.color_theme(:bkColor)}
-                  #{ContentBlocks::PictureCard.embed(:pictureCards)}
+                  subText
                 GRAPHQL
               end
             end

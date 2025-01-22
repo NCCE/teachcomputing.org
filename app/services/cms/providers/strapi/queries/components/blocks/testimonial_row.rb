@@ -4,13 +4,13 @@ module Cms
       module Queries
         module Components
           module Blocks
-            class FullWidthText < BaseComponentQuery
-              def self.name = "ComponentBlocksFullWidthText"
+            class TestimonialRow < BaseComponentQuery
+              def self.name = "ComponentBlocksTestimonialRow"
 
               def self.base_fields
                 <<~GRAPHQL.freeze
-                  fwt_textContent: textContent
-                  showBottomBorder
+                  title
+                  #{ContentBlocks::Testimonial.embed(:testimonials)}
                   #{SharedFields.color_theme(:backgroundColor)}
                 GRAPHQL
               end

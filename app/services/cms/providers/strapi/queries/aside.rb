@@ -4,11 +4,15 @@ module Cms
       module Queries
         class Aside
           CONTENT_COMPONENTS = [
-            Components::ContentBlocks::TextBlock,
-            Components::ContentBlocks::LinkedPicture
+            Components::ContentBlocks::EnrolButton,
+            Components::ContentBlocks::FileLink,
+            Components::Buttons::NcceButton,
+            Components::ContentBlocks::LinkedPicture,
+            Components::ContentBlocks::LinkWithIcon,
+            Components::ContentBlocks::TextBlock
           ]
 
-          def self.fields(_name)
+          def self.embed(_name)
             <<~GRAPHQL.freeze
               slug
               title
@@ -17,7 +21,7 @@ module Cms
               #{SharedFields.icon_block(:asideIcons)}
               content {
                 __typename
-                #{CONTENT_COMPONENTS.map(&:fields).join("\n")}
+                #{CONTENT_COMPONENTS.map(&:fragment).join("\n")}
               }
             GRAPHQL
           end

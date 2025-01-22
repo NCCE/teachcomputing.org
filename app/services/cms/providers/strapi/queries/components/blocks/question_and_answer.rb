@@ -5,17 +5,17 @@ module Cms
         module Components
           module Blocks
             class QuestionAndAnswer < BaseComponentQuery
-              def self.fields
-                super("ComponentBlocksQuestionAndAnswer",
-                  <<~GRAPHQL.freeze
-                    question
-                    answer
-                    asideAlignment
-                    showBackgroundTriangle
-                    #{SharedFields.aside_sections(:asideSections)}
-                    #{SharedFields.icon_block(:answerIcons)}
-                  GRAPHQL
-                )
+              def self.name = "ComponentBlocksQuestionAndAnswer"
+
+              def self.base_fields
+                <<~GRAPHQL.freeze
+                  question
+                  answer
+                  asideAlignment
+                  showBackgroundTriangle
+                  #{SharedFields.aside_sections(:asideSections)}
+                  #{SharedFields.icon_block(:answerIcons)}
+                GRAPHQL
               end
             end
           end
