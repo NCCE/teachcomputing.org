@@ -4,20 +4,17 @@ module Cms
       module Queries
         module Components
           module Blocks
-            class CommunityActivityList < BaseComponentQuery
-              def self.name = "ComponentBlocksCommunityActivityList"
+            class NumberedIconList < BaseComponentQuery
+              def self.name = "ComponentBlocksNumberedIconList"
 
               def self.base_fields
                 <<~GRAPHQL.freeze
-                  intro
+                  #{SharedFields.image_fields(:titleIcon)}
                   title
-                  group {
-                    data {
-                      attributes {
-                        slug
-                      }
-                    }
+                  points {
+                    textContent
                   }
+                  #{SharedFields.aside_sections(:asideSections)}
                 GRAPHQL
               end
             end

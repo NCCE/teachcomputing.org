@@ -4,10 +4,26 @@ module Cms
       module Queries
         module Components
           class BaseComponentQuery
-            def self.fields(name, fields)
+            def self.name
+              raise NotImplementedError
+            end
+
+            def self.base_fields
+              raise NotImplementedError
+            end
+
+            def self.embed(embed_name)
+              <<~GRAPHQL.freeze
+                #{embed_name} {
+                  #{base_fields}
+                }
+              GRAPHQL
+            end
+
+            def self.fragment
               <<~GRAPHQL.freeze
                 ... on #{name} {
-                  #{fields}
+                  #{base_fields}
                 }
               GRAPHQL
             end

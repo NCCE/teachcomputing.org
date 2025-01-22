@@ -5,14 +5,14 @@ module Cms
         module Components
           module Blocks
             class TextWithAsides < BaseComponentQuery
-              def self.fields
-                super("ComponentBlocksTextWithAsides",
-                  <<~GRAPHQL.freeze
-                    textContent
-                    #{SharedFields.aside_sections}
-                    #{SharedFields.color_theme(:bkColor)}
-                  GRAPHQL
-                )
+              def self.name = "ComponentBlocksTextWithAsides"
+
+              def self.base_fields
+                <<~GRAPHQL.freeze
+                  textContent
+                  #{SharedFields.aside_sections}
+                  #{SharedFields.color_theme(:bkColor)}
+                GRAPHQL
               end
             end
           end

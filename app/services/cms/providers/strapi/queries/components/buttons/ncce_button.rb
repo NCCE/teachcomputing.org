@@ -3,14 +3,15 @@ module Cms
     module Strapi
       module Queries
         module Components
-          module ContentBlocks
-            class LinkedPicture < BaseComponentQuery
-              def self.name = "ComponentContentBlocksLinkedPicture"
+          module Buttons
+            class NcceButton < BaseComponentQuery
+              def self.name = "ComponentButtonsNcceButton"
 
               def self.base_fields
                 <<~GRAPHQL.freeze
-                  #{SharedFields.image_fields(:image)}
-                  link
+                  title
+                  ncceButton_link: link
+                  buttonTheme
                 GRAPHQL
               end
             end
