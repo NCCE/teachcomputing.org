@@ -1,5 +1,4 @@
 class EnrichmentGrouping < ApplicationRecord
-
   belongs_to :programme
   has_many :enrichment_entries
 
