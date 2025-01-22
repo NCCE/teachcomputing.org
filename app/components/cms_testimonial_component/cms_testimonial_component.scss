@@ -45,6 +45,11 @@
       .job-title {
         @include govuk-font($size: 16);
         color: $grey-storm;
+
+        &--light {
+          @include govuk-font($size: 16);
+          color: $white;
+        }
       }
     }
   }

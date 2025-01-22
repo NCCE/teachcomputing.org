@@ -6,7 +6,7 @@
 
     <div class="cms-testimonials-row">
       <% @testimonials.each do |testimonial| %>
-       <%= render testimonial.render %>
+       <%= render testimonial.render(background_color: @background_color) %>
       <% end %>
     </div>
 
