@@ -1686,7 +1686,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@rails/actiontext@npm:^7.0.0":
+"@rails/actiontext@npm:^7.1.0":
   version: 7.2.201
   resolution: "@rails/actiontext@npm:7.2.201"
   dependencies:
@@ -1706,7 +1706,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@rails/activestorage@npm:^7.0.0":
+"@rails/activestorage@npm:^7.1.0":
   version: 7.2.201
   resolution: "@rails/activestorage@npm:7.2.201"
   dependencies:
@@ -1715,7 +1715,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@rails/ujs@npm:^7.0.0":
+"@rails/ujs@npm:^7.1.0":
   version: 7.1.501
   resolution: "@rails/ujs@npm:7.1.501"
   checksum: 8d009970360eed8451afb639bc0e27663dc467161fd73ea0472e4e05be626ea5eb92c41a8643a342287acba2f464d3009312365b5691087db5bf6d7ee2dac37e
@@ -7794,9 +7794,9 @@ __metadata:
     "@babel/eslint-parser": ^7.13.14
     "@hotwired/stimulus": ^3.2.2
     "@hotwired/stimulus-webpack-helpers": ^1.0.1
-    "@rails/actiontext": ^7.0.0
-    "@rails/activestorage": ^7.0.0
-    "@rails/ujs": ^7.0.0
+    "@rails/actiontext": ^7.1.0
+    "@rails/activestorage": ^7.1.0
+    "@rails/ujs": ^7.1.0
     "@rails/webpacker": ^5.4.3
     ansi-html-community: 0.0.8
     channels: ^0.0.4
