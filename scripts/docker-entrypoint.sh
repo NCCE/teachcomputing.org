@@ -14,6 +14,7 @@ fi
 
 echo "-Installing the bundle (this may take a little while if the volume is empty):"
 bundle config set force_ruby_platform true
+bundle update pry
 bundle install
 
 echo "- Configuring databases:"
