@@ -44,7 +44,7 @@ gem "prawn"
 gem "puma"
 gem "rack-attack"
 gem "rack-cors", require: "rack/cors"
-gem "rails", "~> 7.0.0"
+gem "rails", "~> 7.1.0"
 gem "rails-healthcheck"
 gem "rest-client"
 gem "scout_apm"
@@ -62,11 +62,6 @@ gem "webpacker"
 gem "wicked"
 # must match the version used to generate the schema
 gem "graphql", "<= 1.10.10"
-
-group :development do
-  gem "better_errors"
-  gem "binding_of_caller"
-end
 
 group :development, :test do
   gem "brakeman"
@@ -92,6 +87,8 @@ end
 group :development do
   # Access an interactive console on exception pages or by calling 'console' anywhere in the code.
   gem "awesome_print"
+  gem "better_errors"
+  gem "binding_of_caller"
   gem "erb_lint", require: false
   gem "listen"
   gem "rack-mini-profiler"
@@ -100,7 +97,7 @@ group :development do
   gem "spring"
   gem "spring-watcher-listen"
   gem "web-console", ">= 3.3.0"
-  gem "bullet"
+  gem "bullet", "~> 7.1.0"
   gem "standard"
   gem "standard-rails"
 end
