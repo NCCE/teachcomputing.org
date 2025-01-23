@@ -1,7 +1,7 @@
 source "https://rubygems.org"
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby "3.1.2"
+ruby "3.3.6"
 
 gem "activestorage-validator"
 gem "administrate", "~> 0.20.0"
@@ -14,14 +14,13 @@ gem "aws-sdk-s3", require: false
 gem "bootsnap", ">= 1.5.1", require: false
 gem "cloudflare-rails", "~> 5.0.1"
 gem "combine_pdf", ">= 1.0.18"
-gem "concurrent-ruby", "1.3.4"
 gem "connection_pool"
 gem "dalli"
 gem "enumerize"
-gem "faraday", "~> 1.10", require: false # Graphlient requires faraday v1
+gem "faraday"
 gem "fog-aws"
 gem "geocoder", ">= 1.6.6"
-gem "graphlient", "= 0.6.0" # v0.7 causes issues with stubbed requests https://github.com/ashkan18/graphlient/issues/100
+gem "graphlient"
 gem "htmlentities"
 gem "humanize"
 gem "jwt"
@@ -61,8 +60,7 @@ gem "view_component"
 gem "webpacker"
 gem "wicked"
 # must match the version used to generate the schema
-gem "graphql", "<= 1.10.10"
-
+gem "graphql"
 group :development, :test do
   gem "brakeman"
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
