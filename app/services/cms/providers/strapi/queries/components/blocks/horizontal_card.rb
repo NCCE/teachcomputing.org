@@ -9,8 +9,8 @@ module Cms
 
               def self.base_fields
                 <<~GRAPHQL.freeze
-                  hozcard_title: title
-                  hozcar_textContent: textContent
+                  hozcard__title: title
+                  hozcar__textContent: textContent
                   imageLink
                   externalTitle
                   spacing

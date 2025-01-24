@@ -14,6 +14,8 @@ module Cms
             [Models::TextBlock, SimpleField],
             [Models::Seo, Seo],
             [Models::DynamicZone, DynamicZone],
+            [Models::EnrichmentDynamicZone, EnrichmentDynamicZone],
+            [Models::EnrichmentList, EnrichmentList],
             [Models::Aside, Aside]
           ]
 
@@ -45,10 +47,15 @@ module Cms
             fields
           end
 
-          def all_query(page, page_size)
+          def all_query(page, page_size, params = {})
+            pagination_options = {
+              page:,
+              pageSize: page_size
+            }
+            filters = Factories::QueryFactory.generate_parameters(@collection_class, params)
             <<~GRAPHQL.freeze
               query {
-                #{resource_name}(pagination: { page: #{page}, pageSize: #{page_size} }) {
+                #{resource_name}(#{query_string(:pagination, pagination_options)} #{query_string(:filters, filters)} #{sort_string(@collection_class.sort)}) {
                   meta {
                     pagination {
                       page pageSize pageCount total
@@ -69,9 +76,11 @@ module Cms
           end
 
           def single_query(id)
+            filters = {}
+            filters[resource_filter] = {eq: id}
             <<~GRAPHQL.freeze
               query {
-                #{resource_name}(filters: { #{resource_filter}: {eq: "#{id}"}}) {
+                #{resource_name}( #{query_string(:filters, filters)} ) {
                   data {
                     id
                     attributes {
@@ -84,6 +93,26 @@ module Cms
                 }
               }
             GRAPHQL
+          end
+
+          def sort_string(value)
+            return "sort: \"#{value}\"" if value
+            ""
+          end
+
+          def query_string(key, value)
+            "#{key}: #{query_value_string(value)}" unless value.empty?
+          end
+
+          def query_value_string(value)
+            case value
+            when String
+              "\"#{value}\""
+            when Hash
+              "{ #{value.map { |k, v| "#{k}: #{query_value_string(v)}" }.join(", ")} }"
+            else
+              value.to_s
+            end
           end
         end
       end
