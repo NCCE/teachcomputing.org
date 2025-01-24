@@ -12,15 +12,23 @@ module StrapiStubs
   end
 
   def stub_strapi_get_single_blog_post(resource_key, id: nil, title: nil, seo: {})
-    stub_request(:get, /^https:\/\/strapi.teachcomputing.org\/api\/#{resource_key}?/).to_return_json(body: {
-      data: Cms::Mocks::Blog.generate_raw_data(slug: resource_key, publish_date: Faker::Date.backward.to_s, id:, title:, seo:)
-    })
+    blog_post = Cms::Mocks::Blog.generate_raw_data(slug: resource_key, publish_date: Faker::Date.backward.to_s, id:, title:, seo:)
+    if as_graphql
+      stub_strapi_graphql_query("blogs", blog_post)
+    else
+      stub_request(:get, /^https:\/\/strapi.teachcomputing.org\/api\/#{resource_key}?/).to_return_json(body: {data: blog_post})
+    end
   end
 
   def stub_strapi_get_single_unpublished_blog_post(resource_key)
-    stub_request(:get, /^https:\/\/strapi.teachcomputing.org\/api\/#{resource_key}?/).to_return_json(body: {
-      data: Cms::Mocks::Blog.generate_raw_data(slug: resource_key, publish_date: nil, published_at: nil)
-    })
+    unpublished_post = Cms::Mocks::Blog.generate_raw_data(slug: resource_key, publish_date: nil, published_at: nil)
+    if as_graphql
+      stub_strapi_graphql_query("blogs", unpublished_post)
+    else
+      stub_request(:get, /^https:\/\/strapi.teachcomputing.org\/api\/#{resource_key}?/).to_return_json(body: {
+        data: unpublished_post
+      })
+    end
   end
 
   def stub_strapi_get_collection_entity(resource_key)
@@ -30,17 +38,19 @@ module StrapiStubs
   end
 
   def stub_strapi_get_empty_collection_entity(resource_key)
-    stub_request(:get, /^https:\/\/strapi.teachcomputing.org\/api\/#{resource_key}?/).to_return_json(body: empty_collection_response)
+    if as_graphql
+      stub_strapi_graphql_collection_query_missing(rest_resource_name_to_graph(resource_key))
+    else
+      stub_request(:get, /^https:\/\/strapi.teachcomputing.org\/api\/#{resource_key}?/).to_return_json(body: empty_collection_response)
+    end
   end
 
   def stub_strapi_not_found(resource_key)
-    stub_request(:get, /^https:\/\/strapi.teachcomputing.org\/api\/#{resource_key}*/).to_return_json(body: not_found_response, status: 404)
-  end
-
-  def stub_strapi_blog_tags
-    stub_request(:get, /^https:\/\/strapi.teachcomputing.org\/api\/blog-tags/).to_return_json(body: to_strapi_collection(
-      Array.new(5) { Cms::Mocks::BlogTag.generate_raw_data }
-    ))
+    if as_graphql
+      stub_strapi_graphql_query_missing(rest_resource_name_to_graph(resource_key))
+    else
+      stub_request(:get, /^https:\/\/strapi.teachcomputing.org\/api\/#{resource_key}*/).to_return_json(body: not_found_response, status: 404)
+    end
   end
 
   def stub_strapi_media_upload
@@ -64,78 +74,144 @@ module StrapiStubs
   end
 
   def stub_featured_posts_error
-    stub_request(:get, /^https:\/\/strapi.teachcomputing.org\/api\/blogs/)
-      .to_return(status: [500, "Internal Server Error"])
+    if as_graphql
+      stub_request(:post, /^https:\/\/strapi.teachcomputing.org\/graphql/)
+        .to_return(status: [500, "Internal Server Error"])
+    else
+      stub_request(:get, /^https:\/\/strapi.teachcomputing.org\/api\/blogs/)
+        .to_return(status: [500, "Internal Server Error"])
+    end
   end
 
   def stub_strapi_blog_collection(blogs: nil)
     blog_list = blogs.presence || Array.new(5) { Cms::Mocks::Blog.generate_raw_data }
-    stub_request(:get, /^https:\/\/strapi.teachcomputing.org\/api\/blogs/).to_return_json(body: to_strapi_collection(
-      blog_list
-    ))
+    if as_graphql
+      stub_strapi_graphql_collection_query("blogs", blog_list)
+    else
+      stub_request(:get, /^https:\/\/strapi.teachcomputing.org\/api\/blogs/).to_return_json(body: to_strapi_collection(blog_list))
+    end
   end
 
   def stub_strapi_blog_collection_with_tag(tag)
-    stub_request(:get, /^https:\/\/strapi.teachcomputing.org\/api\/blogs\?.*(filters\[blog_tags\]\[slug\]\[\$eq\]=#{tag}).*/).to_return_json(body: to_strapi_collection(
-      Array.new(5) { Cms::Mocks::Blog.generate_raw_data }
-    ))
+    blogs = Array.new(5) { Cms::Mocks::Blog.generate_raw_data }
+    if as_graphql
+      stub_strapi_graphql_collection_query("blogs", blogs)
+    else
+      stub_request(:get, /^https:\/\/strapi.teachcomputing.org\/api\/blogs\?.*(filters\[blog_tags\]\[slug\]\[\$eq\]=#{tag}).*/).to_return_json(body: to_strapi_collection(blogs))
+    end
   end
 
   def stub_strapi_aside_section(key, aside_data: {})
-    stub_request(:get, /^https:\/\/strapi.teachcomputing.org\/api\/aside-sections\/#{key}/).to_return_json(body: to_strapi_data_structure(Cms::Mocks::AsideSection.generate_data(slug: key, **aside_data)))
+    aside_section = Cms::Mocks::AsideSection.generate_raw_data(slug: key, **aside_data)
+    if as_graphql
+      stub_strapi_graphql_query("asideSections", aside_section)
+    else
+      stub_request(:get, /^https:\/\/strapi.teachcomputing.org\/api\/aside-sections\/#{key}/).to_return_json(body: aside_section)
+    end
   end
 
   def stub_strapi_aside_section_missing(key)
-    stub_request(:get, /^https:\/\/strapi.teachcomputing.org\/api\/aside-sections\/#{key}/).to_return_json(body: not_found_response, status: 404)
+    if as_graphql
+      stub_strapi_graphql_query_missing("asideSections")
+    else
+      stub_request(:get, /^https:\/\/strapi.teachcomputing.org\/api\/aside-sections\/#{key}/).to_return_json(body: not_found_response, status: 404)
+    end
   end
 
   def stub_strapi_enrichment_page(key, enrichment_page: nil)
     enrichment_page = enrichment_page.presence || Cms::Mocks::EnrichmentPage.generate_raw_data(slug: key)
-    stub_request(:get, /^https:\/\/strapi.teachcomputing.org\/api\/enrichment-pages\/#{key}/)
-      .to_return_json(body: {data: enrichment_page})
+    if as_graphql
+      stub_strapi_graphql_query("enrichmentPages", enrichment_page)
+    else
+      stub_request(:get, /^https:\/\/strapi.teachcomputing.org\/api\/enrichment-pages\/#{key}/)
+        .to_return_json(body: {data: enrichment_page})
+    end
   end
 
   def stub_strapi_enrichment_collection(enrichment_pages: Array.new(2) { Cms::Mocks::EnrichmentPage.generate_raw_data })
-    stub_request(:get, /^https:\/\/strapi.teachcomputing.org\/api\/enrichment-pages/)
-      .to_return_json(body: to_strapi_collection(enrichment_pages))
+    if as_graphql
+      stub_strapi_graphql_collection_query("enrichmentPages", enrichment_pages)
+    else
+      stub_request(:get, /^https:\/\/strapi.teachcomputing.org\/api\/enrichment-pages/)
+        .to_return_json(body: to_strapi_collection(enrichment_pages))
+    end
   end
 
   def stub_strapi_web_page_collection(web_pages: nil)
     web_page_list = web_pages.presence || Array.new(5) { Cms::Mocks::WebPage.generate_raw_data }
-    stub_request(:get, /^https:\/\/strapi.teachcomputing.org\/api\/web-pages/).to_return_json(body: to_strapi_collection(web_page_list))
+    if as_graphql
+      stub_strapi_graphql_collection_query("webPages", web_page_list)
+    else
+      stub_request(:get, /^https:\/\/strapi.teachcomputing.org\/api\/web-pages/).to_return_json(body: to_strapi_collection(web_page_list))
+    end
   end
 
   def stub_strapi_web_page(key, page: Cms::Mocks::WebPage.generate_raw_data)
-    stub_request(:get, /^https:\/\/strapi.teachcomputing.org\/api\/web-pages\/#{key}/).to_return_json(body: {data: page})
+    if as_graphql
+      stub_strapi_graphql_query("webPages", page)
+    else
+      stub_request(:get, /^https:\/\/strapi.teachcomputing.org\/api\/web-pages\/#{key}/).to_return_json(body: {data: page})
+    end
   end
 
   def stub_strapi_web_page_not_found(key)
-    stub_request(:get, /^https:\/\/strapi.teachcomputing.org\/api\/web-pages\/#{key}/).to_return_json(body: not_found_response, status: 404)
+    if as_graphql
+      stub_strapi_graphql_query_missing("webPages")
+    else
+      stub_request(:get, /^https:\/\/strapi.teachcomputing.org\/api\/web-pages\/#{key}/).to_return_json(body: not_found_response, status: 404)
+    end
   end
 
   def stub_strapi_programme(key, programme: Cms::Mocks::Programme.generate_raw_data)
-    stub_request(:get, /^https:\/\/strapi.teachcomputing.org\/api\/programmes\/#{key}/).to_return_json(body: {data: programme})
+    if as_graphql
+      stub_strapi_graphql_query("programmes", programme)
+    else
+      stub_request(:get, /^https:\/\/strapi.teachcomputing.org\/api\/programmes\/#{key}/).to_return_json(body: {data: programme})
+    end
   end
 
   def stub_strapi_graphql_query(resource_name, record)
     response = {}
     response[resource_name] = {data: Array.wrap(record)}
-    stub_request(:post, /^https:\/\/strapi.teachcomputing.org\/graphql/).to_return_json(body: {data: response})
+    stub_request(:post, /^https:\/\/strapi.teachcomputing.org\/graphql/)
+      .with(body: /#{resource_name}/)
+      .to_return_json(body: {data: response})
   end
 
   def stub_strapi_graphql_collection_query(resource_name, records)
     response = {}
     response[resource_name] = to_strapi_collection(records)
-    stub_request(:post, /^https:\/\/strapi.teachcomputing.org\/graphql/).to_return_json(body: {data: response})
+    stub_request(:post, /^https:\/\/strapi.teachcomputing.org\/graphql/)
+      .with(body: /#{resource_name}/)
+      .to_return_json(body: {data: response})
+  end
+
+  def stub_strapi_graphql_collection_query_missing(resource_name)
+    response = {}
+    response[resource_name] = to_strapi_collection([])
+    stub_request(:post, /^https:\/\/strapi.teachcomputing.org\/graphql/)
+      .with(body: /#{resource_name}/)
+      .to_return_json(body: {data: response})
   end
 
   def stub_strapi_graphql_query_missing(resource_name)
     response = {}
     response[resource_name] = {data: []}
-    stub_request(:post, /^https:\/\/strapi.teachcomputing.org\/graphql/).to_return_json(body: {data: response})
+    stub_request(:post, /^https:\/\/strapi.teachcomputing.org\/graphql/)
+      .with(body: /#{resource_name}/)
+      .to_return_json(body: {data: response})
   end
 
   private
+
+  def rest_resource_name_to_graph(resource_key)
+    resource_name = resource_key.include?("/") ? resource_key.split("/").first : resource_key
+    resource_name.tr("-", "_").camelize(:lower)
+  end
+
+  def as_graphql
+    Rails.application.config.strapi_connection_type == "graphql"
+  end
 
   def to_strapi_collection(records, page: 1, page_size: 10, page_count: 1)
     {
@@ -147,19 +223,6 @@ module StrapiStubs
           pageCount: page_count,
           total: records.count
         }
-      }
-    }
-  end
-
-  def to_strapi_data_structure(attributes)
-    {
-      data: {
-        id: Faker::Number.number,
-        attributes: attributes.merge({
-          publishedAt: DateTime.now.to_s,
-          createdAt: DateTime.now.to_s,
-          updatedAt: DateTime.now.to_s
-        })
       }
     }
   end

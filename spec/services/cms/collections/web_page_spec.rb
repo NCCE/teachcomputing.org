@@ -28,7 +28,6 @@ RSpec.describe Cms::Collections::WebPage do
         Cms::Mocks::WebPage.generate_raw_data(slug: "second-test-page-slug")
       ]
       stub_strapi_web_page_collection(web_pages:)
-      stub_strapi_web_page("single-page", page: Cms::Mocks::WebPage.generate_raw_data(slug: "single-page"))
     end
     it "should return correctly in collection" do
       collection = described_class.all(1, 10)
@@ -38,6 +37,7 @@ RSpec.describe Cms::Collections::WebPage do
     end
 
     it "should return correctly for single page" do
+      stub_strapi_web_page("single-page", page: Cms::Mocks::WebPage.generate_raw_data(slug: "single-page"))
       page = described_class.get("single-page")
       expect(page.slug).to eq("single-page")
     end

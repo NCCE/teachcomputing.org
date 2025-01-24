@@ -15,14 +15,9 @@ RSpec.describe Cms::Resource do
     end
   end
 
-  context "with valid config" do
+  context "with valid config for rest" do
     before do
-      stub_const("ENV",
-        {
-          "CMS_PROVIDER" => "strapi",
-          "STRAPI_API_KEY" => "strapi",
-          "STRAPI_URL" => "http://strapi.teachcomputing.rpfdev.com/api"
-        })
+      allow(Rails.application.config).to receive(:strapi_connection_type).and_return("rest")
     end
 
     context "single resource" do

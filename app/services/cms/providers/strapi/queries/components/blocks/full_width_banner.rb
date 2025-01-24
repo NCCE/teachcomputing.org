@@ -9,7 +9,7 @@ module Cms
 
               def self.base_fields
                 <<~GRAPHQL.freeze
-                  fwb_textContent: textContent
+                  fwb__textContent: textContent
                   #{SharedFields.image_fields(:image)}
                   imageSide
                   buttons {

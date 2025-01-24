@@ -9,7 +9,7 @@ module Cms
 
               def self.base_fields
                 <<~GRAPHQL.freeze
-                  fwt_textContent: textContent
+                  fwt__textContent: textContent
                   showBottomBorder
                   #{SharedFields.color_theme(:backgroundColor)}
                 GRAPHQL

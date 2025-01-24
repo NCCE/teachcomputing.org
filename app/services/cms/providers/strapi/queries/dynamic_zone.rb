@@ -5,7 +5,6 @@ module Cms
         class DynamicZone
           COMPONENTS = [
             Components::Blocks::CommunityActivityList,
-            Components::Blocks::TextWithAsides,
             Components::Blocks::HorizontalCard,
             Components::Blocks::FullWidthText,
             Components::Blocks::PictureCardSection,

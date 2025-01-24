@@ -9,8 +9,8 @@ module Cms
 
               def self.base_fields
                 <<~GRAPHQL.freeze
-                  shc_cardContent: cardContent
-                  shc_asideContent: asideContent
+                  shc__cardContent: cardContent
+                  shc__asideContent: asideContent
                   asideTitle
                   #{SharedFields.image_fields(:asideIcon)}
                   sectionTitle

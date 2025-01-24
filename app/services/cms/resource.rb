@@ -44,6 +44,12 @@ module Cms
       raise NotImplementedError
     end
 
+    def self.graphql_key
+      raise NotImplementedError
+    end
+
+    def self.sort = nil
+
     def self.get(resource_id = nil, preview: false, preview_key: nil)
       data = if preview
         # dont use cache for previews
@@ -120,7 +126,11 @@ module Cms
         when "rest"
           Providers::Strapi::Client.new
         when "graphql"
-          Providers::Strapi::GraphqlClient.new
+          if Rails.env.test?
+            Providers::Strapi::GraphqlClient.new(schema_path: StrapiStubs::GRAPH_SCHEMA)
+          else
+            Providers::Strapi::GraphqlClient.new
+          end
         else
           Providers::Strapi::Client.new
         end

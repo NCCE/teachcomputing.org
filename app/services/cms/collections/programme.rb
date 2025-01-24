@@ -25,9 +25,9 @@ module Cms
         15.minutes
       end
 
-      def self.resource_key
-        "programmes"
-      end
+      def self.resource_key = "programmes"
+
+      def self.graphql_key = "programmes"
     end
   end
 end

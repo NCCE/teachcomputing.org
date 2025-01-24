@@ -31,7 +31,7 @@ module Cms
           {model: Models::Slug, key: nil},
           {model: Models::Seo, key: :seo},
           {model: Models::PageTitle, key: :pageTitle},
-          {model: Models::DynamicZone, key: :content},
+          {model: Models::EnrichmentDynamicZone, key: :content},
           {model: Models::EnrichmentList, key: :enrichments}
         ]
       end
@@ -40,9 +40,9 @@ module Cms
         4.hours
       end
 
-      def self.resource_key
-        "enrichment-pages"
-      end
+      def self.resource_key = "enrichment-pages"
+
+      def self.graphql_key = "enrichmentPages"
     end
   end
 end

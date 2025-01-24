@@ -9,8 +9,8 @@ module Cms
 
               def self.base_fields
                 <<~GRAPHQL.freeze
-                  esc_cardContent: cardContent
-                  esc_asideContent: asideContent
+                  esc__cardContent: cardContent
+                  esc__asideContent: asideContent
                   sectionTitle
                   #{SharedFields.color_theme(:bkColor)}
                   #{SharedFields.color_theme(:colorTheme)}

@@ -40,4 +40,44 @@ RSpec.describe Cms::Providers::Strapi::GraphqlClient do
     expect(response[:resources]).to be_a Array
     expect(response[:resources].length).to eq(5)
   end
+
+  context "with failing connection" do
+    before do
+      failing_connection = double("api")
+      allow(failing_connection).to receive(:execute).and_raise(StandardError)
+      allow(Cms::Providers::Strapi::GraphqlConnection).to receive(:api).and_return(failing_connection)
+    end
+    it "one raises RecordNotFound" do
+      expect do
+        client.one(Cms::Collections::Blog, "test")
+      end.to raise_error(ActiveRecord::RecordNotFound)
+    end
+
+    it "all raises RecordNotFound" do
+      expect do
+        client.all(Cms::Collections::Blog, 1, 50, {query: {tag: "ai"}})
+      end.to raise_error(ActiveRecord::RecordNotFound)
+    end
+  end
+
+  context "#clean_aliases" do
+    let(:input) {
+      {
+        "__typename" => "ComponentBlocksTestBlock",
+        "alias__test" => "somevalue",
+        "not_aliased" => "another value"
+      }
+    }
+
+    it "should return correct name for aliased version" do
+      response = client.clean_aliases(input)
+      expect(response).to have_key(:test)
+      expect(response).to have_key(:not_aliased)
+    end
+
+    it "should not effect __typename" do
+      response = client.clean_aliases(input)
+      expect(response).to have_key(:__typename)
+    end
+  end
 end
