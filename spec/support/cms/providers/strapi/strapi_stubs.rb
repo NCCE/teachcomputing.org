@@ -219,19 +219,33 @@ module StrapiStubs
   def stub_strapi_graphql_query(resource_name, record)
     response = {}
     response[resource_name] = {data: Array.wrap(record)}
-    stub_request(:post, /^https:\/\/strapi.teachcomputing.org\/graphql/).to_return_json(body: {data: response})
+    stub_request(:post, /^https:\/\/strapi.teachcomputing.org\/graphql/)
+      .with(body: /#{resource_name}/)
+      .to_return_json(body: {data: response})
   end
 
   def stub_strapi_graphql_collection_query(resource_name, records)
     response = {}
     response[resource_name] = to_strapi_collection(records)
-    stub_request(:post, /^https:\/\/strapi.teachcomputing.org\/graphql/).to_return_json(body: {data: response})
+    stub_request(:post, /^https:\/\/strapi.teachcomputing.org\/graphql/)
+      .with(body: /#{resource_name}/)
+      .to_return_json(body: {data: response})
+  end
+
+  def stub_strapi_graphql_collection_query_missing(resource_name)
+    response = {}
+    response[resource_name] = to_strapi_collection([])
+    stub_request(:post, /^https:\/\/strapi.teachcomputing.org\/graphql/)
+      .with(body: /#{resource_name}/)
+      .to_return_json(body: {data: response})
   end
 
   def stub_strapi_graphql_query_missing(resource_name)
     response = {}
     response[resource_name] = {data: []}
-    stub_request(:post, /^https:\/\/strapi.teachcomputing.org\/graphql/).to_return_json(body: {data: response})
+    stub_request(:post, /^https:\/\/strapi.teachcomputing.org\/graphql/)
+      .with(body: /#{resource_name}/)
+      .to_return_json(body: {data: response})
   end
 
   private
