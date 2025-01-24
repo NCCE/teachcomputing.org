@@ -9,7 +9,7 @@ module Cms
         def all(collection_class, page, page_size, params)
           query = Queries::BaseQuery.new(collection_class)
           begin
-            response = @connection.execute(query.all_query(page, page_size))
+            response = @connection.execute(query.all_query(page, page_size, params))
           rescue => e
             Sentry.capture_exception(e)
             raise ActiveRecord::RecordNotFound
@@ -17,7 +17,6 @@ module Cms
           raise ActiveRecord::RecordNotFound if response.errors.any?
 
           data = clean_aliases(response.original_hash)
-
           to_paginated_response(collection_class, data[:data][collection_class.graphql_key.to_sym])
         end
 
@@ -41,10 +40,13 @@ module Cms
           map_resource(resource_class, results.first, preview, preview_key)
         end
 
+        # This has been created to allow for alias to be name__field_name
+        # This means we can add alias that override the collision issues we found when we moved to graphql
+        # but without needing to rebuild the factory
         def clean_aliases(data)
           updated_data = data.deep_transform_keys do |key|
-            if key.include?("_") && !(key == "__typename")
-              key.split("_").last
+            if key.include?("__") && !(key == "__typename")
+              key.split("__").last
             else
               key
             end

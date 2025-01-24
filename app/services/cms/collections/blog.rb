@@ -39,6 +39,8 @@ module Cms
 
       def self.graphql_key = "blogs"
 
+      def self.sort = "publishDate"
+
       def self.query_keys
         [:tag]
       end
