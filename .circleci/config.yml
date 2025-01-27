@@ -98,6 +98,8 @@ jobs:
           path: coverage
       - store_artifacts:
           path: tmp/screenshots
+      - store_artifacts:
+          path: log
       - persist_to_workspace:
           root: ~/teachcomputing
           paths: [coverage]
