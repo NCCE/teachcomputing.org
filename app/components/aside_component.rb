@@ -28,11 +28,11 @@ class AsideComponent < ViewComponent::Base
     classes.join(" ")
   end
 
-  def aside_image_tag(file, *args, **kwargs)
+  def aside_image_tag(file, *, **)
     if file.start_with?("http://", "https://")
-      image_tag(file, *args, **kwargs)
+      image_tag(file, *, **)
     else
-      image_pack_tag(file, *args, **kwargs)
+      image_pack_tag(file, *, **)
     end
   end
 end
