@@ -241,7 +241,7 @@ GEM
       smart_properties
     erubi (1.13.1)
     excon (0.102.0)
-    execjs (2.8.1)
+    execjs (2.10.0)
     factory_bot (6.2.1)
       activesupport (>= 5.0.0)
     factory_bot_rails (6.2.0)
@@ -691,7 +691,7 @@ GEM
     turbolinks-source (5.2.0)
     tzinfo (2.0.6)
       concurrent-ruby (~> 1.0)
-    uglifier (4.2.0)
+    uglifier (4.2.1)
       execjs (>= 0.3.0, < 3)
     unf (0.1.4)
       unf_ext
