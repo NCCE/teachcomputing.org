@@ -40,7 +40,7 @@ module Cms
           map_resource(resource_class, results.first, preview, preview_key)
         end
 
-        # This has been created to allow for alias to be name__field_name
+        # This has been created to allow for alias to be alias_name__field_name
         # This means we can add alias that override the collision issues we found when we moved to graphql
         # but without needing to rebuild the factory
         def clean_aliases(data)
