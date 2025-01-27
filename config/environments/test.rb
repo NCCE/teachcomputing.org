@@ -22,6 +22,9 @@ Rails.application.configure do
 
   config.cache_store = :null_store
 
+  # Compress JavaScripts and CSS.
+  config.assets.js_compressor = :terser
+
   # Show full error reports and disable caching.
   config.consider_all_requests_local = true
   config.action_controller.perform_caching = false
