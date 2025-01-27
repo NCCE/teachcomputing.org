@@ -7,8 +7,15 @@ RSpec.describe Achiever::FetchUsersCompletedCoursesFromAchieverJob, type: :job d
   let(:activity_one) { create(:activity, stem_course_template_no: "92f4f86e-0237-4ecc-a905-2f6c62d6b5ae") }
 
   before do
+    # Issue with in-build argument checker in rpsec - https://github.com/rspec/rspec/issues/104
+    # Disabled argument checker in this test
+    RSpec::Mocks.configuration.verify_partial_doubles = false
     stub_attendance_sets
     stub_delegate
+  end
+
+  after do
+    RSpec::Mocks.configuration.verify_partial_doubles = true
   end
 
   describe "#perform" do
@@ -25,7 +32,7 @@ RSpec.describe Achiever::FetchUsersCompletedCoursesFromAchieverJob, type: :job d
 
       it "queues CertificatePendingTransitionJob job for complete courses" do
         perform_job
-        expect(CertificatePendingTransitionJob).to have_been_enqueued.exactly(:once)
+        expect(CertificatePendingTransitionJob).to have_been_enqueued.exactly(:once).with(user, {source: "FetchUsersCompletedCoursesFromAchieverJob"})
       end
 
       it "queues AutoEnrolJob" do
@@ -84,7 +91,7 @@ RSpec.describe Achiever::FetchUsersCompletedCoursesFromAchieverJob, type: :job d
         create(:achievement, activity_id: cs_activity2.id, user_id: user.id)
 
         perform_job
-        expect(AssessmentEligibilityJob).to have_been_enqueued.exactly(:once)
+        expect(AssessmentEligibilityJob).to have_been_enqueued.exactly(:once).with(user.id)
       end
     end
 
