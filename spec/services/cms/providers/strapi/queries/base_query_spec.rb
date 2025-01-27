@@ -32,12 +32,12 @@ RSpec.describe Cms::Providers::Strapi::Queries::BaseQuery do
 
     context "with filters" do
       it "featured for blogs" do
-        query = described_class.new(Cms::Collections::Blog).all_query(1, 10, {featured: true})
+        query = described_class.new(Cms::Collections::Blog).all_query(1, 10, {query: {featured: true}})
         expect(query).to match(/filters:\s*{\s*featured:\s*{\s*eq:\s*true/)
       end
 
       it "tag for blogs" do
-        query = described_class.new(Cms::Collections::Blog).all_query(1, 10, {tag: "ai"})
+        query = described_class.new(Cms::Collections::Blog).all_query(1, 10, {query: {tag: "ai"}})
         expect(query).to match(/filters:\s*{\s*blog_tags:\s*{\s*slug:\s*{\s*eq:\s*"ai"/)
       end
     end
