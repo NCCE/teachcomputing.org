@@ -43,7 +43,7 @@ RSpec.shared_examples_for "rateable_query" do |context|
 
     it "fails to create a mutation for an unsupported polarity" do
       expect { described_class.rate("id", "an_id", "achieverid", "add_unsupported_lesson_rating") }.to raise_error(
-        Graphlient::Errors::ClientError, "Field 'addUnsupportedLessonRating' doesn't exist on type 'Mutation'"
+        Graphlient::Errors::ClientError, /Field 'addUnsupportedLessonRating' doesn't exist on type 'Mutation'/
       )
     end
   end

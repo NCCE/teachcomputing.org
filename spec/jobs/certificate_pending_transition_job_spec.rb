@@ -23,6 +23,12 @@ RSpec.describe CertificatePendingTransitionJob, type: :job do
           described_class.perform_now(user, {some_value: "10"})
         end.not_to raise_error
       end
+
+      it "doesn't cause errors when performed later" do
+        expect do
+          described_class.perform_later(user, {source: "10"})
+        end.not_to raise_error
+      end
     end
 
     context "when no programme has no delay" do

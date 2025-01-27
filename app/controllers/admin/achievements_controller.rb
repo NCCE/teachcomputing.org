@@ -25,7 +25,7 @@ module Admin
 
     def completed_job_processing(achievement)
       AssessmentEligibilityJob.perform_later(achievement.user.id)
-      CertificatePendingTransitionJob.perform_later(achievement.user)
+      CertificatePendingTransitionJob.perform_later(achievement.user, {source: "Admin::AchievementsController"})
     end
 
     def after_resource_destroyed_path(achievement)
