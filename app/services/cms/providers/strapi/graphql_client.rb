@@ -45,7 +45,7 @@ module Cms
         # but without needing to rebuild the factory
         def clean_aliases(data)
           updated_data = data.deep_transform_keys do |key|
-            if key.include?("__") && !(key == "__typename")
+            if key.include?("__") && key != "__typename"
               key.split("__").last
             else
               key
