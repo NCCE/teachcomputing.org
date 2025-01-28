@@ -4,9 +4,6 @@ export default class CmsEnrichmentListComponentController extends ApplicationCon
 
   static targets = ["termSelect", "ageGroupSelect", "typeSelect", "enrichment", "filterCount", "filterWrapper"];
 
-  connect(){
-  }
-
   filterChanged(){
     const filters = {
       term: this.termSelectTarget.value,
