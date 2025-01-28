@@ -42,7 +42,7 @@ module TeachComputing
     config.cms_provider = ENV["CMS_PROVIDER"]
     config.strapi_api_key = ENV["STRAPI_API_KEY"]
     config.strapi_api_url = ENV["STRAPI_API_URL"]
-    config.strapi_graphql_url = ENV["STRAPI_GRAPHQL_URL"]
+    config.strapi_graphql_url = ENV.fetch("STRAPI_GRAPHQL_URL", "https://strapi.teachcomputing.com/graphql")
     config.strapi_write_api_key = ENV["STRAPI_WRITE_API_KEY"]
     config.strapi_connection_type = ENV.fetch("STRAPI_CONNECTION_TYPE", "graphql")
 
