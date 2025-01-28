@@ -10,10 +10,6 @@
   text-decoration: underline;
 }
 
-.cms-rich-text-block-component__text--code {
-  font-family: monospace;
-}
-
 .cms-rich-text-block-component__text--strikethrough {
   text-decoration: line-through;
 }
@@ -24,8 +20,9 @@
   }
 }
 
-
 .cms-rich-text-block-component__text--code {
+  font-family: monospace;
+
   p {
     @extend .govuk-body;
   }
