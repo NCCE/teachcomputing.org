@@ -45,6 +45,10 @@ RSpec.describe UserProgrammeCourseBookingsWithAsidesComponent, type: :component 
     it "does not render the aside" do
       expect(page).to_not have_css(".aside-component")
     end
+
+    it "renders the explore courses button" do
+      expect(page).to have_css("a", text: "Explore courses")
+    end
   end
 
   context "with completed course" do
