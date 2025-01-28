@@ -39,12 +39,12 @@
       <% if !in_progress_courses.present? && !completed_courses.present? %>
       <div class="user-programme-course-bookings-with-asides__footer">
           <div><h2 class="govuk-heading-s govuk-!-margin-0">Find a CPD course to get started</h2></div>
-          <div><%= link_to 'Explore courses', courses_path(certificate: @programme&.slug), class: "govuk-button button ncce-button-chevron govuk-!-margin-0" %></div>
+          <div><%= link_to 'Explore courses', primary_courses_path, class: "govuk-button button ncce-button-chevron govuk-!-margin-0" %></div>
         </div>
       <% else %>
         <div class="user-programme-course-bookings-with-asides__footer">
           <div><h2 class="govuk-heading-s govuk-!-margin-0">Discover more courses</h2></div>
-          <div><%= link_to 'Explore courses ', courses_path(certificate: @programme&.slug), class: "govuk-button button ncce-button-chevron button--inverted govuk-!-margin-0" %></div>
+          <div><%= link_to 'Explore courses ', primary_courses_path, class: "govuk-button button ncce-button-chevron button--inverted govuk-!-margin-0" %></div>
         </div>
       <% end %>
     </div>
