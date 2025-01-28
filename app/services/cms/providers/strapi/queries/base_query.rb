@@ -7,6 +7,7 @@ module Cms
 
           QUERY_MAPS = [
             [Models::BlogPreview, BlogPreview],
+            [Models::WebPagePreview, WebPagePreview],
             [Models::FeaturedImage, FeaturedImage],
             [Models::Slug, Slug],
             [Models::PageTitle, Components::Blocks::PageTitle],
