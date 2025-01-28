@@ -4,10 +4,10 @@ class Cms::ResourceCardComponentPreview < ViewComponent::Preview
   def default
     card_section = Cms::Mocks::ResourceCardSection.as_model(
       resource_cards: Array.new(3) {
-                       Cms::Mocks::ResourceCard.generate_data(
-                         color_theme: nil
-                       )
-                     }
+                        Cms::Mocks::ResourceCard.generate_data(
+                          color_theme: nil
+                        )
+                      }
     )
 
     render(Cms::CardWrapperComponent.new(
@@ -21,10 +21,10 @@ class Cms::ResourceCardComponentPreview < ViewComponent::Preview
   def with_color_theme
     card_section = Cms::Mocks::ResourceCardSection.as_model(
       resource_cards: Array.new(3) {
-                       Cms::Mocks::ResourceCard.generate_data(
-                        color_theme: {data: Cms::Mocks::ColorScheme.generate_data(name: "standard")}
-                       )
-                     }
+                        Cms::Mocks::ResourceCard.generate_data(
+                          color_theme: {data: Cms::Mocks::ColorScheme.generate_data(name: "standard")}
+                        )
+                      }
     )
 
     render(Cms::CardWrapperComponent.new(
@@ -38,12 +38,12 @@ class Cms::ResourceCardComponentPreview < ViewComponent::Preview
   def with_button
     card_section = Cms::Mocks::ResourceCardSection.as_model(
       resource_cards: Array.new(3) {
-                       Cms::Mocks::ResourceCard.generate_data(
-                        color_theme: {data: Cms::Mocks::ColorScheme.generate_data(name: "standard")},
-                        button_text: "Click here",
-                        button_link: "https://www.google.com"
-                       )
-                     }
+                        Cms::Mocks::ResourceCard.generate_data(
+                          color_theme: {data: Cms::Mocks::ColorScheme.generate_data(name: "standard")},
+                          button_text: "Click here",
+                          button_link: "https://www.google.com"
+                        )
+                      }
     )
 
     render(Cms::CardWrapperComponent.new(
