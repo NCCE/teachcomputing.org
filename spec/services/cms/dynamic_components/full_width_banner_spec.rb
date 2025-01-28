@@ -5,7 +5,7 @@ RSpec.describe Cms::DynamicComponents::FullWidthBanner do
     @banner = Cms::Providers::Strapi::Factories::ComponentFactory.to_full_width_banner(Cms::Mocks::FullWidthBanner.generate_data)
   end
 
-  it "should render as CmsFullWidthBannerComponent" do
-    expect(@banner.render).to be_a(CmsFullWidthBannerComponent)
+  it "should render as FullWidthBannerComponent" do
+    expect(@banner.render).to be_a(Cms::FullWidthBannerComponent)
   end
 end

@@ -11,7 +11,7 @@ module Cms
       end
 
       def render
-        CmsCardWrapperComponent.new(title:, cards_block:, cards_per_row:, background_color:)
+        Cms::CardWrapperComponent.new(title:, cards_block:, cards_per_row:, background_color:)
       end
     end
   end

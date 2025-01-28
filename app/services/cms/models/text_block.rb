@@ -10,7 +10,7 @@ module Cms
       end
 
       def render
-        CmsRichTextBlockComponent.new(blocks:, with_wrapper:, **@options)
+        Cms::RichTextBlockComponent.new(blocks:, with_wrapper:, **@options)
       end
     end
   end

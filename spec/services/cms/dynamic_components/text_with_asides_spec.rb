@@ -6,6 +6,6 @@ RSpec.describe Cms::DynamicComponents::TextWithAsides do
   end
 
   it "should render as CmsTextWithAsides" do
-    expect(@text_with_asides.render).to be_a(CmsTextWithAsidesComponent)
+    expect(@text_with_asides.render).to be_a(Cms::TextWithAsidesComponent)
   end
 end

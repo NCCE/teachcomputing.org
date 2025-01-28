@@ -15,7 +15,7 @@ module Cms
       end
 
       def render
-        CmsHorizontalCardComponent.new(title:, body_blocks:, image:, image_link:, color_theme:, icon_block:, spacing:, external_title:)
+        Cms::HorizontalCardComponent.new(title:, body_blocks:, image:, image_link:, color_theme:, icon_block:, spacing:, external_title:)
       end
     end
   end

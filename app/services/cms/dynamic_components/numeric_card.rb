@@ -10,7 +10,7 @@ module Cms
       end
 
       def render
-        CmsNumericCardComponent.new(
+        Cms::NumericCardComponent.new(
           title:,
           text_content:,
           number:
