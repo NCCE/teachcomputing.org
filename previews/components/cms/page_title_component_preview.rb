@@ -8,4 +8,20 @@ class Cms::PageTitleComponentPreview < ViewComponent::Preview
   def with_sub_text
     render(Cms::PageTitleComponent.new(title: "Page title", sub_text: "Welcome to the page"))
   end
+
+  def with_image
+    render(Cms::PageTitleComponent.new(
+      title: "Page title",
+      sub_text: "Welcome to the page",
+      title_image: Cms::Mocks::Image.as_model
+    ))
+  end
+
+  def with_video
+    render(Cms::PageTitleComponent.new(
+      title: "Page title",
+      sub_text: "Welcome to the page",
+      title_video_url: "https://www.youtube.com/watch?v=-fTboqiyjxk&list=PLwcV67XMdDdJT0TkvZo6cTDSR0uJgP3Ku"
+    ))
+  end
 end
