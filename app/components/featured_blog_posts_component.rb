@@ -13,6 +13,7 @@ class FeaturedBlogPostsComponent < ViewComponent::Base
         response.resources
       rescue => e
         puts e
+        logger.debug("Problem in featured blog posts #{e}")
         []
       end
 
