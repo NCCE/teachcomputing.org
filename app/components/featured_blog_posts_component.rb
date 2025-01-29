@@ -11,7 +11,8 @@ class FeaturedBlogPostsComponent < ViewComponent::Base
         })
 
         response.resources
-      rescue ActiveRecord::RecordNotFound
+      rescue => e
+        puts e
         []
       end
 
