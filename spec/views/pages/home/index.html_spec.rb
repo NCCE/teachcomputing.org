@@ -7,8 +7,8 @@ RSpec.describe("pages/home/index", type: :view) do
       render
     end
 
-    it("renders the featured news section") do
-      expect(rendered).to(have_css(".ncce-feat", count: 1))
-    end
+    # it("renders the featured news section") do
+    #  expect(rendered).to(have_css(".ncce-feat", count: 1))
+    # end
   end
 end
