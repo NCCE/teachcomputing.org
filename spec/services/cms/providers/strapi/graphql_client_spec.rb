@@ -32,7 +32,7 @@ RSpec.describe Cms::Providers::Strapi::GraphqlClient do
   end
 
   it "class all and returns mapped resource" do
-    stub_strapi_graphql_collection_query("blogs", Array.new(5) { Cms::Mocks::Blog.generate_raw_data })
+    stub_strapi_graphql_collection_query("blogs", Array.new(5) { Cms::Mocks::Blog.generate_raw_data }, page: 1, page_size: 10)
     response = client.all(Cms::Collections::Blog, 1, 10, {})
     expect(response[:total_records]).to eq(5)
     expect(response[:page_size]).to eq(10)
