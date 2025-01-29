@@ -355,18 +355,3 @@ Activity.find_or_initialize_by(stem_course_template_no: "ded270cb-a4b6-ed11-b597
 end.save!
 
 ########################################################################################################################
-
-Activity.find_or_initialize_by(stem_course_template_no: "4bd30860-03ac-ef11-b8e8-6045bd0ddfc9").tap do |activity|
-  activity.title = "CQF support - Leadership and Vision"
-  activity.credit = 20
-  activity.slug = "cqf-support-leadership-and-vision"
-  activity.category = "online"
-  activity.self_certifiable = false
-  activity.provider = "stem-learning"
-  activity.stem_activity_code = "CZ115D"
-  activity.always_on = true
-
-  activity.programmes = [primary_certificate, secondary_certificate]
-end.save!
-
-########################################################################################################################

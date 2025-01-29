@@ -111,6 +111,10 @@ module StrapiStubs
     stub_request(:get, /^https:\/\/strapi.teachcomputing.org\/api\/web-pages\/#{key}/).to_return_json(body: not_found_response, status: 404)
   end
 
+  def stub_strapi_programme(key, programme: Cms::Mocks::Programme.generate_raw_data)
+    stub_request(:get, /^https:\/\/strapi.teachcomputing.org\/api\/programmes\/#{key}/).to_return_json(body: {data: programme})
+  end
+
   private
 
   def to_strapi_collection(records, page: 1, page_size: 10, page_count: 1)

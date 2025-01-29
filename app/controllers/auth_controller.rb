@@ -2,6 +2,11 @@ class AuthController < ApplicationController
   def callback
     auth = omniauth_params
     course_booking_uri = course_redirect_params
+
+    Sentry.configure_scope do |scope|
+      scope.set_context("oauth_custom_claim", auth.info)
+    end
+
     user_exists = User.exists?(stem_user_id: auth.info.stem_user_id)
     user = User.from_auth(auth.uid, auth.credentials, auth.info)
 

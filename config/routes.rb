@@ -246,11 +246,9 @@ Rails.application.routes.draw do
   get "/blog/:page_slug/refresh", to: "cms#clear_blog_cache"
   get "/:page_slug/refresh", to: "cms#web_page_refresh"
 
-  constraints ->(req) { req.format == :html } do
-    get "/blog", to: "cms#blog", as: :cms_posts
-    get "/blog/articles", to: redirect(path: "/blog")
-    get "/blog/:page_slug", to: "cms#blog_resource", as: :cms_post
-    get "/test-web/:page_slug", to: "cms#web_page_resource", as: :cms_web_page if Rails.env.development?
-    get "/:page_slug", to: "cms#web_page_resource", as: :cms_page
-  end
+  get "/blog", to: "cms#blog", as: :cms_posts
+  get "/blog/articles", to: redirect(path: "/blog")
+  get "/blog/:page_slug", to: "cms#blog_resource", as: :cms_post
+  get "/test-web/:page_slug", to: "cms#web_page_resource", as: :cms_web_page if Rails.env.development?
+  get "/:page_slug", to: "cms#web_page_resource", as: :cms_page
 end

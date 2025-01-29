@@ -14,6 +14,26 @@ module Cms
       raise NotImplementedError
     end
 
+    def respond_to_missing?(method_name, include_private = false)
+      self.class.param_indexes.key?(method_name) || super
+    end
+
+    def method_missing(method_name)
+      index = self.class.param_indexes[method_name]
+      data_models[index]
+    end
+
+    def self.param_name(mapping)
+      return mapping[:param_name] if mapping.has_key?(:param_name)
+      mapping[:key].to_s.underscore.to_sym
+    end
+
+    def self.param_indexes
+      resource_attribute_mappings.each_with_object({}).with_index do |(mapping, indexes), index|
+        indexes[param_name(mapping)] = index
+      end
+    end
+
     def self.is_collection = false
 
     def self.resource_attribute_mappings

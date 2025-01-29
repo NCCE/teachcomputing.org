@@ -105,4 +105,10 @@ RSpec.describe Programmes::PrimaryCertificate do
       expect(programme.enrolment_confirmation_required?).to be true
     end
   end
+
+  describe "#certificate_path" do
+    it "should return its certificate path" do
+      expect(programme.certificate_path).to eq "/certificate/primary-certificate/view-certificate"
+    end
+  end
 end

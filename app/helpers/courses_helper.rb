@@ -154,4 +154,8 @@ module CoursesHelper
 
     course[:title]
   end
+
+  def course_duration_text(course)
+    pluralize(course.duration_value, course.duration.downcase.chomp("s")) if course.duration.present?
+  end
 end

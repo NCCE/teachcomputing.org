@@ -58,4 +58,16 @@ RSpec.describe Programmes::IBelong do
       expect(programme.minimum_character_required_community_evidence).to eq(50)
     end
   end
+
+  describe "#enrolment_confirmation_required?" do
+    it "should return false" do
+      expect(programme.enrolment_confirmation_required?).to be false
+    end
+  end
+
+  describe "#certificate_path" do
+    it "should return its certificate path" do
+      expect(programme.certificate_path).to eq "/certificate/i-belong/view-certificate"
+    end
+  end
 end
