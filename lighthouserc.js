@@ -1,7 +1,7 @@
 module.exports = {
   ci: {
     collect: {
-      url: ['http://localhost:3000/primary-teachers', 'http://localhost:3000/secondary-teachers'],
+      url: ['http://localhost:3000/', 'http://localhost:3000/primary-teachers', 'http://localhost:3000/secondary-teachers'],
       startServerCommand: 'bin/rails server',
       numberOfRuns: 1,
       settings: {
