@@ -184,7 +184,7 @@ RSpec.describe UserProgrammeCourseBookingsWithAsidesComponent, type: :component 
 
   describe "when not primary certificate" do
     let(:secondary_certificate) { create(:secondary_certificate) }
-    let!(:secondary_programme_activity_grouping) { create(:programme_activity_grouping, programme: secondary_certificate)}
+    let!(:secondary_programme_activity_grouping) { create(:programme_activity_grouping, programme: secondary_certificate) }
     context "with no user courses" do
       before do
         allow_any_instance_of(AuthenticationHelper).to receive(:current_user).and_return(user)
