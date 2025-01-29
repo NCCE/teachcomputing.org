@@ -83,12 +83,12 @@ module StrapiStubs
     end
   end
 
-  def stub_strapi_blog_collection(blogs: nil)
+  def stub_strapi_blog_collection(blogs: nil, page: 1, page_size: 10)
     blog_list = blogs.presence || Array.new(5) { Cms::Mocks::Blog.generate_raw_data }
     if as_graphql
-      stub_strapi_graphql_collection_query("blogs", blog_list)
+      stub_strapi_graphql_collection_query("blogs", blog_list, page:, page_size:)
     else
-      stub_request(:get, /^https:\/\/strapi.teachcomputing.org\/api\/blogs/).to_return_json(body: to_strapi_collection(blog_list))
+      stub_request(:get, /^https:\/\/strapi.teachcomputing.org\/api\/blogs/).to_return_json(body: to_strapi_collection(blog_list, page:, page_size:))
     end
   end
 
@@ -178,11 +178,11 @@ module StrapiStubs
       .to_return_json(body: {data: response})
   end
 
-  def stub_strapi_graphql_collection_query(resource_name, records)
+  def stub_strapi_graphql_collection_query(resource_name, records, page: 1, page_size: 100)
     response = {}
-    response[resource_name] = to_strapi_collection(records)
+    response[resource_name] = to_strapi_collection(records, page:, page_size:)
     stub_request(:post, /^https:\/\/strapi.teachcomputing.org\/graphql/)
-      .with(body: /#{resource_name}/)
+      .with(body: /#{resource_name}.*page:\s*#{page}/)
       .to_return_json(body: {data: response})
   end
 
@@ -213,15 +213,16 @@ module StrapiStubs
     Rails.application.config.strapi_connection_type == "graphql"
   end
 
-  def to_strapi_collection(records, page: 1, page_size: 10, page_count: 1)
+  def to_strapi_collection(all_records, page: 1, page_size: 10, page_count: 1)
+    records = all_records.slice(((page - 1) * page_size)..((page * page_size) - 1))
     {
-      data: records,
+      data: records.presence || [],
       meta: {
         pagination: {
           page: page,
           pageSize: page_size,
           pageCount: page_count,
-          total: records.count
+          total: all_records.count
         }
       }
     }
