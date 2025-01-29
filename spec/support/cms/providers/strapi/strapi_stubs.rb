@@ -170,7 +170,14 @@ module StrapiStubs
     end
   end
 
+  def stub_strapi_schema
+    stub_request(:post, /^https:\/\/strapi.teachcomputing.org\/graphql/)
+      .with(body: /IntrospectionQuery/)
+      .to_return_json(body: GRAPH_SCHEMA)
+  end
+
   def stub_strapi_graphql_query(resource_name, record)
+    stub_strapi_schema
     response = {}
     response[resource_name] = {data: Array.wrap(record)}
     stub_request(:post, /^https:\/\/strapi.teachcomputing.org\/graphql/)
@@ -179,6 +186,7 @@ module StrapiStubs
   end
 
   def stub_strapi_graphql_collection_query(resource_name, records, page: 1, page_size: 100)
+    stub_strapi_schema
     response = {}
     response[resource_name] = to_strapi_collection(records, page:, page_size:)
     stub_request(:post, /^https:\/\/strapi.teachcomputing.org\/graphql/)
@@ -187,6 +195,7 @@ module StrapiStubs
   end
 
   def stub_strapi_graphql_collection_query_missing(resource_name)
+    stub_strapi_schema
     response = {}
     response[resource_name] = to_strapi_collection([])
     stub_request(:post, /^https:\/\/strapi.teachcomputing.org\/graphql/)
@@ -195,6 +204,7 @@ module StrapiStubs
   end
 
   def stub_strapi_graphql_query_missing(resource_name)
+    stub_strapi_schema
     response = {}
     response[resource_name] = {data: []}
     stub_request(:post, /^https:\/\/strapi.teachcomputing.org\/graphql/)
