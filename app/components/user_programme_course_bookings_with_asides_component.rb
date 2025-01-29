@@ -20,6 +20,12 @@ class UserProgrammeCourseBookingsWithAsidesComponent < CmsWithAsidesComponent
 
   private
 
+  def button_link_text
+    return primary_courses_path if @programme == Programme.primary_certificate
+
+    courses_path(certificate: @programme&.slug)
+  end
+
   def course_sections
     [{title: "Booked courses", courses: in_progress_courses},
       {title: "Completed courses", courses: completed_courses}]
