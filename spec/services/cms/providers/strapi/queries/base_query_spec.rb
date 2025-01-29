@@ -31,14 +31,24 @@ RSpec.describe Cms::Providers::Strapi::Queries::BaseQuery do
     end
 
     context "with filters" do
+      it "always include lt publishDate for blogs" do
+        freeze_time do
+          query = described_class.new(Cms::Collections::Blog).all_query(1, 10)
+          expect(query).to match(/filters:.*publishDate:\s*{\s*lt:\s*"#{Regexp.escape(DateTime.now.strftime)}/)
+
+          featured_query = described_class.new(Cms::Collections::Blog).all_query(1, 10, {query: {featured: true}})
+          expect(featured_query).to match(/filters:.*publishDate:\s*{\s*lt:\s*"#{Regexp.escape(DateTime.now.strftime)}/)
+        end
+      end
+
       it "featured for blogs" do
         query = described_class.new(Cms::Collections::Blog).all_query(1, 10, {query: {featured: true}})
-        expect(query).to match(/filters:\s*{\s*featured:\s*{\s*eq:\s*true/)
+        expect(query).to match(/filters:\s*{.*featured:\s*{\s*eq:\s*true/)
       end
 
       it "tag for blogs" do
         query = described_class.new(Cms::Collections::Blog).all_query(1, 10, {query: {tag: "ai"}})
-        expect(query).to match(/filters:\s*{\s*blog_tags:\s*{\s*slug:\s*{\s*eq:\s*"ai"/)
+        expect(query).to match(/filters:\s*{.*blog_tags:\s*{\s*slug:\s*{\s*eq:\s*"ai"/)
       end
     end
   end

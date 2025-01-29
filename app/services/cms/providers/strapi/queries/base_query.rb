@@ -53,11 +53,7 @@ module Cms
               page:,
               pageSize: page_size
             }
-            filters = if params[:query]
-              Factories::QueryFactory.generate_parameters(@collection_class, params[:query])
-            else
-              {}
-            end
+            filters = Factories::QueryFactory.generate_parameters(@collection_class, params[:query])
             <<~GRAPHQL.freeze
               query {
                 #{resource_name}(#{query_string(:pagination, pagination_options)} #{query_string(:filters, filters)} #{sort_string(@collection_class.sort)}) {
