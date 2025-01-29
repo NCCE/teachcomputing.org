@@ -82,6 +82,11 @@ jobs:
           chrome-version: 128.0.6613.84 # https://github.com/CircleCI-Public/browser-tools-orb/issues/108#issuecomment-1958532112
           replace-existing-chrome: true
       - run:
+          name: Run rspec
+          command: |
+            mkdir ~/rspec
+            bundle exec rspec --format progress --format RspecJunitFormatter -o ~/rspec/rspec.xml
+      - run:
           name: Install Lighthouse
           command: sudo npm install -g @lhci/cli@0.8.x
       - run:
