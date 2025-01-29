@@ -49,4 +49,30 @@ RSpec.describe("Primary certificate page") do
 
     expect(page).to_not have_css(".primary-dashboard-community-activity__activity-details")
   end
+
+  it "adds multiple activities to the dashboard when selected" do
+    activities = programme.programme_activity_groupings.community.first.activities
+    visit primary_certificate_path
+
+    select activities.first.title, from: "activity"
+    click_on "Choose activity"
+
+    sleep 1
+
+    select activities.second.title, from: "activity"
+    click_on "Choose activity"
+
+    sleep 1
+
+    select activities.third.title, from: "activity"
+    click_on "Choose activity"
+
+    expect(page).to have_css(".primary-dashboard-community-activity__activity-details", count: 3)
+    expect(page).to have_text(activities.first.title)
+    expect(page).to have_text(activities.second.title)
+    expect(page).to have_text(activities.third.title)
+    expect(page).to have_text(activities.first.public_copy_description)
+    expect(page).to have_text(activities.second.public_copy_description)
+    expect(page).to have_text(activities.third.public_copy_description)
+  end
 end
