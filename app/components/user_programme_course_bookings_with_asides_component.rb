@@ -20,7 +20,7 @@ class UserProgrammeCourseBookingsWithAsidesComponent < CmsWithAsidesComponent
 
   private
 
-  def button_link_text
+  def programme_link
     return primary_courses_path if @programme == Programme.primary_certificate
 
     courses_path(certificate: @programme&.slug)
