@@ -32,7 +32,7 @@ class User < ApplicationRecord
   scope :enrolled_in_programme, ->(programme) { joins(:user_programme_enrollment).where(user_programme_enrollment: {programme:}) }
 
   audited only: %i[first_name last_name stem_achiever_contact_no stem_user_id], on: :update, comment_required: false
-  alias_attribute :support_audits, :audits
+  alias_method :support_audits, :audits
 
   def self.from_auth(id, credentials, info)
     user = where(stem_user_id: info.stem_user_id).first_or_initialize
