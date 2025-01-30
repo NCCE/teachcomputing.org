@@ -11,7 +11,7 @@ RSpec.describe "rake schedule_eligible_pending_enrolments", type: :task do
     it "should enqueue CertificatePendingTranisitionJob" do
       expect {
         task.execute
-      }.to have_enqueued_job(CertificatePendingTransitionJob)
+      }.to have_enqueued_job(CertificatePendingTransitionJob).exactly(:once)
     end
   end
 

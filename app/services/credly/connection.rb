@@ -6,7 +6,7 @@ module Credly
     def self.connect
       Faraday.new(url: URL) do |conn|
         conn.adapter :net_http
-        conn.request(:basic_auth, API_TOKEN, "")
+        conn.request(:authorization, :basic, API_TOKEN, "")
       end
     end
   end

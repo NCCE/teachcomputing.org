@@ -1,7 +1,6 @@
 # Plays "ProgrammeObjective" role app/lib/programme_objectives/readme.md
 class ProgrammeActivityGrouping < ApplicationRecord
   include ActionView::Helpers::TagHelper
-  include StiPreload
 
   has_many :programme_activities, -> { order(:order) }
   has_many :activities, through: :programme_activities

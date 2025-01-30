@@ -1,4 +1,3 @@
-version: "3.5"
 services:
   docker-host:
     image: qoomon/docker-host
