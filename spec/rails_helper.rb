@@ -4,9 +4,12 @@ require "simplecov"
 
 SimpleCov.minimum_coverage ENV["SIMPLECOV_MIN_COVERAGE"].to_i
 SimpleCov.start "rails" do
+  enable_coverage_for_eval
+
   add_group "Services", "app/services"
   add_group "Presenters", "app/presenters"
   add_group "Components", "app/components"
+  add_group "Views", "app/views"
 
   current_branch = `git rev-parse --abbrev-ref HEAD`
   changed_files = `git diff --name-only main...#{current_branch}`.split("\n")
