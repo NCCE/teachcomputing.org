@@ -76,7 +76,7 @@
       "check_name": "Redirect",
       "message": "Possible unprotected redirect",
       "file": "app/controllers/pages_controller.rb",
-      "line": 84,
+      "line": 94,
       "link": "https://brakemanscanner.org/docs/warning_types/redirect/",
       "code": "redirect_to(Programme.find_by!(:slug => params[:page_slug]).path)",
       "render_path": null,
@@ -99,7 +99,7 @@
       "check_name": "Render",
       "message": "Render path contains parameter value",
       "file": "app/controllers/pages_controller.rb",
-      "line": 86,
+      "line": 96,
       "link": "https://brakemanscanner.org/docs/warning_types/dynamic_render_path/",
       "code": "render(template => \"pages/enrolment/#{params[:page_slug].underscore}\", {})",
       "render_path": null,
@@ -114,6 +114,25 @@
         22
       ],
       "note": "The parameter is constrained to just the courses available"
+    },
+    {
+      "warning_type": "Unmaintained Dependency",
+      "warning_code": 123,
+      "fingerprint": "715ee6d743a8af33c7b930d728708ce19c765fb40e2ad9d2b974db04d92dc7d1",
+      "check_name": "EOLRuby",
+      "message": "Support for Ruby 3.1.2 ends on 2025-03-31",
+      "file": ".ruby-version",
+      "line": 1,
+      "link": "https://brakemanscanner.org/docs/warning_types/unmaintained_dependency/",
+      "code": null,
+      "render_path": null,
+      "location": null,
+      "user_input": null,
+      "confidence": "Weak",
+      "cwe_id": [
+        1104
+      ],
+      "note": "Ignoring as of 30th Jan 2025, work has already begun on ruby version update, but need to deploy while this work is ongoing"
     },
     {
       "warning_type": "Redirect",
@@ -214,7 +233,7 @@
       "check_name": "CrossSiteScripting",
       "message": "Unescaped model attribute",
       "file": "app/views/certificates/pathways/show.html.erb",
-      "line": 104,
+      "line": 113,
       "link": "https://brakemanscanner.org/docs/warning_types/cross_site_scripting",
       "code": "t(\".download_pdf\", :title => Pathway.not_legacy.find_by!(:slug => params[:slug]).title.downcase)",
       "render_path": [
@@ -242,6 +261,6 @@
       "note": "Pathways can only be edited by admins"
     }
   ],
-  "updated": "2024-01-15 15:50:15 +0000",
+  "updated": "2025-01-30 09:44:37 +0000",
   "brakeman_version": "6.0.1"
 }
