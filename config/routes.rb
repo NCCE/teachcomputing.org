@@ -22,6 +22,7 @@ Rails.application.routes.draw do
       get "/perform_reset/:user_id", to: "users#perform_reset_tests", as: :perform_reset
       get "/generate_assessment_attempt", to: "users#generate_assessment_attempt", as: :generate_assessment_attempt unless Rails.env.production?
       post "/process_assessment_attempt", to: "users#process_assessment_attempt", as: :process_assessment_attempt unless Rails.env.production?
+      get "/programme_progress_report", to: "users#programme_progress_report"
     end
     resources :user_programme_enrolments, only: %i[index show edit update] do
       member do
@@ -36,6 +37,12 @@ Rails.application.routes.draw do
     end
     resources :assessment_attempts, only: %i[index show]
     resources :assessment_attempt_transitions
+    resources :reports, only: [:index] do
+      collection do
+        get :by_programme
+        post :report_results
+      end
+    end
   end
 
   namespace :api do
