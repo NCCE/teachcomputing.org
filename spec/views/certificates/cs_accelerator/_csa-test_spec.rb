@@ -39,6 +39,10 @@ RSpec.describe("certificates/cs_accelerator/_csa-test") do
       expect(rendered).to have_unchecked_field("assessment_attempt[accepted_conditions]")
     end
 
+    it "has a ready to begin test checkbox" do
+      expect(rendered).to have_unchecked_field("ready_to_test")
+    end
+
     it "has a submit button" do
       expect(rendered).to have_button("commit", disabled: true)
     end
