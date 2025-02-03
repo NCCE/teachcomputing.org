@@ -1,8 +1,4 @@
-require "sti_preload"
-
 class EnrichmentGrouping < ApplicationRecord
-  include StiPreload
-
   belongs_to :programme
   has_many :enrichment_entries
 

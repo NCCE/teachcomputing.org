@@ -13,7 +13,14 @@ RSpec.describe "Admin::AchievementsController" do
   let(:achievement) { create(:completed_achievement, user:, activity:) }
 
   before do
+    # Issue with in-build argument checker in rpsec - https://github.com/rspec/rspec/issues/104
+    # Disabled argument checker in this test
+    RSpec::Mocks.configuration.verify_partial_doubles = false
     allow_any_instance_of(Admin::ApplicationController).to receive(:authenticate_admin).and_return("user@example.com")
+  end
+
+  after do
+    RSpec::Mocks.configuration.verify_partial_doubles = true
   end
 
   describe "GET #index" do
@@ -66,8 +73,8 @@ RSpec.describe "Admin::AchievementsController" do
           current_state: :complete
         }
       })
-      expect(AssessmentEligibilityJob).to have_been_enqueued
-      expect(CertificatePendingTransitionJob).to have_been_enqueued
+      expect(AssessmentEligibilityJob).to have_been_enqueued.with(user.id)
+      expect(CertificatePendingTransitionJob).to have_been_enqueued.with(user, {source: "Admin::AchievementsController"})
     end
   end
 
@@ -78,8 +85,8 @@ RSpec.describe "Admin::AchievementsController" do
           current_state: :complete
         }
       })
-      expect(AssessmentEligibilityJob).to have_been_enqueued
-      expect(CertificatePendingTransitionJob).to have_been_enqueued
+      expect(AssessmentEligibilityJob).to have_been_enqueued.with(user.id)
+      expect(CertificatePendingTransitionJob).to have_been_enqueued.with(user, {source: "Admin::AchievementsController"})
     end
   end
 

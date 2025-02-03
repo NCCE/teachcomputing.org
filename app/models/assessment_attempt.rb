@@ -18,7 +18,7 @@ class AssessmentAttempt < ApplicationRecord
   }
 
   audited only: %i[id user_id], on: :destroy, comment_required: false
-  alias_attribute :support_audits, :audits
+  alias_method :support_audits, :audits
 
   def state_machine
     @state_machine ||= StateMachines::AssessmentAttemptStateMachine.new(self, transition_class: AssessmentAttemptTransition)

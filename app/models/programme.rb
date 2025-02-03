@@ -1,7 +1,4 @@
-require "sti_preload"
-
 class Programme < ApplicationRecord
-  include StiPreload
   include Rails.application.routes.url_helpers
 
   has_many :programme_activities, dependent: :destroy
