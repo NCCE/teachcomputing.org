@@ -1,4 +1,4 @@
-class ProgressBarComponent < CmsWithAsidesComponent
+class ProgressBarComponent < Cms::WithAsidesComponent
   # Icon status classes
   ICON_BLANK_CIRCLE_CLASS = "icon-blank-circle".freeze
   ICON_TICKED_CIRCLE_CLASS = "icon-ticked-circle".freeze

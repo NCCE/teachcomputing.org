@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class UserProgrammeCourseBookingsWithAsidesComponent < CmsWithAsidesComponent
+class UserProgrammeCourseBookingsWithAsidesComponent < Cms::WithAsidesComponent
   delegate :current_user, :activity_icon_class, to: :helpers
 
   def initialize(programme:, aside_slug: nil)

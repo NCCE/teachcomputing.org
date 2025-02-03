@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Cms::EnrolmentSplitCourseCardComponent < CmsWithAsidesComponent
+class Cms::EnrolmentSplitCourseCardComponent < Cms::WithAsidesComponent
   delegate :current_user, to: :helpers
 
   def initialize(card_content:, aside_content:, enrol_aside:, section_title:, background_color:, color_theme:, aside_title:, aside_icon:, programme:)
