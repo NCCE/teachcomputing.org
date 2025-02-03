@@ -1,5 +1,24 @@
 .page-title {
+
   &__wrapper {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__status-message {
+    @include govuk-font($size: 19);
+    background-color: #1C0F5F;
+    color: #ffffff;
+    font-weight: bold;
+    padding: 2px 12px;
+    width: -webkit-fit-content;
+    width: -moz-fit-content;
+    width: fit-content;
+    float: left;
+    margin: 0;
+  }
+
+  &__body {
     background-color: $white;
     display: flex;
     flex-direction: column;

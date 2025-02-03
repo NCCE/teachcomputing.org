@@ -195,4 +195,8 @@ class Programme < ApplicationRecord
   def enrolment_confirmation_required?
     false
   end
+
+  def show_extra_objectives_on_progress_bar?
+    false
+  end
 end

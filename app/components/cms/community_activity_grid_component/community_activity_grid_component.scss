@@ -1,0 +1,95 @@
+
+.community-activity-grid {
+  margin-bottom: 20px;
+
+  &__modal-content {
+    padding-top: 1.5rem;
+
+    .button-container {
+      width: 100%;
+      text-align: center;
+
+      .button {
+        width: 70%;
+        margin-top: 15px;
+        margin-bottom: 0px;
+      }
+    }
+  }
+
+  &--chosen {
+    .choose-btn {
+      display: none;
+    }
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    
+    @include govuk-media-query($from: tablet) {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    @include govuk-media-query($from: desktop) {
+      grid-template-columns: 1fr 1fr 1fr;
+    }
+    gap: 30px 54px;
+    padding-top: 2rem;
+
+    &-activity {
+      @include box-with-shadow;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      .govuk-heading-s {
+        font-family: $font-family-heading;
+      }
+
+      .activity-started {
+        display: none;
+        width: calc(100% - 30px);
+        padding: 15px;
+        background-color: $purple;
+
+        .govuk-heading-s {
+          color: white;
+          margin-bottom: 0px;
+          font-size: 90%;
+          font-weight: bold;
+        }
+      }
+
+      .manage-btn {
+        display: none;
+      }
+
+      &--started {
+        .activity-started {
+          display: inherit;
+        }
+
+        .manage-btn {
+          display: inherit;
+        }
+      }
+      
+      &-content {
+        flex: 1 1 auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 15px;
+      }
+
+      .activity-content {
+        flex: 1 1 auto;
+      }
+      
+      .ncce-button--white {
+        margin-bottom: 0px;
+      }
+    }
+  }
+}

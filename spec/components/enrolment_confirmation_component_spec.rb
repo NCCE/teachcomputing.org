@@ -8,9 +8,9 @@ RSpec.describe EnrolmentConfirmationComponent, type: :component do
 
   context "when no current user" do
     before do
+      allow_any_instance_of(AuthenticationHelper).to receive(:current_user).and_return(nil)
       render_inline(described_class.new(
         programme: primary_certificate,
-        current_user: nil,
         pathway: nil
       ))
     end
@@ -26,9 +26,9 @@ RSpec.describe EnrolmentConfirmationComponent, type: :component do
 
   context "when enrolment confirmation is false on the programme" do
     before do
+      allow_any_instance_of(AuthenticationHelper).to receive(:current_user).and_return(user)
       render_inline(described_class.new(
         programme: cs_accelerator,
-        current_user: user,
         pathway:
       ))
     end
@@ -44,9 +44,9 @@ RSpec.describe EnrolmentConfirmationComponent, type: :component do
 
   context "when the enrolment comfirmation is true on the programme" do
     before do
+      allow_any_instance_of(AuthenticationHelper).to receive(:current_user).and_return(user)
       render_inline(described_class.new(
         programme: primary_certificate,
-        current_user: user,
         pathway:
       ))
     end
@@ -66,9 +66,9 @@ RSpec.describe EnrolmentConfirmationComponent, type: :component do
 
   context "with button text and full width to false" do
     before do
+      allow_any_instance_of(AuthenticationHelper).to receive(:current_user).and_return(user)
       render_inline(described_class.new(
         programme: primary_certificate,
-        current_user: user,
         button_text: "Click here to enrol",
         full_width: false,
         pathway:
@@ -90,11 +90,11 @@ RSpec.describe EnrolmentConfirmationComponent, type: :component do
 
   context "when the user is already enrolled on a non confirmation programme" do
     before do
+      allow_any_instance_of(AuthenticationHelper).to receive(:current_user).and_return(user)
       allow(cs_accelerator).to receive(:user_enrolled?).with(user).and_return(true)
 
       render_inline(described_class.new(
         programme: cs_accelerator,
-        current_user: user,
         pathway:
       ))
     end
@@ -110,11 +110,11 @@ RSpec.describe EnrolmentConfirmationComponent, type: :component do
 
   context "when the user is already enrolled on a programme that requires confirmation" do
     before do
+      allow_any_instance_of(AuthenticationHelper).to receive(:current_user).and_return(user)
       allow(primary_certificate).to receive(:user_enrolled?).with(user).and_return(true)
 
       render_inline(described_class.new(
         programme: primary_certificate,
-        current_user: user,
         pathway:
       ))
     end

@@ -15,6 +15,11 @@ module CmsProcessing
     klass.clear_cache if params["refresh"]
     preview = preview_params[:preview] || false
     preview_key = preview_params[:preview_key] || nil
+
+    # Temp fix to handle / routes should not be need if we move to graphql
+    raise ActiveRecord::RecordNotFound if resource_id.include? "_"  # Prevent routing to underscored versions
+    resource_id.tr!("/", "_") # Convert / to _ so it can be handled strapi side
+
     @resource = klass.get(resource_id, preview:, preview_key:)
     render "cms/resource"
   end

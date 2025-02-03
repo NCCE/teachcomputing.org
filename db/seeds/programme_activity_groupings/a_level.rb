@@ -7,6 +7,7 @@ puts "Creating Programme Activity Groupings"
 
 a_level.programme_activity_groupings.find_or_initialize_by(title: "all courses").tap do |group|
   group.sort_key = 2
+  group.cms_slug = "a-level-all-courses"
   group.required_for_completion = 0
   group.programme_id = a_level.id
 

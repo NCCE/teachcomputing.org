@@ -1,0 +1,11 @@
+.primary-dashboard-programme-community-activity-group-component {
+  background-color: $white;
+  padding: 20px;
+
+  &__header {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+}

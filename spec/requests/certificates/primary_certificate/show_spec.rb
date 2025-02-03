@@ -15,10 +15,18 @@ RSpec.describe Certificates::PrimaryCertificateController do
   end
 
   describe "#show" do
+    before do
+      stub_strapi_programme("primary-certificate")
+      stub_strapi_aside_section("primary-certificate-need-help")
+      stub_strapi_aside_section("primary-dashboard-cpd-section")
+    end
     context "when user is logged in" do
       before do
+        allow_any_instance_of(ProgrammeActivityGrouping).to receive(:user_complete?).and_return(true)
         allow_any_instance_of(AuthenticationHelper)
           .to receive(:current_user).and_return(user)
+
+        stub_strapi_aside_section("primary-certificate-progress-bar-aside")
       end
 
       context "when user is not enrolled" do
@@ -26,7 +34,7 @@ RSpec.describe Certificates::PrimaryCertificateController do
           programme
 
           get primary_certificate_path
-          expect(response).to redirect_to(primary_path)
+          expect(response).to redirect_to("/primary-certificate")
         end
       end
 
@@ -46,6 +54,9 @@ RSpec.describe Certificates::PrimaryCertificateController do
         badge
         user_programme_enrolment
         stub_issued_badges(user.id)
+        online_discussion_grouping
+        allow_any_instance_of(ProgrammeActivityGrouping).to receive(:user_complete?).and_return(true)
+        stub_strapi_aside_section("primary-certificate-progress-bar-aside")
         allow_any_instance_of(AuthenticationHelper)
           .to receive(:current_user).and_return(user)
         get primary_certificate_path
@@ -61,6 +72,9 @@ RSpec.describe Certificates::PrimaryCertificateController do
         badge
         user_programme_enrolment
         stub_issued_badges_failure(user.id)
+        online_discussion_grouping
+        allow_any_instance_of(ProgrammeActivityGrouping).to receive(:user_complete?).and_return(true)
+        stub_strapi_aside_section("primary-certificate-progress-bar-aside")
         allow_any_instance_of(AuthenticationHelper)
           .to receive(:current_user).and_return(user)
         get primary_certificate_path

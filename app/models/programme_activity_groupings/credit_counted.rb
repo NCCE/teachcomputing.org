@@ -15,4 +15,22 @@ class ProgrammeActivityGroupings::CreditCounted < ProgrammeActivityGrouping
       [user.id, completed_credit_count >= required_credit_count]
     end.to_h
   end
+
+  def course_credit_state(current_user, state)
+    achievements = current_user.achievements
+      .with_courses
+      .in_state(state)
+      .belonging_to_programme(programme)
+      .joins(:activity)
+
+    total_credits = achievements.sum("activities.credit")
+
+    if total_credits >= required_credit_count
+      :required_credits
+    elsif achievements.any?
+      :missing_credits
+    else
+      :no_credits
+    end
+  end
 end

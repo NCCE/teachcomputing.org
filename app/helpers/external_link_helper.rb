@@ -63,6 +63,10 @@ module ExternalLinkHelper
     "https://community.stem.org.uk/communities/community-home?CommunityKey=f5098030-41d2-43f9-8f5d-67b536b18b97"
   end
 
+  def primary_evidence_stem_community_url
+    "https://community.stem.org.uk/discussion/completing-your-primary-certificate-evidence-thread#bma5b58f93-b6b8-4787-9791-cf22c53e3427"
+  end
+
   def stem_community_url
     "https://community.stem.org.uk/home"
   end
@@ -132,11 +136,27 @@ module ExternalLinkHelper
   end
 
   def stem_ambassadors_url
+    "https://www.stem.org.uk/stem-ambassadors"
+  end
+
+  def stem_primary_ambassadors_url
+    "https://www.stem.org.uk/primary/stem-ambassadors"
+  end
+
+  def computing_ambassadors_url
     "https://www.stem.org.uk/stem-ambassadors/computing-ambassadors"
+  end
+
+  def stem_secondary_ambassadors_url
+    "https://www.stem.org.uk/secondary/ambassadors"
   end
 
   def computing_quality_framework_url
     "https://computingqualityframework.org"
+  end
+
+  def computing_quality_mark_url
+    "https://computingqualityframework.org/accreditation/ncce-computing-quality-mark/"
   end
 
   def sme_support_form_url
@@ -155,6 +175,18 @@ module ExternalLinkHelper
     "https://ncce.io/student-survey"
   end
 
+  def impact_toolkit_url
+    "https://www.stem.org.uk/about-us/impact-and-evaluation/impact-toolkit"
+  end
+
+  def leading_professional_development_url
+    "https://www.stem.org.uk/secondary/cpd/leading-professional-development"
+  end
+
+  def cas_communities_url
+    "https://www.computingatschool.org.uk/cas-communities"
+  end
+
   def social_media_card_templates_url
     "https://www.canva.com/design/DAGH7H5evKc/2l2uqE0otmkLBifYz4i4Gg/view?utm_content=DAGH7H5evKc&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink&mode=preview"
   end
@@ -169,5 +201,29 @@ module ExternalLinkHelper
 
   def i_belong_press_release_pack_url
     "https://static.teachcomputing.org/I_Belong_PR_Pack-Editorial_and_Social_Media.pdf"
+  end
+
+  def isaac_url
+    "https://www.isaaccomputerscience.org/"
+  end
+
+  def isaac_journey_gallery_url
+    "https://isaaccomputerscience.org/pages/computer_science_journeys_gallery"
+  end
+
+  def isaac_journey_careers_url
+    "https://isaaccomputerscience.org/careers_in_computer_science"
+  end
+
+  def i_am_computer_scientist_url
+    "https://imacomputerscientist.uk/signup/t/"
+  end
+
+  def ncce_eventbrite_url
+    "https://www.eventbrite.co.uk/o/national-centre-for-computing-education-72809895383"
+  end
+
+  def local_hub_professional_development_form_url
+    "https://forms.office.com/pages/responsepage.aspx?id=8MSlGfdLSE2oGxZmua5L9VL53rMMyRtKnHXwxiNRaSRUMDcwVElaTFBFWlY0QkI2M1lZVzNBQktYUCQlQCN0PWcu"
   end
 end

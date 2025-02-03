@@ -1,38 +1,10 @@
 <% meta_tag :title, t('.page_title') %>
 <% meta_tag :url, request.original_url %>
-<%= render 'pages/certification/hero' %>
-<div class="ncce-programmes-activity">
-  <div class="govuk-width-container">
-    <%= render ProgressBarComponent.new(current_user, @programme) %>
-    <div class="govuk-main-wrapper govuk-main-wrapper--xl">
-      <div class="govuk-grid-row">
-        <div class="govuk-grid-column-two-thirds">
-          <p class="govuk-body-m"><%= t('.introduction.html') %></p>
-          <%= render partial: 'certificates/primary_certificate/pathway_prompt' unless @user_pathway %>
-          <%= render partial: 'flagged_messages' %>
-          <%= render 'certificates/primary_certificate/achievement_list' %>
-        </div>
-        <div class="govuk-grid-column-one-third">
-          <%= render partial: 'certificates/primary_certificate/pathway_aside', locals: {
-            available_pathways_for_user: @available_pathways_for_user
-          } if @user_pathway %>
-          <%= render BursaryComponent.new(
-            tracking_event_label: 'Bursary',
-            tracking_event_category: tracking_category
-          ) %>
-          <%= render AsideComponent.new(
-            title: t('.support_aside.title'),
-            class_name: 'help-aside',
-            text: t('.support_aside.text.html',
-              email_link: mail_to('info@teachcomputing.org', 'info@teachcomputing.org', class: 'ncce-link', data: tracking_data('Email')),
-              hub_link: link_to(t('.support_aside.link_text'), '/hubs', class: 'ncce-link', data: tracking_data('Contact Hub'))
-            )
-          ) %>
-          <div class="ncce-aside--borderless">
-            <%= render FeedbackComponent.new(heading: t('.feedback_text'), area: :primary_certificate) %>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
+
+<%= render CmsPageTitleComponent.new(title: "Your Teach primary computing certificate progress", status_message: @status_message) %>
+<%= render ProgrammeStatusComponent.new(user_programme_enrolment: @user_enrolment) %>
+<%= render ProgressBarComponent.new(programme: @programme, aside_slug: "primary-certificate-need-help") %>
+<%= render UserProgrammeCourseBookingsWithAsidesComponent.new(programme: @programme, aside_slug: "primary-dashboard-cpd-section") %>
+<% @community_groups.each do |group| %>
+  <%= render PrimaryDashboardProgrammeCommunityActivityGroupComponent.new(programme_activity_group: group) %>
+<% end %>

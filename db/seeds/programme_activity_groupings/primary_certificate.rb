@@ -7,11 +7,23 @@ puts "Creating Programme Activity Groupings for Primary certificate"
 
 primary_certificate.programme_activity_groupings.find_or_initialize_by(title: "All courses").becomes!(ProgrammeActivityGroupings::CreditCounted).tap do |group|
   group.sort_key = 2
+  group.cms_slug = "primary-all-courses"
   group.required_for_completion = 1
   group.programme_id = primary_certificate.id
-  group.progress_bar_title = "Complete professional development"
+  group.progress_bar_title = "Attend required CPD"
   group.web_copy_course_requirements = "Complete one full day face-to-face, remote or online course, or a combination of short courses that amounts to 6+ hours of professional development."
   group.required_credit_count = 50
+  group.multi_stage_group = true
+  group.objectives_progress_bar_stages = [
+    {
+      title: "Book required CPD",
+      state: [:enrolled, :complete]
+    },
+    {
+      title: "Attend required CPD",
+      state: :complete
+    }
+  ]
 
   group.save!
 
@@ -25,11 +37,15 @@ ProgrammeActivityGrouping.find_by(title: "Contribute to an online discussion")&.
 
 primary_certificate.programme_activity_groupings.find_or_initialize_by(title: "Develop your teaching practice").tap do |group|
   group.sort_key = 3
+  group.cms_slug = "primary-develop-practice"
   group.required_for_completion = 1
   group.programme_id = primary_certificate.id
   group.community = true
-  group.progress_bar_title = "Develop your teaching practice"
+  group.progress_bar_title = "Put into practice"
   group.web_copy_course_requirements = "Choose at least one activity"
+  group.web_copy_step_number = "two"
+  group.web_copy_aside_slug = "primary-dashboard-step-2-section"
+  group.web_copy_subtitle = "Step two: Putting it into practice"
 
   group.save!
 
@@ -55,11 +71,14 @@ end.save!
 
 primary_certificate.programme_activity_groupings.find_or_initialize_by(title: "Develop computing in your community").tap do |group|
   group.sort_key = 4
+  group.cms_slug = "primary-develop-community"
   group.required_for_completion = 1
   group.programme_id = primary_certificate.id
   group.community = true
-  group.progress_bar_title = "Develop computing in your community"
+  group.progress_bar_title = "Share with others"
   group.web_copy_course_requirements = "Choose at least one activity"
+  group.web_copy_step_number = "three"
+  group.web_copy_subtitle = "Step three: Sharing with others"
 
   group.save!
 
@@ -67,13 +86,13 @@ primary_certificate.programme_activity_groupings.find_or_initialize_by(title: "D
   activities = [
     {slug: "share-tips-on-using-an-ncce-resource-in-your-classroom-with-colleagues-on-stem-community", legacy: false},
     {slug: "gain-accreditation-as-a-professional-development-leader", legacy: false},
-    {slug: "support-other-teachers-and-earn-a-stem-community-participation-badge", legacy: false},
     {slug: "run-an-enrichment-activity-in-your-classroom", legacy: false},
     {slug: "support-other-teachers-and-earn-a-stem-community-participation-badge", legacy: false},
     {slug: "undertake-the-initial-assessment-of-your-school-using-computing-quality-framework", legacy: false},
     {slug: "work-with-your-local-computing-hub-to-develop-a-school-level-action-plan-for-professional-development", legacy: false},
     {slug: "lead-your-school-into-a-computing-cluster-and-develop-an-action-plan-with-a-cluster-advisor", legacy: false},
     {slug: "become-an-i-belong-champion-primary", legacy: false},
+    {slug: "join-and-present-at-your-local-computing-at-school-community", legacy: false},
 
     # Legacy activities
     {slug: "run-an-after-school-code-club", legacy: true},
@@ -95,8 +114,7 @@ primary_certificate.programme_activity_groupings.find_or_initialize_by(title: "D
     {slug: "answer-5-questions-on-isaac-computer-science", legacy: true},
     {slug: "engage-with-stem-ambassadors", legacy: true},
     {slug: "run-a-code-club-or-coder-dojo", legacy: true},
-    {slug: "answer-5-questions-on-isaac-computer-science", legacy: true},
-    {slug: "join-and-present-at-your-local-computing-at-school-community", legacy: true}
+    {slug: "answer-5-questions-on-isaac-computer-science", legacy: true}
   ]
 
   activities.each_with_index do |activity, index|

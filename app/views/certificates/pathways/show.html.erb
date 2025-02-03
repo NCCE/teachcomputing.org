@@ -78,10 +78,10 @@
                   <% group.programme_activities.includes(:activity).where(activity: { id: @recommended_community_activity_ids }).each do |programme_activity| %>
                     <div class="ncce-pathway-courses__course">
                       <p class="ncce-pathway-courses__link">
-                        <%= link_to programme_activity.activity.title, programme_activity.activity.public_copy_title_url, class: 'ncce-link govuk-heading-s' %>
+                        <%= link_to strip_tags(programme_activity.activity.title), programme_activity.activity.public_copy_title_url, class: 'ncce-link govuk-heading-s' %>
                       </p>
                       <p class="govuk-body-s">
-                        <%= programme_activity.activity.public_copy_description %>
+                        <%= sanitize programme_activity.activity.public_copy_description %>
                       </p>
                     </div>
                   <% end %>
@@ -101,7 +101,7 @@
                 <li><%= line.html_safe %></li>
               <% end %>
             </ol>
-            <%= render EnrolmentConfirmationComponent.new(current_user:, programme: @programme, pathway: @pathway) %>
+            <%= render EnrolmentConfirmationComponent.new(programme: @programme, pathway: @pathway) %>
           <% end %>
         <% end %>
         <%= render PathwayImprovementsComponent.new(pathway: @pathway) %>
