@@ -14,6 +14,8 @@ RSpec.describe Activity, type: :model do
   let(:user_achievement) { create(:achievement, user_id: user.id, activity_id: online_activity.id) }
   let(:diagnostic_tool_activity) { create(:activity, :cs_accelerator_diagnostic_tool) }
   let(:removable_activity) { create(:activity, :user_removable) }
+  let(:activity_with_public_copy_description) { create(:activity, public_copy_description: "I am some public copy description <span>I have html</span>") }
+  let(:activity_without_public_copy_description) { create(:activity, public_copy_description: nil, description: "I am regular description <span>I have html</span>") }
 
   describe "associations" do
     it "has_one assessment" do
@@ -229,6 +231,16 @@ RSpec.describe Activity, type: :model do
     it "returns false when the course stem acitivity code not present" do
       activity = build(:activity, stem_activity_code: nil)
       expect(activity.active_course?).to eq(false)
+    end
+  end
+
+  describe "#public_description" do
+    it "should return html safe copy of public_copy_description when present" do
+      expect(activity_with_public_copy_description.public_description).to eq("I am some public copy description <span>I have html</span>")
+    end
+
+    it "should return html safe copy of description when publoc_copy_description is nil" do
+      expect(activity_without_public_copy_description.public_description).to eq("I am regular description <span>I have html</span>")
     end
   end
 end
