@@ -37,8 +37,12 @@ RSpec.describe("CS Accelerator certificate page") do
     end
 
     describe "the initial state of the form" do
-      it "has a disabled checkbox" do
+      it "has a disabled checkbox for accepted conditions" do
         expect(page).to have_unchecked_field("assessment_attempt[accepted_conditions]", visible: :hidden)
+      end
+
+      it "has a disabled checkbox for read to take the test" do
+        expect(page).to have_unchecked_field("ready_to_test", visible: :hidden)
       end
 
       it "has a disabled submit button" do
@@ -46,10 +50,25 @@ RSpec.describe("CS Accelerator certificate page") do
       end
     end
 
-    describe "the state of the form after conditions are accepted" do
+    describe "the state of the form when only conditions are checked" do
+      it "has a disabled submit button" do
+        check("assessment_attempt[accepted_conditions]", visible: false)
+        expect(page).to have_selector('input[type="submit"][name="commit"][disabled]')
+      end
+    end
+
+    describe "the state of the form when only ready to test is checked" do
+      it "has a disabled submit button" do
+        check("ready_to_test", visible: false)
+        expect(page).to have_selector('input[type="submit"][name="commit"][disabled]')
+      end
+    end
+
+    describe "the state of the form after conditions and ready are checked" do
       it "has an enabled submit button" do
         check("assessment_attempt[accepted_conditions]", visible: false)
-        expect(page).to have_button("commit", disabled: false)
+        check("ready_to_test", visible: false)
+        expect(page).to have_selector('input[type="submit"][name="commit"]')
       end
     end
   end
