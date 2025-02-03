@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Cms::EnrolmentTestimonialComponent < CmsWithAsidesComponent
+class Cms::EnrolmentTestimonialComponent < Cms::WithAsidesComponent
   delegate :current_user, to: :helpers
 
   def initialize(title:, testimonial:, enrolled_aside:, enrol_aside:, programme_slug:, background_color:)

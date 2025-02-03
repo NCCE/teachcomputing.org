@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class DashboardProgrammeActivityGroupSectionComponent < CmsWithAsidesComponent
+class DashboardProgrammeActivityGroupSectionComponent < Cms::WithAsidesComponent
   def initialize(anchor_id:, title: nil, completed: false, aside_slug: nil, subtitle: nil)
     aside_sections = if aside_slug.nil?
       nil

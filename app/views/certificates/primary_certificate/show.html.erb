@@ -1,7 +1,7 @@
 <% meta_tag :title, t('.page_title') %>
 <% meta_tag :url, request.original_url %>
 
-<%= render CmsPageTitleComponent.new(title: "Your Teach primary computing certificate progress", status_message: @status_message) %>
+<%= render Cms::PageTitleComponent.new(title: "Your Teach primary computing certificate progress", status_message: @status_message) %>
 <%= render ProgrammeStatusComponent.new(user_programme_enrolment: @user_enrolment) %>
 <%= render ProgressBarComponent.new(programme: @programme, aside_slug: "primary-certificate-need-help") %>
 <%= render UserProgrammeCourseBookingsWithAsidesComponent.new(programme: @programme, aside_slug: "primary-dashboard-cpd-section") %>

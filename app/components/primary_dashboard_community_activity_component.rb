@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class PrimaryDashboardCommunityActivityComponent < CmsWithAsidesComponent
+class PrimaryDashboardCommunityActivityComponent < Cms::WithAsidesComponent
   delegate :current_user, to: :helpers
 
   def initialize(programme_activity_group:)
