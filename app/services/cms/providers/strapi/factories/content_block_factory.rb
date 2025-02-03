@@ -30,14 +30,14 @@ module Cms
             )
           end
 
-          def self.to_enrol_button
+          def self.to_enrol_button(strapi_data)
             DynamicComponents::EnrolButton.new(
               button_text: strapi_data[:buttonText],
               programme_slug: strapi_data[:programme][:data][:attributes][:slug]
             )
           end
 
-          def self.to_link_with_icon
+          def self.to_link_with_icon(strapi_data)
             DynamicComponents::LinkWithIcon.new(
               url: strapi_data[:url],
               link_text: strapi_data[:linkText],

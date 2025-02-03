@@ -8,9 +8,9 @@ module Cms
           end
 
           module ClassMethods
-            def extract_aside_sections(strapi_data)
-              if strapi_data.dig(:asideSections, :data)
-                strapi_data[:asideSections][:data].collect { _1[:attributes] }
+            def extract_aside_sections(strapi_data, param_name: :asideSections)
+              if strapi_data.dig(param_name, :data)
+                Array.wrap(strapi_data[param_name][:data]).collect { _1[:attributes] }
               else
                 []
               end
