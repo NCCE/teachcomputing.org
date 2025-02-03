@@ -16,11 +16,11 @@
       %>
     </p>
 
-    <div class="ncce-flex__space-between" data-controller="toggle-attribute" data-toggle-attribute-name-value="disabled" data-toggle-attribute-value-value="true">
+    <div class="ncce-flex__a-level-modal" data-controller="toggle-attribute" data-toggle-attribute-name-value="disabled" data-toggle-attribute-value-value="true">
       <%= fields_for :assessment_attempt do |sf| %>
         <div class='govuk-checkboxes__item ncce-checkboxes__item ncce-checkboxes__item--multiline'>
           <%= sf.check_box :accepted_conditions, { class: 'govuk-checkboxes__input ncce-checkboxes__input', data: { 'aria-label': 'Accept our exam conditions', action: 'change->toggle-attribute#toggleAttribute', 'toggle-attribute-target' => 'source' } }, '1', '0' %>
-          <%= sf.label :accepted_conditions, class: 'govuk-checkboxes__label ncce-label ncce-checkboxes__label ncce-checkboxes__label--multiline' do %>
+          <%= sf.label :accepted_conditions, class: 'govuk-body govuk-checkboxes__label ncce-label ncce-checkboxes__label ncce-checkboxes__label--multiline' do %>
             I have read and accept <%= link_to 'the full exam conditions', a_level_test_conditions_url, class: 'ncce-link', data: tracking_data('Exam conditions doc') %>.
           <% end %>
         </div>
@@ -28,7 +28,7 @@
         <%= sf.hidden_field 'assessment_id', value: @assessment.id %>
       <% end %>
 
-      <%= f.submit 'Take the test', class: 'govuk-button button govuk-!-margin-bottom-0 govuk-!-margin-left-4', disabled: true, data: tracking_data('Take our test').merge('toggle-attribute-target' => 'button') %>
+      <%= f.submit 'Take the test', class: 'govuk-button button govuk-!-margin-bottom-0', disabled: true, data: tracking_data('Take our test').merge('toggle-attribute-target' => 'button') %>
     </div>
   <% end %>
 <% end %>

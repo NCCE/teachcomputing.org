@@ -3,6 +3,16 @@
   justify-content: space-between;
 }
 
+.ncce-flex__a-level-modal {
+  display: flex;
+  justify-content: space-between;
+
+  @include govuk-media-query($until: tablet) {
+    flex-direction: column;
+    gap: 15px;
+  }
+}
+
 .ncce-flex__grow-1 {
   flex-grow: 1
 }

@@ -2,7 +2,7 @@ import ApplicationController from "./application_controller";
 
 export default class extends ApplicationController {
   static values = { name: String, value: String }
-  static targets = ['source', 'button']
+  static targets = ['source', 'button', 'ready']
 
   removeAttribute() {
     this.buttonTarget.removeAttribute(this.nameValue)
@@ -13,9 +13,10 @@ export default class extends ApplicationController {
   }
 
   toggleAttribute() {
-    const attributeExists = this.buttonTarget.getAttribute(this.nameValue)
+    const conditionsAccepted = this.sourceTarget.checked
+    const readyToTest = this.hasReadyTarget ? this.readyTarget.checked : true
 
-    if (attributeExists) {
+    if (conditionsAccepted && readyToTest) {
       this.removeAttribute()
     } else {
       this.addAttribute()

@@ -25,6 +25,7 @@
     <div class="ncce-csa-dash__sub-section govuk-!-margin-bottom-5">
       <ul class='govuk-list govuk-list--bullet govuk-body-s' role='list'>
         <li>You'll have 30 minutes to answer 25 multiple-choice questions and you must complete the test in one sitting.</li>
+        <li>Your test attempt will begin as soon as you click 'Take the test' below.</li>
         <li>The test must be taken under exam conditions (i.e: no notes or text books, in isolation without communicating with others, no other open tabs on any internet enabled device(s), and all answers must be your own). See <%= link_to 'full details of exam conditions', 'https://static.teachcomputing.org/CSA-Exam-Conditions.pdf', class: 'ncce-link', data: tracking_data('Exam conditions doc') %>.</li>
         <li>If you have a disability, impairment or sensory loss, or an additional need such as a dyslexia or a requirement for assistive technology to enable you to complete the test, we can extend the test time to 45 minutes. To request this, please <%= mail_to 'certificationqueries@bcs.uk', 'email us', class: 'ncce-link' %> and we'd be happy to help.</li>
         <li>Once you start the test, you'll be required to provide the email address of a Senior Leader or course leader in your school who can confirm you have completed the test under exam conditions.</li>
@@ -45,14 +46,34 @@
         %>
       </p>
 
-      <div class="ncce-flex__space-between" data-controller="toggle-attribute" data-toggle-attribute-name-value="disabled" data-toggle-attribute-value-value="true">
+      <div data-controller="toggle-attribute" data-toggle-attribute-name-value="disabled" data-toggle-attribute-value-value="true">
         <%= fields_for :assessment_attempt do |sf| %>
           <div class='govuk-checkboxes__item ncce-checkboxes__item ncce-checkboxes__item--multiline'>
-            <%= sf.check_box :accepted_conditions, { class: 'govuk-checkboxes__input ncce-checkboxes__input', data: { 'aria-label': 'Accept our exam conditions', action: 'change->toggle-attribute#toggleAttribute', 'toggle-attribute-target' => 'source' } }, '1', '0' %>
+            <%= sf.check_box :accepted_conditions, {
+              class: 'govuk-checkboxes__input ncce-checkboxes__input',
+              data: {
+                'aria-label': 'Accept our exam conditions',
+                action: 'change->toggle-attribute#toggleAttribute',
+                'toggle-attribute-target' => 'source'
+              }
+            }, '1', '0' %>
             <%= sf.label :accepted_conditions, class: 'govuk-checkboxes__label ncce-label ncce-checkboxes__label ncce-checkboxes__label--multiline' do %>
               I have read and accept <%= link_to 'the full exam conditions', 'https://static.teachcomputing.org/CSA-Exam-Conditions.pdf', class: 'ncce-link', data: tracking_data('Exam conditions doc') %>.
             <% end %>
           </div>
+          <div class='govuk-checkboxes__item ncce-checkboxes__item ncce-checkboxes__item--multiline govuk-!-margin-bottom-5'>
+            <%= check_box_tag 'ready_to_test', '1', false, {
+              class: 'govuk-checkboxes__input ncce-checkboxes__input',
+              data: {
+                'aria-label': 'Ready to take the test',
+                action: 'change->toggle-attribute#toggleAttribute',
+                'toggle-attribute-target' => 'ready'
+              }
+            } %>
+            <%= label_tag 'ready_to_test', 'I am ready to begin the test under exam conditions and I have details to hand of a leader in my school who can confirm this.',
+              class: 'govuk-checkboxes__label ncce-label ncce-checkboxes__label ncce-checkboxes__label--multiline' %>
+          </div>
+
           <%= sf.hidden_field 'user_id', value: current_user.id %>
           <%= sf.hidden_field 'assessment_id', value: @programme.assessment.id %>
         <% end %>
