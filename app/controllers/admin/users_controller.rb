@@ -41,9 +41,6 @@ module Admin
       redirect_to admin_user_path(@user.id)
     end
 
-    def programme_progress_report
-    end
-
     # redirect to the audit to add an authoriser after it's created
     def after_resource_updated_path(requested_resource)
       edit_admin_support_audit_path(id: requested_resource.support_audits.last.id)
