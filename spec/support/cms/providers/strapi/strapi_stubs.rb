@@ -104,7 +104,7 @@ module StrapiStubs
   def stub_strapi_aside_section(key, aside_data: {})
     aside_section = Cms::Mocks::AsideSection.generate_raw_data(slug: key, **aside_data)
     if as_graphql
-      stub_strapi_graphql_query("asideSections", aside_section)
+      stub_strapi_graphql_query("asideSections", aside_section, unique_key: key)
     else
       stub_request(:get, /^https:\/\/strapi.teachcomputing.org\/api\/aside-sections\/#{key}/).to_return_json(body: aside_section)
     end
@@ -176,13 +176,17 @@ module StrapiStubs
       .to_return_json(body: GRAPH_SCHEMA)
   end
 
-  def stub_strapi_graphql_query(resource_name, record)
+  def stub_strapi_graphql_query(resource_name, record, unique_key: nil)
     stub_strapi_schema
     response = {}
     response[resource_name] = {data: Array.wrap(record)}
-    stub_request(:post, /^https:\/\/strapi.teachcomputing.org\/graphql/)
+    stub = stub_request(:post, /^https:\/\/strapi.teachcomputing.org\/graphql/)
       .with(body: /#{resource_name}/)
       .to_return_json(body: {data: response})
+    if unique_key
+      stub.with(body: /#{unique_key}/)
+    end
+    stub
   end
 
   def stub_strapi_graphql_collection_query(resource_name, records, page: 1, page_size: 100)

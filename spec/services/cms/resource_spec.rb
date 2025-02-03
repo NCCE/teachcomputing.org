@@ -33,6 +33,12 @@ RSpec.describe Cms::Resource do
         end.to raise_error(NotImplementedError)
       end
 
+      it "graphql_key should raise NotImplementedError" do
+        expect do
+          described_class.graphql_key
+        end.to raise_error(NotImplementedError)
+      end
+
       context "when extended" do
         it "calling get returns an object" do
           stub_strapi_get_single_entity("cms-resource-test")
