@@ -29,13 +29,13 @@ module Cms
               to_testimonial_row(strapi_data)
             when "text-with-asides"
               to_text_with_asides(strapi_data)
-            when "blocks.community-activity-list"
+            when "community-activity-list"
               to_community_activity_list(strapi_data)
-            when "blocks.sticky-dashboard-bar"
+            when "sticky-dashboard-bar"
               DynamicComponents::StickyDashboardBar.new(programme_slug: strapi_data[:programme][:data][:attributes][:slug])
-            when "blocks.enrolment-testimonial"
+            when "enrolment-testimonial"
               to_enrolment_testimonial(strapi_data)
-            when "blocks.enrolment-split-course-card"
+            when "enrolment-split-course-card"
               to_enrolment_split_course_card(strapi_data)
             end
           end
