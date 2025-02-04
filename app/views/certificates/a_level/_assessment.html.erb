@@ -28,7 +28,7 @@
         <%= sf.hidden_field 'assessment_id', value: @assessment.id %>
       <% end %>
 
-      <%= f.submit 'Take the test', class: 'govuk-button button govuk-!-margin-bottom-0', disabled: true, data: tracking_data('Take our test').merge('toggle-attribute-target' => 'button') %>
+      <%= f.submit 'Take the test', class: 'govuk-button button govuk-!-margin-bottom-0', disabled: true, data: { 'toggle-attribute-target' => 'button' } %>
     </div>
   <% end %>
 <% end %>
