@@ -21,4 +21,57 @@ RSpec.describe Cms::Providers::Strapi::Factories::ParameterFactory do
       expect(params[:featuredImage]).to eq({populate: [:alternativeText]})
     end
   end
+
+  context "for WebPagePreview" do
+    it "should generate correct params" do
+      params = described_class.generate_parameters(Cms::Models::WebPagePreview)
+      expect(params).to have_key(:populate)
+      expect(params).to have_key(:fields)
+      expect(params[:populate]).to eq({seo: {fields: [:title, :description]}})
+    end
+  end
+
+  context "for PageTitle" do
+    it "should generate correct params" do
+      params = described_class.generate_parameters(Cms::Models::PageTitle)
+      expect(params).to have_key(:populate)
+      expect(params).to have_key(:fields)
+      expect(params[:populate]).to eq({titleImage: {populate: [:alternativeText]}})
+    end
+  end
+
+  context "for Aside" do
+    it "should generate correct params" do
+      params = described_class.generate_parameters(Cms::Models::Aside)
+      expect(params).to have_key(:fields)
+      expect(params).to have_key(:content)
+      expect(params).to have_key(:titleIcon)
+      expect(params).to have_key(:asideIcons)
+    end
+  end
+
+  context "for EnrichmentList" do
+    it "should generate correct params" do
+      params = described_class.generate_parameters(Cms::Models::EnrichmentList)
+      expect(params).to have_key(:populate)
+      expect(params[:populate]).to have_key(:partner_icon)
+      expect(params[:populate]).to have_key(:terms)
+      expect(params[:populate]).to have_key(:age_groups)
+    end
+  end
+
+  context "for DynamicZone" do
+    it "should generate correct params" do
+      params = described_class.generate_parameters(Cms::Models::DynamicZone)
+      expect(params).to have_key(:on)
+    end
+  end
+
+  context "for Seo" do
+    it "should generate correct params" do
+      params = described_class.generate_parameters(Cms::Models::Seo)
+      expect(params).to have_key(:fields)
+      expect(params[:populate]).to eq({featuredImage: {populate: [:alternativeText]}})
+    end
+  end
 end
