@@ -8,7 +8,7 @@ module Cms
       end
 
       def render
-        CmsDynamicZoneComponent.new(cms_models:)
+        Cms::DynamicZoneComponent.new(cms_models:)
       end
     end
   end
