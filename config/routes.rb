@@ -36,6 +36,12 @@ Rails.application.routes.draw do
     end
     resources :assessment_attempts, only: %i[index show]
     resources :assessment_attempt_transitions
+    resources :reports, only: [:index] do
+      collection do
+        get :by_programme
+        post :report_results
+      end
+    end
   end
 
   namespace :api do

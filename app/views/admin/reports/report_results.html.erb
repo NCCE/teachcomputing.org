@@ -1,0 +1,29 @@
+<header class="main-content__header">
+  <h1 class="main-content__page-title">
+    Programme Report: <%= @programme.title %> 
+  </h1>
+</header>
+
+<section class="main-content__body">
+  <%= link_to "Back", by_programme_admin_reports_path(programme_id: @programme.id) %>
+  <% if @users %>
+    <h1>Results</h1>
+    <h2>Matching users: <%= @users.uniq.count %></h2>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Email</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @users.each do |user| %>
+          <tr>
+            <td><%= link_to user.email, admin_user_path(user)  %></td>
+          </tr>
+        <% end %>
+      </tbody>
+
+    </table>
+  <% end %>
+</section>
