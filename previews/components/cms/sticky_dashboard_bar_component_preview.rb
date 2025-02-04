@@ -2,6 +2,6 @@
 
 class Cms::StickyDashboardBarComponentPreview < ViewComponent::Preview
   def default
-    render(Cms::StickyDashboardBarComponent.new(programme_slug: "programme_slug"))
+    render(Cms::StickyDashboardBarComponent.new(programme_slug: "primary-certificate"))
   end
 end
