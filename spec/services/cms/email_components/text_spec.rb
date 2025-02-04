@@ -19,7 +19,7 @@ RSpec.describe Cms::EmailComponents::Text do
   end
 
   it "should render as CmsRichTextBlockComponent" do
-    expect(@email_text.render(email_template, user)).to be_a(CmsRichTextBlockComponent)
+    expect(@email_text.render(email_template, user)).to be_a(Cms::RichTextBlockComponent)
   end
 
   it "should render text as Cms::RichTextBlockTextComponent" do

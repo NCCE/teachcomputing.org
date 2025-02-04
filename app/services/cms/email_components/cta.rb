@@ -9,7 +9,7 @@ module Cms
       end
 
       def render(email_template, user)
-        CmsNcceButtonComponent.new(title: @text, link:)
+        NcceButtonComponent.new(title: @text, link:)
       end
 
       def render_text(email_template, user)

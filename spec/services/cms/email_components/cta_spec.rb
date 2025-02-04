@@ -13,7 +13,7 @@ RSpec.describe Cms::EmailComponents::Cta do
   end
 
   it "should render as NcceButtonComponent" do
-    expect(@cta.render(nil, nil)).to be_a(CmsNcceButtonComponent)
+    expect(@cta.render(nil, nil)).to be_a(Cms::NcceButtonComponent)
   end
 
   it "should render text as CtaText" do
