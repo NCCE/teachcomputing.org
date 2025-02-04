@@ -7,7 +7,15 @@ RSpec.describe("Primary certificate page") do
   let!(:community_programme_activity_grouping) { create(:programme_activity_grouping, programme:, community: true) }
   let!(:user_programme_enrolment) { create(:user_programme_enrolment, user:, programme:) }
 
-  let(:activities) { create_list(:activity, 3, :community, public_copy_description: "Activity description") }
+  let!(:activities) do
+    create_list(:activity, 3, :community, public_copy_description: "Activity description") do |activity, index|
+      activity.update(title: "Activity #{index + 1}")
+      create(:programme_activity,
+        programme_activity_grouping: community_programme_activity_grouping,
+        programme:,
+        activity:)
+    end
+  end
 
   before do
     allow_any_instance_of(AuthenticationHelper).to receive(:current_user).and_return(user)
@@ -17,18 +25,10 @@ RSpec.describe("Primary certificate page") do
     stub_strapi_programme(programme.slug, programme: mock_data)
     stub_strapi_aside_section("primary-certificate-need-help")
     stub_strapi_aside_section("primary-dashboard-cpd-section")
-
-    activities.each_with_index do |activity, index|
-      activity.update(title: "Activity #{index + 1}")
-      create(:programme_activity,
-        programme_activity_grouping: community_programme_activity_grouping,
-        programme:,
-        activity:)
-    end
   end
 
   it "adds the selected activity to the dashboard from the select" do
-    activity = programme.programme_activity_groupings.community.first.activities.first
+    activity = activities.first
     visit primary_certificate_path
 
     select activity.title, from: "activity"
@@ -40,7 +40,7 @@ RSpec.describe("Primary certificate page") do
   end
 
   it "removes the chosen activity when discard image is clicked" do
-    create(:achievement, user:, activity: programme.programme_activity_groupings.community.first.activities.first)
+    create(:achievement, user:, activity: activities.first)
     visit primary_certificate_path
 
     within ".primary-dashboard-community-activity__activity-details-title" do
@@ -51,7 +51,6 @@ RSpec.describe("Primary certificate page") do
   end
 
   it "adds multiple activities to the dashboard when selected" do
-    activities = programme.programme_activity_groupings.community.first.activities
     visit primary_certificate_path
 
     select activities.first.title, from: "activity"
