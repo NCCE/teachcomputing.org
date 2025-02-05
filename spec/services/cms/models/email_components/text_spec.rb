@@ -10,7 +10,8 @@ RSpec.describe Cms::Models::EmailComponents::Text do
       email_content: Cms::Mocks::Text::RichBlocks.generate_data,
       programme_slug: programme.slug,
       completed_programme_activity_group_slugs: [],
-      activity_state: :active
+      activity_state: :active,
+      enrolled: true
     )
   }
 

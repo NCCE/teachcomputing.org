@@ -46,7 +46,8 @@ RSpec.describe Cms::Models::Collections::EmailTemplate do
       email_content: Cms::Mocks::EmailComponents::Text.generate_raw_data(text_content:),
       programme_slug: "primary-certificate",
       completed_programme_activity_group_slugs: [],
-      activity_state: :active
+      activity_state: :active,
+      enrolled: true
     )
   end
 

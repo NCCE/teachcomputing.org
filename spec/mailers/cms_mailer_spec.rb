@@ -15,15 +15,15 @@ RSpec.describe CmsMailer, type: :mailer do
       Cms::Mocks::EmailComponents::Text.generate_raw_data(
         text_content: [
           {
-            type: :paragraph,
+            type: "paragraph",
             children: [
-              {type: :text, text: "Hello {first_name}"}
+              {type: "text", text: "Hello {first_name}"}
             ]
           },
           {
-            type: :paragraph,
+            type: "paragraph",
             children: [
-              {type: :text, text: "You completed {last_cpd_title}"}
+              {type: "text", text: "You completed {last_cpd_title}"}
             ]
           },
           {
@@ -51,28 +51,27 @@ RSpec.describe CmsMailer, type: :mailer do
     ]
   }
   let(:email_template) {
-    Cms::Mocks::Collections::EmailTemplate.generate_raw_data(
-      subject:,
-      slug:,
-      email_content:
+    Cms::Providers::Strapi::Factories::ModelFactory.to_email_template(
+      Cms::Mocks::Collections::EmailTemplate.generate_data(
+        subject:,
+        slug:,
+        email_content:
+      )
     )
   }
   let(:email_template_merge_subject) {
-    Cms::Mocks::Collections::EmailTemplate.generate_raw_data(
-      subject: "Congrats {first_name} you did {last_cpd_title}",
-      slug: slug_with_merge_subject,
-      email_content:
+    Cms::Providers::Strapi::Factories::ModelFactory.to_email_template(
+      Cms::Mocks::Collections::EmailTemplate.generate_data(
+        subject: "Congrats {first_name} you did {last_cpd_title}",
+        slug: slug_with_merge_subject,
+        email_content:
+      )
     )
   }
 
-  before do
-    stub_strapi_email_template(slug, email_template:)
-    stub_strapi_email_template(slug_with_merge_subject, email_template: email_template_merge_subject)
-  end
-
   describe "send_template" do
     before do
-      @mail = CmsMailer.with(user_id: user.id, template_slug: slug).send_template
+      @mail = CmsMailer.with(user_id: user.id, template: email_template).send_template
     end
 
     it "renders the headers" do
@@ -131,7 +130,7 @@ RSpec.describe CmsMailer, type: :mailer do
       before do
         travel_to 1.day.from_now do
           create(:completed_achievement, activity: second_activity, user:)
-          @future_mail = CmsMailer.with(user_id: user.id, template_slug: slug).send_template
+          @future_mail = CmsMailer.with(user_id: user.id, template: email_template).send_template
         end
       end
 
@@ -147,7 +146,7 @@ RSpec.describe CmsMailer, type: :mailer do
 
   describe "send_template with merged subject" do
     before do
-      @mail = CmsMailer.with(user_id: user.id, template_slug: slug_with_merge_subject).send_template
+      @mail = CmsMailer.with(user_id: user.id, template: email_template_merge_subject).send_template
     end
 
     it "renders the headers" do
