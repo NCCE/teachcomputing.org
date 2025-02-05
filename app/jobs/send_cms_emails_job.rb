@@ -17,7 +17,7 @@ class SendCmsEmailsJob < ApplicationJob
     users = Programmes::ProgressQuery.new(data.programme, data.activity_state, data.enrolled, data.completed_programme_activity_groups).call
 
     users.each do |user|
-      CmsMailer.with(template: data, user_id: user.id).send_template.deliver_later
+      CmsMailer.with(template_slug: data.slug, user_id: user.id).send_template.deliver_later
     end
   end
 end

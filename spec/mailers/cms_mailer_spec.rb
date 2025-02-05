@@ -51,27 +51,28 @@ RSpec.describe CmsMailer, type: :mailer do
     ]
   }
   let(:email_template) {
-    Cms::Providers::Strapi::Factories::ModelFactory.to_email_template(
-      Cms::Mocks::Collections::EmailTemplate.generate_data(
-        subject:,
-        slug:,
-        email_content:
-      )
+    Cms::Mocks::Collections::EmailTemplate.generate_raw_data(
+      subject:,
+      slug:,
+      email_content:
     )
   }
   let(:email_template_merge_subject) {
-    Cms::Providers::Strapi::Factories::ModelFactory.to_email_template(
-      Cms::Mocks::Collections::EmailTemplate.generate_data(
-        subject: "Congrats {first_name} you did {last_cpd_title}",
-        slug: slug_with_merge_subject,
-        email_content:
-      )
+    Cms::Mocks::Collections::EmailTemplate.generate_raw_data(
+      subject: "Congrats {first_name} you did {last_cpd_title}",
+      slug: slug_with_merge_subject,
+      email_content:
     )
   }
 
+  before do
+    stub_strapi_email_template(slug, email_template:)
+    stub_strapi_email_template(slug_with_merge_subject, email_template: email_template_merge_subject)
+  end
+
   describe "send_template" do
     before do
-      @mail = CmsMailer.with(user_id: user.id, template: email_template).send_template
+      @mail = described_class.with(user_id: user.id, template_slug: slug).send_template
     end
 
     it "renders the headers" do
@@ -130,7 +131,7 @@ RSpec.describe CmsMailer, type: :mailer do
       before do
         travel_to 1.day.from_now do
           create(:completed_achievement, activity: second_activity, user:)
-          @future_mail = CmsMailer.with(user_id: user.id, template: email_template).send_template
+          @future_mail = described_class.with(user_id: user.id, template_slug: slug).send_template
         end
       end
 
@@ -146,13 +147,29 @@ RSpec.describe CmsMailer, type: :mailer do
 
   describe "send_template with merged subject" do
     before do
-      @mail = CmsMailer.with(user_id: user.id, template: email_template_merge_subject).send_template
+      @mail = described_class.with(user_id: user.id, template_slug: slug_with_merge_subject).send_template
     end
 
     it "renders the headers" do
       expect(@mail.subject).to include("Congrats #{user.first_name} you did #{activity.title}")
       expect(@mail.to).to eq([user.email])
       expect(@mail.from).to eq(["noreply@teachcomputing.org"])
+    end
+  end
+
+  describe "with missing template" do
+    let(:missing_slug) { "missing_template_slug" }
+
+    before do
+      stub_strapi_email_template_missing(missing_slug)
+      allow(Sentry).to receive(:capture_message)
+    end
+
+    it "logs error to sentry" do
+      described_class.with(user_id: user.id, template_slug: missing_slug).send_template.deliver_now
+      expect(Sentry)
+        .to have_received(:capture_message)
+        .with("Failed to load the email template #{missing_slug}")
     end
   end
 end
