@@ -1,9 +1,9 @@
 module Cms
   module Models
     class EmailTemplate
-      attr_accessor :slug, :email_content, :programme, :completed_programme_activity_groups, :activity_state
+      attr_accessor :slug, :email_content, :programme, :completed_programme_activity_groups, :activity_state, :enrolled
 
-      def initialize(slug:, subject:, email_content:, programme_slug:, completed_programme_activity_group_slugs:, activity_state:)
+      def initialize(slug:, subject:, email_content:, programme_slug:, completed_programme_activity_group_slugs:, activity_state:, enrolled:)
         @slug = slug
         @subject = subject
         @email_content = email_content
@@ -16,6 +16,7 @@ module Cms
           []
         end
         @activity_state = activity_state
+        @enrolled = enrolled
       end
 
       def subject(user)
