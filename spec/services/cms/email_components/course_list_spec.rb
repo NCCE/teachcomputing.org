@@ -10,7 +10,8 @@ RSpec.describe Cms::EmailComponents::CourseList do
       email_content: Cms::Mocks::RichBlocks.generate_data,
       programme_slug: programme.slug,
       completed_programme_activity_group_slugs: [],
-      activity_state: :active
+      activity_state: :active,
+      enrolled: true
     )
   }
   let!(:activity1) { create(:activity, stem_activity_code: "CP123", programmes: [programme]) }
