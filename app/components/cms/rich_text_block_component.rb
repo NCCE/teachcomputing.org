@@ -40,7 +40,7 @@ class Cms::RichTextBlockComponent < ViewComponent::Base
     <% end %>
   ERB
 
-  def initialize(blocks:, with_wrapper: true, **options)
+  def initialize(blocks:, with_wrapper: false, **options)
     @blocks = blocks
     @with_wrapper = with_wrapper
     @options = options

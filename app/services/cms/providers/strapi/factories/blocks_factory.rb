@@ -16,13 +16,13 @@ module Cms
             when "numbered-icon-list"
               to_numbered_icon_list(strapi_data)
             when "numeric-cards-section"
-              to_card_wrapper(strapi_data, to_numeric_card_block(strapi_data[:numericCards]))
+              to_card_wrapper(strapi_data, to_numeric_card_array(strapi_data[:numericCards]))
             when "picture-card-section"
-              to_card_wrapper(strapi_data, to_picture_card_block(strapi_data[:pictureCards]))
+              to_card_wrapper(strapi_data, to_picture_card_array(strapi_data[:pictureCards]))
             when "question-and-answer"
               to_question_and_answer(strapi_data)
             when "resource-card-section"
-              to_card_wrapper(strapi_data, to_resource_card_block(strapi_data[:resourceCards]))
+              to_card_wrapper(strapi_data, to_resource_card_array(strapi_data[:resourceCards]))
             when "split-horizontal-card"
               to_split_horizontal_card(strapi_data)
             when "testimonial-row"
@@ -42,14 +42,14 @@ module Cms
 
           def self.to_enrolment_split_course_card(strapi_data)
             DynamicComponents::EnrolmentSplitCourseCard.new(
-              card_content: ModelFactory.to_content_block(strapi_data[:cardContent], with_wrapper: false),
-              aside_content: ModelFactory.to_content_block(strapi_data[:asideContent], with_wrapper: false),
+              card_content: to_content_block(strapi_data[:cardContent]),
+              aside_content: to_content_block(strapi_data[:asideContent]),
               enrol_aside: extract_aside_sections(strapi_data, param_name: :enrolAside),
               section_title: strapi_data[:sectionTitle],
               background_color: extract_color_name(strapi_data, :bkColor),
               color_theme: extract_color_name(strapi_data, :colorTheme),
               aside_title: strapi_data[:asideTitle],
-              aside_icon: ModelFactory.to_image(strapi_data, :asideIcon),
+              aside_icon: to_image(strapi_data, :asideIcon),
               programme_slug: strapi_data[:programme][:data][:attributes][:slug]
             )
           end
@@ -68,7 +68,7 @@ module Cms
           def self.to_community_activity_list(strapi_data)
             DynamicComponents::CommunityActivityGrid.new(
               title: strapi_data[:title],
-              intro: ModelFactory.to_content_block(strapi_data[:intro], with_wrapper: false),
+              intro: to_content_block(strapi_data[:intro]),
               programme_activity_group_slug: strapi_data[:group][:data][:attributes][:slug]
             )
           end
@@ -77,35 +77,35 @@ module Cms
             DynamicComponents::IconBlock.new(icons: strapi_data.map { to_icon(_1) })
           end
 
-          def self.to_numeric_card_block(strapi_data)
+          def self.to_numeric_card_array(strapi_data)
             strapi_data.map.with_index do |card_data, index|
               DynamicComponents::NumericCard.new(
                 title: card_data[:title],
-                text_content: to_content_block(card_data[:textContent], with_wrapper: false, paragraph_class: "govuk-body-l"),
+                text_content: to_content_block(card_data[:textContent], paragraph_class: "govuk-body-l"),
                 number: index + 1
               )
             end
           end
 
-          def self.to_picture_card_block(strapi_data)
+          def self.to_picture_card_array(strapi_data)
             strapi_data.map do |card_data|
               DynamicComponents::PictureCard.new(
                 image: to_image(card_data, :image, default_size: :medium),
                 title: card_data[:title],
-                body_text: to_content_block(card_data[:textContent], with_wrapper: false),
+                body_text: to_content_block(card_data[:textContent]),
                 link: card_data[:link],
                 color_theme: extract_color_name(card_data, :colorTheme)
               )
             end
           end
 
-          def self.to_resource_card_block(strapi_data)
+          def self.to_resource_card_array(strapi_data)
             strapi_data.map do |card_data|
               DynamicComponents::ResourceCard.new(
                 title: card_data[:title],
                 icon: to_image(card_data, :icon, default_size: :medium),
                 color_theme: extract_color_name(card_data, :colorTheme),
-                body_text: to_content_block(card_data[:textContent], with_wrapper: false),
+                body_text: to_content_block(card_data[:textContent]),
                 button_text: card_data[:buttonText],
                 button_link: card_data[:buttonLink]
               )
@@ -124,7 +124,7 @@ module Cms
 
           def self.to_full_width_banner(strapi_data)
             DynamicComponents::FullWidthBanner.new(
-              text_content: to_content_block(strapi_data[:textContent], with_wrapper: false),
+              text_content: to_content_block(strapi_data[:textContent]),
               background_color: extract_color_name(strapi_data, :backgroundColor),
               image: to_image(strapi_data, :image, default_size: :medium),
               image_side: strapi_data[:imageSide],
@@ -137,7 +137,7 @@ module Cms
 
           def self.to_full_width_text(strapi_data)
             DynamicComponents::FullWidthText.new(
-              blocks: to_content_block(strapi_data[:textContent], with_wrapper: false),
+              blocks: to_content_block(strapi_data[:textContent]),
               background_color: extract_color_name(strapi_data, :backgroundColor),
               show_bottom_border: strapi_data[:showBottomBorder]
             )
@@ -146,7 +146,7 @@ module Cms
           def self.to_horizontal_card(strapi_data)
             DynamicComponents::HorizontalCard.new(
               title: strapi_data[:title],
-              body_blocks: to_content_block(strapi_data[:textContent], with_wrapper: false),
+              body_blocks: to_content_block(strapi_data[:textContent]),
               image: to_image(strapi_data, :image, default_size: :small),
               image_link: strapi_data[:imageLink],
               color_theme: extract_color_name(strapi_data, :colorTheme),
@@ -160,7 +160,7 @@ module Cms
             DynamicComponents::NumberedIconList.new(
               title: strapi_data[:title],
               title_icon: to_image(strapi_data, :titleIcon),
-              points: strapi_data[:points].map { to_content_block(_1[:textContent], with_wrapper: false) },
+              points: strapi_data[:points].map { to_content_block(_1[:textContent]) },
               aside_sections: extract_aside_sections(strapi_data)
             )
           end
@@ -168,7 +168,7 @@ module Cms
           def self.to_question_and_answer(strapi_data)
             DynamicComponents::QuestionAndAnswer.new(
               question: strapi_data[:question],
-              answer: to_content_block(strapi_data[:answer], with_wrapper: false),
+              answer: to_content_block(strapi_data[:answer]),
               aside_sections: extract_aside_sections(strapi_data),
               answer_icon_block: to_icon_block(strapi_data[:answerIcons]),
               aside_alignment: strapi_data[:asideAlignment],
@@ -178,8 +178,8 @@ module Cms
 
           def self.to_split_horizontal_card(strapi_data)
             DynamicComponents::SplitHorizontalCard.new(
-              card_content: to_content_block(strapi_data[:cardContent], with_wrapper: false),
-              aside_content: to_content_block(strapi_data[:asideContent], with_wrapper: false),
+              card_content: to_content_block(strapi_data[:cardContent]),
+              aside_content: to_content_block(strapi_data[:asideContent]),
               aside_icon: to_image(strapi_data, :asideIcon),
               aside_title: strapi_data[:asideTitle],
               section_title: strapi_data[:sectionTitle],
@@ -198,7 +198,7 @@ module Cms
 
           def self.to_text_with_asides(strapi_data)
             DynamicComponents::TextWithAsides.new(
-              blocks: to_content_block(strapi_data[:textContent], with_wrapper: false),
+              blocks: to_content_block(strapi_data[:textContent]),
               asides: extract_aside_sections(strapi_data),
               background_color: extract_color_name(strapi_data, :bkColor)
             )
