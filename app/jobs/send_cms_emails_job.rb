@@ -13,10 +13,11 @@ class SendCmsEmailsJob < ApplicationJob
 
   def process_template(template)
     # Do Query
-    users = []
+    data = template.template
+    users = Programmes::ProgressQuery.new(data.programme, data.activity_state, data.enrolled, data.completed_programme_activity_groups).call
 
     users.each do |user|
-      CmsMailer.with(template_slug: template.template.slug, user_id: user.id).send_template.deliver_later
+      CmsMailer.with(template: data, user_id: user.id).send_template.deliver_later
     end
   end
 end
