@@ -65,7 +65,8 @@ module Cms
               programme_slug: strapi_data[:programme][:data][:attributes][:slug],
               email_content: strapi_data[:emailContent].map { EmailComponentFactory.process_component(_1) }.compact,
               completed_programme_activity_group_slugs: strapi_data[:completedGroupings].collect { _1[:data][:attributes][:slug] },
-              activity_state: strapi_data[:activityState]
+              activity_state: strapi_data[:activityState],
+              enrolled: strapi_data[:enrolled]
             )
           end
 
