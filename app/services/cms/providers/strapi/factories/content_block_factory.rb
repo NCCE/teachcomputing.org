@@ -8,7 +8,7 @@ module Cms
           def self.generate_component(component_name, strapi_data)
             case component_name
             when "text-block"
-              to_content_block(strapi_data[:textContent], with_wrapper: false)
+              to_content_block(strapi_data[:textContent])
             when "file-link"
               file_data = strapi_data.dig(:file, :data) ? strapi_data[:file][:data][:attributes] : nil
               to_file(file_data) if file_data

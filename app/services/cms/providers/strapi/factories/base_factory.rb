@@ -30,7 +30,7 @@ module Cms
               )
             end
 
-            def to_content_block(data, with_wrapper: true, **options)
+            def to_content_block(data, with_wrapper: false, **options)
               data.map! do |block|
                 block[:image] = as_image(block[:image], :medium) if block[:type] == "image"
                 block
@@ -50,7 +50,7 @@ module Cms
                 name: strapi_data[:name],
                 job_title: strapi_data[:jobTitle],
                 avatar: to_image(strapi_data, :avatar, default_size: :small),
-                quote: to_content_block(strapi_data[:quote], with_wrapper: false)
+                quote: to_content_block(strapi_data[:quote])
               )
             end
 
