@@ -143,8 +143,11 @@ Rails.application.routes.draw do
   end
 
   resource :feedback, only: %i[create]
-  resources :hubs, only: %i[index]
   resources :downloads, only: %i[create]
+
+  # April 2025 Redirects
+
+  get "/hubs", to: redirect("/")
 
   get "/bursary", to: redirect("/funding", status: 302)
   get "/courses", action: :index, controller: "courses", as: "courses"
