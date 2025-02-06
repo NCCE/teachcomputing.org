@@ -11,7 +11,6 @@ describe TrackingHelper, type: :helper do
       {route: "/curriculum", category: "Curriculum landing"},
       {route: "/about", category: "About"},
       {route: "/gender-balance", category: "GBIC"},
-      {route: "/hubs", category: "Hubs"},
       {route: "/impact-and-evaluation", category: "Impact"},
       {route: "/primary-certificate", category: "Primary unenrolled"},
       {route: "/certificate/primary-certificate", category: "Primary enrolled"},
