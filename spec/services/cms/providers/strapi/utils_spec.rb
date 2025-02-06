@@ -2,6 +2,7 @@ require "rails_helper"
 
 RSpec.describe Cms::Providers::Strapi::Utils do
   before do
+    allow(Rails.application.config).to receive(:strapi_connection_type).and_return("rest")
     stub_strapi_web_page_not_found("test-page")
     stub_strapi_create("web-pages")
   end

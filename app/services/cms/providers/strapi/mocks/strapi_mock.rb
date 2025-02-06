@@ -22,12 +22,17 @@ module Cms
               @attributes << StrapiAttribute.new(strapi_name, &block)
             end
 
-            def generate_raw_data(**values)
+            def generate_raw_data(mode: nil, **values)
+              mode = Rails.application.config.strapi_connection_type.to_sym if mode.nil?
               data = {
                 id: values[:id] || Faker::Number.number
               }
               if @type == :component
-                data[:__component] = @component_key
+                if mode == :rest
+                  data[:__component] = @component_key
+                else
+                  data[:__typename] = "Component#{@component_key.gsub(/[.-]/, "_").camelize}"
+                end
                 data.merge!(generate_data(**values))
               else
                 data[:attributes] = generate_data(**values)

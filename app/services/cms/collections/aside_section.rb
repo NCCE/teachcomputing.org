@@ -21,9 +21,9 @@ module Cms
         4.hours
       end
 
-      def self.resource_key
-        "aside-sections"
-      end
+      def self.resource_key = "aside-sections"
+
+      def self.graphql_key = "asideSections"
     end
   end
 end
