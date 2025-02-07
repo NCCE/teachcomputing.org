@@ -10,10 +10,13 @@ module Cms
               def self.base_fields
                 <<~GRAPHQL.freeze
                   hozcard__title: title
-                  hozcar__textContent: textContent
+                  hozcard__textContent: textContent
+                  #{SharedFields.image_fields("image")}
                   imageLink
-                  externalTitle
+                  #{SharedFields.color_theme("colorTheme")}
+                  #{SharedFields.icon_block("iconBlock")}
                   spacing
+                  externalTitle
                 GRAPHQL
               end
             end
