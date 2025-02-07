@@ -11,13 +11,7 @@ module Cms
                 <<~GRAPHQL.freeze
                   intro
                   title
-                  group {
-                    data {
-                      attributes {
-                        slug
-                      }
-                    }
-                  }
+                  #{SharedFields.by_slug(:group)}
                 GRAPHQL
               end
             end

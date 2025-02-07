@@ -5,20 +5,20 @@ module Cms
         class BaseQuery
           attr_accessor :resource_name, :resource_filter
 
-          QUERY_MAPS = [
-            [Models::BlogPreview, BlogPreview],
-            [Models::WebPagePreview, WebPagePreview],
-            [Models::FeaturedImage, FeaturedImage],
-            [Models::Slug, Slug],
-            [Models::PageTitle, Components::Blocks::PageTitle],
-            [Models::SimpleTitle, SimpleField],
-            [Models::TextBlock, SimpleField],
-            [Models::Seo, Seo],
-            [Models::DynamicZone, DynamicZone],
-            [Models::EnrichmentDynamicZone, EnrichmentDynamicZone],
-            [Models::EnrichmentList, EnrichmentList],
-            [Models::Aside, Aside]
-          ]
+          QUERY_MAPS = {
+            Models::BlogPreview => BlogPreview,
+            Models::WebPagePreview => WebPagePreview,
+            Models::FeaturedImage => FeaturedImage,
+            Models::Slug => Slug,
+            Models::PageTitle => Components::Blocks::PageTitle,
+            Models::SimpleTitle => SimpleField,
+            Models::TextBlock => SimpleField,
+            Models::Seo => Seo,
+            Models::DynamicZone => DynamicZone,
+            Models::EnrichmentDynamicZone => EnrichmentDynamicZone,
+            Models::EnrichmentList => EnrichmentList,
+            Models::Aside => Aside
+          }.freeze
 
           def initialize(collection_class, resource_filter = "slug")
             @collection_class = collection_class
@@ -26,15 +26,11 @@ module Cms
             @resource_filter = resource_filter
           end
 
-          def find_query_map(model_class)
-            QUERY_MAPS.find { _1[0] == model_class }
-          end
-
           def build_collection_fields
             fields = []
             @collection_class.collection_attribute_mappings.each do |mapping|
-              query_map = find_query_map(mapping[:model])
-              fields << query_map[1].embed(mapping[:key]) if query_map
+              model_class = mapping[:model]
+              fields << QUERY_MAPS[model_class].embed(mapping[:key]) if QUERY_MAPS.key?(model_class)
             end
             fields
           end
@@ -42,8 +38,8 @@ module Cms
           def build_resource_fields
             fields = []
             @collection_class.resource_attribute_mappings.each do |mapping|
-              query_map = find_query_map(mapping[:model])
-              fields << query_map[1].embed(mapping[:key]) if query_map
+              model_class = mapping[:model]
+              fields << QUERY_MAPS[model_class].embed(mapping[:key]) if QUERY_MAPS.key?(model_class)
             end
             fields
           end
@@ -54,9 +50,14 @@ module Cms
               pageSize: page_size
             }
             filters = Factories::QueryFactory.generate_parameters(@collection_class, params[:query])
+            param_strings = [
+              query_string(:pagination, pagination_options),
+              query_string(:filters, filters),
+              sort_string(@collection_class)
+            ]
             <<~GRAPHQL.freeze
               query {
-                #{resource_name}(#{query_string(:pagination, pagination_options)} #{query_string(:filters, filters)} #{sort_string(@collection_class.sort)}) {
+                #{resource_name}(#{param_strings.join(" ")}) {
                   meta {
                     pagination {
                       page pageSize pageCount total
@@ -96,8 +97,8 @@ module Cms
             GRAPHQL
           end
 
-          def sort_string(value)
-            return "sort: \"#{value}\"" if value
+          def sort_string(collection_class)
+            return "sort: \"#{collection_class.sort}\"" if collection_class.sort
             ""
           end
 
