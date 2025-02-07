@@ -18,19 +18,14 @@ $hero-tiny-breakpoint: 430px;
   }
 
   .ncce-home-hero__column {
-    background-repeat: no-repeat;
-    background-size: cover;
     position: relative;
     width: 100%;
     height: 100%;
     aspect-ratio: 1/1;
 
-    @media screen and (min-width: $hero-mobile-breakpoint) {
-      background-size: cover;
-    }
-
-    &:nth-child(1) {
-      background-image: url("../images/hero/hero1-house-background.svg");
+    &-home {
+      background:url("../images/hero/hero1-house-background-corner.svg") top right no-repeat, url("../images/hero/hero1-house-background.svg") top left no-repeat;
+      background-size: 13.5%, cover;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -38,14 +33,11 @@ $hero-tiny-breakpoint: 430px;
       @media screen and (min-width: $hero-mobile-breakpoint) {
         grid-column: 1;
       }
-
-      @media screen and (max-width: $hero-mobile-breakpoint) {
-        background-position: center top;
-        aspect-ratio: 12/8;
-      }
     }
 
     &:nth-child(2) {
+      background-repeat: no-repeat;
+      background-size: cover;
       background-image: url("../images/hero/hero2-person-background.png");
       width: 100%;
       overflow: hidden;
@@ -138,22 +130,12 @@ $hero-tiny-breakpoint: 430px;
       display: flex;
       flex-direction: column;
 
-      left: 13%;
-      top: 25%;
-      right: 11%;
-
       padding-left: 5%;
       padding-right: 5%;
       margin-top: 3%;
       margin-bottom: 5%;
 
       align-items: center;
-      @media screen and (max-width: $hero-tiny-breakpoint) {
-        align-items: start;
-      }
-      @media screen and (min-width: $hero-mobile-breakpoint) {
-        align-items: start;
-      }
 
       h1 {
         @extend .govuk-heading-xl;
@@ -188,13 +170,10 @@ $hero-tiny-breakpoint: 430px;
       }
 
       .ncce-home-hero__top {
-        width: 100.1%;
-        margin-bottom: -1px;
-
-        .ncce-home-hero__house-roof {
-          width: 100%;
-          display: block;
-        }
+        width: 100%;
+        aspect-ratio: 25/6;
+        background-image: url("../images/hero/hero1-house-roof.svg"); // #svgView(preserveAspectRatio(none))");
+        background-size: 100% 100%;
       }
 
       .ncce-home-hero__middle {
@@ -204,45 +183,33 @@ $hero-tiny-breakpoint: 430px;
         justify-content: space-between;
 
         .ncce-home-hero__middle-left {
-          position: relative;
-
-          .ncce-home-hero__house-wall-left {
-            display: block;
-            height: 100%;
-            position: absolute;
-            left: 0;
-          }
+          flex: 0 0 1.8%;
+          background-color: #5AFF6A;
         }
 
         .ncce-home-hero__middle-content {
-          padding: 5%;
           display: flex;
           flex-direction: column;
           align-items: center;
 
-          h1 {
-            text-align: center;
-          }
-
-          @media screen and (min-width: $hero-mobile-breakpoint) {
-            padding: 5% 10%;
-            align-items: normal;
+          .ncce-home-hero__middle-content_content {
+            padding: 5%;
 
             h1 {
-              text-align: left;
+              text-align: center;
+            }
+
+            @media screen and (min-width: $hero-mobile-breakpoint) {
+              h1 {
+                text-align: left;
+              }
             }
           }
         }
 
         .ncce-home-hero__middle-right {
-          position: relative;
-
-          .ncce-home-hero__house-wall-right {
-            display: block;
-            height: 100%;
-            position: absolute;
-            right: 0;
-          }
+          flex: 0 0 1.8%;
+          background-color: #5AFF6A;
         }
       }
 

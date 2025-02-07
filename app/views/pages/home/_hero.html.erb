@@ -1,40 +1,35 @@
 <div class="ncce-home-hero-wrapper">
   <div class="ncce-home-hero">
-    <div class="ncce-home-hero__column">
-      <div class="ncce-home-hero__corner-house-right">
-        <%= image_pack_tag 'media/images/hero/hero1-house-background-corner.svg', class: "ncce-home-hero__house-corner", alt: "", aria_hidden: true %>
-      </div>
-
+    <div class="ncce-home-hero__column ncce-home-hero__column-home">
       <div class="ncce-home-hero__house">
         <div class="ncce-home-hero__top">
-          <%= image_pack_tag 'media/images/hero/hero1-house-roof.svg', class: "ncce-home-hero__house-roof", alt: "", aria_hidden: true %>
         </div>
 
         <div class="ncce-home-hero__middle">
           <div class="ncce-home-hero__middle-left">
-            <%= image_pack_tag 'media/images/hero/hero1-house-wall-left.svg', class: "ncce-home-hero__house-wall-left", alt: "", aria_hidden: true %>
           </div>
           <div class="ncce-home-hero__middle-content">
-            <h1><%= t("pages.home.hero.heading") %></h1>
-            <p><%= t("pages.home.hero.subheading") %></p>
-            <ul>
-              <li><%= t("pages.home.hero.point1") %></li>
-              <li><%= t("pages.home.hero.point2") %></li>
-              <li><%= t("pages.home.hero.point3") %></li>
-              <li><%= t("pages.home.hero.point4") %></li>
-            </ul>
-            <div class="ncce-home-hero__house__button-container">
-              <% if current_user %>
-                <%= link_to t("pages.home.hero.view"), dashboard_path, class: "govuk-button button ncce-button", data: { event_action: "click", event_category: "Homepage", event_label: "Dashboard" } %>
-                <%= link_to t("pages.home.hero.learn"), about_path, class: "govuk-button button ncce-button ncce-button__white", data: { event_action: "click", event_category: "Homepage", event_label: "About us" } %>
-              <% else %>
-                <%= link_to t("pages.home.hero.join"), auth_url, class: "govuk-button button ncce-button", data: { event_action: "click", event_category: "Homepage", event_label: "Join for free" } %>
-                <%= link_to t("pages.home.hero.learn"), about_path, class: "govuk-button button ncce-button ncce-button__white", data: { event_action: "click", event_category: "Homepage", event_label: "About us" } %>
-              <% end %>
+            <div class="ncce-home-hero__middle-content_content">
+              <h1><%= t("pages.home.hero.heading") %></h1>
+              <p><%= t("pages.home.hero.subheading") %></p>
+              <ul>
+                <li><%= t("pages.home.hero.point1") %></li>
+                <li><%= t("pages.home.hero.point2") %></li>
+                <li><%= t("pages.home.hero.point3") %></li>
+                <li><%= t("pages.home.hero.point4") %></li>
+              </ul>
+              <div class="ncce-home-hero__house__button-container">
+                <% if current_user %>
+                  <%= link_to t("pages.home.hero.view"), dashboard_path, class: "govuk-button button ncce-button", data: { event_action: "click", event_category: "Homepage", event_label: "Dashboard" } %>
+                  <%= link_to t("pages.home.hero.learn"), about_path, class: "govuk-button button ncce-button ncce-button__white", data: { event_action: "click", event_category: "Homepage", event_label: "About us" } %>
+                <% else %>
+                  <%= link_to t("pages.home.hero.join"), auth_url, class: "govuk-button button ncce-button", data: { event_action: "click", event_category: "Homepage", event_label: "Join for free" } %>
+                  <%= link_to t("pages.home.hero.learn"), about_path, class: "govuk-button button ncce-button ncce-button__white", data: { event_action: "click", event_category: "Homepage", event_label: "About us" } %>
+                <% end %>
+              </div>
             </div>
           </div>
           <div class="ncce-home-hero__middle-right">
-            <%= image_pack_tag 'media/images/hero/hero1-house-wall-right.svg', class: "ncce-home-hero__house-wall-right", alt: "", aria_hidden: true %>
           </div>
         </div>
 
