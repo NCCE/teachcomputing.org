@@ -25,7 +25,6 @@ module NavigationHelper
          {text: "Funding", link: cms_page_path("funding"), label: "Bursaries"},
          {text: "I Belong programme", link: about_i_belong_path, label: "i-belong"},
          {text: "GCSE Computer Science support", link: cms_page_path("gcse-cs-support"), label: "GCSE support"},
-         {text: "Computing Clusters", link: cms_page_path("computing-clusters"), label: "Computing clusters"},
          {text: "School Trusts", link: cms_page_path("school-trusts"), label: "School trusts"}
        ]},
       {text: "Teaching resources",
