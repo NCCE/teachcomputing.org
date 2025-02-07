@@ -2,6 +2,10 @@ Rails.application.routes.draw do
   Healthcheck.routes(self)
   root to: "cms#home", action: :home
 
+  # April 2025 Route Redirect
+
+  get "/computing-clusters", to: redirect("/")
+
   resources :achievements, only: %i[create destroy update] do
     collection do
       post :submit

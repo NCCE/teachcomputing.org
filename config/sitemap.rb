@@ -22,7 +22,6 @@ SitemapGenerator::Sitemap.create do
   add "/careers-week", changefreq: "monthly"
   add "/careers-support", changefreq: "monthly"
   add "/certification", changefreq: "monthly"
-  add "/computing-clusters", changefreq: "monthly"
   add "/contact", changefreq: "monthly"
   add "/courses", changefreq: "daily"
   add "/curriculum", changefreq: "weekly"
