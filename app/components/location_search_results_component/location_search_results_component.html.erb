@@ -1,6 +1,6 @@
 <div class="location-search-results-component">
   <% if show_no_results_message? %>
-    <%= render NoCoursesComponent.new(hub: @course_filter.current_hub) %>
+    <%= render NoCoursesComponent.new %>
   <% else %>
     <% if courses_present? %>
       <p class="govuk-body location-search-results-component__title">
