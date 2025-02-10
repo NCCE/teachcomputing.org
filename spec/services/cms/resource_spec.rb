@@ -21,12 +21,12 @@ RSpec.describe Cms::Resource do
       expect(described_class.send(:client)).to be_a Cms::Providers::Strapi::Client
     end
 
-    it "default to rest client when not specified" do
+    it "return rest client when set to rest" do
       allow(Rails.application.config).to receive(:strapi_connection_type).and_return("rest")
       expect(described_class.send(:client)).to be_a Cms::Providers::Strapi::Client
     end
 
-    it "default to rest client when not specified" do
+    it "return graphql client when set to graphql" do
       allow(Rails.application.config).to receive(:strapi_connection_type).and_return("graphql")
       expect(described_class.send(:client)).to be_a Cms::Providers::Strapi::GraphqlClient
     end
