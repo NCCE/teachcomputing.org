@@ -138,7 +138,7 @@ module CoursesHelper
 
   def filter_count(course_filter)
     filters = course_filter.applied_filters || []
-    filters.count { _1 != course_filter.current_hub }
+    filters.count
   end
 
   def applied_filters_string(course_filter)

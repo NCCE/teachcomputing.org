@@ -11,7 +11,6 @@ RSpec.describe LocationSearchResultsComponent, type: :component do
 
   it "shows error message if no results at all" do
     allow(filter_double).to receive(:location_search?).and_return(true)
-    allow(filter_double).to receive(:current_hub).and_return(nil)
     search_results = Achiever::LocationCourseSearchResult.new.tap do |sr|
       sr.courses_count = 0
       sr.further_results_count = 0
