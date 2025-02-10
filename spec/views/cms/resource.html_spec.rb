@@ -2,6 +2,7 @@ require "rails_helper"
 
 RSpec.describe("cms/resource", type: :view) do
   before do
+    stub_strapi_header
     stub_strapi_get_single_blog_post("blogs/test-blog",
       seo: {
         title: "some SEO content",

@@ -3,7 +3,6 @@ require "rails_helper"
 RSpec.describe IBelongMailer, type: :mailer do
   include ApplicationHelper
   include ExternalLinkHelper
-  include NavigationHelper
 
   let(:user) { create(:user, first_name: "Tobias", last_name: "Doe") }
   let(:programme) { create(:i_belong) }

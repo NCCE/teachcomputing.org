@@ -1,10 +1,6 @@
 module Cms
   module Collections
     class Header < Resource
-      def to_search_record(index_time)
-        raise NotImplementedError
-      end
-
       def self.resource_attribute_mappings
         [
           {model: Models::HeaderMenu, key: :dropDowns}

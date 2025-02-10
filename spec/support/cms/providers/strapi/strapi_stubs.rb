@@ -170,16 +170,26 @@ module StrapiStubs
     end
   end
 
+  def stub_strapi_header(header: Cms::Mocks::Header.generate_raw_data)
+    if as_graphql
+      stub_strapi_graphql_query("header", header, singular: true)
+    end
+  end
+
   def stub_strapi_schema
     stub_request(:post, /^https:\/\/strapi.teachcomputing.org\/graphql/)
       .with(body: /IntrospectionQuery/)
       .to_return_json(body: GRAPH_SCHEMA)
   end
 
-  def stub_strapi_graphql_query(resource_name, record, unique_key: nil)
+  def stub_strapi_graphql_query(resource_name, record, unique_key: nil, singular: false)
     stub_strapi_schema
     response = {}
-    response[resource_name] = {data: Array.wrap(record)}
+    response[resource_name] = if singular
+      {data: record}
+    else
+      {data: Array.wrap(record)}
+    end
     stub = stub_request(:post, /^https:\/\/strapi.teachcomputing.org\/graphql/)
       .with(body: /#{resource_name}/)
       .to_return_json(body: {data: response})
