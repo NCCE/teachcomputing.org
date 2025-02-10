@@ -2,6 +2,7 @@ require "rails_helper"
 
 RSpec.describe("layouts/application", type: :view) do
   before do
+    stub_strapi_header
     render
   end
 
