@@ -1,6 +1,6 @@
 <% if current_user %>
   <% if @programme.user_enrolled?(current_user) %>
-    <%= link_to "Visit dashboard", dashboard_path, class: button_classes, role: "button" %>
+    <%= link_to "Visit dashboard", @programme.path, class: button_classes, role: "button" %>
   <% elsif @programme.enrolment_confirmation_required? %>
     <div class="enrolment-confirmation-component">
       <%= render ModalComponent.new(
