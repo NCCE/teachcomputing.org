@@ -71,22 +71,6 @@ RSpec.describe Achiever::CourseFilter do
     build(:achiever_course_occurrence, course_template_no: multi_filter_template.course_template_no, distance: 70)
   end
 
-  let(:hub_template) { build(:achiever_course_template, title: "Hub template") }
-  let(:hub_occurrence_matching_hub) do
-    build(:achiever_course_occurrence,
-      course_template_no: hub_template.course_template_no,
-      hub_id: "hubid",
-      hub_name: "Hub name",
-      distance: 40)
-  end
-  let(:hub_occurrence_other_hub) do
-    build(:achiever_course_occurrence,
-      course_template_no: hub_template.course_template_no,
-      hub_id: "otherhubid",
-      hub_name: "Other hub name",
-      distance: 60)
-  end
-
   before do
     allow(Achiever::Course::Subject).to receive(:all).and_return(subjects)
     allow(Achiever::Course::AgeGroup).to receive(:all).and_return(age_groups)
@@ -97,7 +81,6 @@ RSpec.describe Achiever::CourseFilter do
       .and_return([
         algorithms_template,
         f2f_template,
-        hub_template,
         ks2_template,
         location_template,
         multi_filter_template,
@@ -110,7 +93,7 @@ RSpec.describe Achiever::CourseFilter do
       .to receive(:face_to_face)
       .and_return([f2f_occurrence, secondary_occurrence, ks2_occurrence,
         location_occurrence_other_location, location_occurrence_matching_location,
-        algorithms_occurrence, multi_filter_occurrence, hub_occurrence_other_hub, hub_occurrence_matching_hub,
+        algorithms_occurrence, multi_filter_occurrence,
         date_range_occurrence_in_range, date_rage_occurrence_out_of_range])
     allow(Achiever::Course::Occurrence)
       .to receive(:online)
@@ -220,32 +203,6 @@ RSpec.describe Achiever::CourseFilter do
     end
   end
 
-  describe "#current_hub" do
-    context "when not filtering by hub" do
-      let(:filter_params) { {certificate: "", level: "", location: "", topic: "", hub_id: ""} }
-
-      it "returns nil" do
-        expect(course_filter.current_hub).to eq(nil)
-      end
-    end
-
-    context "when filtering by hub with occurrences" do
-      let(:filter_params) { {certificate: "", level: "", location: "", topic: "", hub_id: "hubid"} }
-
-      it "returns the hub name from the occurrences" do
-        expect(course_filter.current_hub).to eq("Hub name")
-      end
-    end
-
-    context "when filtering by hub with no occurrences" do
-      let(:filter_params) { {certificate: "", level: "", location: "", topic: "", hub_id: "nooccurrenceshubid"} }
-
-      it "returns :no_courses" do
-        expect(course_filter.current_hub).to eq(:no_courses)
-      end
-    end
-  end
-
   describe "#course_format" do
     context "when not filtering by course format" do
       let(:filter_params) { {certificate: "", level: "", location: "", topic: "", course_format: ""} }
@@ -346,7 +303,6 @@ RSpec.describe Achiever::CourseFilter do
               ks2_template,
               algorithms_template,
               multi_filter_template,
-              hub_template,
               secondary_template,
               no_occ_template,
               date_range_template
@@ -365,13 +321,6 @@ RSpec.describe Achiever::CourseFilter do
           )
         expect(algorithms_template.occurrences).to eq([algorithms_occurrence])
         expect(multi_filter_template.occurrences).to eq([multi_filter_occurrence])
-        expect(hub_template.occurrences)
-          .to match_array(
-            [
-              hub_occurrence_matching_hub,
-              hub_occurrence_other_hub
-            ]
-          )
       end
     end
 
@@ -410,7 +359,6 @@ RSpec.describe Achiever::CourseFilter do
           .to match_array([f2f_template,
             ks2_template,
             algorithms_template,
-            hub_template,
             secondary_template,
             no_occ_template,
             date_range_template])
@@ -435,7 +383,6 @@ RSpec.describe Achiever::CourseFilter do
           f2f_template,
           ks2_template,
           algorithms_template,
-          hub_template,
           secondary_template,
           no_occ_template,
           online_template,
@@ -459,20 +406,6 @@ RSpec.describe Achiever::CourseFilter do
 
       it "returns courses which match all criteria" do
         expect(course_filter.non_location_based_results).to match_array([multi_filter_template])
-      end
-    end
-
-    context "when filtering by hub" do
-      let(:filter_params) { {hub_id: "hubid", certificate: "", level: "", location: "", topic: "", course_format: ""} }
-
-      it "only returns courses with occurrences at the correct hub" do
-        expect(course_filter.non_location_based_results).to match_array([hub_template])
-      end
-
-      it "only returns occurrences for the correct hub" do
-        course = course_filter.non_location_based_results.first
-        expect(course.occurrences).to include(hub_occurrence_matching_hub)
-        expect(course.occurrences).not_to include(hub_occurrence_other_hub)
       end
     end
 
@@ -550,19 +483,7 @@ RSpec.describe Achiever::CourseFilter do
       it "returns f2f courses ordered by nearest occurrences within default radius" do
         expect(course_filter.location_based_results.courses)
           .to eq([f2f_template,
-            algorithms_template,
-            hub_template])
-      end
-
-      it "orders course occurrences by distance for each course" do
-        course_filter.location_based_results
-        expect(hub_template.occurrences)
-          .to eq(
-            [
-              hub_occurrence_matching_hub,
-              hub_occurrence_other_hub
-            ]
-          )
+            algorithms_template])
       end
     end
 
@@ -573,7 +494,6 @@ RSpec.describe Achiever::CourseFilter do
         expect(course_filter.location_based_results.courses)
           .to eq([f2f_template,
             algorithms_template,
-            hub_template,
             secondary_template])
       end
     end
@@ -642,25 +562,16 @@ RSpec.describe Achiever::CourseFilter do
       end
     end
 
-    context "when filtering by hub" do
-      let(:filter_params) { {hub_id: "hubid", certificate: "", level: "", location: "", topic: ""} }
-
-      it "returns current_hub" do
-        expect(course_filter.applied_filters).to match_array([course_filter.current_hub])
-      end
-    end
-
     context "when filtering by all options" do
       let(:filter_params) do
-        {certificate: "secondary-certificate", course_format: %w[remote face_to_face], level: "Key stage 2", topic: "Algorithms",
-         hub_id: "hubid", course_length: %w[short_course]}
+        {certificate: "secondary-certificate", course_format: %w[remote face_to_face], level: "Key stage 2",
+         topic: "Algorithms", course_length: %w[short_course]}
       end
 
       it "returns all strings" do
         expect(course_filter.applied_filters)
           .to match_array(
             [
-              course_filter.current_hub,
               "secondary-certificate",
               "Algorithms",
               "Key stage 2",
@@ -749,7 +660,7 @@ RSpec.describe Achiever::CourseFilter do
 
   describe "#total_results_count" do
     it "returns total results" do
-      expect(course_filter.total_results_count).to eq(10)
+      expect(course_filter.total_results_count).to eq(9)
     end
 
     context "when searching by location" do
@@ -762,7 +673,7 @@ RSpec.describe Achiever::CourseFilter do
       end
 
       it "returns total of location and non location results" do
-        expect(course_filter.total_results_count).to eq(6)
+        expect(course_filter.total_results_count).to eq(5)
       end
     end
   end
@@ -778,7 +689,7 @@ RSpec.describe Achiever::CourseFilter do
       end
 
       it "returns count of results within search radius" do
-        expect(course_filter.location_based_results_count).to eq(3)
+        expect(course_filter.location_based_results_count).to eq(2)
       end
     end
 
