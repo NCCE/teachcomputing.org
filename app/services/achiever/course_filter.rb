@@ -141,12 +141,6 @@ module Achiever
       @current_location ||= @filter_params[:location]
     end
 
-    def current_hub
-      return nil if @filter_params[:hub_id].blank?
-
-      @current_hub ||= course_occurrences.map(&:hub_name).compact.first || :no_courses
-    end
-
     def current_date_range
       return nil if @filter_params[:date_range].blank?
 
@@ -171,12 +165,6 @@ module Achiever
       Date.parse(matched[:to] || matched[:from])
     end
 
-    def current_hub_id
-      return nil if @filter_params[:hub_id].blank?
-
-      @current_hub_id ||= @filter_params[:hub_id]
-    end
-
     def current_format
       return nil if @filter_params[:course_format].blank?
 
@@ -191,7 +179,6 @@ module Achiever
       filter_strings.push(ERB::Util.html_escape(current_format).to_s) if current_format
       filter_strings.push(ERB::Util.html_escape(current_length).to_s) if current_length
       filter_strings.push(ERB::Util.html_escape(current_date_range).to_s) if current_date_range
-      filter_strings.push(current_hub) if current_hub
 
       return if filter_strings.empty?
 
@@ -253,7 +240,7 @@ module Achiever
           end
         end
 
-        courses.reject! { |c| c.occurrences.count.zero? } if current_hub.present? || current_date_range.present?
+        courses.reject! { |c| c.occurrences.count.zero? } if current_date_range.present?
 
         filter_courses(courses)
       end
@@ -272,16 +259,13 @@ module Achiever
 
     def filter_course_occurences(course_occurrences)
       course_occurrences.select do |co|
-        at_hub = true
         in_range = true
-
-        at_hub = co.hub_id == current_hub_id if current_hub_id
 
         unless co.online_cpd
           in_range = Date.parse(co.start_date).between?(current_date_range_from, current_date_range_to) if current_date_range
         end
 
-        at_hub && in_range
+        in_range
       end
     end
 
