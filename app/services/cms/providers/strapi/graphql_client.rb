@@ -34,10 +34,15 @@ module Cms
           data = clean_aliases(response.original_hash)
 
           results = data[:data][resource_class.graphql_key.to_sym][:data]
-
           raise ActiveRecord::RecordNotFound if results.empty?
 
-          map_resource(resource_class, results.first, preview, preview_key)
+          record = if resource_class.is_collection
+            results.first
+          else
+            results
+          end
+
+          map_resource(resource_class, record, preview, preview_key)
         end
 
         # This has been created to allow for alias to be alias_name__field_name

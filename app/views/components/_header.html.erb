@@ -53,21 +53,11 @@
         <div class="ncce-header__site-search">
           <%= render SiteSearchComponent.new %>
         </div>
-        <ul class='ncce-header__certification'>
-          <% header_navigation.each do | nav_item |%>
-            <li class="govuk-body  ncce-header__certification-item dropdown__expander" aria-expanded="false" tabindex="0">
-              <div class="ncce-header__wrap">
-                <span class="ncce-header__certification-item--text"><%= nav_item[:text] %></span>
-                <span class="ncce-header__certification-item--icon"></span>
-              </div>
-              <ul class="govuk-list govuk-body-s dropdown__expander-content">
-              <% nav_item[:children].each do | item |%>
-                <li class="dropdown__expander-content-item"><%= link_to item[:text], item[:link], data: { event_action: 'click', event_category: 'Header: Navigation', event_label: item[:label] }, class: ' ncce-link--on-dark' %></li>
-              <% end %>
-              </ul>
-            </li>
-          <% end %>
-        </ul>
+        <% header = Cms::Collections::Header.get %>
+        <% header.data_models.each do |model| %>
+          <%= render model.render %>
+        <% end %>
+  
       </div>
     </nav>
   </div>

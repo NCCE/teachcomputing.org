@@ -17,7 +17,8 @@ module Cms
             Models::DynamicZone => DynamicZone,
             Models::EnrichmentDynamicZone => EnrichmentDynamicZone,
             Models::EnrichmentList => EnrichmentList,
-            Models::Aside => Aside
+            Models::Aside => Aside,
+            Models::HeaderMenu => HeaderMenu
           }.freeze
 
           def initialize(collection_class, resource_filter = "slug")
@@ -77,14 +78,20 @@ module Cms
             GRAPHQL
           end
 
-          def single_query(id)
+          def single_query(id = nil)
             filters = {}
-            filters[resource_filter] = {eq: id}
+            if @collection_class.is_collection
+              raise StandardError if id.nil?
+              filters[resource_filter] = {eq: id}
+            end
+            filter_string = if filters.any?
+              "(#{query_string(:filters, filters)})"
+            end
             <<~GRAPHQL.freeze
               query {
-                #{resource_name}( #{query_string(:filters, filters)} ) {
+                #{resource_name} #{filter_string} {
                   data {
-                    id
+                    #{"id" if @collection_class.is_collection}
                     attributes {
                       updatedAt
                       createdAt
