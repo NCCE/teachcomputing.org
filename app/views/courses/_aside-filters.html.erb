@@ -115,7 +115,6 @@
       </div>
     </div>
     <button type="button" class="govuk-button button ncce-courses__view-results" data-action="click->course-filter#closeFilterForm" data-course-filter-target="viewResultsCount">View <%= pluralize(@course_filter.total_results_count, 'result') %></button>
-    <%= hidden_field_tag 'hub_id', @course_filter.current_hub_id %>
     <%= hidden_field_tag 'js_enabled', false %>
 
     <%= submit_tag "Apply filters", class: 'govuk-button button ncce-courses__filter-button ncce-courses__apply-filters-button' %>

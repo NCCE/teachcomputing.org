@@ -1,12 +1,8 @@
 <div class='ncce-courses__no-results' data-course-filter-target="courseList">
-  <% if @hub.present? %>
-    <p class="govuk-body">Sorry, this Computing Hub is currently not running any courses.</p>
-    <p class="govuk-body">Please remove the Hub filter to see all our other courses.</p>
-  <% else %>
-    <%= image_pack_tag 'media/images/courses/sad-face.png', alt: 'Sad face', class: 'ncce-courses__sad-face' %>
-    <p class="govuk-body">Sorry, we couldn't find any courses that match your filter options.</p>
-    <p class="govuk-body">Try modifying or clearing the filter to see more results.</p>
-  <% end %>
+  <%= image_pack_tag 'media/images/courses/sad-face.png', alt: 'Sad face', class: 'ncce-courses__sad-face' %>
+  <p class="govuk-body">Sorry, we couldn't find any courses that match your filter options.</p>
+  <p class="govuk-body">Try modifying or clearing the filter to see more results.</p>
+
   <%= link_to 'Show all courses',
     courses_path(anchor: 'results-top'),
     method: :get, # force a reload
