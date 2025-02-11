@@ -7,17 +7,7 @@
       <%= t('.any_course_prompt') %>
     </div>
   </li>
-  <% if @issued_badge.present? %>
-    <li class="ncce-activity-list__item">
-      <div class="ncce-activity-list__item-content">
-        <%= render DashBadgeComponent.new(
-          badge: @issued_badge,
-          tracking_event_category: @badge_tracking_event_category,
-          tracking_event_label: @badge_tracking_event_label
-        ) %>
-      </div>
-    </li>
-  <% end %>
+
   <% if @user_pathway.present? %>
     <li class="ncce-activity-list__item">
       <div class="ncce-activity-list__item-content">
