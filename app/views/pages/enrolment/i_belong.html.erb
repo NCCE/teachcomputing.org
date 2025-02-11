@@ -57,7 +57,11 @@
           <div class="lp-support__card white-bg lp-support__card--bordered">
             <h2 class="govuk-heading-m"><%= t(".#{session_state}.where_to_start_card.heading")%></h2>
             <ol class="govuk-list govuk-list--number"><%= t(".#{session_state}.where_to_start_card.body_html")%></ol>
-            <%= link_to t(".#{session_state}.where_to_start_card.link_text"), cta_link_path, method: cta_link_method, class: 'button govuk-button govuk-!-margin-bottom-0' %>
+            <%= render EnrolmentConfirmationComponent.new(
+              programme: Programme.i_belong,
+              button_text: "Enrol on the programme",
+              logged_out_button_text: "Log in to enrol"
+            ) %>
           </div>
         </div>
       </div>

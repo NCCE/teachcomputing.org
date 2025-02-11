@@ -25,26 +25,12 @@
         <p class="govuk-body">This certificate is for anyone planning to teach A level Computer Science or currently doing so. It is particularly valuable to teachers without qualifications in the subject who wish to demonstrate the capability to teach at this level.</p>
         <h1 class="govuk-heading-m">How do I get started?</h1>
         <p class="govuk-body">If you are confident in your A level subject knowledge, once you've enrolled you can complete the test to achieve your certificate. If you are less experienced, we recommend you access CPD to strengthen your knowledge in preparation for the test.</p>
-        <% if current_user %>
-          <% if @programme.user_enrolled?(current_user) %>
-            <%= link_to 'Visit dashboard',
-              a_level_path,
-              class: 'button govuk-button govuk-!-margin-bottom-4'
-            %>
-          <% else %>
-            <%= link_to 'Enrol to gain access to the test',
-              @programme.enrol_path(user_programme_enrolment: { user_id: current_user.id, programme_id: @programme.id }),
-              method: :post,
-              class: 'button govuk-button govuk-!-margin-bottom-4'
-            %>
-          <% end %>
-        <% else %>
-          <%= link_to 'Log in to enrol',
-            auth_url,
-            method: :post,
-            class: 'button govuk-button govuk-!-margin-bottom-4'
-          %>
-        <% end %>
+        <%= render EnrolmentConfirmationComponent.new(
+              programme: Programme.a_level,
+              button_text: "Enrol to gain access to the test",
+              logged_out_button_text: "Log in to enrol",
+              full_width: false
+            ) %>
         <h1 class="govuk-heading-m">Benefits for you</h1>
         <ul class="govuk-list govuk-list--bullet">
           <li>receive a nationally recognised qualification</li>

@@ -30,15 +30,10 @@
               <li>Participate in a mix of courses to suit your experience</li>
               <li>Pass a short test to receive your certificate</li>
             </ol>
-            <% if current_user %>
-            <p class="govuk-body">
-              <%= link_to 'Enrol on this certificate', enrol_cs_accelerator_certificate_path(user_programme_enrolment: { user_id: current_user.id, programme_id: Programme.cs_accelerator.id }), method: :post, class: 'govuk-button button--aside', role: 'button', draggable: 'false' %>
-            </p>
-            <% else %>
-            <p class="govuk-body">
-              <%= link_to 'Log in', auth_url, method: :post, class: 'govuk-button button--aside', role: 'button', draggable: 'false' %>
-            </p>
-            <% end %>
+            <%= render EnrolmentConfirmationComponent.new(
+              programme: Programme.cs_accelerator,
+              button_text: "Enrol on this certificate"
+            ) %>
           <% end %>
         <% end %>
         <%= render AsideComponent.new(

@@ -27,16 +27,34 @@ RSpec.describe("pages/enrolment/a_level_certificate", type: :view) do
     expect(rendered).to have_css(".govuk-heading-m", text: "How do I get started?")
   end
 
-  it "has an enrol button" do
-    expect(rendered).to have_link("Enrol to gain access")
-  end
-
   it "has a isaac section" do
     expect(rendered).to have_css(".govuk-heading-m", text: "How we can help you and your students")
   end
 
   it "has an isaac CS section" do
     expect(rendered).to have_link("Discover Isaac Computer Science", href: "https://isaaccomputerscience.org/")
+  end
+
+  context "when user is not logged in" do
+    before do
+      allow(view).to receive(:current_user).and_return(nil)
+      render
+    end
+
+    it "has a log in to enrol button" do
+      expect(rendered).to have_link("Log in to enrol")
+    end
+  end
+
+  context "when user is logged in" do
+    before do
+      allow(view).to receive(:current_user).and_return(user)
+      render
+    end
+
+    it "has a enrol to gain access to the test button" do
+      expect(rendered).to have_link("Enrol to gain access to the test")
+    end
   end
 
   describe "hero section" do
