@@ -36,7 +36,6 @@ class StateMachines::UserProgrammeEnrolmentStateMachine
 
     CompleteCertificateEmailJob.perform_later(programme_enrolment.user, programme_enrolment.programme)
     ClearAchievementAttachmentsJob.perform_later(programme_enrolment)
-    IssueCompletionBadgeJob.perform_later(programme_enrolment)
   end
 
   after_transition do |programme_enrolment|
