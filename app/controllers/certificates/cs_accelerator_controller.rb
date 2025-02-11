@@ -11,9 +11,6 @@ module Certificates
       return redirect_to complete_cs_accelerator_certificate_path if @programme.user_completed?(current_user)
 
       @csa_dash = CSADash.new(user: current_user)
-      @badge_tracking_event_category = "CSA enrolled"
-      @badge_tracking_event_label = "CSA badge"
-      assign_issued_badge_data
 
       render :show
     end
@@ -25,21 +22,11 @@ module Certificates
       other_programme_pathways_for_user
 
       assign_assessment_and_achievements
-      assign_issued_badge_data
 
       render :complete
     end
 
     private
-
-    def assign_issued_badge_data
-      return unless @programme.badges.any?
-      begin
-        @issued_badge = Credly::Badge.by_programme_badge_template_ids(current_user.id, @programme.badges.pluck(:credly_badge_template_id))
-      rescue Credly::Error
-        @issued_badge = nil
-      end
-    end
 
     def find_programme
       @programme = Programme.cs_accelerator
