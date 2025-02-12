@@ -1,0 +1,68 @@
+
+.courses-cms-card {
+
+  &__image-wrapper {
+    margin-bottom: 12px;
+    max-height: 175px;
+    overflow: hidden;
+    position: relative;
+  
+    @include govuk-media-query($from: tablet) {
+      margin-bottom: 8px;
+      max-height: unset;
+    }
+  }
+
+  &__banner {
+    background: $purple-dark;
+    color: $white;
+    font-weight: bold;
+    font-size: 14px;
+    left: 0;
+    padding: 2px 8px;
+    position: absolute;
+    top: 0;
+  }
+
+  &__image {
+    img {
+      width: 100%;
+    }
+  }
+
+  &__details {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  &__icons {
+    height: 22px;
+    padding: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  &__type {
+    display: inline-block;
+    margin-bottom: 0;
+    background-size: 16px 16px;
+    display: inline-block;
+    margin-bottom: 0;
+    @include govuk-media-query($from: tablet) {
+      background-size: 20px 20px;
+    }
+  }
+
+  &__time {
+    display: inline-block;
+    margin-bottom: 0;
+    background-size: 16px 16px;
+    @include govuk-media-query($from: tablet) {
+      background-size: 20px 20px;
+    }
+  }
+}
+
+
