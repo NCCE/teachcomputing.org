@@ -2,6 +2,7 @@ require "rails_helper"
 
 RSpec.describe("cms/blog", type: :view) do
   before do
+    stub_strapi_header
     stub_strapi_blog_collection
     assign(:collection, Cms::Collections::Blog.all(1, 50))
     assign(:title, "Page title")
