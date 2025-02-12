@@ -13,7 +13,7 @@ RSpec.describe Cms::CardWrapperComponent, type: :component do
     before do
       render_inline(described_class.new(
         title: nil,
-        sub_text: nil,
+        intro_text: nil,
         cards_per_row: 3,
         cards_block: resource_cards(1).cards_block
       ))
@@ -50,7 +50,7 @@ RSpec.describe Cms::CardWrapperComponent, type: :component do
     before do
       render_inline(described_class.new(
         title: "Section Title",
-        sub_text: "Sub text",
+        intro_text: Cms::Mocks::RichBlocks.as_model,
         cards_per_row: 3,
         cards_block: resource_cards(1).cards_block,
         background_color: "light-grey"
@@ -62,7 +62,7 @@ RSpec.describe Cms::CardWrapperComponent, type: :component do
     end
 
     it "has the sub text" do
-      expect(page).to have_text("Sub text")
+      expect(page).to have_css(".cms-rich-text-block-component")
     end
 
     it "has a background color" do
