@@ -43,6 +43,8 @@ module Cms
               to_icon_row(strapi_data)
             when "two-column-video-section"
               to_two_column_video_section(strapi_data)
+            when "primary-glossary-table"
+              DynamicComponents::PrimaryGlossaryTable.new(title: strapi_data[:title])
             end
           end
 
