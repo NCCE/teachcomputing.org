@@ -1,4 +1,4 @@
-.primary-glossary-table-component {
+.govuk-table {
   border-collapse: collapse;
 
   th, td {
@@ -6,10 +6,10 @@
     padding: 10px;
   }
 
- &__header {
-  color: $white;
-  background-color: $purple;
-  text-wrap: nowrap;
-  text-align: center;
- }
+  .govuk-table__header {
+    color: $white;
+    background-color: $purple;
+    text-wrap: nowrap;
+    text-align: center;
+  }
 }

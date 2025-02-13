@@ -137,6 +137,23 @@ module StrapiStubs
     end
   end
 
+  def stub_strapi_primary_computing_glossary_table_collection(table: nil, page: 1, page_size: 10)
+    table_list = table.presence || Array.new(5) { Cms::Mocks::PrimaryGlossaryTable.generate_raw_data }
+    if as_graphql
+      stub_strapi_graphql_collection_query("primaryComputingGlossaryTables", table_list, page:, page_size:)
+    else
+      stub_request(:get, /^https:\/\/strapi.teachcomputing.org\/api\/primary-computing-glossary-tables/).to_return_json(body: to_strapi_collection(table_list, page:, page_size:))
+    end
+  end
+
+  def stub_strapi_empty_primary_computing_glossary_table_collection(table: nil, page: 1, page_size: 10)
+    if as_graphql
+      stub_strapi_graphql_query_missing("primaryComputingGlossaryTables")
+    else
+      stub_request(:get, /^https:\/\/strapi.teachcomputing.org\/api\/primary-computing-glossary-tables/).to_return_json(body: to_strapi_collection(table_list, page:, page_size:))
+    end
+  end
+
   def stub_strapi_web_page_collection(web_pages: nil)
     web_page_list = web_pages.presence || Array.new(5) { Cms::Mocks::WebPage.generate_raw_data }
     if as_graphql
