@@ -104,7 +104,7 @@ RSpec.describe EnrolmentConfirmationComponent, type: :component do
     end
 
     it "renders the view dashboard button" do
-      expect(page).to have_link("Visit dashboard", href: "/dashboard")
+      expect(page).to have_link("Visit dashboard", href: "/certificate/subject-knowledge")
     end
   end
 
@@ -124,7 +124,7 @@ RSpec.describe EnrolmentConfirmationComponent, type: :component do
     end
 
     it "renders the view dashboard button" do
-      expect(page).to have_link("Visit dashboard", href: "/dashboard")
+      expect(page).to have_link("Visit dashboard", href: "/certificate/primary-certificate")
     end
   end
 end
