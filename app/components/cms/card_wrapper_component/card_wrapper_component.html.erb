@@ -2,7 +2,9 @@
   <%= row.with_column("full") do %>
     <%= title_html if @title %>
     <% if @intro_text %>
-      <% render @intro_text.render %>
+      <div class="govuk-!-margin-bottom-3">
+        <%= render @intro_text.render %>
+      </div>
     <% end %>
     <div class="cms-card-wrapper__grid" style="<%= cards_per_row %>">
       <% @cards_block.each do |card| %>
