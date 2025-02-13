@@ -12,4 +12,8 @@ class Cms::CourseCardComponent < ViewComponent::Base
     @description = description
     @image = image
   end
+
+  def render?
+    @course.present?
+  end
 end
