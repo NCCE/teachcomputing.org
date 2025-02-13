@@ -88,6 +88,20 @@ RSpec.describe EnrolmentConfirmationComponent, type: :component do
     end
   end
 
+  context "when no current user and logged out button text" do
+    before do
+      allow_any_instance_of(AuthenticationHelper).to receive(:current_user).and_return(nil)
+      render_inline(described_class.new(
+        programme: cs_accelerator,
+        logged_out_button_text: "Log in to enrol"
+      ))
+    end
+
+    it "renders a log in button" do
+      expect(page).to have_link("Log in to enrol", href: "/auth/stem")
+    end
+  end
+
   context "when the user is already enrolled on a non confirmation programme" do
     before do
       allow_any_instance_of(AuthenticationHelper).to receive(:current_user).and_return(user)

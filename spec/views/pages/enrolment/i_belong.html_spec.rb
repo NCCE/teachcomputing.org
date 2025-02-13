@@ -36,4 +36,8 @@ RSpec.describe("pages/enrolment/i_belong", type: :view) do
   it "has 7 resource cards" do
     expect(rendered).to have_css(".non-bordered-card", count: 7)
   end
+
+  it "has a log in to enrol button" do
+    expect(rendered).to have_link("Log in to enrol")
+  end
 end

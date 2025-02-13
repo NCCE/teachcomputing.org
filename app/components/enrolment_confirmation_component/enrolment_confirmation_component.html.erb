@@ -26,5 +26,5 @@
     <%= link_to button_text, @programme.enrol_path(user_programme_enrolment: { user_id: current_user.id, programme_id: @programme.id, pathway_slug: @pathway&.slug }), method: :post, class: button_classes, role: "button" %>
   <% end %>
 <% else %>
-  <%= link_to "Log in", auth_url, method: :post, class: button_classes, role: "button" %>
+  <%= link_to logged_out_button_text, auth_url, method: :post, class: button_classes, role: "button" %>
 <% end %>
