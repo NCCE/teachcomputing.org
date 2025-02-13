@@ -27,6 +27,8 @@
   &__image {
     img {
       width: 100%;
+      height: 190px;
+      object-fit: cover;
     }
   }
 

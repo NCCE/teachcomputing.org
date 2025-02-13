@@ -9,7 +9,7 @@ module Cms
 
               def self.base_fields
                 <<~GRAPHQL.freeze
-                  title
+                  sectionTitle
                   introText
                   #{ContentBlocks::CourseCard.embed(:cards)}
                 GRAPHQL

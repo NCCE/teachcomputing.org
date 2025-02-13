@@ -8,7 +8,11 @@ module Cms
         @banner_text = banner_text
         @description = description
         @image = image
-        @course = Achiever::Course::Template.find_by_activity_code(course_code)
+        @course = begin
+          Achiever::Course::Template.find_by_activity_code(course_code)
+        rescue ActiveRecord::RecordNotFound
+          nil
+        end
       end
 
       def render

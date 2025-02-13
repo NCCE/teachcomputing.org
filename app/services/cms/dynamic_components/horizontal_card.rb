@@ -1,9 +1,9 @@
 module Cms
   module DynamicComponents
     class HorizontalCard
-      attr_accessor :title, :body_blocks, :image, :image_link, :color_theme, :icon_block, :spacing, :external_title
+      attr_accessor :title, :body_blocks, :image, :image_link, :color_theme, :icon_block, :spacing, :external_title, :background_color
 
-      def initialize(title:, body_blocks:, image:, image_link:, color_theme:, icon_block:, spacing:, external_title:)
+      def initialize(title:, body_blocks:, image:, image_link:, color_theme:, icon_block:, spacing:, external_title:, background_color:)
         @title = title
         @body_blocks = body_blocks
         @image = image
@@ -12,10 +12,11 @@ module Cms
         @icon_block = icon_block
         @spacing = spacing
         @external_title = external_title
+        @background_color = background_color
       end
 
       def render
-        Cms::HorizontalCardComponent.new(title:, body_blocks:, image:, image_link:, color_theme:, icon_block:, spacing:, external_title:)
+        Cms::HorizontalCardComponent.new(title:, body_blocks:, image:, image_link:, color_theme:, icon_block:, spacing:, external_title:, background_color:)
       end
     end
   end
