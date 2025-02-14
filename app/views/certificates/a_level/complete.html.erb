@@ -10,7 +10,6 @@
         <p class="govuk-body">
           <%= link_to 'Download your certificate', certificate_a_level_path, class: 'govuk-button button', role: 'button', draggable: 'false' %>
         </p>
-        <%= render CompletedDashBadgeComponent.new(badge: @issued_badge, tracking_event_category: @badge_tracking_event_category, tracking_event_label: @badge_tracking_event_label) %>
         <p class="govuk-body-l">Next steps for your development</p>
         <ol class="govuk-list govuk-list--bullet govuk-body-s">
           <li>

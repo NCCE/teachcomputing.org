@@ -4,10 +4,6 @@
   aside_slug: "i-belong-dashboard-help-section",
   completed: @cpd_completed) do %>
 
-  <% if @issued_badge.present? %>
-    <%= render DashBadgeComponent.new(badge: @issued_badge, class_name: 'i-belong') %>
-  <% end %>
-
   <% unless @cpd_completed %>
     <%= render CpdCourseListComponent.new(current_user: current_user, courses: @cpd_courses, show_seperator: true) %>
   <% end %>

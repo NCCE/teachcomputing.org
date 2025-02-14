@@ -12,9 +12,6 @@ module Certificates
 
       @professional_development_groups = @programme.programme_activity_groupings.not_community.order(:sort_key).includes(programme_activities: :activity)
       @cpd_courses = @professional_development_groups.flat_map(&:programme_activities)
-      @badge_tracking_event_category = "A Level enrolled"
-      @badge_tracking_event_label = "A Level badge"
-      assign_issued_badge_data
 
       @assessment = Assessment.find_by(programme: @programme)
 
@@ -25,24 +22,11 @@ module Certificates
       return redirect_to a_level_path unless @programme.user_completed?(current_user)
 
       @complete_achievements = complete_achievements
-      @badge_tracking_event_category = "A Level complete"
-      @badge_tracking_event_label = "A Level badge"
-      assign_issued_badge_data
 
       render :complete
     end
 
     private
-
-    def assign_issued_badge_data
-      return unless @programme.badges.any?
-
-      begin
-        @issued_badge = Credly::Badge.by_programme_badge_template_ids(current_user.id, @programme.badges.pluck(:credly_badge_template_id))
-      rescue Credly::Error
-        @issued_badge = nil
-      end
-    end
 
     def enrolment
       current_user.user_programme_enrolments.find_by(programme_id: @programme.id)

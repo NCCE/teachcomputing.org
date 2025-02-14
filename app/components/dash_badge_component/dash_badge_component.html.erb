@@ -1,8 +1,0 @@
-<div class="dash-badge-component <%= 'dash-badge-component-fixed-width' if @fixed_width %> <%= @class_name %>">
-  <%= image_tag @badge[:badge_template][:image_url], class: "dash-badge-component__badge", alt: '' %>
-  <p class="govuk-body-s dash-badge-component__content">
-    <%= t('dash_badge_component.congratulations.html', badge_link: (
-      link_to t('dash_badge_component.link.text'), @badge[:state] == 'pending' ? @badge[:accept_badge_url] : @badge[:badge_template][:url], class: 'ncce-link', data: tracking_data)
-    ) %>
-  </p>
-</div>
