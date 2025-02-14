@@ -8,7 +8,7 @@ class Achiever::Course::DurationUnit
 
   def self.look_up(id)
     duration_units = Achiever::Course::DurationUnit.all
-    matched = duration_units.select { |duration| duration.has_value?(id) }.reduce
+    matched = duration_units.find { |duration| duration.has_value?(id) }
     return unless matched
 
     matched.keys.first
