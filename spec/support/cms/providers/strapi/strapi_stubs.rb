@@ -68,9 +68,7 @@ module StrapiStubs
 
   def stub_strapi_blog_collection(blogs: nil)
     blog_list = blogs.presence || Array.new(5) { Cms::Mocks::Blog.generate_raw_data }
-    stub_request(:get, /^https:\/\/strapi.teachcomputing.org\/api\/blogs/).to_return_json(body: to_strapi_collection(
-      blog_list
-    ))
+    stub_request(:get, /^https:\/\/strapi.teachcomputing.org\/api\/blogs/).to_return_json(body: lambda { |request| request_collection(request, blog_list) })
   end
 
   def stub_strapi_blog_collection_with_tag(tag)
@@ -100,7 +98,7 @@ module StrapiStubs
 
   def stub_strapi_web_page_collection(web_pages: nil)
     web_page_list = web_pages.presence || Array.new(5) { Cms::Mocks::WebPage.generate_raw_data }
-    stub_request(:get, /^https:\/\/strapi.teachcomputing.org\/api\/web-pages/).to_return_json(body: to_strapi_collection(web_page_list))
+    stub_request(:get, /^https:\/\/strapi.teachcomputing.org\/api\/web-pages/).to_return_json(body: lambda { |request| request_collection(request, web_page_list) })
   end
 
   def stub_strapi_web_page(key, page: Cms::Mocks::WebPage.generate_raw_data)
@@ -111,21 +109,42 @@ module StrapiStubs
     stub_request(:get, /^https:\/\/strapi.teachcomputing.org\/api\/web-pages\/#{key}/).to_return_json(body: not_found_response, status: 404)
   end
 
+  def stub_strapi_email_templates(email_templates: nil)
+    email_templates_list = email_templates.presence || Array.new(5) { Cms::Mocks::EmailTemplate.generate_raw_data }
+    stub_request(:get, /^https:\/\/strapi.teachcomputing.org\/api\/email-templates/).to_return_json(body: lambda { |request| request_collection(request, email_templates_list) })
+  end
+
+  def stub_strapi_email_template(key, email_template: Cms::Mocks::EmailTemplate.generate_raw_data)
+    stub_request(:get, /^https:\/\/strapi.teachcomputing.org\/api\/email-templates\/#{key}/).to_return_json(body: {data: email_template})
+  end
+
+  def stub_strapi_email_template_missing(key)
+    stub_request(:get, /^https:\/\/strapi.teachcomputing.org\/api\/email-templates\/#{key}/).to_return_json(body: not_found_response, status: 404)
+  end
+
   def stub_strapi_programme(key, programme: Cms::Mocks::Programme.generate_raw_data)
     stub_request(:get, /^https:\/\/strapi.teachcomputing.org\/api\/programmes\/#{key}/).to_return_json(body: {data: programme})
   end
 
   private
 
-  def to_strapi_collection(records, page: 1, page_size: 10, page_count: 1)
+  def request_collection(request, records)
+    params = request.uri.query_values
+    page_size = params["pagination[pageSize]"].to_i
+    page = params["pagination[page]"].to_i
+    to_strapi_collection(records, page:, page_size:)
+  end
+
+  def to_strapi_collection(all_records, page: 1, page_size: 10, page_count: 1)
+    records = all_records.slice(((page - 1) * page_size)..(page * page_size))
     {
-      data: records,
+      data: records.presence || [],
       meta: {
         pagination: {
           page: page,
           pageSize: page_size,
           pageCount: page_count,
-          total: records.count
+          total: all_records.count
         }
       }
     }
