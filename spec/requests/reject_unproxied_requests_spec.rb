@@ -6,7 +6,6 @@ RSpec.describe Rack::Attack do
   let(:reject_uproxied_requests) { "false" }
   let(:headers) { {} }
   let(:cloudflare_ips) { [] }
-  let(:ips_v4_status) { 200 }
 
   around do |example|
     ClimateControl.modify REJECT_UNPROXIED_REQUESTS: reject_uproxied_requests do
