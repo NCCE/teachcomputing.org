@@ -37,6 +37,8 @@ module Cms
               to_enrolment_testimonial(strapi_data)
             when "enrolment-split-course-card"
               to_enrolment_split_course_card(strapi_data)
+            when "primary-glossary-table"
+              DynamicComponents::PrimaryGlossaryTable.new(title: strapi_data[:title])
             end
           end
 
