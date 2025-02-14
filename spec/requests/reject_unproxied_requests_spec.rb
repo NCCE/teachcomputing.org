@@ -1,7 +1,7 @@
 require "rails_helper"
 
 RSpec.describe Rack::Attack do
-  # subject { get "/primary-teachers", headers: headers }
+  subject { get "/primary-teachers", headers: headers }
 
   let(:reject_uproxied_requests) { "false" }
   let(:headers) { {} }
@@ -15,7 +15,7 @@ RSpec.describe Rack::Attack do
   end
 
   before do
-    pending("Removed while testing new implementation")
+    # pending("Removed while testing new implementation")
     # Rails.application.config.cloudflare.ips = cloudflare_ips
     stub_request(:get, "https://www.cloudflare.com/ips-v4/")
       .to_return(status: ips_v4_status, body: cloudflare_ips)
