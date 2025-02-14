@@ -36,12 +36,6 @@ class CSADash
     @recommended_activities_for_user = user_programme_pathway&.recommended_activities_for_user(@user)
   end
 
-  def supplementary_activities_for_user
-    return @supplementary_activities_for_user if defined? @supplementary_activities_for_user
-
-    @supplementary_activities_for_user = user_programme_pathway.supplementary_activities_for_user(@user)
-  end
-
   def has_enough_activities_for_test
     @has_enough_activities_for_test ||= @programme.enough_activities_for_test?(@user)
   end
