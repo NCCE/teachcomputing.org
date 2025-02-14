@@ -1,0 +1,16 @@
+<%= render GovGridRowComponent.new do |row|  %>
+  <%= row.with_column("full") do %>
+    <div class="cms-icon-row-component">
+      <% @icons.each do |icon| %>
+        <div class="cms-icon-row-component__icon">
+
+          <%= render Cms::ImageComponent.new(icon.image) %>
+          <div class="icon-row-component-icon__content">
+            <p class="govuk-body govuk-!-text-align-centre"><%= icon.text %></p>
+          </div>
+
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+<% end %>
