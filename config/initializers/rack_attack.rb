@@ -10,7 +10,13 @@ module Rack
         next true
       end
 
-      next !request.cloudflare?
+      forwarded_for_header = request.get_header("HTTP_X_FORWARDED_FOR").to_s
+
+      unless request.cloudflare?
+        ::Rails.logger.warn "Rack Attack filtering: rejected request to #{request.url} with #{forwarded_for_header}"
+        next true
+      end
+      false
     end
   end
 end
