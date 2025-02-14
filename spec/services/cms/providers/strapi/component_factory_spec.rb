@@ -7,6 +7,18 @@ RSpec.describe Cms::Providers::Strapi::Factories::ComponentFactory do
       model = described_class.process_component(strapi_data)
       expect(model).to be_a Cms::DynamicComponents::QuestionAndAnswer
     end
+
+    it "should be created in rest mode" do
+      strapi_data = Cms::Providers::Strapi::Mocks::QuestionAndAnswer.generate_raw_data(mode: :rest)
+      model = described_class.process_component(strapi_data)
+      expect(model).to be_a Cms::DynamicComponents::QuestionAndAnswer
+    end
+
+    it "should be created in graphql mode" do
+      strapi_data = Cms::Providers::Strapi::Mocks::QuestionAndAnswer.generate_raw_data(mode: :graphql)
+      model = described_class.process_component(strapi_data)
+      expect(model).to be_a Cms::DynamicComponents::QuestionAndAnswer
+    end
   end
 
   context "NcceButton" do

@@ -58,7 +58,7 @@ RSpec.describe Cms::CardWrapperComponent, type: :component do
     end
 
     it "has a title" do
-      expect(page).to have_text("Section Title")
+      expect(page).to have_css(".govuk-heading-m", text: "Section Title")
     end
 
     it "has the sub text" do
@@ -67,6 +67,21 @@ RSpec.describe Cms::CardWrapperComponent, type: :component do
 
     it "has a background color" do
       expect(page).to have_css(".light-grey-bg")
+    end
+  end
+
+  context "with a title and background color" do
+    before do
+      render_inline(described_class.new(
+        title: "Section Title",
+        cards_per_row: 3,
+        cards_block: resource_cards(1).cards_block,
+        title_as_paragraph: true
+      ))
+    end
+
+    it "has a title as paragraph" do
+      expect(page).to have_css(".govuk-body-m", text: "Section Title")
     end
   end
 
