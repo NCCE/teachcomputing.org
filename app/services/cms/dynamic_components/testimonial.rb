@@ -10,8 +10,8 @@ module Cms
         @quote = quote
       end
 
-      def render
-        CmsTestimonialComponent.new(name:, job_title:, avatar:, quote:)
+      def render(background_color: nil)
+        Cms::TestimonialComponent.new(name:, job_title:, avatar:, quote:, background_color:)
       end
     end
   end

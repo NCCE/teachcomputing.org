@@ -9,7 +9,7 @@ module Cms
       end
 
       def render
-        CmsImageComponent.new(image, show_caption: false, link:)
+        Cms::ImageComponent.new(image, show_caption: false, link:)
       end
     end
   end

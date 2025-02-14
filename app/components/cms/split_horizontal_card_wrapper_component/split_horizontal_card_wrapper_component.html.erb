@@ -1,0 +1,24 @@
+<%= render GovGridRowComponent.new(additional_classes: wrapper_classes) do |row|  %>
+  <%= row.with_column("full") do %>
+    <% if @section_title %>
+      <h2 class="govuk-heading-m"><%= @section_title %></h2>
+    <% end %>
+    <div class="tc-row">
+
+      <div class="tc-row-two-thirds">
+        <%= content_tag :div, class: left_card_classes do %>
+          <%= render @card_content.render %>
+        <% end %>
+      </div>
+
+        <div class="tc-row-one-third">
+          <% if aside_card_content? %>
+            <div class="split-horizontal-card">
+              <%= aside_card_content %>
+            </div>
+          <% end %>
+          <%= aside if aside? %>
+        </div>
+    </div>
+  <% end %>
+<% end %>

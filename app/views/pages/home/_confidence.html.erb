@@ -37,8 +37,8 @@
     </div>
 
     <div class="ncce-confidence__card">
-      <%= link_to image_pack_tag('media/images/home/card_non_gcse.jpg', loading: 'lazy', alt: 'School students playing with robots'), non_gcse_path, class: 'ncce-confidence__icon', aria_label: 'Link to GCSE Computer Science support' %>
-      <%= link_to t("pages.home.confidence.non_gcse.title"), non_gcse_path, class: "ncce-confidence__link" %>
+      <%= link_to image_pack_tag('media/images/home/card_non_gcse.jpg', loading: 'lazy', alt: 'School students playing with robots'), cms_page_path("gcse-cs-support"), class: 'ncce-confidence__icon', aria_label: 'Link to GCSE Computer Science support' %>
+      <%= link_to t("pages.home.confidence.non_gcse.title"), cms_page_path("gcse-cs-support"), class: "ncce-confidence__link" %>
       <p class="ncce-confidence__description">
         <%= t("pages.home.confidence.non_gcse.description") %>
       </p>

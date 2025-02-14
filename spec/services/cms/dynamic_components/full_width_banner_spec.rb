@@ -2,10 +2,10 @@ require "rails_helper"
 
 RSpec.describe Cms::DynamicComponents::FullWidthBanner do
   before do
-    @banner = Cms::Providers::Strapi::Factories::ComponentFactory.to_full_width_banner(Cms::Mocks::FullWidthBanner.generate_data)
+    @banner = Cms::Providers::Strapi::Factories::ComponentFactory.process_component(Cms::Mocks::FullWidthBanner.generate_raw_data)
   end
 
-  it "should render as CmsFullWidthBannerComponent" do
-    expect(@banner.render).to be_a(CmsFullWidthBannerComponent)
+  it "should render as FullWidthBannerComponent" do
+    expect(@banner.render).to be_a(Cms::FullWidthBannerComponent)
   end
 end

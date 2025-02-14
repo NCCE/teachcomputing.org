@@ -1,0 +1,58 @@
+<%= render GovGridRowComponent.new(background_color: "light-grey", padding: {top: 0, bottom: 7}) do |row| %>
+  <%= row.with_column("two-thirds") do %>
+    <div class="user-programme-course-bookings-with-asides">
+      <div class="user-programme-course-bookings-with-asides__header">
+        <% if course_grouping.user_complete?(@current_user) %>
+          <div>
+            <%= image_pack_tag('media/images/icons/activity-complete-icon.svg') %>
+          </div>
+        <% end %>
+        <div>
+          <h2 class="govuk-heading-m govuk-!-margin-bottom-0">Step one: CPD courses</h2>
+        </div>
+      </div>
+
+      <% course_sections.each do |section| %>
+        <% if section[:courses].present? %>
+          <h2 class="govuk-heading-s"><%= section[:title] %></h2>
+          <div class="user-programme-course-bookings-with-asides__course-wrapper govuk-body">
+            <% section[:courses].each do |course| %>
+            <%= link_to course.activity.title, course_path(id: course.activity.stem_activity_code, name: course.activity.slug), class: 'govuk-heading-s govuk-!-margin-bottom-0 ncce-link govuk-link--no-underline' if course.activity.stem_activity_code %>
+              <div class="user-programme-course-bookings-with-asides__course-details">
+                <div class="user-programme-course-bookings-with-asides__course-icon">
+                  <span class="govuk-body-s <%= activity_icon_class(course.activity) %>"></span>
+                </div>
+                <div class="user-programme-course-bookings-with-asides__course-category">
+                  <span class="govuk-body-s"><%= t("shared.course_types.#{course.activity.category}") %></span>
+                </div>
+                <% if course_instance(course) %>
+                  <div class="user-programme-course-bookings-with-asides__course-instance">
+                    <span class="govuk-body-s icon-clock"><%= course_instance(course).formatted_duration %></span>
+                  </div>
+                <% end %>
+              </div>
+            <% end %>
+          </div>
+        <% end %>
+      <% end %>
+
+      <% if !in_progress_courses.present? && !completed_courses.present? %>
+      <div class="user-programme-course-bookings-with-asides__footer">
+          <div><h2 class="govuk-heading-s govuk-!-margin-0">Find a CPD course to get started</h2></div>
+          <div><%= link_to 'Explore courses', programme_link, class: "govuk-button button ncce-button-chevron govuk-!-margin-0" %></div>
+        </div>
+      <% else %>
+        <div class="user-programme-course-bookings-with-asides__footer">
+          <div><h2 class="govuk-heading-s govuk-!-margin-0">Discover more courses</h2></div>
+          <div><%= link_to 'Explore courses ', programme_link, class: "govuk-button button ncce-button-chevron button--inverted govuk-!-margin-0" %></div>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+
+  <%= row.with_column("one-third") do %>
+    <% if in_progress_courses.present? || completed_courses.present? %>
+        <%= render_parent %>
+    <% end %>
+  <% end %>
+<% end %>

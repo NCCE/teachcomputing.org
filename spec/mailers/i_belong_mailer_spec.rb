@@ -583,7 +583,7 @@ RSpec.describe IBelongMailer, type: :mailer do
       end
 
       it "should render computing ambassador link" do
-        expect(mail.text_part.body).to include("Computing Ambassador (#{stem_ambassadors_url})")
+        expect(mail.text_part.body).to include("Computing Ambassador (#{computing_ambassadors_url})")
       end
 
       it "should render the key stage 2 link" do

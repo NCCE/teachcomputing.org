@@ -13,7 +13,7 @@ module Cms
       end
 
       def render
-        CmsResourceCardComponent.new(title:, icon:, color_theme:, body_text:, button_text:, button_link:)
+        Cms::ResourceCardComponent.new(title:, icon:, color_theme:, body_text:, button_text:, button_link:)
       end
     end
   end

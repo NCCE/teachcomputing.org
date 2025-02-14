@@ -19,7 +19,7 @@ module Cms
       end
 
       def render
-        CmsFileComponent.new(file: self)
+        Cms::FileComponent.new(file: self)
       end
     end
   end

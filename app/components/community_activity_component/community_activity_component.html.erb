@@ -1,14 +1,5 @@
-<div
-  class="community-activity-component <%= @class_name %>"
-  data-controller="community-activity-component"
-  data-community-activity-component-create-path-value="<%= achievements_path %>"
-  data-community-activity-component-update-path-value="<%= achievement_path(@achievement) if @achievement %>"
-  data-community-activity-component-achievements-submit-path-value="<%= submit_achievements_path %>"
-  data-community-activity-component-achievement-id-value="<%= @achievement&.id %>"
-  data-community-activity-component-activity-id-value="<%= @activity.id %>"
-  data-community-activity-component-minimum-evidence-length-value="<%= minimum_character_requirement %>"
->
-  <% if achievement_rejected? %>
+<div class="community-activity-component <%= @class_name %>">
+  <% if @achievement&.rejected? %>
     <div class="community-activity-component__rejected">
     <i class="icon-feedback"></i>
       <span class="community-activity-component__rejected-text govuk-body-s">
@@ -16,172 +7,35 @@
       </span>
     </div>
   <% end %>
-
   <div class="community-activity-component__content">
-
     <div class="community-activity-component__objective">
       <div class="community-activity-component__objective-text">
-        <span><%= @activity.title %></span>
+        <span><%= sanitize @activity.title %></span>
       </div>
-      <% if achievement_complete? %>
-        <div class="community_activity_component__completed_badge_container" >
-          <div class='community-activity-component__completed-badge'><%= t('.complete') %></div>
+      <% if @achievement&.community_achievement_complete? %>
+        <div class="community-activity-component__completed_badge_container" >
+          <div class="community-activity-component__completed-badge">Completed</div>
         </div>
       <% elsif @activity.coming_soon? %>
-        <%= button_to t('.coming_soon'),
+        <%= button_to "Coming soon",
           '#',
           class: 'govuk-button button community-activity-component__objective-button button--full-width',
           disabled: true
         %>
       <% elsif @activity.booking_programme_slug.present? %>
-        <%= link_to t('.book_button_text'),
+        <%= link_to "Book a course",
           courses_path(certificate: @activity.booking_programme_slug),
           class: 'govuk-button button community-activity-component__objective-button'
         %>
-      <% elsif @activity.evidence_not_required? %>
-        <div class="community-activity-component__objective-button-container">
-          <% if @activity.public_copy_submission_options.present? %>
-            <% @activity.public_copy_submission_options.each do |option| %>
-              <% if check_submission_option(option["slug"]) %>
-                <div class="community_activity_component__completed_badge_container">
-                  <div class='community-activity-component__completed-badge'><%= t('.complete') %></div>
-                </div>
-                <% if option["redownload"] %>
-                  <a href="<%= option["redirect"] %>" rel="noopener"
-                    class="govuk-body-s" target="_blank">Re-download <%= option["title"].downcase %></a>
-                <% end %>
-              <% else %>
-                <% if @achievement&.complete? %>
-                  <a href="<%= option["redirect"] %>" rel="noopener"
-                    class="govuk-button button <%= @button_class %>" target="_blank"><%= option["title"] %></a>
-                <% else %>
-                  <button class="govuk-button button <%= @button_class %>"
-                    data-action="click->community-activity-component#submit"
-                    data-community-activity-component-slug-param="<%= option["slug"] %>"
-                    data-community-activity-component-redirect-param="<%= option["redirect"] %>"
-                    >
-                      <%= option["title"] %>
-                  </button>
-                <% end %>
-              <% end %>
-            <% end %>
-          <% else %>
-            <button class="govuk-button button" data-action="click->community-activity-component#submit">Mark complete</button>
-          <% end %>
-        </div>
-      <% else %>
-          <div class="community-activity-component__objective-button-container">
-            <%= render ProgressComponent.new do |progress| %>
-              <%= render ModalComponent.new(
-                title: 'Submit evidence',
-                reopen_button_text: reopen_button_text,
-                show_corner_decoration: false,
-                class_name: 'community-activity-component--modal',
-                reopen_button_class: achievement_rejected? ? 'ncce-button--white_black_border green-chevron' : "#{@button_class} ncce-button-chevron"
-              ) do |component| %>
-                <%= component.with_confirmation do %>
-                  <%= render ModalComponent.new(
-                    title: "Discard submitting evidence?",
-                    show_corner_decoration: false,
-                    class_name: "confirmation-modal",
-                    z_index: 2000,
-                  ) do |modal| %>
-                    <%= modal.with_header do %>
-                      <h1 class="govuk-heading-m">Discard submitting evidence?</h1>
-
-                      <div class="icon-close" data-action="click->modal#maybeToggle"></div>
-                    <% end %>
-                    <%= modal.with_body do %>
-                      <p class="govuk-body-m">You can save as a draft to continue later.</p>
-
-                      <div class="confirmation-modal__footer-actions">
-                        <button class="govuk-button ncce-button--pink" data-action="modal#cascade">Exit without saving</button>
-                        <button class="govuk-button button ncce-button--white" data-action="community-activity-component#saveAsDraft">Save as draft</button>
-                      </div>
-                    <% end %>
-                  <% end%>
-                <% end %>
-
-                <% component.with_header do %>
-                  <h1 class="govuk-heading-m">Submit evidence</h1>
-
-                  <%= progress.with_counter %>
-                  <div class="icon-close" data-action="click->modal#maybeToggle"></div>
-                <% end %>
-                <% component.with_body do %>
-                    <h3 class="govuk-heading-s"><%= @activity.title %></h3>
-
-                    <% evidences = @activity.public_copy_evidence.presence || [{ "brief" => @activity.self_verification_info.presence || t(".evidence")}] %>
-                    <% evidences.each_with_index do |evidence, index| %>
-                      <%= progress.with_step do %>
-                        <p class="govuk-body-s">
-                          <%= evidence["brief"] %>
-                          <% if evidence["bullets"].present? %>
-                            <ul class="govuk-list govuk-list--bullet">
-                              <% evidence["bullets"].each do |bullet| %>
-                                <li class="govuk-body-s"><%= bullet %></li>
-                              <% end %>
-                            </ul>
-                          <% end %>
-                        </p>
-                        <textarea class="govuk-textarea govuk-!-margin-bottom-2" placeholder="Please provide us with evidence of the activity you delivered." data-community-activity-component-target="textarea"><%= @achievement&.evidence&.[](index) %></textarea>
-                        <div class="community-activity-component__completion-count govuk-!-margin-bottom-1">
-                          <span class="govuk-body-s" data-community-activity-component-target="characterCountMessage"></span>
-                        </div>
-                      <% end %>
-                    <% end %>
-
-                    <%= progress.with_warning_step do %>
-                      <div class="comminity-activity-component__warning-text">
-                        <span class="govuk-body-m" data-community-activity-component-target="completionWarningMessage"></span>
-                      </div>
-                    <% end %>
-
-                    <div class="community-activity-component__footer-actions">
-                      <%= progress.with_back do %>
-                        Previous
-                      <% end %>
-                      <%= progress.with_continue do %>
-                        Next
-                      <% end %>
-                      <%= render ModalComponent.new(
-                        title: "Are you sure you want to submit this evidence?",
-                        class_name: "confirmation-modal",
-                        show_corner_decoration: false,
-                        z_index: 3000
-                      ) do |modal| %>
-                        <%= modal.with_reopen_button do %>
-                          <%= progress.with_submit do %>
-                            <div class="progress-component__submit-button-wrapper">
-                              <button class="govuk-button button save-draft button--inverted govuk-!-margin-bottom-0" data-action="click->community-activity-component#saveAsDraft" data-community-activity-component-target="saveDraftButton">Save draft</button>
-                              <button class="govuk-button button ncce-modal--reopen govuk-!-margin-bottom-0" data-community-activity-component-target="submitButton" data-action="modal#toggle">Submit</button>
-                            </div>
-                          <% end %>
-                        <% end %>
-
-                        <%= modal.with_header do %>
-                          <h2 class="govuk-heading-m govuk-!-margin-right-8"><%= modal.title %></h2>
-                        <% end %>
-
-                        <%= modal.with_body do %>
-                          <p class="govuk-body-m">You will not be able to change or add to this evidence once submitted.</p>
-
-                          <div class="confirmation-modal__footer-actions">
-                            <button class="govuk-button button ncce-button--white" data-action="modal#toggle">Continue editing</button>
-                            <button class="govuk-button button" data-action="community-activity-component#submit">Submit evidence</button>
-                          </div>
-                        <% end %>
-                      <% end %>
-                    </div>
-                <% end %>
-              <% end %>
-            <% end %>
-          </div>
       <% end %>
+      <%= render CommunityEvidenceSubmissionModalComponent.new(
+        activity: @activity,
+        achievement: @achievement,
+        button_class: @button_class
+      ) %>
     </div>
     <% if @activity.description.present? %>
       <div class="community-activity-component__description"><%= @activity.description.html_safe %></div>
     <% end %>
   </div>
-
 </div>

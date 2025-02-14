@@ -50,7 +50,9 @@ module Cms
                   on: {
                     "content-blocks.text-block": ComponentParameterFactory.content_block_text_block,
                     "content-blocks.file-link": ComponentParameterFactory.content_block_file_link,
-                    "content-blocks.linked-picture": ComponentParameterFactory.content_block_linked_picture
+                    "content-blocks.linked-picture": ComponentParameterFactory.content_block_linked_picture,
+                    "content-blocks.enrol-button": ComponentParameterFactory.content_block_enrol_button,
+                    "content-blocks.link-with-icon": ComponentParameterFactory.content_block_link_with_icon
                   }
                 }
               }
@@ -67,7 +69,11 @@ module Cms
                   "blocks.full-width-text": ComponentParameterFactory.text_block_parameters,
                   "blocks.testimonial-row": ComponentParameterFactory.testimonial_row_parameters,
                   "blocks.numbered-icon-list": ComponentParameterFactory.numbered_icon_list_parameters,
-                  "blocks.split-horizontal-card": ComponentParameterFactory.split_horizontal_card_parameters
+                  "blocks.split-horizontal-card": ComponentParameterFactory.split_horizontal_card_parameters,
+                  "blocks.community-activity-list": ComponentParameterFactory.community_activity_list_parameters,
+                  "blocks.sticky-dashboard-bar": ComponentParameterFactory.sticky_dashboard_bar_parameters,
+                  "blocks.enrolment-testimonial": ComponentParameterFactory.enrolment_testimonial_parameters,
+                  "blocks.enrolment-split-course-card": ComponentParameterFactory.enrolment_split_course_card_parameters
                 }
               }
             end

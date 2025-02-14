@@ -36,6 +36,12 @@ Rails.application.routes.draw do
     end
     resources :assessment_attempts, only: %i[index show]
     resources :assessment_attempt_transitions
+    resources :reports, only: [:index] do
+      collection do
+        get :by_programme
+        post :report_results
+      end
+    end
   end
 
   namespace :api do
@@ -63,8 +69,8 @@ Rails.application.routes.draw do
 
   namespace "certificates", path: "certificate", as: "" do
     resource "primary_certificate", controller: "primary_certificate", path: "primary-certificate", only: %i[show] do
-      get "/complete", action: :complete, as: :complete
-      get "/pending", action: :pending, as: :pending
+      get "/complete", to: redirect("/certificate/primary-certificate")
+      get "/pending", to: redirect("/certificate/primary-certificate")
       get "/view-certificate", action: :show, controller: "certificate", as: :certificate,
         defaults: {slug: "primary-certificate"}
       post "/enrol", action: :create, controller: "/user_programme_enrolments", as: :enrol
@@ -191,7 +197,6 @@ Rails.application.routes.draw do
   get "/tech-careers-videos", to: "pages#page", as: :tech_careers_videos, defaults: {page_slug: "tech-careers-videos"}
   get "/i-belong", to: "pages#i_belong", as: :about_i_belong, defaults: {page_slug: "i-belong"}
   get "/computing-teaching-schools-support", to: redirect("/gcse-cs-support")
-  get "/gcse-cs-support", to: "pages#non_gcse", as: :non_gcse, defaults: {page_slug: "gcse-cs-support"}
   get "/isaac-computer-science", to: "pages#isaac_computer_science", as: :about_isaac_computer_science, defaults: {page_slug: "isaac-computer-science"}
   get "/gender-balance", to: "pages#page", as: :gender_balance, defaults: {page_slug: "gender-balance"}
   get "/get-involved", to: "pages#page", as: :get_involved, defaults: {page_slug: "get-involved"}
@@ -206,8 +211,8 @@ Rails.application.routes.draw do
   get "/maintenance", to: "pages#page", as: :maintenance, defaults: {page_slug: "maintenance"}
   get "/contributing-partners", to: redirect("/get-involved")
 
-  get "/primary-certificate", to: "pages#static_programme_page", as: :primary,
-    defaults: {page_slug: "primary-certificate"}
+  # get "/primary-certificate", to: "pages#static_programme_page", as: :primary,
+  #  defaults: {page_slug: "primary-certificate"}
   get "/primary-certificate/courses", action: :primary_courses, controller: "courses", as: :primary_courses
 
   get "/primary-teachers", to: "pages#page", as: :primary_teachers,
@@ -249,6 +254,5 @@ Rails.application.routes.draw do
   get "/blog", to: "cms#blog", as: :cms_posts
   get "/blog/articles", to: redirect(path: "/blog")
   get "/blog/:page_slug", to: "cms#blog_resource", as: :cms_post
-  get "/test-web/:page_slug", to: "cms#web_page_resource", as: :cms_web_page if Rails.env.development?
-  get "/:page_slug", to: "cms#web_page_resource", as: :cms_page
+  get "/*page_slug", to: "cms#web_page_resource", as: :cms_page
 end

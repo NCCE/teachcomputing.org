@@ -12,7 +12,7 @@ module Cms
       end
 
       def render
-        CmsPictureCardComponent.new(image:, title:, body_text:, link:, color_theme:)
+        Cms::PictureCardComponent.new(image:, title:, body_text:, link:, color_theme:)
       end
     end
   end

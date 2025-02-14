@@ -15,7 +15,7 @@ module Cms
       end
 
       def render
-        CmsFullWidthBannerComponent.new(
+        Cms::FullWidthBannerComponent.new(
           text_content:,
           image:,
           image_side:,

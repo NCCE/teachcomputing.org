@@ -5,7 +5,7 @@ RSpec.describe Cms::DynamicComponents::LinkedPicture do
     @linked_picture = Cms::Providers::Strapi::Factories::ComponentFactory.process_component(Cms::Mocks::LinkedPicture.generate_raw_data)
   end
 
-  it "should render as CmsNcceButtonComponent" do
-    expect(@linked_picture.render).to be_a(CmsImageComponent)
+  it "should render as CmsImageComponent" do
+    expect(@linked_picture.render).to be_a(Cms::ImageComponent)
   end
 end

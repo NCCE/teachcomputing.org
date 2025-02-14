@@ -13,7 +13,7 @@ module Cms
       end
 
       def render
-        CmsEnrichmentListComponent.new(
+        Cms::EnrichmentListComponent.new(
           enrichments:,
           featured_title:,
           all_title:,

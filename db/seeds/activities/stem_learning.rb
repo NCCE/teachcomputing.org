@@ -2928,3 +2928,15 @@ Activity.find_or_initialize_by(stem_course_template_no: "8c0a514a-ffcc-ef11-b8e8
 
   activity.programmes = [secondary_certificate]
 end.save!
+
+Activity.find_or_initialize_by(stem_course_template_no: "d20a4f49-edcc-ef11-b8e8-6045bd0ddfc9").tap do |activity|
+  activity.title = "Advanced A-Level Programming"
+  activity.slug = "advanced-a-level-programming"
+  activity.category = "face-to-face"
+  activity.remote_delivered_cpd = false
+  activity.provider = "stem-learning"
+  activity.stem_activity_code = "CP519"
+  activity.credit = 60
+
+  activity.programmes = [secondary_certificate]
+end.save!

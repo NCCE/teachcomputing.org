@@ -73,4 +73,9 @@ class Activity < ApplicationRecord
   def evidence_not_required?
     self_verification_info.blank? && public_copy_evidence.blank?
   end
+
+  def public_description
+    return public_copy_description.html_safe unless public_copy_description.nil?
+    description&.html_safe
+  end
 end

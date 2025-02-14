@@ -2,12 +2,12 @@ version: 2.1
 
 orbs:
   ruby: circleci/ruby@1
-  browser-tools: circleci/browser-tools@1.4.8
+  browser-tools: circleci/browser-tools@1.5.1
 
 jobs:
   brakeman:
     docker:
-      - image: "cimg/ruby:3.1.2"
+      - image: "cimg/ruby:3.3.6"
     steps:
       - checkout
       - ruby/install-deps
@@ -17,7 +17,7 @@ jobs:
 
   standardrb:
     docker:
-      - image: "cimg/ruby:3.1.2"
+      - image: "cimg/ruby:3.3.6"
     steps:
       - checkout
       - ruby/install-deps
@@ -28,7 +28,7 @@ jobs:
   test:
     working_directory: ~/teachcomputing
     docker:
-      - image: cimg/ruby:3.1.2-node
+      - image: cimg/ruby:3.3.6-node
         environment:
           BUNDLE_JOBS: "3"
           BUNDLE_RETRY: "3"

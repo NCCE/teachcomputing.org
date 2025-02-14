@@ -1,32 +1,62 @@
-<div class="govuk-width-container govuk-!-padding-top-3">
-  <div class="hero__heading-wrapper--full-width govuk-body progress-bar-component">
-    <h4>
-      <strong><%= @title.presence || 'Your certificate progress' %></strong>
-    </h4>
-    <p class="govuk-body-s ncce-progress-section--description">
-    <strong>
-      <% if @body.present? %>
-        <%= @body %>
-      <% else %>
-        Complete the below training and activities to receive your <%= @programme.title %> certificate.
-        You can complete these at your own pace and in any order.
-      <% end %>
-    </strong>
-    </p>
-    <% if @steps_to_accreditation %>
-      <p class="govuk-body-s">Choose your first step to certification:</p>
-    <% end %>
-    <div class="ncce-progress-section">
-      <% @programme_objectives.each_with_index do |programme_objective, index| %>
-        <% class_name = programme_objective&.user_complete?(@current_user) ? "icon-ticked-circle" : "icon-blank-circle" %>
-        <a href="<%= programme_objective.progress_bar_path %>" class="<%= class_name %> ncce-link ncce-progress-section--text">
-          <span><%= programme_objective.progress_bar_title.html_safe %></span>
-        </a>
-
-        <% unless index == @programme_objectives.size - 1 %>
-          <div class="icon-dotted-line"></div>
+<%= render GovGridRowComponent.new(background_color: @background_color) do |row|  %>
+  <%= row.with_column(@programme.show_extra_objectives_on_progress_bar? ? "two-thirds" : "full") do %>
+    <div class="progress-bar-component">
+      <h2 class="govuk-heading-m"><%= @title.presence || 'Progress bar' %></h2>
+      <p class="govuk-body">
+        <% if @body.present? %>
+          <%= @body %>
+        <% elsif @programme.show_extra_objectives_on_progress_bar? %>
+          The key steps to earn your <%= @programme.title %> certificate</p>
+        <% else %>
+          Complete the below training and activities to receive your <%= @programme.title %> certificate.
+          You can complete these at your own pace and in any order.
         <% end %>
-      <% end %>
+      </p>
+      <div class="<%= content_spacing_class("progress-bar-component__objectives-wrapper") %>">
+        <% if @programme.show_extra_objectives_on_progress_bar? %>
+          <div class="progress-bar-component__objective">
+            <div class="progress-bar-component__objective--icon <%= user_enrolled_class %>">
+            </div>
+            <div class="<%= content_spacing_class("progress-bar-component__objective--text") %>">
+              <p class="govuk-body-s govuk-!-margin-0">Enrol</p>
+            </div>
+          </div>
+          <div class="progress-bar-component--dotted-line icon-dotted-line"></div>
+        <% end %>
+
+        <% @programme_objectives.each_with_index do |programme_objective, index| %>
+          <% if programme_objective.multi_stage_group? %>
+            <% programme_objective.multi_stage_objectives.each_with_index do |objective, index| %>
+              <div class="progress-bar-component__objective">
+                <div class="<%= course_bookings_status_class(programme_objective, objective["state"]) %>"></div>
+                <div class="<%= content_spacing_class("progress-bar-component__objective--text") %>">
+                  <p class="govuk-body-s govuk-!-margin-0"><%= objective["title"] %></p>
+                </div>
+              </div>
+              <% unless index == programme_objective.multi_stage_objectives.size - 1 %>
+                <div class="progress-bar-component--dotted-line icon-dotted-line"></div>
+              <% end %>
+            <% end %>
+          <% else %>
+            <div class="progress-bar-component__objective">
+              <div class="<%= programme_objective_status_class(programme_objective) %>"></div>
+              <div class="<%= content_spacing_class("progress-bar-component__objective--text") %>">
+                <% if @programme.show_extra_objectives_on_progress_bar? %>
+                  <p class="govuk-body-s govuk-!-margin-0"><%= programme_objective.progress_bar_title.html_safe %></p>
+                <% else %>
+                  <a href="<%= programme_objective.progress_bar_path %>"><%= programme_objective.progress_bar_title.html_safe %></a>
+                <% end %>
+              </div>
+            </div>
+          <% end %>
+          <% unless index == @programme_objectives.size - 1 %>
+            <div class="progress-bar-component--dotted-line icon-dotted-line"></div>
+          <% end %>
+        <% end %>
+      </div>
     </div>
-  </div>
-</div>
+  <% end %>
+  <%= row.with_column("one-third") do %>
+    <%= render_parent %>
+  <% end %>
+<% end %>

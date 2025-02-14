@@ -1,0 +1,20 @@
+<%= render GovGridRowComponent.new(background_color: "light-grey", padding: {top: 0, bottom: 7}) do |row| %>
+  <%= row.with_column("two-thirds") do %>
+    <div class="primary-dashboard-programme-community-activity-group-component">
+      <div class="primary-dashboard-programme-community-activity-group-component__header">
+        <% if @programme_activity_group.user_complete?(@current_user) %>
+          <div>
+            <%= image_pack_tag('media/images/icons/activity-complete-icon.svg') %>
+          </div>
+        <% end %>
+        <div>
+          <h2 class="govuk-heading-m govuk-!-margin-bottom-0"><%= @programme_activity_group.web_copy_subtitle %></h2>
+        </div>
+      </div>
+      <%= render PrimaryDashboardCommunityActivityComponent.new(programme_activity_group: @programme_activity_group) %>
+    </div>
+  <% end %>
+  <%= row.with_column("one-third") do %>
+    <%= render_parent  %>
+  <% end %>
+<% end %>

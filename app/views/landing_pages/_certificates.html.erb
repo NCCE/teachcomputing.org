@@ -63,7 +63,7 @@
                 Our nationally recognised qualification will support you to demonstrate your commitment to developing your own practice and to computing as a school subject.
               </p>
               <p class="govuk-body govuk-!-margin-bottom-0">
-                <%= link_to @landing_page.primary_cert_link_text, primary_path,
+                <%= link_to @landing_page.primary_cert_link_text, cms_page_path("primary_certificate"),
                   class: 'button govuk-button lp-certs--button',
                   data: { event_action: 'click',
                           event_category: @landing_page.event_tracking_category,

@@ -17,8 +17,8 @@ RSpec.describe("courses/programme_courses", type: :view) do
   let(:filter_stub) { instance_double(Achiever::CourseFilter) }
 
   before do
-    stub_template "courses/_courses-list": ""
-    stub_template "courses/_aside-filters": ""
+    stub_template "courses/_courses-list" => ""
+    stub_template "courses/_aside-filters" => ""
   end
 
   context "with a hub with no courses" do
