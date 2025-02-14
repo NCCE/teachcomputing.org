@@ -17,7 +17,7 @@ RSpec.describe Rack::Attack do
   before do
     pending("Removed while testing new implementation")
     # Rails.application.config.cloudflare.ips = cloudflare_ips
-    stub_request(:get, 'https://www.cloudflare.com/ips-v4/')
+    stub_request(:get, "https://www.cloudflare.com/ips-v4/")
       .to_return(status: ips_v4_status, body: cloudflare_ips)
   end
 
