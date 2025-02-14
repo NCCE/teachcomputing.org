@@ -14,7 +14,7 @@ RSpec.describe Rack::Attack do
   end
 
   before do
-    Rails.application.config.cloudflare.ips = cloudflare_ips
+    #Rails.application.config.cloudflare.ips = cloudflare_ips
   end
 
   shared_examples "a successful request" do

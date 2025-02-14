@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2025_01_17_115139) do
+ActiveRecord::Schema[7.1].define(version: 2025_01_17_115139) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
@@ -317,9 +317,9 @@ ActiveRecord::Schema[7.0].define(version: 2025_01_17_115139) do
     t.jsonb "metadata"
     t.string "type"
     t.string "cms_slug"
-    t.index ["cms_slug"], name: "index_programme_activity_groupings_on_cms_slug", unique: true
     t.boolean "multi_stage_group", default: false, null: false
     t.jsonb "objectives"
+    t.index ["cms_slug"], name: "index_programme_activity_groupings_on_cms_slug", unique: true
     t.index ["programme_id"], name: "index_programme_activity_groupings_on_programme_id"
   end
 
