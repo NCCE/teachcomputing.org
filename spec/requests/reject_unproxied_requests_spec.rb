@@ -1,11 +1,12 @@
 require "rails_helper"
 
 RSpec.describe Rack::Attack do
-  subject { get "/primary-teachers", headers: headers }
+  # subject { get "/primary-teachers", headers: headers }
 
   let(:reject_uproxied_requests) { "false" }
   let(:headers) { {} }
   let(:cloudflare_ips) { [] }
+  let(:ips_v4_status) { 200 }
 
   around do |example|
     ClimateControl.modify REJECT_UNPROXIED_REQUESTS: reject_uproxied_requests do
@@ -14,7 +15,10 @@ RSpec.describe Rack::Attack do
   end
 
   before do
-    #Rails.application.config.cloudflare.ips = cloudflare_ips
+    pending("Removed while testing new implementation")
+    # Rails.application.config.cloudflare.ips = cloudflare_ips
+    stub_request(:get, 'https://www.cloudflare.com/ips-v4/')
+      .to_return(status: ips_v4_status, body: cloudflare_ips)
   end
 
   shared_examples "a successful request" do
