@@ -36,7 +36,6 @@ RSpec.describe("courses/_courses-list", type: :view) do
         subjects: subjects,
         certificates: certificates,
         course_formats: %i[face_to_face online remote],
-        current_hub: nil,
         current_level: nil,
         current_location: nil,
         current_topic: nil,
@@ -92,72 +91,6 @@ RSpec.describe("courses/_courses-list", type: :view) do
 
     it "renders the programme tag" do
       expect(rendered).to have_css(".ncce-courses__filter-tag--subject-knowledge", text: "Subject Knowledge")
-    end
-  end
-
-  describe "when there are no courses" do
-    context "when there is no hub" do
-      before do
-        allow(filter_stub).to receive_messages(
-          course_tags: {Algorithms: "101"},
-          age_groups: age_groups,
-          subjects: subjects,
-          certificates: certificates,
-          course_formats: %i[face_to_face online remote],
-          current_hub: nil,
-          current_level: nil,
-          current_location: nil,
-          current_topic: nil,
-          current_certificate: nil,
-          applied_filters: nil,
-          total_results_count: 0,
-          location_search?: false,
-          non_location_based_results: []
-        )
-        @filter_params = {}
-        @course_filter = filter_stub
-        render
-      end
-
-      it "displays the emoji" do
-        expect(rendered).to have_css(".ncce-courses__sad-face")
-      end
-
-      it "displays the expected message" do
-        expect(rendered).to have_text("Sorry, we couldn't find any courses that match your filter options.")
-      end
-    end
-
-    context "when there is a hub" do
-      before do
-        allow(filter_stub).to receive_messages(
-          course_tags: {Algorithms: "101"},
-          age_groups: age_groups,
-          subjects: subjects,
-          certificates: certificates,
-          course_formats: %i[face_to_face online remote],
-          current_hub: "bla",
-          current_level: nil,
-          current_location: nil,
-          current_topic: nil,
-          current_certificate: nil,
-          applied_filters: ["bla"],
-          total_results_count: 0,
-          location_search?: false,
-          non_location_based_results: []
-        )
-        @filter_params = {hub_id: "bla"}
-        @course_filter = filter_stub
-        render
-      end
-
-      it "does not display the emoji" do
-        expect(rendered).not_to have_css(".ncce-courses__sad-face")
-      end
-
-      it "displays the expected message" do
-        expect(rendered).to have_text("Sorry, this Computing Hub is currently not running any courses.")
-      end
     end
   end
 end
