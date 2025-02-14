@@ -14,7 +14,7 @@ RSpec.describe Rack::Attack do
   end
 
   before do
-    Rails.application.config.cloudflare.ips = cloudflare_ips
+    allow(CloudflareRails::Importer).to receive(:cloudflare_ips).and_return(cloudflare_ips)
   end
 
   shared_examples "a successful request" do
@@ -46,10 +46,6 @@ RSpec.describe Rack::Attack do
   context "when REJECT_UNPROXIED_REQUESTS is TRUE" do
     let(:reject_uproxied_requests) { "TRUE" }
 
-    describe "when no cloudflare IPs are set" do
-      it_behaves_like "a successful request"
-    end
-
     describe "when the request comes in direct to heroku" do
       let(:headers) { {Host: "foobar.herokuapp.com"} }
 
@@ -74,12 +70,12 @@ RSpec.describe Rack::Attack do
           let(:x_forwarded_for) { "1.2.3.4 4.5.6.7 192.168.0.1" }
 
           it_behaves_like "a successful request"
+        end
 
-          describe "when X-Forwarded-For has extra spaces, commas" do
-            let(:x_forwarded_for) { " , 192.168.0.1 , " }
+        describe "when X-Forwarded-For has extra spaces, commas" do
+          let(:x_forwarded_for) { " , 192.168.0.1 , " }
 
-            it_behaves_like "a successful request"
-          end
+          it_behaves_like "a successful request"
         end
 
         describe "when X-Forwarded-For is set to a non-cloudflare IP" do

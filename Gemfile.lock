@@ -165,10 +165,10 @@ GEM
     childprocess (3.0.0)
     choice (0.2.0)
     climate_control (1.2.0)
-    cloudflare-rails (5.0.1)
-      actionpack (>= 6.1, < 7.2.0)
-      activesupport (>= 6.1, < 7.2.0)
-      railties (>= 6.1, < 7.2.0)
+    cloudflare-rails (6.2.0)
+      actionpack (>= 7.1.0, < 8.1.0)
+      activesupport (>= 7.1.0, < 8.1.0)
+      railties (>= 7.1.0, < 8.1.0)
       zeitwerk (>= 2.5.0)
     cocoon (1.2.15)
     coderay (1.1.3)
@@ -450,7 +450,7 @@ GEM
     puma (6.5.0)
       nio4r (~> 2.0)
     racc (1.8.1)
-    rack (2.2.10)
+    rack (2.2.11)
     rack-attack (6.7.0)
       rack (>= 1.0, < 4)
     rack-cors (2.0.2)
@@ -516,7 +516,7 @@ GEM
     rb-inotify (0.10.1)
       ffi (~> 1.0)
     rbs (2.8.4)
-    rdoc (6.11.0)
+    rdoc (6.12.0)
       psych (>= 4.0.0)
     redis-client (0.22.2)
       connection_pool
@@ -679,7 +679,7 @@ GEM
       lint_roller (~> 1.0)
       rubocop-rails (~> 2.20.2)
     statesman (10.0.0)
-    stringio (3.1.2)
+    stringio (3.1.3)
     terser (1.2.5)
       execjs (>= 0.3.0, < 3)
     thor (1.3.2)
@@ -735,7 +735,7 @@ GEM
     xpath (3.2.0)
       nokogiri (~> 1.8)
     yard (0.9.36)
-    zeitwerk (2.6.18)
+    zeitwerk (2.7.1)
 
 PLATFORMS
   ruby
@@ -759,7 +759,7 @@ DEPENDENCIES
   byebug
   capybara
   climate_control
-  cloudflare-rails (~> 5.0.1)
+  cloudflare-rails
   combine_pdf (>= 1.0.18)
   connection_pool
   dalli
