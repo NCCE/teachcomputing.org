@@ -84,7 +84,12 @@ module StrapiStubs
   end
 
   def stub_strapi_blog_collection(blogs: nil, page: 1, page_size: 10)
-    blog_list = blogs.presence || Array.new(5) { Cms::Mocks::Blog.generate_raw_data }
+    blog_list = if blogs.nil?
+      Array.new(5) { Cms::Mocks::Blog.generate_raw_data }
+    else
+      blogs
+    end
+
     if as_graphql
       stub_strapi_graphql_collection_query("blogs", blog_list, page:, page_size:)
     else
@@ -255,6 +260,14 @@ module StrapiStubs
     stub_request(:post, /^https:\/\/strapi.teachcomputing.org\/graphql/)
       .with(body: /#{resource_name}/)
       .to_return_json(body: {data: response})
+  end
+
+  def stub_strapi_graphql_collection_error(resource_name)
+    stub_strapi_schema
+    response = {errors: [{message: "Not found"}]}
+    stub_request(:post, /^https:\/\/strapi.teachcomputing.org\/graphql/)
+      .with(body: /#{resource_name}/)
+      .to_return_json(body: response)
   end
 
   private

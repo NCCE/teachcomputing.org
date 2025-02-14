@@ -33,7 +33,7 @@ RSpec.describe Cms::PrimaryGlossaryTableComponent, type: :component do
 
   context "when no records found" do
     before do
-      stub_strapi_get_empty_collection_entity("primary-computing-glossary-tables")
+      stub_strapi_graphql_collection_error("primaryComputingGlossaryTables")
 
       render_inline(described_class.new(
         title: title
