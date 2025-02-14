@@ -759,7 +759,7 @@ DEPENDENCIES
   byebug
   capybara
   climate_control
-  cloudflare-rails (~> 6.2.0)
+  cloudflare-rails
   combine_pdf (>= 1.0.18)
   connection_pool
   dalli
