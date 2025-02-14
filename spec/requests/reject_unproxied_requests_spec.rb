@@ -15,10 +15,6 @@ RSpec.describe Rack::Attack do
   end
 
   before do
-    #stub_request(:get, "https://www.cloudflare.com/ips-v4/")
-    #  .to_return(status: 200, body: cloudflare_ips_v4)
-    #stub_request(:get, "https://www.cloudflare.com/ips-v6/")
-    #  .to_return(status: 200, body: cloudflare_ips_v6)
     allow(CloudflareRails::Importer).to receive(:cloudflare_ips).and_return(cloudflare_ips)
   end
 
