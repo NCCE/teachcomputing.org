@@ -11,7 +11,7 @@
   <% end %>
 <% end %>
 
-<div data-controller="cms-enrichment-list-component">
+<div data-controller="cms--enrichment-list-component">
   <%= render GovGridRowComponent.new do |row| %>
     <%= row.with_column(:full) do %>
 
@@ -19,21 +19,21 @@
         <h2 class="govuk-heading-m"><%= @all_title %></h2>
         <div class="enrichment-filters__selects">
           <%= select_tag :term, options_for_select(@terms), prompt: @term_filter_placeholder, class: "govuk-select", data: {
-            cms_enrichment_list_component_target: "termSelect",
-            action: "cms-enrichment-list-component#filterChanged"
+            cms__enrichment_list_component_target: "termSelect",
+            action: "cms--enrichment-list-component#filterChanged"
           } %>
           <%= select_tag :age_group, options_for_select(@age_groups), prompt: @age_group_filter_placeholder, class: "govuk-select", data: {
-            cms_enrichment_list_component_target: "ageGroupSelect",
-            action: "cms-enrichment-list-component#filterChanged"
+            cms__enrichment_list_component_target: "ageGroupSelect",
+            action: "cms--enrichment-list-component#filterChanged"
           } %>
           <%= select_tag :type, options_for_select(@types), prompt: @type_filter_placeholder, class: "govuk-select", data: {
-            cms_enrichment_list_component_target: "typeSelect",
-            action: "cms-enrichment-list-component#filterChanged"
+            cms__enrichment_list_component_target: "typeSelect",
+            action: "cms--enrichment-list-component#filterChanged"
           } %>
         </div>
 
-        <div data-cms-enrichment-list-component-target="filterWrapper" class="filter-counter hide">
-          <span data-cms-enrichment-list-component-target="filterCount"></span><a class="filter-counter__clear" data-action="click->cms-enrichment-list-component#clearFilter">Clear filters</a>
+        <div data-cms--enrichment-list-component-target="filterWrapper" class="filter-counter hide">
+          <span data-cms--enrichment-list-component-target="filterCount"></span><a class="filter-counter__clear" data-action="click->cms--enrichment-list-component#clearFilter">Clear filters</a>
         </div>
       </div>
     <% end %>
