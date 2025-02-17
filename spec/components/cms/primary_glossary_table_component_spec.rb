@@ -31,6 +31,20 @@ RSpec.describe Cms::PrimaryGlossaryTableComponent, type: :component do
     end
   end
 
+  context "with no title" do
+    before do
+      stub_strapi_primary_computing_glossary_table_collection
+
+      render_inline(described_class.new(
+        title: nil
+      ))
+    end
+
+    it "does not render a title" do
+      expect(page).to_not have_css("h2")
+    end
+  end
+
   context "when no records found" do
     before do
       stub_strapi_graphql_collection_error("primaryComputingGlossaryTables")
