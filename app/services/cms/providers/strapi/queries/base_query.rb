@@ -17,7 +17,8 @@ module Cms
             Models::DynamicZone => DynamicZone,
             Models::EnrichmentDynamicZone => EnrichmentDynamicZone,
             Models::EnrichmentList => EnrichmentList,
-            Models::Aside => Aside
+            Models::Aside => Aside,
+            Models::TextField => SimpleField
           }.freeze
 
           def initialize(collection_class, resource_filter = "slug")

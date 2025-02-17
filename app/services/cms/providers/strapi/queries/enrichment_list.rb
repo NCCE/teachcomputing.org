@@ -14,7 +14,14 @@ module Cms
                     link
                     featured
                     terms { data { attributes { name }}}
-                    type { data { attributes { name }}}
+                    type {
+                      data {
+                        attributes {
+                          name
+                          #{SharedFields.image_fields(:icon)}
+                        }
+                      }
+                    }
                     age_groups { data { attributes { name }}}
                     rich_title
                     rich_details

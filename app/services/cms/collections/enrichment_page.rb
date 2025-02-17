@@ -32,7 +32,13 @@ module Cms
           {model: Models::Seo, key: :seo},
           {model: Models::PageTitle, key: :pageTitle},
           {model: Models::EnrichmentDynamicZone, key: :content},
-          {model: Models::EnrichmentList, key: :enrichments}
+          {model: Models::EnrichmentList, key: :enrichments},
+          {model: Models::TextField, key: :featuredSectionTitle},
+          {model: Models::TextField, key: :allSectionTitle},
+          {model: Models::TextField, key: :typeFilterPlaceholder},
+          {model: Models::TextField, key: :termFilterPlaceholder},
+          {model: Models::TextField, key: :ageGroupFilterPlaceholder},
+
         ]
       end
 
