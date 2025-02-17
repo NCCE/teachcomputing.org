@@ -6,19 +6,19 @@ module Cms
           attr_accessor :resource_name, :resource_filter
 
           QUERY_MAPS = {
+            Models::Aside => Aside,
             Models::BlogPreview => BlogPreview,
-            Models::WebPagePreview => WebPagePreview,
-            Models::FeaturedImage => FeaturedImage,
-            Models::Slug => Slug,
-            Models::PageTitle => Components::Blocks::PageTitle,
-            Models::SimpleTitle => SimpleField,
-            Models::TextBlock => SimpleField,
-            Models::Seo => Seo,
             Models::DynamicZone => DynamicZone,
             Models::EnrichmentDynamicZone => EnrichmentDynamicZone,
             Models::EnrichmentList => EnrichmentList,
-            Models::Aside => Aside,
-            Models::TextField => SimpleField
+            Models::FeaturedImage => FeaturedImage,
+            Models::PageTitle => Components::Blocks::PageTitle,
+            Models::Seo => Seo,
+            Models::SimpleTitle => SimpleField,
+            Models::Slug => Slug,
+            Models::TextBlock => SimpleField,
+            Models::TextField => SimpleField,
+            Models::WebPagePreview => WebPagePreview
           }.freeze
 
           def initialize(collection_class, resource_filter = "slug")
