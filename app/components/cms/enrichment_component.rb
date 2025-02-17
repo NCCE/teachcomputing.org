@@ -26,7 +26,7 @@ class Cms::EnrichmentComponent < ViewComponent::Base
       enrichment_age_groups: @age_groups,
       enrichment_type: @type.name
     }
-    data[:cms_enrichment_list_component_target] = "enrichment" unless @featured
+    data[:cms__enrichment_list_component_target] = "enrichment" unless @featured
     data
   end
 end
