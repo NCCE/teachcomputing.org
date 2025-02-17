@@ -5,7 +5,7 @@ module Cms
         class EnrichmentList
           def self.embed(name)
             <<~GRAPHQL.freeze
-              #{name} {
+              #{name} (pagination: {limit: 100}) {
                 data {
                   id
                   attributes {
