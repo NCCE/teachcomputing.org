@@ -37,7 +37,7 @@ module Cms
           {model: Models::TextField, key: :allSectionTitle},
           {model: Models::TextField, key: :typeFilterPlaceholder},
           {model: Models::TextField, key: :termFilterPlaceholder},
-          {model: Models::TextField, key: :ageGroupFilterPlaceholder},
+          {model: Models::TextField, key: :ageGroupFilterPlaceholder}
 
         ]
       end
