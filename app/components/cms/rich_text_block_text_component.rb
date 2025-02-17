@@ -3,7 +3,7 @@
 # `-` at the end of ERB tags
 module Cms
   class RichTextBlockTextComponent < ViewComponent::Base
-    def build(blocks, **options)
+    def build(blocks, **)
       klass =
         case blocks
         in { type: "paragraph" } then Paragraph
@@ -15,7 +15,7 @@ module Cms
         in { type: "quote"} then Quote
         end
 
-      klass.new(blocks: blocks, **options)
+      klass.new(blocks: blocks, **)
     end
 
     erb_template <<~ERB
