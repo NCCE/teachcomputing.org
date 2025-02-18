@@ -15,11 +15,9 @@ class ApplicationController < ActionController::Base
   end
 
   def access_cms_header
-    begin
-      @cms_header = Cms::Collections::Header.get
-    rescue
-      @cms_header = nil
-    end
+    @cms_header = Cms::Collections::Header.get
+  rescue
+    @cms_header = nil
   end
 
   def authenticate_user!
