@@ -3,7 +3,7 @@
 class Cms::FullWidthBannerComponent < ViewComponent::Base
   delegate :cms_image, to: :helpers
 
-  def initialize(text_content:, image:, image_side:, image_link:, title:, background_color: nil, buttons: [], show_bottom_border: false)
+  def initialize(text_content:, image:, image_side:, image_link:, title:, background_color: nil, buttons: [], show_bottom_border: false, i_belong_flag: false, corner_flourish: false)
     @text_content = text_content
     @image = image
     @image_side = image_side
@@ -12,6 +12,8 @@ class Cms::FullWidthBannerComponent < ViewComponent::Base
     @background_color = background_color
     @buttons = buttons
     @show_bottom_border = show_bottom_border
+    @i_belong_flag = i_belong_flag
+    @corner_flourish = corner_flourish
   end
 
   def wrapper_classes
