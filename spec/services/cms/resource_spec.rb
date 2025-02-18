@@ -15,14 +15,26 @@ RSpec.describe Cms::Resource do
     end
   end
 
-  context "with valid config" do
+  context "strapi_connection_type" do
+    it "default to rest client when not specified" do
+      allow(Rails.application.config).to receive(:strapi_connection_type).and_return(nil)
+      expect(described_class.send(:client)).to be_a Cms::Providers::Strapi::Client
+    end
+
+    it "return rest client when set to rest" do
+      allow(Rails.application.config).to receive(:strapi_connection_type).and_return("rest")
+      expect(described_class.send(:client)).to be_a Cms::Providers::Strapi::Client
+    end
+
+    it "return graphql client when set to graphql" do
+      allow(Rails.application.config).to receive(:strapi_connection_type).and_return("graphql")
+      expect(described_class.send(:client)).to be_a Cms::Providers::Strapi::GraphqlClient
+    end
+  end
+
+  context "with valid config for rest" do
     before do
-      stub_const("ENV",
-        {
-          "CMS_PROVIDER" => "strapi",
-          "STRAPI_API_KEY" => "strapi",
-          "STRAPI_URL" => "http://strapi.teachcomputing.rpfdev.com/api"
-        })
+      allow(Rails.application.config).to receive(:strapi_connection_type).and_return("rest")
     end
 
     context "single resource" do
@@ -35,6 +47,12 @@ RSpec.describe Cms::Resource do
       it "resource_key should raise NotImplementedError" do
         expect do
           described_class.resource_key
+        end.to raise_error(NotImplementedError)
+      end
+
+      it "graphql_key should raise NotImplementedError" do
+        expect do
+          described_class.graphql_key
         end.to raise_error(NotImplementedError)
       end
 

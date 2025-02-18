@@ -26,6 +26,10 @@ RSpec.describe Cms::Providers::Strapi::Client do
     described_class.new
   }
 
+  before do
+    allow(Rails.application.config).to receive(:strapi_connection_type).and_return("rest")
+  end
+
   it "calls one and returns mapped resource" do
     stub_strapi_get_single_entity("test-page")
     response = client.one(page_class)
@@ -44,6 +48,27 @@ RSpec.describe Cms::Providers::Strapi::Client do
     expect do
       client.one(page_class)
     end.to raise_error(ActiveRecord::RecordNotFound)
+  end
+
+  context "with failing connection" do
+    before do
+      failing_connection = double("api")
+      allow(failing_connection).to receive(:get).and_raise(StandardError)
+      allow(Cms::Providers::Strapi::Connection).to receive(:api).and_return(failing_connection)
+      stub_strapi_get_single_entity("test-page")
+      stub_strapi_blog_collection_with_tag("ai")
+    end
+    it "one raises RecordNotFound" do
+      expect do
+        client.one(page_class)
+      end.to raise_error(ActiveRecord::RecordNotFound)
+    end
+
+    it "all raises RecordNotFound" do
+      expect do
+        client.all(Cms::Collections::Blog, 1, 50, {query: {tag: "ai"}})
+      end.to raise_error(ActiveRecord::RecordNotFound)
+    end
   end
 
   it "raises RecordNotFound for unpublished resource" do

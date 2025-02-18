@@ -11,4 +11,8 @@ RSpec.describe Cms::Collections::AsideSection do
   it "should have 15 minute cache expiry" do
     expect(described_class.cache_expiry).to eq(4.hours)
   end
+
+  it "has no collection models" do
+    expect(described_class.collection_attribute_mappings).to eq([])
+  end
 end

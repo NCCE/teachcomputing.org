@@ -32,7 +32,7 @@ RSpec.describe SearchablePageIndexingJob, type: :job do
     end
 
     it "should create searchable pages if they are pulled from strapi" do
-      blogs = Array.new(4) { Cms::Mocks::Blog.generate_raw_data }
+      blogs = Array.new(210) { Cms::Mocks::Blog.generate_raw_data }
       blogs << Cms::Mocks::Blog.generate_raw_data(slug: "tech-for-success",
         excerpt: blog_excerpt,
         title: "Education and industry unite at key event championing gender equity in computer science")
@@ -48,7 +48,9 @@ RSpec.describe SearchablePageIndexingJob, type: :job do
         seo: Cms::Mocks::Seo.generate_data(title: "Enrichment Test", description: enrichment_excerpt)
       )]
 
-      stub_strapi_blog_collection(blogs:)
+      stub_strapi_blog_collection(blogs:, page: 1, page_size: 100)
+      stub_strapi_blog_collection(blogs:, page: 2, page_size: 100)
+      stub_strapi_blog_collection(blogs:, page: 3, page_size: 100)
       stub_strapi_web_page_collection(web_pages:)
       stub_strapi_enrichment_collection(enrichment_pages:)
 
@@ -69,8 +71,8 @@ RSpec.describe SearchablePageIndexingJob, type: :job do
 
       SearchablePageIndexingJob.perform_now
 
-      expect(SearchablePages::CmsBlog.count).to eq(5)
-      expect(SearchablePages::CmsWebPage.count).to eq(4) # three web pages + one enrichement page
+      expect(SearchablePages::CmsBlog.count).to eq(211) # 210 in generator + one fixed
+      expect(SearchablePages::CmsWebPage.count).to eq(4) # three web pages + one enrichment page
 
       blog_test = SearchablePages::CmsBlog.find_by(title: "Education and industry unite at key event championing gender equity in computer science")
       expect(blog_test).to be_present

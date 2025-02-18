@@ -44,6 +44,12 @@ module Cms
       raise NotImplementedError
     end
 
+    def self.graphql_key
+      raise NotImplementedError
+    end
+
+    def self.sort = nil
+
     def self.get(resource_id = nil, preview: false, preview_key: nil)
       data = if preview
         # dont use cache for previews
@@ -116,7 +122,14 @@ module Cms
     private_class_method def self.client
       case Rails.application.config.cms_provider
       when "strapi"
-        Providers::Strapi::Client.new
+        case Rails.application.config.strapi_connection_type
+        when "rest"
+          Providers::Strapi::Client.new
+        when "graphql"
+          Providers::Strapi::GraphqlClient.new
+        else
+          Providers::Strapi::Client.new
+        end
       else
         raise Errors::NoCmsProviderDefined
       end

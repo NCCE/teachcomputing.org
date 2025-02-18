@@ -35,9 +35,9 @@ module Cms
         ]
       end
 
-      def self.resource_key
-        "web-pages"
-      end
+      def self.resource_key = "web-pages"
+
+      def self.graphql_key = "webPages"
     end
   end
 end
