@@ -53,9 +53,10 @@
         <div class="ncce-header__site-search">
           <%= render SiteSearchComponent.new %>
         </div>
-        <% header = Cms::Collections::Header.get %>
-        <% header.data_models.each do |model| %>
-          <%= render model.render %>
+        <% if @cms_header %>
+          <% @cms_header.data_models.each do |model| %>
+            <%= render model.render %>
+          <% end %>
         <% end %>
   
       </div>
