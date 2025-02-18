@@ -50,8 +50,7 @@
     display: inline-block;
     margin-bottom: 0;
     background-size: 16px 16px;
-    display: inline-block;
-    margin-bottom: 0;
+
     @include govuk-media-query($from: tablet) {
       background-size: 20px 20px;
     }
@@ -61,6 +60,7 @@
     display: inline-block;
     margin-bottom: 0;
     background-size: 16px 16px;
+
     @include govuk-media-query($from: tablet) {
       background-size: 20px 20px;
     }
