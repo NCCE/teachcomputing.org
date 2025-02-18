@@ -108,6 +108,12 @@ module CoursesHelper
     "#{type} course"
   end
 
+  def course_type_short(course)
+    return "Online" if course.online_cpd
+    return "Live remote" if course.remote_delivered_cpd
+    "Face to face"
+  end
+
   def course_type(course)
     return "Free online course" if course.online_cpd
 

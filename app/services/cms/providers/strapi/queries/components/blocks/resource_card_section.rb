@@ -13,7 +13,7 @@ module Cms
                   sectionTitle
                   cardsPerRow
                   #{SharedFields.color_theme(:bkColor)}
-                  subText
+                  introText
                 GRAPHQL
               end
             end
