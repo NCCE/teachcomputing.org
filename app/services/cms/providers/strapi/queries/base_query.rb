@@ -12,7 +12,7 @@ module Cms
             Models::EnrichmentDynamicZone => EnrichmentDynamicZone,
             Models::EnrichmentList => EnrichmentList,
             Models::FeaturedImage => FeaturedImage,
-            Models::PageTitle => Components::Blocks::PageTitle,
+            Models::PageTitle => PageTitle,
             Models::Seo => Seo,
             Models::SimpleTitle => SimpleField,
             Models::Slug => Slug,

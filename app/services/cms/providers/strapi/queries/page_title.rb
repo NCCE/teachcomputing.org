@@ -3,7 +3,7 @@ module Cms
     module Strapi
       module Queries
         class PageTitle
-          def self.fields(name)
+          def self.embed(name)
             <<~GRAPHQL.freeze
               #{name} {
                 title
