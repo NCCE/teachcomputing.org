@@ -10,6 +10,7 @@ RSpec.describe("components/_header", type: :view) do
 
   before do
     stub_strapi_header
+    assign(:cms_header, Cms::Collections::Header.get)
   end
 
   it "has a link to the home page " do
