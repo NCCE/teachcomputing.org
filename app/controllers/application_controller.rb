@@ -16,7 +16,7 @@ class ApplicationController < ActionController::Base
 
   def access_cms_header
     @cms_header = Cms::Collections::Header.get
-  rescue
+  rescue ActiveRecord::RecordNotFound
     @cms_header = nil
   end
 
