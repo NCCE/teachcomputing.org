@@ -9,6 +9,9 @@ module Cms
                 data {
                   id
                   attributes {
+                    publishedAt
+                    createdAt
+                    updatedAt
                     #{SharedFields.image_fields(:partner_icon)}
                     i_belong
                     link
