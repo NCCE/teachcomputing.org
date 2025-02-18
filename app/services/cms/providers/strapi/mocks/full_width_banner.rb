@@ -10,6 +10,8 @@ module Cms
           attribute(:backgroundColor) { {name: "white"} }
           attribute(:imageSide) { "right" }
           attribute(:buttons) { nil }
+          attribute(:i_belong_flag) { false }
+          attribute(:corner_flourish) { false }
         end
       end
     end
