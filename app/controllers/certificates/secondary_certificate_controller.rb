@@ -16,10 +16,8 @@ module Certificates
 
       @professional_development_groups = @programme.programme_activity_groupings.not_community.order(:sort_key)
       @community_groups = @programme.programme_activity_groupings.community.order(:sort_key)
-      @badge_tracking_event_category = "Secondary enrolled"
-      @badge_tracking_event_label = "Secondary badge"
+
       assign_recommended_activities
-      assign_issued_badge_data
 
       render :show
     end
@@ -36,24 +34,11 @@ module Certificates
       return redirect_to secondary_certificate_path unless @programme.user_completed?(current_user)
 
       @complete_achievements = complete_achievements
-      @badge_tracking_event_category = "Secondary complete"
-      @badge_tracking_event_label = "Secondary badge"
-      assign_issued_badge_data
 
       render :complete
     end
 
     private
-
-    def assign_issued_badge_data
-      return unless @programme.badges.any?
-
-      begin
-        @issued_badge = Credly::Badge.by_programme_badge_template_ids(current_user.id, @programme.badges.pluck(:credly_badge_template_id))
-      rescue Credly::Error
-        @issued_badge = nil
-      end
-    end
 
     def assign_recommended_activities
       recommended_activities = user_pathway.pathway_activities.includes(:activity)

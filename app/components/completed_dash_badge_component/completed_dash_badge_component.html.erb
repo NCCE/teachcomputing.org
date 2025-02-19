@@ -1,7 +1,0 @@
-<h2 class="govuk-heading-m"><%= t('completed_dash_badge_component.share') %></h2>
-<div class="completed-dash-badge-component">
-  <%= image_tag @badge[:badge_template][:image_url], class: 'completed-dash-badge-component__badge', alt: '' %>
-  <p class="govuk-body completed-dash-badge-component__content">
-    <%= t('completed_dash_badge_component.awarded.html', badge_link: (link_to t('completed_dash_badge_component.link.text'), @badge[:state] == 'pending' ? @badge[:accept_badge_url] : @badge[:badge_template][:url], class: 'ncce-link', data: tracking_data)) %>
-  </p>
-</div>

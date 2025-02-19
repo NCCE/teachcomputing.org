@@ -9,7 +9,6 @@ module Certificates
     def show
       @community_groups = @programme.programme_activity_groupings.community.order(:sort_key)
 
-      assign_issued_badge_data
       user_enrolment
 
       @status_message = if @user_enrolment.in_state?(:complete) || @user_enrolment.in_state?(:pending)
@@ -20,16 +19,6 @@ module Certificates
     end
 
     private
-
-    def assign_issued_badge_data
-      return unless @programme.badges.any?
-
-      begin
-        @issued_badge = Credly::Badge.by_programme_badge_template_ids(current_user.id, @programme.badges.pluck(:credly_badge_template_id))
-      rescue Credly::Error
-        @issued_badge = nil
-      end
-    end
 
     def user_enrolment
       @user_enrolment ||= current_user.user_programme_enrolments.find_by(programme_id: @programme.id)
