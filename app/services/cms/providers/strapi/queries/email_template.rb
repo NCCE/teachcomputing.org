@@ -6,7 +6,7 @@ module Cms
           COMPONENTS = [
             Components::EmailContent::CourseList,
             Components::EmailContent::Cta,
-            Components::EmailContent::Text,
+            Components::EmailContent::Text
           ]
 
           def self.embed(_name)
