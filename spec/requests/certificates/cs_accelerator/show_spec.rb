@@ -42,7 +42,6 @@ RSpec.describe Certificates::CSAcceleratorController do
   describe "#show" do
     context "when user is logged in" do
       before do
-        stub_issued_badges(user.id)
         allow_any_instance_of(AuthenticationHelper)
           .to receive(:current_user).and_return(user)
       end
