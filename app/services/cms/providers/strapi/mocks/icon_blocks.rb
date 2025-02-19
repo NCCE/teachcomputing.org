@@ -11,19 +11,6 @@ module Cms
             Array.new(icon_count) { Icon.generate_data }
           end
         end
-
-        class Icon
-          def self.as_model
-            Factories::BlocksFactory.icon(generate_data)
-          end
-
-          def self.generate_data
-            {
-              iconText: Faker::Lorem.word,
-              iconImage: {data: Image.generate_raw_data}
-            }
-          end
-        end
       end
     end
   end

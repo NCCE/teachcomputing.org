@@ -1,6 +1,6 @@
 module Cms
   module DynamicComponents
-    class IconBlock
+    class IconRow
       attr_accessor :icons
 
       def initialize(icons:)
@@ -8,7 +8,7 @@ module Cms
       end
 
       def render
-        Cms::IconBlockComponent.new(icons:)
+        Cms::IconRowComponent.new(icons:)
       end
     end
   end
