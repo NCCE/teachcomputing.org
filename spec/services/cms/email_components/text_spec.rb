@@ -15,7 +15,7 @@ RSpec.describe Cms::EmailComponents::Text do
   }
 
   before do
-    @email_text = Cms::Providers::Strapi::Factories::EmailComponentFactory.process_component(Cms::Mocks::EmailComponents::Text.generate_raw_data)
+    @email_text = Cms::Providers::Strapi::Factories::ComponentFactory.process_component(Cms::Mocks::EmailComponents::Text.generate_raw_data)
   end
 
   it "should render as CmsRichTextBlockComponent" do

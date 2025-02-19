@@ -32,7 +32,8 @@ RSpec.describe Cms::EmailComponents::CourseList do
 
   context "without substitutes" do
     before do
-      @course_list = Cms::Providers::Strapi::Factories::EmailComponentFactory.process_component(Cms::Mocks::EmailComponents::CourseList.generate_raw_data(courses:))
+      @course_list = Cms::Providers::Strapi::Factories::ComponentFactory.process_component(Cms::Mocks::EmailComponents::CourseList.generate_raw_data(courses:))
+      byebug
     end
 
     context "with no achievements" do
@@ -64,7 +65,7 @@ RSpec.describe Cms::EmailComponents::CourseList do
 
   context "with substitutes" do
     before do
-      @course_list_with_sub = Cms::Providers::Strapi::Factories::EmailComponentFactory.process_component(Cms::Mocks::EmailComponents::CourseList.generate_raw_data(courses: courses_with_sub))
+      @course_list_with_sub = Cms::Providers::Strapi::Factories::ComponentFactory.process_component(Cms::Mocks::EmailComponents::CourseList.generate_raw_data(courses: courses_with_sub))
     end
 
     context "with no achievements" do
@@ -94,7 +95,7 @@ RSpec.describe Cms::EmailComponents::CourseList do
 
   context "with remove_on_match" do
     before do
-      @course_list_with_remove = Cms::Providers::Strapi::Factories::EmailComponentFactory.process_component(
+      @course_list_with_remove = Cms::Providers::Strapi::Factories::ComponentFactory.process_component(
         Cms::Mocks::EmailComponents::CourseList.generate_raw_data(courses:, remove_on_match: true)
       )
     end
