@@ -53,10 +53,10 @@ $avatar_size: 32px;
         bottom: 12px;
         left: -7px;
         box-sizing: border-box;
-        
+
         border: 8px solid black;
         border-color: transparent transparent white white;
-        
+
         transform-origin: center;
         transform: rotate(45deg);
         box-shadow: -4px 4px 6px -3px #0000004D;
@@ -116,10 +116,10 @@ $avatar_size: 32px;
         bottom: 12px;
         right: -7px;
         box-sizing: border-box;
-        
+
         border: 8px solid black;
         border-color: transparent transparent white white;
-        
+
         transform-origin: center;
         transform: rotate(-135deg);
         box-shadow: -4px 4px 6px -3px #0000004D;
@@ -133,7 +133,7 @@ $avatar_size: 32px;
       }
 
       &.answer-with-background {
-        background-image: url("../images/components/cms_question_and_answer_component/background_triangle.svg");
+        background-image: url("../images/components/cms/question_and_answer_component/background_triangle.svg");
         background-position: top right;
         background-repeat: no-repeat;
       }
