@@ -3,7 +3,11 @@ module Cms
     class EmailTemplate < Resource
       def self.is_collection = true
 
-      def self.collection_attribute_mapping = []
+      def self.collection_attribute_mapping
+        [
+          {model: Cms::Models::EmailTemplate, key: nil, param_name: :template}
+        ]
+      end
 
       def self.resource_attribute_mappings
         [
@@ -16,9 +20,9 @@ module Cms
         15.minutes
       end
 
-      def self.resource_key
-        "email-templates"
-      end
+      def self.resource_key = "email-templates"
+
+      def self.graphql_key = "emailTemplates"
     end
   end
 end

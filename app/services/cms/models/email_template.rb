@@ -47,8 +47,9 @@ module Cms
             ["{last_cpd_title}", achievement.activity.title]
           ]
         end
-        merges.each { text.gsub!(_1[0], _1[1]) }
-        text
+        new_text = text.dup # to unfreeze the string
+        merges.each { new_text.gsub!(_1[0], _1[1]) }
+        new_text
       end
 
       def time_diff_words(date)

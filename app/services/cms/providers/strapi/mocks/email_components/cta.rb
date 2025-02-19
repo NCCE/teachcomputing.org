@@ -3,7 +3,7 @@ module Cms
     module Strapi
       module Mocks
         module EmailComponents
-          class Cta < StrapiEmailMock
+          class Cta < StrapiMock
             strapi_component "email-content.cta"
             attribute(:text) { Faker::Lorem.sentence }
             attribute(:link) { Faker::Internet.url }

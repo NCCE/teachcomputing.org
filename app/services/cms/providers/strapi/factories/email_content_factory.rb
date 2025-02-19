@@ -2,20 +2,20 @@ module Cms
   module Providers
     module Strapi
       module Factories
-        module EmailComponentFactory
-          def self.process_component(strapi_data)
-            component_name = strapi_data[:__component]
+        module EmailContentFactory
+          include BaseFactory
+          def self.generate_component(component_name, strapi_data)
             case component_name
-            when "email-content.text"
+            when "text"
               EmailComponents::Text.new(
                 blocks: strapi_data[:textContent]
               )
-            when "email-content.cta"
+            when "cta"
               EmailComponents::Cta.new(
                 text: strapi_data[:text],
                 link: strapi_data[:link]
               )
-            when "email-content.course-list"
+            when "course-list"
               EmailComponents::CourseList.new(
                 section_title: strapi_data[:sectionTitle],
                 remove_on_match: strapi_data[:removeOnMatch],

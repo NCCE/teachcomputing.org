@@ -9,7 +9,7 @@ RSpec.describe Cms::EmailComponents::Cta do
   }
 
   before do
-    @cta = Cms::Providers::Strapi::Factories::EmailComponentFactory.process_component(cta_data)
+    @cta = Cms::Providers::Strapi::Factories::ComponentFactory.process_component(cta_data)
   end
 
   it "should render as NcceButtonComponent" do

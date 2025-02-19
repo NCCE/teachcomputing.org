@@ -69,8 +69,8 @@ module Cms
               slug: strapi_data[:slug],
               subject: strapi_data[:subject],
               programme_slug: strapi_data[:programme][:data][:attributes][:slug],
-              email_content: strapi_data[:emailContent].map { EmailComponentFactory.process_component(_1) }.compact,
-              completed_programme_activity_group_slugs: strapi_data[:completedGroupings].collect { _1[:data][:attributes][:slug] },
+              email_content: strapi_data[:emailContent].map { ComponentFactory.process_component(_1) }.compact,
+              completed_programme_activity_group_slugs: strapi_data.dig(:completedGroupings, :data).nil? ? nil : strapi_data[:completedGroupings][:data].collect { _1[:attributes][:slug] },
               activity_state: strapi_data[:activityState]
             )
           end
