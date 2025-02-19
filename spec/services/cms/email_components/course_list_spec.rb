@@ -33,7 +33,6 @@ RSpec.describe Cms::EmailComponents::CourseList do
   context "without substitutes" do
     before do
       @course_list = Cms::Providers::Strapi::Factories::ComponentFactory.process_component(Cms::Mocks::EmailComponents::CourseList.generate_raw_data(courses:))
-      byebug
     end
 
     context "with no achievements" do
