@@ -3,7 +3,7 @@ module Cms
     module Strapi
       module Mocks
         module EmailComponents
-          class CourseList < StrapiEmailMock
+          class CourseList < StrapiMock
             strapi_component "email-content.course-list"
 
             attribute(:sectionTitle) { Faker::Lorem.sentence }
@@ -13,7 +13,7 @@ module Cms
             }
           end
 
-          class Course < StrapiEmailMock
+          class Course < StrapiMock
             attribute(:activityCode) { "CP428" }
             attribute(:displayName) { nil }
             attribute(:substitute) { false }

@@ -11,9 +11,7 @@ module Cms
             {data: {attributes: {slug: "primary-certificate"}}}
           }
           attribute(:completedGroupings) {
-            [
-              {data: {attributes: {slug: "primary-all-courses"}}}
-            ]
+            {data: [{attributes: {slug: "primary-all-courses"}}]}
           }
         end
       end
