@@ -5,7 +5,6 @@ RSpec.describe("certificates/secondary_certificate/complete", type: :view) do
   let(:secondary_certificate) { create(:secondary_certificate) }
 
   before do
-    stub_issued_badges(user.id)
     @programme = secondary_certificate
     assign(:complete_achievements, user.achievements.belonging_to_programme(secondary_certificate).sort_complete_first)
     assign(:current_user, user)
