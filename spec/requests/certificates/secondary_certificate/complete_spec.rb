@@ -9,7 +9,6 @@ RSpec.describe Certificates::SecondaryCertificateController do
   describe "#complete" do
     context "when user is logged in" do
       before do
-        stub_issued_badges(user.id)
         secondary_certificate
         allow_any_instance_of(AuthenticationHelper)
           .to receive(:current_user).and_return(user)
