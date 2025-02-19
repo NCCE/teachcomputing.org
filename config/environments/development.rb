@@ -85,6 +85,8 @@ Rails.application.configure do
   config.action_mailer.asset_host = "http://localhost:3000"
   config.action_mailer.default_url_options = {host: "http://localhost:3000"}
 
+  routes.default_url_options = {host: "teachcomputing.rpfdev.com"}
+
   # Raises error for missing translations
   config.i18n.raise_on_missing_translations = true
 
