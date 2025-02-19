@@ -6,7 +6,6 @@ RSpec.describe("certificates/i_belong/complete", type: :view) do
   let(:enrolment) { create(:user_programme_enrolment, programme:, user:) }
 
   before do
-    stub_issued_badges(user.id)
     @programme = programme
     allow_any_instance_of(AuthenticationHelper).to receive(:current_user).and_return(user)
     assign(:complete_achievements, user.achievements.belonging_to_programme(programme).sort_complete_first)
