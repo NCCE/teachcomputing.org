@@ -15,7 +15,7 @@ RSpec.describe SendCmsEmailsJob, type: :job do
   before do
     stub_strapi_email_template(email_template_1_slug, email_template: email_template_1)
     stub_strapi_email_template(email_template_2_slug, email_template: email_template_2)
-    stub_strapi_email_templates(email_templates: [email_template_1, email_template_2])
+    stub_strapi_email_templates(email_templates: [email_template_1, email_template_2], page: 1, page_size: 50)
 
     allow_any_instance_of(Programmes::ProgressQuery).to receive(:call).and_return(users)
   end

@@ -189,6 +189,14 @@ module StrapiStubs
     end
   end
 
+  def stub_strapi_email_templates(email_templates: Array.new(4) { Cms::Mocks::Collections::EmailTemplate.generate_raw_data }, page: 1, page_size: 10)
+    if as_graphql
+      stub_strapi_graphql_collection_query("emailTemplates", email_templates)
+    else
+      stub_request(:get, /^https:\/\/strapi.teachcomputing.org\/api\/email-templates/).to_return_json(body: to_strapi_collection(email_templates, page:, page_size:))
+    end
+  end
+
   def stub_strapi_email_template(key, email_template: Cms::Mocks::Collections::EmailTemplate.generate_raw_data)
     if as_graphql
       stub_strapi_graphql_query("emailTemplates", email_template, unique_key: key)

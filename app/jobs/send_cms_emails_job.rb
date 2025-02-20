@@ -4,9 +4,8 @@ class SendCmsEmailsJob < ApplicationJob
     page = 1
     loop do
       email_templates = Cms::Collections::EmailTemplate.all(page, PER_PAGE)
-      break if email_templates.resources.empty?
-
       email_templates.resources.each { process_template(_1) }
+      break if (page * PER_PAGE) > email_templates.total_records
       page += 1
     end
   end
