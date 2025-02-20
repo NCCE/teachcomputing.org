@@ -8,6 +8,7 @@ RSpec.describe Cms::HorizontalCardComponent, type: :component do
 
     before do
       render_inline(described_class.new(
+        external_title: "External title",
         title: "Page title",
         body_blocks: content_block,
         image: nil,
@@ -15,6 +16,10 @@ RSpec.describe Cms::HorizontalCardComponent, type: :component do
         color_theme: nil,
         icon_block: nil
       ))
+    end
+
+    it "renders the external title" do
+      expect(page).to have_text("External title")
     end
 
     it "renders the title" do
