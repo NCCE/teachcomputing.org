@@ -13,15 +13,6 @@ module Cms
           attribute(:type) { {data: EnrichmentType.generate_raw_data} }
           attribute(:partner_icon) { Mocks::Image.generate_raw_data }
         end
-
-        class EnrichmentCategory < StrapiMock # For terms and age groups
-          attribute(:name) { Faker::Lorem.word }
-        end
-
-        class EnrichmentType < StrapiMock
-          attribute(:name) { Faker::Lorem.word }
-          attribute(:logo) { Mocks::Image.generate_raw_data }
-        end
       end
     end
   end
