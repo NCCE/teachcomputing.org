@@ -3,10 +3,9 @@ module Cms
     class EmailTemplate < Resource
       def self.is_collection = true
 
-      def self.collection_attribute_mapping
+      def self.collection_attribute_mappings
         [
           {model: Cms::Models::EmailTemplate, key: nil, param_name: :template},
-          {model: Cms::Models::Slug, key: nil, param_name: :slug}
         ]
       end
 
