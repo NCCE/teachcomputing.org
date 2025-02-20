@@ -2,7 +2,7 @@ module Cms
   module Providers
     module Strapi
       module Factories
-        module EmailComponentFactory
+        module EmailContentFactory
           include BaseFactory
           def self.generate_component(component_name, strapi_data)
             case component_name
