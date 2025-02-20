@@ -76,7 +76,6 @@ secondary.programme_activity_groupings.find_or_initialize_by(title: "Support you
   activities = [
     {slug: "gain-accreditation-as-a-professional-development-leader", legacy: false},
     {slug: "work-with-local-business-and-industry-to-inspire-inclusive-computing", legacy: false},
-    {slug: "work-with-your-local-computing-hub-to-develop-a-school-level-action-plan-for-professional-development", legacy: false},
     {slug: "lead-your-school-into-a-computing-cluster-and-develop-an-action-plan-with-a-cluster-advisor", legacy: false},
     {slug: "join-and-present-at-your-local-computing-at-school-community", legacy: false},
     {slug: "become-an-i-belong-champion", legacy: false},
@@ -89,7 +88,9 @@ secondary.programme_activity_groupings.find_or_initialize_by(title: "Support you
     {slug: "provide-feedback-on-our-curriculum-resources", legacy: true},
     {slug: "provide-feedback-on-a-cas-resource", legacy: true},
     {slug: "complete-a-cs-accelerator-course", legacy: true},
-    {slug: "contribute-to-online-discussion-secondary", legacy: true}
+    {slug: "contribute-to-online-discussion-secondary", legacy: true},
+
+    {slug: "work-with-your-local-computing-hub-to-develop-a-school-level-action-plan-for-professional-development", legacy: true}
   ]
 
   activities.each_with_index do |activity, index|
