@@ -53,10 +53,6 @@ RSpec.describe("curriculum/key_stages/index", type: :view) do
     expect(rendered).to have_css(".card--resource__lesson", text: "Lessons: 84")
   end
 
-  it "links to the hubs page" do
-    expect(rendered).to have_link("Contact your local hub", href: "/hubs")
-  end
-
   it "links to the isaac page" do
     expect(rendered).to have_link(href: "/a-level-computer-science")
   end

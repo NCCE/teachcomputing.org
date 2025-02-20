@@ -10,7 +10,4 @@ en:
           hub_link_text: "Contact your local Computing Hub"
           title: "Need some help?"
           text:
-            html: "For support with this certificate:
-              <br>%{hub_link}<br><br>
-              Technical issue?
-              %{email_link}"
+            html: "For support with this certificate or technical issues:<br />%{email_link}"

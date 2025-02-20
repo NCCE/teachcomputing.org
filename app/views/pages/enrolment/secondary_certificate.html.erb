@@ -23,7 +23,7 @@
         <hr class="ncce-pathways__hr govuk-!-margin-bottom-7" />
       </div>
 
-      <div class="govuk-grid-column-two-thirds">
+      <div class="govuk-grid-column-full-width">
         <section class='ncce-section'>
           <h2 class="govuk-heading-m"><%= t('.benefits_to_you') %></h2>
           <ul class="govuk-list govuk-list--bullet">
@@ -58,22 +58,6 @@
           </ul>
         </section>
       </div>
-
-      <div class="govuk-grid-column-one-third">
-        <%= render AsideComponent.new(
-          title: t('.hub_aside.title'),
-          text: t('.hub_aside.text'),
-          link: {
-            text: t('.hub_aside.link_title'),
-            url: '/hubs',
-            class: 'ncce-link',
-            tracking_label: 'Contact Hub'
-          },
-          tracking_category: 'Primary unenrolled'
-        ) %>
-      </div>
-
     </div>
-
   </main>
 </div>

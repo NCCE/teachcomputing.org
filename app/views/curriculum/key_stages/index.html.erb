@@ -88,35 +88,3 @@
   wrapper_padding: "top-0",
   button: { text: "Explore careers videos", link: "/tech-careers-videos", class: "ncce-button--white"},
 ) %>
-
-<div class="govuk-width-container">
-  <div class="govuk-main-wrapper govuk-main-wrapper--xl">
-    <div class="govuk-grid-row">
-      <div class="govuk-grid-column-full">
-        <%= render NoticeComponent.new(
-          class_name: 'light-blue-bg',
-          icon: {
-            url: 'media/images/icons/raspberry-pi.svg',
-            title: 'Raspberry Pi'
-          },
-          title: t('.notice.title'),
-          text: t(
-          '.notice.text.html',
-            kit_link: (
-              link_to t('.notice.text.kit_link_text'),
-              'https://static.teachcomputing.org/Guide-for-physical-computing-kits.pdf',
-              class: 'ncce-link',
-              data: tracking_data('Hubs kit')
-            )
-          ),
-          link: {
-            url: '/hubs',
-            text: t('.notice.link_text'),
-            tracking_label: 'Contact hubs'
-          },
-          tracking_category: tracking_category
-        ) %>
-      </div>
-    </div>
-  </div>
-</div>
