@@ -9,6 +9,10 @@ module Cms
                 populate: {featuredImage: {populate: [:alternativeText]}},
                 fields: [:title, :description]
               }
+            elsif model_class == Cms::Models::Slug
+              {
+                populate: [:slug]
+              }
             elsif model_class == Cms::Models::FeaturedImage
               {populate: [:alternativeText, :caption]}
             elsif model_class == Cms::Models::EnrichmentList
@@ -27,6 +31,20 @@ module Cms
                 sort: ["publishDate:desc"],
                 filters: {
                   publishDate: {"$lt": DateTime.now.strftime}
+                }
+              }
+            elsif model_class == Models::EmailTemplate
+              {
+                programme: {field: [:slug]},
+                emailContent: {
+                  on: {
+                    "email-content.text": {populate: {fields: [:textContent]}},
+                    "email-content.cta": {populate: {fields: [:link, :text]}},
+                    "email-content.course-list": {populate: {
+                      fields: [:sectionTitle],
+                      courses: {populate: {fields: [:activityCode, :displayName, :substitute]}}
+                    }}
+                  }
                 }
               }
             elsif model_class == Models::WebPagePreview
