@@ -23,7 +23,7 @@ module Cms
             when "content-blocks"
               ContentBlockFactory.generate_component(name, strapi_data)
             when "email-content"
-              EmailContentFactory.generate_component(name, strapi_data)
+              EmailComponentFactory.generate_component(name, strapi_data)
             end
           end
         end
