@@ -2,38 +2,38 @@ require "rails_helper"
 require "axe/rspec"
 
 RSpec.describe("Enrichment Page", type: [:system]) do
-  let(:autumn_term) { Cms::Mocks::EnrichmentCategory.generate_raw_data(name: "Autumn")}
-  let(:summer_term) { Cms::Mocks::EnrichmentCategory.generate_raw_data(name: "Summer")}
+  let(:autumn_term) { Cms::Mocks::EnrichmentCategory.generate_raw_data(name: "Autumn") }
+  let(:summer_term) { Cms::Mocks::EnrichmentCategory.generate_raw_data(name: "Summer") }
 
-  let(:ks1) { Cms::Mocks::EnrichmentCategory.generate_raw_data(name: "KS1")}
-  let(:ks2) { Cms::Mocks::EnrichmentCategory.generate_raw_data(name: "KS2")}
+  let(:ks1) { Cms::Mocks::EnrichmentCategory.generate_raw_data(name: "KS1") }
+  let(:ks2) { Cms::Mocks::EnrichmentCategory.generate_raw_data(name: "KS2") }
 
-  let(:challenge) { Cms::Mocks::EnrichmentType.generate_raw_data(name: "Challenge")}
-  let(:resource) { Cms::Mocks::EnrichmentType.generate_raw_data(name: "Resource")}
+  let(:challenge) { Cms::Mocks::EnrichmentType.generate_raw_data(name: "Challenge") }
+  let(:resource) { Cms::Mocks::EnrichmentType.generate_raw_data(name: "Resource") }
 
   let(:enrichments) {
     {data: [
       Cms::Mocks::Enrichment.generate_raw_data(
         featured: true,
-        terms: { data: [autumn_term] },
+        terms: {data: [autumn_term]},
         age_groups: {data: [ks1]},
-        type: {data: challenge },
+        type: {data: challenge},
         rich_title: Cms::Mocks::RichBlocks.single_line("Featured Item")
       ),
       Cms::Mocks::Enrichment.generate_raw_data(
-        terms: { data: [autumn_term]},
+        terms: {data: [autumn_term]},
         age_groups: {data: [ks2]},
-        type: {data: challenge }
+        type: {data: challenge}
       ),
       Cms::Mocks::Enrichment.generate_raw_data(
-        terms: { data: [summer_term]},
+        terms: {data: [summer_term]},
         age_groups: {data: [ks1]},
-        type: {data: resource }
+        type: {data: resource}
       ),
       Cms::Mocks::Enrichment.generate_raw_data(
-        terms: { data: [summer_term, autumn_term]},
+        terms: {data: [summer_term, autumn_term]},
         age_groups: {data: [ks1]},
-        type: {data: resource }
+        type: {data: resource}
       )
     ]}
   }
@@ -149,7 +149,6 @@ RSpec.describe("Enrichment Page", type: [:system]) do
   end
 
   context "selecting mulitple options" do
-
     describe "selecting KS1 age_group and Autumn term" do
       before do
         select("Autumn", from: "term")
@@ -164,7 +163,6 @@ RSpec.describe("Enrichment Page", type: [:system]) do
         expect(page).to have_css(".all-enrichments .enrichment", count: 2)
       end
     end
-
   end
 
   describe "selecting KS1 age_group and Autumn term and Challenge type" do
@@ -182,5 +180,4 @@ RSpec.describe("Enrichment Page", type: [:system]) do
       expect(page).to have_css(".all-enrichments .enrichment", count: 1)
     end
   end
-
 end

@@ -3,12 +3,11 @@ module Cms
     module Strapi
       module Mocks
         class RichBlocks
-
           def self.single_line(text)
             [
               {
                 type: "paragraph",
-                children: [ {text:, type: "text"} ]
+                children: [{text:, type: "text"}]
               }
             ]
           end
