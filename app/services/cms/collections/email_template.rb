@@ -5,7 +5,7 @@ module Cms
 
       def self.collection_attribute_mappings
         [
-          {model: Cms::Models::EmailTemplate, key: nil, param_name: :template},
+          {model: Cms::Models::EmailTemplate, key: nil, param_name: :template}
         ]
       end
 
