@@ -549,7 +549,7 @@ Activity.find_or_initialize_by(slug: "participate-in-a-ncce-student-enrichment-a
   activity.category = "community"
   activity.provider = "ncce"
   activity.self_certifiable = true
-  activity.description = "Find out about the upcoming events from your local <a href='/hubs'>Computing Hub</a> or by visiting our <a href='#{ncce_student_events_url}'>Eventbrite</a>."
+  activity.description = "Find out about upcoming events by visiting our <a href='#{ncce_student_events_url}'>Eventbrite</a>."
   activity.self_verification_info = "Please provide us with evidence of participation"
   activity.public_copy_evidence = [
     {
