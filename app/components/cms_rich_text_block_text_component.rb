@@ -2,7 +2,7 @@
 # SubClasses should not include any indentation and should make use of
 # `-` at the end of ERB tags
 class CmsRichTextBlockTextComponent < ViewComponent::Base
-  def build(blocks, **options)
+  def build(blocks, **)
     klass =
       case blocks
       in { type: "paragraph" } then Paragraph
@@ -14,7 +14,7 @@ class CmsRichTextBlockTextComponent < ViewComponent::Base
       in { type: "quote"} then Quote
       end
 
-    klass.new(blocks: blocks, **options)
+    klass.new(blocks: blocks, **)
   end
 
   erb_template <<~ERB

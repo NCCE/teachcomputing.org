@@ -6,10 +6,10 @@ RSpec.describe SendCmsEmailsJob, type: :job do
   let(:users) { create_list(:user, 2) }
 
   let(:email_template_1) {
-    Cms::Mocks::EmailTemplate.generate_raw_data(slug: email_template_1_slug)
+    Cms::Mocks::Collections::EmailTemplate.generate_raw_data(slug: email_template_1_slug)
   }
   let(:email_template_2) {
-    Cms::Mocks::EmailTemplate.generate_raw_data(slug: email_template_2_slug)
+    Cms::Mocks::Collections::EmailTemplate.generate_raw_data(slug: email_template_2_slug)
   }
 
   before do
