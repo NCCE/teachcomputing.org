@@ -3551,10 +3551,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-"core-js@npm:^3.12.0, core-js@npm:^3.16.2":
+"core-js@npm:^3.16.2":
   version: 3.26.0
   resolution: "core-js@npm:3.26.0"
   checksum: 0149eb9d3909fde9c17626af3a6e625c326e8598d0bb5e6c5b48a18e5fcd4eaf48d4964d873667d8148542ff590fb98eb3f93618da114ca54999d6bc0349734b
+  languageName: node
+  linkType: hard
+
+"core-js@npm:^3.40.0":
+  version: 3.40.0
+  resolution: "core-js@npm:3.40.0"
+  checksum: fc962b93470fd4a129555c765b630c1741fc38706bca68779879f0feaef3b6eec11a33904e3111b2b0e8ba206e8cfbc2a70193271227cfa2f2d13a986f78e557
   languageName: node
   linkType: hard
 
@@ -7819,7 +7826,7 @@ __metadata:
     "@rails/webpacker": ^5.4.3
     ansi-html-community: 0.0.8
     channels: ^0.0.4
-    core-js: ^3.12.0
+    core-js: ^3.40.0
     dotenv-webpack: ^8.0.1
     eslint: ^7.25
     eslint-config-prettier: ^8.3.0
