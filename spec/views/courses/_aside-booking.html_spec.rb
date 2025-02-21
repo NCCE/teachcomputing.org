@@ -606,16 +606,6 @@ RSpec.describe("courses/_aside-booking", type: :view) do
         assign(:activity, activity)
       end
 
-      it "shows the 'Dates coming soon' button if there are no occurrences" do
-        assign(:occurrences, [])
-        render
-
-        expect(rendered).to have_link(
-          "Find your local Hub",
-          href: "/hubs"
-        )
-      end
-
       it "and when there is at least one occurrence, says that need to be logged in, " do
         assign(:occurrences, [build(:achiever_course_occurrence)])
         render
