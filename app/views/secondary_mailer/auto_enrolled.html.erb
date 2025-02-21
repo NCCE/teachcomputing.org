@@ -2,19 +2,17 @@
   <p class="govuk-body">Hi <%= @user.first_name %>,</p>
   <p class="govuk-body">Did you know that you're already well on your way to gaining a nationally recognised certificate?</p>
   <p class="govuk-body">We can see you've been working on your professional development, by engaging in courses that are part of the <b>Teach secondary computing certificate</b> on <%= link_to "TeachComputing.org", root_url %>. To help you take the next step towards achieving this national accreditation, which is awarded by BCS, the Chartered Institute for IT, we've enrolled you on the certificate.</p>
-  <p class="govuk-body">This means that you'll now be able to access your own personal dashboard, where you can find out more about the certificate and the next steps required to achieving it.</p>
+  <p class="govuk-body">This means that you'll now be able to access your own personal dashboard, where you can find out more about the certificate and the next steps required to achieve it.</p>
   <p class='govuk-body'><%= link_to "Explore your personal dashboard", secondary_certificate_url, class: 'govuk-button button' %></p>
   <p class="govuk-body"><strong>Next steps...</strong></p>
   <ol class="govuk-list govuk-list--number">
-    <li>Explore your dashboard which shows your learning pathway and courses and activities for you to engage with – you can change your pathway at any point</li>
+    <li>Explore your dashboard which shows courses and activities for you to engage with</li>
     <li>Complete a minimum of six hours of <%= link_to "CPD", courses_url(certificate: "secondary-certificate") %> – you might have already achieved that part of the certificate!</li>
     <li>Develop your teaching practice – a great place to start is downloading and using a <%= link_to "Teach Computing Curriculum resource", curriculum_key_stages_url %> then reflecting on how you adapted it in the classroom</li>
     <li>Support your professional community – to achieve this you could review your school’s progress in developing an exemplary computing curriculum through the <%= link_to "Computing Quality Framework", computing_quality_framework_url %></li>
     <li>Ensure you have completed the <%= link_to "Key Stage 3 and GCSE computer science", cs_accelerator_certificate_url %> subject knowledge certificate</li>
     <li>Receive your nationally accredited certificate!</li>
   </ol>
-  <p class="govuk-body"><strong>Get help from your local Computing Hub</strong></p>
-  <p class="govuk-body">Your local Computing Hub is here to support you – they will work with you to identify your computing needs and provide a targeted programme of support to help embed computing in your school. <%= link_to "Find your nearest Hub.", hubs_url %></p>
   <p class="govuk-body"><strong>Not the right time?</strong></p>
   <p class="govuk-body">If you don't want to continue on the programme at this time, let us know and we'll update our records. You can still re-enrol yourself in the future on <%= link_to "our website.", secondary_certificate_url %></p>
 </div>
