@@ -623,11 +623,12 @@ GEM
       activesupport (>= 3)
     shoulda-matchers (6.4.0)
       activesupport (>= 5.2.0)
-    sidekiq (7.2.4)
-      concurrent-ruby (< 2)
+    sidekiq (7.3.9)
+      base64
       connection_pool (>= 2.3.0)
+      logger
       rack (>= 2.2.4)
-      redis-client (>= 0.19.0)
+      redis-client (>= 0.22.2)
     simplecov (0.22.0)
       docile (~> 1.1)
       simplecov-html (~> 0.11)
