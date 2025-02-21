@@ -66,4 +66,22 @@ RSpec.describe Cms::FullWidthBannerComponent, type: :component do
       expect(page).to have_css(".cms-full-width-banner-row.has-border")
     end
   end
+
+  context "with buttons" do
+    before do
+      render_inline(described_class.new(
+        text_content: Cms::Mocks::RichBlocks.as_model,
+        image: Cms::Mocks::Image.as_model,
+        image_side: :left,
+        image_link: nil,
+        title: nil,
+        show_bottom_border: true,
+        buttons: [Cms::Mocks::NcceButton.as_model]
+      ))
+    end
+
+    it "show render button" do
+      expect(page).to have_css(".govuk-button")
+    end
+  end
 end
