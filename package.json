@@ -39,7 +39,7 @@
     "prettier": "^3.2.5",
     "purgecss": "^5.0.0",
     "speed-measure-webpack-plugin": "^1.5.0",
-    "stylelint": "^16.2",
+    "stylelint": "^16.14",
     "stylelint-config-prettier": "^8.0.2",
     "stylelint-config-recommended-scss": "^4.2.0",
     "stylelint-order": "^6.0.4",
