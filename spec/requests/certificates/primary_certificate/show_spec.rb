@@ -3,7 +3,6 @@ require "rails_helper"
 RSpec.describe Certificates::PrimaryCertificateController do
   let(:user) { create(:user) }
   let(:programme) { create(:primary_certificate) }
-  let(:badge) { create(:badge, programme:) }
   let(:user_programme_enrolment) do
     create(:user_programme_enrolment, user_id: user.id, programme_id: programme.id)
   end
