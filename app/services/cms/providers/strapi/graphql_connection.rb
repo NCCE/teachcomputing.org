@@ -17,7 +17,8 @@ module Cms
             )
           end
 
-          def dump_schema
+          def dump_schema(schema_path: nil)
+            api(schema_path:) #initialize client
             GraphQL::Client.dump_schema(@client.schema)&.to_json
           end
         end
