@@ -160,7 +160,7 @@
           <h2 class="govuk-heading-l"><%= t(".resources.title") %></h2>
 
           <%= render BorderedCardsComponent.new(
-            cards_per_row: 3,
+            cards_per_row: 2,
             class_name: 'resources-help-cards',
             cards: [
               {
@@ -183,17 +183,6 @@
                   link_url: t('.resources.cards.glossary.link.url'),
                   tracking_page: 'Primary toolkit',
                   tracking_label: t('.resources.cards.glossary.link.event-label')
-                }]
-              },
-              {
-                class_name: 'bordered-card--primary-cert',
-                title: t('.resources.cards.kits.title'),
-                text: t('.resources.cards.kits.text.html'),
-                links: [{
-                  link_title: t('.resources.cards.kits.link.title'),
-                  link_url: t('.resources.cards.kits.link.url'),
-                  tracking_page: 'Primary toolkit',
-                  tracking_label: t('.resources.cards.kits.link.event-label')
                 }]
               }
             ]

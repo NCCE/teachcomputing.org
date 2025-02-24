@@ -53,14 +53,6 @@ en:
               title: "Explore the primary glossary"
               url: "/primary-computing-glossary"
               event-label: "primary computing glossary"
-          kits:
-            title: "Physical computing kits"
-            text:
-              html: "Schools across the country can loan our Physical Computing Kits from their local Computing Hub.<br /><br />The kits containing Micro:bits, BeeBots, data loggers and more, provide pupils with a hands-on experience of computing, enriching their learning in a fun and engaging way."
-            link:
-              title: "Explore physical computing kits"
-              url: "/physical-computing-kit"
-              event-label: "physical computing kit"
       enrich:
         title: "Enrich your pupils’ learning"
         para_1: "Encourage your pupils to develop important life skills through enrichment and engage with the wider community in practical, enjoyable, and meaningful ways."
