@@ -1,9 +1,9 @@
-<ul class='ncce-header__certification'>
+<ul class='cms-header-menu'>
   <% @menu_items.each do | nav_item |%>
-    <li class="govuk-body  ncce-header__certification-item dropdown__expander" aria-expanded="false" tabindex="0">
-      <div class="ncce-header__wrap">
-        <span class="ncce-header__certification-item--text"><%= nav_item[:label] %></span>
-        <span class="ncce-header__certification-item--icon"></span>
+    <li class="govuk-body  cms-header-menu__item dropdown__expander" aria-expanded="false" tabindex="0">
+      <div class="cms-header-menu__wrap">
+        <span class="cms-header-menu__item-text"><%= nav_item[:label] %></span>
+        <span class="cms-header-menu__item-icon"></span>
       </div>
       <ul class="govuk-list govuk-body-s dropdown__expander-content">
       <% nav_item[:menu_items].each do | item |%>

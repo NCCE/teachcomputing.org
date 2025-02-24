@@ -23,7 +23,7 @@ RSpec.describe Cms::HeaderMenuComponent, type: :component do
   end
 
   it "should render the drop downs" do
-    expect(page).to have_css(".ncce-header__certification-item.dropdown__expander", count: 2)
+    expect(page).to have_css(".cms-header-menu__item.dropdown__expander", count: 2)
   end
 
   it "should render all links" do

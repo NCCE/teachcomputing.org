@@ -20,7 +20,7 @@ RSpec.describe("components/_header", type: :view) do
 
   it "should render the header menu" do
     render
-    expect(rendered).to have_css(".ncce-header__certification")
+    expect(rendered).to have_css(".cms-header-menu")
   end
 
   context "when a user is signed in" do
