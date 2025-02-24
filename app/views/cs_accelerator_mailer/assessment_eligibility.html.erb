@@ -25,15 +25,11 @@
     <li><%= link_to 'Certificate handbook', 'https://ncce.io/csa-handbook', class: 'ncce-link' %></li>
   </ul>
 
-  <p class='govuk-body'>We also recommend you complete more courses on your chosen pathway to ensure you possess well-rounded subject knowledge before attempting to take the test.</p>
+  <p class='govuk-body'>We also recommend you complete more courses to ensure you possess well-rounded subject knowledge before attempting to take the test.</p>
 
   <p class='govuk-body'><strong>Ready to take the test?</strong></p>
 
-  <p class='govuk-body'>Depending on your starting point, you may also benefit from engaging in CPD from one of our other pathways, which you can access via your <%= link_to 'certificate dashboard', cs_accelerator_certificate_url, class: 'ncce-link' %>.. Alternatively, you can browse our full range of training via our <%= link_to 'our courses page', courses_url(certificate: @programme.slug), class: 'ncce-link' %>.</p>
-
-  <p class='govuk-body'>If you work in state-funded education, you may also be eligible for a <%= link_to 'subsidy', '/funding#secondary-subsidy', class: 'ncce-link' %> to support supply cover for continuing professional development, paid to your school or college.</p>
-
-  <p class='govuk-body'>Plus, your local <%= link_to 'Computing Hub', hubs_url, class: 'ncce-link' %> is on-hand to provide guidance and support at any time.</p>
+  <p class='govuk-body'>Depending on your starting point, you may also benefit from engaging in CPD from other areas of computer science. Explore the full range of CPD available to you on <%= link_to 'our courses page', courses_url %>.</p>
 
   <p class='govuk-body'>Good luck!</p>
 </div>

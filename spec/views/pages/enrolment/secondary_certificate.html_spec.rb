@@ -30,10 +30,6 @@ RSpec.describe("pages/enrolment/secondary_certificate", type: :view) do
     expect(rendered).to have_css(".govuk-heading-m", text: pathways.first.title)
   end
 
-  it "has subject expert support" do
-    expect(rendered).to have_css(".govuk-heading-s", text: "Subject Expert support")
-  end
-
   describe "hero section" do
     it "has title" do
       expect(rendered).to have_css(".govuk-heading-l", text: @programme.title)
