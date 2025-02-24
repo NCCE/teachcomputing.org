@@ -8,7 +8,7 @@ module Cms
               component_name = strapi_data[:__typename]
                 .underscore
                 .tr("_", "-")
-                .gsub(/\Acomponent-(blocks|content-blocks|buttons)-/, '\1.')
+                .gsub(/\Acomponent-(blocks|content-blocks|buttons|email-content)-/, '\1.')
               return nil if strapi_data.keys.count == 1
             else
               component_name = strapi_data[:__component]
@@ -22,6 +22,8 @@ module Cms
               ButtonFactory.generate_component(name, strapi_data)
             when "content-blocks"
               ContentBlockFactory.generate_component(name, strapi_data)
+            when "email-content"
+              EmailContentFactory.generate_component(name, strapi_data)
             end
           end
         end
