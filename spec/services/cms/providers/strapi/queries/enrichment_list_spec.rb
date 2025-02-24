@@ -1,8 +1,8 @@
 require "rails_helper"
 
 RSpec.describe Cms::Providers::Strapi::Queries::EnrichmentList do
-  it_should_behave_like "a strapi graphql query", "enrichment",
-    %w[
+  it_should_behave_like "a strapi graphql query", {key: "enrichment",
+    required_fields: %w[
       publishedAt
       i_belong
       link
@@ -13,5 +13,5 @@ RSpec.describe Cms::Providers::Strapi::Queries::EnrichmentList do
       rich_title
       rich_details
       partner_icon
-    ]
+    ]}
 end
