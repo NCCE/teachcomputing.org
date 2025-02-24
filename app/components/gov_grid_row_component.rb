@@ -28,7 +28,7 @@ class GovGridRowComponent < ViewComponent::Base
     delegate :govuk_padding_classes, :govuk_margin_classes,
       to: :helpers
 
-    VALID_COLUMNS = %w[two-thirds one-third full]
+    VALID_COLUMNS = %w[two-thirds one-third full one-half]
 
     def initialize(column_type, padding: {}, margin: {})
       @column_type = column_type

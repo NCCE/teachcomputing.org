@@ -18,7 +18,8 @@ module Cms
             Components::Blocks::StickyDashboardBar,
             Components::Blocks::EnrolmentTestimonial,
             Components::Blocks::EnrolmentSplitCourseCard,
-            Components::Blocks::TextWithAsides
+            Components::Blocks::TextWithAsides,
+            Components::Blocks::TwoColumnVideoSection
           ]
 
           def self.embed(name)
