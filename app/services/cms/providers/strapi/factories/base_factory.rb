@@ -73,6 +73,12 @@ module Cms
                 updated_at: DateTime.parse(data[:updatedAt])
               )
             end
+
+            def to_embedded_video(strapi_data)
+              DynamicComponents::EmbeddedVideo.new(
+                url: strapi_data[:url]
+              )
+            end
           end
         end
       end

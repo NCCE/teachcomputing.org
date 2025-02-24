@@ -20,7 +20,8 @@ module Cms
             Components::Blocks::SplitHorizontalCard,
             Components::Blocks::StickyDashboardBar,
             Components::Blocks::TestimonialRow,
-            Components::Blocks::TextWithAsides
+            Components::Blocks::TextWithAsides,
+            Components::Blocks::TwoColumnVideoSection
           ]
 
           def self.embed(name)
