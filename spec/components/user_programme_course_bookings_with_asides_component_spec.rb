@@ -2,7 +2,10 @@ require "rails_helper"
 
 RSpec.describe UserProgrammeCourseBookingsWithAsidesComponent, type: :component do
   let(:user) { create(:user) }
-  let(:activity) { create(:activity, stem_activity_code: "CP199", category: :online) }
+  let(:activity) {
+    activity = Activity.find_by(stem_activity_code: "CP199")
+    activity || create(:activity, stem_activity_code: "CP199", category: :online)
+  }
   let(:activity_two) { create(:activity, stem_activity_code: "CP228") }
   let(:activity_three) { create(:activity, stem_activity_code: "CS101", remote_delivered_cpd: true) }
   let(:programme) { create(:primary_certificate) }
