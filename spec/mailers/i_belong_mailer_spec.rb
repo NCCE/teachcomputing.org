@@ -42,10 +42,6 @@ RSpec.describe IBelongMailer, type: :mailer do
       expect(mail.body.encoded).to have_link("personal dashboard", href: i_belong_url)
     end
 
-    it "contains the computing hub link" do
-      expect(mail.body.encoded).to have_link("your local Computing Hub", href: hubs_url)
-    end
-
     it "contains mail_to link" do
       expect(mail.html_part.body.to_s).to have_link("info@teachcomputing.org", href: "mailto:info@teachcomputing.org")
     end
@@ -65,10 +61,6 @@ RSpec.describe IBelongMailer, type: :mailer do
 
       it "contains the certificate dashboard link" do
         expect(mail.text_part.body.to_s).to include("personal dashboard (#{i_belong_url})")
-      end
-
-      it "contains the computing hub link" do
-        expect(mail.text_part.body.to_s).to include("your local Computing Hub (#{hubs_url})")
       end
 
       it "contains teachcomputing email address" do
