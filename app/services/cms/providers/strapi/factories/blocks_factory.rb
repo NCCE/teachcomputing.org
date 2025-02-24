@@ -41,12 +41,23 @@ module Cms
               to_enrolment_split_course_card(strapi_data)
             when "icon-row"
               to_icon_row(strapi_data)
+            when "two-column-video-section"
+              to_two_column_video_section(strapi_data)
             end
           end
 
           def self.to_icon_row(strapi_data)
             DynamicComponents::IconRow.new(
               icons: strapi_data[:icons].map { to_icon(_1) }
+            )
+          end
+
+          def self.to_two_column_video_section(strapi_data)
+            DynamicComponents::TwoColumnVideoSection.new(
+              left_column_content: to_content_block(strapi_data[:leftColumnContent]),
+              video: to_embedded_video(strapi_data[:video]),
+              right_column_content: to_content_block(strapi_data[:rightColumnContent]),
+              background_color: extract_color_name(strapi_data, :bkColor),
             )
           end
 
