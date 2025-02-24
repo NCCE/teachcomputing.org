@@ -31,6 +31,10 @@ module Cms
             end
 
             def to_content_block(data, with_wrapper: false, **)
+              if data.nil?
+                return Models::TextBlock.new(blocks: [], with_wrapper:, **)
+              end
+
               data.map! do |block|
                 block[:image] = as_image(block[:image], :medium) if block[:type] == "image"
                 block

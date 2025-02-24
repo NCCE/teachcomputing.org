@@ -1,9 +1,9 @@
-<%= render GovGridRowComponent.new(background_color: @background_color) do |row|  %>
+<%= render GovGridRowComponent.new(background_color: @background_color, additional_classes: "cms-two-column-video-section") do |row|  %>
   <%= row.with_column("one-half") do %>
     <%= render @left_column_content.render %>
   <% end %>
   <%= row.with_column("one-half") do %>
-    <%= @video %>
+    <%= render @video.render %>
     <% if @right_column_content %>
       <%= render @right_column_content.render %>
     <% end %>
