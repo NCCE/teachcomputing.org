@@ -1,10 +1,6 @@
 module Cms
   module Collections
     class Programme < Resource
-      def to_search_record(index_time)
-        raise NotImplementedError
-      end
-
       def self.is_collection = true
 
       def self.collection_attribute_mappings
