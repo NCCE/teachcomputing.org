@@ -66,7 +66,6 @@ RSpec.configure do |config|
   config.filter_rails_from_backtrace!
   config.include RackAttackStubs
   config.include AchieverStubs
-  config.include CredlyStubs
   config.include CurriculumStubs
   config.include StrapiStubs
   config.include Cms::Mocks

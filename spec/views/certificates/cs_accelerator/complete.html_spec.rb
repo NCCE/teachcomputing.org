@@ -8,7 +8,6 @@ RSpec.describe("certificates/cs_accelerator/complete") do
   let(:pathway) { create(:pathway, pdf_link: "http://example.com") }
 
   before do
-    stub_issued_badges(user.id)
     allow_any_instance_of(AuthenticationHelper).to receive(:current_user).and_return(user)
 
     create(:pathway_activity, pathway_id: pathway.id, activity_id: online_activity.id)
