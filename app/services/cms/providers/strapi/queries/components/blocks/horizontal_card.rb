@@ -17,6 +17,7 @@ module Cms
                   #{SharedFields.icon_block("iconBlock")}
                   spacing
                   externalTitle
+                  #{SharedFields.color_theme("bkColor")}
                 GRAPHQL
               end
             end

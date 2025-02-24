@@ -4,15 +4,14 @@ module Cms
       module Queries
         module Components
           module Blocks
-            class PageTitle < BaseComponentQuery
-              def self.name = "ComponentBlocksPageTitlte"
+            class CourseCardsSection < BaseComponentQuery
+              def self.name = "ComponentBlocksCourseCardsSection"
 
               def self.base_fields
                 <<~GRAPHQL.freeze
-                  title
-                  subText
-                  titleVideoUrl
-                  #{SharedFields.image_fields("titleImage")}
+                  sectionTitle
+                  introText
+                  #{ContentBlocks::CourseCard.embed(:cards)}
                 GRAPHQL
               end
             end

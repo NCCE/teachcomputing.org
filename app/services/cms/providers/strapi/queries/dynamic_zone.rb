@@ -5,19 +5,20 @@ module Cms
         class DynamicZone
           COMPONENTS = [
             Components::Blocks::CommunityActivityList,
-            Components::Blocks::HorizontalCard,
+            Components::Blocks::CourseCardsSection,
+            Components::Blocks::EnrolmentSplitCourseCard,
+            Components::Blocks::EnrolmentTestimonial,
+            Components::Blocks::FullWidthBanner,
             Components::Blocks::FullWidthText,
+            Components::Blocks::HorizontalCard,
+            Components::Blocks::NumberedIconList,
+            Components::Blocks::NumericCardsSection,
             Components::Blocks::PictureCardSection,
             Components::Blocks::QuestionAndAnswer,
             Components::Blocks::ResourceCardSection,
-            Components::Blocks::FullWidthBanner,
-            Components::Blocks::TestimonialRow,
-            Components::Blocks::NumericCardsSection,
-            Components::Blocks::NumberedIconList,
             Components::Blocks::SplitHorizontalCard,
             Components::Blocks::StickyDashboardBar,
-            Components::Blocks::EnrolmentTestimonial,
-            Components::Blocks::EnrolmentSplitCourseCard,
+            Components::Blocks::TestimonialRow,
             Components::Blocks::TextWithAsides
           ]
 
