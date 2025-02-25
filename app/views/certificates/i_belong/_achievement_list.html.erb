@@ -1,10 +1,9 @@
-<%= render DashboardProgrammeActivityGroupSectionComponent.new(
-  anchor_id: @cpd_completed ? 'badge-section' : @cpd_group.id,
-  title: @cpd_completed ? nil : @cpd_group.title,
-  aside_slug: "i-belong-dashboard-help-section",
-  completed: @cpd_completed) do %>
+<% unless @cpd_completed %>
+  <%= render DashboardProgrammeActivityGroupSectionComponent.new(
+    anchor_id: @cpd_group.id,
+    title: @cpd_group.title,
+    aside_slug: @cpd_group.web_copy_aside_slug) do %>
 
-  <% unless @cpd_completed %>
     <%= render CpdCourseListComponent.new(current_user: current_user, courses: @cpd_courses, show_seperator: true) %>
   <% end %>
 <% end %>
@@ -43,6 +42,7 @@
   <%= render DashboardProgrammeActivityGroupSectionComponent.new(
     anchor_id: @cpd_group.id,
     title: @cpd_group.title,
+    aside_slug: @cpd_group.web_copy_aside_slug,
     completed: @cpd_completed) do %>
     <%= render CpdCourseListComponent.new(current_user: current_user, courses: @cpd_courses, show_seperator: true) %>
   <% end %>
