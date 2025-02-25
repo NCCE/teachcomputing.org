@@ -3,7 +3,6 @@
 require "rails_helper"
 
 RSpec.describe Cms::ImageComponent, type: :component do
-
   let(:caption) { "This is a picture" }
 
   context "with link" do
@@ -69,5 +68,4 @@ RSpec.describe Cms::ImageComponent, type: :component do
       expect(page).not_to have_text(caption)
     end
   end
-
 end
