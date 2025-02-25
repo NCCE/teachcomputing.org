@@ -3,6 +3,15 @@ module Cms
     module Strapi
       module Mocks
         class RichBlocks
+          def self.single_line(text)
+            [
+              {
+                type: "paragraph",
+                children: [{text:, type: "text"}]
+              }
+            ]
+          end
+
           def self.as_model(with_wrapper: false)
             Factories::ModelFactory.to_content_block(generate_data, with_wrapper:)
           end
