@@ -357,16 +357,16 @@ end.save!
 ########################################################################################################################
 
 Activity.find_or_initialize_by(stem_course_template_no: "74674e39-eeed-ef11-9342-002248c6bc9f").tap do |activity|
-activity.title = "KS3 computing (module 1): Creative curriculum design principles"
-activity.credit = 50
-activity.slug = "ks3-computing-module-1-creative-curriculum-design-principles-online"
-activity.category = "online"
-activity.self_certifiable = false
-activity.provider = "stem-learning"
-activity.stem_activity_code = "CO247"
-activity.always_on = true
+  activity.title = "KS3 computing (module 1): Creative curriculum design principles"
+  activity.credit = 50
+  activity.slug = "ks3-computing-module-1-creative-curriculum-design-principles-online"
+  activity.category = "online"
+  activity.self_certifiable = false
+  activity.provider = "stem-learning"
+  activity.stem_activity_code = "CO247"
+  activity.always_on = true
 
-activity.programmes = [secondary_certificate]
+  activity.programmes = [secondary_certificate]
 end.save!
 
 ########################################################################################################################
