@@ -3,7 +3,7 @@ require "rails_helper"
 RSpec.describe("certificates/i_belong/show", type: :view) do
   let(:user) { create(:user) }
   let(:i_belong) { create(:i_belong) }
-  let(:professional_development_groups) { create_list(:programme_activity_grouping, 1, :with_activities, sort_key: 2, programme: i_belong, title: "CPD Group Title",  web_copy_aside_slug: "i-belong-community-help-section") }
+  let(:professional_development_groups) { create_list(:programme_activity_grouping, 1, :with_activities, sort_key: 2, programme: i_belong, title: "CPD Group Title", web_copy_aside_slug: "i-belong-community-help-section") }
   let(:community_groups) { create_list(:programme_activity_grouping, 2, :with_activities, sort_key: 4, programme: i_belong, web_copy_aside_slug: "i-belong-community-help") }
 
   before do
@@ -18,7 +18,6 @@ RSpec.describe("certificates/i_belong/show", type: :view) do
   end
 
   context "All incomplete" do
-
     before do
       assign(:professional_development_groups, professional_development_groups)
       assign(:cpd_courses, professional_development_groups.flat_map(&:programme_activities))
