@@ -1,0 +1,53 @@
+.cms-two-column-video-section-component {
+  &--wrapper {
+    display: flex;
+    gap: 30px;
+
+    @include govuk-media-query($until: tablet) {
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    &__white {
+      display: flex;
+      gap: 30px;
+      background-color: $white;
+      padding: 15px;
+
+      @include govuk-media-query($until: tablet) {
+        flex-direction: column;
+        gap: 15px;
+      }
+    }
+  }
+
+  &--left-content {
+    width: 50%;
+    flex: 0 0 calc(50% - 15px);
+
+    @include govuk-media-query($until: tablet) {
+      width: 100%;
+    }
+  }
+
+  &--right {
+    &-content {
+      video {
+        max-width: 100%;
+        height: auto;
+        display: block;
+      }
+
+      @include govuk-media-query($until: tablet) {
+        width: 100%;
+      }
+
+      width: 50%;
+      flex: 0 0 calc(50% - 15px);
+    }
+
+    &-text {
+      margin-top: 20px;
+    }
+  }
+}

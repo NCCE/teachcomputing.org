@@ -31,9 +31,7 @@ module Cms
             end
 
             def to_content_block(data, with_wrapper: false, **)
-              if data.nil?
-                return Models::TextBlock.new(blocks: [], with_wrapper:, **)
-              end
+              return nil if data.nil?
 
               data.map! do |block|
                 block[:image] = as_image(block[:image], :medium) if block[:type] == "image"
@@ -59,6 +57,8 @@ module Cms
             end
 
             def to_ncce_button(strapi_data)
+              return nil if strapi_data.nil?
+
               DynamicComponents::NcceButton.new(title: strapi_data[:title], link: strapi_data[:link], color: strapi_data[:buttonTheme])
             end
 

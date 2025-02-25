@@ -13,6 +13,7 @@ module Cms
                   #{ContentBlocks::EmbeddedVideo.embed(:video)}
                   rightColumnContent
                   #{SharedFields.color_theme(:bkColor)}
+                  #{Buttons::NcceButton.embed(:leftColumnButton)}
                 GRAPHQL
               end
             end
