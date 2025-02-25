@@ -10,8 +10,8 @@ module Cms
               def self.base_fields
                 <<~GRAPHQL.freeze
                   leftColumnContent
-                  #{ContentBlocks::EmbeddedVideo.embed(:video)}
                   rightColumnContent
+                  #{ContentBlocks::EmbeddedVideo.embed(:video)}
                   #{SharedFields.color_theme(:bkColor)}
                   #{Buttons::NcceButton.embed(:leftColumnButton)}
                 GRAPHQL
