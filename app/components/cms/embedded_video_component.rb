@@ -1,6 +1,10 @@
 # frozen_string_literal: true
 
 class Cms::EmbeddedVideoComponent < ViewComponent::Base
+  erb_template <<~ERB
+    <%= render_video_format %>
+  ERB
+
   def initialize(url:)
     @url = url
   end
