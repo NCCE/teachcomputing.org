@@ -42,7 +42,7 @@ a = Activity.find_or_create_by(stem_course_template_no: "9187d975-a6b6-ed11-b597
   activity.category = "online"
   activity.provider = "stem-learning"
   activity.stem_activity_code = "CO207"
-  activity.always_on = false
+  activity.always_on = true
 end
 
 a.programmes << cs_accelerator unless a.programmes.include?(cs_accelerator)
@@ -99,7 +99,7 @@ Activity.find_or_create_by(stem_course_template_no: "f670dfa1-ce3d-ee11-bdf4-002
   activity.category = "online"
   activity.provider = "stem-learning"
   activity.stem_activity_code = "CO220"
-  activity.always_on = false
+  activity.always_on = true
   activity.programmes = [cs_accelerator]
 end.save!
 
@@ -319,7 +319,7 @@ Activity.find_or_initialize_by(stem_course_template_no: "f6a9f913-cd3d-ee11-bdf4
   activity.self_certifiable = false
   activity.provider = "stem-learning"
   activity.stem_activity_code = "CO040"
-  activity.always_on = false
+  activity.always_on = true
 
   activity.programmes = [primary_certificate]
 end.save!
@@ -334,7 +334,7 @@ Activity.find_or_initialize_by(stem_course_template_no: "0a70f9ad-cd3d-ee11-bdf4
   activity.self_certifiable = false
   activity.provider = "stem-learning"
   activity.stem_activity_code = "CO042"
-  activity.always_on = false
+  activity.always_on = true
 
   activity.programmes = [primary_certificate]
 end.save!
@@ -349,9 +349,172 @@ Activity.find_or_initialize_by(stem_course_template_no: "ded270cb-a4b6-ed11-b597
   activity.self_certifiable = false
   activity.provider = "stem-learning"
   activity.stem_activity_code = "CO700"
-  activity.always_on = false
+  activity.always_on = true
 
   activity.programmes = [primary_certificate, secondary_certificate]
 end.save!
 
 ########################################################################################################################
+
+Activity.find_or_initialize_by(stem_course_template_no: "74674e39-eeed-ef11-9342-002248c6bc9f").tap do |activity|
+activity.title = "KS3 computing (module 1): Creative curriculum design principles"
+activity.credit = 50
+activity.slug = "ks3-computing-module-1-creative-curriculum-design-principles-online"
+activity.category = "online"
+activity.self_certifiable = false
+activity.provider = "stem-learning"
+activity.stem_activity_code = "CO247"
+activity.always_on = true
+
+activity.programmes = [secondary_certificate]
+end.save!
+
+########################################################################################################################
+
+Activity.find_or_initialize_by(stem_course_template_no: "6abeb4f1-c9ee-ef11-9341-6045bd0abf27").tap do |activity|
+  activity.title = "Introduction to primary computing"
+  activity.credit = 60
+  activity.slug = "introduction-to-primary-computing-online"
+  activity.category = "online"
+  activity.self_certifiable = false
+  activity.provider = "stem-learning"
+  activity.stem_activity_code = "CO454"
+  activity.always_on = true
+
+  activity.programmes = [primary_certificate]
+end.save!
+
+########################################################################################################################
+
+Activity.find_or_initialize_by(stem_course_template_no: "b33e199b-d6ea-ef11-9342-6045bd0c7e50").tap do |activity|
+  activity.title = "Developing and supporting programming within your primary school"
+  activity.credit = 60
+  activity.slug = "developing-and-supporting-programming-within-your-primary-school-online"
+  activity.category = "online"
+  activity.self_certifiable = false
+  activity.provider = "stem-learning"
+  activity.stem_activity_code = "CO003"
+  activity.always_on = true
+
+  activity.programmes = [primary_certificate]
+end.save!
+
+########################################################################################################################
+
+Activity.find_or_initialize_by(stem_course_template_no: "c4ec9601-daea-ef11-9341-002248c8ecdf").tap do |activity|
+  activity.title = "Empowering girls in key stage 2 computing"
+  activity.credit = 20
+  activity.slug = "empowering-girls-in-key-stage-2-computing-online"
+  activity.category = "online"
+  activity.self_certifiable = false
+  activity.provider = "stem-learning"
+  activity.stem_activity_code = "CO409"
+  activity.always_on = true
+
+  activity.programmes = [primary_certificate]
+end.save!
+
+########################################################################################################################
+
+Activity.find_or_initialize_by(stem_course_template_no: "af01836d-e2ea-ef11-9341-002248c8ecdf").tap do |activity|
+  activity.title = "Adapting the Teach Computing Curriculum for mixed-year classes"
+  activity.credit = 20
+  activity.slug = "adapting-the-teach-computing-curriculum-for-mixed-year-classes-online"
+  activity.category = "online"
+  activity.self_certifiable = false
+  activity.provider = "stem-learning"
+  activity.stem_activity_code = "CO404"
+  activity.always_on = true
+
+  activity.programmes = [primary_certificate]
+end.save!
+
+########################################################################################################################
+
+Activity.find_or_initialize_by(stem_course_template_no: "dfe72774-e4ea-ef11-9342-002248c60b03").tap do |activity|
+  activity.title = "Assessment of primary computing"
+  activity.credit = 60
+  activity.slug = "assessment-of-primary-computing-online"
+  activity.category = "online"
+  activity.self_certifiable = false
+  activity.provider = "stem-learning"
+  activity.stem_activity_code = "CO007"
+  activity.always_on = true
+
+  activity.programmes = [primary_certificate]
+end.save!
+
+########################################################################################################################
+
+Activity.find_or_initialize_by(stem_course_template_no: "fe7a28ac-e5ea-ef11-9342-002248c60b03").tap do |activity|
+  activity.title = "Computational thinking in primary schools"
+  activity.credit = 20
+  activity.slug = "computational-thinking-in-primary-schools-online"
+  activity.category = "online"
+  activity.self_certifiable = false
+  activity.provider = "stem-learning"
+  activity.stem_activity_code = "CO457"
+  activity.always_on = true
+
+  activity.programmes = [primary_certificate]
+end.save!
+
+########################################################################################################################
+
+Activity.find_or_initialize_by(stem_course_template_no: "9600665b-e6ea-ef11-9342-002248c60b03").tap do |activity|
+  activity.title = "Introduction to the micro:bit in key stage 2"
+  activity.credit = 20
+  activity.slug = "introduction-to-microbit-key-stage-2-online"
+  activity.category = "online"
+  activity.self_certifiable = false
+  activity.provider = "stem-learning"
+  activity.stem_activity_code = "CO292"
+  activity.always_on = true
+
+  activity.programmes = [primary_certificate]
+end.save!
+
+########################################################################################################################
+
+Activity.find_or_initialize_by(stem_course_template_no: "1b3a1493-e7ea-ef11-9341-6045bd0d2e35").tap do |activity|
+  activity.title = "Literacy via primary computing - building vocabulary and embedding literacy skills"
+  activity.credit = 20
+  activity.slug = "literacy-via-primary-computing-building-vocabulary-embedding-literacy-skills-online"
+  activity.category = "online"
+  activity.self_certifiable = false
+  activity.provider = "stem-learning"
+  activity.stem_activity_code = "CO407"
+  activity.always_on = true
+
+  activity.programmes = [primary_certificate]
+end.save!
+
+########################################################################################################################
+
+Activity.find_or_initialize_by(stem_course_template_no: "fbdb2a39-e8ea-ef11-9341-6045bd0d2e35").tap do |activity|
+  activity.title = "Preparing for Ofsted in primary computing"
+  activity.credit = 20
+  activity.slug = "preparing-for-ofsted-in-primary-computing-online"
+  activity.category = "online"
+  activity.self_certifiable = false
+  activity.provider = "stem-learning"
+  activity.stem_activity_code = "CO486"
+  activity.always_on = true
+
+  activity.programmes = [primary_certificate]
+end.save!
+
+########################################################################################################################
+
+Activity.find_or_initialize_by(stem_course_template_no: "891a93e4-e8ea-ef11-9341-6045bd0d2e35").tap do |activity|
+  activity.title = "Teaching programming using Scratch and Scratch Jr"
+  activity.credit = 60
+  activity.slug = "teaching-programming-using-scratch-and-scratch-jr-online"
+  activity.category = "online"
+  activity.self_certifiable = false
+  activity.provider = "stem-learning"
+  activity.stem_activity_code = "CO455"
+  activity.always_on = true
+
+  activity.programmes = [primary_certificate]
+end.save!
