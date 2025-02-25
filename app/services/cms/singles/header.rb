@@ -1,5 +1,5 @@
 module Cms
-  module Collections
+  module Singles
     class Header < Resource
       def self.resource_attribute_mappings
         [
