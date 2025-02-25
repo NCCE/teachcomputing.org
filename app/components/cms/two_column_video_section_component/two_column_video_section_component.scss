@@ -32,6 +32,9 @@
 
   &--right {
     &-content {
+      width: 50%;
+      flex: 0 0 calc(50% - 15px);
+
       video {
         max-width: 100%;
         height: auto;
@@ -41,9 +44,6 @@
       @include govuk-media-query($until: tablet) {
         width: 100%;
       }
-
-      width: 50%;
-      flex: 0 0 calc(50% - 15px);
     }
 
     &-text {
