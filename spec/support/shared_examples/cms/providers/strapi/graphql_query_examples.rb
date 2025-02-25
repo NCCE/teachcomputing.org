@@ -1,6 +1,6 @@
 RSpec.shared_examples "a strapi graphql query" do |options|
   key = options[:key]
-  required_fields = options[:required_field] || []
+  required_fields = options[:required_fields] || []
 
   let(:query) {
     <<~GRAPHQL
@@ -45,7 +45,7 @@ end
 
 RSpec.shared_examples "a strapi graphql embed" do |options|
   key = options[:key]
-  required_fields = options[:required_field] || []
+  required_fields = options[:required_fields] || []
 
   let(:query) {
     <<~GRAPHQL

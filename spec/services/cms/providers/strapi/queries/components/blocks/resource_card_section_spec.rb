@@ -1,3 +1,5 @@
+require "rails_helper"
+
 RSpec.describe Cms::Providers::Strapi::Queries::Components::Blocks::ResourceCardSection do
   it_should_behave_like "a strapi graphql component",
     %w[
@@ -5,6 +7,6 @@ RSpec.describe Cms::Providers::Strapi::Queries::Components::Blocks::ResourceCard
       sectionTitle
       cardsPerRow
       bkColor
-      subText
+      introText
     ]
 end
