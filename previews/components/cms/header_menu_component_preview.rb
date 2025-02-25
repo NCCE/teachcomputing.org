@@ -1,21 +1,22 @@
 # frozen_string_literal: true
 
 class Cms::HeaderMenuComponentPreview < ViewComponent::Preview
+  layout "view_component_preview"
+
   def default
-    render(Cms::HeaderMenuComponent.new(
-      menu_items: [
+    render(Cms::RichTextBlockComponent.new(blocks:
+      [
         {
-          label: "First Item",
-          menu_items: [
-            { label: "First sub item", url: cms_page_path(:blogs) },
-            { label: "Second sub item", url: cms_page_path(:blogs) }
+          type: "heading",
+          level: 1,
+          children: [
+            {type: "text", text: "Menu Preview"}
           ]
         },
         {
-          label: "Second Item",
-          menu_items: [
-            { label: "First sub item", url: cms_page_path(:blogs) },
-            { label: "Second sub item", url: cms_page_path(:blogs) }
+          type: "paragraph",
+          children: [
+            {type: "text", text: "This heading, and all headings in previews are loaded from Strapi"}
           ]
         }
       ]
