@@ -19,7 +19,6 @@ class Cms::HeaderMenuComponentPreview < ViewComponent::Preview
             {type: "text", text: "This heading, and all headings in previews are loaded from Strapi"}
           ]
         }
-      ]
-    ))
+      ]))
   end
 end
