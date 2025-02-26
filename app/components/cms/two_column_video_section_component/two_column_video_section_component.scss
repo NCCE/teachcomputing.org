@@ -1,5 +1,5 @@
 .cms-two-column-video-section-component {
-  &--wrapper {
+  &__wrapper {
     display: flex;
     gap: 30px;
 
@@ -8,10 +8,9 @@
       gap: 15px;
     }
 
-    &__white {
+    &--padded {
       display: flex;
       gap: 30px;
-      background-color: $white;
       padding: 15px;
 
       @include govuk-media-query($until: tablet) {
@@ -21,7 +20,7 @@
     }
   }
 
-  &--left-content {
+  &__left-content {
     width: 50%;
     flex: 0 0 calc(50% - 15px);
 
@@ -30,7 +29,7 @@
     }
   }
 
-  &--right {
+  &__right {
     &-content {
       width: 50%;
       flex: 0 0 calc(50% - 15px);

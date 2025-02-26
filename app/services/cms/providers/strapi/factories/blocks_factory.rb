@@ -58,7 +58,8 @@ module Cms
               video: to_embedded_video(strapi_data[:video]),
               right_column_content: to_content_block(strapi_data[:rightColumnContent]),
               background_color: extract_color_name(strapi_data, :bkColor),
-              left_column_button: to_ncce_button(strapi_data[:leftColumnButton])
+              left_column_button: to_ncce_button(strapi_data[:leftColumnButton]),
+              box_color: extract_color_name(strapi_data, :boxColor),
             )
           end
 
