@@ -52,17 +52,26 @@ RSpec.describe Cms::TwoColumnVideoSectionComponent, type: :component do
     end
   end
 
-  context "with yellow background color" do
+  context "with background colors" do
     before do
       render_inline(described_class.new(
         left_column_content: Cms::Mocks::RichBlocks.as_model,
         video: Cms::Mocks::DynamicComponents::EmbeddedVideo.as_model,
-        background_color: "isaac"
+        background_color: "isaac",
+        box_color: "white"
       ))
     end
 
-    it "has white background color for content" do
-      expect(page).to have_css(".cms-two-column-video-section-component--wrapper__white")
+    it "has yellow background color" do
+      expect(page).to have_css(".isaac-bg")
+    end
+
+    it "has padded wrapper class" do
+      expect(page).to have_css(".cms-two-column-video-section-component__wrapper--padded")
+    end
+
+    it "has content background color" do
+      expect(page).to have_css(".white-bg")
     end
   end
 
