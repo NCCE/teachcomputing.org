@@ -45,6 +45,8 @@
   background: $purple-dark;
   border-bottom: none;
   border-top: 10px solid $lime-green;
+  z-index: 1; // Ensures its appears above the house in the few odd places it leaks out
+
   @include govuk-media-query($from: desktop) {
     border-top-width: 13px;
     position: relative;
