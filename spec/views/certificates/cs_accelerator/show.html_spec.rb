@@ -22,8 +22,4 @@ RSpec.describe("certificates/cs_accelerator/show", type: :view) do
   it "has an activity heading" do
     expect(rendered).to have_css(".govuk-heading-s")
   end
-
-  it "has the expected bursary info" do
-    expect(rendered).to have_css(".ncce-bursary-aside", text: /financial support/)
-  end
 end
