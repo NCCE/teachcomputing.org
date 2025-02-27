@@ -3,9 +3,9 @@
 <div class="govuk-width-container">
   <div class="govuk-main-wrapper govuk-main-wrapper--xl">
     <div class="govuk-grid-row">
-        <div class="govuk-grid-column-two-thirds">
+      <div class="govuk-grid-column-two-thirds">
         <p class="govuk-body">Funded by the Department for Education, this professional development programme for teachers leads to a nationally recognised certificate in key stage 3 and GCSE Computer Science subject knowledge.</p>
-				<p class="govuk-body">The programme will help you develop or refresh your subject knowledge up to GCSE, with <%= link_to 'funding available', '/funding', class: 'govuk-link ncce-link govuk-link--no-underline' %> for state-funded schools and colleges to support classroom cover.</p>
+				<p class="govuk-body">The programme will help you develop or refresh your subject knowledge up to GCSE.</p>
         <h2 class="govuk-heading-m">Who is eligible?</h2>
         <ul class="govuk-list govuk-list--bullet govuk-body">
           <li>current and aspiring computing teachers</li>
@@ -15,8 +15,6 @@
         <%= render 'pages/certification/pathway' %>
 				<h2 class="govuk-heading-m">How much does it cost?</h2>
         <p class="govuk-body">There are no fees to pay for teachers in England who work in state-funded schools and colleges and trainee teachers, supply teachers or teachers returning to the state sector.</p>
-        <p class="govuk-body">If you are a teacher working in state-funded education, you will also be eligible to apply for a <%= link_to 'subsidy', '/funding', class: 'govuk-link ncce-link govuk-link--no-underline' %> to support supply cover for professional development, paid to your school or college.</p>
-        </p>
       </div>
       <div class="govuk-grid-column-one-third">
         <%= render AsideComponent.new(title: 'Enrol on the programme') do |component| %>

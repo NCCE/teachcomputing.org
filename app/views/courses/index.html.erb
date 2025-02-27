@@ -1,27 +1,23 @@
 <% meta_tag :title, 'Courses - Teach Computing' %>
 <%= render 'components/hero', hero_title: 'Computing courses for teachers', glyph_position: 'bottom', colour: 'lime-green' %>
 <div data-controller="course-filter">
-  <div class="govuk-width-container">
-    <div class="govuk-main-wrapper">
-      <div class="govuk-grid-row govuk-!-margin-bottom-0">
-        <div class="govuk-grid-column-two-thirds">
-          <p class="govuk-body">
-            Discover our range of professional development courses, designed to help you teach computing. Courses cover key stages 1 to 4 and cater for all levels of knowledge.
-          </p>
-          <p class="govuk-body">
-            Choose how and when you want to learn, through face to face, online, or live remote training.
-          </p>
-        </div>
-        <div class="govuk-grid-column-one-third">
-          <%= render BursaryComponent.new(
-            tracking_event_category: 'Courses',
-            tracking_event_label: 'Bursaries',
-            bottom_margin: false
-          ) %>
-        </div>
-      </div>
-    </div>
-  </div>
+  <%= render GovGridRowComponent.new(padding: {bottom: 2}) do |row| %>
+    <%= row.with_column("two-thirds") do %>
+      <p class="govuk-body">
+        Discover our range of professional development courses, designed to help you teach computing. Courses cover key stages 1 to 4 and cater for all levels of knowledge.
+      </p>
+      <p class="govuk-body">
+        Choose how and when you want to learn, through face to face, online, or live remote training.
+      </p>
+    <% end %>
+    <%= row.with_column("one-third") do %>
+      <%= render AsideComponent.new(title: "Costs") do |component| %>
+        <% component.with_body do %>
+          <p class="govuk-body">All our online courses are free to all educators. Additional fees are applicable to residential courses and are stated at the point of booking. </p>
+        <% end %>
+      <% end %>
+    <% end %>
+  <% end %>
 
   <%= form_with url: course_filter_path, method: :get, class: 'ncce-courses__filter-form', data: { action: "ajax:success->course-filter#handleResults", 'course-filter-target': "form" } do %>
     <div class="govuk-width-container ncce-courses__container" data-course-filter-target="resultsContainer" id="results-top">
