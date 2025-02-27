@@ -46,7 +46,7 @@ en:
       programmes:
         title: "Our offer"
         text:
-          html: "We provide teachers with a comprehensive range of evidence-informed, high-quality support, including free %{resources_link} and %{training_link}. %{funding_link}, including subsidies, to support supply cover for continuing professional development - to help them become inspirational computing teachers."
+          html: "We provide teachers with a comprehensive range of evidence-informed, high-quality support, including free %{resources_link} and %{training_link}."
       primary_card:
         title: "Primary teachers"
         text: "Resources and training for primary teachers."

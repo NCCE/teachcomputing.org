@@ -3,11 +3,6 @@ en:
     cs_accelerator:
       complete:
         all_courses_button: 'Browse all of our courses'
-        subsidy_aside:
-          title: "Subsidy payment"
-          link_text: "this form"
-          text:
-            html: "If your school or college is eligible for funding, this is usually paid within six to eight weeks of activity completion. To claim a subsidy for your organisation, please complete %{form_link} and return it to %{email_link}."
         support_aside:
           title: "Support"
           text:

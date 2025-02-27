@@ -35,7 +35,6 @@ RSpec.describe("pages/about", type: :view) do
   it "has the expected links in the offer section" do
     expect(rendered).to have_link("resources", href: "/curriculum")
     expect(rendered).to have_link("training courses", href: "/courses")
-    expect(rendered).to have_link("Funding is available", href: "/funding")
     expect(rendered).to have_link("Primary teachers toolkit", href: "/primary-teachers")
     expect(rendered).to have_link("Secondary teachers toolkit", href: "/secondary-teachers")
   end
