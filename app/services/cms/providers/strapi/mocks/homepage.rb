@@ -4,9 +4,11 @@ module Cms
       module Mocks
         class Homepage < StrapiMock
           attribute(:seo) { Seo.generate_data }
-          attribute(:content) { [
-            DynamicComponents::Blocks::HomepageHero.generate_raw_data
-          ] }
+          attribute(:content) {
+            [
+              DynamicComponents::Blocks::HomepageHero.generate_raw_data
+            ]
+          }
         end
       end
     end
