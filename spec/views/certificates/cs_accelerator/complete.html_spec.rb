@@ -67,11 +67,6 @@ RSpec.describe("certificates/cs_accelerator/complete") do
       expect(rendered).to have_link("Find out more", href: "https://community.computingatschool.org.uk/events")
     end
 
-    it "has a subsidy section" do
-      expect(rendered).to have_link("this form", href: "https://static.teachcomputing.org/BACS+form+-+NCCE.docx")
-      expect(rendered).to have_link("finance@stem.org.uk", href: "mailto:finance@stem.org.uk")
-    end
-
     it "has a support section" do
       expect(rendered).to have_link("info@teachcomputing.org", href: "mailto:info@teachcomputing.org")
     end

@@ -23,7 +23,7 @@ en:
       courses:
         title: "Courses to advance your knowledge and skills"
         intro:
-          html: "Start your journey as a computing leader by building your own subject knowledge, then progressing to support your staff and leading change across your school. Our courses will help you to better understand the needs of SEND pupils, improve your pedagogy and support you in teaching programming at primary.<br /><br />Eligible state-funded primary schools in England can also %{subsidies_link} to help with supply cover."
+          html: "Start your journey as a computing leader by building your own subject knowledge, then progressing to support your staff and leading change across your school. Our courses will help you to better understand the needs of SEND pupils, improve your pedagogy and support you in teaching programming at primary."
       i_belong_banner:
         title: "I Belong: encouraging girls into computer science"
         content:
