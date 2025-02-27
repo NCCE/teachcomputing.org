@@ -107,8 +107,7 @@
 
 <%= render CourseGridComponent.new(
   title: t(".courses.title"),
-  intro: t(".courses.intro.html",
-    subsidies_link: link_to("access subsidies", cms_page_path("funding"))),
+  intro: nil,
   event_category: 'Primary teacher',
   course_link: courses_path(params: { certificate: 'secondary-certificate' }),
   courses: [
