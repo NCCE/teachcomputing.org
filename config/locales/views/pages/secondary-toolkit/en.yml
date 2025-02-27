@@ -33,8 +33,6 @@ en:
           bio: "Computer Science and AI student at the University of Sussex"
       courses:
         title: "Courses to advance your knowledge and skills"
-        intro:
-          html: "Eligible state-funded secondary schools and colleges in England can also %{subsidies_link} to help with supply cover."
       further_learning:
         title: "Take your students’ learning further"
         para_1: "Encourage your students to develop important life skills through enrichment and engage with the wider community in practical, enjoyable, and meaningful ways."
