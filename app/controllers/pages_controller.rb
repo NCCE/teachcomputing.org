@@ -1,4 +1,5 @@
 class PagesController < ApplicationController
+  include CmsProcessing
   layout "full-width"
   before_action :redirect_to_dashboard, only: [:login]
 
@@ -14,7 +15,7 @@ class PagesController < ApplicationController
   end
 
   def home
-    render template: "pages/home/index"
+    process_resource(Cms::Singles::Homepage)
   end
 
   def non_gcse

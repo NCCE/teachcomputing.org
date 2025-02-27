@@ -1,0 +1,9 @@
+.cms-horizontal-link-card {
+  background-color: $white;
+  padding: 20px;
+  border-left-width: 13px;
+
+  h2 {
+    @extend .govuk-heading-m;
+  }
+}

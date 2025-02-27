@@ -1,7 +1,8 @@
 # frozen_string_literal: true
 
 class FeaturedBlogPostsComponent < ViewComponent::Base
-  def initialize(number_to_display:, show_main_feature: true)
+  def initialize(number_to_display:, show_main_feature: true, title: "News and Updates")
+    @title = title
     posts =
       begin
         response = Cms::Collections::Blog.all(1, number_to_display, params: {

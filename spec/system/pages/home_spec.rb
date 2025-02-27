@@ -3,12 +3,9 @@ require "axe/rspec"
 
 RSpec.describe("Home page", type: :system) do
   before do
+    stub_strapi_homepage
     stub_featured_posts
     visit root_path
-  end
-
-  it "is the correct page" do
-    expect(page).to have_content("Helping you teach computing")
   end
 
   it "header is accessible" do

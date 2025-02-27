@@ -198,6 +198,12 @@ module StrapiStubs
     end
   end
 
+  def stub_strapi_homepage(homepage: Cms::Mocks::Homepage.generate_raw_data)
+    if as_graphql
+      stub_strapi_graphql_query("homepage", homepage, singular: true)
+    end
+  end
+
   def stub_strapi_schema
     stub_request(:post, /^https:\/\/strapi.teachcomputing.org\/graphql/)
       .with(body: /IntrospectionQuery/)
