@@ -4,6 +4,7 @@ require "axe/rspec"
 RSpec.describe("Site search", type: :system, js: true) do
   before do
     resize_window_to_desktop
+    stub_strapi_homepage
     stub_featured_posts
     visit root_path
   end

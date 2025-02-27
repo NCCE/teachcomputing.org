@@ -1,0 +1,6 @@
+<%= content_tag :div, class: wrapper_classes do %>
+  <h2><%= link_to @title, @link_url, class: %w[ncce-link ncce-link--heading govuk-link--no-underline] %></h2>
+  <div class="cms-horizontal-link-card__content">
+    <%= render @card_content.render %>
+  </div>
+<% end %>
