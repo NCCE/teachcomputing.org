@@ -518,3 +518,33 @@ Activity.find_or_initialize_by(stem_course_template_no: "891a93e4-e8ea-ef11-9341
 
   activity.programmes = [primary_certificate]
 end.save!
+
+########################################################################################################################
+
+Activity.find_or_initialize_by(stem_course_template_no: "74afc4a5-fef4-ef11-be20-0022481add34").tap do |activity|
+  activity.title = "Empowering trainee teachers:Introduction to primary computing"
+  activity.credit = 60
+  activity.slug = "empowering-trainee-teachers-introduction-to-primary-computing-online"
+  activity.category = "online"
+  activity.self_certifiable = false
+  activity.provider = "stem-learning"
+  activity.stem_activity_code = "CO417"
+  activity.always_on = true
+
+  activity.programmes = [primary_certificate]
+end.save!
+
+########################################################################################################################
+
+Activity.find_or_initialize_by(stem_course_template_no: "967de7bb-b6f5-ef11-be20-002248c763ad").tap do |activity|
+  activity.title = "Computing Quality Framework – driving change within your primary school"
+  activity.credit = 15
+  activity.slug = "computing-quality-framework–driving-change-within-your-primary-school-online"
+  activity.category = "online"
+  activity.self_certifiable = false
+  activity.provider = "stem-learning"
+  activity.stem_activity_code = "CO403"
+  activity.always_on = true
+
+  activity.programmes = [primary_certificate]
+end.save!
