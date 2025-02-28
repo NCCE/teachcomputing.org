@@ -1,5 +1,4 @@
 class PagesController < ApplicationController
-  include CmsProcessing
   layout "full-width"
   before_action :redirect_to_dashboard, only: [:login]
 
@@ -14,9 +13,6 @@ class PagesController < ApplicationController
     end
   end
 
-  def home
-    process_resource(Cms::Singles::Homepage)
-  end
 
   def i_belong
     if current_user

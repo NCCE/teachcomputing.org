@@ -9,6 +9,7 @@ RSpec.describe("cms/blog", type: :view) do
     assign(:collection_wrapper_class, "ncce-news-archive")
     assign(:path, cms_posts_path)
     assign(:page_name, "Articles")
+    assign(:wrapper_class, "cms-blogs")
     render template: "cms/collection", layout: "layouts/application"
   end
 
@@ -18,5 +19,9 @@ RSpec.describe("cms/blog", type: :view) do
 
   it "should have a heading" do
     expect(rendered).to have_css("h1", text: "Page Title")
+  end
+
+  it "should add resource_key as class to main tag" do
+    expect(rendered).to have_css("main.cms-blogs")
   end
 end

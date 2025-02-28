@@ -2,6 +2,10 @@ class CmsController < ApplicationController
   include CmsProcessing
   layout "full-width"
 
+  def home
+    process_resource(Cms::Singles::Homepage)
+  end
+
   def blog
     title = params[:tag] || "News & Updates"
     process_collection Cms::Collections::Blog, title:,

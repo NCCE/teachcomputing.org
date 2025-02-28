@@ -86,3 +86,12 @@
   flex-direction: column;
   margin-top: 10px;
 }
+
+.cms { 
+  &-homepage {
+    .cms-card-wrapper__title {
+      text-align: center;
+      font-size: 2rem;
+    }
+  }
+}
