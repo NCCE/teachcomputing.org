@@ -7,6 +7,9 @@ module Cms
 
           attribute(:title) { Faker::Lorem.word }
           attribute(:link) { Faker::Internet.url }
+          attribute(:buttonTheme) { "green" }
+          attribute(:loggedInTitle) { nil }
+          attribute(:loggedInLink) { nil }
         end
       end
     end
