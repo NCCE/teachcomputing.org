@@ -4,8 +4,10 @@ RSpec.describe CmsController do
   describe "GET #cms_post" do
     context "with a valid page" do
       before do
-        stub_strapi_get_single_blog_post("blogs/funding",
-          title: "Education and industry unite at key event championing gender equity in computer science")
+        stub_strapi_blog_post("funding", blog: Cms::Mocks::Blog.generate_raw_data(
+          slug: "funding",
+          title: "Education and industry unite at key event championing gender equity in computer science"
+        ))
         get "/blog/funding"
       end
 
