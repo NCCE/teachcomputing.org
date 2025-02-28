@@ -18,14 +18,6 @@ class PagesController < ApplicationController
     process_resource(Cms::Singles::Homepage)
   end
 
-  def non_gcse
-    render template: "pages/enrolment/non_gcse"
-  end
-
-  def school_trusts
-    render template: "pages/school_trusts"
-  end
-
   def i_belong
     if current_user
       programme = Programme.i_belong
