@@ -96,3 +96,25 @@
     text-decoration: none;
   }
 }
+
+.purple-bg {
+  .cms-rich-text-block-component:not(.white-bg):not(.white-bg *) {
+    .govuk-body-m, .govuk-body-s {
+       color: $white;
+    }
+  }
+
+  .white-bg {
+    .govuk-body-m, .govuk-body-s {
+      color: $black;
+   }
+  }
+}
+
+.isaac-bg {
+  .cms-rich-text-block-component {
+    a {
+       color: $black;
+    }
+  }
+}

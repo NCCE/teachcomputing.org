@@ -1,50 +1,17 @@
 .cms-two-column-video-section-component {
+  video {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
   &__wrapper {
-    display: flex;
-    gap: 30px;
-
-    @include govuk-media-query($until: tablet) {
-      flex-direction: column;
-      gap: 15px;
-    }
-
     &--padded {
-      display: flex;
-      gap: 30px;
       padding: 15px;
-
-      @include govuk-media-query($until: tablet) {
-        flex-direction: column;
-        gap: 15px;
-      }
     }
   }
 
-  &__left-content {
-    flex: 0 1 50%;
-
-    @include govuk-media-query($until: tablet) {
-      width: 100%;
-    }
-  }
-
-  &__right {
-    &-content {
-      flex: 0 1 50%
-
-      video {
-        width: 100%;
-        height: auto;
-        display: block;
-      }
-
-      @include govuk-media-query($until: tablet) {
-        width: 100%;
-      }
-    }
-
-    &-text {
+  &__right-text {
       margin-top: 20px;
-    }
   }
 }
