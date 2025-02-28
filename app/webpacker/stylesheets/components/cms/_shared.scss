@@ -80,3 +80,12 @@
     padding-bottom: 40px;
   }
 }
+
+.cms { 
+  &-homepage {
+    .cms-card-wrapper__title {
+      text-align: center;
+      font-size: 2rem;
+    }
+  }
+}
