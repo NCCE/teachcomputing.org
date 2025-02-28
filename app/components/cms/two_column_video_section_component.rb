@@ -14,10 +14,10 @@ class Cms::TwoColumnVideoSectionComponent < ViewComponent::Base
     classes = []
 
     if @box_color
-      classes << "cms-two-column-video-section-component__wrapper--padded"
+      classes << ["cms-two-column-video-section-component__wrapper--padded", "tc-row"]
       classes << "#{@box_color}-bg"
     else
-      classes << "cms-two-column-video-section-component__wrapper"
+      classes << ["cms-two-column-video-section-component__wrapper", "tc-row"]
     end
     classes
   end
