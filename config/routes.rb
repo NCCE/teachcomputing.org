@@ -152,8 +152,9 @@ Rails.application.routes.draw do
   # April 2025 Redirects
 
   get "/hubs", to: redirect("/")
+  get "/bursary", to: redirect("/")
+  get "/funding", to: redirect("/")
 
-  get "/bursary", to: redirect("/funding", status: 302)
   get "/courses", action: :index, controller: "courses", as: "courses"
   get "/courses/filter", action: :filter, controller: "courses", as: "course_filter"
   get "/courses/hubs/:hub_id", to: redirect("/courses"), as: "hub"
