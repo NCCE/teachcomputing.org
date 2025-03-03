@@ -59,6 +59,7 @@ module Cms
       def time_diff_words(date)
         diff = DateTime.now.to_i - date.to_i
         months = diff / (60 * 60 * 24 * 30)
+        months = 1 if months == 0
         if months >= 12
           "#{months / 12} #{"year".pluralize(months / 12)}"
         else
