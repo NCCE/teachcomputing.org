@@ -1,0 +1,30 @@
+<div class="courses-cms-card">
+
+  <div class="courses-cms-card__image-wrapper">
+    <%= render Cms::ImageComponent.new(@image, show_caption: false, classes: "courses-cms-card__image") %>
+    <% if @banner_text %>
+      <span class="govuk-body-s courses-cms-card__banner">
+        <%= @banner_text.upcase %>
+      </span>
+    <% end %>
+  </div>
+
+  <%= link_to @title, course_path(id: @course.activity_code, name: @course.title.parameterize), class: 'govuk-!-font-weight-bold govuk-body ncce-link' %>
+  <div class="courses-cms-card__details">
+    <p class="govuk-body">
+      <%= render @description.render %>
+    </p>
+    <div class="courses-cms-card__icons">
+      <div>
+        <span class="govuk-body-s <%= course_meta_icon_class(@course) %> courses-cms-card__type">
+          <%= course_type_short(@course) %>
+        </span>
+      </div>
+      <div>
+        <%= content_tag :span, class: ['govuk-body-s', 'icon-clock', 'courses-cms-card__time', { 'govuk-!-margin-left-0': "".blank? }] do %>
+          <%= course_duration_text(@course) %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

@@ -23,6 +23,8 @@ module Cms
               to_question_and_answer(strapi_data)
             when "resource-card-section"
               to_card_wrapper(strapi_data, to_resource_card_array(strapi_data[:resourceCards]))
+            when "course-cards-section"
+              to_card_wrapper(strapi_data, to_course_card_array(strapi_data[:cards]))
             when "split-horizontal-card"
               to_split_horizontal_card(strapi_data)
             when "testimonial-row"
@@ -112,12 +114,24 @@ module Cms
             end
           end
 
+          def self.to_course_card_array(strapi_data)
+            strapi_data.map do |card_data|
+              DynamicComponents::CourseCard.new(
+                title: card_data[:title],
+                banner_text: card_data[:bannerText],
+                course_code: card_data[:courseCode],
+                description: to_content_block(card_data[:description]),
+                image: to_image(card_data, :image, default_size: :medium)
+              )
+            end
+          end
+
           def self.to_card_wrapper(strapi_data, cards_block, title_as_paragraph: false)
             DynamicComponents::CardWrapper.new(
               title: strapi_data[:sectionTitle],
-              sub_text: strapi_data[:subText],
+              intro_text: to_content_block(strapi_data[:introText].presence || []),
               cards_block: cards_block,
-              cards_per_row: strapi_data[:cardsPerRow],
+              cards_per_row: strapi_data[:cardsPerRow].presence || 3,
               background_color: extract_color_name(strapi_data, :bkColor),
               title_as_paragraph:
             )
@@ -153,7 +167,8 @@ module Cms
               color_theme: extract_color_name(strapi_data, :colorTheme),
               icon_block: to_icon_block(strapi_data[:iconBlock]),
               spacing: strapi_data[:spacing],
-              external_title: strapi_data[:externalTitle]
+              external_title: strapi_data[:externalTitle],
+              background_color: extract_color_name(strapi_data, :bkColor)
             )
           end
 
