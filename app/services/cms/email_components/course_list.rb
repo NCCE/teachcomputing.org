@@ -25,7 +25,8 @@ module Cms
 
       def has_match?(email_template, user)
         latest_cpd = user.sorted_completed_cpd_achievements_by(programme: email_template.programme).last&.activity
-        @courses.select { _1.activity.id == latest_cpd.id }.any?
+        return @courses.select { _1.activity.id == latest_cpd.id }.any? if latest_cpd
+        false
       end
 
       def render?(email_template, user)
