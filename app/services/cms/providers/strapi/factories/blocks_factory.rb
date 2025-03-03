@@ -39,7 +39,15 @@ module Cms
               to_enrolment_testimonial(strapi_data)
             when "enrolment-split-course-card"
               to_enrolment_split_course_card(strapi_data)
+            when "icon-row"
+              to_icon_row(strapi_data)
             end
+          end
+
+          def self.to_icon_row(strapi_data)
+            DynamicComponents::IconRow.new(
+              icons: strapi_data[:icons].map { to_icon(_1) }
+            )
           end
 
           def self.to_enrolment_split_course_card(strapi_data)
