@@ -10,7 +10,11 @@ module Cms
         @programme_slug = programme_slug
         @programme = Programme.find_by(slug: @programme_slug)
         @completed_programme_activity_group_slugs = completed_programme_activity_group_slugs
-        @completed_programme_activity_groups = completed_programme_activity_group_slugs.each { ProgrammeActivityGrouping.find_by(cms_slug: _1) }
+        @completed_programme_activity_groups = if completed_programme_activity_group_slugs
+          completed_programme_activity_group_slugs.each { ProgrammeActivityGrouping.find_by(cms_slug: _1) }
+        else
+          []
+        end
         @activity_state = activity_state
       end
 
