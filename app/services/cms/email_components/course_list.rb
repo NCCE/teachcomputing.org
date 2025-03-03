@@ -7,13 +7,14 @@ module Cms
         @section_title = section_title
         @courses = courses
         @remove_on_match = remove_on_match
+        @has_subsitutes = @courses.collect(&:substitute).any?
       end
 
       def activity_list(email_template, user)
-        latest_cpd = user.sorted_completed_cpd_achievements_by(programme: email_template.programme).last&.activity
+        completed_activities = user.sorted_completed_cpd_achievements_by(programme: email_template.programme).collect(&:activity)
         matched = false
         display_courses = @courses.select { !_1.substitute }.each_with_object([]) do |course, list|
-          if course.activity == latest_cpd
+          if completed_activities.include?(course.activity)
             matched = true
           else
             list << course
@@ -23,14 +24,15 @@ module Cms
         display_courses
       end
 
-      def has_match?(email_template, user)
-        latest_cpd = user.sorted_completed_cpd_achievements_by(programme: email_template.programme).last&.activity
-        return @courses.select { _1.activity.id == latest_cpd.id }.any? if latest_cpd
-        false
+      def matches(email_template, user)
+        activites = user.sorted_completed_cpd_achievements_by(programme: email_template.programme).collect(&:activity)
+        @courses.map { activites.include?(_1.activity) }
       end
 
       def render?(email_template, user)
-        return !has_match?(email_template, user) if @remove_on_match
+        course_matches = matches(email_template, user)
+        return !course_matches.any? if @remove_on_match
+        return @has_subsitutes if course_matches.all?
         true
       end
 
