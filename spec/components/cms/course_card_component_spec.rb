@@ -16,7 +16,7 @@ RSpec.describe Cms::CourseCardComponent, type: :component do
     ))
   end
 
-  it "renders the banner text" do
+  it "renders the banner text and makes it uppercase" do
     expect(page).to have_css(".courses-cms-card__banner", text: "BANNER TEXT")
   end
 
