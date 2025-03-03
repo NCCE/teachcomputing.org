@@ -8,7 +8,7 @@ RSpec.describe Cms::FullWidthBannerComponent, type: :component do
       render_inline(described_class.new(
         text_content: Cms::Mocks::RichBlocks.as_model,
         image: Cms::Mocks::Image.as_model,
-        image_side: :left,
+        image_side: "left",
         image_link: "https://www.teachcomputing.test/test-page",
         title: nil,
         background_color: "light-grey"
@@ -30,23 +30,36 @@ RSpec.describe Cms::FullWidthBannerComponent, type: :component do
     it "should have link" do
       expect(page).to have_link(href: "https://www.teachcomputing.test/test-page")
     end
+
+    it "has no i belong flag" do
+      expect(page).to_not have_css(".cms-full-width-banner__media--with-flag")
+    end
+
+    it "has no corner flourish" do
+      expect(page).to_not have_css(".cms-full-width-banner__media--with-flourish-left")
+      expect(page).to_not have_css(".cms-full-width-banner__media--with-flourish-right")
+    end
   end
 
-  context "with heading" do
+  context "with heading and right side image" do
     let(:title) { Faker::Lorem.sentence }
 
     before do
       render_inline(described_class.new(
         text_content: Cms::Mocks::RichBlocks.as_model,
         image: Cms::Mocks::Image.as_model,
-        image_side: :left,
+        image_side: "right",
         image_link: nil,
         title:
       ))
     end
 
-    it "show render heading" do
+    it "renders the heading" do
       expect(page).to have_css(".govuk-heading-l.cms-full-width-banner__heading", text: title)
+    end
+
+    it "renders the image on the right" do
+      expect(page).to have_css(".right-align")
     end
   end
 
@@ -62,12 +75,12 @@ RSpec.describe Cms::FullWidthBannerComponent, type: :component do
       ))
     end
 
-    it "show render heading" do
+    it "renders the border" do
       expect(page).to have_css(".cms-full-width-banner-row.has-border")
     end
   end
 
-  context "with buttons" do
+  context "with button" do
     before do
       render_inline(described_class.new(
         text_content: Cms::Mocks::RichBlocks.as_model,
@@ -80,8 +93,64 @@ RSpec.describe Cms::FullWidthBannerComponent, type: :component do
       ))
     end
 
-    it "show render button" do
+    it "renders the button" do
       expect(page).to have_css(".govuk-button")
+    end
+  end
+
+  context "with i belong flag" do
+    before do
+      render_inline(described_class.new(
+        text_content: Cms::Mocks::RichBlocks.as_model,
+        image: Cms::Mocks::Image.as_model,
+        image_side: "left",
+        image_link: nil,
+        title: nil,
+        show_bottom_border: false,
+        i_belong_flag: true
+      ))
+    end
+
+    it "renders the i belong flag" do
+      expect(page).to have_css(".cms-full-width-banner__media--with-flag")
+    end
+  end
+
+  context "with corner flourish on the left" do
+    before do
+      render_inline(described_class.new(
+        text_content: Cms::Mocks::RichBlocks.as_model,
+        image: Cms::Mocks::Image.as_model,
+        image_side: "left",
+        image_link: nil,
+        title: nil,
+        show_bottom_border: false,
+        i_belong_flag: false,
+        corner_flourish: true
+      ))
+    end
+
+    it "renders the left corner flourish" do
+      expect(page).to have_css(".cms-full-width-banner__media--with-flourish-left")
+    end
+  end
+
+  context "with corner flourish on the right" do
+    before do
+      render_inline(described_class.new(
+        text_content: Cms::Mocks::RichBlocks.as_model,
+        image: Cms::Mocks::Image.as_model,
+        image_side: "right",
+        image_link: nil,
+        title: nil,
+        show_bottom_border: false,
+        i_belong_flag: false,
+        corner_flourish: true
+      ))
+    end
+
+    it "renders the right corner flourish" do
+      expect(page).to have_css(".cms-full-width-banner__media--with-flourish-right")
     end
   end
 end

@@ -154,7 +154,9 @@ module Cms
               image_link: strapi_data[:imageLink],
               buttons: strapi_data[:buttons] ? strapi_data[:buttons].map { to_ncce_button(_1) } : [],
               title: strapi_data[:sectionTitle],
-              show_bottom_border: strapi_data[:showBottomBorder]
+              show_bottom_border: strapi_data[:showBottomBorder],
+              i_belong_flag: strapi_data[:iBelongFlag],
+              corner_flourish: strapi_data[:imageCornerFlourish]
             )
           end
 
