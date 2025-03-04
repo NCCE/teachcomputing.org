@@ -183,7 +183,6 @@ Rails.application.routes.draw do
   get "/404", to: "pages#exception", defaults: {status: 404}
   get "/422", to: "pages#exception", defaults: {status: 422}
   get "/500", to: "pages#exception", defaults: {status: 500}
-  get "/about", to: "pages#page", as: :about, defaults: {page_slug: "about"}
   get "/accelerator", to: redirect("/subject-knowledge")
   get "/accessibility-statement", to: "pages#page", as: :accessibility_statement,
     defaults: {page_slug: "accessibility-statement"}
@@ -205,7 +204,6 @@ Rails.application.routes.draw do
   get "/computing-teaching-schools-support", to: redirect("/gcse-cs-support")
   get "/isaac-computer-science", to: "pages#isaac_computer_science", as: :about_isaac_computer_science, defaults: {page_slug: "isaac-computer-science"}
   get "/gender-balance", to: "pages#page", as: :gender_balance, defaults: {page_slug: "gender-balance"}
-  get "/get-involved", to: "pages#page", as: :get_involved, defaults: {page_slug: "get-involved"}
   get "/secondary-question-banks", to: "pages#page", as: :secondary_question_banks, defaults: {page_slug: "secondary-question-banks"}
   get "/powerupthedigitalgeneration", to: redirect("/supporting-partners")
   get "/impact-and-evaluation", to: "pages#page", as: :impact, defaults: {page_slug: "impact-and-evaluation"}

@@ -4,20 +4,6 @@ require "axe/rspec"
 RSpec.describe("Static pages", type: :system) do
   let(:programme) { create(:programme, slug: "subject-knowledge") }
 
-  context "About page" do
-    before do
-      visit about_path
-    end
-
-    it "is the correct page" do
-      expect(page).to have_css(".hero-media-component__title", text: "About us")
-    end
-
-    it "main is accessible" do
-      expect(page).to be_accessible.within("#main-content")
-    end
-  end
-
   context "Accessibility statement page" do
     before do
       visit accessibility_statement_path
@@ -97,20 +83,6 @@ RSpec.describe("Static pages", type: :system) do
         expect(page).to have_css("li", text: "Participate in a range of recommended activity")
         expect(page).to have_css("li", text: "Claim your school certificate")
       end
-    end
-  end
-
-  context "Get involved page" do
-    before do
-      visit get_involved_path
-    end
-
-    it "is the correct page" do
-      expect(page).to have_content("Play your part in inspiring the next generation")
-    end
-
-    it "main is accessible" do
-      expect(page).to be_accessible.excluding("iframe").within("#main-content")
     end
   end
 

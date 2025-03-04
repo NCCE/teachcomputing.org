@@ -7,7 +7,7 @@ RSpec.describe PagesController do
     end
 
     it "redirects to the get involved page" do
-      expect(response).to redirect_to(get_involved_path)
+      expect(response).to redirect_to(cms_page_path("get-involved"))
     end
   end
 end
