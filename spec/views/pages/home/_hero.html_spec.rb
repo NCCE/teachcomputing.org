@@ -15,7 +15,7 @@ RSpec.describe("pages/home/_hero", type: :view) do
   end
 
   it "has button to find out more about NCCE" do
-    expect(rendered).to have_link("Learn more about us", href: about_path)
+    expect(rendered).to have_link("Learn more about us", href: cms_page_path("about"))
   end
 
   context "when a user is signed in" do
@@ -29,7 +29,7 @@ RSpec.describe("pages/home/_hero", type: :view) do
     end
 
     it "button to find out more about NCCE" do
-      expect(rendered).to have_link("Learn more about us", href: about_path)
+      expect(rendered).to have_link("Learn more about us", href: cms_page_path("about"))
     end
   end
 end

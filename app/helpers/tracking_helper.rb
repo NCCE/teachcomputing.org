@@ -5,7 +5,7 @@ module TrackingHelper
     @tracking_categories ||= begin
       tracking_categories = {
         curriculum_key_stages_path => "Curriculum landing",
-        about_path => "About",
+        cms_page_path("about") => "About",
         gender_balance_path => "GBIC",
         hubs_path => "Hubs",
         impact_path => "Impact",
