@@ -141,11 +141,7 @@ module Cms
         when "rest"
           Providers::Strapi::Client.new
         when "graphql"
-          if Rails.env.test?
-            Providers::Strapi::GraphqlClient.new(schema_path: StrapiStubs::GRAPH_SCHEMA)
-          else
             Providers::Strapi::GraphqlClient.new
-          end
         else
           Providers::Strapi::Client.new
         end

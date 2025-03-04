@@ -1,6 +1,6 @@
 module Cms
   module Collections
-    class PrimaryGlossaryTable < Resource
+    class PrimaryGlossaryTableItems < Resource
       def self.is_collection = true
 
       def self.resource_key

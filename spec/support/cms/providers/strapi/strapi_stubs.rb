@@ -143,7 +143,7 @@ module StrapiStubs
   end
 
   def stub_strapi_primary_computing_glossary_table_collection(table: nil, page: 1, page_size: 10)
-    table_list = table.presence || Array.new(5) { Cms::Mocks::PrimaryGlossaryTable.generate_raw_data }
+    table_list = table.presence || Array.new(5) { Cms::Mocks::PrimaryGlossaryTableItems.generate_raw_data }
     if as_graphql
       stub_strapi_graphql_collection_query("primaryComputingGlossaryTables", table_list, page:, page_size:)
     else

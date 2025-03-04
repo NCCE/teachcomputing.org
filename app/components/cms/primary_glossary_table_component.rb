@@ -4,7 +4,7 @@ class Cms::PrimaryGlossaryTableComponent < ViewComponent::Base
   def initialize(title:)
     @title = title
     @records = begin
-      Cms::Collections::PrimaryGlossaryTable.all_records
+      Cms::Collections::PrimaryGlossaryTableItems.all_records
     rescue ActiveRecord::RecordNotFound
       []
     end
