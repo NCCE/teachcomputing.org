@@ -208,7 +208,6 @@ Rails.application.routes.draw do
   get "/get-involved", to: "pages#page", as: :get_involved, defaults: {page_slug: "get-involved"}
   get "/secondary-question-banks", to: "pages#page", as: :secondary_question_banks, defaults: {page_slug: "secondary-question-banks"}
   get "/powerupthedigitalgeneration", to: redirect("/supporting-partners")
-  get "/pedagogy", to: "pages#page", as: :pedagogy, defaults: {page_slug: "pedagogy"}
   get "/impact-and-evaluation", to: "pages#page", as: :impact, defaults: {page_slug: "impact-and-evaluation"}
   get "/a-level-computer-science", to: redirect("/isaac-computer-science")
   get "/gcse-revision", to: redirect("/isaac-computer-science")
