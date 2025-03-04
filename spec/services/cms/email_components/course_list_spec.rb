@@ -124,7 +124,6 @@ RSpec.describe Cms::EmailComponents::CourseList do
     it "should not render" do
       expect(@course_list.render?(email_template, user)).to be false
     end
-
   end
 
   context "with remove_on_match" do
