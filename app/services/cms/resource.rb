@@ -141,7 +141,7 @@ module Cms
         when "rest"
           Providers::Strapi::Client.new
         when "graphql"
-            Providers::Strapi::GraphqlClient.new
+          Providers::Strapi::GraphqlClient.new
         else
           Providers::Strapi::Client.new
         end
