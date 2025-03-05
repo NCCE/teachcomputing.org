@@ -6,12 +6,15 @@ class CommunityActivityListComponent < ViewComponent::Base
     @class_name = class_name
     @button_class = button_class
 
-    activities_with_achievements = programme_activity_grouping.programme_activities.not_legacy.map do |programme_activity|
+    activities_with_achievements = programme_activity_grouping.programme_activities.map do |programme_activity|
       {
         programme_activity:,
         achievement: community_achievements&.find { _1.activity_id == programme_activity.activity_id }
       }
     end
+
+    # Remove legacy only if they have an achievement
+    activities_with_achievements.delete_if { _1[:achievement].nil? && _1[:programme_activity].legacy }
 
     complete, non_complete = activities_with_achievements.partition { _1[:achievement]&.in_state? :complete }
 
