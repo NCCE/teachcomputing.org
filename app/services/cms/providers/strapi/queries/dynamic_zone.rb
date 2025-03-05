@@ -15,6 +15,7 @@ module Cms
             Components::Blocks::NumberedIconList,
             Components::Blocks::NumericCardsSection,
             Components::Blocks::PictureCardSection,
+            Components::Blocks::PrimaryGlossaryTable,
             Components::Blocks::QuestionAndAnswer,
             Components::Blocks::ResourceCardSection,
             Components::Blocks::SplitHorizontalCard,
