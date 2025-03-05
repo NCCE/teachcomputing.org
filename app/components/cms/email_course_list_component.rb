@@ -5,7 +5,11 @@ module Cms
     erb_template <<~ERB
       <table>
         <% if @section_title %>
-          <tr><td><h2><%= @section_title %></h2></td></tr>
+          <tr>
+            <td>
+              <h2><%= @section_title %></h2>
+            </td>
+          </tr>
         <% end %>
         <% @courses.each do |course| %>
           <tr>

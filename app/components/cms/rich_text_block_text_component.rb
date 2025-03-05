@@ -52,7 +52,6 @@ module Cms
     end
 
     class Link < RichTextBlockTextComponent
-      # Had to removed indentation in this erb as it was adding whitespace to page render
       erb_template <<~ERB
         <% @blocks[:children].each do |child| -%>
         <%= render build(child) -%>
