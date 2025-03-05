@@ -4,6 +4,7 @@ class ApplicationController < ActionController::Base
   include Pagy::Backend
 
   before_action :authenticate
+  before_action :access_cms_header
 
   def authenticate
     return unless ENV["BASIC_AUTH_PASSWORD"]
@@ -11,6 +12,12 @@ class ApplicationController < ActionController::Base
     authenticate_or_request_with_http_basic do |username, password|
       username == ENV["BASIC_AUTH_USER"] && password == ENV["BASIC_AUTH_PASSWORD"]
     end
+  end
+
+  def access_cms_header
+    @cms_header = Cms::Singles::Header.get
+  rescue ActiveRecord::RecordNotFound
+    @cms_header = nil
   end
 
   def authenticate_user!

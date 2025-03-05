@@ -8,19 +8,19 @@ RSpec.describe("components/_header", type: :view) do
       programme: create(:cs_accelerator))
   end
 
+  before do
+    stub_strapi_header
+    assign(:cms_header, Cms::Singles::Header.get)
+  end
+
   it "has a link to the home page " do
     render
     expect(rendered).to have_xpath('//a[@href = "/"][contains(@class, "govuk-header__link")]', count: 1)
   end
 
-  it "shows a link to Primary teachers" do
+  it "should render the header menu" do
     render
-    expect(rendered).to have_link("Subject lead toolkit", href: "/primary-teachers")
-  end
-
-  it "shows a link to Secondary teachers" do
-    render
-    expect(rendered).to have_link("Teacher certification", href: "/secondary-certification")
+    expect(rendered).to have_css(".cms-header-menu")
   end
 
   context "when a user is signed in" do

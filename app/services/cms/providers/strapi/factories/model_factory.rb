@@ -57,7 +57,20 @@ module Cms
               model_class.new(cms_models: strapi_data.map { ComponentFactory.process_component(_1) }.compact)
             elsif model_class == Models::EnrichmentList
               to_enrichment_list(all_data, strapi_data)
+            elsif model_class == Models::HeaderMenu
+              to_menu(strapi_data)
             end
+          end
+
+          def self.to_menu(strapi_data)
+            Models::HeaderMenu.new(
+              strapi_data.map do |menu_item|
+                {
+                  label: menu_item[:label],
+                  menu_items: menu_item[:menuItems].map { {label: _1[:label], url: _1[:url]} }
+                }
+              end
+            )
           end
 
           def self.to_seo(strapi_data)

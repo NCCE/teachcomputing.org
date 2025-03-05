@@ -32,6 +32,8 @@ module TeachComputing
       g.orm :active_record, primary_key_type: :uuid
     end
 
+    config.view_component.default_preview_layout = "view_component_preview"
+
     config.i18n.load_path += Dir[Rails.root.join("config", "locales", "**/*.{rb,yml}").to_s]
 
     config.mylearning_dashboard_url = ENV["MYLEARNING_DASHBOARD_URL"]

@@ -1,0 +1,15 @@
+<ul class='cms-header-menu'>
+  <% @menu_items.each do |nav_item| %>
+    <li class="govuk-body  cms-header-menu__item dropdown__expander" aria-expanded="false" tabindex="0">
+      <div class="cms-header-menu__wrap">
+        <span class="cms-header-menu__item-text"><%= nav_item[:label] %></span>
+        <span class="cms-header-menu__item-icon"></span>
+      </div>
+      <ul class="govuk-list govuk-body-s dropdown__expander-content">
+      <% nav_item[:menu_items].each do | item |%>
+        <li class="dropdown__expander-content-item"><%= link_to item[:label], item[:url], class: 'ncce-link--on-dark' %></li>
+      <% end %>
+      </ul>
+    </li>
+  <% end %>
+</ul>
