@@ -1,0 +1,3 @@
+<% @template.email_content.each do |comp| %>
+<%= render comp.render_text(@template, @user) if comp.render?(@template, @user) %>
+<% end %>

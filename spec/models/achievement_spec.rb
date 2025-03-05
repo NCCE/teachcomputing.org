@@ -437,6 +437,18 @@ RSpec.describe Achievement, type: :model do
     end
   end
 
+  describe "#initial_state" do
+    it "should be enrolled" do
+      expect(described_class.send(:initial_state)).to eq "enrolled"
+    end
+  end
+
+  describe "#transition_class" do
+    it "should be AchievementTransition" do
+      expect(described_class.send(:transition_class)).to eq AchievementTransition
+    end
+  end
+
   describe "after save" do
     let!(:activity) { create(:activity) }
     let!(:cs_accelerator) { create(:cs_accelerator) }

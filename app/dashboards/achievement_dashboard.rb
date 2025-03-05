@@ -8,6 +8,7 @@ class AchievementDashboard < BaseDashboard
   ATTRIBUTE_TYPES = {
     activity: GroupedActivityListField,
     user: Field::BelongsTo,
+    stem_activity_code: Field::String,
     self_verification_info: Field::String,
     current_state: ValidStatePickerField,
     id: Field::String,
@@ -24,6 +25,7 @@ class AchievementDashboard < BaseDashboard
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = %i[
     user
+    stem_activity_code
     activity
     current_state
     created_at

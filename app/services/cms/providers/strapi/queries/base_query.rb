@@ -9,6 +9,7 @@ module Cms
             Models::Aside => Aside,
             Models::BlogPreview => BlogPreview,
             Models::DynamicZone => DynamicZone,
+            Models::EmailTemplate => EmailTemplate,
             Models::EnrichmentDynamicZone => EnrichmentDynamicZone,
             Models::EnrichmentList => EnrichmentList,
             Models::FeaturedImage => FeaturedImage,

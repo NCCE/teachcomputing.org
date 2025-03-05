@@ -142,4 +142,6 @@ Rails.application.configure do
   config.hosts << "teachcomputing-staging.herokuapp.com"
   config.hosts << "qa.teachcomputing.org"
   config.hosts << "teachcomputing-qa.herokuapp.com"
+
+  routes.default_url_options = {host: "staging.teachcomputing.org"}
 end
