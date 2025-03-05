@@ -2,12 +2,12 @@ require "rails_helper"
 require "axe/rspec"
 
 RSpec.describe("Resource Page", type: [:system]) do
+  let(:slug) { "testing" }
+  let(:blog) { Cms::Mocks::Blog.generate_raw_data(slug:, title: "Test blog") }
+
   before do
-    stub_strapi_blog_post("testing", blog: Cms::Mocks::Blog.generate_raw_data(
-        slug: "testing",
-        title: "Test blog"
-      ))
-    visit cms_post_path("testing")
+    stub_strapi_blog_post(slug, blog:)
+    visit cms_post_path(slug)
   end
 
   it "is the correct page" do
