@@ -13,7 +13,6 @@ class PagesController < ApplicationController
     end
   end
 
-
   def i_belong
     if current_user
       programme = Programme.i_belong
