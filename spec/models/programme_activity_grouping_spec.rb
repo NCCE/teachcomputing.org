@@ -55,9 +55,9 @@ RSpec.describe ProgrammeActivityGrouping, type: :model do
         programme_activity.update(legacy: true)
       end
 
-      it "returns false" do
+      it "returns true" do
         grouping = programme_activity_groupings.first
-        expect(grouping.user_complete?(user)).to be false
+        expect(grouping.user_complete?(user)).to be true
       end
     end
   end
