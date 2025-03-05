@@ -2,7 +2,6 @@ require "rails_helper"
 require "axe/rspec"
 
 RSpec.describe("Collection Page", type: [:system]) do
-
   before do
     stub_strapi_blog_collection
     visit cms_posts_path
@@ -15,5 +14,4 @@ RSpec.describe("Collection Page", type: [:system]) do
   it "adds the resource key as class to main" do
     expect(page).to have_css("main.cms-blogs")
   end
-
 end
