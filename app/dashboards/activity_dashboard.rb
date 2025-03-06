@@ -25,7 +25,7 @@ class ActivityDashboard < BaseDashboard
     stem_activity_code: Field::String,
     remote_delivered_cpd: Field::Boolean,
     retired: Field::Boolean,
-    replaced_by: Field::BelongsTo.with_options(scope: -> {Activity.courses.order(:stem_activity_code)})
+    replaced_by: Field::BelongsTo.with_options(scope: -> { Activity.courses.order(:stem_activity_code) })
   }.freeze
 
   # COLLECTION_ATTRIBUTES
