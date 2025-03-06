@@ -1,10 +1,6 @@
 <div class="ncce-pathway-courses__course <%= 'ncce-pathway-courses__course-no-last-margin' unless last_margin %>">
   <p class="ncce-pathway-courses__link">
-    <% if activity.replaced_by %>
-      <%= link_to activity.replaced_by.title, course_path(id: activity.replaced_by.stem_activity_code, name: activity.replaced_by.slug), class: 'ncce-link' if activity.replaced_by.stem_activity_code %>
-    <% else %>
-      <%= link_to activity.title, course_path(id: activity.stem_activity_code, name: activity.slug), class: 'ncce-link' if activity.stem_activity_code %>
-    <% end %>
+    <%= link_to activity.title, course_path(id: activity.stem_activity_code, name: activity.slug), class: 'ncce-link' if activity.stem_activity_code %>
   </p>
 
   <div class="ncce-flex__space-between">
