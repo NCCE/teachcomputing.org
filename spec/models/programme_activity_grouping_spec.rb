@@ -80,6 +80,12 @@ RSpec.describe ProgrammeActivityGrouping, type: :model do
     end
   end
 
+  describe "#objective_displayed_in_body?" do
+    it "should default to true" do
+      expect(programme_activity_grouping.objective_displayed_in_body?).to be true
+    end
+  end
+
   describe "#users_completed" do
     let!(:programme) { create(:programme) }
     let!(:programme_activity_grouping) { create(:programme_activity_grouping, required_for_completion: 3, programme:) }

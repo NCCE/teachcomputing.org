@@ -13,7 +13,7 @@ class CommunityActivityListComponent < ViewComponent::Base
       }
     end
 
-    # Remove legacy only if they have an achievement
+    # Remove legacy if they do not have an achievement
     activities_with_achievements.delete_if { _1[:achievement].nil? && _1[:programme_activity].legacy }
 
     complete, non_complete = activities_with_achievements.partition { _1[:achievement]&.in_state? :complete }
