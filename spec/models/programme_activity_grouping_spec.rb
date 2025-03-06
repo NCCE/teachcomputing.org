@@ -55,9 +55,9 @@ RSpec.describe ProgrammeActivityGrouping, type: :model do
         programme_activity.update(legacy: true)
       end
 
-      it "returns false" do
+      it "returns true" do
         grouping = programme_activity_groupings.first
-        expect(grouping.user_complete?(user)).to be false
+        expect(grouping.user_complete?(user)).to be true
       end
     end
   end
@@ -77,6 +77,12 @@ RSpec.describe ProgrammeActivityGrouping, type: :model do
 
     it "should return just not community PAGs" do
       expect(described_class.not_community.to_a).to eq [not_community]
+    end
+  end
+
+  describe "#objective_displayed_in_body?" do
+    it "should default to true" do
+      expect(programme_activity_grouping.objective_displayed_in_body?).to be true
     end
   end
 
