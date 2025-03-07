@@ -23,6 +23,7 @@ module Cms
             Components::Blocks::TestimonialRow,
             Components::Blocks::TextWithAsides,
             Components::Blocks::TextWithTestimonial,
+            Components::Blocks::TwoColumnPictureSection,
             Components::Blocks::TwoColumnVideoSection
           ]
 
