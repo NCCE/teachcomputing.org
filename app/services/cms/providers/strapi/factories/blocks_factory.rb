@@ -43,7 +43,19 @@ module Cms
               to_icon_row(strapi_data)
             when "two-column-video-section"
               to_two_column_video_section(strapi_data)
+            when "text-with-testimonial"
+              to_text_with_testimonial(strapi_data)
             end
+          end
+
+          def self.to_text_with_testimonial(strapi_data)
+            DynamicComponents::Blocks::TextWithTestimonial.new(
+              text_content: to_content_block(strapi_data[:textContent]),
+              background_color: extract_color_name(strapi_data, :bkColor),
+              testimonial: to_testimonial(strapi_data[:testimonial]),
+              testimonial_side: strapi_data[:testimonialSide],
+              buttons: strapi_data[:buttons] ? strapi_data[:buttons].map { to_ncce_button(_1) } : []
+            )
           end
 
           def self.to_icon_row(strapi_data)
