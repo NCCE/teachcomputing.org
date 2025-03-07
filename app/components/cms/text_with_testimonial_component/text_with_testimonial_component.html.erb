@@ -1,0 +1,18 @@
+<%= render GovGridRowComponent.new(background_color: @background_color, additional_classes: "cms-text-with-testimonial") do |row|  %>
+  <%= row.with_column("full") do %>
+    <%= content_tag :div, class: row_classes do %>
+      <div class="tc-row-half">
+        <%= render @text_content.render %>
+        <div class="cms-button-container">
+          <% @buttons.each do |button| %>
+            <%= render button.render %>
+          <% end %>
+        </div>
+      </div>
+      <div class="tc-row-half">
+        <%= render @testimonial.render %>
+      </div>
+    <% end %>
+  <% end %>
+<% end %>
+

@@ -22,6 +22,7 @@ module Cms
             Components::Blocks::StickyDashboardBar,
             Components::Blocks::TestimonialRow,
             Components::Blocks::TextWithAsides,
+            Components::Blocks::TextWithTestimonial,
             Components::Blocks::TwoColumnVideoSection
           ]
 
