@@ -1,5 +1,3 @@
-require 'rails/generators'
-
 module Strapi
   class ComponentGenerator < Rails::Generators::Base
     source_root File.expand_path("component_templates", __dir__)
