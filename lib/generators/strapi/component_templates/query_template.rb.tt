@@ -1,0 +1,23 @@
+module Cms
+  module Providers
+    module Strapi
+      module Queries
+        module Components
+          module <%= @component_type_class %>
+            class <%= @component_name_class %> < BaseComponentQuery
+              def self.name = "Component<%= @component_name_class %>"
+
+              def self.base_fields
+                <<~GRAPHQL.freeze
+                  <%- @strapi_params.each do |param| -%>
+                  <%= param %>
+                  <%- end -%>
+                GRAPHQL
+              end
+            end
+          end
+        end
+      end
+    end
+  end
+end
