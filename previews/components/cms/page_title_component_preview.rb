@@ -24,4 +24,21 @@ class Cms::PageTitleComponentPreview < ViewComponent::Preview
       title_video_url: "https://www.youtube.com/watch?v=-fTboqiyjxk&list=PLwcV67XMdDdJT0TkvZo6cTDSR0uJgP3Ku"
     ))
   end
+
+  def with_background_color
+    render(Cms::PageTitleComponent.new(
+      title: "Page title",
+      sub_text: "Welcome to the page",
+      background_color: "orange"
+    ))
+  end
+
+  def with_i_belong_flag
+    render(Cms::PageTitleComponent.new(
+      title: "Page title",
+      sub_text: "Welcome to the page",
+      background_color: "orange",
+      i_belong_flag: true
+    ))
+  end
 end
