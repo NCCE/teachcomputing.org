@@ -14,5 +14,4 @@ class Cms::TextWithTestimonialComponent < ViewComponent::Base
     classes << "testimonial-#{@testimonial_side}"
     classes
   end
-
 end
