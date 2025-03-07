@@ -13,14 +13,14 @@ module Strapi
     TEST_PATH = "app/sevices/spec/#{PROVIDER}"
 
     def setup_params
-      raise Exception unless COMPONENT_TYPES.include?(options["component_type"])
+      raise StandardError unless COMPONENT_TYPES.include?(options["component_type"])
       @component_name_class = options["component_name"].classify
       @component_type_class = options["component_type"].camelize
       @component_filename = options["component_name"].underscore
       @component_type_filename = options["component_type"].underscore
       @component_strapi_name = options["component_name"].underscore.tr("_", "-")
       @strapi_params = options["strapi_params"]
-      @rails_param_names = options["strapi_params"].map{ _1.underscore }
+      @rails_param_names = options["strapi_params"].map { _1.underscore }
     end
 
     def create_query_file
@@ -42,7 +42,5 @@ module Strapi
     def run_other_generators
       generate "component Cms::#{@component_name_class} #{@rails_param_names.join(" ")} --test-framework=rspec"
     end
-
   end
-
 end
