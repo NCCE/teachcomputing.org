@@ -1,4 +1,4 @@
-module Strapi
+module StrapiGenerator
   class ComponentGenerator < Rails::Generators::Base
     source_root File.expand_path("component_templates", __dir__)
 
