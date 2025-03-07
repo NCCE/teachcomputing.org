@@ -14,6 +14,7 @@ module Cms
             Models::EnrichmentList => EnrichmentList,
             Models::FeaturedImage => FeaturedImage,
             Models::HeaderMenu => HeaderMenu,
+            Models::HomepageDynamicZone => HomepageDynamicZone,
             Models::PageTitle => PageTitle,
             Models::Seo => Seo,
             Models::SimpleTitle => SimpleField,

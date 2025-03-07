@@ -6,5 +6,7 @@ RSpec.describe Cms::Providers::Strapi::Queries::Components::Buttons::NcceButton 
       title
       link
       buttonTheme
+      loggedInTitle
+      loggedInLink
     ]
 end
