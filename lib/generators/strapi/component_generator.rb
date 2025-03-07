@@ -42,5 +42,41 @@ module Strapi
     def run_other_generators
       generate "component Cms::#{@component_name_class} #{@rails_param_names.join(" ")} --test-framework=rspec"
     end
+
+    def print_method_defintions
+      puts <<~HEREDOC
+
+      #{"*" * 80}
+
+      Remember to add the mapping method to #{STRAPI_PATH}factories/#{@component_type_filename}_factory.rb
+
+      !! Code provided below, but may require modification depending on data types !!
+
+      #{factory_key}
+      #{"-" * 80}
+
+      #{method_defintion}
+      #{"*" * 80}
+
+      HEREDOC
+    end
+
+    def factory_key
+      <<~RUBY
+      when "#{@component_strapi_name}":
+        to_#{@component_filename}(strapi_data)
+      RUBY
+    end
+
+    def method_defintion
+      <<~RUBY
+        def to_#{@component_filename}(strapi_data)
+          DynamicsComponents::Blocks::#{@component_name_class}.new(
+            #{@strapi_params.map{"#{_1.underscore}: strapi_data[:#{_1}]"}.join(",\n\s\s\s\s")}
+          )
+        end
+      RUBY
+    end
+
   end
 end
