@@ -10,6 +10,8 @@ module Cms
                 subText
                 titleVideoUrl
                 #{SharedFields.image_fields("titleImage")}
+                #{SharedFields.color_theme(:bkColor)}
+                iBelongFlag
               }
             GRAPHQL
           end
