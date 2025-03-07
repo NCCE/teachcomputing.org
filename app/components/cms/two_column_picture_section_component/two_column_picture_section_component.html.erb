@@ -1,0 +1,12 @@
+<%= render GovGridRowComponent.new(background_color: @background_color, additional_classes: "cms-two-column-picture-section-component") do |row|  %>
+  <%= row.with_column("full") do %>
+    <%= content_tag :div, class: align_classes do %>
+      <div class="tc-row-half">
+        <%= render @image.render %>
+      </div>
+      <div class="tc-row-half">
+        <%= render @text.render %>
+      </div>
+    <% end %>
+  <% end %>
+<% end %>

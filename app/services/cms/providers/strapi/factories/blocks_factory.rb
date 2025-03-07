@@ -43,12 +43,23 @@ module Cms
               to_icon_row(strapi_data)
             when "two-column-video-section"
               to_two_column_video_section(strapi_data)
+            when "two-column-picture-section"
+              to_two_column_picture_section(strapi_data)
             end
           end
 
           def self.to_icon_row(strapi_data)
             DynamicComponents::IconRow.new(
               icons: strapi_data[:icons].map { to_icon(_1) }
+            )
+          end
+
+          def self.to_two_column_picture_section(strapi_data)
+            DynamicComponents::TwoColumnPictureSection.new(
+              text: to_content_block(strapi_data[:textContent]),
+              image: to_image(strapi_data, :image),
+              image_side: strapi_data[:imageSide],
+              background_color: extract_color_name(strapi_data, :bkColor)
             )
           end
 
