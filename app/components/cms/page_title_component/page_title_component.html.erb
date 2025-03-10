@@ -1,4 +1,4 @@
-<%= render GovGridRowComponent.new(background_color: "lime-green", padding: {top: 7, bottom: 7}) do |row| %>
+<%= render GovGridRowComponent.new(background_color: @background_color, padding: {top: 7, bottom: 7}) do |row| %>
   <%= row.with_column("full") do %>
 
     <div class="page-title__wrapper">
@@ -25,6 +25,10 @@
         <% elsif @title_image %>
           <div class="page-title__media">
             <%= render Cms::ImageComponent.new(@title_image, show_caption: false) %>
+          </div>
+        <% elsif @i_belong_flag %>
+          <div class="page-title__i-belong-flag">
+            <%= render IBelongFlagComponent.new %>
           </div>
         <% end %>
       </div>

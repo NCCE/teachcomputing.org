@@ -22,7 +22,7 @@
     background-color: $white;
     display: flex;
     flex-direction: column;
-    
+
     @include govuk-media-query($from: tablet) {
       flex-direction: row;
     }
@@ -85,6 +85,25 @@
           margin: 0;
         }
       }
+    }
+  }
+
+  &__i-belong-flag {
+    display: none; // no logo in mobile
+    grid-area: logo;
+    .i-belong-flag {
+      position: relative;
+    }
+    @include govuk-media-query($from: desktop) {
+      display: block;
+      text-align: right;
+      img {
+        margin: 0 2rem 2rem auto;
+      }
+    }
+
+    img {
+      display: block;
     }
   }
 }
