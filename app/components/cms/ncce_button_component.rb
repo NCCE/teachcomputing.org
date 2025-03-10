@@ -8,7 +8,7 @@ class Cms::NcceButtonComponent < ViewComponent::Base
   end
 
   def button_classes
-    classes = %i[govuk-button button]
+    classes = %i[govuk-button button govuk-!-margin-top-4]
     classes << "ncce-button--#{@color}" if @color
     classes
   end
