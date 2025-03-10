@@ -3,7 +3,7 @@
 class Cms::HorizontalCardWithAsidesComponent < Cms::WithAsidesComponent
   delegate :cms_color_theme_class, to: :helpers
 
-  def initialize(text:, button: nil, aside_sections:, background_color: nil, color_theme: nil)
+  def initialize(text:, aside_sections:, button: nil, background_color: nil, color_theme: nil)
     super(aside_sections:)
     @text = text
     @button = button
