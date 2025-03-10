@@ -43,7 +43,19 @@ module Cms
               to_icon_row(strapi_data)
             when "two-column-video-section"
               to_two_column_video_section(strapi_data)
+            when "horizontal-card-with-asides"
+              to_horizontal_card_with_asides(strapi_data)
             end
+          end
+
+          def self.to_horizontal_card_with_asides(strapi_data)
+            DynamicComponents::HorizontalCardWithAsides.new(
+              text: to_content_block(strapi_data[:textContent]),
+              button: to_ncce_button(strapi_data[:button]),
+              aside_sections: extract_aside_sections(strapi_data, param_name: :asides),
+              background_color: extract_color_name(strapi_data, :bkColor),
+              color_theme: extract_color_name(strapi_data, :theme)
+            )
           end
 
           def self.to_icon_row(strapi_data)
