@@ -276,6 +276,9 @@ GEM
       fog-core
       nokogiri (>= 1.5.11, < 2.0.0)
     formatador (1.1.0)
+    generator_spec (0.10.0)
+      activesupport (>= 3.0.0)
+      railties (>= 3.0.0)
     geocoder (1.8.2)
     globalid (1.2.1)
       activesupport (>= 6.1)
@@ -777,6 +780,7 @@ DEPENDENCIES
   faker
   faraday
   fog-aws
+  generator_spec
   geocoder (>= 1.6.6)
   graphlient
   graphql
