@@ -1,0 +1,21 @@
+.cms-two-column-picture-section-component {
+  .cms-image {
+    display: flex;
+    width: 100%;
+    height: 100%
+  }
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  &--right-align {
+    flex-direction: row-reverse !important;
+
+    @include govuk-media-query($until: tablet) {
+      flex-direction: column-reverse !important;
+    }
+  }
+}
