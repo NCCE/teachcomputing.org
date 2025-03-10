@@ -15,7 +15,7 @@
     flex-direction: row-reverse !important;
 
     @include govuk-media-query($until: tablet) {
-      flex-direction: column !important;
+      flex-direction: column-reverse !important;
     }
   }
 }
