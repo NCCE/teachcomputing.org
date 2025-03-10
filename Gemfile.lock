@@ -100,7 +100,7 @@ GEM
       administrate (> 0.8, < 1)
       cocoon (~> 1.2, >= 1.2.11)
     ast (2.4.2)
-    attr_encrypted (4.0.0)
+    attr_encrypted (4.2.0)
       encryptor (~> 3.0.0)
     audited (5.8.0)
       activerecord (>= 5.2, < 8.2)
