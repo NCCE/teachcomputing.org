@@ -8,7 +8,7 @@ class Cms::TwoColumnPictureSectionComponent < ViewComponent::Base
     @background_color = background_color
   end
 
-  def align_classes
+  def image_align_classes
     classes = ["tc-row"]
     classes << "cms-two-column-picture-section-component--right-align" if @image_side == "right"
     classes
