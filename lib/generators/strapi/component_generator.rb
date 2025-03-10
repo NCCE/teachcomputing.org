@@ -40,10 +40,9 @@ module Strapi
     end
 
     def run_view_component_generator
-      params = @rails_param_names.join(" ").presence
       Rails::Generators.invoke(
         "component",
-        ["Cms::#{@component_name_class}", params, "--test-framework=rspec", "--sidecar"].compact,
+        ["Cms::#{@component_name_class}", *@rails_param_names, "--test-framework=rspec", "--sidecar"].compact,
         behaviour: :invoke,
         destination_root:
       )
