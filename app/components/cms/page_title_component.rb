@@ -10,4 +10,11 @@ class Cms::PageTitleComponent < ViewComponent::Base
     @background_color = background_color
     @i_belong_flag = i_belong_flag
   end
+
+  def background_color_class
+    # Default background color unless specified
+    return @background_color if @background_color
+
+    "lime-green"
+  end
 end

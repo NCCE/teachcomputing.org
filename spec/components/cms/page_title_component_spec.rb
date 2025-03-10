@@ -24,8 +24,8 @@ RSpec.describe Cms::PageTitleComponent, type: :component do
       expect(page).not_to have_css(".page-title__status-message")
     end
 
-    it "doesnt apply background color class when not present" do
-      expect(page).not_to have_css("[class$='-bg']")
+    it "applies the default background color" do
+      expect(page).to have_css(".lime-green-bg")
     end
 
     it "doesnt render i belong flag when false" do
