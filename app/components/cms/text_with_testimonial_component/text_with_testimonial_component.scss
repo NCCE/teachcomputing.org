@@ -1,0 +1,24 @@
+.cms-text-with-testimonial {
+  .cms-button-container {
+    width: 80%;
+    @include govuk-media-query($until: tablet) {
+      width: 100%;
+    }
+  }
+
+  .tc-row {
+    &.testimonial-left {
+      flex-direction: row-reverse;
+      @include govuk-media-query($until: tablet) {
+        flex-direction: column-reverse;
+      }
+    }
+
+    &.testimonial-right {
+      flex-direction: row;
+      @include govuk-media-query($until: tablet) {
+        flex-direction: column;
+      }
+    }
+  }
+}
