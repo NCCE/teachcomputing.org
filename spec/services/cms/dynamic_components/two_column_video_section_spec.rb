@@ -3,11 +3,13 @@ require "rails_helper"
 RSpec.describe Cms::DynamicComponents::TwoColumnVideoSection do
   before do
     @section = Cms::Providers::Strapi::Factories::ComponentFactory.process_component(
-      Cms::Mocks::DynamicComponents::TwoColumnPictureSection.generate_raw_data
+      Cms::Mocks::DynamicComponents::TwoColumnVideoSection.generate_raw_data(
+        video: Cms::Mocks::DynamicComponents::EmbeddedVideo.generate_raw_data
+      )
     )
   end
 
-  it "should render as TwoColumnPictureSectionComponent" do
-    expect(@section.render).to be_a(Cms::TwoColumnPictureSectionComponent)
+  it "should render as TwoColumnVideoSectionComponent" do
+    expect(@section.render).to be_a(Cms::TwoColumnVideoSectionComponent)
   end
 end
