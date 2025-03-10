@@ -52,7 +52,7 @@ RSpec.describe Strapi::ComponentGenerator, type: :generator do
     it "creates the query file" do
       expect {
         run_generator %w[gen_test not-a-type --strapi-params=title textContent]
-      }.to raise_error
+      }.to raise_error(StandardError)
     end
   end
 end
