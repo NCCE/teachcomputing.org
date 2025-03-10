@@ -18,7 +18,7 @@ en:
           assess:
             title: "Assess your school’s computing provision"
             text:
-              html: "Self-evaluation is the first step to improvement. The %{cqf_link} helps you identify strengths and weaknesses in your computing curriculum and set actionable goals towards achieving our accredited Computing Quality Mark.<br /><br />You can also join a %{cluster_link} to work collaboratively with other schools to improve your computing provision."
+              html: "Self-evaluation is the first step to improvement. The %{cqf_link} helps you identify strengths and weaknesses in your computing curriculum and set actionable goals towards achieving our accredited Computing Quality Mark."
       supporting:
         title: "Supporting your GCSE Computer Science provision"
         para_1: "If you don’t currently offer GCSE Computer Science at your school, we are dedicated to work with you. Our support will help you create a sustainable computing department, improve provision and build capability and confidence –ultimately getting you in a better position to offer this key subject to your students."
