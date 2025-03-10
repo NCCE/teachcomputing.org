@@ -46,25 +46,25 @@ module Strapi
     def print_method_defintions
       puts <<~HEREDOC
 
-      #{"*" * 80}
+        #{"*" * 80}
 
-      Remember to add the mapping method to #{STRAPI_PATH}factories/#{@component_type_filename}_factory.rb
+        Remember to add the mapping method to #{STRAPI_PATH}factories/#{@component_type_filename}_factory.rb
 
-      !! Code provided below, but may require modification depending on data types !!
+        !! Code provided below, but may require modification depending on data types !!
 
-      #{factory_key}
-      #{"-" * 80}
+        #{factory_key}
+        #{"-" * 80}
 
-      #{method_defintion}
-      #{"*" * 80}
+        #{method_defintion}
+        #{"*" * 80}
 
       HEREDOC
     end
 
     def factory_key
       <<~RUBY
-      when "#{@component_strapi_name}":
-        to_#{@component_filename}(strapi_data)
+        when "#{@component_strapi_name}":
+          to_#{@component_filename}(strapi_data)
       RUBY
     end
 
@@ -72,11 +72,10 @@ module Strapi
       <<~RUBY
         def to_#{@component_filename}(strapi_data)
           DynamicsComponents::Blocks::#{@component_name_class}.new(
-            #{@strapi_params.map{"#{_1.underscore}: strapi_data[:#{_1}]"}.join(",\n\s\s\s\s")}
+            #{@strapi_params.map { "#{_1.underscore}: strapi_data[:#{_1}]" }.join(",\n\s\s\s\s")}
           )
         end
       RUBY
     end
-
   end
 end
