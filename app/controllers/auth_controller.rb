@@ -19,7 +19,14 @@ class AuthController < ApplicationController
     Achiever::FetchUsersCompletedCoursesFromAchieverJob.perform_later(user)
   rescue => e
     Sentry.with_scope do |scope|
-      scope.set_context("oauth_custom_claim", auth&.info)
+      scope.set_context("CustomClaim", {
+        email: auth.info.email,
+        first_name: auth.info.first_name,
+        last_name: auth.info.last_name,
+        stem_achiever_contact_no: auth.info.achiever_contact_no,
+        auth0_id: auth.uid,
+        stem_user_id: auth.info.stem_user_id
+      })
       Sentry.capture_exception(e)
     end
 
