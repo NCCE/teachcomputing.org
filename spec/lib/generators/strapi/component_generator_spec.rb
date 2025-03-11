@@ -89,7 +89,7 @@ RSpec.describe Strapi::ComponentGenerator, type: :generator do
     end
 
     def file_path(file)
-      "tmp/gen_test/#{file}"
+      File.join(tmp_dir, file)
     end
   end
 
