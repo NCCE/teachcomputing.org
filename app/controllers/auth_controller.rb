@@ -3,10 +3,6 @@ class AuthController < ApplicationController
     auth = omniauth_params
     course_booking_uri = course_redirect_params
 
-    Sentry.configure_scope do |scope|
-      scope.set_context("oauth_custom_claim", auth.info)
-    end
-
     user_exists = User.exists?(stem_user_id: auth.info.stem_user_id)
     user = User.from_auth(auth.uid, auth.credentials, auth.info)
 
@@ -22,7 +18,10 @@ class AuthController < ApplicationController
 
     Achiever::FetchUsersCompletedCoursesFromAchieverJob.perform_later(user)
   rescue => e
-    Sentry.capture_exception(e)
+    Sentry.with_scope do |scope|
+      scope.set_context("oauth_custom_claim", auth&.info)
+      Sentry.capture_exception(e)
+    end
 
     raise e
   end
