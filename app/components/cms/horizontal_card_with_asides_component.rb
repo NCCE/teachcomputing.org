@@ -13,10 +13,7 @@ class Cms::HorizontalCardWithAsidesComponent < Cms::WithAsidesComponent
 
   def wrapper_classes
     classes = ["horizontal-card-with-asides-component__wrapper white-bg"]
-    if @color_theme
-      classes << cms_color_theme_class(@color_theme, "left")
-      classes << "#{@color_theme}-theme"
-    end
+    classes << cms_color_theme_class(@color_theme, "left") if @color_theme
     classes
   end
 end
