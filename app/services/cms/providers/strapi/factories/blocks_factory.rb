@@ -45,6 +45,19 @@ module Cms
               to_two_column_video_section(strapi_data)
             when "primary-glossary-table"
               DynamicComponents::PrimaryGlossaryTable.new(title: strapi_data[:title])
+            when "i-belong-picture-card-section"
+              to_card_wrapper(strapi_data, to_i_belong_picture_card_section(strapi_data[:iBelongCards]))
+            end
+          end
+
+          def self.to_i_belong_picture_card_section(strapi_data)
+            strapi_data.map do |card_data|
+              DynamicComponents::ContentBlocks::IBelongPictureCard.new(
+                title: card_data[:title],
+                image: to_image(card_data, :image, default_size: :medium),
+                text_content: to_content_block(card_data[:textContent]),
+                card_links: group_i_belong_card_links(card_data)
+              )
             end
           end
 
