@@ -9,7 +9,7 @@ module Cms
 
               attribute(:title) { Faker::Lorem.sentence }
               attribute(:textContent) { RichBlocks.generate_data }
-              attribute(:image) { { data: Image.generate_raw_data } }
+              attribute(:image) { {data: Image.generate_raw_data} }
               attribute(:loggedOutLinkTitle) { Faker::Lorem.sentence }
               attribute(:loggedOutLink) { Faker::Internet.url }
               attribute(:enrolledLinkTitle) { Faker::Lorem.sentence }
