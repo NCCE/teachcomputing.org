@@ -2,20 +2,6 @@
 <div class="ncce-courses__filters-wrapper-title--desktop">
   <h2 class="govuk-heading-s">Filter courses</h2>
 </div>
-<div class="ncce-aside ncce-aside--filters govuk-!-margin-top-2">
-  <div class="ncce-courses__filters-wrapper-title--mobile govuk-!-margin-top-1">
-    <h2 class="govuk-heading-s">Filter courses</h2>
-  </div>
-  <%= label_tag :date_range, 'Have a specific date?', class: 'govuk-body-m ncce-label--s' %>
-  <%= render DatepickerComponent.new(
-      "date_range",
-      nil,
-      flatpickr: { mode: "range" },
-      options: { data: { action: "changeRange->course-filter#filter changeRange->course-filter#addRangeFilter changeRange->course-filter#dateRangeSearched"} },
-      input_options: { placeholder: "Select a date or date range" }
-    )
-  %>
-</div>
 
 <div class="ncce-aside ncce-aside--filters govuk-!-margin-top-2" data-action="resize@window->course-filter#openFilterFormOnDesktop" data-course-filter-target="filterFormHeader">
   <div class="ncce-aside--filters-header">

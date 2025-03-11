@@ -73,7 +73,7 @@ RSpec.describe("courses/_aside-filters", type: :view) do
       end
 
       it "renders the checkboxes" do
-        expect(rendered).to have_css(".ncce-checkboxes__input", count: 7)
+        expect(rendered).to have_css(".ncce-checkboxes__input", count: 4)
 
         expect(rendered).to have_css(".ncce-checkboxes__label", text: "0 - 3 Hours")
         expect(rendered).to have_css(".ncce-checkboxes__label", text: "3 - 6 Hours")
