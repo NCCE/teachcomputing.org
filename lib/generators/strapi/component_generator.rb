@@ -10,7 +10,8 @@ module Strapi
     PROVIDER = "providers/strapi/"
     BASE_PATH = "app/services/cms/"
     STRAPI_PATH = "#{BASE_PATH}#{PROVIDER}"
-    TEST_PATH = "spec/services/cms/#{PROVIDER}"
+    TEST_BASE_PATH = "spec/services/cms/"
+    TEST_PATH = "#{TEST_BASE_PATH}#{PROVIDER}"
 
     def setup_params
       raise StandardError unless COMPONENT_TYPES.include?(component_type)
@@ -37,6 +38,10 @@ module Strapi
 
     def create_data_file
       template("mapping_template.rb.tt", "#{BASE_PATH}dynamic_components/#{@component_type_filename}/#{@component_filename}.rb")
+    end
+
+    def create_data_text
+      template("mapping_test_template.rb.tt", "#{TEST_BASE_PATH}dynamic_components/#{@component_type_filename}/#{@component_filename}_spec.rb")
     end
 
     def run_view_component_generator

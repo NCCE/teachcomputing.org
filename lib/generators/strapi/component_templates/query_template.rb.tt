@@ -5,7 +5,7 @@ module Cms
         module Components
           module <%= @component_type_class %>
             class <%= @component_name_class %> < BaseComponentQuery
-              def self.name = "Component<%= @component_name_class %>"
+              def self.name = "Component<%= @component_type_class %><%= @component_name_class %>"
 
               def self.base_fields
                 <<~GRAPHQL.freeze
