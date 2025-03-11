@@ -61,6 +61,19 @@ module Cms
               to_full_width_image_banner(strapi_data)
             when "horizontal-card-with-asides"
               to_horizontal_card_with_asides(strapi_data)
+            when "i-belong-picture-card-section"
+              to_card_wrapper(strapi_data, to_i_belong_picture_card_section(strapi_data[:iBelongCards]))
+            end
+          end
+
+          def self.to_i_belong_picture_card_section(strapi_data)
+            strapi_data.map do |card_data|
+              DynamicComponents::ContentBlocks::IBelongPictureCard.new(
+                title: card_data[:title],
+                image: to_image(card_data, :image, default_size: :medium),
+                text_content: to_content_block(card_data[:textContent]),
+                card_links: group_i_belong_card_links(card_data)
+              )
             end
           end
 

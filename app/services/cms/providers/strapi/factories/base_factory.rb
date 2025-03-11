@@ -89,6 +89,23 @@ module Cms
                 url: strapi_data[:url]
               )
             end
+
+            def group_i_belong_card_links(strapi_data)
+              {
+                enrolled: {
+                  link: strapi_data[:enrolledLink],
+                  title: strapi_data[:enrolledLinkTitle]
+                },
+                not_enrolled: {
+                  link: strapi_data[:notEnrolledLink],
+                  title: strapi_data[:notEnrolledLinkTitle]
+                },
+                logged_out: {
+                  link: strapi_data[:loggedOutLink],
+                  title: strapi_data[:loggedOutLinkTitle]
+                }
+              }
+            end
           end
         end
       end

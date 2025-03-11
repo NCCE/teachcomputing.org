@@ -13,6 +13,7 @@ module Cms
             Components::Blocks::FullWidthText,
             Components::Blocks::HorizontalCard,
             Components::Blocks::HorizontalCardWithAsides,
+            Components::Blocks::IBelongPictureCardSection,
             Components::Blocks::IconRow,
             Components::Blocks::NumberedIconList,
             Components::Blocks::NumericCardsSection,
