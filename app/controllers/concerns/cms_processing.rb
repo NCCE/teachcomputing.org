@@ -37,6 +37,6 @@ module CmsProcessing
   end
 
   def validate_slug!(slug)
-    raise ActiveRecord::RecordNotFound unless /^[a-zA-z0-9\-_\/]+$/.match(slug)
+    raise ActiveRecord::RecordNotFound unless slug.match?(/^[a-zA-z0-9\-_\/]+$/)
   end
 end
