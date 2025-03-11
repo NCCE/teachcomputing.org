@@ -3,7 +3,6 @@ require "rails_helper"
 RSpec.describe Certificates::ALevelController do
   let(:user) { create(:user) }
   let(:certificate) { create(:a_level) }
-  let(:badge) { create(:badge, programme: certificate) }
   let(:enrolment) { create(:user_programme_enrolment, user: user, programme: certificate) }
   let(:assessment) { create(:assessment, programme: certificate) }
 
@@ -40,36 +39,6 @@ RSpec.describe Certificates::ALevelController do
 
       it "asks client not to cache a private page" do
         expect(response.headers["cache-control"]).to eq("no-store")
-      end
-    end
-
-    describe "enrolled with badge" do
-      before do
-        badge
-        assessment
-        enrolment
-        stub_issued_badges(user.id)
-        allow_any_instance_of(AuthenticationHelper).to receive(:current_user).and_return(user)
-        get "/certificate/a-level-certificate"
-      end
-
-      it "renders the correct template" do
-        expect(response).to render_template("show")
-      end
-    end
-
-    describe "enrolled with badge but credly errors" do
-      before do
-        badge
-        assessment
-        enrolment
-        stub_issued_badges_failure(user.id)
-        allow_any_instance_of(AuthenticationHelper).to receive(:current_user).and_return(user)
-        get "/certificate/a-level-certificate"
-      end
-
-      it "renders the correct template" do
-        expect(response).to render_template("show")
       end
     end
 

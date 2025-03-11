@@ -9,11 +9,17 @@
 
       <% if @image %>
         <div class="cms-full-width-banner__media">
+          <% if @i_belong_flag %>
+            <%= content_tag(:div, nil, class: "cms-full-width-banner__media--with-flag") %>
+          <% end %>
+          <% if @corner_flourish %>
+            <%= content_tag(:div, nil, class: "cms-full-width-banner__media--with-flourish-#{@image_side}") %>
+          <% end %>
           <%= render Cms::ImageComponent.new(@image, show_caption: false, link: @image_link) %>
         </div>
       <% end %>
 
-      <div class="cms-full-width-banner__content">
+      <div class="cms-full-width-banner__content white-bg">
         <%= render @text_content.render %>
 
         <% if @buttons %>
@@ -24,6 +30,7 @@
           </div>
         <% end %>
       </div>
+
     <% end %>
   <% end %>
 <% end %>

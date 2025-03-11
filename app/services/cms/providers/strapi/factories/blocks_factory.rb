@@ -23,6 +23,8 @@ module Cms
               to_question_and_answer(strapi_data)
             when "resource-card-section"
               to_card_wrapper(strapi_data, to_resource_card_array(strapi_data[:resourceCards]))
+            when "course-cards-section"
+              to_card_wrapper(strapi_data, to_course_card_array(strapi_data[:cards]))
             when "split-horizontal-card"
               to_split_horizontal_card(strapi_data)
             when "testimonial-row"
@@ -37,7 +39,28 @@ module Cms
               to_enrolment_testimonial(strapi_data)
             when "enrolment-split-course-card"
               to_enrolment_split_course_card(strapi_data)
+            when "icon-row"
+              to_icon_row(strapi_data)
+            when "two-column-video-section"
+              to_two_column_video_section(strapi_data)
             end
+          end
+
+          def self.to_icon_row(strapi_data)
+            DynamicComponents::IconRow.new(
+              icons: strapi_data[:icons].map { to_icon(_1) }
+            )
+          end
+
+          def self.to_two_column_video_section(strapi_data)
+            DynamicComponents::TwoColumnVideoSection.new(
+              left_column_content: to_content_block(strapi_data[:leftColumnContent]),
+              video: to_embedded_video(strapi_data[:video]),
+              right_column_content: to_content_block(strapi_data[:rightColumnContent]),
+              background_color: extract_color_name(strapi_data, :bkColor),
+              left_column_button: to_ncce_button(strapi_data[:leftColumnButton]),
+              box_color: extract_color_name(strapi_data, :boxColor)
+            )
           end
 
           def self.to_enrolment_split_course_card(strapi_data)
@@ -112,12 +135,24 @@ module Cms
             end
           end
 
+          def self.to_course_card_array(strapi_data)
+            strapi_data.map do |card_data|
+              DynamicComponents::CourseCard.new(
+                title: card_data[:title],
+                banner_text: card_data[:bannerText],
+                course_code: card_data[:courseCode],
+                description: to_content_block(card_data[:description]),
+                image: to_image(card_data, :image, default_size: :medium)
+              )
+            end
+          end
+
           def self.to_card_wrapper(strapi_data, cards_block, title_as_paragraph: false)
             DynamicComponents::CardWrapper.new(
               title: strapi_data[:sectionTitle],
-              sub_text: strapi_data[:subText],
+              intro_text: to_content_block(strapi_data[:introText].presence || []),
               cards_block: cards_block,
-              cards_per_row: strapi_data[:cardsPerRow],
+              cards_per_row: strapi_data[:cardsPerRow].presence || 3,
               background_color: extract_color_name(strapi_data, :bkColor),
               title_as_paragraph:
             )
@@ -132,7 +167,9 @@ module Cms
               image_link: strapi_data[:imageLink],
               buttons: strapi_data[:buttons] ? strapi_data[:buttons].map { to_ncce_button(_1) } : [],
               title: strapi_data[:sectionTitle],
-              show_bottom_border: strapi_data[:showBottomBorder]
+              show_bottom_border: strapi_data[:showBottomBorder],
+              i_belong_flag: strapi_data[:iBelongFlag],
+              corner_flourish: strapi_data[:imageCornerFlourish]
             )
           end
 
@@ -153,7 +190,8 @@ module Cms
               color_theme: extract_color_name(strapi_data, :colorTheme),
               icon_block: to_icon_block(strapi_data[:iconBlock]),
               spacing: strapi_data[:spacing],
-              external_title: strapi_data[:externalTitle]
+              external_title: strapi_data[:externalTitle],
+              background_color: extract_color_name(strapi_data, :bkColor)
             )
           end
 

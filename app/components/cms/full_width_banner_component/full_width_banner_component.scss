@@ -12,38 +12,81 @@
 }
 
 .cms-full-width-banner {
+  display: flex;
+  flex-direction: row;
 
   &.right-align {
     flex-direction: row-reverse;
   }
 
-  display: flex;
-
-  flex-direction: row;
-  gap: 15px;
-
   @include govuk-media-query($until: tablet) {
     flex-direction: column;
-    gap: 0px;
+
+    &.right-align {
+      flex-direction: column;
+    }
   }
 
   &__media {
     flex: 0 0 calc(100% * 1/3);
-    padding: 10px;
+    position: relative;
+
+    &--with-flag {
+      position: absolute;
+      top: 0;
+      left: 5px;
+      height: 97px;
+      width: 79px;
+      display: block;
+      background-image: url("../images/logos/i_belong_flag.svg");
+      background-size: 100%;
+      background-repeat: no-repeat;
+    }
+
+    &--with-flourish {
+      position: relative;
+
+      &-left,
+      &-right {
+        position: absolute;
+        bottom: 0;
+        height: 163px;
+        width: 162px;
+        display: block;
+        background-image: url("../images/components/cms/full_width_banner_component/flourish.svg");
+      }
+
+      &-left {
+        left: 0;
+      }
+
+      &-right {
+        right: 0;
+        transform: scaleX(-1);
+      }
+    }
+
+    .cms-image {
+      display: flex;
+      width: 100%;
+      height: 100%
+    }
 
     img {
       width: 100%;
+      height: 100%;
+      object-fit: cover;
     }
+
   }
-  
+
   &__content {
     flex: 1 1 calc(100% * 2/3);
-    padding: 20px 0px;
+    padding: 20px 20px;
 
     .govuk-button {
       min-width: 300px;
     }
-
   }
 
 }

@@ -31,6 +31,8 @@ module Cms
             end
 
             def to_content_block(data, with_wrapper: false, **)
+              return nil if data.nil?
+
               data.map! do |block|
                 block[:image] = as_image(block[:image], :medium) if block[:type] == "image"
                 block
@@ -55,6 +57,8 @@ module Cms
             end
 
             def to_ncce_button(strapi_data)
+              return nil if strapi_data.nil?
+
               DynamicComponents::NcceButton.new(title: strapi_data[:title], link: strapi_data[:link], color: strapi_data[:buttonTheme])
             end
 
@@ -71,6 +75,12 @@ module Cms
                 filename: data[:name],
                 size: data[:size],
                 updated_at: DateTime.parse(data[:updatedAt])
+              )
+            end
+
+            def to_embedded_video(strapi_data)
+              DynamicComponents::EmbeddedVideo.new(
+                url: strapi_data[:url]
               )
             end
           end

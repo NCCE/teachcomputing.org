@@ -18,11 +18,6 @@
               <%= link_to 'Download your certificate (PDF)', certificate_cs_accelerator_certificate_path, class: 'button govuk-button lp-certs--button', data: tracking_data('CSA certificate') %>
             </p>
           </div>
-          <% if @issued_badge.present? %>
-            <div class='govuk-body'>
-              <%= render CompletedDashBadgeComponent.new(badge: @issued_badge, tracking_event_category: tracking_category, tracking_event_label: 'CSA badge') %>
-            </div>
-          <% end %>
           <h2 class="govuk-heading-m">Next steps</h2>
           <ul class="govuk-list ncce-activity-list ncce-activity-list--programme govuk-!-margin-bottom-4" role="list">
             <li class="ncce-activity-list__item">

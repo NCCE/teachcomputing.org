@@ -29,11 +29,6 @@
       </div>
     </div>
   </div>
-  <% if @issued_badge %>
-    <div class="ncce-csa-dash__objective">
-      <%= render DashBadgeComponent.new(badge: @issued_badge, tracking_event_category: tracking_category, tracking_event_label: 'CSA badge') %>
-    </div>
-  <% end %>
 <% end %>
 
 <div class="ncce-csa-dash__objective

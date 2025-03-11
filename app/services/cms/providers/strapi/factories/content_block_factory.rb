@@ -20,6 +20,8 @@ module Cms
               to_enrol_button(strapi_data)
             when "link-with-icon"
               to_link_with_icon(strapi_data)
+            when "embedded-video"
+              to_embedded_video(strapi_data)
             end
           end
 

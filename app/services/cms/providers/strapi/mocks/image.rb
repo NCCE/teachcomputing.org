@@ -9,8 +9,8 @@ module Cms
             thumbnail: [250, 100]
           }
 
-          def self.as_model
-            Factories::ModelFactory.as_image(generate_data)
+          def self.as_model(caption: nil)
+            Factories::ModelFactory.as_image(generate_data(caption:))
           end
 
           def self.generate_raw_data(caption: nil)

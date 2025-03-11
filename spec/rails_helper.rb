@@ -4,6 +4,7 @@ require "simplecov"
 
 SimpleCov.minimum_coverage ENV["SIMPLECOV_MIN_COVERAGE"].to_i
 SimpleCov.start "rails" do
+  require_relative "support/simplecov_warnings_patch" # To remove excess warnings from line below
   enable_coverage_for_eval
 
   add_group "Services", "app/services"
@@ -65,7 +66,6 @@ RSpec.configure do |config|
   config.filter_rails_from_backtrace!
   config.include RackAttackStubs
   config.include AchieverStubs
-  config.include CredlyStubs
   config.include CurriculumStubs
   config.include StrapiStubs
   config.include Cms::Mocks
@@ -99,6 +99,11 @@ RSpec.configure do |config|
 
   config.before(:each, type: :system) do
     driven_by selenium_driver
+    stub_strapi_header
+  end
+
+  config.before(:each, type: :request) do
+    stub_strapi_header
   end
 
   config.after(:each, js: true, type: :system) do |_spec|

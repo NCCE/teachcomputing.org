@@ -18,7 +18,6 @@ module Certificates
       @community_groups = @programme.programme_activity_groupings.community.order(:sort_key).includes(programme_activities: :activity)
 
       @completed_comm_groups, @incomplete_comm_groups = @community_groups.partition { _1.user_complete?(current_user) }
-      assign_issued_badge_data
 
       render :show
     end
@@ -35,24 +34,11 @@ module Certificates
       return redirect_to i_belong_path unless @programme.user_completed?(current_user)
 
       @complete_achievements = complete_achievements
-      @badge_tracking_event_category = "I belong complete"
-      @badge_tracking_event_label = "I belong badge"
-      assign_issued_badge_data
 
       render :complete
     end
 
     private
-
-    def assign_issued_badge_data
-      return unless @programme.badges.any?
-
-      begin
-        @issued_badge = Credly::Badge.by_programme_badge_template_ids(current_user.id, @programme.badges.pluck(:credly_badge_template_id))
-      rescue Credly::Error
-        @issued_badge = nil
-      end
-    end
 
     def enrolment
       current_user.user_programme_enrolments.find_by(programme_id: @programme.id)

@@ -23,14 +23,14 @@ RSpec.describe Cms::EnrichmentListComponent, type: :component do
   end
 
   it "renders term select with place holder" do
-    expect(page).to have_css("select[data-cms-enrichment-list-component-target='termSelect'] option", text: "Term (all)")
+    expect(page).to have_css("select[data-cms--enrichment-list-component-target='termSelect'] option", text: "Term (all)")
   end
 
   it "renders ageGroup select with place holder" do
-    expect(page).to have_css("select[data-cms-enrichment-list-component-target='ageGroupSelect'] option", text: "Age group (all)")
+    expect(page).to have_css("select[data-cms--enrichment-list-component-target='ageGroupSelect'] option", text: "Age group (all)")
   end
 
   it "renders type select with place holder" do
-    expect(page).to have_css("select[data-cms-enrichment-list-component-target='typeSelect'] option", text: "Type (all)")
+    expect(page).to have_css("select[data-cms--enrichment-list-component-target='typeSelect'] option", text: "Type (all)")
   end
 end

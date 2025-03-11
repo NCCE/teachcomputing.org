@@ -12,6 +12,7 @@ i_belong.programme_activity_groupings.find_or_initialize_by(sort_key: 2).tap do 
   group.programme_id = i_belong.id
   group.progress_bar_title = "<strong>Complete</strong> a recommended course"
   group.title = "Complete a course to understand the factors of girls’ participation in computer science"
+  group.web_copy_aside_slug = "i-belong-dashboard-help-section"
   group.save!
 
   activities = [

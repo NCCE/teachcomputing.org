@@ -1,0 +1,17 @@
+.cms-two-column-video-section-component {
+  video {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  &__wrapper {
+    &--padded {
+      padding: 15px;
+    }
+  }
+
+  &__right-text {
+      margin-top: 20px;
+  }
+}

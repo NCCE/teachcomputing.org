@@ -19,7 +19,7 @@ module TeachComputing
     # Please, add to the `ignore` list any other `lib` subdirectories that do
     # not contain `.rb` files, or that should not be reloaded or eager loaded.
     # Common ones are `templates`, `generators`, or `middleware`, for example.
-    config.autoload_lib(ignore: %w[assets tasks])
+    config.autoload_lib(ignore: %w[assets tasks generators])
 
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration can go into files in config/initializers
@@ -32,6 +32,8 @@ module TeachComputing
       g.orm :active_record, primary_key_type: :uuid
     end
 
+    config.view_component.default_preview_layout = "view_component_preview"
+
     config.i18n.load_path += Dir[Rails.root.join("config", "locales", "**/*.{rb,yml}").to_s]
 
     config.mylearning_dashboard_url = ENV["MYLEARNING_DASHBOARD_URL"]
@@ -42,7 +44,9 @@ module TeachComputing
     config.cms_provider = ENV["CMS_PROVIDER"]
     config.strapi_api_key = ENV["STRAPI_API_KEY"]
     config.strapi_api_url = ENV["STRAPI_API_URL"]
+    config.strapi_graphql_url = ENV["STRAPI_GRAPHQL_URL"]
     config.strapi_write_api_key = ENV["STRAPI_WRITE_API_KEY"]
+    config.strapi_connection_type = ENV["STRAPI_CONNECTION_TYPE"]
 
     # Credly settings
     config.credly_url = ENV["CREDLY_URL"]

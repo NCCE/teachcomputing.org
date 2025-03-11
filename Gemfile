@@ -105,6 +105,7 @@ group :test do
   gem "axe-matchers", ">= 2.5.0", require: false
   gem "capybara"
   gem "climate_control"
+  gem "generator_spec"
   gem "guard-rspec", require: false
   gem "rails-controller-testing"
   gem "rspec-json_expectations"

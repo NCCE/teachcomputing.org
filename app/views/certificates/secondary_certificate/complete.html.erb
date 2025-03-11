@@ -9,7 +9,6 @@
         <p class="govuk-body">
           <%= link_to 'Download your certificate', certificate_secondary_certificate_path, class: 'govuk-button button', role: 'button', draggable: 'false' %>
         </p>
-        <%= render CompletedDashBadgeComponent.new(badge: @issued_badge, tracking_event_category: @badge_tracking_event_category, tracking_event_label: @badge_tracking_event_label) %>
         <p class="govuk-body-l">Next steps for you</p>
         <p class="govuk-body-l">Discover our teaching resources</p>
         <p class="govuk-body">Access over 500 hours of teaching materials through the Teach Computing Curriculum, which contains everything you need to teach computing at key stages 1 to 4.</p>

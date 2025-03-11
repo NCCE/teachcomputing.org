@@ -53,9 +53,37 @@ module Cms
               to_web_page_preview(strapi_data)
             elsif model_class == Models::DynamicZone
               model_class.new(cms_models: strapi_data.map { ComponentFactory.process_component(_1) }.compact)
+            elsif model_class == Models::EnrichmentDynamicZone
+              model_class.new(cms_models: strapi_data.map { ComponentFactory.process_component(_1) }.compact)
             elsif model_class == Models::EnrichmentList
               to_enrichment_list(all_data, strapi_data)
+            elsif model_class == Models::HeaderMenu
+              to_menu(strapi_data)
+            elsif model_class == Models::EmailTemplate
+              to_email_template(strapi_data)
             end
+          end
+
+          def self.to_email_template(strapi_data)
+            Models::EmailTemplate.new(
+              slug: strapi_data[:slug],
+              subject: strapi_data[:subject],
+              programme_slug: strapi_data[:programme][:data][:attributes][:slug],
+              email_content: strapi_data[:emailContent].map { ComponentFactory.process_component(_1) }.compact,
+              completed_programme_activity_group_slugs: strapi_data.dig(:completedGroupings, :data).nil? ? nil : strapi_data[:completedGroupings][:data].collect { _1[:attributes][:slug] },
+              activity_state: strapi_data[:activityState]
+            )
+          end
+
+          def self.to_menu(strapi_data)
+            Models::HeaderMenu.new(
+              strapi_data.map do |menu_item|
+                {
+                  label: menu_item[:label],
+                  menu_items: menu_item[:menuItems].map { {label: _1[:label], url: _1[:url]} }
+                }
+              end
+            )
           end
 
           def self.to_seo(strapi_data)

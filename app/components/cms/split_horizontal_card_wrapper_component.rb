@@ -20,7 +20,7 @@ class Cms::SplitHorizontalCardWrapperComponent < ViewComponent::Base
   end
 
   def left_card_classes
-    classes = ["split-horizontal-card"]
+    classes = ["split-horizontal-card white-bg"]
     classes << cms_color_theme_class(@color_theme, "left") if @color_theme
     classes
   end

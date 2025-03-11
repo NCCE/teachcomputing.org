@@ -42,10 +42,7 @@
             <% end %>
           <% end %>
         <% end %>
-
         <% end %>
-        <%= render CompletedDashBadgeComponent.new(badge: @issued_badge, tracking_event_category: @badge_tracking_event_category, tracking_event_label: @badge_tracking_event_label) %>
-
         <p class="govuk-body-l">Next steps for you</p>
         <p class="govuk-body">
           This is just the start of your journey!
@@ -56,7 +53,7 @@
         </p>
         <p class="govuk-body">
           Help to widen impact through your network by sharing your knowledge and practice – you can check out the I Belong Champion <%= link_to 'information pack', i_belong_info_pack_url %> for ideas and support on how you can do this.
-          If you haven’t already, remember to claim your I Belong Champion digital badge and use <%= link_to "our social media card templates", social_media_card_templates_url %> to showcase your great work!
+          If you haven’t already, <%= link_to "use our social media card templates", social_media_card_templates_url %> to showcase your great work!
         </p>
         <p class="govuk-body">You can continue to access programme resources and opportunities. Keep an eye on our website and social media for future updates.</p>
       </div>

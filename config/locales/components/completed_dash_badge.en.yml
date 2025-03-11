@@ -1,7 +1,0 @@
-en:
-  completed_dash_badge_component:
-    awarded:
-      html: You were awarded a badge for completing your first face to face or remote course for this certificate. Head over to %{badge_link} to share or download your badge.
-    link:
-      text: Credly
-    share: 'Share your badge!'

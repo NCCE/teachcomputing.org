@@ -1,0 +1,10 @@
+require "rails_helper"
+
+RSpec.describe Cms::Providers::Strapi::Queries::Components::<%= @component_type_class %>::<%= @component_name_class %> do
+  it_should_behave_like "a strapi graphql component",
+    %w[
+      <%- @strapi_params.each do |param| -%>
+      <%= param %>
+      <%- end -%>
+    ]
+end

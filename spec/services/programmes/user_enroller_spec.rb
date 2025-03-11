@@ -64,16 +64,5 @@ RSpec.describe Programmes::UserEnroller do
         expect(enroller.call).to eq(false)
       end
     end
-
-    context "if user has completed a f2f achievement in the programme" do
-      let!(:achievement) { create(:completed_achievement, user:) }
-      let!(:programme_activity) { create(:programme_activity, activity: achievement.activity, programme:) }
-
-      it "should call IssueCpdBadgeJob" do
-        expect(IssueCpdBadgeJob).to receive(:perform_later)
-
-        enroller.call
-      end
-    end
   end
 end

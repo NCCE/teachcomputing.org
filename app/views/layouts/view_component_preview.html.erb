@@ -1,0 +1,12 @@
+<% content_for :content do -%>
+  <div class="govuk-width-container">
+    <main id="main-content" class="<%= content_for?(:main_class) ? yield(:main_class) : nil %>">
+      <%= render 'components/flash' %>
+      <%= yield %>
+    </main>
+  </div>
+<% end -%>
+
+<% @cms_header = Cms::Singles::Header.get() %>
+
+<%= render 'layouts/base' %>
