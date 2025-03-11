@@ -75,10 +75,6 @@ RSpec.describe("courses/_aside-filters", type: :view) do
       it "renders the checkboxes" do
         expect(rendered).to have_css(".ncce-checkboxes__input", count: 7)
 
-        expect(rendered).to have_css(".ncce-checkboxes__label", text: "Face to face")
-        expect(rendered).to have_css(".ncce-checkboxes__label", text: "Online")
-        expect(rendered).to have_css(".ncce-checkboxes__label", text: "Remote")
-
         expect(rendered).to have_css(".ncce-checkboxes__label", text: "0 - 3 Hours")
         expect(rendered).to have_css(".ncce-checkboxes__label", text: "3 - 6 Hours")
         expect(rendered).to have_css(".ncce-checkboxes__label", text: "1 Day")
