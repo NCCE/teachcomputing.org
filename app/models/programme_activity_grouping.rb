@@ -55,7 +55,6 @@ class ProgrammeActivityGrouping < ApplicationRecord
       .belonging_to_programme(programme)
       .joins(activity: :programme_activities)
       .where(
-        activities: {programme_activities: {legacy: false}},
         user: users
       )
       .group_by(&:user_id)

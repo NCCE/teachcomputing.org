@@ -47,4 +47,26 @@ RSpec.describe CommunityActivityListComponent, type: :component do
       expect(page).to have_css(".community-activity-list--show-hide")
     end
   end
+
+  context "with legacy activity" do
+    let(:activity) { create(:activity, title: "Legacy activity") }
+    let(:programme_activities) {
+      create_list(:programme_activity, 2, programme_activity_grouping:)
+      create(:programme_activity, programme_activity_grouping:, activity:, legacy: true)
+    }
+
+    context "without achievement" do
+      it "should not show legacy activity" do
+        expect(page).not_to have_text("Legacy activity")
+      end
+    end
+
+    context "with achievement" do
+      let(:community_achievements) { [create(:completed_achievement, activity: activity)] }
+
+      it "should show legacy activity" do
+        expect(page).to have_text("Legacy activity")
+      end
+    end
+  end
 end
