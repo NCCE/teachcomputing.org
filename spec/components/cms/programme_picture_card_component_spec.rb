@@ -2,7 +2,7 @@
 
 require "rails_helper"
 
-RSpec.describe Cms::IBelongPictureCardComponent, type: :component do
+RSpec.describe Cms::ProgrammePictureCardComponent, type: :component do
   let(:user) { create(:user) }
   let!(:programme) { create(:i_belong) }
   let(:card_links) {
@@ -28,7 +28,8 @@ RSpec.describe Cms::IBelongPictureCardComponent, type: :component do
         title: "Card title",
         text_content: Cms::Mocks::RichBlocks.as_model,
         image: Cms::Mocks::Image.as_model,
-        card_links:
+        card_links:,
+        programme: "i-belong"
       ))
     end
 
@@ -58,7 +59,8 @@ RSpec.describe Cms::IBelongPictureCardComponent, type: :component do
           title: "Card title",
           text_content: Cms::Mocks::RichBlocks.as_model,
           image: Cms::Mocks::Image.as_model,
-          card_links:
+          card_links:,
+          programme: "i-belong"
         ))
       end
 
@@ -77,7 +79,8 @@ RSpec.describe Cms::IBelongPictureCardComponent, type: :component do
           title: "Card title",
           text_content: Cms::Mocks::RichBlocks.as_model,
           image: Cms::Mocks::Image.as_model,
-          card_links:
+          card_links:,
+          programme: "i-belong"
         ))
       end
 

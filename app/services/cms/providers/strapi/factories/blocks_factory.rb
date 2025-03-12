@@ -61,18 +61,19 @@ module Cms
               to_full_width_image_banner(strapi_data)
             when "horizontal-card-with-asides"
               to_horizontal_card_with_asides(strapi_data)
-            when "i-belong-picture-card-section"
-              to_card_wrapper(strapi_data, to_i_belong_picture_card_section(strapi_data[:iBelongCards]))
+            when "programme-picture-card-section"
+              to_card_wrapper(strapi_data, to_programme_picture_card_section(strapi_data[:programmeCards]))
             end
           end
 
-          def self.to_i_belong_picture_card_section(strapi_data)
+          def self.to_programme_picture_card_section(strapi_data)
             strapi_data.map do |card_data|
-              DynamicComponents::ContentBlocks::IBelongPictureCard.new(
+              DynamicComponents::ContentBlocks::ProgrammePictureCard.new(
                 title: card_data[:title],
                 image: to_image(card_data, :image, default_size: :medium),
                 text_content: to_content_block(card_data[:textContent]),
-                card_links: group_i_belong_card_links(card_data)
+                card_links: group_programme_card_links(card_data),
+                programme: card_data[:prog][:data][:attributes][:slug]
               )
             end
           end
@@ -107,19 +108,49 @@ module Cms
             )
           end
 
-          def self.group_i_belong_card_links(strapi_data)
+          def self.to_text_with_testimonial(strapi_data)
+            DynamicComponents::Blocks::TextWithTestimonial.new(
+              text_content: to_content_block(strapi_data[:textContent]),
+              background_color: extract_color_name(strapi_data, :bkColor),
+              testimonial: to_testimonial(strapi_data[:testimonial]),
+              testimonial_side: strapi_data[:testimonialSide],
+              buttons: strapi_data[:buttons] ? strapi_data[:buttons].map { to_ncce_button(_1) } : []
+            )
+          end
+
+          def self.to_full_width_image_banner(strapi_data)
+            DynamicComponents::Blocks::FullWidthImageBanner.new(
+              background_image: to_image(strapi_data, :backgroundImage, default_size: :original),
+              overlay_title: strapi_data[:overlayTitle],
+              overlay_text: to_content_block(strapi_data[:overlayText], paragraph_class: "govuk-body-s"),
+              overlay_icon: to_image(strapi_data, :overlayIcon, default_size: :small),
+              overlay_side: strapi_data[:overlaySide]
+            )
+          end
+
+          def self.to_horizontal_card_with_asides(strapi_data)
+            DynamicComponents::HorizontalCardWithAsides.new(
+              text: to_content_block(strapi_data[:textContent]),
+              button: to_ncce_button(strapi_data[:button]),
+              aside_sections: extract_aside_sections(strapi_data, param_name: :asides),
+              background_color: extract_color_name(strapi_data, :bkColor),
+              color_theme: extract_color_name(strapi_data, :theme)
+            )
+          end
+
+          def self.group_programme_card_links(card_data)
             {
               enrolled: {
-                link: strapi_data[:enrolledLink],
-                title: strapi_data[:enrolledLinkTitle]
+                link: card_data[:enrolledLink],
+                title: card_data[:enrolledLinkTitle]
               },
               not_enrolled: {
-                link: strapi_data[:notEnrolledLink],
-                title: strapi_data[:notEnrolledLinkTitle]
+                link: card_data[:notEnrolledLink],
+                title: card_data[:notEnrolledLinkTitle]
               },
               logged_out: {
-                link: strapi_data[:loggedOutLink],
-                title: strapi_data[:loggedOutLinkTitle]
+                link: card_data[:loggedOutLink],
+                title: card_data[:loggedOutLinkTitle]
               }
             }
           end

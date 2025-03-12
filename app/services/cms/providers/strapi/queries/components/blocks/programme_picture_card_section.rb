@@ -4,13 +4,14 @@ module Cms
       module Queries
         module Components
           module Blocks
-            class IBelongPictureCardSection < BaseComponentQuery
-              def self.name = "ComponentBlocksIBelongPictureCardSection"
+            class ProgrammePictureCardSection < BaseComponentQuery
+              def self.name = "ComponentBlocksProgrammePictureCardSection"
 
               def self.base_fields
                 <<~GRAPHQL.freeze
                   ibc__sectionTitle: sectionTitle
-                  #{ContentBlocks::IBelongPictureCard.embed(:iBelongCards)}
+                  introText
+                  #{ContentBlocks::ProgrammePictureCard.embed(:programmeCards)}
                 GRAPHQL
               end
             end

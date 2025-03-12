@@ -4,8 +4,8 @@ module Cms
       module Queries
         module Components
           module ContentBlocks
-            class IBelongPictureCard < BaseComponentQuery
-              def self.name = "ComponentIBelongPictureCard"
+            class ProgrammePictureCard < BaseComponentQuery
+              def self.name = "ComponentProgrammePictureCard"
 
               def self.base_fields
                 <<~GRAPHQL.freeze
@@ -18,6 +18,7 @@ module Cms
                   enrolledLink
                   notEnrolledLinkTitle
                   notEnrolledLink
+                  #{SharedFields.programme_slug(name = "prog")}
                 GRAPHQL
               end
             end
