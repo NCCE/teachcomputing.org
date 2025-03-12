@@ -16,7 +16,7 @@ module Cms
               attribute(:enrolledLink) { Faker::Internet.url }
               attribute(:notEnrolledLinkTitle) { Faker::Lorem.sentence }
               attribute(:notEnrolledLink) { Faker::Internet.url }
-              attribute(:prog) { Programme.i_belong }
+              attribute(:prog) { {data: {attributes: {slug: "i-belong"}}} }
             end
           end
         end
