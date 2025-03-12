@@ -22,6 +22,26 @@ RSpec.describe CmsController do
       end
     end
 
+    context "invalid slug" do
+      it "should raise error" do
+        expect {
+          get("/blog/not(avalid)page")
+        }.to raise_error(ActiveRecord::RecordNotFound)
+      end
+
+      it "should raise error for sql attempt" do
+        expect {
+          get("/blog/#{CGI.escape("select from users where 1=1;")}")
+        }.to raise_error(ActiveRecord::RecordNotFound)
+      end
+
+      it "should raise error for graphql attempt" do
+        expect {
+          get("/blog/#{CGI.escape("users { email }")}")
+        }.to raise_error(ActiveRecord::RecordNotFound)
+      end
+    end
+
     context "with a missing page" do
       before do
         stub_strapi_not_found("blogs/eggs")
