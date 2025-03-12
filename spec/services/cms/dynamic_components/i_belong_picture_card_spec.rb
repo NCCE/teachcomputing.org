@@ -2,12 +2,16 @@ require "rails_helper"
 
 RSpec.describe Cms::DynamicComponents::ContentBlocks::IBelongPictureCard do
   before do
-    @i_belong_card = Cms::Providers::Strapi::Factories::BlocksFactory.to_i_belong_picture_card_section(
-      Array.wrap(Cms::Mocks::DynamicComponents::ContentBlocks::IBelongPictureCard.generate_data)
-    ).first
+    @card_section = Cms::Providers::Strapi::Factories::ComponentFactory.process_component(
+      Cms::Mocks::IBelongPictureCardSection.generate_raw_data
+    )
   end
 
-  it "should render as CmsIBelongPictureCardComponent" do
-    expect(@i_belong_card.render).to be_a(Cms::IBelongPictureCardComponent)
+  it "should render as Cms::CardWrapperComponent" do
+    expect(@card_section.render).to be_a(Cms::CardWrapperComponent)
+  end
+
+  it "should render cards as Cms::DynamicsComponents::ContentBlocks::IBelongPictureCard" do
+    expect(@card_section.cards_block.first.render).to be_a(Cms::IBelongPictureCardComponent)
   end
 end
