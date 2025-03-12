@@ -243,7 +243,8 @@ GEM
       rubocop
       smart_properties
     erubi (1.13.1)
-    excon (0.102.0)
+    excon (1.2.5)
+      logger
     execjs (2.10.0)
     factory_bot (6.2.1)
       activesupport (>= 5.0.0)
@@ -260,19 +261,20 @@ GEM
       net-http (>= 0.5.0)
     ffi (1.15.5)
     fiber-storage (1.0.0)
-    fog-aws (3.19.0)
-      fog-core (~> 2.1)
+    fog-aws (3.30.0)
+      base64 (~> 0.2.0)
+      fog-core (~> 2.6)
       fog-json (~> 1.1)
       fog-xml (~> 0.1)
-    fog-core (2.3.0)
+    fog-core (2.6.0)
       builder
-      excon (~> 0.71)
+      excon (~> 1.0)
       formatador (>= 0.2, < 2.0)
       mime-types
     fog-json (1.2.0)
       fog-core
       multi_json (~> 1.10)
-    fog-xml (0.1.4)
+    fog-xml (0.1.5)
       fog-core
       nokogiri (>= 1.5.11, < 2.0.0)
     formatador (1.1.0)
@@ -369,9 +371,10 @@ GEM
     matrix (0.4.2)
     memcachier (0.0.2)
     method_source (1.1.0)
-    mime-types (3.5.1)
+    mime-types (3.6.0)
+      logger
       mime-types-data (~> 3.2015)
-    mime-types-data (3.2023.0808)
+    mime-types-data (3.2025.0304)
     mimemagic (0.4.3)
       nokogiri (~> 1)
       rake
