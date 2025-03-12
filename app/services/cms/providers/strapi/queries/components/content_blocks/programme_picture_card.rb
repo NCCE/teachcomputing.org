@@ -18,7 +18,7 @@ module Cms
                   enrolledLink
                   notEnrolledLinkTitle
                   notEnrolledLink
-                  #{SharedFields.programme_slug(name = "prog")}
+                  #{SharedFields.programme_slug("prog")}
                 GRAPHQL
               end
             end
