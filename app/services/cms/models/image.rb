@@ -13,7 +13,7 @@ module Cms
       end
 
       def image_url
-        if formats&.has_key? default_size.to_sym
+        if formats&.has_key?(default_size.to_sym)
           formats[default_size.to_sym][:url]
         else
           url

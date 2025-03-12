@@ -51,6 +51,8 @@ module Cms
               to_two_column_picture_section(strapi_data)
             when "video-cards-section"
               to_card_wrapper(strapi_data, to_video_card_array(strapi_data[:videoCards]))
+            when "full-width-image-banner"
+              to_full_width_image_banner(strapi_data)
             end
           end
 
@@ -61,6 +63,16 @@ module Cms
               testimonial: to_testimonial(strapi_data[:testimonial]),
               testimonial_side: strapi_data[:testimonialSide],
               buttons: strapi_data[:buttons] ? strapi_data[:buttons].map { to_ncce_button(_1) } : []
+            )
+          end
+
+          def self.to_full_width_image_banner(strapi_data)
+            DynamicComponents::Blocks::FullWidthImageBanner.new(
+              background_image: to_image(strapi_data, :backgroundImage, default_size: :original),
+              overlay_title: strapi_data[:overlayTitle],
+              overlay_text: to_content_block(strapi_data[:overlayText]),
+              overlay_icon: to_image(strapi_data, :overlayIcon, default_size: :small),
+              overlay_side: strapi_data[:overlaySide]
             )
           end
 
