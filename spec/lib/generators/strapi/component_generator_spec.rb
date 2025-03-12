@@ -33,12 +33,12 @@ RSpec.describe Strapi::ComponentGenerator, type: :generator do
       end
 
       it "should contain the component name" do
-        expect(File.read(query_file_path)).to match /ComponentBlocksGenTest/
+        expect(File.read(query_file_path)).to match(/ComponentBlocksGenTest/)
       end
 
       it "should include params" do
-        expect(File.read(query_file_path)).to match /title/
-        expect(File.read(query_file_path)).to match /textContent/
+        expect(File.read(query_file_path)).to match(/title/)
+        expect(File.read(query_file_path)).to match(/textContent/)
       end
     end
 
@@ -48,7 +48,7 @@ RSpec.describe Strapi::ComponentGenerator, type: :generator do
       end
 
       it "should contain the correct example" do
-        expect(File.read(query_test_path)).to match /a strapi graphql component/
+        expect(File.read(query_test_path)).to match(/a strapi graphql component/)
       end
     end
 
@@ -58,7 +58,7 @@ RSpec.describe Strapi::ComponentGenerator, type: :generator do
       end
 
       it "should contain the correct component name" do
-        expect(File.read(mapping_file_path)).to match /Cms::GenTestComponent/
+        expect(File.read(mapping_file_path)).to match(/Cms::GenTestComponent/)
       end
     end
 
@@ -68,7 +68,7 @@ RSpec.describe Strapi::ComponentGenerator, type: :generator do
       end
 
       it "should contain the correct component name" do
-        expect(File.read(mapping_test_path)).to match /Cms::GenTestComponent/
+        expect(File.read(mapping_test_path)).to match(/Cms::GenTestComponent/)
       end
     end
 
@@ -78,7 +78,7 @@ RSpec.describe Strapi::ComponentGenerator, type: :generator do
       end
 
       it "should contain strapi component name" do
-        expect(File.read(mock_path)).to match /strapi_component \"blocks.gen-test\"/
+        expect(File.read(mock_path)).to match(/strapi_component "blocks.gen-test"/)
       end
     end
 
