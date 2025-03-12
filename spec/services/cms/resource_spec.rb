@@ -230,4 +230,44 @@ RSpec.describe Cms::Resource do
       end.to raise_error(Cms::Errors::NoCmsProviderDefined)
     end
   end
+
+  describe "#all_records" do
+    describe "with multiple records" do
+      before do
+        blogs = Array.new(210) { Cms::Mocks::Blog.generate_raw_data }
+
+        stub_strapi_blog_collection(blogs:, page: 1, page_size: 100)
+        stub_strapi_blog_collection(blogs:, page: 2, page_size: 100)
+        stub_strapi_blog_collection(blogs:, page: 3, page_size: 100)
+      end
+
+      it "should return all records" do
+        expect(Cms::Collections::Blog.all_records.count).to eq(210)
+      end
+    end
+
+    describe "with one record" do
+      before do
+        blogs = [Cms::Mocks::Blog.generate_raw_data]
+
+        stub_strapi_blog_collection(blogs:, page: 1, page_size: 100)
+      end
+
+      it "should return one record" do
+        expect(Cms::Collections::Blog.all_records.count).to eq(1)
+      end
+    end
+
+    describe "with no records" do
+      before do
+        blogs = []
+
+        stub_strapi_blog_collection(blogs:, page: 1, page_size: 100)
+      end
+
+      it "should return one record" do
+        expect(Cms::Collections::Blog.all_records.count).to eq(0)
+      end
+    end
+  end
 end

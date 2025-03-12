@@ -84,7 +84,12 @@ module StrapiStubs
   end
 
   def stub_strapi_blog_collection(blogs: nil, page: 1, page_size: 10)
-    blog_list = blogs.presence || Array.new(5) { Cms::Mocks::Blog.generate_raw_data }
+    blog_list = if blogs.nil?
+      Array.new(5) { Cms::Mocks::Blog.generate_raw_data }
+    else
+      blogs
+    end
+
     if as_graphql
       stub_strapi_graphql_collection_query("blogs", blog_list, page:, page_size:)
     else
@@ -134,6 +139,15 @@ module StrapiStubs
     else
       stub_request(:get, /^https:\/\/strapi.teachcomputing.org\/api\/enrichment-pages/)
         .to_return_json(body: to_strapi_collection(enrichment_pages))
+    end
+  end
+
+  def stub_strapi_primary_computing_glossary_table_collection(table: nil, page: 1, page_size: 10)
+    table_list = table.presence || Array.new(5) { Cms::Mocks::PrimaryGlossaryTableItems.generate_raw_data }
+    if as_graphql
+      stub_strapi_graphql_collection_query("primaryComputingGlossaryTables", table_list, page:, page_size:)
+    else
+      stub_request(:get, /^https:\/\/strapi.teachcomputing.org\/api\/primary-computing-glossary-tables/).to_return_json(body: to_strapi_collection(table_list, page:, page_size:))
     end
   end
 
@@ -232,6 +246,14 @@ module StrapiStubs
     stub_request(:post, /^https:\/\/strapi.teachcomputing.org\/graphql/)
       .with(body: /#{resource_name}/)
       .to_return_json(body: {data: response})
+  end
+
+  def stub_strapi_graphql_collection_error(resource_name)
+    stub_strapi_schema
+    response = {errors: [{message: "Not found"}]}
+    stub_request(:post, /^https:\/\/strapi.teachcomputing.org\/graphql/)
+      .with(body: /#{resource_name}/)
+      .to_return_json(body: response)
   end
 
   private

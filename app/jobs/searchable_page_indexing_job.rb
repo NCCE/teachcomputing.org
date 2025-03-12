@@ -5,21 +5,17 @@ class SearchablePageIndexingJob < ApplicationJob
   def perform
     now = DateTime.now
     SearchablePages::CmsBlog.delete_all
-    page = 1
-    per_page = 100
-    loop do
-      blog_search_records = Cms::Collections::Blog.all(page, per_page) # Strapi Graphql has a max limit of 100
-      if blog_search_records.resources.any?
-        SearchablePages::CmsBlog.insert_all(blog_search_records.resources.map { |blog| blog.to_search_record(now) })
-      end
-      break if (page * per_page) > blog_search_records.total_records
-      page += 1
+
+    all_blogs = Cms::Collections::Blog.all_records
+
+    if all_blogs.any?
+      SearchablePages::CmsBlog.insert_all(all_blogs.map { |blog| blog.to_search_record(now) })
     end
 
     SearchablePages::CmsWebPage.delete_all
-    page_search_records = Cms::Collections::WebPage.all(1, 100)
-    if page_search_records.resources.any?
-      SearchablePages::CmsWebPage.insert_all(page_search_records.resources.map { |page| page.to_search_record(now) })
+    page_search_records = Cms::Collections::WebPage.all_records
+    if page_search_records.any?
+      SearchablePages::CmsWebPage.insert_all(page_search_records.map { |page| page.to_search_record(now) })
     end
     enrichment_pages = Cms::Collections::EnrichmentPage.all(1, 10)
     if enrichment_pages.resources.any?

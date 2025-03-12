@@ -93,6 +93,21 @@ module Cms
       Collection.new(**response)
     end
 
+    def self.all_records(params: {})
+      page = 1
+      per_page = 100
+      all_records = []
+
+      loop do
+        records = all(page, per_page, params:)
+        all_records += records.resources
+
+        break if (page * per_page) > records.total_records
+        page += 1
+      end
+      all_records
+    end
+
     def self.clear_cache(key = nil)
       if key
         Rails.cache.delete("#{resource_key}-#{key}", namespace: "cms")
