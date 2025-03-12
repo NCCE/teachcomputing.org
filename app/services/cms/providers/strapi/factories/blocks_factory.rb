@@ -43,35 +43,36 @@ module Cms
               to_icon_row(strapi_data)
             when "two-column-video-section"
               to_two_column_video_section(strapi_data)
-            when "i-belong-picture-card-section"
-              to_card_wrapper(strapi_data, to_i_belong_picture_card_section(strapi_data[:iBelongCards]))
+            when "programme-picture-card-section"
+              to_card_wrapper(strapi_data, to_programme_picture_card_section(strapi_data[:programmeCards]))
             end
           end
 
-          def self.to_i_belong_picture_card_section(strapi_data)
+          def self.to_programme_picture_card_section(strapi_data)
             strapi_data.map do |card_data|
-              DynamicComponents::ContentBlocks::IBelongPictureCard.new(
+              DynamicComponents::ContentBlocks::ProgrammePictureCard.new(
                 title: card_data[:title],
                 image: to_image(card_data, :image, default_size: :medium),
                 text_content: to_content_block(card_data[:textContent]),
-                card_links: group_i_belong_card_links(card_data)
+                card_links: group_programme_card_links(card_data),
+                programme: card_data[:prog][:data][:attributes][:slug]
               )
             end
           end
 
-          def self.group_i_belong_card_links(strapi_data)
+          def self.group_programme_card_links(card_data)
             {
               enrolled: {
-                link: strapi_data[:enrolledLink],
-                title: strapi_data[:enrolledLinkTitle]
+                link: card_data[:enrolledLink],
+                title: card_data[:enrolledLinkTitle]
               },
               not_enrolled: {
-                link: strapi_data[:notEnrolledLink],
-                title: strapi_data[:notEnrolledLinkTitle]
+                link: card_data[:notEnrolledLink],
+                title: card_data[:notEnrolledLinkTitle]
               },
               logged_out: {
-                link: strapi_data[:loggedOutLink],
-                title: strapi_data[:loggedOutLinkTitle]
+                link: card_data[:loggedOutLink],
+                title: card_data[:loggedOutLinkTitle]
               }
             }
           end
