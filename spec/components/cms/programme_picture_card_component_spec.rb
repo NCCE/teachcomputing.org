@@ -29,7 +29,7 @@ RSpec.describe Cms::ProgrammePictureCardComponent, type: :component do
         text_content: Cms::Mocks::RichBlocks.as_model,
         image: Cms::Mocks::Image.as_model,
         card_links:,
-        programme: "i-belong"
+        programme: programme.slug
       ))
     end
 
@@ -60,7 +60,7 @@ RSpec.describe Cms::ProgrammePictureCardComponent, type: :component do
           text_content: Cms::Mocks::RichBlocks.as_model,
           image: Cms::Mocks::Image.as_model,
           card_links:,
-          programme: "i-belong"
+          programme: programme.slug
         ))
       end
 
@@ -80,7 +80,7 @@ RSpec.describe Cms::ProgrammePictureCardComponent, type: :component do
           text_content: Cms::Mocks::RichBlocks.as_model,
           image: Cms::Mocks::Image.as_model,
           card_links:,
-          programme: "i-belong"
+          programme: programme.slug
         ))
       end
 
