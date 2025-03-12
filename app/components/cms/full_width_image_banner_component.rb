@@ -14,5 +14,4 @@ class Cms::FullWidthImageBannerComponent < ViewComponent::Base
   def show_overlay?
     !@overlay_text.nil? || !@overlay_title.nil?
   end
-
 end
