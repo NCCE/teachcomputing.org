@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe Cms::Providers::Strapi::Queries::Components::ContentBlocks::IBelongPictureCard do
+RSpec.describe Cms::Providers::Strapi::Queries::Components::ContentBlocks::ProgrammePictureCard do
   it_should_behave_like "a strapi graphql component",
     %w[
       title
@@ -12,5 +12,6 @@ RSpec.describe Cms::Providers::Strapi::Queries::Components::ContentBlocks::IBelo
       enrolledLink
       notEnrolledLinkTitle
       notEnrolledLink
+      prog
     ]
 end

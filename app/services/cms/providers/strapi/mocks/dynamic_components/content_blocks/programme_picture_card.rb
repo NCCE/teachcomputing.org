@@ -4,8 +4,8 @@ module Cms
       module Mocks
         module DynamicComponents
           module ContentBlocks
-            class IBelongPictureCard < StrapiMock
-              strapi_component "blocks.i-belong-picture-card"
+            class ProgrammePictureCard < StrapiMock
+              strapi_component "blocks.programme-picture-card"
 
               attribute(:title) { Faker::Lorem.sentence }
               attribute(:textContent) { RichBlocks.generate_data }
@@ -16,6 +16,7 @@ module Cms
               attribute(:enrolledLink) { Faker::Internet.url }
               attribute(:notEnrolledLinkTitle) { Faker::Lorem.sentence }
               attribute(:notEnrolledLink) { Faker::Internet.url }
+              attribute(:prog) { Programme.i_belong }
             end
           end
         end
