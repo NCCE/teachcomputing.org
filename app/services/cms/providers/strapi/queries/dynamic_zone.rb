@@ -21,7 +21,8 @@ module Cms
             Components::Blocks::StickyDashboardBar,
             Components::Blocks::TestimonialRow,
             Components::Blocks::TextWithAsides,
-            Components::Blocks::TwoColumnVideoSection
+            Components::Blocks::TwoColumnVideoSection,
+            Components::Blocks::HorizontalCardWithAsides
           ]
 
           def self.embed(name)
