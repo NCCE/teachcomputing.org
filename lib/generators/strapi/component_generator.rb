@@ -2,15 +2,18 @@ module Strapi
   class ComponentGenerator < Rails::Generators::Base
     source_root File.expand_path("component_templates", __dir__)
 
-    argument :component_name, type: :string, required: true
-    argument :component_type, type: :string, required: true
-    class_option :strapi_params, type: :array, default: []
+    desc "Generates a Strapi component and related files"
+
+    argument :component_name, type: :string, required: true, desc: "Name of your component, do not include Cms:: namespace, we automatically add this"
+    argument :component_type, type: :string, required: true, desc: "Name of the type you assigned your component to, e,g blocks"
+    class_option :strapi_params, type: :array, default: [], desc: "A list of params you want to include from strapi, please provide these matching the case you have used in Strapi"
 
     COMPONENT_TYPES = %w[blocks content_blocks buttons email_content]
     PROVIDER = "providers/strapi/"
     BASE_PATH = "app/services/cms/"
-    STRAPI_PATH = "#{BASE_PATH}#{PROVIDER}"
-    TEST_PATH = "spec/services/cms/#{PROVIDER}"
+    STRAPI_PATH = File.join(BASE_PATH, PROVIDER)
+    TEST_BASE_PATH = "spec/services/cms/"
+    TEST_PATH = File.join(TEST_BASE_PATH, PROVIDER)
 
     def setup_params
       raise StandardError unless COMPONENT_TYPES.include?(component_type)
@@ -24,19 +27,23 @@ module Strapi
     end
 
     def create_query_file
-      template("query_template.rb.tt", "#{STRAPI_PATH}queries/components/#{@component_type_filename}/#{@component_filename}.rb")
+      template("query_template.rb.tt", File.join(STRAPI_PATH, "queries/components", @component_type_filename, "#{@component_filename}.rb"))
     end
 
     def create_query_test
-      template("query_test_template.rb.tt", "#{TEST_PATH}queries/components/#{@component_type_filename}/#{@component_filename}_spec.rb")
+      template("query_test_template.rb.tt", File.join(TEST_PATH, "queries/components", @component_type_filename, "#{@component_filename}_spec.rb"))
     end
 
     def create_mock_file
-      template("mock_template.rb.tt", "#{STRAPI_PATH}mocks/dynamic_components/#{@component_type_filename}/#{@component_filename}.rb")
+      template("mock_template.rb.tt", File.join(STRAPI_PATH, "mocks/dynamic_components", @component_type_filename, "#{@component_filename}.rb"))
     end
 
     def create_data_file
-      template("mapping_template.rb.tt", "#{BASE_PATH}dynamic_components/#{@component_type_filename}/#{@component_filename}.rb")
+      template("mapping_template.rb.tt", File.join(BASE_PATH, "dynamic_components", @component_type_filename, "#{@component_filename}.rb"))
+    end
+
+    def create_data_text
+      template("mapping_test_template.rb.tt", File.join(TEST_BASE_PATH, "dynamic_components", @component_type_filename, "#{@component_filename}_spec.rb"))
     end
 
     def run_view_component_generator
