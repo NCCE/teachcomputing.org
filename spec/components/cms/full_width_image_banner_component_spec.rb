@@ -4,7 +4,7 @@ require "rails_helper"
 
 RSpec.describe Cms::FullWidthImageBannerComponent, type: :component do
   let(:overlay_title) { Faker::Lorem.sentence }
-  let(:background_image) {Cms::Mocks::Image.as_model}
+  let(:background_image) { Cms::Mocks::Image.as_model }
 
   context "right side overlay" do
     before do
