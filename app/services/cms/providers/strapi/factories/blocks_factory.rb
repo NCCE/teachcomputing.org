@@ -45,7 +45,19 @@ module Cms
               to_two_column_video_section(strapi_data)
             when "primary-glossary-table"
               DynamicComponents::PrimaryGlossaryTable.new(title: strapi_data[:title])
+            when "full-width-image-banner"
+              to_full_width_image_banner(strapi_data)
             end
+          end
+
+          def self.to_full_width_image_banner(strapi_data)
+            DynamicComponents::Blocks::FullWidthImageBanner.new(
+              background_image: to_image(strapi_data, :backgroundImage, default_size: :original),
+              overlay_title: strapi_data[:overlayTitle],
+              overlay_text: to_content_block(strapi_data[:overlayText]),
+              overlay_icon: to_image(strapi_data, :overlayIcon, default_size: :small),
+              overlay_side: strapi_data[:overlaySide]
+            )
           end
 
           def self.to_icon_row(strapi_data)
