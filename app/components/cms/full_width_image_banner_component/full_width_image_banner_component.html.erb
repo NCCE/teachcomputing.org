@@ -1,0 +1,12 @@
+<div class="cms-full-width-image-banner" style="background-image: url(<%= cms_url(@background_image.image_url) %>)">
+  <% if show_overlay? %>
+    <%= render GovGridRowComponent.new(padding: {top: 0, bottom: 0}) do |row| %>
+      <%= row.with_column("full") do %>
+        <div class="cms-full-width-image-banner__overlay cms-full-width-image-banner__overlay--<%= @overlay_side %>">
+          <%= render SectionTitleWithIconComponent.new(text: @overlay_title, icon: @overlay_icon, text_size: :small) %>
+          <%= render @overlay_text.render %>
+        </div>
+      <% end %>
+    <% end %>
+  <% end %>
+</div>

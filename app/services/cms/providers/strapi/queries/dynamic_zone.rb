@@ -9,6 +9,7 @@ module Cms
             Components::Blocks::EnrolmentSplitCourseCard,
             Components::Blocks::EnrolmentTestimonial,
             Components::Blocks::FullWidthBanner,
+            Components::Blocks::FullWidthImageBanner,
             Components::Blocks::FullWidthText,
             Components::Blocks::HorizontalCard,
             Components::Blocks::IconRow,
