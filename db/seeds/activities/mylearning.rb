@@ -549,6 +549,8 @@ Activity.find_or_initialize_by(stem_course_template_no: "967de7bb-b6f5-ef11-be20
   activity.programmes = [primary_certificate]
 end.save!
 
+########################################################################################################################
+
 Activity.find_or_initialize_by(stem_course_template_no: "0ba68557-50fe-ef11-bae3-6045bd0da0e9").tap do |activity|
   activity.title = "Supporting GCSE computer science students at grades 1-3"
   activity.credit = 60
