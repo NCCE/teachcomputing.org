@@ -18,9 +18,8 @@ module CmsProcessing
     preview_key = preview_params[:preview_key] || nil
 
 
-    validate_slug!(resource_id)
-
     if resource_id
+      validate_slug!(resource_id)
       # Temp fix to handle / routes should not be need if we move to graphql
       raise ActiveRecord::RecordNotFound if resource_id.include?("_")  # Prevent routing to underscored versions
       resource_id.tr!("/", "_") # Convert / to _ so it can be handled strapi side
