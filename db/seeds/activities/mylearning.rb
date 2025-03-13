@@ -551,6 +551,8 @@ end.save!
 
 ########################################################################################################################
 
+########################################################################################################################
+
 Activity.find_or_initialize_by(stem_course_template_no: "054037e5-eff8-ef11-bae2-6045bd0da0e9").tap do |activity|
   activity.title = "New leaders of secondary computing"
   activity.credit = 50
