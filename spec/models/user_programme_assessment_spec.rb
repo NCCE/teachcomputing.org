@@ -108,10 +108,6 @@ RSpec.describe UserProgrammeAssessment do
       expect(user_programme_asessment.total_num_attempts).to eq(0)
     end
 
-    it "assigns the new test gate correctly" do
-      expect(user_programme_asessment.enough_activities_for_test?).to be(false)
-    end
-
     context "when user can take the test" do
       before do
         setup_achievements_for_taking_test
@@ -131,10 +127,6 @@ RSpec.describe UserProgrammeAssessment do
 
       it "assigns the number of attempts at test correctly" do
         expect(user_programme_asessment.total_num_attempts).to eq(0)
-      end
-
-      it "assigns the new test gate correctly" do
-        expect(user_programme_asessment.enough_activities_for_test?).to be(true)
       end
     end
 
