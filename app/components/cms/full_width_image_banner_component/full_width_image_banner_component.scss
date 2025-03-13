@@ -4,6 +4,10 @@
   aspect-ratio: 7/2;
   min-height: 100px;
 
+  @include govuk-media-query($until: tablet) {
+    aspect-ratio: 3/2;
+  }
+
   &__overlay {
     width: 30%;
     min-width: 235px;

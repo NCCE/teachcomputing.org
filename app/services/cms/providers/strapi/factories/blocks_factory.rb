@@ -70,7 +70,7 @@ module Cms
             DynamicComponents::Blocks::FullWidthImageBanner.new(
               background_image: to_image(strapi_data, :backgroundImage, default_size: :original),
               overlay_title: strapi_data[:overlayTitle],
-              overlay_text: to_content_block(strapi_data[:overlayText]),
+              overlay_text: to_content_block(strapi_data[:overlayText], paragraph_class: "govuk-body-s"),
               overlay_icon: to_image(strapi_data, :overlayIcon, default_size: :small),
               overlay_side: strapi_data[:overlaySide]
             )
