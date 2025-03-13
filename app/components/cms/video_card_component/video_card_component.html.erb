@@ -1,0 +1,21 @@
+ <%= content_tag :div, class: wrapper_classes do %>
+  <%= render @video.render %>
+  <div class="cms-video-card-component__wrapper">
+    <h2 class="govuk-heading-m govuk-!-margin-bottom-2 cms-video-card-component--blue-title"><%= @title %></h2>
+    <% if @name %>
+      <div class="cms-video-card-component__icon-wrapper">
+        <%= image_pack_tag("media/images/icons/person-green.svg", class: "cms-video-card-component__icon") %>
+        <p class="govuk-body-s govuk-!-margin-bottom-0"><%= @name %></p>
+      </div>
+    <% end %>
+    <% if @job_title %>
+      <div class="cms-video-card-component__icon-wrapper">
+        <%= image_pack_tag("media/images/icons/job-green.svg", class: "cms-video-card-component__icon") %>
+        <p class="govuk-body-s govuk-!-margin-bottom-0"><%= @job_title %></p>
+      </div>
+    <% end %>
+    <div class="cms-video-card-component__text">
+      <%= render @text_content.render %>
+    </div>
+  </div>
+<% end %>
