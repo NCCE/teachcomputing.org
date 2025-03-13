@@ -1,4 +1,6 @@
 <% meta_tag(:title, "#{@title.titlecase} - Teach Computing") %>
+<% content_for(:main_class, @wrapper_class) %>
+
 <%= render 'components/hero', hero_title: @title.titlecase, small_title: true %>
 <div class="govuk-width-container">
   <%= render BreadcrumbComponent.new(ancestors: [[root_path, 'Home']], current_page_name: @page_name) %>

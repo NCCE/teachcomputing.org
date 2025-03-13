@@ -3,16 +3,17 @@ require "axe/rspec"
 
 RSpec.describe("Home page", type: :system) do
   before do
+    stub_strapi_homepage
     stub_featured_posts
     visit root_path
   end
 
-  it "is the correct page" do
-    expect(page).to have_content("Helping you teach computing")
-  end
-
   it "header is accessible" do
     expect(page).to be_accessible.within("header")
+  end
+
+  it "adds resource key to main as class" do
+    expect(page).to have_css("main.cms-homepage")
   end
 
   it "page is accessible" do

@@ -11,7 +11,8 @@
   $colors: (
     "standard": $lime-green,
     "i-belong": $orange,
-    "isaac": $brand-yellow
+    "isaac": $brand-yellow,
+    "cqf": $pink
   );
 
   $sides: ("left", "right", "top", "bottom");
@@ -78,5 +79,14 @@
 
   .tc-gov-grid-wrapper:last-child {
     padding-bottom: 40px;
+  }
+}
+
+.cms { 
+  &-homepage {
+    .cms-card-wrapper__title {
+      text-align: center;
+      font-size: 2rem;
+    }
   }
 }
