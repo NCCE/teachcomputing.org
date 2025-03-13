@@ -17,7 +17,6 @@ module CmsProcessing
     preview = preview_params[:preview] || false
     preview_key = preview_params[:preview_key] || nil
 
-
     if resource_id
       validate_slug!(resource_id)
       # Temp fix to handle / routes should not be need if we move to graphql
