@@ -65,7 +65,8 @@ module Programmes
     end
 
     def course_achievements(user)
-      user.achievements.belonging_to_programme(self)
+      user.achievements.includes(:activity)
+        .belonging_to_programme(self)
         .with_category([Activity::FACE_TO_FACE_CATEGORY,
           Activity::ONLINE_CATEGORY])
         .not_in_state(:dropped)
