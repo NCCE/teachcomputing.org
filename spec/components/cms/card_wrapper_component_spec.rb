@@ -15,7 +15,8 @@ RSpec.describe Cms::CardWrapperComponent, type: :component do
         title: nil,
         intro_text: nil,
         cards_per_row: 3,
-        cards_block: resource_cards(1).cards_block
+        cards_block: resource_cards(1).cards_block,
+        programme: nil
       ))
     end
 
