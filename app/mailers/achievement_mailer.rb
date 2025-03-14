@@ -7,16 +7,9 @@ class AchievementMailer < ApplicationMailer
     mail(to: @user, subject: @subject)
   end
 
-  def completed_face_to_face_course
+  def completed_course
     @user = User.find(params[:user_id])
     @subject = "Take the next step on your subject knowledge certificate"
-
-    mail(to: @user, subject: @subject)
-  end
-
-  def completed_online_course
-    @user = User.find(params[:user_id])
-    @subject = "Keep going with your subject knowledge certificate"
 
     mail(to: @user, subject: @subject)
   end
