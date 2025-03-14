@@ -149,7 +149,7 @@ class Programme < ApplicationRecord
   end
 
   def programme_objectives
-    programme_activity_groupings.includes(:programme_activities).order(:sort_key)
+    programme_activity_groupings.order(:sort_key)
   end
 
   def programme_objectives_displayed_in_progress_bar
