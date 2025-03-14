@@ -7,6 +7,6 @@ class Cms::ImageComponent < ViewComponent::Base
     @image = image
     @show_caption = show_caption
     @link = link
-    @classes = classes
+    @classes = ["cms-image"] + Array.wrap(classes)
   end
 end
