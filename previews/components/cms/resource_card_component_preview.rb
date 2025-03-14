@@ -18,6 +18,40 @@ class Cms::ResourceCardComponentPreview < ViewComponent::Preview
     ))
   end
 
+  def with_icons
+    card_section = Cms::Mocks::ResourceCardSection.as_model(
+      resource_cards: Array.new(3) {
+                        Cms::Mocks::ResourceCard.generate_data(
+                          color_theme: {data: Cms::Mocks::ColorScheme.generate_data(name: "standard")},
+                          icon: {data: Cms::Mocks::Image.generate_raw_data}
+                        )
+                      }
+    )
+    render(Cms::CardWrapperComponent.new(
+      title: card_section.title,
+      cards_block: card_section.cards_block,
+      background_color: nil,
+      cards_per_row: 3
+    ))
+  end
+
+  def no_title
+    card_section = Cms::Mocks::ResourceCardSection.as_model(
+      resource_cards: Array.new(3) {
+                        Cms::Mocks::ResourceCard.generate_data(
+                          color_theme: {data: Cms::Mocks::ColorScheme.generate_data(name: "standard")},
+                          title: nil
+                        )
+                      }
+    )
+    render(Cms::CardWrapperComponent.new(
+      title: card_section.title,
+      cards_block: card_section.cards_block,
+      background_color: nil,
+      cards_per_row: 3
+    ))
+  end
+
   def with_color_theme
     card_section = Cms::Mocks::ResourceCardSection.as_model(
       resource_cards: Array.new(3) {
