@@ -10,6 +10,7 @@ module Cms
               def self.base_fields
                 <<~GRAPHQL.freeze
                   #{SharedFields.icon_block("icons")}
+                  #{SharedFields.color_theme("bkColor")}
                 GRAPHQL
               end
             end

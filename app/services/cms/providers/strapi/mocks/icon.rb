@@ -9,7 +9,7 @@ module Cms
 
           def self.generate_data
             {
-              iconText: Faker::Lorem.word,
+              iconText: Faker::Lorem.sentence(word_count: 3),
               iconImage: {data: Image.generate_raw_data}
             }
           end

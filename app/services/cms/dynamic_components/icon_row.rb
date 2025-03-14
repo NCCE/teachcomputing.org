@@ -1,14 +1,15 @@
 module Cms
   module DynamicComponents
     class IconRow
-      attr_accessor :icons
+      attr_accessor :icons, :background_color
 
-      def initialize(icons:)
+      def initialize(icons:, background_color:)
         @icons = icons
+        @background_color = background_color
       end
 
       def render
-        Cms::IconRowComponent.new(icons:)
+        Cms::IconRowComponent.new(icons:, background_color:)
       end
     end
   end
