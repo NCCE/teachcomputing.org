@@ -118,9 +118,6 @@
             </p>
           <% end %>
         <% end %>
-        <% if should_show_funding?(@programme) %>
-          <%= render BursaryComponent.new %>
-        <% end %>
       </div>
       <% if should_show_other_pathways?(@programme) %>
         <div class="govuk-grid-column-full">

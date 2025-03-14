@@ -96,11 +96,6 @@ RSpec.describe CSAcceleratorMailer, type: :mailer do
         .to have_link("Explore your dashboard", href: cs_accelerator_certificate_url)
     end
 
-    it "contains link to funding" do
-      expect(mail.html_part.body)
-        .to have_link("for a subsidy", href: cms_post_url("funding"))
-    end
-
     it "contains opt-out link" do
       expect(mail.html_part.body)
         .to have_link("let us know",
@@ -134,11 +129,6 @@ RSpec.describe CSAcceleratorMailer, type: :mailer do
       it "contains link to dashboard" do
         expect(mail.text_part.body)
           .to match(/Explore your dashboard \(#{cs_accelerator_certificate_url}\)/)
-      end
-
-      it "contains link to bursary" do
-        expect(mail.text_part.body)
-          .to include("eligible for a subsidy (#{cms_post_url("funding", anchor: "secondary-subsidy")})")
       end
 
       it "contains opt-out link" do
