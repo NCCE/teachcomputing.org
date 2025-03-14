@@ -41,13 +41,17 @@ RSpec.describe Cms::ResourceCardComponent, type: :component do
   context "has only the required values" do
     before do
       render_inline(described_class.new(
-        title: "Card title",
+        title: nil,
         icon: nil,
         color_theme: nil,
         body_text: body_text,
         button_text: nil,
         button_link: nil
       ))
+    end
+
+    it "does not render header section" do
+      expect(page).to_not have_css(".cms-resource-card__top-content")
     end
 
     it "does not render an icon" do
