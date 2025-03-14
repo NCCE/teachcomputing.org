@@ -74,7 +74,6 @@ RSpec.describe Cms::ImageComponent, type: :component do
   end
 
   context "with additional classes" do
-
     context "as string" do
       before do
         render_inline(described_class.new(
@@ -100,6 +99,5 @@ RSpec.describe Cms::ImageComponent, type: :component do
         expect(page).to have_css(".cms-image.another-class.second-class")
       end
     end
-
   end
 end
