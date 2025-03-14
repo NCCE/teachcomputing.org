@@ -6,5 +6,6 @@ RSpec.describe Cms::Providers::Strapi::Queries::Components::Blocks::ProgrammePic
       sectionTitle
       introText
       programmeCards
+      prog
     ]
 end

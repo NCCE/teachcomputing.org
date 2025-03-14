@@ -4,7 +4,7 @@ module Cms
       class ProgrammePictureCard
         attr_accessor :title, :text_content, :image, :card_links, :programme
 
-        def initialize(title:, text_content:, image:, card_links:, programme:)
+        def initialize(title:, text_content:, image:, card_links:, programme: nil)
           @title = title
           @text_content = text_content
           @image = image

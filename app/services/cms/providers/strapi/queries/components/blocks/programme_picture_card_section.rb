@@ -11,6 +11,7 @@ module Cms
                 <<~GRAPHQL.freeze
                   ibc__sectionTitle: sectionTitle
                   introText
+                  #{SharedFields.programme_slug("prog")}
                   #{ContentBlocks::ProgrammePictureCard.embed(:programmeCards)}
                 GRAPHQL
               end

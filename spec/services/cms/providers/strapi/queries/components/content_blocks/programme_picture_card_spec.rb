@@ -12,6 +12,5 @@ RSpec.describe Cms::Providers::Strapi::Queries::Components::ContentBlocks::Progr
       enrolledLink
       notEnrolledLinkTitle
       notEnrolledLink
-      prog
     ]
 end

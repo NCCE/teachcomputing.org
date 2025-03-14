@@ -3,12 +3,12 @@
 class Cms::ProgrammePictureCardComponent < ViewComponent::Base
   delegate :current_user, to: :helpers
 
-  def initialize(title:, text_content:, image:, card_links:, programme:)
+  def initialize(title:, text_content:, image:, card_links:, programme: nil)
     @title = title
     @text_content = text_content
     @image = image
     @card_links = card_links
-    @programme = Programme.find_by(slug: programme)
+    @programme = programme
   end
 
   def current_user_state
@@ -21,5 +21,9 @@ class Cms::ProgrammePictureCardComponent < ViewComponent::Base
     link = @card_links[current_user_state]
 
     link_to(link[:title], link[:link], class: "ncce-link")
+  end
+
+  def render?
+    @programme.present?
   end
 end

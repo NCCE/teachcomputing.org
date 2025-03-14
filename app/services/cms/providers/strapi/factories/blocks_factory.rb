@@ -72,8 +72,7 @@ module Cms
                 title: card_data[:title],
                 image: to_image(card_data, :image, default_size: :medium),
                 text_content: to_content_block(card_data[:textContent]),
-                card_links: group_programme_card_links(card_data),
-                programme: card_data[:prog][:data][:attributes][:slug]
+                card_links: group_programme_card_links(card_data)
               )
             end
           end
@@ -314,7 +313,8 @@ module Cms
               cards_block: cards_block,
               cards_per_row: strapi_data[:cardsPerRow].presence || 3,
               background_color: extract_color_name(strapi_data, :bkColor),
-              title_as_paragraph:
+              title_as_paragraph:,
+              programme: strapi_data[:prog].presence
             )
           end
 
