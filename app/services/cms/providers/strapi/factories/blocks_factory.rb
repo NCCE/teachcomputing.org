@@ -54,19 +54,6 @@ module Cms
             end
           end
 
-          def self.to_video_card_array(strapi_data)
-            strapi_data.map do |card_data|
-              DynamicComponents::ContentBlocks::VideoCard.new(
-                title: card_data[:title],
-                text_content: to_content_block(card_data[:textContent], paragraph_class: "govuk-body-s"),
-                video: to_embedded_video({url: card_data[:videoUrl]}),
-                name: card_data[:name],
-                job_title: card_data[:jobTitle],
-                color_theme: extract_color_name(card_data, :colorTheme)
-              )
-            end
-          end
-
           def self.to_text_with_testimonial(strapi_data)
             DynamicComponents::Blocks::TextWithTestimonial.new(
               text_content: to_content_block(strapi_data[:textContent]),
@@ -183,6 +170,19 @@ module Cms
                 course_code: card_data[:courseCode],
                 description: to_content_block(card_data[:description]),
                 image: to_image(card_data, :image, default_size: :medium)
+              )
+            end
+          end
+
+          def self.to_video_card_array(strapi_data)
+            strapi_data.map do |card_data|
+              DynamicComponents::ContentBlocks::VideoCard.new(
+                title: card_data[:title],
+                text_content: to_content_block(card_data[:textContent], paragraph_class: "govuk-body-s"),
+                video: to_embedded_video({url: card_data[:videoUrl]}),
+                name: card_data[:name],
+                job_title: card_data[:jobTitle],
+                color_theme: extract_color_name(card_data, :colorTheme)
               )
             end
           end
