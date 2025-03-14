@@ -1,0 +1,29 @@
+.cms-video-card-component {
+  height: 100%;
+  box-shadow: 0 0 5px rgba(0,0,0,.2);
+  border-width: 8px;
+
+  &__wrapper {
+    padding: 20px;
+  }
+
+  &--blue-title {
+    color: $hyper-link-blue !important;
+  }
+
+  &__icon {
+    padding-right: 10px;
+  }
+
+  &__icon-wrapper {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+  }
+
+  &__text {
+    padding-top: 10px;
+  }
+}
