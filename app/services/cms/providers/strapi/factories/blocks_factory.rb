@@ -62,18 +62,7 @@ module Cms
             when "horizontal-card-with-asides"
               to_horizontal_card_with_asides(strapi_data)
             when "programme-picture-card-section"
-              to_card_wrapper(strapi_data, to_programme_picture_card_section(strapi_data[:programmeCards]))
-            end
-          end
-
-          def self.to_programme_picture_card_section(strapi_data)
-            strapi_data.map do |card_data|
-              DynamicComponents::ContentBlocks::ProgrammePictureCard.new(
-                title: card_data[:title],
-                image: to_image(card_data, :image, default_size: :medium),
-                text_content: to_content_block(card_data[:textContent]),
-                card_links: group_programme_card_links(card_data)
-              )
+              to_card_wrapper(strapi_data, to_programme_picture_card_array(strapi_data[:programmeCards]))
             end
           end
 
@@ -135,23 +124,6 @@ module Cms
               background_color: extract_color_name(strapi_data, :bkColor),
               color_theme: extract_color_name(strapi_data, :theme)
             )
-          end
-
-          def self.group_programme_card_links(card_data)
-            {
-              enrolled: {
-                link: card_data[:enrolledLink],
-                title: card_data[:enrolledLinkTitle]
-              },
-              not_enrolled: {
-                link: card_data[:notEnrolledLink],
-                title: card_data[:notEnrolledLinkTitle]
-              },
-              logged_out: {
-                link: card_data[:loggedOutLink],
-                title: card_data[:loggedOutLinkTitle]
-              }
-            }
           end
 
           def self.to_icon_row(strapi_data)
@@ -304,6 +276,34 @@ module Cms
                 color_theme: extract_color_name(card_data, :colorTheme)
               )
             end
+          end
+
+          def self.to_programme_picture_card_array(strapi_data)
+            strapi_data.map do |card_data|
+              DynamicComponents::ContentBlocks::ProgrammePictureCard.new(
+                title: card_data[:title],
+                image: to_image(card_data, :image, default_size: :medium),
+                text_content: to_content_block(card_data[:textContent]),
+                card_links: group_programme_card_links(card_data)
+              )
+            end
+          end
+
+          def self.group_programme_card_links(card_data)
+            {
+              enrolled: {
+                link: card_data[:enrolledLink],
+                title: card_data[:enrolledLinkTitle]
+              },
+              not_enrolled: {
+                link: card_data[:notEnrolledLink],
+                title: card_data[:notEnrolledLinkTitle]
+              },
+              logged_out: {
+                link: card_data[:loggedOutLink],
+                title: card_data[:loggedOutLinkTitle]
+              }
+            }
           end
 
           def self.to_card_wrapper(strapi_data, cards_block, title_as_paragraph: false)
