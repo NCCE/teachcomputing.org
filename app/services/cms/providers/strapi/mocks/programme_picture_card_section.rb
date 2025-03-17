@@ -6,6 +6,8 @@ module Cms
           strapi_component "blocks.programme-picture-card-section"
 
           attribute(:sectionTitle) { Faker::Lorem.sentence }
+          attribute(:introText) { Faker::Lorem.sentence }
+          attribute(:prog) { { data: { attributes: { slug: "i-belong" } } } }
           attribute(:programmeCards) { Array.new(3) { DynamicComponents::ContentBlocks::ProgrammePictureCard.generate_data } }
         end
       end
