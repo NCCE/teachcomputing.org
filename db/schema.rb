@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2025_01_17_115139) do
+ActiveRecord::Schema[7.1].define(version: 2025_02_28_130820) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
@@ -97,8 +97,10 @@ ActiveRecord::Schema[7.1].define(version: 2025_01_17_115139) do
     t.boolean "coming_soon", default: false
     t.jsonb "public_copy"
     t.string "course_video_url"
+    t.uuid "replaced_by_id"
     t.index ["category"], name: "index_activities_on_category"
     t.index ["future_learn_course_uuid"], name: "index_activities_on_future_learn_course_uuid", unique: true
+    t.index ["replaced_by_id"], name: "index_activities_on_replaced_by_id"
     t.index ["self_certifiable"], name: "index_activities_on_self_certifiable"
     t.index ["stem_course_template_no"], name: "index_activities_on_stem_course_template_no", unique: true
   end
@@ -481,6 +483,7 @@ ActiveRecord::Schema[7.1].define(version: 2025_01_17_115139) do
   add_foreign_key "achiever_sync_records", "user_programme_enrolments"
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "activities", "activities", column: "replaced_by_id"
   add_foreign_key "assessment_attempt_transitions", "assessment_attempts"
   add_foreign_key "badges", "programmes"
   add_foreign_key "downloads", "aggregate_downloads"

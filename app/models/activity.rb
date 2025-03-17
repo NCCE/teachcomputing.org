@@ -13,6 +13,8 @@ class Activity < ApplicationRecord
   has_many :pathway_activities, dependent: :destroy
   has_one :assessment
 
+  belongs_to :replaced_by, optional: true, class_name: :Activity
+
   validates :title, :slug, :category, presence: true
   validates :category, inclusion: {in: [
     ACTION_CATEGORY, ASSESSMENT_CATEGORY, COMMUNITY_CATEGORY,
