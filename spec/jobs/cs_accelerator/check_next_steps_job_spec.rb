@@ -67,7 +67,6 @@ RSpec.describe CSAccelerator::CheckNextStepsJob, type: :job do
           .not_to change { ActionMailer::Base.deliveries.count }
       end
     end
-
   end
 
   context "when the user is not enrolled on CSA" do
