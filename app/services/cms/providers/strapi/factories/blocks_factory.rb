@@ -62,7 +62,7 @@ module Cms
             when "horizontal-card-with-asides"
               to_horizontal_card_with_asides(strapi_data)
             when "programme-picture-card-section"
-              to_card_wrapper(strapi_data, to_programme_picture_card_array(strapi_data[:programmeCards]))
+              to_programme_card_wrapper(strapi_data)
             end
           end
 
@@ -278,32 +278,31 @@ module Cms
             end
           end
 
-          def self.to_programme_picture_card_array(strapi_data)
+          def self.to_programme_picture_card_array(strapi_data, programme)
             strapi_data.map do |card_data|
               DynamicComponents::ContentBlocks::ProgrammePictureCard.new(
                 title: card_data[:title],
                 image: to_image(card_data, :image, default_size: :medium),
                 text_content: to_content_block(card_data[:textContent]),
-                card_links: group_programme_card_links(card_data)
+                card_links: to_multi_state_link(card_data, programme),
+                programme:
               )
             end
           end
 
-          def self.group_programme_card_links(card_data)
-            {
-              enrolled: {
-                link: card_data[:enrolledLink],
-                title: card_data[:enrolledLinkTitle]
-              },
-              not_enrolled: {
-                link: card_data[:notEnrolledLink],
-                title: card_data[:notEnrolledLinkTitle]
-              },
-              logged_out: {
-                link: card_data[:loggedOutLink],
-                title: card_data[:loggedOutLinkTitle]
-              }
-            }
+          def self.to_programme_card_wrapper(strapi_data, title_as_paragraph: false)
+            programme_slug = extract_programme_slug(strapi_data, :prog)
+            programme = Programme.find_by(slug: programme_slug)
+
+            DynamicComponents::ProgrammeCardWrapper.new(
+              title: strapi_data[:sectionTitle],
+              intro_text: to_content_block(strapi_data[:introText].presence || []),
+              cards_block: to_programme_picture_card_array(strapi_data[:programmeCards], programme),
+              cards_per_row: strapi_data[:cardsPerRow].presence || 3,
+              background_color: extract_color_name(strapi_data, :bkColor),
+              title_as_paragraph:,
+              programme:
+            )
           end
 
           def self.to_card_wrapper(strapi_data, cards_block, title_as_paragraph: false)
@@ -313,8 +312,7 @@ module Cms
               cards_block: cards_block,
               cards_per_row: strapi_data[:cardsPerRow].presence || 3,
               background_color: extract_color_name(strapi_data, :bkColor),
-              title_as_paragraph:,
-              programme: strapi_data[:prog].presence
+              title_as_paragraph:
             )
           end
 
