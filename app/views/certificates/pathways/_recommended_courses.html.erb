@@ -18,7 +18,6 @@
         <% recommended_activities.each do |pa| %>
           <%= render CpdCourseComponent.new(current_user: @current_user, activity: pa.activity) %>
         <% end %>
-        <p class='govuk-body govuk-!-margin-top-4 govuk-!-margin-bottom-0'><%= t('.other_formats') %></p>
       </div>
     </div>
   <% end %>
