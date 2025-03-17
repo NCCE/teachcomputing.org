@@ -16,7 +16,7 @@ class Pathway < ApplicationRecord
   end
 
   def recommended_activities
-    pathway_activities.includes(:activity)
+    pathway_activities.includes(activity: :replaced_by)
   end
 
   def recommended_activities_for_user(user)
