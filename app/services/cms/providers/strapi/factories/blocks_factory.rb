@@ -45,6 +45,8 @@ module Cms
               to_two_column_video_section(strapi_data)
             when "primary-glossary-table"
               DynamicComponents::PrimaryGlossaryTable.new(title: strapi_data[:title])
+            when "programme-picture-card-section"
+              to_programme_card_wrapper(strapi_data)
             end
           end
 
@@ -147,6 +149,33 @@ module Cms
                 image: to_image(card_data, :image, default_size: :medium)
               )
             end
+          end
+
+          def self.to_programme_picture_card_array(strapi_data, programme)
+            strapi_data.map do |card_data|
+              DynamicComponents::ContentBlocks::ProgrammePictureCard.new(
+                title: card_data[:title],
+                image: to_image(card_data, :image, default_size: :medium),
+                text_content: to_content_block(card_data[:textContent]),
+                card_links: to_multi_state_link(card_data, programme),
+                programme:
+              )
+            end
+          end
+
+          def self.to_programme_card_wrapper(strapi_data, title_as_paragraph: false)
+            programme_slug = extract_programme_slug(strapi_data, :prog)
+            programme = Programme.find_by(slug: programme_slug)
+
+            DynamicComponents::ProgrammeCardWrapper.new(
+              title: strapi_data[:sectionTitle],
+              intro_text: to_content_block(strapi_data[:introText].presence || []),
+              cards_block: to_programme_picture_card_array(strapi_data[:programmeCards], programme),
+              cards_per_row: strapi_data[:cardsPerRow].presence || 3,
+              background_color: extract_color_name(strapi_data, :bkColor),
+              title_as_paragraph:,
+              programme:
+            )
           end
 
           def self.to_card_wrapper(strapi_data, cards_block, title_as_paragraph: false)
