@@ -3,10 +3,25 @@ module Cms
     module Strapi
       module Mocks
         class Image
+          include ActionView::Helpers::AssetUrlHelper
+
           SIZES = {
-            medium: [750, 500],
-            small: [500, 300],
-            thumbnail: [250, 100]
+            large: {
+              size: [1000, 800],
+              url: "/test-images/large_test.png"
+            },
+            medium: {
+              size: [750, 500],
+              url: "/test-images/medium_test.png"
+            },
+            small: {
+              size: [500, 300],
+              url: "/test-images/small_test.png"
+            },
+            thumbnail: {
+              size: [250, 100],
+              url: "/test-images/thumbail_test.png"
+            }
           }
 
           def self.as_model(caption: nil)
@@ -40,20 +55,20 @@ module Cms
               ext: ".png",
               mime: "image/png",
               size: 137.23,
-              url: Faker::LoremFlickr.image(size: "1000x800")
+              url: SIZES[:large][:url]
             }
           end
 
           def self.format(name, hash_name, size)
             {
               ext: ".png",
-              url: Faker::LoremFlickr.image(size: SIZES[size].join("x")),
+              url: SIZES[size][:url],
               hash: hash_name,
               mime: "image/png",
               name: name,
               size: 390.03,
-              width: SIZES[size][0],
-              height: SIZES[size][1],
+              width: SIZES[size][:size][0],
+              height: SIZES[size][:size][1],
               sizeInBytes: 390028
             }
           end

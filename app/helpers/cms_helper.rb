@@ -1,7 +1,7 @@
 module CmsHelper
   def cms_url(url)
     if Rails.env.development?
-      return url if url.starts_with?("http")
+      return url if url.starts_with?("http") || url.starts_with?("/test-images")
       "#{Rails.application.config.strapi_image_url}#{url}"
     else
       url
