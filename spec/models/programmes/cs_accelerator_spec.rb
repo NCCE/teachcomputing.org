@@ -108,12 +108,6 @@ RSpec.describe Programmes::CSAccelerator do
     end
   end
 
-  describe "#max_credits_for_certificate" do
-    it "returns 100 for 10 hour system" do
-      expect(programme.max_credits_for_certificate).to eq(100)
-    end
-  end
-
   describe "#show_notification_for_test?" do
     context "when a user is not enrolled" do
       before do

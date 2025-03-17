@@ -19,7 +19,7 @@ module Programmes
         .belonging_to_programme(self)
         .in_state("complete")
 
-      # Allow legacy users with two face to face complete
+      # Allow legacy users with two face to face take test
       total_face_to_face = complete_achievements.with_category("face-to-face").sum(:credit)
       return true if total_face_to_face >= 20
 
@@ -38,10 +38,6 @@ module Programmes
 
     def notification_link
       cs_accelerator_certificate_path
-    end
-
-    def max_credits_for_certificate
-      100
     end
 
     def diagnostic
