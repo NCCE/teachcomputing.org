@@ -53,12 +53,6 @@
                   )
                 } %>
               </div>
-              <div class="govuk-body ncce-activity-list ncce-csa-dash__section">
-                <%= render partial: 'certificates/pathways/supplementary_courses', locals: {
-                  pathway: @user_pathway,
-                  supplementary_activities: @user_pathway&.supplementary_activities
-                } %>
-              </div>
             <% else %>
               <%= link_to t('.all_courses_button'),
                 courses_path(certificate: @programme.slug), class: 'govuk-button button',
