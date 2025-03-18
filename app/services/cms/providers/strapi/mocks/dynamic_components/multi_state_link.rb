@@ -4,7 +4,7 @@ module Cms
       module Mocks
         module DynamicComponents
           class MultiStateLink < StrapiMock
-            attribute(:programme) { "i-belong" }
+            attribute(:programme) { ::Programme.i_belong }
 
             attribute(:loggedOutLinkTitle) { Faker::Lorem.sentence }
             attribute(:loggedOutLink) { Faker::Internet.url }
@@ -15,6 +15,10 @@ module Cms
             attribute(:enrolledLinkTitle) { Faker::Lorem.sentence }
             attribute(:enrolledLink) { Faker::Internet.url }
 
+            def self.as_model(**)
+              data = generate_data(**)
+              Factories::ModelFactory.to_multi_state_link(data.except(:programme), data[:programme])
+            end
           end
         end
       end

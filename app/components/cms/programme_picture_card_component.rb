@@ -3,7 +3,7 @@
 class Cms::ProgrammePictureCardComponent < ViewComponent::Base
   delegate :current_user, to: :helpers
 
-  def initialize(title:, text_content:, image:, card_links:, programme: nil)
+  def initialize(title:, text_content:, image:, card_links:, programme:)
     @title = title
     @text_content = text_content
     @image = image

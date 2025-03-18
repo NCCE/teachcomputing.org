@@ -1,4 +1,4 @@
-.cms-i-belong-picture-card {
+.cms-programme-picture-card {
   display: flex;
   flex-direction: column;
   height: 100%;
@@ -23,9 +23,7 @@
     }
   }
 
-  &__link {
-    a {
-      font-weight: 700;
-    }
+  &__link, a {
+    font-weight: 700;
   }
 }

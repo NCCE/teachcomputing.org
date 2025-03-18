@@ -16,9 +16,9 @@ class Cms::CardWrapperComponent < ViewComponent::Base
 
   def title_html
     if @title_as_paragraph
-      content_tag :p, @title, class: "govuk-body-m"
+      content_tag :p, @title, class: "govuk-body-m cms-card-wrapper__title"
     else
-      content_tag :h2, @title, class: "govuk-heading-m"
+      content_tag :h2, @title, class: "govuk-heading-m cms-card-wrapper__title"
     end
   end
 end
