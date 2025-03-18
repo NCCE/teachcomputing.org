@@ -1,14 +1,14 @@
-<div class="cms-i-belong-picture-card">
-  <div class="cms-i-belong-picture-card__image">
+<div class="cms-programme-picture-card">
+  <div class="cms-programme-picture-card__image">
     <%= render Cms::ImageComponent.new(@image, show_caption: false, link: @link) %>
   </div>
-  <div class="cms-i-belong-picture-card__title">
+  <div class="cms-programme-picture-card__title">
     <h2 class="govuk-heading-m"><%= @title %></h2>
   </div>
-  <div class="cms-i-belong-picture-card__text">
+  <div class="cms-programme-picture-card__text">
     <%= render @text_content.render %>
   </div>
-  <div class="cms-i-belong-picture-card__link">
+  <div class="cms-programme-picture-card__link">
     <p class="govuk-body"><%= render @card_links.render %></p>
   </div>
 </div>

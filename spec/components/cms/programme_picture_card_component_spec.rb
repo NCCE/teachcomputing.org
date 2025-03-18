@@ -5,22 +5,14 @@ require "rails_helper"
 RSpec.describe Cms::ProgrammePictureCardComponent, type: :component do
   let(:user) { create(:user) }
   let!(:programme) { create(:i_belong) }
-  let(:card_links) {
-    {
-      enrolled: {
-        link: "https://teachcomputing.org/enrolled",
-        title: "Enrolled"
-      },
-      not_enrolled: {
-        link: "https://teachcomputing.org/not-enrolled",
-        title: "Not enrolled"
-      },
-      logged_out: {
-        link: "https://teachcomputing.org/login",
-        title: "Log in"
-      }
-    }
-  }
+  let(:card_links) { Cms::Mocks::DynamicComponents::MultiStateLink.as_model(
+    enrolled_link_title: "Enrolled",
+    enrolled_link: "https://teachcomputing.org/enrolled",
+    not_enrolled_link: "https://teachcomputing.org/not-enrolled",
+    not_enrolled_link_title: "Not enrolled",
+    logged_out_link: "https://teachcomputing.org/login",
+    logged_out_link_title: "Log in"
+  ) }
 
   context "with no logged in user" do
     before do

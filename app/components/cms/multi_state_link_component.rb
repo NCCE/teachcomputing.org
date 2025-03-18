@@ -10,7 +10,7 @@ class Cms::MultiStateLinkComponent < ViewComponent::Base
     @logged_out_link = logged_out_link
 
     @not_enrolled_link_title = not_enrolled_link_title
-    @not_enrolled_link = @not_enrolled_link
+    @not_enrolled_link = not_enrolled_link
 
     @enrolled_link_title = enrolled_link_title
     @enrolled_link = enrolled_link
