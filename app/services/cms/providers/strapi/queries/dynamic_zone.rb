@@ -24,7 +24,8 @@ module Cms
             Components::Blocks::TextWithAsides,
             Components::Blocks::TextWithTestimonial,
             Components::Blocks::TwoColumnPictureSection,
-            Components::Blocks::TwoColumnVideoSection
+            Components::Blocks::TwoColumnVideoSection,
+            Components::Blocks::VideoCardsSection
           ]
 
           def self.embed(name)
