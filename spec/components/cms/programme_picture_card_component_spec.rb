@@ -7,13 +7,13 @@ RSpec.describe Cms::ProgrammePictureCardComponent, type: :component do
   let!(:programme) { create(:i_belong) }
   let(:card_links) {
     Cms::Mocks::DynamicComponents::MultiStateLink.as_model(
-        enrolled_link_title: "Enrolled",
-        enrolled_link: "https://teachcomputing.org/enrolled",
-        not_enrolled_link: "https://teachcomputing.org/not-enrolled",
-        not_enrolled_link_title: "Not enrolled",
-        logged_out_link: "https://teachcomputing.org/login",
-        logged_out_link_title: "Log in"
-      )
+      enrolled_link_title: "Enrolled",
+      enrolled_link: "https://teachcomputing.org/enrolled",
+      not_enrolled_link: "https://teachcomputing.org/not-enrolled",
+      not_enrolled_link_title: "Not enrolled",
+      logged_out_link: "https://teachcomputing.org/login",
+      logged_out_link_title: "Log in"
+    )
   }
 
   context "with no logged in user" do
