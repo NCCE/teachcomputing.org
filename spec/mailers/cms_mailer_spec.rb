@@ -5,7 +5,7 @@ RSpec.describe CmsMailer, type: :mailer do
   let(:user) { create(:user) }
   let(:activity) { create(:activity, programmes: [programme], title: "Test activity") }
   let!(:second_activity) { create(:activity, programmes: [programme], title: "Test activity second") }
-  let!(:other_activity) { create(:activity, programmes: [programme], title: "Other activity", stem_activity_code: "CP423") }
+  let!(:other_activity) { create(:activity, programmes: [programme], title: "Other activity", stem_activity_code: "CP823") }
   let!(:achievement) { create(:completed_achievement, activity:, user:) }
   let(:subject) { "I am a test email" }
   let(:slug) { "test-email-slug" }
@@ -46,7 +46,7 @@ RSpec.describe CmsMailer, type: :mailer do
       Cms::Mocks::EmailComponents::Cta.generate_raw_data(text: "CTA 1", link: "https://teachcomputing.org/cta1"),
       Cms::Mocks::EmailComponents::Cta.generate_raw_data(text: "CTA 2", link: "https://teachcomputing.org/cta2"),
       Cms::Mocks::EmailComponents::CourseList.generate_raw_data(section_title: nil, courses: [
-        Cms::Mocks::EmailComponents::Course.generate_data(activity_code: "CP423")
+        Cms::Mocks::EmailComponents::Course.generate_data(activity_code: "CP823")
       ])
     ]
   }
@@ -124,7 +124,7 @@ RSpec.describe CmsMailer, type: :mailer do
     end
 
     it "renders course link in text part" do
-      expect(@mail.text_part.body).to include("#{other_activity.title} (http://teachcomputing.test/courses/CP423/#{other_activity.title.parameterize})")
+      expect(@mail.text_part.body).to include("#{other_activity.title} (http://teachcomputing.test/courses/CP823/#{other_activity.title.parameterize})")
     end
 
     describe "Newer achievement" do
