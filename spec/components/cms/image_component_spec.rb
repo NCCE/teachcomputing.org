@@ -17,6 +17,10 @@ RSpec.describe Cms::ImageComponent, type: :component do
       expect(page).to have_css("img")
     end
 
+    it "should set default class" do
+      expect(page).to have_css(".cms-image")
+    end
+
     it "should have link" do
       expect(page).to have_link(href: "https://www.google.com")
     end
@@ -66,6 +70,34 @@ RSpec.describe Cms::ImageComponent, type: :component do
 
     it "should not show caption" do
       expect(page).not_to have_text(caption)
+    end
+  end
+
+  context "with additional classes" do
+    context "as string" do
+      before do
+        render_inline(described_class.new(
+          Cms::Mocks::Image.as_model(caption:),
+          classes: "another-class"
+        ))
+      end
+
+      it "should add both classes" do
+        expect(page).to have_css(".cms-image.another-class")
+      end
+    end
+
+    context "as array" do
+      before do
+        render_inline(described_class.new(
+          Cms::Mocks::Image.as_model(caption:),
+          classes: ["another-class", "second-class"]
+        ))
+      end
+
+      it "should add both of them" do
+        expect(page).to have_css(".cms-image.another-class.second-class")
+      end
     end
   end
 end

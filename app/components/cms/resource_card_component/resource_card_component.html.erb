@@ -1,12 +1,17 @@
 <%= content_tag :div, class: wrapper_classes do %>
-  <div class="cms-resource-card__top-content">
-    <div class="cms-resource-card__top-content-title">
-      <h2 class="govuk-heading-m"><%= @title %></h1>
+  <% if @title %>
+    <div class="cms-resource-card__top-content">
+      <div class="cms-resource-card__top-content-title">
+        <h2 class="govuk-heading-m"><%= @title %></h1>
+      </div>
+      <% if @icon %>
+        <div class="cms-resource-card__top-content-image">
+          <%= render Cms::ImageComponent.new(@icon) %>
+        </div>
+      <% end %>
     </div>
-    <div class="cms-resource-card__top-content-image">
-      <%= render Cms::ImageComponent.new(@icon) if @icon %>
-    </div>
-  </div>
+  <% end %>
+
   <div class="cms-resource-card__body-text">
     <%= render @body_text.render %>
   </div>
