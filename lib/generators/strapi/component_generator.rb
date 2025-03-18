@@ -49,7 +49,7 @@ module Strapi
     def run_view_component_generator
       Rails::Generators.invoke(
         "component",
-        ["Cms::#{@component_name_class}", *@rails_param_names, "--test-framework=rspec", "--sidecar"].compact,
+        ["Cms::#{@component_name_class}", *@rails_param_names, "--test-framework=rspec", "--sidecar", "--preview"].compact,
         behaviour: :invoke,
         destination_root:
       )
@@ -84,15 +84,15 @@ module Strapi
 
     def factory_key
       <<~RUBY
-        when "#{@component_strapi_name}":
+        when "#{@component_strapi_name}"
           to_#{@component_filename}(strapi_data)
       RUBY
     end
 
     def method_defintion
       <<~RUBY
-        def to_#{@component_filename}(strapi_data)
-          DynamicsComponents::Blocks::#{@component_name_class}.new(
+        def self.to_#{@component_filename}(strapi_data)
+          DynamicComponents::Blocks::#{@component_name_class}.new(
             #{@strapi_params.map { "#{_1.underscore}: strapi_data[:#{_1}]" }.join(",\n\s\s\s\s")}
           )
         end
