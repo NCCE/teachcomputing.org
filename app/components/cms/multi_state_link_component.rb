@@ -25,11 +25,11 @@ class Cms::MultiStateLinkComponent < ViewComponent::Base
   def call
     case current_user_state
     when :logged_out
-      link_to(@logged_out_link_title, @logged_out_link, class: "ncce-link")
+      link_to(@logged_out_link_title, @logged_out_link)
     when :not_enrolled
-      link_to(@not_enrolled_link_title, @not_enrolled_link, class: "ncce-link")
+      link_to(@not_enrolled_link_title, @not_enrolled_link)
     when :enrolled
-      link_to(@enrolled_link_title, @enrolled_link, class: "ncce-link")
+      link_to(@enrolled_link_title, @enrolled_link)
     end
   end
 end
