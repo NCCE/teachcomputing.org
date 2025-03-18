@@ -53,6 +53,8 @@ module Cms
               to_card_wrapper(strapi_data, to_video_card_array(strapi_data[:videoCards]))
             when "full-width-image-banner"
               to_full_width_image_banner(strapi_data)
+            when "horizontal-card-with-asides"
+              to_horizontal_card_with_asides(strapi_data)
             end
           end
 
@@ -73,6 +75,16 @@ module Cms
               overlay_text: to_content_block(strapi_data[:overlayText], paragraph_class: "govuk-body-s"),
               overlay_icon: to_image(strapi_data, :overlayIcon, default_size: :small),
               overlay_side: strapi_data[:overlaySide]
+            )
+          end
+
+          def self.to_horizontal_card_with_asides(strapi_data)
+            DynamicComponents::HorizontalCardWithAsides.new(
+              text: to_content_block(strapi_data[:textContent]),
+              button: to_ncce_button(strapi_data[:button]),
+              aside_sections: extract_aside_sections(strapi_data, param_name: :asides),
+              background_color: extract_color_name(strapi_data, :bkColor),
+              color_theme: extract_color_name(strapi_data, :theme)
             )
           end
 
