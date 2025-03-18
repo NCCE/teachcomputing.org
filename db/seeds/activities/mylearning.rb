@@ -1013,3 +1013,93 @@ Activity.find_or_initialize_by(stem_course_template_no: "406e8937-80b8-ef11-b8e9
 
   activity.programmes = [primary_certificate]
 end.save!
+
+########################################################################################################################
+
+Activity.find_or_initialize_by(stem_course_template_no: "0ba68557-50fe-ef11-bae3-6045bd0da0e9").tap do |activity|
+  activity.title = "Supporting GCSE computer science students at grades 1-3"
+  activity.credit = 60
+  activity.slug = "supporting-gcse-computer-science-students-at-grades-1-3-online"
+  activity.category = "online"
+  activity.self_certifiable = false
+  activity.provider = "stem-learning"
+  activity.stem_activity_code = "CO478"
+  activity.always_on = true
+
+  activity.programmes = [secondary_certificate]
+end.save!
+
+########################################################################################################################
+
+Activity.find_or_initialize_by(stem_course_template_no: "3a08b061-51fe-ef11-bae3-6045bd0da0e9").tap do |activity|
+  activity.title = "KS3 computing (module 3): Creative curriculum enrichment and inclusion"
+  activity.credit = 50
+  activity.slug = "ks3-computing-module-3-creative-curriculum-enrichment-and-inclusion-online"
+  activity.category = "online"
+  activity.self_certifiable = false
+  activity.provider = "stem-learning"
+  activity.stem_activity_code = "CO249"
+  activity.always_on = true
+
+  activity.programmes = [secondary_certificate]
+end.save!
+
+########################################################################################################################
+
+Activity.find_or_initialize_by(stem_course_template_no: "a1f21bd0-52fe-ef11-bae3-6045bd0da0e9").tap do |activity|
+  activity.title = "Foundation knowledge of computer science for KS3 and GCSE"
+  activity.credit = 20
+  activity.slug = "foundation-knowledge-of-computer-science-for-ks3-and-gcse-online"
+  activity.category = "online"
+  activity.self_certifiable = false
+  activity.provider = "stem-learning"
+  activity.stem_activity_code = "CO426"
+  activity.always_on = true
+
+  activity.programmes = [cs_accelerator]
+end.save!
+
+########################################################################################################################
+
+Activity.find_or_initialize_by(stem_course_template_no: "89b260f5-53fe-ef11-bae3-6045bd0da0e9").tap do |activity|
+  activity.title = "Computing Quality Framework - driving change within your secondary school"
+  activity.credit = 20
+  activity.slug = "computing-quality-framework-driving-change-within-your-secondary-school-online"
+  activity.category = "online"
+  activity.self_certifiable = false
+  activity.provider = "stem-learning"
+  activity.stem_activity_code = "CO406"
+  activity.always_on = true
+
+  activity.programmes = [secondary_certificate]
+end.save!
+
+########################################################################################################################
+
+Activity.find_or_initialize_by(stem_course_template_no: "c9536bf0-66fe-ef11-bae3-6045bd0da0e9").tap do |activity|
+  activity.title = "Higher attainment in computer science - meeting the challenges of the exams"
+  activity.credit = 60
+  activity.slug = "higher-attainment-in-computer-science-meeting-the-challenges-of-the-exams-online"
+  activity.category = "online"
+  activity.self_certifiable = false
+  activity.provider = "stem-learning"
+  activity.stem_activity_code = "CO439"
+  activity.always_on = true
+
+  activity.programmes = [secondary_certificate]
+end.save!
+
+########################################################################################################################
+
+Activity.find_or_initialize_by(stem_course_template_no: "a83fd7af-f5ff-ef11-bae3-0022481add34").tap do |activity|
+  activity.title = "Digital literacy in key stage 2 and key stage 3"
+  activity.credit = 20
+  activity.slug = "digital-literacy-in-key-stage-2-and-key-stage-3-online"
+  activity.category = "online"
+  activity.self_certifiable = false
+  activity.provider = "stem-learning"
+  activity.stem_activity_code = "CO904"
+  activity.always_on = true
+
+  activity.programmes = [secondary_certificate]
+end.save!
