@@ -25,10 +25,11 @@
   <div class="cpd-course-item__links">
 
 
-    <% if @achievement %>
-      <div class="status-tag">
-        <%= @achievement.complete? ? 'Completed' : 'In progress' %>
-      </div>
+
+    <% if @achievement_state == :complete %>
+      <div class="status-tag">Completed</div>
+    <% elsif @achievement_state == :in_progress %>
+      <div class="status-tag">In progress</div>
     <% else %>
       <%= link_to "Book now", course_path(id: @activity.stem_activity_code, name: @activity.slug),
         class: "govuk-button button" %>
