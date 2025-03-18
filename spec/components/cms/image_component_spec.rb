@@ -82,7 +82,7 @@ RSpec.describe Cms::ImageComponent, type: :component do
         ))
       end
 
-      it "should add them" do
+      it "should add both classes" do
         expect(page).to have_css(".cms-image.another-class")
       end
     end
@@ -95,7 +95,7 @@ RSpec.describe Cms::ImageComponent, type: :component do
         ))
       end
 
-      it "should add them" do
+      it "should add both of them" do
         expect(page).to have_css(".cms-image.another-class.second-class")
       end
     end
