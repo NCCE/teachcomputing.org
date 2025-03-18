@@ -45,7 +45,9 @@ module Cms
                 title: strapi_data[:title],
                 sub_text: strapi_data[:subText],
                 title_image: to_image(strapi_data, :titleImage),
-                title_video_url: strapi_data[:titleVideoUrl]
+                title_video_url: strapi_data[:titleVideoUrl],
+                background_color: extract_color_name(strapi_data, :bkColor),
+                i_belong_flag: strapi_data[:iBelongFlag]
               )
             elsif model_class == Models::BlogPreview
               to_blog_preview(strapi_data)
