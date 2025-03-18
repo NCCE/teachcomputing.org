@@ -551,8 +551,6 @@ end.save!
 
 ########################################################################################################################
 
-########################################################################################################################
-
 Activity.find_or_initialize_by(stem_course_template_no: "054037e5-eff8-ef11-bae2-6045bd0da0e9").tap do |activity|
   activity.title = "New leaders of secondary computing"
   activity.credit = 50
@@ -1015,6 +1013,8 @@ Activity.find_or_initialize_by(stem_course_template_no: "406e8937-80b8-ef11-b8e9
 
   activity.programmes = [primary_certificate]
 end.save!
+
+########################################################################################################################
 
 Activity.find_or_initialize_by(stem_course_template_no: "0ba68557-50fe-ef11-bae3-6045bd0da0e9").tap do |activity|
   activity.title = "Supporting GCSE computer science students at grades 1-3"
