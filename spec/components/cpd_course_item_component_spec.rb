@@ -37,6 +37,26 @@ RSpec.describe CpdCourseItemComponent, type: :component do
     end
   end
 
+  context "with dropped achievement" do
+    let!(:achievement) { create(:dropped_achievement, user: current_user, activity:) }
+
+    before do
+      render_inline(described_class.new(activity:, current_user:))
+    end
+
+    it "should render the element" do
+      expect(page).to have_css(".cpd-course-item")
+    end
+
+    it "should render title" do
+      expect(page).to have_css(".govuk-body", text: activity.title)
+    end
+
+    it "should render the book now button" do
+      expect(page).to have_link("Book now", href: "/courses/#{activity.stem_activity_code}/#{activity.slug}")
+    end
+  end
+
   context "when complete" do
     let!(:achievement) { create(:completed_achievement, user: current_user, activity:) }
 
@@ -60,12 +80,62 @@ RSpec.describe CpdCourseItemComponent, type: :component do
       render_inline(described_class.new(activity:, current_user:))
     end
 
-    it "should show completed flag" do
+    it "should show in progress flag" do
       expect(page).to have_css(".status-tag", text: "In progress")
     end
 
     it "should not show book button" do
       expect(page).not_to have_link("Book now", href: "/courses/#{activity.stem_activity_code}/#{activity.slug}")
+    end
+  end
+
+  context "with dropped achievement and completed" do
+    let!(:achievement) { create(:dropped_achievement, user: current_user, activity:) }
+    let!(:achievement) { create(:completed_achievement, user: current_user, activity:) }
+
+    before do
+      render_inline(described_class.new(activity:, current_user:))
+    end
+
+    it "should render the element" do
+      expect(page).to have_css(".cpd-course-item")
+    end
+
+    it "should render title" do
+      expect(page).to have_css(".govuk-body", text: activity.title)
+    end
+
+    it "should not show book button" do
+      expect(page).not_to have_link("Book now", href: "/courses/#{activity.stem_activity_code}/#{activity.slug}")
+    end
+
+    it "should show completed flag" do
+      expect(page).to have_css(".status-tag", text: "Completed")
+    end
+  end
+
+  context "with dropped achievement and in_progress" do
+    let!(:achievement) { create(:dropped_achievement, user: current_user, activity:) }
+    let!(:achievement) { create(:achievement, user: current_user, activity:) }
+
+    before do
+      render_inline(described_class.new(activity:, current_user:))
+    end
+
+    it "should render the element" do
+      expect(page).to have_css(".cpd-course-item")
+    end
+
+    it "should render title" do
+      expect(page).to have_css(".govuk-body", text: activity.title)
+    end
+
+    it "should not show book button" do
+      expect(page).not_to have_link("Book now", href: "/courses/#{activity.stem_activity_code}/#{activity.slug}")
+    end
+
+    it "should show in progress flag" do
+      expect(page).to have_css(".status-tag", text: "In progress")
     end
   end
 end
