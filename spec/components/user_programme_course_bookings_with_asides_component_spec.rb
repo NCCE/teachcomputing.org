@@ -2,12 +2,9 @@ require "rails_helper"
 
 RSpec.describe UserProgrammeCourseBookingsWithAsidesComponent, type: :component do
   let(:user) { create(:user) }
-  let(:activity) {
-    activity = Activity.find_by(stem_activity_code: "CP199")
-    activity || create(:activity, stem_activity_code: "CP199", category: :online)
-  }
-  let(:activity_two) { create(:activity, stem_activity_code: "CP228") }
-  let(:activity_three) { create(:activity, stem_activity_code: "CS101", remote_delivered_cpd: true) }
+  let(:activity) { find_or_create_activity("CP199", category: :online) }
+  let(:activity_two) { find_or_create_activity("CP228") }
+  let(:activity_three) { find_or_create_activity("CS101", remote_delivered_cpd: true) }
   let(:programme) { create(:primary_certificate) }
   let(:achievement) { create(:achievement, user:) }
   let!(:courses) { create_list(:programme_activity_grouping, 2, :with_activities, sort_key: 2, community: false, programme:) }
@@ -17,6 +14,11 @@ RSpec.describe UserProgrammeCourseBookingsWithAsidesComponent, type: :component 
   let(:user_achievement) { create(:achievement, user:, activity:) }
   let(:remote_achievement) { create(:achievement, user:, activity: activity_three) }
   let(:completed_user_achievement) { create(:completed_achievement, user:, activity: activity_two) }
+
+  def find_or_create_activity(stem_activity_code, **)
+    activity = Activity.find_by(stem_activity_code:)
+    activity || create(:activity, stem_activity_code:, **)
+  end
 
   describe "when primary certificate" do
     context "with no user courses" do
