@@ -34,14 +34,19 @@ module Cms
               )
             end
 
-            def to_content_block(data, with_wrapper: false, **)
-              return nil if data.nil?
+            def process_block_data(blocks)
+              return nil if blocks.nil?
 
-              data.map! do |block|
+              blocks.map! do |block|
                 block[:image] = as_image(block[:image], :medium) if block[:type] == "image"
                 block
               end
-              Models::TextBlock.new(blocks: data, with_wrapper:, **)
+            end
+
+            def to_content_block(data, with_wrapper: false, **)
+              return nil if data.nil?
+
+              Models::TextBlock.new(blocks: process_block_data(data), with_wrapper:, **)
             end
 
             def to_image(strapi_data, image_key, default_size: :medium)

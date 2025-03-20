@@ -11,9 +11,9 @@ module Cms
         [
           {model: Models::Slug, key: nil, param_name: :slug},
           {model: Models::TextField, key: :statusPendingTitle},
-          {model: Models::TextBlock, key: :statusPendingText, with_wrapper: false},
+          {model: Models::TextBlockWithoutWrapper, key: :statusPendingText},
           {model: Models::TextField, key: :statusCompletedTitle},
-          {model: Models::TextBlock, key: :statusCompletedText, with_wrapper: false}
+          {model: Models::TextBlockWithoutWrapper, key: :statusCompletedText}
         ]
       end
 
