@@ -5,72 +5,56 @@
 <% meta_tag :image_alt, 'Secondary Teachers - Teach Computing' %>
 <%= render 'pages/certification/hero', full_width: true %>
 
-<div class="light-grey-bg">
-  <div class="govuk-width-container">
-    <div class="govuk-main-wrapper govuk-main-wrapper--xl">
-      <div class="govuk-grid-row">
-        <div class="govuk-grid-column-two-thirds">
-          <h2 class="govuk-heading-m">Welcome to the KS3 and GCSE Computer Science subject knowledge certificate!</h2>
-          <p class="govuk-body-m govuk-!-margin-bottom-7">
-            <% if @csa_dash.has_enough_activities_for_test %>
-              You've completed enough courses to access the test. You should continue to complete any courses you think are right for you. When you are ready, you can <%= link_to 'take our test or practice with our mock test', '#csa-test', class: 'ncce-link', data: tracking_data('View test and mock test') %>
-              </p>
-            <% else %>
-              To access our test and get your certificate, you'll need to complete two days of professional development, including at least one face-to-face or remote course. You can choose another face-to-face, remote or online course to make up the remaining hours of CPD required to unlock the assessment.
-            <% end %>
-          </p>
 
-          <%= render partial: 'certificates/cs_accelerator/pathway-prompt', locals: { user_programme_pathway: @csa_dash.user_programme_pathway } %>
+<%= render GovGridRowComponent.new(background_color: "light-grey") do |row| %>
+  <%= row.with_column(:"two-thirds") do %>
+    <h2 class="govuk-heading-m">Welcome to the KS3 and GCSE Computer Science subject knowledge certificate!</h2>
+    <p class="govuk-body-m govuk-!-margin-bottom-7">
+      <% if @csa_dash.has_enough_activities_for_test %>
+        You've completed enough courses to access the test. You should continue to complete any courses you think are right for you. When you are ready, you can <%= link_to 'take our test or practice with our mock test', '#csa-test', class: 'ncce-link', data: tracking_data('View test and mock test') %>
+      <% else %>
+        To access the test and get your certificate, you'll need to complete a minimum of two online courses or a full residential course at our centre in York. Upon meeting this requirement for professional development, the assessment will be unlocked for you in your dashboard.
+      <% end %>
+    </p>
 
-          <div class="govuk-body ncce-csa-dash__section-unpadded">
-            <%= render partial: 'certificates/cs_accelerator/achievements', locals: {
-              compulsory_achievement: @csa_dash.compulsory_achievement,
-              user_completed_non_compulsory_achievement: @csa_dash.user_completed_non_compulsory_achievement?,
-              non_compulsory_achievements: @csa_dash.non_compulsory_achievements
-            } %>
+    <%= render partial: 'certificates/cs_accelerator/pathway-prompt', locals: { user_programme_pathway: @csa_dash.user_programme_pathway } %>
 
-            <div class="ncce-csa-dash__section ncce-csa-dash__section-padded">
-              <%= render partial: 'certificates/pathways/recommended_courses', locals: {
-                event_category: 'CSA enrolled',
-                pathway: @csa_dash.user_programme_pathway,
-                recommended_activities: @csa_dash.recommended_activities_for_user
-              } %>
-            </div>
-          </div>
+    <div class="govuk-body ncce-csa-dash__section-unpadded">
+      <%= render partial: 'certificates/cs_accelerator/achievements', locals: {
+        course_achievements: @csa_dash.course_achievements,
+        test_available: @csa_dash.has_enough_activities_for_test
+      } %>
 
-          <% if @csa_dash.user_programme_pathway.present? %>
-            <div class="govuk-body ncce-activity-list ncce-csa-dash__section">
-              <%= render partial: 'certificates/pathways/supplementary_courses', locals: {
-                pathway: @csa_dash.user_programme_pathway ,
-                supplementary_activities: @csa_dash.supplementary_activities_for_user
-              } %>
-            </div>
-          <% end %>
-
-          <% if @csa_dash.has_enough_activities_for_test %>
-            <%= render partial: 'certificates/cs_accelerator/csa-test', locals: {
-                user_programme_assessment: @csa_dash.user_programme_assessment
-            } %>
-          <% end %>
-          <h3 class="govuk-heading-m"><%= t('.take_development_further') %></h3>
-          <p class="govuk-body"><%= t('.take_development_further_body') %></p>
-          <%= link_to t('.take_development_further_cta'), secondary_path, class: 'govuk-button button' %>
-        </div>
-        <div class="govuk-grid-column-one-third">
-          <div class='ncce-aside ncce-pathway-aside'>
-            <%= render partial: 'certificates/cs_accelerator/pathway-switcher', locals: {
-              other_programme_pathways_for_user: @csa_dash.other_programme_pathways_for_user,
-              user_pathway: @csa_dash.user_programme_pathway,
-              completed: @programme.user_completed?(current_user)
-            } %>
-          </div>
-          <%= render 'components/support-aside' %>
-          <div class="ncce-aside--borderless">
-            <%= render FeedbackComponent.new(heading: 'Help us improve our certificate experience', area: :cs_accelerator) %>
-          </div>
-        </div>
+      <div class="ncce-csa-dash__section ncce-csa-dash__section-padded">
+        <%= render partial: 'certificates/pathways/recommended_courses', locals: {
+          event_category: 'CSA enrolled',
+          pathway: @csa_dash.user_programme_pathway,
+          recommended_activities: @csa_dash.recommended_activities_for_user
+        } %>
       </div>
     </div>
-  </div>
 
-</div>
+    <% if @csa_dash.has_enough_activities_for_test %>
+      <%= render partial: 'certificates/cs_accelerator/csa-test', locals: {
+          user_programme_assessment: @csa_dash.user_programme_assessment
+      } %>
+    <% end %>
+    <h3 class="govuk-heading-m"><%= t('.take_development_further') %></h3>
+    <p class="govuk-body"><%= t('.take_development_further_body') %></p>
+    <%= link_to t('.take_development_further_cta'), secondary_path, class: 'govuk-button button' %>
+  <% end %>
+
+  <%= row.with_column(:"one-third") do %>
+    <div class='ncce-aside ncce-pathway-aside'>
+      <%= render partial: 'certificates/cs_accelerator/pathway-switcher', locals: {
+        other_programme_pathways_for_user: @csa_dash.other_programme_pathways_for_user,
+        user_pathway: @csa_dash.user_programme_pathway,
+        completed: @programme.user_completed?(current_user)
+      } %>
+    </div>
+    <%= render 'components/support-aside' %>
+    <div class="ncce-aside--borderless">
+      <%= render FeedbackComponent.new(heading: 'Help us improve our certificate experience', area: :cs_accelerator) %>
+    </div>
+  <% end %>
+<% end %>
