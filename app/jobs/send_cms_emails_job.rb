@@ -1,13 +1,8 @@
 class SendCmsEmailsJob < ApplicationJob
   PER_PAGE = 50
   def perform
-    page = 1
-    loop do
-      email_templates = Cms::Collections::EmailTemplate.all(page, PER_PAGE)
-      email_templates.resources.each { process_template(_1) }
-      break if (page * PER_PAGE) > email_templates.total_records
-      page += 1
-    end
+    email_templates = Cms::Collections::EmailTemplate.all_records
+    email_templates.each { process_template(_1) }
   end
 
   def process_template(template)
