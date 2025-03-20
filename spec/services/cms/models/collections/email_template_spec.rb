@@ -84,4 +84,18 @@ RSpec.describe Cms::Models::Collections::EmailTemplate do
       expect(@model.time_diff_words(25.months.ago)).to eq("2 years")
     end
   end
+
+  it "passing nil into completed_programme_activity_group_slugs defaults to array" do
+    @model = described_class.new(
+      slug:,
+      subject:,
+      email_content: Cms::Mocks::EmailComponents::Text.generate_raw_data(text_content:),
+      programme_slug: "primary-certificate",
+      completed_programme_activity_group_slugs: nil,
+      activity_state: :active,
+      enrolled: true
+    )
+
+    expect(@model.completed_programme_activity_groups).to eq([])
+  end
 end
