@@ -46,7 +46,7 @@ RSpec.describe CSADash do
     end
   end
 
-  describe "#has_enough_activities_for_test" do
+  describe "#enough_credits_for_test?" do
     it "calls method on programme" do
       allow(csa).to receive(:enough_credits_for_test?)
       dash.has_enough_activities_for_test
