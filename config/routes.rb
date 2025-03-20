@@ -158,8 +158,8 @@ Rails.application.routes.draw do
   get "/courses/filter", action: :filter, controller: "courses", as: "course_filter"
   get "/courses/:id(/:name)", action: :show, controller: "courses", as: "course"
 
-  #get "/curriculum", to: "curriculum/key_stages#index", as: :curriculum_key_stages
-  get "/curriculum", to: "pages#web_page_resource", as: :curriculum_key_stages, defaults: { page_slug: "curriculum" }
+  # get "/curriculum", to: "curriculum/key_stages#index", as: :curriculum_key_stages
+  get "/curriculum", to: "pages#web_page_resource", as: :curriculum_key_stages, defaults: {page_slug: "curriculum"}
   get "/curriculum/files/:slug", to: "curriculum/file_redirect#redirect_to_file", as: :curriculum_file_redirect
   get "/curriculum/:key_stage_slug", to: "curriculum/key_stages#show", as: :curriculum_key_stage_units
   get "/curriculum/:key_stage_slug/:unit_slug", to: "curriculum/units#show", as: :curriculum_key_stage_unit
@@ -201,11 +201,11 @@ Rails.application.routes.draw do
   get "/external/assets/ncce.css", to: "asset_endpoint#css_endpoint", as: :css_endpoint
 
   get "/tech-careers-videos", to: "pages#page", as: :tech_careers_videos, defaults: {page_slug: "tech-careers-videos"}
-  #get "/i-belong", to: "pages#i_belong", as: :about_i_belong, defaults: {page_slug: "i-belong"}
+  # get "/i-belong", to: "pages#i_belong", as: :about_i_belong, defaults: {page_slug: "i-belong"}
 
   get "/computing-teaching-schools-support", to: redirect("/gcse-cs-support")
   get "/isaac-computer-science", to: "pages#isaac_computer_science", as: :about_isaac_computer_science, defaults: {page_slug: "isaac-computer-science"}
-  #get "/gender-balance", to: "pages#page", as: :gender_balance, defaults: {page_slug: "gender-balance"}
+  # get "/gender-balance", to: "pages#page", as: :gender_balance, defaults: {page_slug: "gender-balance"}
   get "/secondary-question-banks", to: "pages#page", as: :secondary_question_banks, defaults: {page_slug: "secondary-question-banks"}
   get "/powerupthedigitalgeneration", to: redirect("/supporting-partners")
   get "/impact-and-evaluation", to: "pages#page", as: :impact, defaults: {page_slug: "impact-and-evaluation"}
@@ -249,8 +249,8 @@ Rails.application.routes.draw do
   get "/secondary-enrichment", to: "cms#enrichment", defaults: {page_slug: "secondary-enrichment"}, as: :secondary_enrichment
   get "/secondary-enrichment/refresh", to: "cms#enrichment_refresh", defaults: {page_slug: "secondary-enrichment"}, as: :secondary_enrichment_reload
 
-  get "/i-belong", to: "cms#web_page_resource", as: :about_i_belong, defaults: { page_slug: "i-belong"}
-  get "/gender-balance", to: "cms#web_page_resource", as: :gender_balance, defaults: { page_slug: "gender-balance"}
+  get "/i-belong", to: "cms#web_page_resource", as: :about_i_belong, defaults: {page_slug: "i-belong"}
+  get "/gender-balance", to: "cms#web_page_resource", as: :gender_balance, defaults: {page_slug: "gender-balance"}
   get "/secondary-senior-leaders", to: "cms#web_page_resource", as: :secondary_senior_leaders,
     defaults: {page_slug: "secondary-senior-leaders"}
 
