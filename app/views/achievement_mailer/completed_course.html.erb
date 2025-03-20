@@ -2,7 +2,7 @@
   <p class='govuk-body'>Hello <%= @user.first_name %>,</p>
 
   <p class='govuk-body'>Thanks for engaging with the KS3 and GCSE Computer Science subject knowledge certificate. You're making great progress towards achieving your subject knowledge certificate.</p>
-  <p class='govuk-body'>Once you have completed your next face to face or remote course, you will have reached ten hours of CPD and become <b>eligible to take the test and achieve your qualification.</b></p>
+  <p class='govuk-body'>Once you have completed your next course, you will have reached ten hours of CPD and become <b>eligible to take the test and achieve your qualification.</b></p>
   <h3 class="govuk-heading-s">Next steps</h3>
   <p class='govuk-body'>Choose from any of our computer science subject knowledge courses.</p>
   <%= link_to 'Browse all courses', courses_url(certificate: 'subject-knowledge', emailTrigger: 'CSA4'), class: 'govuk-button button' %>
