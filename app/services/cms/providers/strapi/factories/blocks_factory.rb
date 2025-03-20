@@ -49,6 +49,8 @@ module Cms
               DynamicComponents::PrimaryGlossaryTable.new(title: strapi_data[:title])
             when "two-column-picture-section"
               to_two_column_picture_section(strapi_data)
+            when "secondary-question-bank"
+              DynamicComponents::SecondaryQuestionBank.new(title: strapi_data[:title])
             end
           end
 

@@ -1,0 +1,10 @@
+<div class="question-bank-form-component">
+  <div>
+    <span class="govuk-body-m govuk-!-font-weight-bold"><%= @form_name %></span>
+  </div>
+  <% @links.each do |link| %>
+    <div>
+      <%= render link.render %>
+    </div>
+  <% end %>
+</div>

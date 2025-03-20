@@ -1,0 +1,11 @@
+<%= @title %>
+
+<% @records.each do |record| %>
+  <%= record.topic.value %>
+  <% record.forms.each do |form| %>
+    <%= form %>
+  <% end %>
+
+  <%= record.forms %>
+
+<% end %>

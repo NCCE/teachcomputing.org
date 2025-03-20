@@ -1,12 +1,14 @@
 module Cms
   module Models
     class HeaderMenu
-      def initialize(menus)
-        @menus = menus
+      attr_accessor :menu_items
+
+      def initialize(menu_items:)
+        @menu_items = menu_items
       end
 
       def render
-        Cms::HeaderMenuComponent.new(menu_items: @menus)
+        Cms::HeaderMenuComponent.new(menu_items:)
       end
     end
   end

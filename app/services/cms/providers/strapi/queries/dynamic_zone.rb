@@ -18,6 +18,7 @@ module Cms
             Components::Blocks::PrimaryGlossaryTable,
             Components::Blocks::QuestionAndAnswer,
             Components::Blocks::ResourceCardSection,
+            Components::Blocks::SecondaryQuestionBank,
             Components::Blocks::SplitHorizontalCard,
             Components::Blocks::StickyDashboardBar,
             Components::Blocks::TestimonialRow,

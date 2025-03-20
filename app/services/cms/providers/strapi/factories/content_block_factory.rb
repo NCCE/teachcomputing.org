@@ -22,7 +22,16 @@ module Cms
               to_link_with_icon(strapi_data)
             when "embedded-video"
               to_embedded_video(strapi_data)
+            when "link"
+              to_link(strapi_data)
             end
+          end
+
+          def self.to_link(strapi_data)
+            DynamicComponents::ContentBlocks::Link.new(
+              link_text: strapi_data[:linkText],
+              url: strapi_data[:url]
+            )
           end
 
           def self.to_linked_picture(strapi_data)
