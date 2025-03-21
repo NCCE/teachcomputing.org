@@ -42,7 +42,7 @@ RSpec.describe("certificates/secondary_certificate/show", type: :view) do
   end
 
   it "has the expected section titles" do
-    expect(rendered).to have_text("Complete one full day course of a combination of short courses that amounts to 6+ hours of professional development. Please note that the CPD must be part of the Teach secondary certificate.")
+    expect(rendered).to have_text("Complete one full day course or a combination of short courses that amounts to 6+ hours of professional development. Please note that the CPD must be part of the Teach secondary certificate.")
     expect(rendered).to have_text("Choose at least one activity to a group name", count: 2)
   end
 
