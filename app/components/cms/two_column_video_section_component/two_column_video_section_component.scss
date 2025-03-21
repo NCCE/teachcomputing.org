@@ -1,9 +1,4 @@
 .cms-two-column-video-section-component {
-  video {
-    width: 100%;
-    height: auto;
-    display: block;
-  }
 
   &__wrapper {
     &--padded {
@@ -13,5 +8,17 @@
 
   &__right-text {
       margin-top: 20px;
+  }
+
+  &__video-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    video {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
   }
 }
