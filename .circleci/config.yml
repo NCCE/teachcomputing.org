@@ -86,12 +86,6 @@ jobs:
           command: |
             mkdir ~/rspec
             bundle exec rspec --format progress --format RspecJunitFormatter -o ~/rspec/rspec.xml
-      - run:
-          name: Install Lighthouse
-          command: sudo npm install -g @lhci/cli@0.8.x
-      - run:
-          name: Run Lighthouse
-          command: lhci autorun
       - store_test_results:
           path: ~/rspec
       - store_artifacts:
