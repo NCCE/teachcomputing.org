@@ -72,7 +72,7 @@ module Cms
 
           def self.to_button_block(strapi_data)
             DynamicComponents::Blocks::ButtonBlock.new(
-              buttons: strapi_data[:buttons].map{ to_ncce_button(_1) },
+              buttons: strapi_data[:buttons].map { to_ncce_button(_1) },
               background_color: extract_color_name(strapi_data, :bkColor),
               padding: strapi_data[:padding],
               alignment: strapi_data[:alignment],

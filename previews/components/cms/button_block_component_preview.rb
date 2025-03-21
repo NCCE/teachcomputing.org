@@ -8,7 +8,7 @@ class Cms::ButtonBlockComponentPreview < ViewComponent::Preview
       padding: true,
       full_width: false,
       alignment: "left"
-      ))
+    ))
   end
 
   def with_padding_full_width_center
@@ -18,7 +18,7 @@ class Cms::ButtonBlockComponentPreview < ViewComponent::Preview
       padding: true,
       full_width: true,
       alignment: "center"
-      ))
+    ))
   end
 
   def with_padding_not_full_width_center
@@ -28,7 +28,7 @@ class Cms::ButtonBlockComponentPreview < ViewComponent::Preview
       padding: true,
       full_width: false,
       alignment: "center"
-      ))
+    ))
   end
 
   def with_padding_full_width_right
@@ -38,7 +38,7 @@ class Cms::ButtonBlockComponentPreview < ViewComponent::Preview
       padding: true,
       full_width: true,
       alignment: "right"
-      ))
+    ))
   end
 
   def with_padding_not_full_width_right
@@ -48,6 +48,6 @@ class Cms::ButtonBlockComponentPreview < ViewComponent::Preview
       padding: true,
       full_width: false,
       alignment: "right"
-      ))
+    ))
   end
 end

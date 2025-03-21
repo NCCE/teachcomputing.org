@@ -19,8 +19,7 @@ class Cms::ButtonBlockComponent < ViewComponent::Base
   end
 
   def padding
-    return { all: 0 } unless @padding
+    return {all: 0} unless @padding
     {}
   end
-
 end
