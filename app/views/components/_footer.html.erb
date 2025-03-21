@@ -25,7 +25,7 @@
           <%= link_to 'Teaching resources', curriculum_key_stages_path, class: 'govuk-footer__link ncce-link ncce-link--on-dark', data: { event_action: 'click', event_category: 'Site Navigation: Footer', event_label: 'Teaching resources' } %>
         </li>
         <li class="ncce-footer__list-item">
-          <%= link_to 'About us', about_path, class: 'govuk-footer__link ncce-link ncce-link--on-dark', data: { event_action: 'click', event_category: 'Site Navigation: Footer', event_label: 'About us' } %>
+          <%= link_to 'About us', cms_page_path("about"), class: 'govuk-footer__link ncce-link ncce-link--on-dark', data: { event_action: 'click', event_category: 'Site Navigation: Footer', event_label: 'About us' } %>
         </li>
       </ul>
       <ul class="ncce-footer__list">
@@ -33,7 +33,7 @@
           <%= link_to 'News', cms_posts_path, class: 'govuk-footer__link ncce-link ncce-link--on-dark', data: { event_action: 'click', event_category: 'Site Navigation: Footer', event_label: 'News' } %>
         </li>
         <li class="ncce-footer__list-item">
-          <%= link_to 'Get involved', get_involved_path, class: 'govuk-footer__link ncce-link ncce-link--on-dark', data: { event_action: 'click', event_category: 'Site Navigation: Footer', event_label: 'Get involved' } %>
+          <%= link_to 'Get involved', cms_page_path("get-involved"), class: 'govuk-footer__link ncce-link ncce-link--on-dark', data: { event_action: 'click', event_category: 'Site Navigation: Footer', event_label: 'Get involved' } %>
         </li>
         <li class="ncce-footer__list-item">
           <%= link_to 'Computing hubs', '/hubs', class: 'govuk-footer__link ncce-link ncce-link--on-dark', data: { event_action: 'click', event_category: 'Site Navigation: Footer', event_label: 'Computing hubs' } %>
@@ -50,7 +50,7 @@
           <%= link_to 'Privacy', cms_page_path('privacy'), class: 'govuk-footer__link ncce-link ncce-link--on-dark', data: { event_action: 'click', event_category: 'Site Navigation: Footer', event_label: 'Privacy' } %>
         </li>
         <li class="ncce-footer__list-item">
-          <%= link_to 'Terms and Conditions', terms_conditions_path, class: 'govuk-footer__link ncce-link ncce-link--on-dark',data: { event_action: 'click', event_category: 'Site Navigation: Footer', event_label: 'Terms and Conditions' } %>
+          <%= link_to 'Terms and Conditions', cms_page_path('terms-conditions'), class: 'govuk-footer__link ncce-link ncce-link--on-dark',data: { event_action: 'click', event_category: 'Site Navigation: Footer', event_label: 'Terms and Conditions' } %>
         </li>
         <li class="ncce-footer__list-item">
           <%= link_to 'Safeguarding', cms_page_path('safeguarding'), class: 'govuk-footer__link ncce-link ncce-link--on-dark',data: { event_action: 'click', event_category: 'Site Navigation: Footer', event_label: 'Safeguarding' } %>

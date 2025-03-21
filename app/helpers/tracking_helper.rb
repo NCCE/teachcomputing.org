@@ -5,7 +5,7 @@ module TrackingHelper
     @tracking_categories ||= begin
       tracking_categories = {
         curriculum_key_stages_path => "Curriculum landing",
-        about_path => "About",
+        cms_page_path("about") => "About",
         gender_balance_path => "GBIC",
         hubs_path => "Hubs",
         impact_path => "Impact",
@@ -19,7 +19,7 @@ module TrackingHelper
         complete_cs_accelerator_certificate_path => "CSA Complete",
         cms_page_path("primary-early-careers") => "ECT primary",
         cms_page_path("secondary-early-careers") => "ECT secondary",
-        pedagogy_path => "Pedagogy"
+        cms_page_path("pedagogy") => "Pedagogy"
       }
 
       (1..4).each do |key_stage|
