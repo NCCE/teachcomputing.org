@@ -55,7 +55,19 @@ module Cms
               to_full_width_image_banner(strapi_data)
             when "horizontal-card-with-asides"
               to_horizontal_card_with_asides(strapi_data)
+            when "button-block"
+              to_button_block(strapi_data)
             end
+          end
+
+          def self.to_button_block(strapi_data)
+            DynamicComponents::Blocks::ButtonBlock.new(
+              buttons: strapi_data[:buttons].map { to_ncce_button(_1) },
+              background_color: extract_color_name(strapi_data, :bkColor),
+              padding: strapi_data[:padding],
+              alignment: strapi_data[:alignment],
+              full_width: strapi_data[:fullWidth]
+            )
           end
 
           def self.to_text_with_testimonial(strapi_data)
