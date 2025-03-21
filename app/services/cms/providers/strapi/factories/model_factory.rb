@@ -154,7 +154,8 @@ module Cms
 
           def self.to_question_bank_forms(strapi_data, _all_data)
             {
-              forms: strapi_data[:forms]
+              form_name: strapi_data[:formName],
+              links: strapi_data[:links].map{ DynamicComponents::ContentBlocks::Link.new(url: _1[:url], link_text: _1[:linkText]) }
              }
           end
 

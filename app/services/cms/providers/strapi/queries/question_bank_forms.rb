@@ -3,9 +3,9 @@ module Cms
     module Strapi
       module Queries
         class QuestionBankForms
-          def self.embed(_name)
+          def self.embed(name)
             <<~GRAPHQL.freeze
-              #{QuestionBankForm.embed(:forms)}
+              #{Components::ContentBlocks::QuestionBankForm.embed(name)}
             GRAPHQL
           end
         end

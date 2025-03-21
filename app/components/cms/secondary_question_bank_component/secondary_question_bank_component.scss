@@ -1,0 +1,20 @@
+.secondary-question-bank-component {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  &__wrapper {
+    padding: 20px;
+    border-width: 10px;
+  }
+
+  &__forms {
+    display: flex;
+    gap: 60px;
+
+    @include govuk-media-query($until: tablet) {
+      flex-direction: column;
+      gap: 5px;
+    }
+  }
+}

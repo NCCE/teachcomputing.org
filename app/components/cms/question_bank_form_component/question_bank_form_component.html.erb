@@ -1,9 +1,9 @@
 <div class="question-bank-form-component">
   <div>
-    <span class="govuk-body-m govuk-!-font-weight-bold"><%= @form_name %></span>
+    <span class="govuk-body-m govuk-!-font-weight-bold"><%= @form_name %>:</span>
   </div>
   <% @links.each do |link| %>
-    <div>
+    <div class="question-bank-form-component__link govuk-body-m govuk-!-margin-0">
       <%= render link.render %>
     </div>
   <% end %>
