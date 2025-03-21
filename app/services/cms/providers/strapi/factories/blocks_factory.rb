@@ -90,7 +90,8 @@ module Cms
 
           def self.to_icon_row(strapi_data)
             DynamicComponents::IconRow.new(
-              icons: strapi_data[:icons].map { to_icon(_1) }
+              icons: strapi_data[:icons].map { to_icon(_1) },
+              background_color: extract_color_name(strapi_data, :bkColor)
             )
           end
 
