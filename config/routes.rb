@@ -158,8 +158,8 @@ Rails.application.routes.draw do
   get "/courses/filter", action: :filter, controller: "courses", as: "course_filter"
   get "/courses/:id(/:name)", action: :show, controller: "courses", as: "course"
 
-  # get "/curriculum", to: "curriculum/key_stages#index", as: :curriculum_key_stages
-  get "/curriculum", to: "pages#web_page_resource", as: :curriculum_key_stages, defaults: {page_slug: "curriculum"}
+  get "/curriculum", to: "curriculum/key_stages#index", as: :curriculum_key_stages
+  # get "/curriculum", to: "pages#web_page_resource", as: :curriculum_key_stages, defaults: {page_slug: "curriculum"}
   get "/curriculum/files/:slug", to: "curriculum/file_redirect#redirect_to_file", as: :curriculum_file_redirect
   get "/curriculum/:key_stage_slug", to: "curriculum/key_stages#show", as: :curriculum_key_stage_units
   get "/curriculum/:key_stage_slug/:unit_slug", to: "curriculum/units#show", as: :curriculum_key_stage_unit
@@ -200,7 +200,7 @@ Rails.application.routes.draw do
     defaults: {page_slug: "a-level-certificate"}
   get "/external/assets/ncce.css", to: "asset_endpoint#css_endpoint", as: :css_endpoint
 
-  get "/tech-careers-videos", to: "pages#page", as: :tech_careers_videos, defaults: {page_slug: "tech-careers-videos"}
+  # get "/tech-careers-videos", to: "pages#page", as: :tech_careers_videos, defaults: {page_slug: "tech-careers-videos"}
   # get "/i-belong", to: "pages#i_belong", as: :about_i_belong, defaults: {page_slug: "i-belong"}
 
   get "/computing-teaching-schools-support", to: redirect("/gcse-cs-support")
@@ -218,8 +218,8 @@ Rails.application.routes.draw do
 
   get "/primary-certificate/courses", action: :primary_courses, controller: "courses", as: :primary_courses
 
-  get "/primary-teachers", to: "pages#page", as: :primary_teachers,
-    defaults: {page_slug: "primary-toolkit"}
+  # get "/primary-teachers", to: "pages#page", as: :primary_teachers,
+  #  defaults: {page_slug: "primary-toolkit"}
   get "/secondary-certificate",
     to: "pages#static_programme_page",
     as: :secondary,
@@ -229,8 +229,8 @@ Rails.application.routes.draw do
                  }
   # get "/secondary-senior-leaders", to: "pages#page", as: :secondary_senior_leaders,
   #  defaults: {page_slug: "secondary-senior-leaders"}
-  get "/primary-senior-leaders", to: "pages#page", as: :primary_senior_leaders,
-    defaults: {page_slug: "primary-senior-leaders"}
+  # get "/primary-senior-leaders", to: "pages#page", as: :primary_senior_leaders,
+  #  defaults: {page_slug: "primary-senior-leaders"}
   get "/secondary-teachers", to: "pages#page", as: :secondary_teachers,
     defaults: {page_slug: "secondary-toolkit"}
   get "/secondary-certification", to: "pages#secondary-certification", as: :secondary_certification
