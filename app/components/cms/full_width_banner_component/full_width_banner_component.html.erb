@@ -23,7 +23,7 @@
         <%= render @text_content.render %>
 
         <% if @buttons %>
-          <div class="cms-full-width-banner__content-buttons">
+          <div class="cms-full-width-banner__content-buttons cms-button-container">
             <% @buttons.each do |button| %>
               <%= render button.render %>
             <% end %>

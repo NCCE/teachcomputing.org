@@ -34,7 +34,7 @@ RSpec.describe Cms::PictureCardComponent, type: :component do
     end
 
     it "has a linked title" do
-      expect(page).to have_css("h2 a")
+      expect(page).to have_css("h3 a")
     end
 
     it "applies the ribbon class" do
