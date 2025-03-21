@@ -3,7 +3,6 @@
 require "rails_helper"
 
 RSpec.describe Cms::ButtonBlockComponent, type: :component do
-
   context "left alignment and no padding and not full width" do
     before do
       render_inline(described_class.new(
@@ -34,7 +33,6 @@ RSpec.describe Cms::ButtonBlockComponent, type: :component do
     it "should set padding class" do
       expect(page).to have_css("div[class*='govuk-!-padding-0']")
     end
-
   end
 
   context "right alignment and no padding and full width" do
@@ -92,5 +90,4 @@ RSpec.describe Cms::ButtonBlockComponent, type: :component do
       expect(page).to have_css(".cms-button-block--center")
     end
   end
-
 end
