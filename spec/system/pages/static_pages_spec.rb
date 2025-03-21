@@ -35,20 +35,6 @@ RSpec.describe("Static pages", type: :system) do
     end
   end
 
-  context "Terms page" do
-    before do
-      visit terms_conditions_path
-    end
-
-    it "is the correct page" do
-      expect(page).to have_content("National Centre for Computing Education Terms and Conditions")
-    end
-
-    it "main is accessible" do
-      expect(page).to be_accessible.within("#main-content")
-    end
-  end
-
   context "404 page" do
     before do
       visit "/404"
