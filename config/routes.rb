@@ -236,7 +236,7 @@ Rails.application.routes.draw do
   get "/secondary-certification", to: "pages#secondary-certification", as: :secondary_certification
   get "/signup-confirmation", to: "pages#page", as: :signup_confirmation, defaults: {page_slug: "signup-confirmation"}
   get "/supporting-partners", to: redirect("/get-involved")
-  get "/terms-conditions", to: "pages#page", as: :terms_conditions, defaults: {page_slug: "terms-conditions"}
+  # get "/terms-conditions", to: "pages#page", as: :terms_conditions, defaults: {page_slug: "terms-conditions"}
 
   resource :search, only: :show
 
