@@ -1,4 +1,9 @@
 .question-bank-form-component {
   display: flex;
-  justify-content: space-around;
+  gap: 30px;
+  align-items: center;
+
+  &__link a {
+    font-weight: 500;
+  }
 }

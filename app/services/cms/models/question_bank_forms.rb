@@ -1,14 +1,15 @@
 module Cms
   module Models
     class QuestionBankForms
-      attr_accessor :forms
+      attr_accessor :form_name, :links
 
-      def initialize(forms:)
-        @forms = forms
+      def initialize(form_name:, links:)
+        @form_name = form_name
+        @links = links
       end
 
       def render
-        nil
+        Cms::QuestionBankFormComponent.new(form_name:, links:)
       end
     end
   end

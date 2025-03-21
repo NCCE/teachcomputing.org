@@ -7,6 +7,6 @@ class Cms::LinkComponent < ViewComponent::Base
   end
 
   def call
-    link_to(@link_text, @url, class: "ncce-link")
+    link_to(@link_text, @url)
   end
 end
