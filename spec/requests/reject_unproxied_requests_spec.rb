@@ -14,6 +14,7 @@ RSpec.describe Rack::Attack do
   end
 
   before do
+    stub_strapi_web_page("primary-teachers")
     allow(CloudflareRails::Importer).to receive(:cloudflare_ips).and_return(cloudflare_ips)
   end
 
