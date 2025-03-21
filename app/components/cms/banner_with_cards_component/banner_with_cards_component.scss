@@ -1,0 +1,28 @@
+.cms-banner-with-cards {
+
+  &__content {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    @include govuk-media-query($from: desktop) {
+      padding-right: 100px;
+    }
+
+    .text-content {
+      &--light {
+        .govuk-body-m {
+          color: $white;
+        }
+      }
+    }
+  }
+
+  &__cards {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+}

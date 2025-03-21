@@ -11,7 +11,8 @@
   $colors: (
     "standard": $lime-green,
     "i-belong": $orange,
-    "isaac": $brand-yellow
+    "isaac": $brand-yellow,
+    "cqf": $pink
   );
 
   $sides: ("left", "right", "top", "bottom");
@@ -85,4 +86,13 @@
   display: flex;
   flex-direction: column;
   margin-top: 10px;
+}
+
+.cms { 
+  &-homepage {
+    .cms-card-wrapper__title {
+      text-align: center;
+      font-size: 2rem;
+    }
+  }
 }

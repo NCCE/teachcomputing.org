@@ -43,6 +43,12 @@ module Cms
               to_icon_row(strapi_data)
             when "two-column-video-section"
               to_two_column_video_section(strapi_data)
+            when "homepage-hero"
+              to_homepage_hero(strapi_data)
+            when "featured-blogs"
+              DynamicComponents::Blocks::FeaturedBlogs.new(title: strapi_data[:title])
+            when "banner-with-cards"
+              to_banner_with_cards(strapi_data)
             when "text-with-testimonial"
               to_text_with_testimonial(strapi_data)
             when "primary-glossary-table"
@@ -112,6 +118,23 @@ module Cms
               background_color: extract_color_name(strapi_data, :bkColor),
               left_column_button: to_ncce_button(strapi_data[:leftColumnButton]),
               box_color: extract_color_name(strapi_data, :boxColor)
+            )
+          end
+
+          def self.to_banner_with_cards(strapi_data)
+            DynamicComponents::Blocks::BannerWithCards.new(
+              title: strapi_data[:title],
+              text_content: to_content_block(strapi_data[:textContent]),
+              background_color: extract_color_name(strapi_data, :bkColor),
+              cards: to_horizontal_link_card_array(strapi_data[:cards])
+            )
+          end
+
+          def self.to_homepage_hero(strapi_data)
+            DynamicComponents::Blocks::HomepageHero.new(
+              title: strapi_data[:title],
+              house_content: to_content_block(strapi_data[:houseText]),
+              buttons: strapi_data[:buttons] ? strapi_data[:buttons].map { to_ncce_button(_1) } : []
             )
           end
 
@@ -195,6 +218,17 @@ module Cms
                 course_code: card_data[:courseCode],
                 description: to_content_block(card_data[:description]),
                 image: to_image(card_data, :image, default_size: :medium)
+              )
+            end
+          end
+
+          def self.to_horizontal_link_card_array(strapi_data)
+            strapi_data.map do |card_data|
+              DynamicComponents::ContentBlocks::HorizontalLinkCard.new(
+                title: card_data[:title],
+                link_url: card_data[:linkUrl],
+                card_content: to_content_block(card_data[:cardContent]),
+                theme: extract_color_name(card_data, :theme)
               )
             end
           end

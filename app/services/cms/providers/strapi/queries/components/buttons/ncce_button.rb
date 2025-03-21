@@ -12,6 +12,8 @@ module Cms
                   title
                   ncceButton__link: link
                   buttonTheme
+                  loggedInTitle
+                  loggedInLink
                 GRAPHQL
               end
             end
