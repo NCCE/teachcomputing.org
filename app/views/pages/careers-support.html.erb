@@ -47,14 +47,14 @@
 
 <%= render BannerComponent.new(
   title: t(".student-resources.topics_to_life.heading"),
-  title_link: tech_careers_videos_path,
+  title_link: cms_page_path("tech-careers-videos"),
   text:  t(".student-resources.topics_to_life.content.html"),
   video: { url: cs_topic_video_1_url },
   media_column_size: :half,
   media_side: :left,
   padding: 0,
   button: { text: "Explore careers videos",
-  link: tech_careers_videos_path,
+  link: cms_page_path("tech-careers-videos"),
   class: "ncce-button--white"},
 ) %>
 
