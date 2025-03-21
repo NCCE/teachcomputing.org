@@ -1,0 +1,23 @@
+.cms-button-block {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  gap: 15px;
+
+  @include govuk-media-query($until: tablet) {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  &--right {
+    justify-content: flex-end;
+  }
+
+  &--left {
+    justify-content: flex-start;
+  }
+
+  &--center {
+    justify-content: center;
+  }
+}
