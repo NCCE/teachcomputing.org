@@ -15,7 +15,7 @@ module Certificates
       set_cpd_courses
       @cpd_group = @professional_development_groups.first
       @cpd_completed = @professional_development_groups.first.user_complete?(current_user)
-      @community_groups = @programme.programme_activity_groupings.community.order(:sort_key).includes(programme_activities: :activity)
+      @community_groups = @programme.programme_activity_groupings.community.order(:sort_key).includes(:programme_activities)
 
       @completed_comm_groups, @incomplete_comm_groups = @community_groups.partition { _1.user_complete?(current_user) }
 
@@ -51,7 +51,10 @@ module Certificates
     end
 
     def user_achievements(category)
-      current_user.achievements.belonging_to_programme(@programme).with_category(category)
+      current_user.achievements
+        .includes(:activity)
+        .belonging_to_programme(@programme)
+        .with_category(category)
         .without_category(:action)
         .not_in_state(:dropped)
         .sort_complete_first

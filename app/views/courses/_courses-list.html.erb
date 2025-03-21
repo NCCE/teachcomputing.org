@@ -5,7 +5,7 @@
 <div class="govuk-body-m ncce-courses__loading-bar hidden" data-course-filter-target="loadingBar">Loading...</div>
 
 <% if !@course_filter.location_search? && @course_filter.total_results_count == 0 %>
-  <%= render NoCoursesComponent.new(hub: @course_filter.current_hub) %>
+  <%= render NoCoursesComponent.new %>
 <% else %>
   <div class="ncce-courses__list" data-course-filter-target="courseList">
     <%= render LocationSearchResultsComponent.new(course_filter: @course_filter) %>

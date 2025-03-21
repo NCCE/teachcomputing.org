@@ -46,12 +46,6 @@
           <%= render partial: 'pages/computing_quality_framework' %>
 
         </div>
-        <div class="govuk-grid-column-one-third">
-          <%= render AsideComponent.new(
-            title: "Guidance for offering computing",
-            text: "Our network of #{link_to('Computing Hubs', hubs_url)} is there to support you and your school to offer exemplary computing education for all.".html_safe
-          ) %>
-        </div>
       </div>
     </div>
   </div>
@@ -67,10 +61,8 @@
           cards: [
             {
               title: t('.objectives.cards.confidence.title'),
-              text: t('.objectives.cards.confidence.text.html',
-                  subsidies_link: (link_to('subsidies', cms_page_url('funding', anchor: 'primary-subsidy')))),
+              text: t('.objectives.cards.confidence.text.html'),
               image_url: 'media/images/pages/primary-senior-leaders/build_confidence_in_your_teachers.svg',
-
               link: { link_url: courses_url, link_title: t('.objectives.cards.confidence.link_text')}
             },
             {

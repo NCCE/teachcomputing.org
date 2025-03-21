@@ -82,7 +82,7 @@ module CareersHelper
       {
         title: "Guidance for you",
         title_link: hubs_path,
-        text: "We recommend conducting a 1:1 interview with every student, ensuring you provide quality guidance about STEM pathways using all the advice above.<br /><br />We are here to help, and you can contact your #{link_to "local Computing Hub", hubs_path} for further support and guidance for your school.".html_safe,
+        text: "We recommend conducting a 1:1 interview with every student, ensuring you provide quality guidance about STEM pathways using all the advice above.".html_safe,
         benchmark_icons: [
           "media/images/pages/careers-support/benchmark_8.svg"
         ]

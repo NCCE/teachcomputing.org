@@ -75,10 +75,6 @@
         </div>
 
         <div class="govuk-grid-column-one-third">
-          <%= render BursaryComponent.new(
-            tracking_event_category: @landing_page.event_tracking_category,
-            tracking_event_label: 'Bursaries certificate'
-          ) %>
           <%= render 'landing_pages/champions-aside' if @landing_page.secondary? %>
         </div>
       </div>
