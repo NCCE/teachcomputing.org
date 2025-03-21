@@ -4,10 +4,12 @@
       <div class="tc-row-half">
         <%= render @left_column_content.render %>
         <% if @left_column_button %>
-          <%= render @left_column_button.render %>
+          <div class="cms-button-container">
+            <%= render @left_column_button.render %>
+          </div>
         <% end %>
       </div>
-      <div class="tc-row-half">
+      <div class="tc-row-half cms-two-column-video-section-component__video-wrapper">
         <%= render @video.render %>
         <% if @right_column_content %>
           <div class="cms-two-column-video-section-component__right-text">

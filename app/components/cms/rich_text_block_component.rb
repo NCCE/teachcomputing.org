@@ -73,7 +73,7 @@ class Cms::RichTextBlockComponent < ViewComponent::Base
     def heading_class
       if @blocks[:level] == 1
         "govuk-heading-l"
-      elsif @blocks[:level] == 2
+      elsif @blocks[:level] == 2 || @blocks[:level] == 3
         "govuk-heading-m"
       else
         "govuk-heading-s"
