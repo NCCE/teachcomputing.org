@@ -11,6 +11,7 @@ RSpec.describe Cms::DynamicComponents::CourseCard do
   before do
     stub_course_templates
     stub_duration_units
+    allow(Sentry).to receive(:capture_message)
   end
 
   context "with valid activity" do
@@ -32,6 +33,10 @@ RSpec.describe Cms::DynamicComponents::CourseCard do
     it "should have correct course instance" do
       expect(first_block.course.activity_code).to eq("CP228")
     end
+
+    it "should not send sentry notification" do
+      expect(Sentry).not_to have_received(:capture_message)
+    end
   end
 
   context "with invalid activity" do
@@ -45,11 +50,16 @@ RSpec.describe Cms::DynamicComponents::CourseCard do
     it "should have no course instance" do
       expect(first_block.course).to be_nil
     end
+
+    it "should not send sentry notification" do
+      expect(Sentry).not_to have_received(:capture_message)
+    end
   end
 
   context "with replaced activity" do
-    let(:card_section) { Cms::Providers::Strapi::Factories::ComponentFactory.process_component(Cms::Mocks::CourseCardSection.generate_raw_data(cards: [replaced_course_card])) }
+    let!(:card_section) { Cms::Providers::Strapi::Factories::ComponentFactory.process_component(Cms::Mocks::CourseCardSection.generate_raw_data(cards: [replaced_course_card])) }
     let(:first_block) { card_section.cards_block.first }
+
 
     it "should render as Cms::CardWrapperComponent" do
       expect(card_section.render).to be_a(Cms::CardWrapperComponent)
@@ -65,6 +75,10 @@ RSpec.describe Cms::DynamicComponents::CourseCard do
 
     it "should have correct course instance" do
       expect(first_block.course.activity_code).to eq("CP229")
+    end
+
+    it "should send sentry notification" do
+      expect(Sentry).to have_received(:capture_message).once.with("Course card has been found with a now replaced course (RP228 -> CP229) - get comms to update Strapi to new course instance")
     end
   end
 end
