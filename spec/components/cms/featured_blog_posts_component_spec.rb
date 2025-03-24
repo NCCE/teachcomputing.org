@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe FeaturedBlogPostsComponent, type: :component do
+RSpec.describe Cms::FeaturedBlogPostsComponent, type: :component do
   context "when no posts" do
     before do
       stub_strapi_get_empty_collection_entity("blogs")

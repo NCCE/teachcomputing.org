@@ -6,7 +6,7 @@ RSpec.describe Cms::DynamicComponents::Blocks::FeaturedBlogs do
     stub_featured_posts
   end
 
-  it "should render as FeaturedBlogPostsComponent" do
-    expect(@blogs.render).to be_a(FeaturedBlogPostsComponent)
+  it "should render as Cms::FeaturedBlogPostsComponent" do
+    expect(@blogs.render).to be_a(Cms::FeaturedBlogPostsComponent)
   end
 end

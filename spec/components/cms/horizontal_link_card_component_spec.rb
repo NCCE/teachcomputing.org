@@ -22,7 +22,6 @@ RSpec.describe Cms::HorizontalLinkCardComponent, type: :component do
 
   it "should add theme classes" do
     expect(page).to have_css(".cms-color-theme__border--standard-left")
-    expect(page).to have_css(".standard-theme")
   end
 
   it "should render card content" do

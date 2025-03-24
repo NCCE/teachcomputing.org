@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class FeaturedBlogPostsComponent < ViewComponent::Base
+class Cms::FeaturedBlogPostsComponent < ViewComponent::Base
   def initialize(number_to_display:, show_main_feature: true, title: "News and Updates")
     @title = title
     posts =
