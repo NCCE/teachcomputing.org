@@ -16,7 +16,7 @@ module Cms
             Models::HeaderMenu => :to_menu,
             Models::HomepageDynamicZone => :to_dynamic_zone,
             Models::PageTitle => :to_page_title,
-            Models::QuestionBankForms => :to_question_bank_forms,
+            DynamicComponents::ContentBlocks::QuestionBankForm => :to_question_bank_forms,
             Models::Seo => :to_seo,
             Models::SimpleTitle => :to_simple_title,
             Models::Slug => :to_slug,
@@ -40,14 +40,14 @@ module Cms
             model_function = MAPPING_FUNCTIONS[model_class]
 
             if is_array
-              strapi_data.map{self.create_model(model_class, model_function, _1, all_data)}
+              strapi_data.map { create_model(model_class, model_function, _1, all_data) }
             else
-              self.create_model(model_class, model_function, strapi_data, all_data)
+              create_model(model_class, model_function, strapi_data, all_data)
             end
           end
 
           def self.create_model(model_class, model_function, strapi_data, all_data)
-            model_data = self.send(model_function, strapi_data, all_data)
+            model_data = send(model_function, strapi_data, all_data)
             model_class.new(**model_data) if model_data
           end
 
@@ -74,7 +74,7 @@ module Cms
           end
 
           def self.to_dynamic_zone(strapi_data, _all_data)
-            { cms_models: strapi_data.map { ComponentFactory.process_component(_1) }.compact }
+            {cms_models: strapi_data.map { ComponentFactory.process_component(_1) }.compact}
           end
 
           def self.to_email_template(strapi_data, _all_data)
@@ -155,8 +155,8 @@ module Cms
           def self.to_question_bank_forms(strapi_data, _all_data)
             {
               form_name: strapi_data[:formName],
-              links: strapi_data[:links].map{ DynamicComponents::ContentBlocks::Link.new(url: _1[:url], link_text: _1[:linkText]) }
-             }
+              links: strapi_data[:links].map { DynamicComponents::ContentBlocks::Link.new(url: _1[:url], link_text: _1[:linkText]) }
+            }
           end
 
           def self.to_seo(strapi_data, _all_data)
@@ -168,23 +168,23 @@ module Cms
           end
 
           def self.to_simple_title(strapi_data, _all_data)
-            { title: strapi_data }
+            {title: strapi_data}
           end
 
           def self.to_slug(strapi_data, _all_data)
-            { slug: strapi_data[:slug] }
+            {slug: strapi_data[:slug]}
           end
 
           def self.to_text_block(strapi_data, _all_data)
-            { blocks: process_block_data(strapi_data), with_wrapper: true }
+            {blocks: process_block_data(strapi_data), with_wrapper: true}
           end
 
           def self.to_text_block_without_wrapper(strapi_data, _all_data)
-            { blocks: process_block_data(strapi_data), with_wrapper: false }
+            {blocks: process_block_data(strapi_data), with_wrapper: false}
           end
 
           def self.to_text_field(strapi_data, _all_data)
-            { value: strapi_data }
+            {value: strapi_data}
           end
 
           def self.to_web_page_preview(strapi_data, _all_data)

@@ -16,7 +16,7 @@ module Cms
             Models::HeaderMenu => HeaderMenu,
             Models::HomepageDynamicZone => HomepageDynamicZone,
             Models::PageTitle => PageTitle,
-            Models::QuestionBankForms => QuestionBankForms,
+            DynamicComponents::ContentBlocks::QuestionBankForm => Components::ContentBlocks::QuestionBankForm,
             Models::Seo => Seo,
             Models::SimpleTitle => SimpleField,
             Models::Slug => Slug,

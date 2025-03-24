@@ -155,6 +155,15 @@ module StrapiStubs
     end
   end
 
+  def stub_strapi_secondary_question_bank_collection(topic: nil, page: 1, page_size: 10)
+    topic_list = topic.presence || Array.new(5) { Cms::Mocks::SecondaryQuestionBankTopic.generate_raw_data }
+    if as_graphql
+      stub_strapi_graphql_collection_query("secondaryQuestionBankTopics", topic_list, page:, page_size:)
+    else
+      stub_request(:get, /^https:\/\/strapi.teachcomputing.org\/api\/secondary-question-bank-topics/).to_return_json(body: to_strapi_collection(topic_list, page:, page_size:))
+    end
+  end
+
   def stub_strapi_web_page_collection(web_pages: nil)
     web_page_list = web_pages.presence || Array.new(5) { Cms::Mocks::WebPage.generate_raw_data }
     if as_graphql

@@ -45,9 +45,23 @@ RSpec.describe Cms::PrimaryGlossaryTableComponent, type: :component do
     end
   end
 
-  context "when no records found" do
+  context "when strapi collection error" do
     before do
       stub_strapi_graphql_collection_error("primaryComputingGlossaryTables")
+
+      render_inline(described_class.new(
+        title: title
+      ))
+    end
+
+    it "does not render" do
+      expect(page).to_not have_css("table")
+    end
+  end
+
+  context "when no records found" do
+    before do
+      stub_strapi_graphql_collection_query_missing("primaryComputingGlossaryTables")
 
       render_inline(described_class.new(
         title: title
