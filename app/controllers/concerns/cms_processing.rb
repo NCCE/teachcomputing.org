@@ -8,6 +8,7 @@ module CmsProcessing
     @collection_wrapper_class = collection_wrapper
     @path = cms_posts_path
     @collection = klass.all(page, page_size, params: {query: params.permit(klass.query_keys).to_h})
+    @wrapper_class = "cms-#{klass.resource_key}"
     render "cms/collection"
   end
 
@@ -16,12 +17,14 @@ module CmsProcessing
     preview = preview_params[:preview] || false
     preview_key = preview_params[:preview_key] || nil
 
-    validate_slug!(resource_id)
-
-    # Temp fix to handle / routes should not be need if we move to graphql
-    raise ActiveRecord::RecordNotFound if resource_id.include? "_"  # Prevent routing to underscored versions
-    resource_id.tr!("/", "_") # Convert / to _ so it can be handled strapi side
-
+    if resource_id
+      validate_slug!(resource_id)
+      # Temp fix to handle / routes should not be need if we move to graphql
+      raise ActiveRecord::RecordNotFound if resource_id.include?("_")  # Prevent routing to underscored versions
+      resource_id.tr!("/", "_") # Convert / to _ so it can be handled strapi side
+    end
+    @wrapper_class = "cms-#{klass.resource_key}"
+    @wrapper_class += "-#{resource_id}" if resource_id
     @resource = klass.get(resource_id, preview:, preview_key:)
     render "cms/resource"
   end

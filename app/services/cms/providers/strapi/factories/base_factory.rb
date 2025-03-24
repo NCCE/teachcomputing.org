@@ -59,7 +59,13 @@ module Cms
             def to_ncce_button(strapi_data)
               return nil if strapi_data.nil?
 
-              DynamicComponents::NcceButton.new(title: strapi_data[:title], link: strapi_data[:link], color: strapi_data[:buttonTheme])
+              DynamicComponents::NcceButton.new(
+                title: strapi_data[:title],
+                link: strapi_data[:link],
+                color: strapi_data[:buttonTheme],
+                logged_in_title: strapi_data[:loggedInTitle],
+                logged_in_link: strapi_data[:loggedInLink]
+              )
             end
 
             def to_icon(icon_data)

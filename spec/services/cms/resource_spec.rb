@@ -119,7 +119,7 @@ RSpec.describe Cms::Resource do
 
         before do
           stub_strapi_get_collection_entity("cms-collection-resource-test")
-          stub_strapi_get_single_blog_post("cms-collection-resource-test/test-post")
+          stub_strapi_get_single_resource("cms-collection-resource-test/test-post")
         end
 
         it "calling all gets collection object" do
@@ -188,13 +188,13 @@ RSpec.describe Cms::Resource do
           end
 
           it "should cache result with correct key with get and id" do
-            stub_strapi_get_single_blog_post("cms-collection-resource-test/test-post")
+            stub_strapi_get_single_resource("cms-collection-resource-test/test-post")
             collection_class.get("test-post")
             expect(Rails.cache.exist?("cms-collection-resource-test-test-post", namespace: "cms")).to be true
           end
 
           it "should not cache when preview supplied" do
-            stub_strapi_get_single_blog_post("cms-collection-resource-test/test-post")
+            stub_strapi_get_single_resource("cms-collection-resource-test/test-post")
             collection_class.get("test-post", preview: true)
             expect(Rails.cache.exist?("cms-collection-resource-test-test-post", namespace: "cms")).to be false
           end
@@ -207,7 +207,7 @@ RSpec.describe Cms::Resource do
 
           it "clear cache should clear all instances of resource keys" do
             stub_strapi_get_collection_entity("cms-collection-resource-test")
-            stub_strapi_get_single_blog_post("cms-collection-resource-test/test-post")
+            stub_strapi_get_single_resource("cms-collection-resource-test/test-post")
             collection_class.all(1, 10)
             collection_class.get("test-post")
             collection_class.clear_cache

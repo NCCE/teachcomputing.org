@@ -1,0 +1,50 @@
+<div class="cms-ncce-home-hero-wrapper">
+  <div class="ncce-home-hero">
+    <div class="ncce-home-hero__column ncce-home-hero__column-home">
+      <div class="ncce-home-hero__house">
+        <div class="ncce-home-hero__top">
+        </div>
+
+        <div class="ncce-home-hero__middle">
+          <div class="ncce-home-hero__middle-left">
+          </div>
+          <div class="ncce-home-hero__middle-content">
+            <div class="ncce-home-hero__middle-content_content">
+              <h1><%= @title %></h1>
+              <%= render @house_content.render %>
+              <div class="ncce-home-hero__house__button-container">
+                <% @buttons.each do |button| %>
+                  <%= render button.render %>
+                <% end %>
+              </div>
+            </div>
+          </div>
+          <div class="ncce-home-hero__middle-right">
+          </div>
+        </div>
+
+        <div class="ncce-home-hero__bottom">
+          <%= image_pack_tag 'media/images/hero/hero1-house-base.svg', class: "ncce-home-hero__house-base", alt: "", aria_hidden: true %>
+        </div>
+      </div>
+    </div>
+
+    <div class="ncce-home-hero__column">
+      <div class="ncce-home-hero__corner-person-left">
+        <%= image_pack_tag 'media/images/hero/hero2-person-corner-left.svg', class: "ncce-home-hero__person-corner-left", alt: "", aria_hidden: true %>
+      </div>
+
+      <div class="ncce-home-hero__person-content">
+        <div class="ncce-home-hero__person">
+          <%= image_pack_tag 'media/images/hero/hero2-person.png', class: "ncce-home-hero__person", alt: "", aria_hidden: true %>
+        </div>
+        <div class="ncce-home-hero__person-title">
+          <%= image_pack_tag 'media/images/hero/hero2-title.svg', class: "ncce-home-hero__title", alt: t("pages.home.hero_2.alt.title") %>
+        </div>
+      </div>
+
+      <div class="ncce-home-hero__corner-person-right">
+      </div>
+    </div>
+  </div>
+</div>

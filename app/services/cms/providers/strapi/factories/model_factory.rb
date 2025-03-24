@@ -57,6 +57,8 @@ module Cms
               model_class.new(cms_models: strapi_data.map { ComponentFactory.process_component(_1) }.compact)
             elsif model_class == Models::EnrichmentDynamicZone
               model_class.new(cms_models: strapi_data.map { ComponentFactory.process_component(_1) }.compact)
+            elsif model_class == Models::HomepageDynamicZone
+              model_class.new(cms_models: strapi_data.map { ComponentFactory.process_component(_1) }.compact)
             elsif model_class == Models::EnrichmentList
               to_enrichment_list(all_data, strapi_data)
             elsif model_class == Models::HeaderMenu

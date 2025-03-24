@@ -11,13 +11,17 @@ module StrapiStubs
     stub_request(:get, /^https:\/\/strapi.teachcomputing.org\/api\/#{resource_key}?/).to_return(body: json_response)
   end
 
-  def stub_strapi_get_single_blog_post(resource_key, id: nil, title: nil, seo: {})
-    blog_post = Cms::Mocks::Blog.generate_raw_data(slug: resource_key, publish_date: Faker::Date.backward.to_s, id:, title:, seo:)
+  def stub_strapi_blog_post(slug, blog: nil)
+    blog_post = blog.presence || Cms::Mocks::Blog.generate_raw_data(slug:)
     if as_graphql
       stub_strapi_graphql_query("blogs", blog_post)
     else
-      stub_request(:get, /^https:\/\/strapi.teachcomputing.org\/api\/#{resource_key}?/).to_return_json(body: {data: blog_post})
+      stub_request(:get, /^https:\/\/strapi.teachcomputing.org\/api\/blog\/#{slug}?/).to_return_json(body: {data: blog_post})
     end
+  end
+
+  def stub_strapi_get_single_resource(resource_key, data: Cms::Mocks::Blog.generate_raw_data)
+    stub_request(:get, /^https:\/\/strapi.teachcomputing.org\/api\/#{resource_key}?/).to_return_json(body: {data: data})
   end
 
   def stub_strapi_get_single_unpublished_blog_post(resource_key)
@@ -195,6 +199,12 @@ module StrapiStubs
   def stub_strapi_header(header: Cms::Mocks::Header.generate_raw_data)
     if as_graphql
       stub_strapi_graphql_query("header", header, singular: true)
+    end
+  end
+
+  def stub_strapi_homepage(homepage: Cms::Mocks::Homepage.generate_raw_data)
+    if as_graphql
+      stub_strapi_graphql_query("homepage", homepage, singular: true)
     end
   end
 

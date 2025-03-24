@@ -1,6 +1,6 @@
 <div class="govuk-width-container">
   <div class="ncce-feat">
-    <h2 class="govuk-heading-l ncce-heading-l__centered">News and Updates</h2>
+    <h2 class="govuk-heading-l ncce-heading-l__centered"><%= @title %></h2>
     <% if @main_feature  || @featured_posts.any? %>
       <div class="ncce-feat__grid">
         <% if @main_feature%>
