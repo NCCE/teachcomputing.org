@@ -15,7 +15,7 @@ module Cms
             Models::FeaturedImage => FeaturedImage,
             Models::HeaderMenu => HeaderMenu,
             Models::PageTitle => PageTitle,
-            Models::QuestionBankForms => QuestionBankForms,
+            DynamicComponents::ContentBlocks::QuestionBankForm => Components::ContentBlocks::QuestionBankForm,
             Models::Seo => Seo,
             Models::SimpleTitle => SimpleField,
             Models::Slug => Slug,
