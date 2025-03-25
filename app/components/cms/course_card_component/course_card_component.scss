@@ -1,5 +1,8 @@
 
 .courses-cms-card {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
 
   &__image-wrapper {
     margin-bottom: 12px;
@@ -36,6 +39,12 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    
+    flex: 1 1 auto;
+
+    &-content {
+      flex: 1 1 auto;
+    }
   }
 
   &__icons {
