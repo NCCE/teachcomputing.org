@@ -34,7 +34,6 @@ RSpec.describe Cms::CurriculumKeyStagesComponent, type: :component do
       expect(page).to have_css(".cms-color-theme__border--green-left", text: "Key Stage 3")
       expect(page).to have_css(".cms-color-theme__border--green-left", text: "Key Stage 4")
     end
-
   end
   context "when curriculum returns no keyStages" do
     before do
