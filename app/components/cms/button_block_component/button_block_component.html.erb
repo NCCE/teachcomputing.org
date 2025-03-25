@@ -1,5 +1,5 @@
 <%= render GovGridRowComponent.new(background_color: @background_color, padding:) do |row|  %>
-  <%= row.with_column(column) do %>
+  <%= row.with_column(column_size) do %>
     <div class="cms-button-block <%= alignment_class %>">
       <% @buttons.each do |button| %>
         <%= render button.render %>

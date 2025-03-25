@@ -9,7 +9,7 @@ class Cms::ButtonBlockComponent < ViewComponent::Base
     @full_width = full_width
   end
 
-  def column
+  def column_size
     return "full" if @full_width
     "two-thirds"
   end
