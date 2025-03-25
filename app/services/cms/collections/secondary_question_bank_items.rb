@@ -24,6 +24,8 @@ module Cms
           {model: DynamicComponents::ContentBlocks::QuestionBankForm, key: :forms, is_array: true}
         ]
       end
+
+      def self.sort = "order:asc"
     end
   end
 end

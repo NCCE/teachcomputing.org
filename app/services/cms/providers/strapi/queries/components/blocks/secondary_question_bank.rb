@@ -9,7 +9,7 @@ module Cms
 
               def self.base_fields
                 <<~GRAPHQL.freeze
-                  title
+                  sqb__title: title
                 GRAPHQL
               end
             end
