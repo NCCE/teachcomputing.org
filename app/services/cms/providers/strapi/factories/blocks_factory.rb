@@ -61,6 +61,8 @@ module Cms
               to_full_width_image_banner(strapi_data)
             when "horizontal-card-with-asides"
               to_horizontal_card_with_asides(strapi_data)
+            when "curriculum-key-stages"
+              to_curriculum_key_stages(strapi_data)
             end
           end
 
@@ -71,6 +73,13 @@ module Cms
               testimonial: to_testimonial(strapi_data[:testimonial]),
               testimonial_side: strapi_data[:testimonialSide],
               buttons: strapi_data[:buttons] ? strapi_data[:buttons].map { to_ncce_button(_1) } : []
+            )
+          end
+
+          def self.to_curriculum_key_stages(strapi_data)
+            DynamicComponents::Blocks::CurriculumKeyStages.new(
+              title: strapi_data[:title],
+              background_color: extract_color_name(strapi_data, :bkColor)
             )
           end
 
