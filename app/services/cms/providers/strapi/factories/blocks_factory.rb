@@ -61,7 +61,16 @@ module Cms
               to_full_width_image_banner(strapi_data)
             when "horizontal-card-with-asides"
               to_horizontal_card_with_asides(strapi_data)
+            when "feedback-banner"
+              to_feedback_banner(strapi_data)
             end
+          end
+
+          def self.to_feedback_banner(strapi_data)
+            DynamicComponents::Blocks::FeedbackBanner.new(
+              title: strapi_data[:title],
+              button: to_ncce_button(strapi_data[:button])
+            )
           end
 
           def self.to_text_with_testimonial(strapi_data)
