@@ -19,6 +19,14 @@
   @include govuk-media-query($from: desktop) {
     margin-right: 12px;
   }
+
+  .cms-image {
+    width: 100%;
+
+    img {
+      width: 100%;
+    }
+  }
 }
 
 .ncce-feat__panel-container {
