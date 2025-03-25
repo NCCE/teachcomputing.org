@@ -3,7 +3,7 @@
 require "rails_helper"
 
 RSpec.describe Cms::CourseCardComponent, type: :component do
-  let(:course) {Achiever::Course::Template.all.first}
+  let(:course) { Achiever::Course::Template.all.first }
   before do
     stub_course_templates
     stub_duration_units
@@ -51,7 +51,6 @@ RSpec.describe Cms::CourseCardComponent, type: :component do
     it "renders title as link" do
       expect(page).to have_link(course.title, href: "/courses/#{course.activity_code}/#{course.title.parameterize}")
     end
-
   end
 
   context "when course is nil" do
@@ -69,7 +68,6 @@ RSpec.describe Cms::CourseCardComponent, type: :component do
       expect(page).not_to have_css(".courses-cms-card")
     end
   end
-
 
   context "when description is nil" do
     before do
