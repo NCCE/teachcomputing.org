@@ -828,7 +828,7 @@ Activity.find_or_initialize_by(stem_course_template_no: "2f5ffa87-b9f9-ef11-bae2
   activity.category = "online"
   activity.self_certifiable = false
   activity.provider = "stem-learning"
-  activity.stem_activity_code = "CO512"
+  activity.stem_activity_code = "CO502"
   activity.always_on = true
 
   activity.programmes = [secondary_certificate]
