@@ -19,7 +19,7 @@ module CurriculumStubs
   def stub_an_invalid_request(status = 404)
     stub_request(:post, URL)
       .to_return(
-        {status:, body: response, headers: {}}
+        {status:, body: "{}", headers: {}}
       )
   end
 

@@ -1,0 +1,24 @@
+<%= render GovGridRowComponent.new(background_color: @background_color, additional_classes: "cms-curriculum-key-stages") do |row| %>
+  <%= row.with_column("full") do %>
+    <h2 class="govuk-heading-m"><%= @title %></h2>
+    <div class="govuk-grid-row">
+      <% @key_stages.each do |key_stage| %>
+        <div class="govuk-grid-column-one-quarter">
+          <%= content_tag :div, class: box_classes(key_stage) do %>
+            <h3 class="govuk-heading-m curriculum-card__title">
+              <%= link_to key_stage.title, curriculum_key_stage_units_path(key_stage_slug: key_stage.slug), class: 'govuk-link ncce-link' %>
+            </h3>
+            <p class="govuk-body-s curriculum-card__details">
+              <span class='curriculum-card__year'><strong>Year <%= key_stage.years %></strong>,&nbsp;</span>
+              <span class='curriculum-card__age'>Age <%= key_stage.ages %></span>
+            </p>
+            <p class='govuk-body-s curriculum-card__counts'>
+              <span class='curriculum-card__unit'>Units: <%= key_stage.unit_count %></span>
+              <span class='curriculum-card__lesson'>Lessons: <%= key_stage.lesson_count %></span>
+            </p>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+<% end %>

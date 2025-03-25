@@ -7,6 +7,7 @@ module Cms
             Components::Blocks::ButtonBlock,
             Components::Blocks::CommunityActivityList,
             Components::Blocks::CourseCardsSection,
+            Components::Blocks::CurriculumKeyStages,
             Components::Blocks::EnrolmentSplitCourseCard,
             Components::Blocks::EnrolmentTestimonial,
             Components::Blocks::FeedbackBanner,
