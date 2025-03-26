@@ -1,7 +1,0 @@
-<% if @landing_page.testimonials.present? %>
-  <%= render TestimonialsComponent.new(
-    testimonials: @landing_page.testimonials,
-    event_tracking_category: @landing_page.event_tracking_category,
-    testimonials_per_row: 2,
-  ) %>
-<% end %>
