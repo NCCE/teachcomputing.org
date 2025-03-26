@@ -29,7 +29,7 @@ programme.pathways.find_or_initialize_by(slug: "curriculum-leadership").tap do |
 
   pathway.save!
 
-  cpds = %w[CO478 CO444 CO439 CO413 CO411A CO249 CO247 CO248 CP448 CP440 CO700 CP446 CO222 CP468 CP212 CO230]
+  cpds = %w[CO411A CO478 CO444 CO439 CO413 CO411A CO249 CO247 CO248 CP448 CP440 CO700 CP446 CO222 CP468 CP212 CO230]
   cpds.each do |cpd|
     maybe_attach_activity_to_pathway(pathway, stem_activity_code: cpd)
   end

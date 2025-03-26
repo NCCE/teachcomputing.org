@@ -952,8 +952,8 @@ Activity.find_or_initialize_by(slug: "complete-the-i-belong-programme-as-a-schoo
   activity.category = "community"
   activity.provider = "stem-learning"
   activity.self_certifiable = true
-  activity.description = "Once you’ve completed the short, remote course <a href='https://teachcomputing.org/courses/CO409/encouraging-girls-into-gcse-computer-science-remote-short-course-online'>‘Empowering girls in key stage 2 computing’</a> you’ll be ready to bring enrichment activities, role models and inclusive teaching practices to your school. The I Belong handbook contains everything you need to know to reach this goal."
-  activity.public_copy_description = "Once you’ve completed the short, remote course <a href='https://teachcomputing.org/courses/CO409/encouraging-girls-into-gcse-computer-science-remote-short-course-online'>‘Empowering girls in key stage 2 computing’</a> you’ll be ready to bring enrichment activities, role models and inclusive teaching practices to your school. The I Belong handbook contains everything you need to know to reach this goal."
+  activity.description = "Once you’ve completed the short, remote course <a href='https://teachcomputing.org/courses/CO409/empowering-girls-in-key-stage-2-computing-online'>‘Empowering girls in key stage 2 computing’</a> you’ll be ready to bring enrichment activities, role models and inclusive teaching practices to your school. The I Belong handbook contains everything you need to know to reach this goal."
+  activity.public_copy_description = "Once you’ve completed the short, remote course <a href='https://teachcomputing.org/courses/CO409/empowering-girls-in-key-stage-2-computing-online'>‘Empowering girls in key stage 2 computing’</a> you’ll be ready to bring enrichment activities, role models and inclusive teaching practices to your school. The I Belong handbook contains everything you need to know to reach this goal."
   activity.public_copy_title_url = "https://teachcomputing.org/i-belong"
   activity.self_verification_info = nil
   activity.public_copy_evidence = [{
