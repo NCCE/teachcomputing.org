@@ -558,7 +558,7 @@ Activity.find_or_initialize_by(stem_course_template_no: "054037e5-eff8-ef11-bae2
   activity.category = "online"
   activity.self_certifiable = false
   activity.provider = "stem-learning"
-  activity.stem_activity_code = "CO411"
+  activity.stem_activity_code = "CO411A"
   activity.always_on = true
 
   activity.programmes = [secondary_certificate]
@@ -858,7 +858,7 @@ Activity.find_or_initialize_by(stem_course_template_no: "4eff3a06-adf9-ef11-bae2
   activity.category = "online"
   activity.self_certifiable = false
   activity.provider = "stem-learning"
-  activity.stem_activity_code = "CO238"
+  activity.stem_activity_code = "CO438"
   activity.always_on = true
 
   activity.programmes = [cs_accelerator]
