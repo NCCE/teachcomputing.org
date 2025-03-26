@@ -16,10 +16,14 @@ i_belong.programme_activity_groupings.find_or_initialize_by(sort_key: 2).tap do 
   group.save!
 
   activities = [
-    {slug: "empowering-girls-in-key-stage-2-computing", legacy: false},
-    {slug: "encouraging-girls-into-gcse-computer-science-remote-short-course", legacy: false},
+    # April 1st course replacements
+    {slug: "empowering-girls-in-key-stage-2-computing-online", legacy: false},
+    {slug: "encouraging-girls-into-computer-science-online", legacy: false},
+
     # LEGACY
-    {slug: "supporting-the-i-belong-programme", legacy: true}
+    {slug: "supporting-the-i-belong-programme", legacy: true},
+    {slug: "empowering-girls-in-key-stage-2-computing", legacy: true},
+    {slug: "encouraging-girls-into-gcse-computer-science-remote-short-course", legacy: true}
   ]
 
   activities.each_with_index do |activity, index|
