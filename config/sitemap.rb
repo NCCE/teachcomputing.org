@@ -19,7 +19,6 @@ SitemapGenerator::Sitemap.create do
   add "/about", changefreq: "monthly"
   add "/accessibility-statement", changefreq: "monthly"
   add "/blog", changefreq: "daily"
-  add "/careers-week", changefreq: "monthly"
   add "/careers-support", changefreq: "monthly"
   add "/certification", changefreq: "monthly"
   add "/contact", changefreq: "monthly"
