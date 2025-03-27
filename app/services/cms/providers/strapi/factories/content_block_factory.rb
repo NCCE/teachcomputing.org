@@ -22,7 +22,17 @@ module Cms
               to_link_with_icon(strapi_data)
             when "embedded-video"
               to_embedded_video(strapi_data)
+            when "accordion-block"
+              to_accordion_block(strapi_data)
             end
+          end
+
+          def self.to_accordion_block(strapi_data)
+            DynamicComponents::Blocks::AccordionBlock.new(
+              heading: strapi_data[:heading],
+              summary_text: strapi_data[:summaryText],
+              content: strapi_data[:content]
+            )
           end
 
           def self.to_linked_picture(strapi_data)

@@ -1,0 +1,11 @@
+.cms-accordion-section-component {
+  .govuk-accordion {
+    font-family: $font-family-body;
+  }
+}
+
+.govuk-accordion__section-button {
+  font-weight: 500;
+  font-size: 19px;
+  font-family: $font-family-heading;
+}
