@@ -6,6 +6,7 @@ module Cms
           attr_accessor :resource_name, :resource_filter
 
           QUERY_MAPS = {
+            DynamicComponents::ContentBlocks::QuestionBankForm => Components::ContentBlocks::QuestionBankForm,
             Models::Aside => Aside,
             Models::BlogPreview => BlogPreview,
             Models::DynamicZone => DynamicZone,
@@ -15,11 +16,11 @@ module Cms
             Models::FeaturedImage => FeaturedImage,
             Models::HeaderMenu => HeaderMenu,
             Models::PageTitle => PageTitle,
-            DynamicComponents::ContentBlocks::QuestionBankForm => Components::ContentBlocks::QuestionBankForm,
             Models::Seo => Seo,
             Models::SimpleTitle => SimpleField,
             Models::Slug => Slug,
             Models::TextBlock => SimpleField,
+            Models::TextBlockWithoutWrapper => SimpleField,
             Models::TextField => SimpleField,
             Models::WebPagePreview => WebPagePreview
           }.freeze

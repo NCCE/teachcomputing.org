@@ -4,7 +4,7 @@ module Cms
       def self.is_collection = true
 
       def self.resource_key
-        "secondary-question-bank-topic"
+        "secondary-question-bank-topics"
       end
 
       def self.graphql_key

@@ -42,4 +42,6 @@ RSpec.describe Cms::Collections::WebPage do
       expect(page.slug).to eq("single-page")
     end
   end
+
+  it_should_behave_like "a strapi graphql collection single query", %w[pageTitle pageContent]
 end

@@ -15,4 +15,6 @@ RSpec.describe Cms::Collections::Blog do
   it "should include tag in query keys" do
     expect(described_class.query_keys).to include(:tag)
   end
+
+  it_should_behave_like "a strapi graphql collection single query", %w[title featuredImage content seo]
 end
