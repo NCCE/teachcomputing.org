@@ -43,4 +43,6 @@ RSpec.describe Cms::Collections::EnrichmentPage do
       expect(page.slug).to eq("single-enrichment-page")
     end
   end
+
+  it_should_behave_like "a strapi graphql collection single query", %w[pageTitle content enrichments featuredSectionTitle allSectionTitle typeFilterPlaceholder termFilterPlaceholder ageGroupFilterPlaceholder]
 end

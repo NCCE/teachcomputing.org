@@ -106,3 +106,51 @@ RSpec.shared_examples "a strapi graphql component" do |required_fields|
     end
   end
 end
+
+RSpec.shared_examples "a strapi graphql collection single query" do |required_fields|
+  let(:query) { Cms::Providers::Strapi::Queries::BaseQuery.new(described_class) }
+
+  let(:base_fragment) {
+    parsed_fragment = GraphQL::Language::Parser.parse(query.single_query("test"))
+    parsed_fragment.definitions.first.selections.first
+  }
+
+  let(:data_fragment) {
+    base_fragment.selections.find { _1.name == "data" }
+  }
+
+  let(:query_attributes) {
+    attributes_field = data_fragment.selections.find { _1.name == "attributes" }
+    attributes_field.selections.map(&:name)
+  }
+
+  required_fields.each do |field|
+    it "should include attribute #{field}" do
+      expect(query_attributes).to include(field)
+    end
+  end
+end
+
+RSpec.shared_examples "a strapi graphql collection all query" do |required_fields|
+  let(:query) { Cms::Providers::Strapi::Queries::BaseQuery.new(described_class) }
+
+  let(:base_fragment) {
+    parsed_fragment = GraphQL::Language::Parser.parse(query.all_query(1, 10))
+    parsed_fragment.definitions.first.selections.first
+  }
+
+  let(:data_fragment) {
+    base_fragment.selections.find { _1.name == "data" }
+  }
+
+  let(:query_attributes) {
+    attributes_field = data_fragment.selections.find { _1.name == "attributes" }
+    attributes_field.selections.map(&:name)
+  }
+
+  required_fields.each do |field|
+    it "should include attribute #{field}" do
+      expect(query_attributes).to include(field)
+    end
+  end
+end

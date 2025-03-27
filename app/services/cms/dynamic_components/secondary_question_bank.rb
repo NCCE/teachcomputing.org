@@ -8,7 +8,7 @@ module Cms
       end
 
       def render
-        SecondaryQuestionBankComponent.new(title:)
+        Cms::SecondaryQuestionBankComponent.new(title:)
       end
     end
   end

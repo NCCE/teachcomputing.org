@@ -6,6 +6,7 @@ module Cms
           include BaseFactory
 
           MAPPING_FUNCTIONS = {
+            DynamicComponents::ContentBlocks::QuestionBankForm => :to_question_bank_forms,
             Models::Aside => :to_aside,
             Models::BlogPreview => :to_blog_preview,
             Models::DynamicZone => :to_dynamic_zone,
@@ -16,7 +17,6 @@ module Cms
             Models::HeaderMenu => :to_menu,
             Models::HomepageDynamicZone => :to_dynamic_zone,
             Models::PageTitle => :to_page_title,
-            DynamicComponents::ContentBlocks::QuestionBankForm => :to_question_bank_forms,
             Models::Seo => :to_seo,
             Models::SimpleTitle => :to_simple_title,
             Models::Slug => :to_slug,
