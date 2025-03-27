@@ -2,10 +2,15 @@
   .govuk-accordion {
     font-family: $font-family-body;
   }
-}
 
-.govuk-accordion__section-button {
-  font-weight: 500;
-  font-size: 19px;
-  font-family: $font-family-heading;
+  .govuk-accordion__section-button {
+    font-weight: 500;
+    font-size: 19px;
+    font-family: $font-family-heading;
+    padding-bottom: 0px !important;
+  }
+
+  .govuk-accordion__section-button:hover {
+    background-color: $concrete !important;
+  }
 }

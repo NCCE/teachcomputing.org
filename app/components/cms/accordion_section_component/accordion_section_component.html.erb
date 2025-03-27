@@ -1,11 +1,11 @@
-<%= render GovGridRowComponent.new do |row| %>
+<%= render GovGridRowComponent.new(background_color: @background_color) do |row| %>
   <%= row.with_column("full") do %>
 
     <h2 class="govuk-heading-m"><%= @title %></h2>
 
     <div class="cms-accordion-section-component govuk-accordion govuk-body" data-module="govuk-accordion" id="accordion-default">
-      <% @accordion_block.each do |block| %>
-        <%= render block.render  %>
+      <% @accordion_block.each_with_index do |block, index| %>
+        <%= render block.render(index:)  %>
       <% end %>
     </div>
   <% end %>
