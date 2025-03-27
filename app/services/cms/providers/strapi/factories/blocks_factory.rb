@@ -71,6 +71,26 @@ module Cms
               to_feedback_banner(strapi_data)
             when "curriculum-key-stages"
               to_curriculum_key_stages(strapi_data)
+            when "accordion-section"
+              to_accordion_section(strapi_data, to_accordion_block(strapi_data[:accordionBlock]))
+            end
+          end
+
+          def self.to_accordion_section(strapi_data, accordion_block)
+            Models::DynamicComponents::Blocks::AccordionSection.new(
+              title: strapi_data[:title],
+              bk_color: strapi_data[:bkColor],
+              accordion_block: accordion_block
+            )
+          end
+
+          def self.to_accordion_block(strapi_data)
+            strapi_data.map do |accordion_block|
+              Models::DynamicComponents::ContentBlocks::AccordionBlock.new(
+                heading: accordion_block[:heading],
+                summary_text: accordion_block[:summaryText],
+                text_content: to_content_block(accordion_block[:textContent])
+              )
             end
           end
 

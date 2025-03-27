@@ -4,6 +4,7 @@ module Cms
       module Queries
         class DynamicZone
           COMPONENTS = [
+            Components::Blocks::AccordionSection,
             Components::Blocks::ButtonBlock,
             Components::Blocks::CommunityActivityList,
             Components::Blocks::CourseCardsSection,
