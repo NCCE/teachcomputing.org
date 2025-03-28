@@ -9,7 +9,7 @@ RSpec.describe Cms::AccordionSectionComponent, type: :component do
     render_inline(described_class.new(
       title:,
       background_color: "light-grey",
-      accordion_block: Array.new(2) {Cms::Mocks::DynamicComponents::ContentBlocks::AccordionBlock.as_model}
+      accordion_block: Array.new(2) { Cms::Mocks::DynamicComponents::ContentBlocks::AccordionBlock.as_model }
     ))
   end
 
