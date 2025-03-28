@@ -7,10 +7,4 @@ module CertificateHelper
     complete = groups.all? { |group| group.user_complete?(current_user) }
     complete ? "ncce-activity-list__title--complete" : ""
   end
-
-  def sort_complete_first(activities:, complete: false)
-    return activities unless complete
-
-    activities.sort_by { |a| current_user.achievements.find_by(activity_id: a.activity_id)&.complete? ? 0 : 1 }
-  end
 end
