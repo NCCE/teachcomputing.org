@@ -21,7 +21,7 @@ class Cms::AccordionBlockComponent < ViewComponent::Base
     </div>
   ERB
 
-  def initialize(heading:, summary_text:, text_content:)
+  def initialize(heading:, text_content:, summary_text: nil)
     @heading = heading
     @summary_text = summary_text
     @text_content = text_content

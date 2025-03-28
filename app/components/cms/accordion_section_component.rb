@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class Cms::AccordionSectionComponent < ViewComponent::Base
-  def initialize(id:, title:, background_color:, accordion_block:)
+  def initialize(id:, accordion_block:, title: nil, background_color: nil)
     @id = id
     @title = title
     @background_color = background_color
