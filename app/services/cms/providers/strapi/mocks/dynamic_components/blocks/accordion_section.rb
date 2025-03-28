@@ -10,6 +10,7 @@ module Cms
               attribute(:title) { Faker::Lorem.sentence }
               attribute(:bkColor) { nil }
               attribute(:accordionBlock) { Array.new(2) { ContentBlocks::AccordionBlock.generate_data } }
+              attribute(:id) { 1 }
             end
           end
         end

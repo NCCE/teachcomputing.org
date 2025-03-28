@@ -9,7 +9,7 @@ module Cms
 
               attribute(:heading) { Faker::Lorem.word }
               attribute(:summaryText) { Faker::Lorem.sentence }
-              attribute(:textContent) { RichBlocks.as_model }
+              attribute(:textContent) { RichBlocks.generate_data }
             end
           end
         end
