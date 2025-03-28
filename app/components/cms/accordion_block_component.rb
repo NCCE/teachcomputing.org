@@ -15,7 +15,7 @@ class Cms::AccordionBlockComponent < ViewComponent::Base
           </div>
         <% end %>
       </div>
-      <div id="accordion-default-content-<%= @index %>" class="govuk-accordion__section-content">
+      <div id="accordion-default-content-<%= @index %>" class="govuk-accordion__section-content govuk-!-padding-bottom-2">
         <%= render @text_content.render  %>
       </div>
     </div>
@@ -25,6 +25,6 @@ class Cms::AccordionBlockComponent < ViewComponent::Base
     @heading = heading
     @summary_text = summary_text
     @text_content = text_content
-    @index = index[:index]
+    @index = index
   end
 end

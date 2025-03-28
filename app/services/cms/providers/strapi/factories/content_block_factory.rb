@@ -40,7 +40,7 @@ module Cms
             Models::DynamicComponents::Blocks::AccordionBlock.new(
               heading: strapi_data[:heading],
               summary_text: strapi_data[:summaryText],
-              content: strapi_data[:content]
+              text_content: strapi_data[:textContent]
             )
           end
 

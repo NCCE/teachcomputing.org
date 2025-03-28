@@ -5,11 +5,11 @@ module Cms
         module DynamicComponents
           module ContentBlocks
             class AccordionBlock < StrapiMock
-              strapi_component "blocks.accordion-block"
+              strapi_component "content-blocks.accordion-block"
 
-              attribute(:heading) { } 
-              attribute(:summaryText) { } 
-              attribute(:content) { } 
+              attribute(:heading) { Faker::Lorem.word }
+              attribute(:summaryText) { Faker::Lorem.sentence }
+              attribute(:textContent) { RichBlocks.as_model }
             end
           end
         end

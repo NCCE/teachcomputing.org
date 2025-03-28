@@ -7,9 +7,9 @@ module Cms
             class AccordionSection < StrapiMock
               strapi_component "blocks.accordion-section"
 
-              attribute(:title) { } 
-              attribute(:bkColor) { } 
-              attribute(:accordionBlock) { } 
+              attribute(:title) { Faker::Lorem.sentence }
+              attribute(:bkColor) { nil }
+              attribute(:accordionBlock) { Array.new(2) { ContentBlocks::AccordionBlock.generate_data } }
             end
           end
         end

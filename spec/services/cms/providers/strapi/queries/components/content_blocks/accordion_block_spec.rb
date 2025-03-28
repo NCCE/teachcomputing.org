@@ -5,6 +5,6 @@ RSpec.describe Cms::Providers::Strapi::Queries::Components::ContentBlocks::Accor
     %w[
       heading
       summaryText
-      content
+      textContent
     ]
 end
