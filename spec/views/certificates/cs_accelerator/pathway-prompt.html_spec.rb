@@ -2,7 +2,6 @@ require "rails_helper"
 
 RSpec.describe("certificates/cs_accelerator/_pathway-prompt", type: :view) do
   context "when user has no questionnaire_response" do
-
     before do
       render "certificates/cs_accelerator/pathway-prompt", user_programme_pathway: nil
     end
@@ -20,8 +19,8 @@ RSpec.describe("certificates/cs_accelerator/_pathway-prompt", type: :view) do
   context "when user has pathway" do
     let(:programme) { create(:cs_accelerator) }
     let(:user) { create(:user) }
-    let(:pathway) { create(:pathway, programme:)}
-    let(:user_programme_enrolment) { create(:user_programme_enrolment, programme:, pathway:)}
+    let(:pathway) { create(:pathway, programme:) }
+    let(:user_programme_enrolment) { create(:user_programme_enrolment, programme:, pathway:) }
 
     before do
       render "certificates/cs_accelerator/pathway-prompt", user_programme_pathway: pathway
