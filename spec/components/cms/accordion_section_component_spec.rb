@@ -13,7 +13,7 @@ RSpec.describe Cms::AccordionSectionComponent, type: :component do
       accordion_block: Array.new(2) {
         Cms::Mocks::DynamicComponents::ContentBlocks::AccordionBlock.as_model(
           text_content: Cms::Mocks::RichBlocks.as_model
-          )
+        )
       }
     ))
   end
