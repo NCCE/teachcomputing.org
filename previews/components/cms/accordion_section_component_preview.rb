@@ -2,6 +2,10 @@
 
 class Cms::AccordionSectionComponentPreview < ViewComponent::Preview
   def default
-    render(Cms::AccordionSectionComponent.new(title: "title", bk_color: "bk_color", accordion_block: "accordion_block"))
+    render(Cms::AccordionSectionComponent.new(
+      title: Faker::Lorem.sentence,
+      background_color: nil,
+      accordion_block: Array.new(2) {Cms::Mocks::DynamicComponents::ContentBlocks::AccordionBlock.as_model}
+    ))
   end
 end

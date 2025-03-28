@@ -3,13 +3,25 @@
 require "rails_helper"
 
 RSpec.describe Cms::AccordionSectionComponent, type: :component do
-  pending "add some examples to (or delete) #{__FILE__}"
+  let(:title) { Faker::Lorem.word }
 
-  # it "renders something useful" do
-  #   expect(
-  #     render_inline(described_class.new(attr: "value")) { "Hello, components!" }.css("p").to_html
-  #   ).to include(
-  #     "Hello, components!"
-  #   )
-  # end
+  before do
+    render_inline(described_class.new(
+      title:,
+      background_color: "light-grey",
+      accordion_block: Array.new(2) {Cms::Mocks::DynamicComponents::ContentBlocks::AccordionBlock.as_model}
+    ))
+  end
+
+  it "renders the title" do
+    expect(page).to have_text(title)
+  end
+
+  it "renders the accordion blocks" do
+    expect(page).to have_css(".govuk-accordion__section", count: 2)
+  end
+
+  it "has the background color class" do
+    expect(page).to have_css(".light-grey-bg")
+  end
 end

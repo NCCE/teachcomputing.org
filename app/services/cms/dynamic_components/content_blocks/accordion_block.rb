@@ -11,7 +11,7 @@ module Cms
         end
 
         def render(index)
-          Cms::AccordionBlockComponent.new(heading:, summary_text:, text_content:, index:)
+          Cms::AccordionBlockComponent.new(heading:, summary_text:, text_content:, index: index[:index])
         end
       end
     end
