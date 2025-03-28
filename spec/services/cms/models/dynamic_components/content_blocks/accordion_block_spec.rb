@@ -8,6 +8,6 @@ RSpec.describe Cms::Models::DynamicComponents::ContentBlocks::AccordionBlock do
   end
 
   it "should render as Cms::AccordionBlockComponent" do
-    expect(@comp.render(index: 1)).to be_a(Cms::AccordionBlockComponent)
+    expect(@comp.render).to be_a(Cms::AccordionBlockComponent)
   end
 end
