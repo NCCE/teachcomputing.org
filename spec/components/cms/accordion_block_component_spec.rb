@@ -11,8 +11,7 @@ RSpec.describe Cms::AccordionBlockComponent, type: :component do
       render_inline(described_class.new(
         heading:,
         summary_text: nil,
-        text_content:,
-        index: 1
+        text_content:
       ))
     end
 
@@ -36,8 +35,7 @@ RSpec.describe Cms::AccordionBlockComponent, type: :component do
       render_inline(described_class.new(
         heading:,
         summary_text:,
-        text_content:,
-        index: 1
+        text_content:
       ))
     end
 

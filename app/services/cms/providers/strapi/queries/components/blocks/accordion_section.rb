@@ -9,6 +9,7 @@ module Cms
 
               def self.base_fields
                 <<~GRAPHQL.freeze
+                  id
                   title
                   #{SharedFields.color_theme(:bkColor)}
                   #{ContentBlocks::AccordionBlock.embed(:accordionBlock)}
