@@ -68,6 +68,7 @@ module Cms
 
           def self.to_accordion_section(strapi_data, accordion_block)
             DynamicComponents::Blocks::AccordionSection.new(
+              id: strapi_data[:id],
               title: strapi_data[:title],
               background_color: extract_color_name(strapi_data, :bkColor),
               accordion_block: accordion_block

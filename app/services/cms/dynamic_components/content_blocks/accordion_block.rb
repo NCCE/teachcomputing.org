@@ -10,8 +10,8 @@ module Cms
           @text_content = text_content
         end
 
-        def render(index)
-          Cms::AccordionBlockComponent.new(heading:, summary_text:, text_content:, index: index[:index])
+        def render
+          Cms::AccordionBlockComponent.new(heading:, summary_text:, text_content:)
         end
       end
     end

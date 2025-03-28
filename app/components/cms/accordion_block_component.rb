@@ -10,21 +10,20 @@ class Cms::AccordionBlockComponent < ViewComponent::Base
           </span>
         </h2>
         <% if @summary_text %>
-          <div class="govuk-accordion__section-summary govuk-body-s" id="accordion-with-summary-sections-summary-<%= @index %>">
+          <div class="govuk-accordion__section-summary govuk-body-s" id="accordion-with-summary-sections-summary">
             <%= @summary_text %>
           </div>
         <% end %>
       </div>
-      <div id="accordion-default-content-<%= @index %>" class="govuk-accordion__section-content govuk-!-padding-bottom-2">
+      <div id="accordion-default-content" class="govuk-accordion__section-content govuk-!-padding-bottom-4">
         <%= render @text_content.render  %>
       </div>
     </div>
   ERB
 
-  def initialize(heading:, summary_text:, text_content:, index:)
+  def initialize(heading:, summary_text:, text_content:)
     @heading = heading
     @summary_text = summary_text
     @text_content = text_content
-    @index = index
   end
 end
