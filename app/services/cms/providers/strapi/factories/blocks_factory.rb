@@ -61,6 +61,27 @@ module Cms
               to_full_width_image_banner(strapi_data)
             when "horizontal-card-with-asides"
               to_horizontal_card_with_asides(strapi_data)
+            when "accordion-section"
+              to_accordion_section(strapi_data, to_accordion_block(strapi_data[:accordionBlock]))
+            end
+          end
+
+          def self.to_accordion_section(strapi_data, accordion_block)
+            DynamicComponents::Blocks::AccordionSection.new(
+              id: strapi_data[:id],
+              title: strapi_data[:title],
+              background_color: extract_color_name(strapi_data, :bkColor),
+              accordion_block: accordion_block
+            )
+          end
+
+          def self.to_accordion_block(strapi_data)
+            strapi_data.map do |accordion_block|
+              DynamicComponents::ContentBlocks::AccordionBlock.new(
+                heading: accordion_block[:heading],
+                summary_text: accordion_block[:summaryText],
+                text_content: to_content_block(accordion_block[:textContent])
+              )
             end
           end
 
