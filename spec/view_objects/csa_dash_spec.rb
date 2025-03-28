@@ -13,36 +13,11 @@ RSpec.describe CSADash do
     end
   end
 
-  describe "#compulsory_achievement" do
-    it "calls through to compulsory achievement method on programme" do
-      allow(csa).to receive(:compulsory_achievement)
-
-      dash.compulsory_achievement
-      expect(csa).to have_received(:compulsory_achievement).with(user)
-    end
-  end
-
-  describe "#non_compulsory_achievements" do
-    it "calls through to non_compulsory achievements method on programme" do
-      allow(csa).to receive(:non_compulsory_achievements)
-      dash.non_compulsory_achievements
-      expect(csa).to have_received(:non_compulsory_achievements).with(user)
-    end
-  end
-
-  describe "#user_completed_non_compulsory_achievement?" do
-    it "calls through to correct method on programme" do
-      allow(csa).to receive(:user_completed_non_compulsory_achievement?)
-      dash.user_completed_non_compulsory_achievement?
-      expect(csa).to have_received(:user_completed_non_compulsory_achievement?).with(user)
-    end
-  end
-
-  describe "#user_completed_non_compulsory_achievement?" do
-    it "calls through to correct method on programme" do
-      allow(csa).to receive(:user_completed_non_compulsory_achievement?)
-      dash.user_completed_non_compulsory_achievement?
-      expect(csa).to have_received(:user_completed_non_compulsory_achievement?).with(user)
+  describe "#course_achievements" do
+    it "calls through to course_achievements achievements method on programme" do
+      allow(csa).to receive(:course_achievements)
+      dash.course_achievements
+      expect(csa).to have_received(:course_achievements).with(user)
     end
   end
 
@@ -71,25 +46,11 @@ RSpec.describe CSADash do
     end
   end
 
-  describe "#supplementary_activities_for_user" do
-    it "calls correct method on users pathway" do
-      allow(csa).to receive(:pathways_excluding)
-      pathway = instance_double(Pathway)
-      allow(pathway).to receive(:supplementary_activities_for_user)
-      allow(user).to receive(:programme_pathway) { pathway }
-
-      dash.supplementary_activities_for_user
-      expect(pathway)
-        .to have_received(:supplementary_activities_for_user)
-        .with(user)
-    end
-  end
-
-  describe "#has_enough_activities_for_test" do
+  describe "#enough_credits_for_test?" do
     it "calls method on programme" do
-      allow(csa).to receive(:enough_activities_for_test?)
+      allow(csa).to receive(:enough_credits_for_test?)
       dash.has_enough_activities_for_test
-      expect(csa).to have_received(:enough_activities_for_test?).with(user)
+      expect(csa).to have_received(:enough_credits_for_test?).with(user)
     end
   end
 

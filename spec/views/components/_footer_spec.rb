@@ -5,10 +5,6 @@ RSpec.describe("components/_footer", type: :view) do
     render
   end
 
-  it "has a bursaries link" do
-    expect(rendered).to have_link("Funding", href: "/funding")
-  end
-
   it "has a contact link" do
     expect(rendered).to have_link("Email", href: "mailto:info@teachcomputing.org")
   end
@@ -46,10 +42,6 @@ RSpec.describe("components/_footer", type: :view) do
 
   it "has a pedagogy link" do
     expect(rendered).to have_link("Pedagogy", href: "/pedagogy")
-  end
-
-  it "has a Computing hubs link" do
-    expect(rendered).to have_link("Computing hubs", href: "/hubs")
   end
 
   it "has a ITE providers link" do

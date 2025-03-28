@@ -8,9 +8,11 @@
     <% end %>
     <div class="cms-card-wrapper__grid" style="<%= cards_per_row %>">
       <% @cards_block.each do |card| %>
-        <div class="cms-card-wrapper__card">
-          <%= render card.render %>
-        </div>
+        <% if card.render.render? %>
+          <div class="cms-card-wrapper__card">
+            <%= render card.render %>
+          </div>
+        <% end %>
       <% end %>
     </div>
   <% end %>

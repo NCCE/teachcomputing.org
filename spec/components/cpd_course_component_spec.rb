@@ -76,4 +76,24 @@ RSpec.describe CpdCourseComponent, type: :component do
       expect(page).to have_css(".ncce-link")
     end
   end
+
+  context "when activity has been replaced by" do
+    context "but still in achiever" do
+      let(:replaced_by_activity) { create(:activity) }
+      let(:activity) { create(:activity, stem_activity_code: "CP228", replaced_by: replaced_by_activity) }
+
+      it "should display the link" do
+        expect(page).to have_text(activity.title)
+      end
+    end
+
+    context "not in achiever" do
+      let(:replaced_by_activity) { create(:activity, stem_activity_code: "CP288") }
+      let(:activity) { create(:activity, stem_activity_code:, replaced_by: replaced_by_activity) }
+
+      it "should display the link" do
+        expect(page).to have_text(replaced_by_activity.title)
+      end
+    end
+  end
 end

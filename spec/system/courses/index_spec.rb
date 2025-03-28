@@ -12,6 +12,7 @@ RSpec.describe("Courses page", type: :system) do
     stub_subjects
     stub_age_groups
     stub_course_templates
+    stub_duration_units
   end
 
   context "when using a desktop", js: true do
@@ -36,11 +37,11 @@ RSpec.describe("Courses page", type: :system) do
 
     describe "with a checkbox filter" do
       before do
-        check("course_format_0", visible: false)
+        check("course_length_0", visible: false)
       end
 
       it "shows the expected number of results" do
-        expect(page).to have_css(".ncce-courses__count", text: "Showing 30 results")
+        expect(page).to have_css(".ncce-courses__count", text: "Showing 3 results")
       end
     end
 
@@ -86,11 +87,11 @@ RSpec.describe("Courses page", type: :system) do
     describe "with filters applied" do
       before do
         click_button(class: "ncce-courses__filter-form-toggle")
-        check("course_format_1", visible: false)
+        check("course_length_1", visible: false)
       end
 
       it "shows the expected number of results" do
-        expect(page).to have_css(".ncce-courses__count", text: "Showing 25 results")
+        expect(page).to have_css(".ncce-courses__count", text: "Showing 22 results")
       end
 
       it "shows the expected number of filters" do
@@ -98,7 +99,7 @@ RSpec.describe("Courses page", type: :system) do
       end
 
       it "increases the filter count when another filter is clicked" do
-        check("course_format_2", visible: false)
+        check("course_length_2", visible: false)
         expect(page).to have_css(".ncce-courses__filter-form-toggle-applied", text: "2 filters applied")
       end
 

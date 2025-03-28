@@ -6,6 +6,7 @@ RSpec.describe CoursesController do
   let(:online_course) { Achiever::Course::Template.find_by_activity_code("CO214") }
   let(:activity) { create(:activity, stem_course_template_no: course.course_template_no, stem_activity_code: course.activity_code) }
   let(:activity2) { create(:activity, stem_course_template_no: online_course.course_template_no, stem_activity_code: online_course.activity_code) }
+  let(:activity_not_in_achiever) { create(:activity, stem_activity_code: "XX100") }
   let(:programme) { create(:cs_accelerator) }
   let(:programme_activity) do
     programme.activities << activity
@@ -31,6 +32,11 @@ RSpec.describe CoursesController do
 
     it "raises a 404 not found" do
       expect { get course_path(id: "ZZ101", name: "this-is-a-dud") }.to raise_error(ActiveRecord::RecordNotFound)
+    end
+
+    it "raises 404 not found when course not in achiever" do
+      expect { get course_path(id: activity_not_in_achiever.stem_activity_code, name: "this-is-a-dud") }
+        .to raise_error(ActiveRecord::RecordNotFound)
     end
 
     context "when the course exists" do
@@ -64,6 +70,38 @@ RSpec.describe CoursesController do
 
       it "sets the activity" do
         expect(assigns(:activity)).to eq(activity)
+      end
+    end
+
+    context "when activity has a replaced by" do
+      context "but still in achiever" do
+        before do
+          activity.replaced_by = activity2
+          activity.save
+
+          get course_path(id: activity.stem_activity_code, name: "this-is-a-dud")
+        end
+
+        it "returns successfully" do
+          expect(response.status).to eq(200)
+        end
+      end
+
+      context "not in achiever" do
+        before do
+          activity_not_in_achiever.replaced_by = activity2
+          activity_not_in_achiever.save
+
+          get course_path(id: activity_not_in_achiever.stem_activity_code, name: "this-is-a-dud")
+        end
+
+        it "redirects" do
+          expect(response.status).to eq(302)
+        end
+
+        it "redirect to replaced by url" do
+          expect(response).to redirect_to(course_path(id: activity2.stem_activity_code, name: activity2.title.parameterize))
+        end
       end
     end
 

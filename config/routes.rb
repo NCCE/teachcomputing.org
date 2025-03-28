@@ -143,13 +143,18 @@ Rails.application.routes.draw do
   end
 
   resource :feedback, only: %i[create]
-  resources :hubs, only: %i[index]
   resources :downloads, only: %i[create]
 
-  get "/bursary", to: redirect("/funding", status: 302)
+  # April 2025 Redirects
+
+  get "/computing-clusters", to: redirect("/")
+  get "/hubs", to: redirect("/")
+  get "/bursary", to: redirect("/")
+  get "/funding", to: redirect("/")
+
   get "/courses", action: :index, controller: "courses", as: "courses"
   get "/courses/filter", action: :filter, controller: "courses", as: "course_filter"
-  get "/courses/hubs/:hub_id", action: :index, controller: "courses", as: "hub"
+  get "/courses/hubs/:hub_id", to: redirect("/courses"), as: "hub"
   get "/courses/:id(/:name)", action: :show, controller: "courses", as: "course"
 
   get "/curriculum", to: "curriculum/key_stages#index", as: :curriculum_key_stages
@@ -211,8 +216,6 @@ Rails.application.routes.draw do
   get "/maintenance", to: "pages#page", as: :maintenance, defaults: {page_slug: "maintenance"}
   get "/contributing-partners", to: redirect("/get-involved")
 
-  # get "/primary-certificate", to: "pages#static_programme_page", as: :primary,
-  #  defaults: {page_slug: "primary-certificate"}
   get "/primary-certificate/courses", action: :primary_courses, controller: "courses", as: :primary_courses
 
   get "/primary-teachers", to: "pages#page", as: :primary_teachers,

@@ -6,9 +6,9 @@ class Cms::CourseCardComponent < ViewComponent::Base
     to: :helpers
 
   def initialize(title:, banner_text:, course:, description:, image:)
-    @title = title
     @banner_text = banner_text
     @course = course
+    @title = title.presence || @course&.title
     @description = description
     @image = image
   end

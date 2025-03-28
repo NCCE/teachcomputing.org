@@ -73,18 +73,10 @@ RSpec.describe Pathway, type: :model do
   end
 
   describe "#recommended_activities" do
-    it "returns pathway_activities not set as supplementary" do
+    it "returns pathway_activities regardless of if set as supplementary" do
       recommended = create_list(:pathway_activity, 3, pathway: pathway, supplementary: false)
-      create_list(:pathway_activity, 3, pathway: pathway, supplementary: true)
+      recommended += create_list(:pathway_activity, 3, pathway: pathway, supplementary: true)
       expect(pathway.recommended_activities).to match_array(recommended)
-    end
-  end
-
-  describe "#supplementary_activities" do
-    it "returns pathway_activities set as supplementary" do
-      create_list(:pathway_activity, 3, pathway: pathway, supplementary: false)
-      supplementary = create_list(:pathway_activity, 3, pathway: pathway, supplementary: true)
-      expect(pathway.supplementary_activities).to match_array(supplementary)
     end
   end
 
@@ -96,17 +88,6 @@ RSpec.describe Pathway, type: :model do
       create(:pathway_activity, pathway: pathway, activity: activity, supplementary: false)
       recommended = create_list(:pathway_activity, 3, pathway: pathway, supplementary: false)
       expect(pathway.recommended_activities_for_user(user)).to match_array(recommended)
-    end
-  end
-
-  describe "#supplementary_activities_for_user" do
-    it "returns pathway_activities set as supplementary where user is not taking course" do
-      user = create(:user)
-      activity = create(:activity)
-      create(:achievement, user: user, activity: activity)
-      create(:pathway_activity, pathway: pathway, activity: activity, supplementary: true)
-      supplementary = create_list(:pathway_activity, 3, pathway: pathway, supplementary: true)
-      expect(pathway.supplementary_activities_for_user(user)).to match_array(supplementary)
     end
   end
 end

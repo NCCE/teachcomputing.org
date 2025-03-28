@@ -51,11 +51,6 @@
             title: "Not currently offering GCSE Computer Science?",
             text: "We have additional funding and subject matter expert support available to schools and colleges with an ambition to add GCSE Computer Science as an option to their students. #{link_to 'Find out more', cms_page_path("gcse-cs-support"), class: "govuk-button ncce-button--white senior-aside-button govuk-!-margin-top-3"}".html_safe
           ) %>
-
-          <%= render AsideComponent.new(
-            title: "Guidance for offering computing",
-            text: "Our network of #{link_to('Computing Hubs', hubs_url)} is there to support you and your school to offer exemplary computing education for all.".html_safe
-          ) %>
         </div>
       </div>
     </div>
@@ -75,8 +70,7 @@
           cards: [
             {
               title: t('.objectives.cards.invest.title'),
-              text: t('.objectives.cards.invest.text.html',
-                  subsidies_link: (link_to('subsidies', cms_page_url('funding', anchor: 'secondary-subsidy')))),
+              text: t('.objectives.cards.invest.text.html'),
               image_url: 'media/images/pages/secondary-senior-leaders/invest_in_your_teachers.svg',
 
               link: { link_url: courses_url, link_title: t('.objectives.cards.invest.link_text')}

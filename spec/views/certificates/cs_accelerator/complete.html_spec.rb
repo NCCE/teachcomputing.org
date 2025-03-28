@@ -54,21 +54,12 @@ RSpec.describe("certificates/cs_accelerator/complete") do
       expect(rendered).not_to have_css(".recommended-courses-wrapper")
     end
 
-    it "does not show the additional pathways" do
-      expect(rendered).not_to have_css(".supplementary-courses__header")
-    end
-
     it "has a code club link" do
       expect(rendered).to have_link("Code Club", href: "https://codeclub.org/en/start-a-code-club")
     end
 
     it "has a CAS link" do
       expect(rendered).to have_link("Find out more", href: "https://community.computingatschool.org.uk/events")
-    end
-
-    it "has a subsidy section" do
-      expect(rendered).to have_link("this form", href: "https://static.teachcomputing.org/BACS+form+-+NCCE.docx")
-      expect(rendered).to have_link("finance@stem.org.uk", href: "mailto:finance@stem.org.uk")
     end
 
     it "has a support section" do
@@ -126,10 +117,6 @@ RSpec.describe("certificates/cs_accelerator/complete") do
 
     it "does show the recommended pathways" do
       expect(rendered).to have_css(".recommended-courses-wrapper")
-    end
-
-    it "does show the additional pathways" do
-      expect(rendered).to have_css(".supplementary-courses__header")
     end
 
     it "shows when a user has made progress on a course in both recommended and additional pathway activities" do

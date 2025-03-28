@@ -16,20 +16,11 @@ class Pathway < ApplicationRecord
   end
 
   def recommended_activities
-    pathway_activities.where(supplementary: false)
-  end
-
-  def supplementary_activities
-    pathway_activities.where(supplementary: true)
+    pathway_activities.includes(activity: :replaced_by)
   end
 
   def recommended_activities_for_user(user)
     user_activity_ids = user.achievements.map(&:activity_id)
     recommended_activities.where.not(activity_id: user_activity_ids)
-  end
-
-  def supplementary_activities_for_user(user)
-    user_activity_ids = user.achievements.map(&:activity_id)
-    supplementary_activities.where.not(activity_id: user_activity_ids)
   end
 end

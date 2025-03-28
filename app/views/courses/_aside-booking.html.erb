@@ -33,15 +33,6 @@
             </li>
           <% end %>
           </ul>
-          <% if !@course.online_cpd %>
-            <%= link_to('Find your local Hub', '/hubs',
-                class: 'govuk-button button button--full-width',
-                draggable: 'false',
-                target: :_blank, data_event_action: 'click',
-                data_event_category: 'course details',
-                data_event_label: 'Coming soon')
-            %>
-          <% end %>
         <% else %>
           <p class="govuk-body">
             <%= link_to(
@@ -132,13 +123,6 @@
     <% if !@course.online_cpd && @occurrences.empty? %>
       <h2 class="govuk-heading-m ncce-aside__title"><%= @booking.no_occurrences_title %></h2>
       <p class="govuk-body-s ncce-aside__text"><%= @booking.no_occurrences_introduction%></p>
-      <%= link_to('Find your local Hub', '/hubs',
-          class: 'govuk-button button button--full-width',
-          draggable: 'false',
-          target: :_blank, data_event_action: 'click',
-          data_event_category: 'course details',
-          data_event_label: 'Coming soon')
-      %>
     <% else %>
       <h2 class="govuk-heading-m ncce-aside__title"><%= @booking.title %></h2>
       <p class="govuk-body-s ncce-aside__text"><%= @booking.unauthenticated_introduction %></p>

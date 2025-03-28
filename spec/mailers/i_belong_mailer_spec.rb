@@ -30,19 +30,15 @@ RSpec.describe IBelongMailer, type: :mailer do
     end
 
     it "contains the primary course link" do
-      expect(mail.body.encoded).to have_link("primary", href: course_url("CP409"))
+      expect(mail.body.encoded).to have_link("primary", href: course_url("CO409"))
     end
 
     it "contains the secondary course link" do
-      expect(mail.body.encoded).to have_link("secondary", href: course_url("CP440"))
+      expect(mail.body.encoded).to have_link("secondary", href: course_url("CO440"))
     end
 
     it "contains the certificate dashboard link" do
       expect(mail.body.encoded).to have_link("personal dashboard", href: i_belong_url)
-    end
-
-    it "contains the computing hub link" do
-      expect(mail.body.encoded).to have_link("your local Computing Hub", href: hubs_url)
     end
 
     it "contains mail_to link" do
@@ -55,19 +51,15 @@ RSpec.describe IBelongMailer, type: :mailer do
       end
 
       it "contains the primary course link" do
-        expect(mail.text_part.body.to_s).to include("primary (#{course_url("CP409")})")
+        expect(mail.text_part.body.to_s).to include("primary (#{course_url("CO409")})")
       end
 
       it "contains the secondary course link" do
-        expect(mail.text_part.body.to_s).to include("secondary (#{course_url("CP440")})")
+        expect(mail.text_part.body.to_s).to include("secondary (#{course_url("CO440")})")
       end
 
       it "contains the certificate dashboard link" do
         expect(mail.text_part.body.to_s).to include("personal dashboard (#{i_belong_url})")
-      end
-
-      it "contains the computing hub link" do
-        expect(mail.text_part.body.to_s).to include("your local Computing Hub (#{hubs_url})")
       end
 
       it "contains teachcomputing email address" do
@@ -312,15 +304,15 @@ RSpec.describe IBelongMailer, type: :mailer do
       end
 
       it "contains link to primary course" do
-        expect(mail.html_part.body).to have_link("primary", href: course_url("CP409"))
+        expect(mail.html_part.body).to have_link("primary", href: course_url("CO409"))
       end
 
       it "contains link to secondary course" do
-        expect(mail.html_part.body).to have_link("secondary", href: course_url("CP440"))
+        expect(mail.html_part.body).to have_link("secondary", href: course_url("CO440"))
       end
 
       it "contains link to secondary course" do
-        expect(mail.html_part.body).to have_link("secondary", href: course_url("CP440"))
+        expect(mail.html_part.body).to have_link("secondary", href: course_url("CO440"))
       end
 
       it "should render a link to the primary i belong handbook" do
@@ -342,11 +334,11 @@ RSpec.describe IBelongMailer, type: :mailer do
       end
 
       it "contains link to primary course" do
-        expect(mail.text_part.body.to_s).to include("primary (#{course_url("CP409")})")
+        expect(mail.text_part.body.to_s).to include("primary (#{course_url("CO409")})")
       end
 
       it "contains link to secondary course" do
-        expect(mail.text_part.body.to_s).to include("secondary (#{course_url("CP440")})")
+        expect(mail.text_part.body.to_s).to include("secondary (#{course_url("CO440")})")
       end
 
       it "should render a link to the primary i belong handbook" do
@@ -430,19 +422,19 @@ RSpec.describe IBelongMailer, type: :mailer do
       end
 
       it "contains the primary course link" do
-        expect(mail.html_part.body).to have_link("primary", href: course_url("CP409"))
+        expect(mail.html_part.body).to have_link("primary", href: course_url("CO409"))
       end
 
       it "contains the secondary course link" do
-        expect(mail.html_part.body).to have_link("secondary", href: course_url("CP440"))
+        expect(mail.html_part.body).to have_link("secondary", href: course_url("CO440"))
       end
 
       it "contains the primary course button link" do
-        expect(mail.html_part.body).to have_link("Book primary course", href: course_url("CP409"))
+        expect(mail.html_part.body).to have_link("Book primary course", href: course_url("CO409"))
       end
 
       it "contains the secondary course button link" do
-        expect(mail.html_part.body).to have_link("Book secondary course", href: course_url("CP440"))
+        expect(mail.html_part.body).to have_link("Book secondary course", href: course_url("CO440"))
       end
     end
 
@@ -452,19 +444,19 @@ RSpec.describe IBelongMailer, type: :mailer do
       end
 
       it "contains the primary course link" do
-        expect(mail.text_part.body).to include("primary (#{course_url("CP409")}")
+        expect(mail.text_part.body).to include("primary (#{course_url("CO409")}")
       end
 
       it "contains the secondary course link" do
-        expect(mail.text_part.body).to include("secondary (#{course_url("CP440")}")
+        expect(mail.text_part.body).to include("secondary (#{course_url("CO440")}")
       end
 
       it "contains the book primary course link" do
-        expect(mail.text_part.body).to include("Book primary course (#{course_url("CP409")}")
+        expect(mail.text_part.body).to include("Book primary course (#{course_url("CO409")}")
       end
 
       it "contains the book secondary course link" do
-        expect(mail.text_part.body).to include("Book secondary course (#{course_url("CP440")}")
+        expect(mail.text_part.body).to include("Book secondary course (#{course_url("CO440")}")
       end
     end
   end
