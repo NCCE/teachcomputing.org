@@ -31,7 +31,7 @@
     </div>
   <% else %>
     <div class="govuk-body-s govuk-!-font-weight-bold ncce-courses__locations--always-open">
-      <span><%= t('.no_occurrences_html', hubs_link: link_to('your local Computing Hub', '/hubs', class: 'ncce-link', data: tracking_data('Coming soon'))) %></span>
+      <span><%= t('.no_occurrences_html')%></span>
     </div>
   <% end %>
   <%= render CourseOccurrencesComponent.new(course: @course) %>
