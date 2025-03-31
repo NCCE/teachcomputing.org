@@ -6,7 +6,7 @@ module Cms
           strapi_component "blocks.text-with-asides"
 
           attribute(:textContent) { RichBlocks.generate_data }
-          attribute(:asides) { Cms::Mocks::AsideSection.generate_aside_list }
+          attribute(:asides) { Cms::Mocks::AsideComponents::AsideSection.generate_aside_list }
           attribute(:bkColor) { ColorScheme.generate_data(name: "light_grey") }
         end
       end

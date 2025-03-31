@@ -12,7 +12,7 @@ module StrapiStubs
   end
 
   def stub_strapi_blog_post(slug, blog: nil)
-    blog_post = blog.presence || Cms::Mocks::Blog.generate_raw_data(slug:)
+    blog_post = blog.presence || Cms::Mocks::BlogComponents::Blog.generate_raw_data(slug:)
     if as_graphql
       stub_strapi_graphql_query("blogs", blog_post)
     else
@@ -20,12 +20,12 @@ module StrapiStubs
     end
   end
 
-  def stub_strapi_get_single_resource(resource_key, data: Cms::Mocks::Blog.generate_raw_data)
+  def stub_strapi_get_single_resource(resource_key, data: Cms::Mocks::BlogComponents::Blog.generate_raw_data)
     stub_request(:get, /^https:\/\/strapi.teachcomputing.org\/api\/#{resource_key}?/).to_return_json(body: {data: data})
   end
 
   def stub_strapi_get_single_unpublished_blog_post(resource_key)
-    unpublished_post = Cms::Mocks::Blog.generate_raw_data(slug: resource_key, publish_date: nil, published_at: nil)
+    unpublished_post = Cms::Mocks::BlogComponents::Blog.generate_raw_data(slug: resource_key, publish_date: nil, published_at: nil)
     if as_graphql
       stub_strapi_graphql_query("blogs", unpublished_post)
     else
@@ -37,7 +37,7 @@ module StrapiStubs
 
   def stub_strapi_get_collection_entity(resource_key)
     stub_request(:get, /^https:\/\/strapi.teachcomputing.org\/api\/#{resource_key}?/).to_return_json(body: to_strapi_collection(
-      Array.new(5) { Cms::Mocks::BlogTag.generate_raw_data }
+      Array.new(5) { Cms::Mocks::BlogComponents::BlogTag.generate_raw_data }
     ))
   end
 
@@ -89,7 +89,7 @@ module StrapiStubs
 
   def stub_strapi_blog_collection(blogs: nil, page: 1, page_size: 10)
     blog_list = if blogs.nil?
-      Array.new(5) { Cms::Mocks::Blog.generate_raw_data }
+      Array.new(5) { Cms::Mocks::BlogComponents::Blog.generate_raw_data }
     else
       blogs
     end
@@ -102,7 +102,7 @@ module StrapiStubs
   end
 
   def stub_strapi_blog_collection_with_tag(tag)
-    blogs = Array.new(5) { Cms::Mocks::Blog.generate_raw_data }
+    blogs = Array.new(5) { Cms::Mocks::BlogComponents::Blog.generate_raw_data }
     if as_graphql
       stub_strapi_graphql_collection_query("blogs", blogs)
     else
@@ -111,7 +111,7 @@ module StrapiStubs
   end
 
   def stub_strapi_aside_section(key, aside_data: {})
-    aside_section = Cms::Mocks::AsideSection.generate_raw_data(slug: key, **aside_data)
+    aside_section = Cms::Mocks::AsideComponents::AsideSection.generate_raw_data(slug: key, **aside_data)
     if as_graphql
       stub_strapi_graphql_query("asideSections", aside_section, unique_key: key)
     else
@@ -128,7 +128,7 @@ module StrapiStubs
   end
 
   def stub_strapi_enrichment_page(key, enrichment_page: nil)
-    enrichment_page = enrichment_page.presence || Cms::Mocks::EnrichmentPage.generate_raw_data(slug: key)
+    enrichment_page = enrichment_page.presence || Cms::Mocks::EnrichmentComponents::EnrichmentPage.generate_raw_data(slug: key)
     if as_graphql
       stub_strapi_graphql_query("enrichmentPages", enrichment_page)
     else
@@ -137,7 +137,7 @@ module StrapiStubs
     end
   end
 
-  def stub_strapi_enrichment_collection(enrichment_pages: Array.new(2) { Cms::Mocks::EnrichmentPage.generate_raw_data })
+  def stub_strapi_enrichment_collection(enrichment_pages: Array.new(2) { Cms::Mocks::EnrichmentComponents::EnrichmentPage.generate_raw_data })
     if as_graphql
       stub_strapi_graphql_collection_query("enrichmentPages", enrichment_pages)
     else

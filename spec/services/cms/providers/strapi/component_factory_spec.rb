@@ -139,7 +139,7 @@ RSpec.describe Cms::Providers::Strapi::Factories::ComponentFactory do
 
   context "TwoColumnVideoSection" do
     it "should create two column video section" do
-      strapi_data = Cms::Providers::Strapi::Mocks::DynamicComponents::TwoColumnVideoSection.generate_raw_data
+      strapi_data = Cms::Providers::Strapi::Mocks::DynamicComponents::Blocks::TwoColumnVideoSection.generate_raw_data
       model = described_class.process_component(strapi_data)
       expect(model).to be_a Cms::DynamicComponents::Blocks::TwoColumnVideoSection
     end

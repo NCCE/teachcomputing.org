@@ -234,7 +234,7 @@ RSpec.describe Cms::Resource do
   describe "#all_records" do
     describe "with multiple records" do
       before do
-        blogs = Array.new(210) { Cms::Mocks::Blog.generate_raw_data }
+        blogs = Array.new(210) { Cms::Mocks::BlogComponents::Blog.generate_raw_data }
 
         stub_strapi_blog_collection(blogs:, page: 1, page_size: 100)
         stub_strapi_blog_collection(blogs:, page: 2, page_size: 100)
@@ -248,7 +248,7 @@ RSpec.describe Cms::Resource do
 
     describe "with one record" do
       before do
-        blogs = [Cms::Mocks::Blog.generate_raw_data]
+        blogs = [Cms::Mocks::BlogComponents::Blog.generate_raw_data]
 
         stub_strapi_blog_collection(blogs:, page: 1, page_size: 100)
       end

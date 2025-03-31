@@ -6,7 +6,7 @@ RSpec.describe Cms::DynamicComponents::Blocks::EnrolmentTestimonial do
   before do
     stub_strapi_aside_section(enrolled_aside_slug)
     stub_strapi_aside_section(enrol_aside_slug)
-    data = Cms::Mocks::DynamicComponents::EnrolmentTestimonial.generate_raw_data(
+    data = Cms::Mocks::DynamicComponents::Blocks::EnrolmentTestimonial.generate_raw_data(
       enrol_aside: {data: [{attributes: {slug: enrol_aside_slug}}]},
       enrolled_aside: {data: [{attributes: {slug: enrolled_aside_slug}}]}
     )

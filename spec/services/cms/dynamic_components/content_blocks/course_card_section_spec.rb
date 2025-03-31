@@ -15,7 +15,7 @@ RSpec.describe Cms::DynamicComponents::ContentBlocks::CourseCard do
   end
 
   context "with valid activity" do
-    let(:card_section) { Cms::Providers::Strapi::Factories::ComponentFactory.process_component(Cms::Mocks::CourseCardSection.generate_raw_data(cards: [valid_course_card])) }
+    let(:card_section) { Cms::Providers::Strapi::Factories::ComponentFactory.process_component(Cms::Mocks::DynamicComponents::Blocks::CourseCardSection.generate_raw_data(cards: [valid_course_card])) }
     let(:first_block) { card_section.cards_block.first }
 
     it "should render as Cms::CardWrapperComponent" do
@@ -40,7 +40,7 @@ RSpec.describe Cms::DynamicComponents::ContentBlocks::CourseCard do
   end
 
   context "with invalid activity" do
-    let(:card_section) { Cms::Providers::Strapi::Factories::ComponentFactory.process_component(Cms::Mocks::CourseCardSection.generate_raw_data(cards: [invalid_course_card])) }
+    let(:card_section) { Cms::Providers::Strapi::Factories::ComponentFactory.process_component(Cms::Mocks::DynamicComponents::Blocks::CourseCardSection.generate_raw_data(cards: [invalid_course_card])) }
     let(:first_block) { card_section.cards_block.first }
 
     it "should return false for invalid code" do
@@ -57,7 +57,7 @@ RSpec.describe Cms::DynamicComponents::ContentBlocks::CourseCard do
   end
 
   context "with replaced activity" do
-    let!(:card_section) { Cms::Providers::Strapi::Factories::ComponentFactory.process_component(Cms::Mocks::CourseCardSection.generate_raw_data(cards: [replaced_course_card])) }
+    let!(:card_section) { Cms::Providers::Strapi::Factories::ComponentFactory.process_component(Cms::Mocks::DynamicComponents::Blocks::CourseCardSection.generate_raw_data(cards: [replaced_course_card])) }
     let(:first_block) { card_section.cards_block.first }
 
     it "should render as Cms::CardWrapperComponent" do
