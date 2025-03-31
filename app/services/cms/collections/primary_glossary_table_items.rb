@@ -13,17 +13,17 @@ module Cms
 
       def self.collection_attribute_mappings
         [
-          {model: Cms::Models::TextField, key: :term},
-          {model: Cms::Models::TextField, key: :keyStage},
-          {model: Cms::Models::TextBlock, key: :definition}
+          {model: Models::TextComponents::TextField, key: :term},
+          {model: Models::TextComponents::TextField, key: :keyStage},
+          {model: Models::TextComponents::TextBlock, key: :definition}
         ]
       end
 
       def self.resource_attribute_mappings
         [
-          {model: Cms::Models::TextField, key: :term},
-          {model: Cms::Models::TextField, key: :keyStage},
-          {model: Cms::Models::TextBlock, key: :definition}
+          {model: Models::TextComponents::TextField, key: :term},
+          {model: Models::TextComponents::TextField, key: :keyStage},
+          {model: Models::TextComponents::TextBlock, key: :definition}
         ]
       end
     end

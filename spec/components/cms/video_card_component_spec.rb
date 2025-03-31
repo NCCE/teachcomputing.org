@@ -8,7 +8,7 @@ RSpec.describe Cms::VideoCardComponent, type: :component do
   context "standard layout" do
     before do
       render_inline(described_class.new(
-        video: Cms::Mocks::DynamicComponents::EmbeddedVideo.as_model,
+        video: Cms::Mocks::DynamicComponents::ContentBlocks::EmbeddedVideo.as_model,
         title: "Card title",
         name: "John Smith",
         job_title: "Head of IT",
@@ -49,7 +49,7 @@ RSpec.describe Cms::VideoCardComponent, type: :component do
   context "with no name job title or color theme" do
     before do
       render_inline(described_class.new(
-        video: Cms::Mocks::DynamicComponents::EmbeddedVideo.as_model,
+        video: Cms::Mocks::DynamicComponents::ContentBlocks::EmbeddedVideo.as_model,
         title: "Card title",
         name: nil,
         job_title: nil,

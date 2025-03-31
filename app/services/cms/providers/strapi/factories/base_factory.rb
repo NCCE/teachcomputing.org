@@ -25,7 +25,7 @@ module Cms
             end
 
             def as_image(image_data, default_size = :medium)
-              Models::Image.new(
+              Models::ImageComponents::Image.new(
                 url: image_data[:url],
                 alt: image_data[:alternativeText],
                 caption: image_data[:caption],
@@ -46,7 +46,7 @@ module Cms
             def to_content_block(data, with_wrapper: false, **)
               return nil if data.nil?
 
-              Models::TextBlock.new(blocks: process_block_data(data), with_wrapper:, **)
+              Models::TextComponents::TextBlock.new(blocks: process_block_data(data), with_wrapper:, **)
             end
 
             def to_image(strapi_data, image_key, default_size: :medium)
@@ -57,7 +57,7 @@ module Cms
             end
 
             def to_testimonial(strapi_data)
-              DynamicComponents::Testimonial.new(
+              DynamicComponents::ContentBlocks::Testimonial.new(
                 name: strapi_data[:name],
                 job_title: strapi_data[:jobTitle],
                 avatar: to_image(strapi_data, :avatar, default_size: :small),
@@ -68,7 +68,7 @@ module Cms
             def to_ncce_button(strapi_data)
               return nil if strapi_data.nil?
 
-              DynamicComponents::NcceButton.new(
+              DynamicComponents::Buttons::NcceButton.new(
                 title: strapi_data[:title],
                 link: strapi_data[:link],
                 color: strapi_data[:buttonTheme],
@@ -78,14 +78,14 @@ module Cms
             end
 
             def to_icon(icon_data)
-              DynamicComponents::Icon.new(
+              DynamicComponents::ContentBlocks::Icon.new(
                 text: icon_data[:iconText],
                 image: to_image(icon_data, :iconImage, default_size: :small)
               )
             end
 
             def to_file(data)
-              DynamicComponents::FileLink.new(
+              DynamicComponents::ContentBlocks::FileLink.new(
                 url: data[:url],
                 filename: data[:name],
                 size: data[:size],
@@ -94,7 +94,7 @@ module Cms
             end
 
             def to_embedded_video(strapi_data)
-              DynamicComponents::EmbeddedVideo.new(
+              DynamicComponents::ContentBlocks::EmbeddedVideo.new(
                 url: strapi_data[:url]
               )
             end

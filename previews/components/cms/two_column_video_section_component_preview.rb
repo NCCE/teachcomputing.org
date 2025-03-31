@@ -4,14 +4,14 @@ class Cms::TwoColumnVideoSectionComponentPreview < ViewComponent::Preview
   def default
     render Cms::TwoColumnVideoSectionComponent.new(
       left_column_content: Cms::Mocks::RichBlocks.as_model,
-      video: Cms::Mocks::DynamicComponents::EmbeddedVideo.as_model
+      video: Cms::Mocks::DynamicComponents::ContentBlocks::EmbeddedVideo.as_model
     )
   end
 
   def with_right_column_content
     render Cms::TwoColumnVideoSectionComponent.new(
       left_column_content: Cms::Mocks::RichBlocks.as_model,
-      video: Cms::Mocks::DynamicComponents::EmbeddedVideo.as_model,
+      video: Cms::Mocks::DynamicComponents::ContentBlocks::EmbeddedVideo.as_model,
       right_column_content: Cms::Mocks::RichBlocks.as_model
     )
   end
@@ -19,7 +19,7 @@ class Cms::TwoColumnVideoSectionComponentPreview < ViewComponent::Preview
   def with_background_color
     render Cms::TwoColumnVideoSectionComponent.new(
       left_column_content: Cms::Mocks::RichBlocks.as_model,
-      video: Cms::Mocks::DynamicComponents::EmbeddedVideo.as_model,
+      video: Cms::Mocks::DynamicComponents::ContentBlocks::EmbeddedVideo.as_model,
       background_color: "isaac"
     )
   end
@@ -27,7 +27,7 @@ class Cms::TwoColumnVideoSectionComponentPreview < ViewComponent::Preview
   def with_button
     render Cms::TwoColumnVideoSectionComponent.new(
       left_column_content: Cms::Mocks::RichBlocks.as_model,
-      video: Cms::Mocks::DynamicComponents::EmbeddedVideo.as_model,
+      video: Cms::Mocks::DynamicComponents::ContentBlocks::EmbeddedVideo.as_model,
       left_column_button: Cms::Mocks::NcceButton.as_model
     )
   end
@@ -35,7 +35,7 @@ class Cms::TwoColumnVideoSectionComponentPreview < ViewComponent::Preview
   def with_content_background_color
     render Cms::TwoColumnVideoSectionComponent.new(
       left_column_content: Cms::Mocks::RichBlocks.as_model,
-      video: Cms::Mocks::DynamicComponents::EmbeddedVideo.as_model,
+      video: CmCms::Mocks::DynamicComponents::ContentBlocks::EmbeddedVideo.as_model,
       left_column_button: Cms::Mocks::NcceButton.as_model,
       background_color: "isaac",
       box_color: "white"

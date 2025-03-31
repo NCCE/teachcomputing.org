@@ -5,11 +5,11 @@ require "rails_helper"
 RSpec.describe Cms::EnrichmentComponent, type: :component do
   before do
     render_inline(Cms::EnrichmentComponent.new(
-      title: Cms::Models::RichHeader.new(blocks: Cms::Mocks::RichBlocks.generate_data),
+      title: Cms::Models::TextComponents::RichHeader.new(blocks: Cms::Mocks::RichBlocks.generate_data),
       details: Cms::Mocks::RichBlocks.generate_data,
       link: "https:://www.teachcomputing.org/test-enrichment",
       i_belong: false,
-      type: Cms::Models::EnrichmentType.new(
+      type: Cms::Models::EnrichmentComponents::EnrichmentType.new(
         name: "Challenge",
         icon: Cms::Mocks::Image.as_model
       ),

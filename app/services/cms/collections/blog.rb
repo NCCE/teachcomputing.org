@@ -18,16 +18,16 @@ module Cms
 
       def self.collection_attribute_mappings
         [
-          {model: Cms::Models::BlogPreview, key: nil}
+          {model: Models::BlogComponents::BlogPreview, key: nil}
         ]
       end
 
       def self.resource_attribute_mappings
         [
-          {model: Cms::Models::SimpleTitle, key: :title},
-          {model: Cms::Models::FeaturedImage, key: :featuredImage},
-          {model: Cms::Models::TextBlock, key: :content},
-          {model: Cms::Models::Seo, key: :seo}
+          {model: Models::BlogComponents::SimpleTitle, key: :title},
+          {model: Models::ImageComponents::FeaturedImage, key: :featuredImage},
+          {model: Models::TextComponents::TextBlock, key: :content},
+          {model: Models::MetaComponents::Seo, key: :seo}
         ]
       end
 

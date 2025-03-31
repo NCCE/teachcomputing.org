@@ -7,23 +7,23 @@ module Cms
 
           QUERY_MAPS = {
             DynamicComponents::ContentBlocks::QuestionBankForm => Components::ContentBlocks::QuestionBankForm,
-            Models::Aside => Aside,
-            Models::BlogPreview => BlogPreview,
-            Models::DynamicZone => DynamicZone,
+            Models::AsideComponents::Aside => Aside,
+            Models::BlogComponents::BlogPreview => BlogPreview,
+            Models::BlogComponents::SimpleTitle => SimpleField,
+            Models::DynamicZoneComponents::DynamicZone => DynamicZone,
+            Models::DynamicZoneComponents::EnrichmentDynamicZone => EnrichmentDynamicZone,
+            Models::DynamicZoneComponents::HomepageDynamicZone => HomepageDynamicZone,
             Models::EmailTemplate => EmailTemplate,
-            Models::EnrichmentDynamicZone => EnrichmentDynamicZone,
-            Models::EnrichmentList => EnrichmentList,
-            Models::FeaturedImage => FeaturedImage,
-            Models::HeaderMenu => HeaderMenu,
-            Models::HomepageDynamicZone => HomepageDynamicZone,
-            Models::PageTitle => PageTitle,
-            Models::Seo => Seo,
-            Models::SimpleTitle => SimpleField,
-            Models::Slug => Slug,
-            Models::TextBlock => SimpleField,
-            Models::TextBlockWithoutWrapper => SimpleField,
-            Models::TextField => SimpleField,
-            Models::WebPagePreview => WebPagePreview
+            Models::EnrichmentComponents::EnrichmentList => EnrichmentList,
+            Models::HeaderComponents::HeaderMenu => HeaderMenu,
+            Models::ImageComponents::FeaturedImage => FeaturedImage,
+            Models::MetaComponents::PageTitle => PageTitle,
+            Models::MetaComponents::Seo => Seo,
+            Models::MetaComponents::Slug => Slug,
+            Models::MetaComponents::WebPagePreview => WebPagePreview,
+            Models::TextComponents::TextBlock => SimpleField,
+            Models::TextComponents::TextBlockWithoutWrapper => SimpleField,
+            Models::TextComponents::TextField => SimpleField
           }.freeze
 
           def initialize(collection_class, resource_filter = "slug")

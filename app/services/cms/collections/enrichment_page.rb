@@ -22,22 +22,22 @@ module Cms
 
       def self.collection_attribute_mappings
         [
-          {model: Cms::Models::WebPagePreview, key: nil}
+          {model: Cms::Models::MetaComponents::WebPagePreview, key: nil}
         ]
       end
 
       def self.resource_attribute_mappings
         [
-          {model: Models::Slug, key: nil},
-          {model: Models::Seo, key: :seo},
-          {model: Models::PageTitle, key: :pageTitle},
-          {model: Models::EnrichmentDynamicZone, key: :content},
-          {model: Models::EnrichmentList, key: :enrichments},
-          {model: Models::TextField, key: :featuredSectionTitle},
-          {model: Models::TextField, key: :allSectionTitle},
-          {model: Models::TextField, key: :typeFilterPlaceholder},
-          {model: Models::TextField, key: :termFilterPlaceholder},
-          {model: Models::TextField, key: :ageGroupFilterPlaceholder}
+          {model: Models::MetaComponents::Slug, key: nil},
+          {model: Models::MetaComponents::Seo, key: :seo},
+          {model: Models::MetaComponents::PageTitle, key: :pageTitle},
+          {model: Models::DynamicZoneComponents::EnrichmentDynamicZone, key: :content},
+          {model: Models::EnrichmentComponents::EnrichmentList, key: :enrichments},
+          {model: Models::TextComponents::TextField, key: :featuredSectionTitle},
+          {model: Models::TextComponents::TextField, key: :allSectionTitle},
+          {model: Models::TextComponents::TextField, key: :typeFilterPlaceholder},
+          {model: Models::TextComponents::TextField, key: :termFilterPlaceholder},
+          {model: Models::TextComponents::TextField, key: :ageGroupFilterPlaceholder}
 
         ]
       end

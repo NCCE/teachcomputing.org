@@ -4,14 +4,14 @@ module Cms
       module Factories
         module ParameterFactory
           def self.generate_parameters(model_class)
-            if model_class == Cms::Models::Seo
+            if model_class == Cms::Models::MetaComponents::Seo
               {
                 populate: {featuredImage: {populate: [:alternativeText]}},
                 fields: [:title, :description]
               }
-            elsif model_class == Cms::Models::FeaturedImage
+            elsif model_class == Models::ImageComponents::FeaturedImage
               {populate: [:alternativeText, :caption]}
-            elsif model_class == Cms::Models::EnrichmentList
+            elsif model_class == Models::EnrichmentComponents::EnrichmentList
               {
                 populate: {
                   partner_icon: {populate: [:alternativeText]},
@@ -20,7 +20,7 @@ module Cms
                   type: {populate: {icon: {populate: [:alternativeText]}}}
                 }
               }
-            elsif model_class == Cms::Models::BlogPreview
+            elsif model_class == Models::BlogComponents::BlogPreview
               {
                 populate: {featuredImage: {populate: [:alternativeText]}},
                 fields: [:title, :excerpt, :publishDate, :slug, :publishedAt, :createdAt, :updatedAt],
@@ -43,17 +43,17 @@ module Cms
                   }
                 }
               }
-            elsif model_class == Models::WebPagePreview
+            elsif model_class == Models::MetaComponents::WebPagePreview
               {
                 populate: {seo: {fields: [:title, :description]}},
                 fields: [:slug, :publishedAt, :createdAt, :updatedAt]
               }
-            elsif model_class == Models::PageTitle
+            elsif model_class == Models::MetaComponents::PageTitle
               {
                 fields: [:title],
                 populate: {titleImage: {populate: [:alternativeText]}}
               }
-            elsif model_class == Models::Aside
+            elsif model_class == Models::AsideComponents::Aside
               {
                 fields: [:slug, :title, :showHeadingLine],
                 titleIcon: {populate: [:alternativeText]},
@@ -70,7 +70,7 @@ module Cms
                   }
                 }
               }
-            elsif model_class == Models::DynamicZone
+            elsif model_class == Models::DynamicZoneComponents::DynamicZone
               {
                 on: {
                   "blocks.text-with-asides": ComponentParameterFactory.text_with_asides_parameters,

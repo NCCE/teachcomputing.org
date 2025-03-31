@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe Cms::Models::EnrichmentDynamicZone do
+RSpec.describe Cms::Models::DynamicZoneComponents::EnrichmentDynamicZone do
   it "should render a Cms::DynamicZoneComponent" do
     @dynamic_zone = described_class.new(cms_models: [
       Cms::Mocks::FullWidthText.as_model

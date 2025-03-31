@@ -7,23 +7,23 @@ module Cms
 
           MAPPING_FUNCTIONS = {
             DynamicComponents::ContentBlocks::QuestionBankForm => :to_question_bank_forms,
-            Models::Aside => :to_aside,
-            Models::BlogPreview => :to_blog_preview,
-            Models::DynamicZone => :to_dynamic_zone,
+            Models::AsideComponents::Aside => :to_aside,
+            Models::BlogComponents::BlogPreview => :to_blog_preview,
+            Models::DynamicZoneComponents::DynamicZone => :to_dynamic_zone,
             Models::EmailTemplate => :to_email_template,
-            Models::EnrichmentDynamicZone => :to_dynamic_zone,
-            Models::EnrichmentList => :to_enrichment_list,
-            Models::FeaturedImage => :to_featured_image,
-            Models::HeaderMenu => :to_menu,
-            Models::HomepageDynamicZone => :to_dynamic_zone,
-            Models::PageTitle => :to_page_title,
-            Models::Seo => :to_seo,
-            Models::SimpleTitle => :to_simple_title,
-            Models::Slug => :to_slug,
-            Models::TextBlock => :to_text_block,
-            Models::TextBlockWithoutWrapper => :to_text_block_without_wrapper,
-            Models::TextField => :to_text_field,
-            Models::WebPagePreview => :to_web_page_preview
+            Models::DynamicZoneComponents::EnrichmentDynamicZone => :to_dynamic_zone,
+            Models::EnrichmentComponents::EnrichmentList => :to_enrichment_list,
+            Models::ImageComponents::FeaturedImage => :to_featured_image,
+            Models::HeaderComponents::HeaderMenu => :to_menu,
+            Models::DynamicZoneComponents::HomepageDynamicZone => :to_dynamic_zone,
+            Models::MetaComponents::PageTitle => :to_page_title,
+            Models::MetaComponents::Seo => :to_seo,
+            Models::BlogComponents::SimpleTitle => :to_simple_title,
+            Models::MetaComponents::Slug => :to_slug,
+            Models::TextComponents::TextBlock => :to_text_block,
+            Models::TextComponents::TextBlockWithoutWrapper => :to_text_block_without_wrapper,
+            Models::TextComponents::TextField => :to_text_field,
+            Models::MetaComponents::WebPagePreview => :to_web_page_preview
           }
 
           def self.process_model(mapping, all_data)
@@ -47,15 +47,19 @@ module Cms
           end
 
           def self.create_model(model_class, model_function, strapi_data, all_data)
-            model_data = send(model_function, strapi_data, all_data)
-            model_class.new(**model_data) if model_data
+            begin
+              model_data = send(model_function, strapi_data, all_data)
+              model_class.new(**model_data) if model_data
+            rescue Exception => e
+              byebug
+            end
           end
 
           def self.to_aside(strapi_data, _all_data)
             {
               title: strapi_data[:title],
               title_icon: ModelFactory.to_image(strapi_data, :titleIcon),
-              dynamic_content: Models::DynamicZone.new(
+              dynamic_content: Models::DynamicZoneComponents::DynamicZone.new(
                 cms_models: strapi_data[:content].map { ComponentFactory.process_component(_1) }.compact
               ),
               show_heading_line: strapi_data[:showHeadingLine],
@@ -68,7 +72,7 @@ module Cms
               title: strapi_data[:title],
               excerpt: strapi_data[:excerpt],
               publish_date: strapi_data[:publishDate],
-              featured_image: strapi_data[:featuredImage][:data].nil? ? nil : Models::FeaturedImage.new(**to_featured_image(strapi_data[:featuredImage][:data][:attributes], nil, :small)),
+              featured_image: strapi_data[:featuredImage][:data].nil? ? nil : Models::ImageComponents::FeaturedImage.new(**to_featured_image(strapi_data[:featuredImage][:data][:attributes], nil, :small)),
               slug: strapi_data[:slug]
             }
           end
@@ -102,8 +106,8 @@ module Cms
           def self.to_enrichment(strapi_data)
             return nil if strapi_data[:publishedAt].nil? && Rails.env.production?
             type_data = strapi_data[:type][:data][:attributes]
-            Models::Enrichment.new(
-              title: Models::RichHeader.new(blocks: strapi_data[:rich_title]),
+            Models::EnrichmentComponents::Enrichment.new(
+              title: Models::TextComponents::RichHeader.new(blocks: strapi_data[:rich_title]),
               details: strapi_data[:rich_details],
               link: strapi_data[:link],
               featured: strapi_data[:featured],
@@ -111,7 +115,7 @@ module Cms
               terms: strapi_data.dig(:terms, :data).map { _1[:attributes][:name] },
               age_groups: strapi_data.dig(:age_groups, :data).map { _1[:attributes][:name] },
               partner_icon: to_image(strapi_data, :partner_icon, default_size: :small),
-              type: Models::EnrichmentType.new(
+              type: Models::EnrichmentComponents::EnrichmentType.new(
                 name: type_data[:name],
                 icon: to_image(type_data, :icon, default_size: :small)
               )

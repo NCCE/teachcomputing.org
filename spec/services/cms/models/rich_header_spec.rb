@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe Cms::Models::RichHeader do
+RSpec.describe Cms::Models::TextComponents::RichHeader do
   let(:blocks_plain_text) {
     [
       {
@@ -46,18 +46,18 @@ RSpec.describe Cms::Models::RichHeader do
   end
 
   it "should extract text when only one child" do
-    hib = Cms::Models::RichHeader.new(blocks: blocks_plain_text)
+    hib = Cms::Models::TextComponents::RichHeader.new(blocks: blocks_plain_text)
     expect(hib.plain_string).to eq("I am some text")
   end
 
   it "should extract text when mulitple children" do
-    hib = Cms::Models::RichHeader.new(blocks: blocks_with_italics)
+    hib = Cms::Models::TextComponents::RichHeader.new(blocks: blocks_with_italics)
     expect(hib.plain_string).to eq("I am some text followed by Italic text")
   end
 
   context "with_multiple blocks" do
     before do
-      @header_with_mutliple_blocks = Cms::Models::RichHeader.new(blocks: two_blocks_plain_text)
+      @header_with_mutliple_blocks = Cms::Models::TextComponents::RichHeader.new(blocks: two_blocks_plain_text)
     end
     it "plain string should ignore second block" do
       expect(@header_with_mutliple_blocks.plain_string).to eq("first block")
