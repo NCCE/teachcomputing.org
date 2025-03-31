@@ -65,5 +65,4 @@ RSpec.describe BenchmarkBorderedCardsComponent, type: :component do
       expect(page).to have_text("Pellentesque")
     end
   end
-
 end
