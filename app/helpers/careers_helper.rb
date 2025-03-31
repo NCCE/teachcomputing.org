@@ -81,7 +81,7 @@ module CareersHelper
       },
       {
         title: "Guidance for you",
-        title_link: hubs_path,
+        title_link: nil,
         text: "We recommend conducting a 1:1 interview with every student, ensuring you provide quality guidance about STEM pathways using all the advice above.".html_safe,
         benchmark_icons: [
           "media/images/pages/careers-support/benchmark_8.svg"

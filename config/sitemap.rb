@@ -28,7 +28,6 @@ SitemapGenerator::Sitemap.create do
   add "/gcse-cs-support", changefreq: "monthly"
   add "/gender-balance", changefreq: "monthly"
   add "/get-involved", changefreq: "monthly"
-  add "/hubs", changefreq: "monthly"
   add "/i-belong", changefreq: "monthly"
   add "/impact-and-evaluation", changefreq: "monthly"
   add "/isaac-computer-science", changefreq: "monthly"
