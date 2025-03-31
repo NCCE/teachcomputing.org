@@ -53,12 +53,6 @@
                   )
                 } %>
               </div>
-              <div class="govuk-body ncce-activity-list ncce-csa-dash__section">
-                <%= render partial: 'certificates/pathways/supplementary_courses', locals: {
-                  pathway: @user_pathway,
-                  supplementary_activities: @user_pathway&.supplementary_activities
-                } %>
-              </div>
             <% else %>
               <%= link_to t('.all_courses_button'),
                 courses_path(certificate: @programme.slug), class: 'govuk-button button',
@@ -75,14 +69,6 @@
           </div>
         </div>
         <div class="govuk-grid-column-one-third">
-          <%= render AsideComponent.new(
-            title: t('.subsidy_aside.title'),
-            class_name: 'subsidy-aside',
-            text: t('.subsidy_aside.text.html',
-              form_link: link_to(t('.subsidy_aside.link_text'), 'https://static.teachcomputing.org/BACS+form+-+NCCE.docx', class: 'ncce-link', data: tracking_data('funding form')),
-              email_link: mail_to('finance@stem.org.uk', 'finance@stem.org.uk', class: 'ncce-link', data: tracking_data('finance mailbox')),
-            )
-          ) %>
           <%= render AsideComponent.new(
             title: t('.share_aside.title'),
             class_name: 'share-aside',

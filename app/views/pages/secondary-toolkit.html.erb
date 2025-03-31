@@ -50,7 +50,7 @@
 
 <%= render FullImageBannerComponent.new(title: t(".i_belong_banner.title"),
   text: t('.i_belong_banner.content.html',
-    course_link: link_to("Encouraging girls into GCSE computer science short course", "/courses/CP440/encouraging-girls-into-gcse-computer-science-remote-short-course")),
+    course_link: link_to("Encouraging girls into GCSE computer science short course", "/courses/CO440/encouraging-girls-into-computer-science-online")),
   background_color: 'orange-bg',
   image_side: :right,
   image: {
@@ -107,8 +107,7 @@
 
 <%= render CourseGridComponent.new(
   title: t(".courses.title"),
-  intro: t(".courses.intro.html",
-    subsidies_link: link_to("access subsidies", cms_page_path("funding"))),
+  intro: nil,
   event_category: 'Primary teacher',
   course_link: courses_path(params: { certificate: 'secondary-certificate' }),
   courses: [
@@ -285,8 +284,6 @@
     <div class="govuk-grid-row">
         <div class="govuk-grid-column-full">
           <h2 class="govuk-heading-l"><%= t(".support.title") %></h2>
-          <p class="govuk-body"><%= t(".support.para_1_html",
-            hubs_link: link_to('Computing Hubs', hubs_path)) %></p>
           <p class="govuk-body"><%= t(".support.para_2_html",
             stem_community_link: link_to('STEM Community', stem_community_url)) %></p>
         </div>

@@ -10,12 +10,12 @@ en:
         paragraph_2: "Growth begins with identifying areas for improvement and working on them. Our comprehensive offer and support will help identify your computing needs and provide a targeted programme of support to help embed this key subject in your school or college. The NCCE can help you with:"
       objectives:
         cards:
-          invest: 
+          invest:
             title: "Invest in your teachers’ development"
-            text: 
-              html: "Develop outstanding computing teaching, build confidence and reduce teacher workload with our quality assured CPD.<br /><br />All courses are delivered free of charge for state-funded education, with %{subsidies_link} available to eligible schools."
+            text:
+              html: "Develop outstanding computing teaching, build confidence and reduce teacher workload with our quality assured CPD."
             link_text: "Explore all courses"
-          certification: 
+          certification:
             title: "Nationally recognised certification"
             text:
               html: "Help your staff attain their career goals and meet the rise in student demand by building your teachers’ skills and knowledge.<br /><br />Our certificates are awarded by BCS, the Chartered Institute for IT, and provide a full programme of courses and activities to upskill your staff in various areas of computing teaching."

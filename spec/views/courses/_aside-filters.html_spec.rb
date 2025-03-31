@@ -36,8 +36,6 @@ RSpec.describe("courses/_aside-filters", type: :view) do
             {label: "Online", value: "online"},
             {label: "Live Remote", value: "remote"}],
           course_lengths:,
-          current_hub: "bla",
-          current_hub_id: nil,
           current_length: nil,
           current_level: nil,
           current_location: nil,
@@ -50,17 +48,12 @@ RSpec.describe("courses/_aside-filters", type: :view) do
           total_results_count: 3
         )
 
-        @filter_params = {hub_id: "bla"}
         @course_filter = filter_stub
         render
       end
 
       it "renders a title" do
         expect(rendered).to have_text("Filter courses")
-      end
-
-      it "does not render the filters applied count" do
-        expect(rendered).to have_css(".ncce-courses__filter-form-toggle-applied.hidden")
       end
 
       it "renders the filter aside closed by default" do
@@ -80,11 +73,7 @@ RSpec.describe("courses/_aside-filters", type: :view) do
       end
 
       it "renders the checkboxes" do
-        expect(rendered).to have_css(".ncce-checkboxes__input", count: 7)
-
-        expect(rendered).to have_css(".ncce-checkboxes__label", text: "Face to face")
-        expect(rendered).to have_css(".ncce-checkboxes__label", text: "Online")
-        expect(rendered).to have_css(".ncce-checkboxes__label", text: "Remote")
+        expect(rendered).to have_css(".ncce-checkboxes__input", count: 4)
 
         expect(rendered).to have_css(".ncce-checkboxes__label", text: "0 - 3 Hours")
         expect(rendered).to have_css(".ncce-checkboxes__label", text: "3 - 6 Hours")
@@ -113,8 +102,6 @@ RSpec.describe("courses/_aside-filters", type: :view) do
             {label: "Online", value: "online"},
             {label: "Live Remote", value: "remote"}],
           course_lengths:,
-          current_hub: "bla",
-          current_hub_id: nil,
           current_length: nil,
           current_level: nil,
           current_location: nil,
@@ -130,11 +117,6 @@ RSpec.describe("courses/_aside-filters", type: :view) do
         @filter_params = {hub_id: "bla", certificate: "subject-knowledge"}
         @course_filter = filter_stub
         render
-      end
-
-      it "renders the filters applied count" do
-        expect(rendered).not_to have_css(".ncce-courses__filter-form-toggle-applied.hidden")
-        expect(rendered).to have_css(".ncce-courses__filter-form-toggle-applied", text: "1 filter applied")
       end
 
       it "selects the filter" do
@@ -156,8 +138,6 @@ RSpec.describe("courses/_aside-filters", type: :view) do
             {label: "Online", value: "online"},
             {label: "Live Remote", value: "remote"}],
           course_lengths:,
-          current_hub: "bla",
-          current_hub_id: nil,
           current_length: nil,
           current_level: nil,
           current_location: nil,

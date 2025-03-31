@@ -457,24 +457,6 @@ RSpec.describe("courses/_aside-booking", type: :view) do
             end
           end
         end
-
-        context "when there are no occurances" do
-          it "shows the 'Dates coming soon' button" do
-            allow_any_instance_of(AuthenticationHelper).to receive(:current_user).and_return(user)
-
-            assign(:course, course)
-            assign(:booking, live_booking_presenter)
-            assign(:occurrences, [])
-            assign(:activity, activity)
-
-            render
-
-            expect(rendered).to have_link(
-              "Find your local Hub",
-              href: "/hubs"
-            )
-          end
-        end
       end
 
       context "when a user is enrolled on a course" do
@@ -565,22 +547,6 @@ RSpec.describe("courses/_aside-booking", type: :view) do
         end
       end
     end
-
-    it "shows the 'Dates coming soon' button if there are no occurrences" do
-      allow_any_instance_of(AuthenticationHelper).to receive(:current_user).and_return(user)
-
-      assign(:course, course)
-      assign(:booking, live_booking_presenter)
-      assign(:occurrences, [])
-      assign(:activity, activity)
-
-      render
-
-      expect(rendered).to have_link(
-        "Find your local Hub",
-        href: "/hubs"
-      )
-    end
   end
 
   describe "when not logged in" do
@@ -638,16 +604,6 @@ RSpec.describe("courses/_aside-booking", type: :view) do
         assign(:course, remote_course)
         assign(:booking, live_booking_presenter)
         assign(:activity, activity)
-      end
-
-      it "shows the 'Dates coming soon' button if there are no occurrences" do
-        assign(:occurrences, [])
-        render
-
-        expect(rendered).to have_link(
-          "Find your local Hub",
-          href: "/hubs"
-        )
       end
 
       it "and when there is at least one occurrence, says that need to be logged in, " do

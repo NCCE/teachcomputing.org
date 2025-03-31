@@ -22,12 +22,12 @@ RSpec.describe CSAccelerator::CheckNextStepsJob, type: :job do
         enrolment
       end
 
-      it "sends online course completion emails" do
+      it "sends email for face-to-face course" do
         expect { described_class.perform_now(achievement.id) }
           .to change { ActionMailer::Base.deliveries.count }.by(1)
       end
 
-      it "sends face to face course completion emails" do
+      it "sends email for online course" do
         expect { described_class.perform_now(achievement_2.id) }
           .to change { ActionMailer::Base.deliveries.count }.by(1)
       end
@@ -36,9 +36,25 @@ RSpec.describe CSAccelerator::CheckNextStepsJob, type: :job do
     context "when the user has completed CSA" do
       before do
         user
-        allow_any_instance_of(Programmes::CSAccelerator).to receive(:enough_activities_for_test?).with(user).and_return(true)
         allow_any_instance_of(Programmes::CSAccelerator).to receive(:user_meets_completion_requirement?).with(user).and_return(true)
         enrolment.transition_to(:complete)
+      end
+
+      it "does not send the online course completion emails" do
+        expect { described_class.perform_now(achievement.id) }
+          .not_to change { ActionMailer::Base.deliveries.count }
+      end
+
+      it "does not send the face to face course completion emails" do
+        expect { described_class.perform_now(achievement_2.id) }
+          .not_to change { ActionMailer::Base.deliveries.count }
+      end
+    end
+
+    context "when the user has enough credits for the exam" do
+      before do
+        user
+        allow_any_instance_of(Programmes::CSAccelerator).to receive(:enough_credits_for_test?).with(user).and_return(true)
       end
 
       it "does not send the online course completion emails" do

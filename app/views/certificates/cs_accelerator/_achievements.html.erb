@@ -1,46 +1,13 @@
 <div class="ncce-csa-dash__objective
-  <%= 'ncce-csa-dash__objective--incomplete' unless compulsory_achievement&.complete? %>">
+  <%= 'ncce-csa-dash__objective--incomplete' unless test_available %>">
   <span class="ncce-csa-dash__objective-text">
-    Complete a face to face or remote course
-  </span>
-</div>
-
-<% if compulsory_achievement %>
-  <div class="ncce-pathway-courses__short">
-    <div class="ncce-pathway-courses__course">
-      <p>
-        <% if compulsory_achievement.active_course? %>
-          <%= link_to compulsory_achievement.title,
-                      course_path(id: compulsory_achievement.stem_activity_code,
-                                  name: compulsory_achievement.slug),
-                      class: 'ncce-link' %>
-        <% else %>
-          <%= compulsory_achievement.title %>
-        <% end %>
-      </p>
-
-      <div class="ncce-flex__space-between">
-        <span class="govuk-body-s ncce-pathway-courses__course_type <%= activity_icon_class(compulsory_achievement.activity) %>">
-          <%= activity_type(compulsory_achievement.activity) %> course
-        </span>
-        <strong class="govuk-tag ncce-pathway-courses__status ncce-courses__tag">
-          <%= compulsory_achievement.complete? ? 'Completed' : 'In progress' %>
-        </strong>
-      </div>
-    </div>
-  </div>
-<% end %>
-
-<div class="ncce-csa-dash__objective
-  <%= 'ncce-csa-dash__objective--incomplete' unless user_completed_non_compulsory_achievement %>
-ncce-csa-dash__objective--borderless">
-  <span class="ncce-csa-dash__objective-text">
-  Complete any other KS3 and GCSE Computer Science subject knowledge course
+    Complete two online courses or a full residential course
   </span>
 </div>
 
 <div class="ncce-pathway-courses__short">
-  <% non_compulsory_achievements.each do |achievement| %>
+  <% course_achievements.each do |achievement| %>
+
     <div class="ncce-pathway-courses__course">
       <p>
         <% if achievement.active_course? %>
@@ -49,7 +16,6 @@ ncce-csa-dash__objective--borderless">
           <%= achievement.title %>
         <% end %>
       </p>
-
 
       <div class="ncce-flex__space-between">
         <span class="govuk-body-s ncce-pathway-courses__course_type <%= activity_icon_class(achievement.activity) %>">

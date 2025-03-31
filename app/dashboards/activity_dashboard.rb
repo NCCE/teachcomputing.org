@@ -24,7 +24,8 @@ class ActivityDashboard < BaseDashboard
     uploadable: Field::Boolean,
     stem_activity_code: Field::String,
     remote_delivered_cpd: Field::Boolean,
-    retired: Field::Boolean
+    retired: Field::Boolean,
+    replaced_by: Field::BelongsTo.with_options(scope: -> { Activity.courses.order(:stem_activity_code) })
   }.freeze
 
   # COLLECTION_ATTRIBUTES
@@ -58,6 +59,7 @@ class ActivityDashboard < BaseDashboard
     stem_activity_code
     remote_delivered_cpd
     retired
+    replaced_by
   ].freeze
 
   # FORM_ATTRIBUTES
@@ -79,6 +81,7 @@ class ActivityDashboard < BaseDashboard
     stem_activity_code
     remote_delivered_cpd
     retired
+    replaced_by
   ].freeze
 
   # COLLECTION_FILTERS
@@ -97,6 +100,6 @@ class ActivityDashboard < BaseDashboard
   # across all pages of the admin dashboard.
   #
   def display_resource(activity)
-    activity.title
+    [activity.stem_activity_code, activity.title].compact.join(" - ")
   end
 end

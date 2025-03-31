@@ -29,11 +29,22 @@ class CoursesController < ApplicationController
   end
 
   def show
-    @age_groups = Achiever::Course::AgeGroup.all
-    @course = Achiever::Course::Template.find_by_activity_code(params[:id])
-    @subjects = Achiever::Course::Subject.all
+    begin
+      @course = Achiever::Course::Template.find_by_activity_code(params[:id])
+    rescue ActiveRecord::RecordNotFound
+      activity = Activity.find_by!(stem_activity_code: params[:id])
+
+      if activity.replaced_by
+        return redirect_to course_path(id: activity.replaced_by.stem_activity_code, name: activity.replaced_by.title.parameterize)
+      else
+        raise ActiveRecord::RecordNotFound
+      end
+    end
 
     return redirect_to course_path(id: @course.activity_code, name: @course.title.parameterize) if params[:name].nil?
+
+    @age_groups = Achiever::Course::AgeGroup.all
+    @subjects = Achiever::Course::Subject.all
 
     online = @course.online_cpd
 
@@ -83,7 +94,7 @@ class CoursesController < ApplicationController
   end
 
   def filter_params
-    params.permit(:certificate, :level, :location, :topic, :hub_id, :js_enabled, :radius, :date_range, course_format: [], course_length: [])
+    params.permit(:certificate, :level, :location, :topic, :js_enabled, :radius, :date_range, course_format: [], course_length: [])
   end
 
   def assign_start_date
