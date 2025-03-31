@@ -323,8 +323,8 @@ Activity.find_or_initialize_by(slug: "implement-your-professional-development-in
   activity.category = "community"
   activity.provider = "stem-learning"
   activity.self_certifiable = true
-  activity.description = "Think not only about your actions but also about <a href='https://www.stem.org.uk/about-us/impact-and-evaluation/impact-toolkit'>collecting evidence</a> of how the changes you make impact you, your colleagues, and your students."
-  activity.public_copy_description = "Think not only about your actions but also about <a href='https://www.stem.org.uk/about-us/impact-and-evaluation/impact-toolkit'>collecting evidence</a> of how the changes you make impact you, your colleagues, and your students."
+  activity.description = "Think not only about your actions but also about <a href='https://www.stem.org.uk/about-us/impact-and-evaluation/impact-toolkit'>collecting evidence</a> of how the changes you make impact you, your colleagues, and your students. Use the available <a href='https://community.stem.org.uk/helpfaqs/cpdtools'>CPD implementation tools and techniques</a> to evaluate this impact."
+  activity.public_copy_description = "Think not only about your actions but also about <a href='https://www.stem.org.uk/about-us/impact-and-evaluation/impact-toolkit'>collecting evidence</a> of how the changes you make impact you, your colleagues, and your students. Use the available <a href='https://community.stem.org.uk/helpfaqs/cpdtools'>CPD implementation tools and techniques</a> to evaluate this impact."
   activity.public_copy_title_url = impact_toolkit_url
   activity.self_verification_info = nil
   activity.public_copy_evidence = [{
