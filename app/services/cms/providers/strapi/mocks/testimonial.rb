@@ -8,7 +8,7 @@ module Cms
           attribute(:name) { Faker::Name.name }
           attribute(:jobTitle) { Faker::Job.title }
           attribute(:avatar) { {data: ImageComponents::Image.generate_raw_data} }
-          attribute(:quote) { RichBlocks.generate_data }
+          attribute(:quote) { TextComponents::RichBlocks.generate_data }
         end
       end
     end

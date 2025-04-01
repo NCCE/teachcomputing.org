@@ -7,7 +7,7 @@ RSpec.describe Cms::EmailComponents::BaseComponent do
     Cms::Models::EmailComponents::EmailTemplate.new(
       slug: "test",
       subject: "Test email",
-      email_content: Cms::Mocks::RichBlocks.generate_data,
+      email_content: Cms::Mocks::TextComponents::RichBlocks.generate_data,
       programme_slug: programme.slug,
       completed_programme_activity_group_slugs: [],
       activity_state: :active

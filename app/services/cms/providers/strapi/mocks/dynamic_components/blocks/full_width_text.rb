@@ -7,7 +7,7 @@ module Cms
             class FullWidthText < StrapiMock
               strapi_component "blocks.full-width-text"
 
-              attribute(:textContent) { RichBlocks.generate_data }
+              attribute(:textContent) { TextComponents::RichBlocks.generate_data }
             end
           end
         end

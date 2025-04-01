@@ -7,7 +7,7 @@ module Cms
             class HorizontalCardWithAsides < StrapiMock
               strapi_component "blocks.horizontal-card-with-asides"
 
-              attribute(:textContent) { RichBlocks.generate_data }
+              attribute(:textContent) { TextComponents::RichBlocks.generate_data }
               attribute(:bkColor) { ColorScheme.generate_data(name: "light_grey") }
               attribute(:theme) { ColorScheme.generate_data(name: "light_grey") }
               attribute(:button) { Cms::Mocks::DynamicComponents::Buttons::NcceButton.generate_data }

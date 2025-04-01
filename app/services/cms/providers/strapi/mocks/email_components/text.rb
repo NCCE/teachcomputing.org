@@ -5,7 +5,7 @@ module Cms
         module EmailComponents
           class Text < StrapiMock
             strapi_component "email-content.text"
-            attribute(:textContent) { RichBlocks.generate_data }
+            attribute(:textContent) { TextComponents::RichBlocks.generate_data }
           end
         end
       end

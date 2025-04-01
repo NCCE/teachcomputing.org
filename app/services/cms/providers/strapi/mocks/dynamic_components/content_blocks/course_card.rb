@@ -10,7 +10,7 @@ module Cms
               attribute(:title) { Faker::Lorem.words(number: 5).join(" ") }
               attribute(:bannerText) { Faker::Lorem.words(number: 3).join(" ") }
               attribute(:image) { ImageComponents::Image.generate_data }
-              attribute(:description) { RichBlocks.generate_data }
+              attribute(:description) { TextComponents::RichBlocks.generate_data }
               attribute(:courseCode) { "CP199" }
             end
           end

@@ -12,7 +12,7 @@ RSpec.describe Cms::VideoCardComponent, type: :component do
         title: "Card title",
         name: "John Smith",
         job_title: "Head of IT",
-        text_content: Cms::Mocks::RichBlocks.as_model,
+        text_content: Cms::Mocks::TextComponents::RichBlocks.as_model,
         color_theme: "standard"
       ))
     end
@@ -53,7 +53,7 @@ RSpec.describe Cms::VideoCardComponent, type: :component do
         title: "Card title",
         name: nil,
         job_title: nil,
-        text_content: Cms::Mocks::RichBlocks.as_model,
+        text_content: Cms::Mocks::TextComponents::RichBlocks.as_model,
         color_theme: nil
       ))
     end

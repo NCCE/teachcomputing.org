@@ -6,7 +6,7 @@ RSpec.describe Cms::TwoColumnVideoSectionComponent, type: :component do
   context "with standard layout" do
     before do
       render_inline(described_class.new(
-        left_column_content: Cms::Mocks::RichBlocks.as_model,
+        left_column_content: Cms::Mocks::TextComponents::RichBlocks.as_model,
         video: Cms::Mocks::DynamicComponents::ContentBlocks::EmbeddedVideo.as_model
       ))
     end
@@ -27,8 +27,8 @@ RSpec.describe Cms::TwoColumnVideoSectionComponent, type: :component do
   context "with left and right column content" do
     before do
       render_inline(described_class.new(
-        left_column_content: Cms::Mocks::RichBlocks.as_model,
-        right_column_content: Cms::Mocks::RichBlocks.as_model,
+        left_column_content: Cms::Mocks::TextComponents::RichBlocks.as_model,
+        right_column_content: Cms::Mocks::TextComponents::RichBlocks.as_model,
         video: Cms::Mocks::DynamicComponents::ContentBlocks::EmbeddedVideo.as_model
       ))
     end
@@ -41,7 +41,7 @@ RSpec.describe Cms::TwoColumnVideoSectionComponent, type: :component do
   context "with light background color" do
     before do
       render_inline(described_class.new(
-        left_column_content: Cms::Mocks::RichBlocks.as_model,
+        left_column_content: Cms::Mocks::TextComponents::RichBlocks.as_model,
         video: Cms::Mocks::DynamicComponents::ContentBlocks::EmbeddedVideo.as_model,
         background_color: "light-grey"
       ))
@@ -55,7 +55,7 @@ RSpec.describe Cms::TwoColumnVideoSectionComponent, type: :component do
   context "with background colors" do
     before do
       render_inline(described_class.new(
-        left_column_content: Cms::Mocks::RichBlocks.as_model,
+        left_column_content: Cms::Mocks::TextComponents::RichBlocks.as_model,
         video: Cms::Mocks::DynamicComponents::ContentBlocks::EmbeddedVideo.as_model,
         background_color: "isaac",
         box_color: "white"
@@ -78,7 +78,7 @@ RSpec.describe Cms::TwoColumnVideoSectionComponent, type: :component do
   context "with ncce button" do
     before do
       render_inline(described_class.new(
-        left_column_content: Cms::Mocks::RichBlocks.as_model,
+        left_column_content: Cms::Mocks::TextComponents::RichBlocks.as_model,
         video: Cms::Mocks::DynamicComponents::ContentBlocks::EmbeddedVideo.as_model,
         left_column_button: Cms::Mocks::DynamicComponents::Buttons::NcceButton.as_model
       ))

@@ -3,19 +3,19 @@ require "rails_helper"
 RSpec.describe Cms::Providers::Strapi::Factories::ComponentFactory do
   context "QuestionAndAnswer" do
     it "should be created" do
-      strapi_data = Cms::Providers::Strapi::Mocks::QuestionAndAnswer.generate_raw_data
+      strapi_data = Cms::Mocks::DynamicComponents::Blocks::QuestionAndAnswer.generate_raw_data
       model = described_class.process_component(strapi_data)
       expect(model).to be_a Cms::DynamicComponents::Blocks::QuestionAndAnswer
     end
 
     it "should be created in rest mode" do
-      strapi_data = Cms::Providers::Strapi::Mocks::QuestionAndAnswer.generate_raw_data(mode: :rest)
+      strapi_data = Cms::Mocks::DynamicComponents::Blocks::QuestionAndAnswer.generate_raw_data(mode: :rest)
       model = described_class.process_component(strapi_data)
       expect(model).to be_a Cms::DynamicComponents::Blocks::QuestionAndAnswer
     end
 
     it "should be created in graphql mode" do
-      strapi_data = Cms::Providers::Strapi::Mocks::QuestionAndAnswer.generate_raw_data(mode: :graphql)
+      strapi_data = Cms::Mocks::DynamicComponents::Blocks::QuestionAndAnswer.generate_raw_data(mode: :graphql)
       model = described_class.process_component(strapi_data)
       expect(model).to be_a Cms::DynamicComponents::Blocks::QuestionAndAnswer
     end

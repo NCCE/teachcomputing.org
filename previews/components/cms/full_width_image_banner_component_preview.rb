@@ -6,7 +6,7 @@ class Cms::FullWidthImageBannerComponentPreview < ViewComponent::Preview
       overlay_title: Faker::Lorem.sentence,
       background_image: Cms::Mocks::ImageComponents::Image.as_model,
       overlay_icon: Cms::Mocks::ImageComponents::Image.as_model,
-      overlay_text: Cms::Mocks::RichBlocks.as_model,
+      overlay_text: Cms::Mocks::TextComponents::RichBlocks.as_model,
       overlay_side: "right"
     ))
   end

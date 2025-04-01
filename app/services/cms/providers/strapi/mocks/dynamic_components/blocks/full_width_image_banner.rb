@@ -9,7 +9,7 @@ module Cms
 
               attribute(:backgroundImage) { Cms::Mocks::ImageComponents::Image.generate_raw_data }
               attribute(:overlayTitle) { Faker::Lorem.sentence }
-              attribute(:overlayText) { Cms::Mocks::RichBlocks.generate_data }
+              attribute(:overlayText) { Cms::Mocks::TextComponents::RichBlocks.generate_data }
               attribute(:overlayIcon) { Cms::Mocks::ImageComponents::Image.generate_raw_data }
               attribute(:overlaySide) { "right" }
             end

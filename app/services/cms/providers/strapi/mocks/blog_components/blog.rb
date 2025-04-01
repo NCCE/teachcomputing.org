@@ -5,7 +5,7 @@ module Cms
         module BlogComponents
           class Blog < StrapiMock
             attribute(:slug) { Faker::Internet.slug }
-            attribute(:content) { RichBlocks.generate_data }
+            attribute(:content) { TextComponents::RichBlocks.generate_data }
             attribute(:publishDate) { Faker::Date.backward }
             attribute(:excerpt) { Faker::Lorem.paragraph }
             attribute(:seo) { MetaComponents::Seo.generate_raw_data }

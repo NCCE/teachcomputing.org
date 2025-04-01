@@ -5,7 +5,7 @@ module Cms
         class TextBlock < StrapiMock
           strapi_component "content-blocks.text-block"
 
-          attribute(:textContent) { RichBlocks.generate_data }
+          attribute(:textContent) { TextComponents::RichBlocks.generate_data }
         end
       end
     end

@@ -4,8 +4,8 @@ class Cms::SplitHorizontalCardComponentPreview < ViewComponent::Preview
   def default
     render(Cms::SplitHorizontalCardComponent.new(
       section_title: Faker::Lorem.sentence,
-      card_content: Cms::Mocks::RichBlocks.as_model,
-      aside_content: Cms::Mocks::RichBlocks.as_model,
+      card_content: Cms::Mocks::TextComponents::RichBlocks.as_model,
+      aside_content: Cms::Mocks::TextComponents::RichBlocks.as_model,
       aside_icon: Cms::Mocks::ImageComponents::Image.as_model,
       aside_title: "aside_title",
       background_color: "light-grey",

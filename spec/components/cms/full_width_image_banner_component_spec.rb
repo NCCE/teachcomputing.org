@@ -12,7 +12,7 @@ RSpec.describe Cms::FullWidthImageBannerComponent, type: :component do
         overlay_title:,
         background_image:,
         overlay_icon: Cms::Mocks::ImageComponents::Image.as_model,
-        overlay_text: Cms::Mocks::RichBlocks.as_model,
+        overlay_text: Cms::Mocks::TextComponents::RichBlocks.as_model,
         overlay_side: "right"
       ))
     end
@@ -44,7 +44,7 @@ RSpec.describe Cms::FullWidthImageBannerComponent, type: :component do
         overlay_title:,
         background_image: Cms::Mocks::ImageComponents::Image.as_model,
         overlay_icon: Cms::Mocks::ImageComponents::Image.as_model,
-        overlay_text: Cms::Mocks::RichBlocks.as_model,
+        overlay_text: Cms::Mocks::TextComponents::RichBlocks.as_model,
         overlay_side: "left"
       ))
     end

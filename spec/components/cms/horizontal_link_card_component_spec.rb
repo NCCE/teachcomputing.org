@@ -6,7 +6,7 @@ RSpec.describe Cms::HorizontalLinkCardComponent, type: :component do
   before do
     render_inline(described_class.new(
       title: "Primary certificate",
-      card_content: Cms::Mocks::RichBlocks.as_model,
+      card_content: Cms::Mocks::TextComponents::RichBlocks.as_model,
       link_url: "/primary-certificate",
       theme: "standard"
     ))

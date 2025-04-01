@@ -8,7 +8,7 @@ module Cms
               strapi_component "blocks.course-cards-section"
 
               attribute(:sectionTitle) { Faker::Lorem.sentence }
-              attribute(:introText) { RichBlocks.generate_data }
+              attribute(:introText) { TextComponents::RichBlocks.generate_data }
               attribute(:cards) { Array.new(3) { DynamicComponents::CourseCard.generate_data } }
             end
           end

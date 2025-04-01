@@ -20,8 +20,8 @@ RSpec.describe Cms::EnrolmentSplitCourseCardComponent, type: :component do
     before do
       allow_any_instance_of(AuthenticationHelper).to receive(:current_user).and_return(nil)
       render_inline(described_class.new(
-        card_content: Cms::Mocks::RichBlocks.as_model,
-        aside_content: Cms::Mocks::RichBlocks.as_model,
+        card_content: Cms::Mocks::TextComponents::RichBlocks.as_model,
+        aside_content: Cms::Mocks::TextComponents::RichBlocks.as_model,
         enrol_aside: enrol_aside_slug,
         programme: programme,
         background_color: "purple",
@@ -49,8 +49,8 @@ RSpec.describe Cms::EnrolmentSplitCourseCardComponent, type: :component do
     before do
       allow_any_instance_of(AuthenticationHelper).to receive(:current_user).and_return(unenrolled_user)
       render_inline(described_class.new(
-        card_content: Cms::Mocks::RichBlocks.as_model,
-        aside_content: Cms::Mocks::RichBlocks.as_model,
+        card_content: Cms::Mocks::TextComponents::RichBlocks.as_model,
+        aside_content: Cms::Mocks::TextComponents::RichBlocks.as_model,
         enrol_aside: enrol_aside_slug,
         programme: programme,
         background_color: "purple",
@@ -82,8 +82,8 @@ RSpec.describe Cms::EnrolmentSplitCourseCardComponent, type: :component do
     before do
       allow_any_instance_of(AuthenticationHelper).to receive(:current_user).and_return(enrolled_user)
       render_inline(described_class.new(
-        card_content: Cms::Mocks::RichBlocks.as_model,
-        aside_content: Cms::Mocks::RichBlocks.as_model,
+        card_content: Cms::Mocks::TextComponents::RichBlocks.as_model,
+        aside_content: Cms::Mocks::TextComponents::RichBlocks.as_model,
         enrol_aside: enrol_aside_slug,
         programme: programme,
         background_color: "purple",

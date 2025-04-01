@@ -23,7 +23,7 @@ RSpec.describe Cms::CommunityActivityGridComponent, type: :component do
       render_inline(described_class.new(
         programme_activity_group_slug: cms_slug,
         title: Faker::Lorem.sentence,
-        intro: Cms::Mocks::RichBlocks.as_model
+        intro: Cms::Mocks::TextComponents::RichBlocks.as_model
       ))
     end
 
@@ -42,7 +42,7 @@ RSpec.describe Cms::CommunityActivityGridComponent, type: :component do
       render_inline(described_class.new(
         programme_activity_group_slug: cms_slug,
         title: Faker::Lorem.sentence,
-        intro: Cms::Mocks::RichBlocks.as_model
+        intro: Cms::Mocks::TextComponents::RichBlocks.as_model
       ))
     end
 
@@ -61,7 +61,7 @@ RSpec.describe Cms::CommunityActivityGridComponent, type: :component do
       render_inline(described_class.new(
         programme_activity_group_slug: cms_slug,
         title: Faker::Lorem.sentence,
-        intro: Cms::Mocks::RichBlocks.as_model
+        intro: Cms::Mocks::TextComponents::RichBlocks.as_model
       ))
     end
 
@@ -86,7 +86,7 @@ RSpec.describe Cms::CommunityActivityGridComponent, type: :component do
       render_inline(described_class.new(
         programme_activity_group_slug: cms_slug,
         title: Faker::Lorem.sentence,
-        intro: Cms::Mocks::RichBlocks.as_model
+        intro: Cms::Mocks::TextComponents::RichBlocks.as_model
       ))
     end
 

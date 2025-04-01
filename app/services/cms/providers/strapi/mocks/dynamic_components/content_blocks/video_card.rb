@@ -11,7 +11,7 @@ module Cms
               attribute(:title) { Faker::Lorem.words(number: 3).join(" ") }
               attribute(:name) { Faker::Name.name }
               attribute(:jobTitle) { Faker::Job.title }
-              attribute(:textContent) { Mocks::RichBlocks.generate_data }
+              attribute(:textContent) { Cms::Mocks::TextComponents::RichBlocks.generate_data }
               attribute(:colorTheme) { ColorScheme.generate_data(name: "standard") }
             end
           end

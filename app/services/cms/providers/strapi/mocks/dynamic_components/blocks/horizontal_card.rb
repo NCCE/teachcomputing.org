@@ -8,7 +8,7 @@ module Cms
               strapi_component "blocks.horizontal-card"
 
               attribute(:title) { Faker::Lorem.words(number: 5) }
-              attribute(:textContent) { RichBlocks.generate_data }
+              attribute(:textContent) { TextComponents::RichBlocks.generate_data }
               attribute(:image) { ImageComponents::Image.generate_data }
               attribute(:imageLink) { nil }
               attribute(:colorTheme) { nil }

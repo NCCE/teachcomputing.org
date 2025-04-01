@@ -8,9 +8,9 @@ RSpec.describe Cms::NumberedIconListComponent, type: :component do
       title: Faker::Lorem.sentence,
       title_icon: nil,
       points: [
-        Cms::Mocks::RichBlocks.as_model,
-        Cms::Mocks::RichBlocks.as_model,
-        Cms::Mocks::RichBlocks.as_model
+        Cms::Mocks::TextComponents::RichBlocks.as_model,
+        Cms::Mocks::TextComponents::RichBlocks.as_model,
+        Cms::Mocks::TextComponents::RichBlocks.as_model
       ],
       aside_sections: []
     ))

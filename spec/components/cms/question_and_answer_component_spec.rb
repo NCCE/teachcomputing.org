@@ -11,7 +11,7 @@ RSpec.describe Cms::QuestionAndAnswerComponent, type: :component do
     before do
       render_inline(described_class.new(
         question: "Do you want to know more?",
-        answer: Cms::Mocks::RichBlocks.as_model,
+        answer: Cms::Mocks::TextComponents::RichBlocks.as_model,
         aside_sections: [{slug: "test-aside"}],
         answer_icon_block: nil,
         aside_alignment: :top,
@@ -40,7 +40,7 @@ RSpec.describe Cms::QuestionAndAnswerComponent, type: :component do
     before do
       render_inline(described_class.new(
         question: "Do you want to know more?",
-        answer: Cms::Mocks::RichBlocks.as_model,
+        answer: Cms::Mocks::TextComponents::RichBlocks.as_model,
         aside_sections: [{slug: "test-aside"}],
         answer_icon_block: nil,
         aside_alignment: :bottom,
@@ -61,7 +61,7 @@ RSpec.describe Cms::QuestionAndAnswerComponent, type: :component do
     before do
       render_inline(described_class.new(
         question: "Do you want to know more?",
-        answer: Cms::Mocks::RichBlocks.as_model,
+        answer: Cms::Mocks::TextComponents::RichBlocks.as_model,
         aside_sections: [{slug: "test-aside"}],
         answer_icon_block: Cms::Mocks::DynamicComponents::ContentBlocks::IconBlocks.as_model,
         aside_alignment: :top,
@@ -78,7 +78,7 @@ RSpec.describe Cms::QuestionAndAnswerComponent, type: :component do
     before do
       render_inline(described_class.new(
         question: "Do you want to know more?",
-        answer: Cms::Mocks::RichBlocks.as_model,
+        answer: Cms::Mocks::TextComponents::RichBlocks.as_model,
         aside_sections: [],
         answer_icon_block: nil,
         aside_alignment: :top,

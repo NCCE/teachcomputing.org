@@ -6,7 +6,7 @@ RSpec.describe Cms::TextWithAsidesComponent, type: :component do
   context "with valid aside" do
     before do
       stub_strapi_aside_section("test-aside")
-      render_inline(described_class.new(blocks: Cms::Mocks::RichBlocks.as_model, asides: [{slug: "test-aside"}], background_color: nil))
+      render_inline(described_class.new(blocks: Cms::Mocks::TextComponents::RichBlocks.as_model, asides: [{slug: "test-aside"}], background_color: nil))
     end
 
     it "renders govuk grid row" do
@@ -29,7 +29,7 @@ RSpec.describe Cms::TextWithAsidesComponent, type: :component do
   context "with missing aside" do
     before do
       stub_strapi_aside_section_missing("missing-aside")
-      render_inline(described_class.new(blocks: Cms::Mocks::RichBlocks.as_model, asides: [{slug: "missing-aside"}], background_color: nil))
+      render_inline(described_class.new(blocks: Cms::Mocks::TextComponents::RichBlocks.as_model, asides: [{slug: "missing-aside"}], background_color: nil))
     end
 
     it "renders govuk grid row" do

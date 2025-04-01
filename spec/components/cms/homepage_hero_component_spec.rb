@@ -6,7 +6,7 @@ RSpec.describe Cms::HomepageHeroComponent, type: :component do
   before do
     render_inline(described_class.new(
       title: "Helping you teach computing",
-      house_content: Cms::Mocks::RichBlocks.as_model,
+      house_content: Cms::Mocks::TextComponents::RichBlocks.as_model,
       buttons: [
         Cms::Mocks::DynamicComponents::Buttons::NcceButton.as_model
       ]
