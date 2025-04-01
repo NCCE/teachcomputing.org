@@ -2,9 +2,9 @@ class Cms::PictureCardComponentPreview < ViewComponent::Preview
   layout "full-width"
 
   def default
-    card_section = Cms::Mocks::PictureCardSection.as_model(
+    card_section = Cms::Mocks::DynamicComponents::Blocks::PictureCardSection.as_model(
       picture_cards: Array.new(3) {
-                       Cms::Mocks::PictureCard.generate_data(
+                       Cms::Mocks::DynamicComponents::ContentBlocks::PictureCard.generate_data(
                          color_theme: nil
                        )
                      }
@@ -19,9 +19,9 @@ class Cms::PictureCardComponentPreview < ViewComponent::Preview
   end
 
   def with_color_theme
-    card_section = Cms::Mocks::PictureCardSection.as_model(
+    card_section = Cms::Mocks::DynamicComponents::Blocks::PictureCardSection.as_model(
       picture_cards: Array.new(3) {
-                       Cms::Mocks::PictureCard.generate_data(
+                       Cms::Mocks::DynamicComponents::ContentBlocks::PictureCard.generate_data(
                          color_theme: {data: Cms::Mocks::ColorScheme.generate_data(name: "standard")}
                        )
                      }
@@ -36,9 +36,9 @@ class Cms::PictureCardComponentPreview < ViewComponent::Preview
   end
 
   def with_background_color
-    card_section = Cms::Mocks::PictureCardSection.as_model(
+    card_section = Cms::Mocks::DynamicComponents::Blocks::PictureCardSection.as_model(
       picture_cards: Array.new(3) {
-                       Cms::Mocks::PictureCard.generate_data(
+                       Cms::Mocks::DynamicComponents::ContentBlocks::PictureCard.generate_data(
                          color_theme: {data: Cms::Mocks::ColorScheme.generate_data(name: "standard")}
                        )
                      }

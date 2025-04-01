@@ -63,7 +63,7 @@ RSpec.describe Cms::QuestionAndAnswerComponent, type: :component do
         question: "Do you want to know more?",
         answer: Cms::Mocks::RichBlocks.as_model,
         aside_sections: [{slug: "test-aside"}],
-        answer_icon_block: Cms::Mocks::IconBlocks.as_model,
+        answer_icon_block: Cms::Mocks::DynamicComponents::ContentBlocks::IconBlocks.as_model,
         aside_alignment: :top,
         show_background_triangle: false
       ))

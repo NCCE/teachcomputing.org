@@ -6,7 +6,7 @@ class Cms::FullWidthBannerComponentPreview < ViewComponent::Preview
       text_content: Cms::Mocks::RichBlocks.as_model,
       title: "Banner title",
       background_color: :white,
-      image: Cms::Mocks::Image.as_model,
+      image: Cms::Mocks::ImageComponents::Image.as_model,
       image_side: "left",
       image_link: nil,
       buttons: []
@@ -18,10 +18,10 @@ class Cms::FullWidthBannerComponentPreview < ViewComponent::Preview
       title: "Banner title",
       text_content: Cms::Mocks::RichBlocks.as_model,
       background_color: :white,
-      image: Cms::Mocks::Image.as_model,
+      image: Cms::Mocks::ImageComponents::Image.as_model,
       image_side: "left",
       image_link: nil,
-      buttons: [Cms::Mocks::NcceButton.as_model]
+      buttons: [Cms::Mocks::DynamicComponents::Buttons::NcceButton.as_model]
     ))
   end
 
@@ -30,10 +30,10 @@ class Cms::FullWidthBannerComponentPreview < ViewComponent::Preview
       title: "Banner title",
       text_content: Cms::Mocks::RichBlocks.as_model,
       background_color: :white,
-      image: Cms::Mocks::Image.as_model,
+      image: Cms::Mocks::ImageComponents::Image.as_model,
       image_side: "right",
       image_link: nil,
-      buttons: [Cms::Mocks::NcceButton.as_model],
+      buttons: [Cms::Mocks::DynamicComponents::Buttons::NcceButton.as_model],
       i_belong_flag: true
     ))
   end
@@ -43,10 +43,10 @@ class Cms::FullWidthBannerComponentPreview < ViewComponent::Preview
       title: "Banner title",
       text_content: Cms::Mocks::RichBlocks.as_model,
       background_color: :white,
-      image: Cms::Mocks::Image.as_model,
+      image: Cms::Mocks::ImageComponents::Image.as_model,
       image_side: "left",
       image_link: nil,
-      buttons: [Cms::Mocks::NcceButton.as_model],
+      buttons: [Cms::Mocks::DynamicComponents::Buttons::NcceButton.as_model],
       corner_flourish: true
     ))
   end

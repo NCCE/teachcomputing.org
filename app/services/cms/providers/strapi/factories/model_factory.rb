@@ -47,12 +47,8 @@ module Cms
           end
 
           def self.create_model(model_class, model_function, strapi_data, all_data)
-            begin
-              model_data = send(model_function, strapi_data, all_data)
-              model_class.new(**model_data) if model_data
-            rescue Exception => e
-              byebug
-            end
+            model_data = send(model_function, strapi_data, all_data)
+            model_class.new(**model_data) if model_data
           end
 
           def self.to_aside(strapi_data, _all_data)

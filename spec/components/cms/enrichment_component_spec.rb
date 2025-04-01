@@ -11,7 +11,7 @@ RSpec.describe Cms::EnrichmentComponent, type: :component do
       i_belong: false,
       type: Cms::Models::EnrichmentComponents::EnrichmentType.new(
         name: "Challenge",
-        icon: Cms::Mocks::Image.as_model
+        icon: Cms::Mocks::ImageComponents::Image.as_model
       ),
       terms: ["Spring", "Autumn"],
       age_groups: ["KS1", "KS3"],

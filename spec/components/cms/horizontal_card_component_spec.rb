@@ -48,7 +48,7 @@ RSpec.describe Cms::HorizontalCardComponent, type: :component do
       render_inline(described_class.new(
         title: "Page title",
         body_blocks: Cms::Mocks::RichBlocks.as_model,
-        image: Cms::Mocks::Image.as_model,
+        image: Cms::Mocks::ImageComponents::Image.as_model,
         image_link: nil,
         color_theme: nil,
         icon_block: nil
@@ -65,7 +65,7 @@ RSpec.describe Cms::HorizontalCardComponent, type: :component do
       render_inline(described_class.new(
         title: "Page title",
         body_blocks: Cms::Mocks::RichBlocks.as_model,
-        image: Cms::Mocks::Image.as_model,
+        image: Cms::Mocks::ImageComponents::Image.as_model,
         image_link: "https://www.example.com",
         color_theme: nil,
         icon_block: nil
@@ -86,7 +86,7 @@ RSpec.describe Cms::HorizontalCardComponent, type: :component do
       render_inline(described_class.new(
         title: "Page title",
         body_blocks: Cms::Mocks::RichBlocks.as_model,
-        image: Cms::Mocks::Image.as_model,
+        image: Cms::Mocks::ImageComponents::Image.as_model,
         image_link: nil,
         color_theme: nil,
         icon_block: nil
@@ -123,7 +123,7 @@ RSpec.describe Cms::HorizontalCardComponent, type: :component do
   end
 
   context "has an icon block" do
-    let(:icon_block) { Cms::Mocks::IconBlocks.as_model }
+    let(:icon_block) { Cms::Mocks::DynamicComponents::ContentBlocks::IconBlocks.as_model }
     before do
       render_inline(described_class.new(
         title: "Page title",

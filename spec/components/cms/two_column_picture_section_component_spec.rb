@@ -7,7 +7,7 @@ RSpec.describe Cms::TwoColumnPictureSectionComponent, type: :component do
     before do
       render_inline(described_class.new(
         text: Cms::Mocks::RichBlocks.as_model,
-        image: Cms::Mocks::Image.as_model,
+        image: Cms::Mocks::ImageComponents::Image.as_model,
         image_side: "left",
         background_color: nil
       ))
@@ -34,7 +34,7 @@ RSpec.describe Cms::TwoColumnPictureSectionComponent, type: :component do
     before do
       render_inline(described_class.new(
         text: Cms::Mocks::RichBlocks.as_model,
-        image: Cms::Mocks::Image.as_model,
+        image: Cms::Mocks::ImageComponents::Image.as_model,
         image_side: "right",
         background_color: nil
       ))
@@ -49,7 +49,7 @@ RSpec.describe Cms::TwoColumnPictureSectionComponent, type: :component do
     before do
       render_inline(described_class.new(
         text: Cms::Mocks::RichBlocks.as_model,
-        image: Cms::Mocks::Image.as_model,
+        image: Cms::Mocks::ImageComponents::Image.as_model,
         image_side: "left",
         background_color: "orange"
       ))

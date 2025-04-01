@@ -6,7 +6,7 @@ class Cms::HomepageHeroComponentPreview < ViewComponent::Preview
       title: "Helping you teach computing",
       house_content: Cms::Mocks::RichBlocks.as_model,
       buttons: [
-        Cms::Mocks::NcceButton.as_model
+        Cms::Mocks::DynamicComponents::Buttons::NcceButton.as_model
       ]
     ))
   end

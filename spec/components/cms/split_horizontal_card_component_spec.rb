@@ -8,7 +8,7 @@ RSpec.describe Cms::SplitHorizontalCardComponent, type: :component do
       section_title: Faker::Lorem.sentence,
       card_content: Cms::Mocks::RichBlocks.as_model,
       aside_content: Cms::Mocks::RichBlocks.as_model,
-      aside_icon: Cms::Mocks::Image.as_model,
+      aside_icon: Cms::Mocks::ImageComponents::Image.as_model,
       aside_title: Faker::Lorem.sentence
     ))
   end

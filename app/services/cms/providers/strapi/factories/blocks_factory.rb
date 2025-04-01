@@ -206,7 +206,7 @@ module Cms
           end
 
           def self.to_icon_block(strapi_data)
-            DynamicComponents::Blocks::IconBlock.new(icons: strapi_data.map { to_icon(_1) })
+            DynamicComponents::ContentBlocks::IconBlock.new(icons: strapi_data.map { to_icon(_1) })
           end
 
           def self.to_numeric_card_array(strapi_data)

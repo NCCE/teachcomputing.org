@@ -34,7 +34,7 @@ RSpec.describe Cms::TextWithTestimonialComponent, type: :component do
         testimonial: Cms::Mocks::Testimonial.as_model,
         testimonial_side: "left",
         background_color: "purple",
-        buttons: Array.new(2) { Cms::Mocks::NcceButton.as_model }
+        buttons: Array.new(2) { Cms::Mocks::DynamicComponents::Buttons::NcceButton.as_model }
       ))
     end
 

@@ -2,7 +2,9 @@ require "rails_helper"
 
 RSpec.describe Cms::DynamicComponents::Blocks::NumberedIconList do
   before do
-    @icon_list = Cms::Providers::Strapi::Factories::ComponentFactory.process_component(Cms::Mocks::NumberedIconList.generate_raw_data)
+    @icon_list = Cms::Providers::Strapi::Factories::ComponentFactory.process_component(
+      Cms::Mocks::DynamicComponents::Blocks::NumberedIconList.generate_raw_data
+    )
   end
 
   it "should render as CmsNumberedIconListComponent" do

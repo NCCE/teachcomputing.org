@@ -80,7 +80,7 @@ RSpec.describe Cms::TwoColumnVideoSectionComponent, type: :component do
       render_inline(described_class.new(
         left_column_content: Cms::Mocks::RichBlocks.as_model,
         video: Cms::Mocks::DynamicComponents::ContentBlocks::EmbeddedVideo.as_model,
-        left_column_button: Cms::Mocks::NcceButton.as_model
+        left_column_button: Cms::Mocks::DynamicComponents::Buttons::NcceButton.as_model
       ))
     end
 

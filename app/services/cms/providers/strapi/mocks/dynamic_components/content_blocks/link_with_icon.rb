@@ -9,7 +9,7 @@ module Cms
 
               attribute(:linkText) { Faker::Lorem.sentence }
               attribute(:url) { Faker::Internet.url }
-              attribute(:icon) { Cms::Mocks::Image.generate_raw_data }
+              attribute(:icon) { Cms::Mocks::ImageComponents::Image.generate_raw_data }
             end
           end
         end

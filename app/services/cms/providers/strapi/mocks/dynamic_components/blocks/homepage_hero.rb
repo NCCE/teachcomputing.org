@@ -9,7 +9,7 @@ module Cms
 
               attribute(:title) { Faker::Lorem.sentence }
               attribute(:houseText) { RichBlocks.generate_data }
-              attribute(:buttons) { Array.new(2) { NcceButton.generate_raw_data } }
+              attribute(:buttons) { Array.new(2) { Buttons::NcceButton.generate_raw_data } }
             end
           end
         end

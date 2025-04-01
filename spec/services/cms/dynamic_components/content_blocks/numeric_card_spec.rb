@@ -2,7 +2,9 @@ require "rails_helper"
 
 RSpec.describe Cms::DynamicComponents::ContentBlocks::NumericCard do
   before do
-    @numeric_card = Cms::Providers::Strapi::Factories::BlocksFactory.to_numeric_card_array(Array.wrap(Cms::Mocks::NumericCard.generate_data)).first
+    @numeric_card = Cms::Providers::Strapi::Factories::BlocksFactory.to_numeric_card_array(
+      Array.wrap(Cms::Mocks::DynamicComponents::ContentBlocks::NumericCard.generate_data)
+    ).first
   end
 
   it "should render as CmsNumericCardComponent" do

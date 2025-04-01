@@ -13,7 +13,7 @@ class Cms::PageTitleComponentPreview < ViewComponent::Preview
     render(Cms::PageTitleComponent.new(
       title: "Page title",
       sub_text: "Welcome to the page",
-      title_image: Cms::Mocks::Image.as_model
+      title_image: Cms::Mocks::ImageComponents::Image.as_model
     ))
   end
 

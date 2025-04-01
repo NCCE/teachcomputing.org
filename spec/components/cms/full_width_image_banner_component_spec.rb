@@ -4,14 +4,14 @@ require "rails_helper"
 
 RSpec.describe Cms::FullWidthImageBannerComponent, type: :component do
   let(:overlay_title) { Faker::Lorem.sentence }
-  let(:background_image) { Cms::Mocks::Image.as_model }
+  let(:background_image) { Cms::Mocks::ImageComponents::Image.as_model }
 
   context "right side overlay" do
     before do
       render_inline(described_class.new(
         overlay_title:,
         background_image:,
-        overlay_icon: Cms::Mocks::Image.as_model,
+        overlay_icon: Cms::Mocks::ImageComponents::Image.as_model,
         overlay_text: Cms::Mocks::RichBlocks.as_model,
         overlay_side: "right"
       ))
@@ -42,8 +42,8 @@ RSpec.describe Cms::FullWidthImageBannerComponent, type: :component do
     before do
       render_inline(described_class.new(
         overlay_title:,
-        background_image: Cms::Mocks::Image.as_model,
-        overlay_icon: Cms::Mocks::Image.as_model,
+        background_image: Cms::Mocks::ImageComponents::Image.as_model,
+        overlay_icon: Cms::Mocks::ImageComponents::Image.as_model,
         overlay_text: Cms::Mocks::RichBlocks.as_model,
         overlay_side: "left"
       ))
@@ -62,7 +62,7 @@ RSpec.describe Cms::FullWidthImageBannerComponent, type: :component do
     before do
       render_inline(described_class.new(
         overlay_title: nil,
-        background_image: Cms::Mocks::Image.as_model,
+        background_image: Cms::Mocks::ImageComponents::Image.as_model,
         overlay_icon: nil,
         overlay_text: nil,
         overlay_side: "left"

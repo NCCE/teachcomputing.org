@@ -16,7 +16,7 @@ RSpec.describe Cms::CourseCardComponent, type: :component do
         banner_text: "Banner text",
         course: course,
         description: Cms::Mocks::RichBlocks.as_model,
-        image: Cms::Mocks::Image.as_model
+        image: Cms::Mocks::ImageComponents::Image.as_model
       ))
     end
 

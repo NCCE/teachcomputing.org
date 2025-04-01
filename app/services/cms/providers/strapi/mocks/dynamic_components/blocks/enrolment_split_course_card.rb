@@ -14,7 +14,7 @@ module Cms
               attribute(:bkColor) { ColorScheme.generate_data(name: "light-grey") }
               attribute(:colorTheme) { ColorScheme.generate_data(name: "standard") }
               attribute(:aside_title) { Faker::Lorem.sentence }
-              attribute(:aside_icon) { Cms::Mocks::Image.generate_raw_data }
+              attribute(:aside_icon) { Cms::Mocks::ImageComponents::Image.generate_raw_data }
               attribute(:programme) { {data: {attributes: {slug: "primary-certificate"}}} }
             end
           end

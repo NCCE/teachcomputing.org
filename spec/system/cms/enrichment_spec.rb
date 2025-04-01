@@ -8,29 +8,29 @@ RSpec.describe("Enrichment Page", type: [:system]) do
   let(:ks1) { Cms::Mocks::EnrichmentComponents::EnrichmentCategory.generate_raw_data(name: "KS1") }
   let(:ks2) { Cms::Mocks::EnrichmentComponents::EnrichmentCategory.generate_raw_data(name: "KS2") }
 
-  let(:challenge) { Cms::Mocks::EnrichmentType.generate_raw_data(name: "Challenge") }
-  let(:resource) { Cms::Mocks::EnrichmentType.generate_raw_data(name: "Resource") }
+  let(:challenge) { Cms::Mocks::EnrichmentComponents::EnrichmentType.generate_raw_data(name: "Challenge") }
+  let(:resource) { Cms::Mocks::EnrichmentComponents::EnrichmentType.generate_raw_data(name: "Resource") }
 
   let(:enrichments) {
     {data: [
-      Cms::Mocks::Enrichment.generate_raw_data(
+      Cms::Mocks::EnrichmentComponents::Enrichment.generate_raw_data(
         featured: true,
         terms: {data: [autumn_term]},
         age_groups: {data: [ks1]},
         type: {data: challenge},
         rich_title: Cms::Mocks::RichBlocks.single_line("Featured Item")
       ),
-      Cms::Mocks::Enrichment.generate_raw_data(
+      Cms::Mocks::EnrichmentComponents::Enrichment.generate_raw_data(
         terms: {data: [autumn_term]},
         age_groups: {data: [ks2]},
         type: {data: challenge}
       ),
-      Cms::Mocks::Enrichment.generate_raw_data(
+      Cms::Mocks::EnrichmentComponents::Enrichment.generate_raw_data(
         terms: {data: [summer_term]},
         age_groups: {data: [ks1]},
         type: {data: resource}
       ),
-      Cms::Mocks::Enrichment.generate_raw_data(
+      Cms::Mocks::EnrichmentComponents::Enrichment.generate_raw_data(
         terms: {data: [summer_term, autumn_term]},
         age_groups: {data: [ks1]},
         type: {data: resource}

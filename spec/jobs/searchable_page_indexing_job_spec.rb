@@ -39,13 +39,13 @@ RSpec.describe SearchablePageIndexingJob, type: :job do
 
       web_pages = [Cms::Mocks::WebPage.generate_raw_data(
         slug: "test-page",
-        seo: Cms::Mocks::Seo.generate_data(title: "Test Page", description: page_excerpt)
+        seo: Cms::Mocks::MetaComponents::Seo.generate_data(title: "Test Page", description: page_excerpt)
       )]
       web_pages += Array.new(2) { Cms::Mocks::WebPage.generate_raw_data }
 
       enrichment_pages = [Cms::Mocks::EnrichmentComponents::EnrichmentPage.generate_raw_data(
         slug: "enrichment-test",
-        seo: Cms::Mocks::Seo.generate_data(title: "Enrichment Test", description: enrichment_excerpt)
+        seo: Cms::Mocks::MetaComponents::Seo.generate_data(title: "Enrichment Test", description: enrichment_excerpt)
       )]
 
       stub_strapi_blog_collection(blogs:, page: 1, page_size: 100)

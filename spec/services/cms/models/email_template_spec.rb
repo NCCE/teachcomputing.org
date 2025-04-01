@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe Cms::Models::EmailTemplate do
+RSpec.describe Cms::Models::EmailComponents::EmailTemplate do
   let(:slug) { "test-email-slug" }
   let(:subject) { "Test Email" }
   let(:user) { create(:user, first_name: "Frodo") }

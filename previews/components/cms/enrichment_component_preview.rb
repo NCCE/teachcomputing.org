@@ -7,7 +7,7 @@ class Cms::EnrichmentComponentPreview < ViewComponent::Preview
       i_belong: false,
       type: Cms::Models::EnrichmentType.new(
         name: "Challenge",
-        icon: Cms::Mocks::Image.as_model
+        icon: Cms::Mocks::ImageComponents::Image.as_model
       ),
       terms: ["Spring", "Autumn"],
       age_groups: ["KS1", "KS3"],

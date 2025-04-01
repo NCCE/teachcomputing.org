@@ -7,7 +7,7 @@ RSpec.describe Cms::FullWidthBannerComponent, type: :component do
     before do
       render_inline(described_class.new(
         text_content: Cms::Mocks::RichBlocks.as_model,
-        image: Cms::Mocks::Image.as_model,
+        image: Cms::Mocks::ImageComponents::Image.as_model,
         image_side: "left",
         image_link: "https://www.teachcomputing.test/test-page",
         title: nil,
@@ -55,7 +55,7 @@ RSpec.describe Cms::FullWidthBannerComponent, type: :component do
     before do
       render_inline(described_class.new(
         text_content: Cms::Mocks::RichBlocks.as_model,
-        image: Cms::Mocks::Image.as_model,
+        image: Cms::Mocks::ImageComponents::Image.as_model,
         image_side: "right",
         image_link: nil,
         title:
@@ -75,7 +75,7 @@ RSpec.describe Cms::FullWidthBannerComponent, type: :component do
     before do
       render_inline(described_class.new(
         text_content: Cms::Mocks::RichBlocks.as_model,
-        image: Cms::Mocks::Image.as_model,
+        image: Cms::Mocks::ImageComponents::Image.as_model,
         image_side: :left,
         image_link: nil,
         title: nil,
@@ -92,12 +92,12 @@ RSpec.describe Cms::FullWidthBannerComponent, type: :component do
     before do
       render_inline(described_class.new(
         text_content: Cms::Mocks::RichBlocks.as_model,
-        image: Cms::Mocks::Image.as_model,
+        image: Cms::Mocks::ImageComponents::Image.as_model,
         image_side: :left,
         image_link: nil,
         title: nil,
         show_bottom_border: true,
-        buttons: [Cms::Mocks::NcceButton.as_model]
+        buttons: [Cms::Mocks::DynamicComponents::Buttons::NcceButton.as_model]
       ))
     end
 
@@ -110,7 +110,7 @@ RSpec.describe Cms::FullWidthBannerComponent, type: :component do
     before do
       render_inline(described_class.new(
         text_content: Cms::Mocks::RichBlocks.as_model,
-        image: Cms::Mocks::Image.as_model,
+        image: Cms::Mocks::ImageComponents::Image.as_model,
         image_side: "left",
         image_link: nil,
         title: nil,
@@ -128,7 +128,7 @@ RSpec.describe Cms::FullWidthBannerComponent, type: :component do
     before do
       render_inline(described_class.new(
         text_content: Cms::Mocks::RichBlocks.as_model,
-        image: Cms::Mocks::Image.as_model,
+        image: Cms::Mocks::ImageComponents::Image.as_model,
         image_side: "left",
         image_link: nil,
         title: nil,
@@ -147,7 +147,7 @@ RSpec.describe Cms::FullWidthBannerComponent, type: :component do
     before do
       render_inline(described_class.new(
         text_content: Cms::Mocks::RichBlocks.as_model,
-        image: Cms::Mocks::Image.as_model,
+        image: Cms::Mocks::ImageComponents::Image.as_model,
         image_side: "right",
         image_link: nil,
         title: nil,

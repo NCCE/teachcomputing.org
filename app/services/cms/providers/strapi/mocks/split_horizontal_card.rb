@@ -7,7 +7,7 @@ module Cms
 
           attribute(:cardContent) { Cms::Mocks::RichBlocks.generate_data }
           attribute(:asideContent) { Cms::Mocks::RichBlocks.generate_data }
-          attribute(:asideIcon) { {data: Cms::Mocks::Image.generate_raw_data} }
+          attribute(:asideIcon) { {data: Cms::Mocks::ImageComponents::Image.generate_raw_data} }
           attribute(:asideTitle) { Faker::Lorem.sentence }
           attribute(:sectionTitle) { Faker::Lorem.sentence }
           attribute(:colorTheme) { ColorScheme.generate_data(name: "standard") }

@@ -13,7 +13,7 @@ module Cms
             Models::DynamicZoneComponents::DynamicZone => DynamicZone,
             Models::DynamicZoneComponents::EnrichmentDynamicZone => EnrichmentDynamicZone,
             Models::DynamicZoneComponents::HomepageDynamicZone => HomepageDynamicZone,
-            Models::EmailTemplate => EmailTemplate,
+            Models::EmailComponents::EmailTemplate => EmailTemplate,
             Models::EnrichmentComponents::EnrichmentList => EnrichmentList,
             Models::HeaderComponents::HeaderMenu => HeaderMenu,
             Models::ImageComponents::FeaturedImage => FeaturedImage,

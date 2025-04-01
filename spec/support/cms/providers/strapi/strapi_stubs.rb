@@ -58,11 +58,11 @@ module StrapiStubs
   end
 
   def stub_strapi_media_upload
-    stub_request(:post, /^https:\/\/strapi.teachcomputing.org\/api\/upload/).to_return_json(body: Cms::Mocks::Image.generate_raw_data)
+    stub_request(:post, /^https:\/\/strapi.teachcomputing.org\/api\/upload/).to_return_json(body: Cms::Mocks::ImageComponents::Image.generate_raw_data)
   end
 
   def stub_strapi_media_query
-    stub_request(:get, /^https:\/\/strapi.teachcomputing.org\/api\/upload\/files/).to_return_json(body: [Cms::Mocks::Image.generate_raw_data])
+    stub_request(:get, /^https:\/\/strapi.teachcomputing.org\/api\/upload\/files/).to_return_json(body: [Cms::Mocks::ImageComponents::Image.generate_raw_data])
   end
 
   def stub_strapi_update(resource_key)
@@ -205,7 +205,7 @@ module StrapiStubs
     end
   end
 
-  def stub_strapi_header(header: Cms::Mocks::Header.generate_raw_data)
+  def stub_strapi_header(header: Cms::Mocks::HeaderComponents::Header.generate_raw_data)
     if as_graphql
       stub_strapi_graphql_query("header", header, singular: true)
     end

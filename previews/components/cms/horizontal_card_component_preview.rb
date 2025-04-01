@@ -16,7 +16,7 @@ class Cms::HorizontalCardComponentPreview < ViewComponent::Preview
     render(Cms::HorizontalCardComponent.new(
       title: "Page title",
       body_blocks: Cms::Mocks::RichBlocks.as_model,
-      image: Cms::Mocks::Image.as_model,
+      image: Cms::Mocks::ImageComponents::Image.as_model,
       image_link: Faker::Internet.url,
       color_theme: nil,
       icon_block: nil
@@ -41,7 +41,7 @@ class Cms::HorizontalCardComponentPreview < ViewComponent::Preview
       image: nil,
       image_link: nil,
       color_theme: "standard",
-      icon_block: Cms::Mocks::IconBlocks.as_model(icon_count: 3)
+      icon_block: Cms::Mocks::DynamicComponents::ContentBlocks::IconBlocks.as_model(icon_count: 3)
     ))
   end
 end

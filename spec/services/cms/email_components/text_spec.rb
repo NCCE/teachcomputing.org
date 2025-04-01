@@ -4,7 +4,7 @@ RSpec.describe Cms::EmailComponents::Text do
   let(:user) { create(:user) }
   let(:programme) { create(:primary_certificate) }
   let(:email_template) {
-    Cms::Models::EmailTemplate.new(
+    Cms::Models::EmailComponents::EmailTemplate.new(
       slug: "test",
       subject: "Test email",
       email_content: Cms::Mocks::RichBlocks.generate_data,

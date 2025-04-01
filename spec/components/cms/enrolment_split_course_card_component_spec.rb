@@ -28,7 +28,7 @@ RSpec.describe Cms::EnrolmentSplitCourseCardComponent, type: :component do
         color_theme: "standard",
         section_title: Faker::Lorem.sentence,
         aside_title: Faker::Lorem.sentence,
-        aside_icon: Cms::Mocks::Image.as_model
+        aside_icon: Cms::Mocks::ImageComponents::Image.as_model
       ))
     end
 
@@ -57,7 +57,7 @@ RSpec.describe Cms::EnrolmentSplitCourseCardComponent, type: :component do
         color_theme: "standard",
         section_title: nil,
         aside_title: Faker::Lorem.sentence,
-        aside_icon: Cms::Mocks::Image.as_model
+        aside_icon: Cms::Mocks::ImageComponents::Image.as_model
       ))
     end
 
@@ -90,7 +90,7 @@ RSpec.describe Cms::EnrolmentSplitCourseCardComponent, type: :component do
         color_theme: "standard",
         section_title: nil,
         aside_title: Faker::Lorem.sentence,
-        aside_icon: Cms::Mocks::Image.as_model
+        aside_icon: Cms::Mocks::ImageComponents::Image.as_model
       ))
     end
 

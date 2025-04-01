@@ -1,6 +1,6 @@
 module Cms
   module DynamicComponents
-    module Blocks
+    module ContentBlocks
       class IconBlock
         attr_accessor :icons
 

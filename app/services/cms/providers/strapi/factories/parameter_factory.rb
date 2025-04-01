@@ -29,7 +29,7 @@ module Cms
                   publishDate: {"$lt": DateTime.now.strftime}
                 }
               }
-            elsif model_class == Models::EmailTemplate
+            elsif model_class == Models::EmailComponents::EmailTemplate
               {
                 programme: {field: [:slug]},
                 emailContent: {

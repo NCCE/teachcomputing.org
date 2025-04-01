@@ -9,7 +9,7 @@ RSpec.describe Cms::ResourceCardComponent, type: :component do
     before do
       render_inline(described_class.new(
         title: "Card Title",
-        icon: Cms::Mocks::Image.as_model,
+        icon: Cms::Mocks::ImageComponents::Image.as_model,
         color_theme: "standard",
         body_text: body_text,
         button_text: "Click here",

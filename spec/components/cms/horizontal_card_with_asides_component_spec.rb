@@ -76,7 +76,7 @@ RSpec.describe Cms::HorizontalCardWithAsidesComponent, type: :component do
         render_inline(described_class.new(
           text: Cms::Mocks::RichBlocks.as_model,
           aside_sections: [{slug: "test-aside"}],
-          button: Cms::Mocks::NcceButton.as_model
+          button: Cms::Mocks::DynamicComponents::Buttons::NcceButton.as_model
         ))
       end
 
