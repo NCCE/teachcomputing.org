@@ -17,8 +17,10 @@ module Cms
                   }
                   imageLink
                   #{SharedFields.color_theme(:backgroundColor)}
+                  #{SharedFields.color_theme(:boxColor)}
                   sectionTitle
                   showBottomBorder
+                  imageFit
                 GRAPHQL
               end
             end
