@@ -8,7 +8,7 @@ RSpec.describe("certificates/pathways/show", type: :view) do
   let!(:cpd_group) { create(:programme_activity_grouping, community: false, programme:) }
   let!(:community_group) { create(:programme_activity_grouping, community: true, programme:) }
   let(:pathway) { create(:pathway, programme:, enrol_copy: ["foo", "bar"]) }
-  let!(:pathway_activities) { create_list(:pathway_activity, 2, pathway:)}
+  let!(:pathway_activities) { create_list(:pathway_activity, 2, pathway:) }
   let!(:not_recommened_community_activity) {
     act = create(:activity, :community, title: not_recommended_title)
     create(:programme_activity, activity: act, programme:, programme_activity_grouping: community_group)
@@ -40,7 +40,6 @@ RSpec.describe("certificates/pathways/show", type: :view) do
 
   context "with community title link" do
     before do
-
       assign(:recommended_community_activities, [recommended_community_activity])
       assign(:recommended_community_activity_ids, [recommended_community_activity.id])
       render
@@ -61,7 +60,6 @@ RSpec.describe("certificates/pathways/show", type: :view) do
 
   context "without community title link" do
     before do
-
       assign(:recommended_community_activities, [recommended_community_activity_without_link])
       assign(:recommended_community_activity_ids, [recommended_community_activity_without_link.id])
       render
@@ -79,5 +77,4 @@ RSpec.describe("certificates/pathways/show", type: :view) do
       expect(rendered).to have_text(recommended_title)
     end
   end
-
 end

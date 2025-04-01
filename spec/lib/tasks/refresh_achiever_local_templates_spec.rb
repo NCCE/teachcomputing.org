@@ -11,7 +11,7 @@ RSpec.describe "rake achiever:refresh_local_templates", type: :task do
     stub_online_occurrences
     stub_occurrence_details
     stub_delegate
-    allow(STDOUT).to receive(:puts) # suppress puts
+    allow($stdout).to receive(:puts) # suppress puts
   end
 
   it "should attempt to create 9 local template files" do

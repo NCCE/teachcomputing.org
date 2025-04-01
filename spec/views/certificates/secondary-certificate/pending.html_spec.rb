@@ -8,7 +8,7 @@ RSpec.describe("certificates/secondary_certificate/pending", type: :view) do
     create(:programme_activity, activity: act, programme: secondary_certificate)
     act
   }
-  let!(:completed_achievement) { create(:completed_achievement, user:, activity:)}
+  let!(:completed_achievement) { create(:completed_achievement, user:, activity:) }
 
   before do
     @programme = secondary_certificate
