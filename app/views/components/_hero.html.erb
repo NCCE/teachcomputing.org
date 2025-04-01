@@ -8,15 +8,15 @@
           <span class="govuk-body-m hero__status"><%= status_message %></span>
         <% end %>
         <div class="i-belong-hero__wrapper hero__heading-wrapper hero__heading-wrapper--full-width">
-            <div class="i-belong-hero__area--text">
-               <h1 class="<%= local_assigns[:small_title] ? 'govuk-heading-l' : 'govuk-heading-xl'%> hero__heading"><%= hero_title %></h1>
-                <% unless local_assigns[:subtitle].nil? %>
-            <p class="govuk-body hero__text"><%= subtitle %></p>
-          <% end %>
-            </div>
-            <div class="i-belong-hero__area--logo">
-              <%= render(IBelongFlagComponent.new(label: false)) %>
-            </div>
+          <div class="i-belong-hero__area--text">
+            <h1 class="<%= local_assigns[:small_title] ? 'govuk-heading-l' : 'govuk-heading-xl'%> hero__heading"><%= hero_title %></h1>
+              <% unless local_assigns[:subtitle].nil? %>
+                <p class="govuk-body hero__text"><%= subtitle %></p>
+              <% end %>
+          </div>
+          <div class="i-belong-hero__area--logo">
+            <%= render(IBelongFlagComponent.new(label: false)) %>
+          </div>
         </div>
       </div>
     </div>
