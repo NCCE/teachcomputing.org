@@ -23,8 +23,16 @@ RSpec.describe Cms::FullWidthBannerComponent, type: :component do
       expect(page).to have_css(".cms-rich-text-block-component")
     end
 
+    it "render box with white background" do
+      expect(page).to have_css(".cms-full-width-banner__content.white-bg")
+    end
+
     it "should have image" do
       expect(page).to have_css("img")
+    end
+
+    it "render default image fit class" do
+      expect(page).to have_css(".cms-full-width-banner__media--cover")
     end
 
     it "should have link" do
@@ -151,6 +159,66 @@ RSpec.describe Cms::FullWidthBannerComponent, type: :component do
 
     it "renders the right corner flourish" do
       expect(page).to have_css(".cms-full-width-banner__media--with-flourish-right")
+    end
+  end
+
+  context "with box color" do
+    before do
+      render_inline(described_class.new(
+        text_content: Cms::Mocks::RichBlocks.as_model,
+        image: Cms::Mocks::Image.as_model,
+        image_side: "left",
+        image_link: nil,
+        title: nil,
+        show_bottom_border: false,
+        i_belong_flag: false,
+        box_color: "purple"
+      ))
+    end
+
+    it "render box with white background" do
+      expect(page).to have_css(".cms-full-width-banner__content.purple-bg")
+    end
+  end
+
+  context "with image fit" do
+    context "contain" do
+      before do
+        render_inline(described_class.new(
+          text_content: Cms::Mocks::RichBlocks.as_model,
+          image: Cms::Mocks::Image.as_model,
+          image_side: "left",
+          image_link: nil,
+          title: nil,
+          show_bottom_border: false,
+          i_belong_flag: false,
+          box_color: "purple",
+          image_fit: "contain"
+        ))
+      end
+
+      it "render image fit class" do
+        expect(page).to have_css(".cms-full-width-banner__media--contain")
+      end
+    end
+    context "cover" do
+      before do
+        render_inline(described_class.new(
+          text_content: Cms::Mocks::RichBlocks.as_model,
+          image: Cms::Mocks::Image.as_model,
+          image_side: "left",
+          image_link: nil,
+          title: nil,
+          show_bottom_border: false,
+          i_belong_flag: false,
+          box_color: "purple",
+          image_fit: "cover"
+        ))
+      end
+
+      it "render image fit class" do
+        expect(page).to have_css(".cms-full-width-banner__media--cover")
+      end
     end
   end
 end

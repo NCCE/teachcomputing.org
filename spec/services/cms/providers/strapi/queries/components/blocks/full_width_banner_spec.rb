@@ -9,7 +9,9 @@ RSpec.describe Cms::Providers::Strapi::Queries::Components::Blocks::FullWidthBan
       buttons
       imageLink
       backgroundColor
+      boxColor
       sectionTitle
       showBottomBorder
+      imageFit
     ]
 end

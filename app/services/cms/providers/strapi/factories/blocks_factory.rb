@@ -261,6 +261,7 @@ module Cms
             DynamicComponents::FullWidthBanner.new(
               text_content: to_content_block(strapi_data[:textContent]),
               background_color: extract_color_name(strapi_data, :backgroundColor),
+              box_color: extract_color_name(strapi_data, :boxColor),
               image: to_image(strapi_data, :image, default_size: :medium),
               image_side: strapi_data[:imageSide],
               image_link: strapi_data[:imageLink],
@@ -268,7 +269,8 @@ module Cms
               title: strapi_data[:sectionTitle],
               show_bottom_border: strapi_data[:showBottomBorder],
               i_belong_flag: strapi_data[:iBelongFlag],
-              corner_flourish: strapi_data[:imageCornerFlourish]
+              corner_flourish: strapi_data[:imageCornerFlourish],
+              image_fit: strapi_data[:imageFit]
             )
           end
 

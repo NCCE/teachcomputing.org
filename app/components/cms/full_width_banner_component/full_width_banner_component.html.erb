@@ -8,7 +8,7 @@
     <%= content_tag :div, class: banner_classes do %>
 
       <% if @image %>
-        <div class="cms-full-width-banner__media">
+        <div class="cms-full-width-banner__media cms-full-width-banner__media--<%= @image_fit %>">
           <% if @i_belong_flag %>
             <%= content_tag(:div, nil, class: "cms-full-width-banner__media--with-flag") %>
           <% end %>
@@ -19,7 +19,7 @@
         </div>
       <% end %>
 
-      <div class="cms-full-width-banner__content white-bg">
+      <%= content_tag :div, class: box_classes do %>
         <%= render @text_content.render %>
 
         <% if @buttons %>
@@ -29,7 +29,7 @@
             <% end %>
           </div>
         <% end %>
-      </div>
+      <% end %>
 
     <% end %>
   <% end %>

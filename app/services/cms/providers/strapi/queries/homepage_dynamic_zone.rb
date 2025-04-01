@@ -6,6 +6,7 @@ module Cms
           HOMEPAGE_COMPONENTS = [
             Components::Blocks::BannerWithCards,
             Components::Blocks::FeaturedBlogs,
+            Components::Blocks::FullWidthBanner,
             Components::Blocks::HomepageHero,
             Components::Blocks::PictureCardSection
           ]
