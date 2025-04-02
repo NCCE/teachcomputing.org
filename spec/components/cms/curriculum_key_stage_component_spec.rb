@@ -35,6 +35,7 @@ RSpec.describe Cms::CurriculumKeyStagesComponent, type: :component do
       expect(page).to have_css(".cms-color-theme__border--green-left", text: "Key Stage 4")
     end
   end
+
   context "when curriculum returns no keyStages" do
     before do
       stub_a_valid_request("{\"data\": { \"keyStages\": [] }}")
@@ -44,7 +45,7 @@ RSpec.describe Cms::CurriculumKeyStagesComponent, type: :component do
       ))
     end
 
-    it "renders the title" do
+    it "does not render the title" do
       expect(page).not_to have_css("h2.govuk-heading-m", text: "Choose resources by key stage")
     end
   end
