@@ -84,7 +84,7 @@ RSpec.describe CourseComponent, type: :component do
     end
 
     it "shows the expected message" do
-      expect(page).to have_text("Dates coming soon.")
+      expect(page).to have_text("This course is being updated.")
     end
   end
 
