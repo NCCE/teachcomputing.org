@@ -3,6 +3,13 @@
   padding: 20px;
   border-left-width: 13px;
 
+  .ncce-link {
+    color: $hyper-link-blue;
+    &:visited {
+      color: $hyper-link-blue;
+    }
+  }
+
   h2 {
     @extend .govuk-heading-m;
   }
