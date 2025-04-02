@@ -41,6 +41,27 @@ a:not([class]) {
   }
 }
 
+.purple-bg {
+  .ncce-link {
+    &:link {
+      color: $white;
+    }
+    &:visited {
+      color: $white;
+    }
+    &:hover {
+      color: $white;
+    }
+    &:focus {
+      color: $white;
+      box-shadow: 0 -2px $brand-yellow, 0 2px $brand-yellow;
+    }
+    &:active {
+      color: $ncce-grey;
+    }
+  }
+}
+
 .ncce-link__icon {
   height: 30px;
   margin-right: 10px;

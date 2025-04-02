@@ -46,7 +46,7 @@ RSpec.describe Cms::RichTextBlockComponent, type: :component do
     expect(page).to have_css(".govuk-heading-l", text: "Heading world!")
   end
 
-  it "renders a medium heading" do
+  it "renders a medium heading for h2" do
     render_inline(described_class.new(blocks: [
       type: "heading",
       level: 2,
@@ -58,10 +58,22 @@ RSpec.describe Cms::RichTextBlockComponent, type: :component do
     expect(page).to have_css(".govuk-heading-m", text: "Heading world!")
   end
 
-  it "renders a small heading" do
+  it "renders a medium heading or h3" do
     render_inline(described_class.new(blocks: [
       type: "heading",
       level: 3,
+      children: [
+        {type: "text", text: "Heading world!"}
+      ]
+    ]))
+
+    expect(page).to have_css(".govuk-heading-m", text: "Heading world!")
+  end
+
+  it "renders a small heading" do
+    render_inline(described_class.new(blocks: [
+      type: "heading",
+      level: 4,
       children: [
         {type: "text", text: "Heading world!"}
       ]

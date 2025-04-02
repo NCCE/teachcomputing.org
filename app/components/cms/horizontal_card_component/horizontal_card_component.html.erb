@@ -5,7 +5,7 @@
     <% end %>
     <%= content_tag :div, class: wrapper_classes do %>
       <div class="horizontal-card-component__content">
-        <h1 class="govuk-heading-m"><%= @title %></h1>
+        <h3 class="govuk-heading-m"><%= @title %></h3>
         <%= render @body_blocks.render %>
         <%= render @icon_block.render if @icon_block&.icons&.any? %>
       </div>
