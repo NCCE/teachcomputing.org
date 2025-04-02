@@ -1,0 +1,11 @@
+<%= render GovGridRowComponent.new do |row| %>
+  <%= row.with_column("full") do %>
+    <div class="cms-feedback-banner-component">
+      <h2 class="govuk-heading-m"><%= @title %></h2>
+      <%= render @button.render %>
+      <p class="govuk-body govuk-!-margin-bottom-0">
+        Or email us at <a class="govuk-link ncce-link" href="mailto: info@teachcomputing.org">info@teachcomputing.org</a>
+      </p>
+    </div>
+  <% end %>
+<% end %>

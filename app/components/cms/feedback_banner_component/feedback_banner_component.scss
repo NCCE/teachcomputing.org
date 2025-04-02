@@ -1,0 +1,10 @@
+.cms-feedback-banner-component {
+  border: 3px solid $hyper-link-blue;
+  padding: 32px;
+
+  .govuk-button {
+    @include govuk-media-query($until: desktop) {
+      margin-bottom: 16px;
+    }
+  }
+}

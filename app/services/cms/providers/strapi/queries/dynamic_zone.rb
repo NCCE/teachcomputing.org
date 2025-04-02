@@ -9,6 +9,7 @@ module Cms
             Components::Blocks::CourseCardsSection,
             Components::Blocks::EnrolmentSplitCourseCard,
             Components::Blocks::EnrolmentTestimonial,
+            Components::Blocks::FeedbackBanner,
             Components::Blocks::FullWidthBanner,
             Components::Blocks::FullWidthImageBanner,
             Components::Blocks::FullWidthText,

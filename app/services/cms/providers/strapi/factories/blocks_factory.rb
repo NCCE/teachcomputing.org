@@ -67,7 +67,16 @@ module Cms
               DynamicComponents::SecondaryQuestionBank.new(title: strapi_data[:title])
             when "button-block"
               to_button_block(strapi_data)
+            when "feedback-banner"
+              to_feedback_banner(strapi_data)
             end
+          end
+
+          def self.to_feedback_banner(strapi_data)
+            DynamicComponents::Blocks::FeedbackBanner.new(
+              title: strapi_data[:title],
+              button: to_ncce_button(strapi_data[:button])
+            )
           end
 
           def self.to_button_block(strapi_data)
