@@ -2,7 +2,7 @@ module Cms
   module Providers
     module Strapi
       module Mocks
-        module BlogComponents
+        module Collections
           class BlogTag < StrapiMock
             attribute(:title) { Faker::Lorem.word }
             attribute(:slug) { Faker::Internet.slug }

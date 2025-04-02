@@ -2,10 +2,9 @@ module Cms
   module Providers
     module Strapi
       module Mocks
-        module EnrichmentComponents
-          class EnrichmentType < StrapiMock
+        module Collections
+          class EnrichmentCategory < StrapiMock # For terms and age groups
             attribute(:name) { Faker::Lorem.word }
-            attribute(:icon) { ImageComponents::Image.generate_raw_data }
           end
         end
       end

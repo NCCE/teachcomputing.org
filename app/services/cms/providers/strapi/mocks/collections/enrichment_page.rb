@@ -13,7 +13,7 @@ module Cms
             attribute(:termFilterPlaceholder) { Faker::Lorem.sentence }
             attribute(:ageGroupFilterPlaceholder) { Faker::Lorem.sentence }
             attribute(:content) { [DynamicComponents::Blocks::FullWidthBanner.generate_raw_data] }
-            attribute(:enrichments) { {data: Array.new(5) { EnrichmentComponents::Enrichment.generate_raw_data }} }
+            attribute(:enrichments) { {data: Array.new(5) { Collections::Enrichment.generate_raw_data }} }
           end
         end
       end

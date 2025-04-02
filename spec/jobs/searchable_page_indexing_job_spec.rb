@@ -43,7 +43,7 @@ RSpec.describe SearchablePageIndexingJob, type: :job do
       )]
       web_pages += Array.new(2) { Cms::Mocks::Collections::WebPage.generate_raw_data }
 
-      enrichment_pages = [Cms::Mocks::EnrichmentComponents::EnrichmentPage.generate_raw_data(
+      enrichment_pages = [Cms::Mocks::Collections::EnrichmentPage.generate_raw_data(
         slug: "enrichment-test",
         seo: Cms::Mocks::MetaComponents::Seo.generate_data(title: "Enrichment Test", description: enrichment_excerpt)
       )]

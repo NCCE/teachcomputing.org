@@ -37,7 +37,7 @@ module StrapiStubs
 
   def stub_strapi_get_collection_entity(resource_key)
     stub_request(:get, /^https:\/\/strapi.teachcomputing.org\/api\/#{resource_key}?/).to_return_json(body: to_strapi_collection(
-      Array.new(5) { Cms::Mocks::BlogComponents::BlogTag.generate_raw_data }
+      Array.new(5) { Cms::Mocks::Collections::BlogTag.generate_raw_data }
     ))
   end
 
@@ -128,7 +128,7 @@ module StrapiStubs
   end
 
   def stub_strapi_enrichment_page(key, enrichment_page: nil)
-    enrichment_page = enrichment_page.presence || Cms::Mocks::EnrichmentComponents::EnrichmentPage.generate_raw_data(slug: key)
+    enrichment_page = enrichment_page.presence || Cms::Mocks::Collections::EnrichmentPage.generate_raw_data(slug: key)
     if as_graphql
       stub_strapi_graphql_query("enrichmentPages", enrichment_page)
     else
@@ -137,7 +137,7 @@ module StrapiStubs
     end
   end
 
-  def stub_strapi_enrichment_collection(enrichment_pages: Array.new(2) { Cms::Mocks::EnrichmentComponents::EnrichmentPage.generate_raw_data })
+  def stub_strapi_enrichment_collection(enrichment_pages: Array.new(2) { Cms::Mocks::Collections::EnrichmentPage.generate_raw_data })
     if as_graphql
       stub_strapi_graphql_collection_query("enrichmentPages", enrichment_pages)
     else
