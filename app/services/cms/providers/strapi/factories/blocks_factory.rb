@@ -96,36 +96,6 @@ module Cms
             )
           end
 
-          def self.to_text_with_testimonial(strapi_data)
-            DynamicComponents::Blocks::TextWithTestimonial.new(
-              text_content: to_content_block(strapi_data[:textContent]),
-              background_color: extract_color_name(strapi_data, :bkColor),
-              testimonial: to_testimonial(strapi_data[:testimonial]),
-              testimonial_side: strapi_data[:testimonialSide],
-              buttons: strapi_data[:buttons] ? strapi_data[:buttons].map { to_ncce_button(_1) } : []
-            )
-          end
-
-          def self.to_full_width_image_banner(strapi_data)
-            DynamicComponents::Blocks::FullWidthImageBanner.new(
-              background_image: to_image(strapi_data, :backgroundImage, default_size: :original),
-              overlay_title: strapi_data[:overlayTitle],
-              overlay_text: to_content_block(strapi_data[:overlayText], paragraph_class: "govuk-body-s"),
-              overlay_icon: to_image(strapi_data, :overlayIcon, default_size: :small),
-              overlay_side: strapi_data[:overlaySide]
-            )
-          end
-
-          def self.to_horizontal_card_with_asides(strapi_data)
-            DynamicComponents::HorizontalCardWithAsides.new(
-              text: to_content_block(strapi_data[:textContent]),
-              button: to_ncce_button(strapi_data[:button]),
-              aside_sections: extract_aside_sections(strapi_data, param_name: :asides),
-              background_color: extract_color_name(strapi_data, :bkColor),
-              color_theme: extract_color_name(strapi_data, :theme)
-            )
-          end
-
           def self.to_icon_row(strapi_data)
             DynamicComponents::IconRow.new(
               icons: strapi_data[:icons].map { to_icon(_1) },
