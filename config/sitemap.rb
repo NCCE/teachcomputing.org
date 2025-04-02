@@ -52,11 +52,11 @@ SitemapGenerator::Sitemap.create do
   # CMS Routes
   add "/privacy", changefreq: "monthly"
 
-  Cms::Collections::EnrichmentPage.all(1, 10).resources.each do |enrichment_page|
+  Cms::Collections::EnrichmentPage.all_records.each do |enrichment_page|
     add cms_page_path(enrichment_page.slug), changefreq: "monthly", lastmod: enrichment_page.updated_at
   end
 
-  Cms::Collections::WebPage.all(1, 200).resources.each do |page|
+  Cms::Collections::WebPage.all_records.each do |page|
     add cms_page_path(page.slug), changefreq: "monthly", lastmod: page.updated_at
   end
 
