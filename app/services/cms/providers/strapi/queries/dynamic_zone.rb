@@ -18,6 +18,7 @@ module Cms
             Components::Blocks::NumericCardsSection,
             Components::Blocks::PictureCardSection,
             Components::Blocks::PrimaryGlossaryTable,
+            Components::Blocks::ProgrammePictureCardSection,
             Components::Blocks::QuestionAndAnswer,
             Components::Blocks::ResourceCardSection,
             Components::Blocks::SplitHorizontalCard,

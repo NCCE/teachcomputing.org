@@ -20,6 +20,10 @@ module Cms
               strapi_data[key][:data][:attributes][:name] if strapi_data.dig(key, :data)
             end
 
+            def extract_programme_slug(strapi_data, key)
+              strapi_data[key][:data][:attributes][:slug] if strapi_data.dig(key, :data)
+            end
+
             def as_image(image_data, default_size = :medium)
               Models::Image.new(
                 url: image_data[:url],
@@ -87,6 +91,18 @@ module Cms
             def to_embedded_video(strapi_data)
               DynamicComponents::EmbeddedVideo.new(
                 url: strapi_data[:url]
+              )
+            end
+
+            def to_multi_state_link(strapi_data, programme)
+              DynamicComponents::MultiStateLink.new(
+                programme:,
+                logged_out_link_title: strapi_data[:loggedOutLinkTitle],
+                logged_out_link: strapi_data[:loggedOutLink],
+                not_enrolled_link_title: strapi_data[:notEnrolledLinkTitle],
+                not_enrolled_link: strapi_data[:notEnrolledLink],
+                enrolled_link_title: strapi_data[:enrolledLinkTitle],
+                enrolled_link: strapi_data[:enrolledLink]
               )
             end
           end
