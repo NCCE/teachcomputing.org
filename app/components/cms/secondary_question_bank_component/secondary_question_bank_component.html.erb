@@ -1,0 +1,22 @@
+<%= render GovGridRowComponent.new do |row|  %>
+  <%= row.with_column("full") do %>
+    <h2 class="govuk-heading-m"><%= @title %></h2>
+
+    <div class="secondary-question-bank-component">
+      <% @records.each_with_index do |record, index| %>
+        <div class="secondary-question-bank-component__wrapper light-grey-bg cms-color-theme__border--standard-left">
+          <h2 class="govuk-heading-s"><%= index + 1 %>. <%= record.topic.value %></h2>
+          <div class="secondary-question-bank-component__forms">
+            <% record.forms.each do |form| %>
+              <div class="secondary-question-bank-component__forms-item">
+                <%= render form.render %>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+<% end%>
+
+

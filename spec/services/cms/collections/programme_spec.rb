@@ -33,4 +33,6 @@ RSpec.describe Cms::Collections::Programme do
       }.to raise_exception(NotImplementedError)
     end
   end
+
+  it_should_behave_like "a strapi graphql collection single query", %w[statusPendingTitle statusPendingText statusCompletedTitle statusCompletedText]
 end

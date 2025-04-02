@@ -63,6 +63,8 @@ module Cms
               to_horizontal_card_with_asides(strapi_data)
             when "programme-picture-card-section"
               to_programme_card_wrapper(strapi_data)
+            when "secondary-question-bank"
+              DynamicComponents::SecondaryQuestionBank.new(title: strapi_data[:title])
             end
           end
 
