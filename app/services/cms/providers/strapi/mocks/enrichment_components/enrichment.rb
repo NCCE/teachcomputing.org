@@ -7,12 +7,12 @@ module Cms
             attribute(:i_belong) { true }
             attribute(:link) { nil }
             attribute(:featured) { false }
-            attribute(:rich_title) { Cms::Mocks::TextComponents::RichBlocks.generate_data }
-            attribute(:rich_details) { Cms::Mocks::TextComponents::RichBlocks.generate_data }
-            attribute(:terms) { {data: Array.new(1) { EnrichmentCategory.generate_raw_data }} }
-            attribute(:age_groups) { {data: Array.new(2) { EnrichmentCategory.generate_raw_data }} }
-            attribute(:type) { {data: EnrichmentType.generate_raw_data} }
-            attribute(:partner_icon) { Cms::Mocks::ImageComponents::Image.generate_raw_data }
+            attribute(:rich_title) { TextComponents::RichBlocks.generate_data }
+            attribute(:rich_details) { TextComponents::RichBlocks.generate_data }
+            attribute(:terms) { {data: Array.new(1) { EnrichmentComponents::EnrichmentCategory.generate_raw_data }} }
+            attribute(:age_groups) { {data: Array.new(2) { EnrichmentComponents::EnrichmentCategory.generate_raw_data }} }
+            attribute(:type) { {data: EnrichmentComponents::EnrichmentType.generate_raw_data} }
+            attribute(:partner_icon) { ImageComponents::Image.generate_raw_data }
           end
         end
       end

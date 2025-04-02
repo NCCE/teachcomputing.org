@@ -2,7 +2,7 @@ module Cms
   module Providers
     module Strapi
       module Mocks
-        module BlogComponents
+        module Collections
           class Blog < StrapiMock
             attribute(:slug) { Faker::Internet.slug }
             attribute(:content) { TextComponents::RichBlocks.generate_data }

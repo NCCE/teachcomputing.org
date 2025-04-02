@@ -10,7 +10,7 @@ module Cms
               attribute(:text) { TextComponents::RichBlocks.generate_data }
               attribute(:image) { ImageComponents::Image.generate_data }
               attribute(:imageSide) { "left" }
-              attribute(:bkColor) { ColorScheme.generate_data(name: "light_grey") }
+              attribute(:bkColor) { MetaComponents::ColorScheme.generate_data(name: "light_grey") }
             end
           end
         end

@@ -11,7 +11,7 @@ RSpec.describe Cms::Providers::Strapi::Utils do
     described_class.new.upload_to_strapi({
       slug: "test-page",
       pageContent: [
-        Cms::Mocks::TextWithAsides.generate_raw_data
+        Cms::Mocks::DynamicComponents::Blocks::TextWithAsides.generate_raw_data
       ]
     }, "web-pages")
     assert_requested(:post, "https://strapi.teachcomputing.org/api/web-pages", times: 1) do |request|

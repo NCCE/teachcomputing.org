@@ -10,7 +10,7 @@ module Cms
               end
 
               def self.generate_data(icon_count: 1)
-                Array.new(icon_count) { Icon.generate_data }
+                Array.new(icon_count) { ContentBlocks::Icon.generate_data }
               end
             end
           end

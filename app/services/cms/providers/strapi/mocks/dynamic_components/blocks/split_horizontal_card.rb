@@ -7,13 +7,13 @@ module Cms
             class SplitHorizontalCard < StrapiMock
               strapi_component "blocks.split-horizontal-card"
 
-              attribute(:cardContent) { Cms::Mocks::TextComponents::RichBlocks.generate_data }
-              attribute(:asideContent) { Cms::Mocks::TextComponents::RichBlocks.generate_data }
-              attribute(:asideIcon) { {data: Cms::Mocks::ImageComponents::Image.generate_raw_data} }
+              attribute(:cardContent) { TextComponents::RichBlocks.generate_data }
+              attribute(:asideContent) { TextComponents::RichBlocks.generate_data }
+              attribute(:asideIcon) { {data: ImageComponents::Image.generate_raw_data} }
               attribute(:asideTitle) { Faker::Lorem.sentence }
               attribute(:sectionTitle) { Faker::Lorem.sentence }
-              attribute(:colorTheme) { ColorScheme.generate_data(name: "standard") }
-              attribute(:backgroundColor) { ColorScheme.generate_data(name: "light-grey") }
+              attribute(:colorTheme) { MetaComponents::ColorScheme.generate_data(name: "standard") }
+              attribute(:backgroundColor) { MetaComponents::ColorScheme.generate_data(name: "light-grey") }
             end
           end
         end

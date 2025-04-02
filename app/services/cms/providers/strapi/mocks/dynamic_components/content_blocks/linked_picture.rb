@@ -7,7 +7,7 @@ module Cms
             class LinkedPicture < StrapiMock
               strapi_component "content-blocks.linked-picture"
 
-              attribute(:image) { Cms::Mocks::ImageComponents::Image.generate_raw_data }
+              attribute(:image) { ImageComponents::Image.generate_raw_data }
               attribute(:link) { Faker::Internet.url }
             end
           end

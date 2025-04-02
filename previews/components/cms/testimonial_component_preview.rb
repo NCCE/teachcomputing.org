@@ -2,7 +2,7 @@
 
 class Cms::TestimonialComponentPreview < ViewComponent::Preview
   def default
-    testimonial = Cms::Mocks::Testimonial.as_model
+    testimonial = Cms::Mocks::DynamicComponents::ContentBlocks::Testimonial.as_model
 
     render(testimonial.render)
   end

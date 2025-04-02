@@ -9,10 +9,10 @@ module Cms
 
               attribute(:leftColumnContent) { TextComponents::RichBlocks.generate_data }
               attribute(:rightColumnContent) { TextComponents::RichBlocks.generate_data }
-              attribute(:bkColor) { ColorScheme.generate_data(name: "light_grey") }
-              attribute(:boxColor) { ColorScheme.generate_data(name: "white") }
-              attribute(:video) { Cms::Mocks::DynamicComponents::ContentBlocks::EmbeddedVideo.generate_data }
-              attribute(:leftColumnButton) { Cms::Mocks::DynamicComponents::Buttons::NcceButton.generate_data }
+              attribute(:bkColor) { MetaComponents::ColorScheme.generate_data(name: "light_grey") }
+              attribute(:boxColor) { MetaComponents::ColorScheme.generate_data(name: "white") }
+              attribute(:video) { DynamicComponents::ContentBlocks::EmbeddedVideo.generate_data }
+              attribute(:leftColumnButton) { DynamicComponents::Buttons::NcceButton.generate_data }
             end
           end
         end

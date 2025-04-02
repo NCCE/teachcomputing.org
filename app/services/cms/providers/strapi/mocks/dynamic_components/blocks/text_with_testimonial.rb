@@ -9,7 +9,7 @@ module Cms
 
               attribute(:textContent) { TextComponents::RichBlocks.generate_data }
               attribute(:buttons) { [] }
-              attribute(:testimonial) { Testimonial.generate_data }
+              attribute(:testimonial) { ContentBlocks::Testimonial.generate_data }
               attribute(:testimonialSide) { "left" }
               attribute(:bkColor) { nil }
             end

@@ -55,7 +55,7 @@ RSpec.describe Cms::Providers::Strapi::Factories::ComponentFactory do
 
   context "TextWithAsides" do
     it "should be created" do
-      strapi_data = Cms::Providers::Strapi::Mocks::TextWithAsides.generate_raw_data
+      strapi_data = Cms::Providers::Strapi::Mocks::DynamicComponents::Blocks::TextWithAsides.generate_raw_data
       model = described_class.process_component(strapi_data)
       expect(model).to be_a Cms::DynamicComponents::Blocks::TextWithAsides
     end
@@ -123,7 +123,7 @@ RSpec.describe Cms::Providers::Strapi::Factories::ComponentFactory do
 
   context "TestimonialRow" do
     it "should create testimonial row" do
-      strapi_data = Cms::Providers::Strapi::Mocks::TestimonialRow.generate_raw_data
+      strapi_data = Cms::Providers::Strapi::Mocks::DynamicComponents::Blocks::TestimonialRow.generate_raw_data
       model = described_class.process_component(strapi_data)
       expect(model).to be_a Cms::DynamicComponents::Blocks::TestimonialRow
     end

@@ -12,8 +12,8 @@ module Cms
             attribute(:typeFilterPlaceholder) { Faker::Lorem.sentence }
             attribute(:termFilterPlaceholder) { Faker::Lorem.sentence }
             attribute(:ageGroupFilterPlaceholder) { Faker::Lorem.sentence }
-            attribute(:content) { [Cms::Mocks::DynamicComponents::Blocks::FullWidthBanner.generate_raw_data] }
-            attribute(:enrichments) { {data: Array.new(5) { Enrichment.generate_raw_data }} }
+            attribute(:content) { [DynamicComponents::Blocks::FullWidthBanner.generate_raw_data] }
+            attribute(:enrichments) { {data: Array.new(5) { EnrichmentComponents::Enrichment.generate_raw_data }} }
           end
         end
       end

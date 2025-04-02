@@ -22,7 +22,7 @@ class Cms::ResourceCardComponentPreview < ViewComponent::Preview
     card_section = Cms::Mocks::DynamicComponents::Blocks::ResourceCardSection.as_model(
       resource_cards: Array.new(3) {
                         Cms::Mocks::DynamicComponents::ContentBlocks::ResourceCard.generate_data(
-                          color_theme: {data: Cms::Mocks::ColorScheme.generate_data(name: "standard")},
+                          color_theme: {data: Cms::Mocks::MetaComponents::ColorScheme.generate_data(name: "standard")},
                           icon: {data: Cms::Mocks::ImageComponents::Image.generate_raw_data}
                         )
                       }
@@ -39,7 +39,7 @@ class Cms::ResourceCardComponentPreview < ViewComponent::Preview
     card_section = Cms::Mocks::DynamicComponents::Blocks::ResourceCardSection.as_model(
       resource_cards: Array.new(3) {
                         Cms::Mocks::DynamicComponents::ContentBlocks::ResourceCard.generate_data(
-                          color_theme: {data: Cms::Mocks::ColorScheme.generate_data(name: "standard")},
+                          color_theme: {data: Cms::Mocks::MetaComponents::ColorScheme.generate_data(name: "standard")},
                           title: nil
                         )
                       }
@@ -56,7 +56,7 @@ class Cms::ResourceCardComponentPreview < ViewComponent::Preview
     card_section = Cms::Mocks::DynamicComponents::Blocks::ResourceCardSection.as_model(
       resource_cards: Array.new(3) {
                         Cms::Mocks::DynamicComponents::ContentBlocks::ResourceCard.generate_data(
-                          color_theme: {data: Cms::Mocks::ColorScheme.generate_data(name: "standard")}
+                          color_theme: {data: Cms::Mocks::MetaComponents::ColorScheme.generate_data(name: "standard")}
                         )
                       }
     )
@@ -73,7 +73,7 @@ class Cms::ResourceCardComponentPreview < ViewComponent::Preview
     card_section = Cms::Mocks::DynamicComponents::Blocks::ResourceCardSection.as_model(
       resource_cards: Array.new(3) {
                         Cms::Mocks::DynamicComponents::ContentBlocks::ResourceCard.generate_data(
-                          color_theme: {data: Cms::Mocks::ColorScheme.generate_data(name: "standard")},
+                          color_theme: {data: Cms::Mocks::MetaComponents::ColorScheme.generate_data(name: "standard")},
                           button_text: "Click here",
                           button_link: "https://www.google.com"
                         )

@@ -7,7 +7,7 @@ RSpec.describe Cms::TextWithTestimonialComponent, type: :component do
     before do
       render_inline(described_class.new(
         text_content: Cms::Mocks::TextComponents::RichBlocks.as_model,
-        testimonial: Cms::Mocks::Testimonial.as_model,
+        testimonial: Cms::Mocks::DynamicComponents::ContentBlocks::Testimonial.as_model,
         testimonial_side: "right",
         background_color: "purple",
         buttons: []
@@ -31,7 +31,7 @@ RSpec.describe Cms::TextWithTestimonialComponent, type: :component do
     before do
       render_inline(described_class.new(
         text_content: Cms::Mocks::TextComponents::RichBlocks.as_model,
-        testimonial: Cms::Mocks::Testimonial.as_model,
+        testimonial: Cms::Mocks::DynamicComponents::ContentBlocks::Testimonial.as_model,
         testimonial_side: "left",
         background_color: "purple",
         buttons: Array.new(2) { Cms::Mocks::DynamicComponents::Buttons::NcceButton.as_model }

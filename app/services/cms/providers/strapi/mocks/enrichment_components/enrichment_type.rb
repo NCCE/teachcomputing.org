@@ -5,7 +5,7 @@ module Cms
         module EnrichmentComponents
           class EnrichmentType < StrapiMock
             attribute(:name) { Faker::Lorem.word }
-            attribute(:icon) { Cms::Mocks::ImageComponents::Image.generate_raw_data }
+            attribute(:icon) { ImageComponents::Image.generate_raw_data }
           end
         end
       end

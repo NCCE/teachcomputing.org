@@ -2,11 +2,11 @@ module Cms
   module Providers
     module Strapi
       module Mocks
-        module AsideComponents
+        module Collections
           class AsideSection < StrapiMock
             attribute(:slug) { Faker::Internet.slug }
             attribute(:title) { Faker::Lorem.sentence }
-            attribute(:content) { [TextBlock.generate_raw_data] }
+            attribute(:content) { [TextComponents::TextBlock.generate_raw_data] }
             attribute(:showHeadingLine) { true }
             attribute(:asideIcons) { [] }
 

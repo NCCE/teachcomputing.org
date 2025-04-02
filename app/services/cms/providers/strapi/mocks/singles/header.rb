@@ -2,7 +2,7 @@ module Cms
   module Providers
     module Strapi
       module Mocks
-        module HeaderComponents
+        module Singles
           class Header < StrapiMock
             attribute(:dropDowns) { Array.new(3) { DropDownMenu.generate_raw_data } }
           end

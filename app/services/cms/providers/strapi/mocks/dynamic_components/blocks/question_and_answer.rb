@@ -9,7 +9,7 @@ module Cms
 
               attribute(:question) { Faker::Lorem.sentence }
               attribute(:answer) { TextComponents::RichBlocks.generate_data }
-              attribute(:asideSections) { Cms::Mocks::AsideComponents::AsideSection.generate_aside_list }
+              attribute(:asideSections) { Collections::AsideSection.generate_aside_list }
               attribute(:answerIcons) { [] }
               attribute(:asideAlignment) { :top }
               attribute(:showBackgroundTriangle) { false }
