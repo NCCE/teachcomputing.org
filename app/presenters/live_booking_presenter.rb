@@ -13,7 +13,7 @@ class LiveBookingPresenter
   end
 
   def no_occurrences_title
-    "Dates coming soon"
+    "This course is being updated."
   end
 
   def unauthenticated_introduction
@@ -21,7 +21,7 @@ class LiveBookingPresenter
   end
 
   def no_occurrences_introduction
-    "Contact your local Computing Hub for more information"
+    "We are working on transforming our CPD into exciting new online on-demand courses for you. Keep an eye on our social media for new courses announcements coming soon!"
   end
 
   def introduction

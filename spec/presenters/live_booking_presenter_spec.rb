@@ -24,7 +24,7 @@ RSpec.describe LiveBookingPresenter do
   end
 
   describe "#no_occurrences_introduction" do
-    it { expect(described_class.new.no_occurrences_introduction).to eq("Contact your local Computing Hub for more information") }
+    it { expect(described_class.new.no_occurrences_introduction).to eq("We are working on transforming our CPD into exciting new online on-demand courses for you. Keep an eye on our social media for new courses announcements coming soon!") }
   end
 
   describe "#enrolled_introduction" do
