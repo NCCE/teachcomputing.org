@@ -1,0 +1,57 @@
+.cms-curriculum-key-stages {
+
+  .curriculum-card {
+    background-color: $concrete;
+    border-left-style: solid;
+    border-left-width: 9px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    padding: 20px 10px;
+    position: relative;
+
+    @include govuk-media-query($from: tablet) {
+      margin-bottom: 0;
+      min-height: 5.5rem;
+    }
+
+    @include govuk-media-query($from: desktop) {
+      padding: 20px 10px 20px 25px;
+      min-height: inherit;
+    }
+
+    &__title {
+      font-weight: 500;
+      margin-bottom: 0.5rem;
+      margin-top: 0;
+
+      @include govuk-media-query($from: desktop) {
+        margin-bottom: 1rem;
+      }
+    }
+
+    &__details {
+      display: flex;
+      flex-wrap: wrap;
+      margin-bottom: 0;
+      flex-direction: row;
+
+      @include govuk-media-query($from: tablet) {
+        flex-direction: column;
+      }
+
+      @include govuk-media-query($from: desktop) {
+        flex-direction: row;
+      }
+    }
+
+    &__counts {
+      padding-top: 16px;
+      display: flex;
+      flex-wrap: wrap;
+      margin-bottom: 0;
+      flex-direction: column;
+    }
+  }
+}
