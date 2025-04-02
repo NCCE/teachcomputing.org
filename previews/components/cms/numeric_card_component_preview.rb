@@ -2,7 +2,7 @@
 
 class Cms::NumericCardComponentPreview < ViewComponent::Preview
   def default
-    card_section = Cms::Mocks::DynamicZone::Blocks::NumericCardSection.as_model(
+    card_section = Cms::Mocks::DynamicComponents::Blocks::NumericCardSection.as_model(
       number_of_cards: 3
     )
 

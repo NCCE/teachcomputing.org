@@ -35,7 +35,7 @@ class Cms::TwoColumnVideoSectionComponentPreview < ViewComponent::Preview
   def with_content_background_color
     render Cms::TwoColumnVideoSectionComponent.new(
       left_column_content: Cms::Mocks::TextComponents::RichBlocks.as_model,
-      video: CmCms::Mocks::DynamicComponents::ContentBlocks::EmbeddedVideo.as_model,
+      video: Cms::Mocks::DynamicComponents::ContentBlocks::EmbeddedVideo.as_model,
       left_column_button: Cms::Mocks::DynamicComponents::Buttons::NcceButton.as_model,
       background_color: "isaac",
       box_color: "white"
