@@ -41,13 +41,14 @@
   &__body-text {
     flex-grow: 1;
   }
-}
 
-.ncce-button--white {
-  width: 100%;
-  margin: 24px 0 0;
+  .ncce-button--white {
+    width: 100%;
+    margin: 24px 0 0;
 
-  @include govuk-media-query($until: tablet) {
-    margin-top: 12px;
+    @include govuk-media-query($until: tablet) {
+      margin-top: 12px;
+    }
   }
 }
+
