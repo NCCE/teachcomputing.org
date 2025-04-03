@@ -2,18 +2,23 @@ require "rails_helper"
 
 RSpec.describe UserProgrammeCourseBookingsWithAsidesComponent, type: :component do
   let(:user) { create(:user) }
-  let(:activity) { find_or_create_activity("CP199", category: :online) }
-  let(:activity_two) { find_or_create_activity("CP228") }
-  let(:activity_three) { find_or_create_activity("CS101", remote_delivered_cpd: true) }
+  let(:activity) { create(:activity, category: :online) }
+  let(:activity_two) { find_or_create_activity("CP228") } # Require specific activity code to ensure its in smart connector
+  let(:activity_three) { create(:activity, remote_delivered_cpd: true) }
   let(:programme) { create(:primary_certificate) }
   let(:achievement) { create(:achievement, user:) }
   let!(:courses) { create_list(:programme_activity_grouping, 2, :with_activities, sort_key: 2, community: false, programme:) }
   let!(:programme_activity) { create(:programme_activity, programme:, activity:, programme_activity_grouping: courses.first) }
-  let!(:programme_activity_two) { create(:programme_activity, programme:, activity: activity_two, programme_activity_grouping: courses.first) }
+  let!(:programme_activity_two) { find_or_create_programme_activity(activity_two, programme, courses.first) }
   let!(:programme_activity_three) { create(:programme_activity, programme:, activity: activity_three, programme_activity_grouping: courses.first) }
   let(:user_achievement) { create(:achievement, user:, activity:) }
   let(:remote_achievement) { create(:achievement, user:, activity: activity_three) }
   let(:completed_user_achievement) { create(:completed_achievement, user:, activity: activity_two) }
+
+  def find_or_create_programme_activity(activity, programme, grouping)
+    programme_activity = ProgrammeActivity.find_by(activity:, programme:)
+    programme_activity || create(:programme_activity, programme:, activity:, programme_activity_grouping: grouping)
+  end
 
   def find_or_create_activity(stem_activity_code, **)
     activity = Activity.find_by(stem_activity_code:)
