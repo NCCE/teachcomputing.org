@@ -158,6 +158,7 @@ Rails.application.routes.draw do
   get "/courses/:id(/:name)", action: :show, controller: "courses", as: "course"
 
   get "/curriculum", to: "curriculum/key_stages#index", as: :curriculum_key_stages
+  # get "/curriculum", to: "pages#web_page_resource", as: :curriculum_key_stages, defaults: {page_slug: "curriculum"}
   get "/curriculum/files/:slug", to: "curriculum/file_redirect#redirect_to_file", as: :curriculum_file_redirect
   get "/curriculum/:key_stage_slug", to: "curriculum/key_stages#show", as: :curriculum_key_stage_units
   get "/curriculum/:key_stage_slug/:unit_slug", to: "curriculum/units#show", as: :curriculum_key_stage_unit
@@ -182,7 +183,6 @@ Rails.application.routes.draw do
   get "/404", to: "pages#exception", defaults: {status: 404}
   get "/422", to: "pages#exception", defaults: {status: 422}
   get "/500", to: "pages#exception", defaults: {status: 500}
-  get "/about", to: "pages#page", as: :about, defaults: {page_slug: "about"}
   get "/accelerator", to: redirect("/subject-knowledge")
   get "/accessibility-statement", to: "pages#page", as: :accessibility_statement,
     defaults: {page_slug: "accessibility-statement"}
@@ -199,15 +199,14 @@ Rails.application.routes.draw do
     defaults: {page_slug: "a-level-certificate"}
   get "/external/assets/ncce.css", to: "asset_endpoint#css_endpoint", as: :css_endpoint
 
-  get "/tech-careers-videos", to: "pages#page", as: :tech_careers_videos, defaults: {page_slug: "tech-careers-videos"}
-  get "/i-belong", to: "pages#i_belong", as: :about_i_belong, defaults: {page_slug: "i-belong"}
+  # get "/tech-careers-videos", to: "pages#page", as: :tech_careers_videos, defaults: {page_slug: "tech-careers-videos"}
+  # get "/i-belong", to: "pages#i_belong", as: :about_i_belong, defaults: {page_slug: "i-belong"}
+
   get "/computing-teaching-schools-support", to: redirect("/gcse-cs-support")
   get "/isaac-computer-science", to: "pages#isaac_computer_science", as: :about_isaac_computer_science, defaults: {page_slug: "isaac-computer-science"}
-  get "/gender-balance", to: "pages#page", as: :gender_balance, defaults: {page_slug: "gender-balance"}
-  get "/get-involved", to: "pages#page", as: :get_involved, defaults: {page_slug: "get-involved"}
+  # get "/gender-balance", to: "pages#page", as: :gender_balance, defaults: {page_slug: "gender-balance"}
   get "/secondary-question-banks", to: "pages#page", as: :secondary_question_banks, defaults: {page_slug: "secondary-question-banks"}
   get "/powerupthedigitalgeneration", to: redirect("/supporting-partners")
-  get "/pedagogy", to: "pages#page", as: :pedagogy, defaults: {page_slug: "pedagogy"}
   get "/impact-and-evaluation", to: "pages#page", as: :impact, defaults: {page_slug: "impact-and-evaluation"}
   get "/a-level-computer-science", to: redirect("/isaac-computer-science")
   get "/gcse-revision", to: redirect("/isaac-computer-science")
@@ -218,8 +217,8 @@ Rails.application.routes.draw do
 
   get "/primary-certificate/courses", action: :primary_courses, controller: "courses", as: :primary_courses
 
-  get "/primary-teachers", to: "pages#page", as: :primary_teachers,
-    defaults: {page_slug: "primary-toolkit"}
+  # get "/primary-teachers", to: "pages#page", as: :primary_teachers,
+  #  defaults: {page_slug: "primary-toolkit"}
   get "/secondary-certificate",
     to: "pages#static_programme_page",
     as: :secondary,
@@ -227,16 +226,16 @@ Rails.application.routes.draw do
     constraints: lambda { |_request|
                    Programme.secondary_certificate.enrollable?
                  }
-  get "/secondary-senior-leaders", to: "pages#page", as: :secondary_senior_leaders,
-    defaults: {page_slug: "secondary-senior-leaders"}
-  get "/primary-senior-leaders", to: "pages#page", as: :primary_senior_leaders,
-    defaults: {page_slug: "primary-senior-leaders"}
+  # get "/secondary-senior-leaders", to: "pages#page", as: :secondary_senior_leaders,
+  #  defaults: {page_slug: "secondary-senior-leaders"}
+  # get "/primary-senior-leaders", to: "pages#page", as: :primary_senior_leaders,
+  #  defaults: {page_slug: "primary-senior-leaders"}
   get "/secondary-teachers", to: "pages#page", as: :secondary_teachers,
     defaults: {page_slug: "secondary-toolkit"}
   get "/secondary-certification", to: "pages#secondary-certification", as: :secondary_certification
   get "/signup-confirmation", to: "pages#page", as: :signup_confirmation, defaults: {page_slug: "signup-confirmation"}
   get "/supporting-partners", to: redirect("/get-involved")
-  get "/terms-conditions", to: "pages#page", as: :terms_conditions, defaults: {page_slug: "terms-conditions"}
+  # get "/terms-conditions", to: "pages#page", as: :terms_conditions, defaults: {page_slug: "terms-conditions"}
 
   resource :search, only: :show
 
@@ -248,6 +247,11 @@ Rails.application.routes.draw do
   get "/primary-enrichment/refresh", to: "cms#enrichment_refresh", defaults: {page_slug: "primary-enrichment"}, as: :primary_enrichment_reload
   get "/secondary-enrichment", to: "cms#enrichment", defaults: {page_slug: "secondary-enrichment"}, as: :secondary_enrichment
   get "/secondary-enrichment/refresh", to: "cms#enrichment_refresh", defaults: {page_slug: "secondary-enrichment"}, as: :secondary_enrichment_reload
+
+  get "/i-belong", to: "cms#web_page_resource", as: :about_i_belong, defaults: {page_slug: "i-belong"}
+  get "/gender-balance", to: "cms#web_page_resource", as: :gender_balance, defaults: {page_slug: "gender-balance"}
+  get "/secondary-senior-leaders", to: "cms#web_page_resource", as: :secondary_senior_leaders,
+    defaults: {page_slug: "secondary-senior-leaders"}
 
   get "/home-teaching-resources" => redirect("/home-teaching")
   get "/home-teaching/:page_slug" => redirect("/home-teaching")
