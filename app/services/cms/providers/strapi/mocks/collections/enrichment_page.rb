@@ -2,7 +2,7 @@ module Cms
   module Providers
     module Strapi
       module Mocks
-        module EnrichmentComponents
+        module Collections
           class EnrichmentPage < StrapiMock
             attribute(:pageTitle) { MetaComponents::PageTitle.generate_data }
             attribute(:seo) { MetaComponents::Seo.generate_data }
