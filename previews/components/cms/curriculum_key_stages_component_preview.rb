@@ -2,6 +2,6 @@
 
 class Cms::CurriculumKeyStagesComponentPreview < ViewComponent::Preview
   def default
-    render(Cms::CurriculumKeyStagesComponent.new(title: "title", bk_color: "bk_color"))
+    render(Cms::CurriculumKeyStagesComponent.new(title: "Resources for you", background_color: "white"))
   end
 end
