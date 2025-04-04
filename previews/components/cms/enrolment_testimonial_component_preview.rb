@@ -8,7 +8,7 @@ class Cms::EnrolmentTestimonialComponentPreview < ViewComponent::Preview
       enrol_aside: [{slug: "i-belong-dashboard-resources"}],
       enrolled_aside: [],
       programme_slug: "primary-certificate",
-      background_color: Cms::Mocks::MetaComponents::ColorScheme.generate_data(name: "standard")
+      background_color: Cms::Mocks::Meta::ColorScheme.generate_data(name: "standard")
     ))
   end
 end

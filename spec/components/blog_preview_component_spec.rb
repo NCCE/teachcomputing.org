@@ -7,7 +7,7 @@ RSpec.describe BlogPreviewComponent, type: :component do
         title: "Blog Preview",
         excerpt: "You will not believe what we discuss in this blog post",
         publish_date: DateTime.new(2024, 3, 18),
-        featured_image: Cms::Models::ImageComponents::FeaturedImage.new(
+        featured_image: Cms::Models::Images::FeaturedImage.new(
           url: "http://media.teachcomputing.org/an-image.png",
           alt: "",
           caption: "",

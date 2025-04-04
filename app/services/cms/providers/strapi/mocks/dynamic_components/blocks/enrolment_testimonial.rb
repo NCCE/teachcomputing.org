@@ -12,7 +12,7 @@ module Cms
               attribute(:enrolledAside) { Collections::AsideSection.generate_aside_list(aside_slugs: ["enrolled-aside"]) }
               attribute(:enrolAside) { Collections::AsideSection.generate_aside_list(aside_slugs: ["enrol-aside"]) }
               attribute(:programme) { {data: {attributes: {slug: "primary-certificate"}}} }
-              attribute(:bkColor) { MetaComponents::ColorScheme.generate_data(name: "light-grey") }
+              attribute(:bkColor) { Meta::ColorScheme.generate_data(name: "light-grey") }
             end
           end
         end

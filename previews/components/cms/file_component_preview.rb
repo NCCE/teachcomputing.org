@@ -1,6 +1,6 @@
 class Cms::FileComponentPreview < ViewComponent::Preview
   def default
-    file = Cms::DynamicComponents::ContentBlocks::FileLink.new(
+    file = Cms::Models::DynamicComponents::ContentBlocks::FileLink.new(
       url: "https://strapi.teachcomputing.org/test_file.pdf",
       filename: "Test File",
       size: 45,

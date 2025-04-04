@@ -6,7 +6,7 @@ RSpec.describe Cms::FeedbackBannerComponent, type: :component do
   before do
     render_inline(described_class.new(
       title: "Help us make these resources better",
-      button: Cms::Mocks::NcceButton.as_model
+      button: Cms::Mocks::DynamicComponents::Buttons::NcceButton.as_model
     ))
   end
 

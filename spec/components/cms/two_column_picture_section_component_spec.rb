@@ -6,8 +6,8 @@ RSpec.describe Cms::TwoColumnPictureSectionComponent, type: :component do
   context "with standard layout" do
     before do
       render_inline(described_class.new(
-        text: Cms::Mocks::TextComponents::RichBlocks.as_model,
-        image: Cms::Mocks::ImageComponents::Image.as_model,
+        text: Cms::Mocks::Text::RichBlocks.as_model,
+        image: Cms::Mocks::Images::Image.as_model,
         image_side: "left",
         background_color: nil
       ))
@@ -33,8 +33,8 @@ RSpec.describe Cms::TwoColumnPictureSectionComponent, type: :component do
   context "with right side image layout" do
     before do
       render_inline(described_class.new(
-        text: Cms::Mocks::TextComponents::RichBlocks.as_model,
-        image: Cms::Mocks::ImageComponents::Image.as_model,
+        text: Cms::Mocks::Text::RichBlocks.as_model,
+        image: Cms::Mocks::Images::Image.as_model,
         image_side: "right",
         background_color: nil
       ))
@@ -48,8 +48,8 @@ RSpec.describe Cms::TwoColumnPictureSectionComponent, type: :component do
   context "with background color" do
     before do
       render_inline(described_class.new(
-        text: Cms::Mocks::TextComponents::RichBlocks.as_model,
-        image: Cms::Mocks::ImageComponents::Image.as_model,
+        text: Cms::Mocks::Text::RichBlocks.as_model,
+        image: Cms::Mocks::Images::Image.as_model,
         image_side: "left",
         background_color: "orange"
       ))

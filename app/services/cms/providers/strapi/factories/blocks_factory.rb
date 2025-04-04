@@ -34,7 +34,7 @@ module Cms
             when "community-activity-list"
               to_community_activity_list(strapi_data)
             when "sticky-dashboard-bar"
-              DynamicComponents::Blocks::StickyDashboardBar.new(programme_slug: strapi_data[:programme][:data][:attributes][:slug])
+              Models::DynamicComponents::Blocks::StickyDashboardBar.new(programme_slug: strapi_data[:programme][:data][:attributes][:slug])
             when "enrolment-testimonial"
               to_enrolment_testimonial(strapi_data)
             when "enrolment-split-course-card"
@@ -46,13 +46,13 @@ module Cms
             when "homepage-hero"
               to_homepage_hero(strapi_data)
             when "featured-blogs"
-              DynamicComponents::Blocks::FeaturedBlogs.new(title: strapi_data[:title])
+              Models::DynamicComponents::Blocks::FeaturedBlogs.new(title: strapi_data[:title])
             when "banner-with-cards"
               to_banner_with_cards(strapi_data)
             when "text-with-testimonial"
               to_text_with_testimonial(strapi_data)
             when "primary-glossary-table"
-              DynamicComponents::Blocks::PrimaryGlossaryTable.new(title: strapi_data[:title])
+              Models::DynamicComponents::Blocks::PrimaryGlossaryTable.new(title: strapi_data[:title])
             when "two-column-picture-section"
               to_two_column_picture_section(strapi_data)
             when "video-cards-section"
@@ -64,7 +64,7 @@ module Cms
             when "programme-picture-card-section"
               to_programme_card_wrapper(strapi_data)
             when "secondary-question-bank"
-              DynamicComponents::SecondaryQuestionBank.new(title: strapi_data[:title])
+              Models::DynamicComponents::Blocks::SecondaryQuestionBank.new(title: strapi_data[:title])
             when "button-block"
               to_button_block(strapi_data)
             when "feedback-banner"
@@ -75,14 +75,14 @@ module Cms
           end
 
           def self.to_feedback_banner(strapi_data)
-            DynamicComponents::Blocks::FeedbackBanner.new(
+            Models::DynamicComponents::Blocks::FeedbackBanner.new(
               title: strapi_data[:title],
               button: to_ncce_button(strapi_data[:button])
             )
           end
 
           def self.to_button_block(strapi_data)
-            DynamicComponents::Blocks::ButtonBlock.new(
+            Models::DynamicComponents::Blocks::ButtonBlock.new(
               buttons: strapi_data[:buttons].map { to_ncce_button(_1) },
               background_color: extract_color_name(strapi_data, :bkColor),
               padding: strapi_data[:padding],
@@ -92,7 +92,7 @@ module Cms
           end
 
           def self.to_text_with_testimonial(strapi_data)
-            DynamicComponents::Blocks::TextWithTestimonial.new(
+            Models::DynamicComponents::Blocks::TextWithTestimonial.new(
               text_content: to_content_block(strapi_data[:textContent]),
               background_color: extract_color_name(strapi_data, :bkColor),
               testimonial: to_testimonial(strapi_data[:testimonial]),
@@ -102,14 +102,14 @@ module Cms
           end
 
           def self.to_curriculum_key_stages(strapi_data)
-            DynamicComponents::Blocks::CurriculumKeyStages.new(
+            Models::DynamicComponents::Blocks::CurriculumKeyStages.new(
               title: strapi_data[:title],
               background_color: extract_color_name(strapi_data, :bkColor)
             )
           end
 
           def self.to_full_width_image_banner(strapi_data)
-            DynamicComponents::Blocks::FullWidthImageBanner.new(
+            Models::DynamicComponents::Blocks::FullWidthImageBanner.new(
               background_image: to_image(strapi_data, :backgroundImage, default_size: :original),
               overlay_title: strapi_data[:overlayTitle],
               overlay_text: to_content_block(strapi_data[:overlayText], paragraph_class: "govuk-body-s"),
@@ -119,7 +119,7 @@ module Cms
           end
 
           def self.to_horizontal_card_with_asides(strapi_data)
-            DynamicComponents::Blocks::HorizontalCardWithAsides.new(
+            Models::DynamicComponents::Blocks::HorizontalCardWithAsides.new(
               text: to_content_block(strapi_data[:textContent]),
               button: to_ncce_button(strapi_data[:button]),
               aside_sections: extract_aside_sections(strapi_data, param_name: :asides),
@@ -129,14 +129,14 @@ module Cms
           end
 
           def self.to_icon_row(strapi_data)
-            DynamicComponents::Blocks::IconRow.new(
+            Models::DynamicComponents::Blocks::IconRow.new(
               icons: strapi_data[:icons].map { to_icon(_1) },
               background_color: extract_color_name(strapi_data, :bkColor)
             )
           end
 
           def self.to_two_column_picture_section(strapi_data)
-            DynamicComponents::Blocks::TwoColumnPictureSection.new(
+            Models::DynamicComponents::Blocks::TwoColumnPictureSection.new(
               text: to_content_block(strapi_data[:textContent]),
               image: to_image(strapi_data, :image),
               image_side: strapi_data[:imageSide],
@@ -145,7 +145,7 @@ module Cms
           end
 
           def self.to_two_column_video_section(strapi_data)
-            DynamicComponents::Blocks::TwoColumnVideoSection.new(
+            Models::DynamicComponents::Blocks::TwoColumnVideoSection.new(
               left_column_content: to_content_block(strapi_data[:leftColumnContent]),
               video: to_embedded_video(strapi_data[:video]),
               right_column_content: to_content_block(strapi_data[:rightColumnContent]),
@@ -156,7 +156,7 @@ module Cms
           end
 
           def self.to_banner_with_cards(strapi_data)
-            DynamicComponents::Blocks::BannerWithCards.new(
+            Models::DynamicComponents::Blocks::BannerWithCards.new(
               title: strapi_data[:title],
               text_content: to_content_block(strapi_data[:textContent]),
               background_color: extract_color_name(strapi_data, :bkColor),
@@ -165,7 +165,7 @@ module Cms
           end
 
           def self.to_homepage_hero(strapi_data)
-            DynamicComponents::Blocks::HomepageHero.new(
+            Models::DynamicComponents::Blocks::HomepageHero.new(
               title: strapi_data[:title],
               house_content: to_content_block(strapi_data[:houseText]),
               buttons: strapi_data[:buttons] ? strapi_data[:buttons].map { to_ncce_button(_1) } : []
@@ -173,7 +173,7 @@ module Cms
           end
 
           def self.to_enrolment_split_course_card(strapi_data)
-            DynamicComponents::Blocks::EnrolmentSplitCourseCard.new(
+            Models::DynamicComponents::Blocks::EnrolmentSplitCourseCard.new(
               card_content: to_content_block(strapi_data[:cardContent]),
               aside_content: to_content_block(strapi_data[:asideContent]),
               enrol_aside: extract_aside_sections(strapi_data, param_name: :enrolAside),
@@ -187,7 +187,7 @@ module Cms
           end
 
           def self.to_enrolment_testimonial(strapi_data)
-            DynamicComponents::Blocks::EnrolmentTestimonial.new(
+            Models::DynamicComponents::Blocks::EnrolmentTestimonial.new(
               title: strapi_data[:title],
               testimonial: to_testimonial(strapi_data[:testimonial]),
               enrolled_aside: extract_aside_sections(strapi_data, param_name: :enrolledAside),
@@ -198,7 +198,7 @@ module Cms
           end
 
           def self.to_community_activity_list(strapi_data)
-            DynamicComponents::Blocks::CommunityActivityGrid.new(
+            Models::DynamicComponents::Blocks::CommunityActivityGrid.new(
               title: strapi_data[:title],
               intro: to_content_block(strapi_data[:intro]),
               programme_activity_group_slug: strapi_data[:group][:data][:attributes][:slug]
@@ -206,12 +206,12 @@ module Cms
           end
 
           def self.to_icon_block(strapi_data)
-            DynamicComponents::ContentBlocks::IconBlock.new(icons: strapi_data.map { to_icon(_1) })
+            Models::DynamicComponents::ContentBlocks::IconBlock.new(icons: strapi_data.map { to_icon(_1) })
           end
 
           def self.to_numeric_card_array(strapi_data)
             strapi_data.map.with_index do |card_data, index|
-              DynamicComponents::ContentBlocks::NumericCard.new(
+              Models::DynamicComponents::ContentBlocks::NumericCard.new(
                 title: card_data[:title],
                 text_content: to_content_block(card_data[:textContent], paragraph_class: "govuk-body-l"),
                 number: index + 1
@@ -221,7 +221,7 @@ module Cms
 
           def self.to_picture_card_array(strapi_data)
             strapi_data.map do |card_data|
-              DynamicComponents::ContentBlocks::PictureCard.new(
+              Models::DynamicComponents::ContentBlocks::PictureCard.new(
                 image: to_image(card_data, :image, default_size: :medium),
                 title: card_data[:title],
                 body_text: to_content_block(card_data[:textContent]),
@@ -233,7 +233,7 @@ module Cms
 
           def self.to_resource_card_array(strapi_data)
             strapi_data.map do |card_data|
-              DynamicComponents::ContentBlocks::ResourceCard.new(
+              Models::DynamicComponents::ContentBlocks::ResourceCard.new(
                 title: card_data[:title],
                 icon: to_image(card_data, :icon, default_size: :medium),
                 color_theme: extract_color_name(card_data, :colorTheme),
@@ -246,7 +246,7 @@ module Cms
 
           def self.to_course_card_array(strapi_data)
             strapi_data.map do |card_data|
-              DynamicComponents::ContentBlocks::CourseCard.new(
+              Models::DynamicComponents::ContentBlocks::CourseCard.new(
                 title: card_data[:title],
                 banner_text: card_data[:bannerText],
                 course_code: card_data[:courseCode],
@@ -258,7 +258,7 @@ module Cms
 
           def self.to_horizontal_link_card_array(strapi_data)
             strapi_data.map do |card_data|
-              DynamicComponents::ContentBlocks::HorizontalLinkCard.new(
+              Models::DynamicComponents::ContentBlocks::HorizontalLinkCard.new(
                 title: card_data[:title],
                 link_url: card_data[:linkUrl],
                 card_content: to_content_block(card_data[:cardContent]),
@@ -269,7 +269,7 @@ module Cms
 
           def self.to_video_card_array(strapi_data)
             strapi_data.map do |card_data|
-              DynamicComponents::ContentBlocks::VideoCard.new(
+              Models::DynamicComponents::ContentBlocks::VideoCard.new(
                 title: card_data[:title],
                 text_content: to_content_block(card_data[:textContent], paragraph_class: "govuk-body-s"),
                 video: to_embedded_video({url: card_data[:videoUrl]}),
@@ -282,7 +282,7 @@ module Cms
 
           def self.to_programme_picture_card_array(strapi_data, programme)
             strapi_data.map do |card_data|
-              DynamicComponents::ContentBlocks::ProgrammePictureCard.new(
+              Models::DynamicComponents::ContentBlocks::ProgrammePictureCard.new(
                 title: card_data[:title],
                 image: to_image(card_data, :image, default_size: :medium),
                 text_content: to_content_block(card_data[:textContent]),
@@ -296,7 +296,7 @@ module Cms
             programme_slug = extract_programme_slug(strapi_data, :prog)
             programme = Programme.find_by(slug: programme_slug)
 
-            DynamicComponents::ProgrammeCardWrapper.new(
+            Models::DynamicComponents::Blocks::ProgrammeCardWrapper.new(
               title: strapi_data[:sectionTitle],
               intro_text: to_content_block(strapi_data[:introText].presence || []),
               cards_block: to_programme_picture_card_array(strapi_data[:programmeCards], programme),
@@ -308,7 +308,7 @@ module Cms
           end
 
           def self.to_card_wrapper(strapi_data, cards_block, title_as_paragraph: false)
-            DynamicComponents::Blocks::CardWrapper.new(
+            Models::DynamicComponents::Blocks::CardWrapper.new(
               title: strapi_data[:sectionTitle],
               intro_text: to_content_block(strapi_data[:introText].presence || []),
               cards_block: cards_block,
@@ -319,7 +319,7 @@ module Cms
           end
 
           def self.to_full_width_banner(strapi_data)
-            DynamicComponents::Blocks::FullWidthBanner.new(
+            Models::DynamicComponents::Blocks::FullWidthBanner.new(
               text_content: to_content_block(strapi_data[:textContent]),
               background_color: extract_color_name(strapi_data, :backgroundColor),
               box_color: extract_color_name(strapi_data, :boxColor),
@@ -336,7 +336,7 @@ module Cms
           end
 
           def self.to_full_width_text(strapi_data)
-            DynamicComponents::Blocks::FullWidthText.new(
+            Models::DynamicComponents::Blocks::FullWidthText.new(
               blocks: to_content_block(strapi_data[:textContent]),
               background_color: extract_color_name(strapi_data, :backgroundColor),
               show_bottom_border: strapi_data[:showBottomBorder]
@@ -344,7 +344,7 @@ module Cms
           end
 
           def self.to_horizontal_card(strapi_data)
-            DynamicComponents::Blocks::HorizontalCard.new(
+            Models::DynamicComponents::Blocks::HorizontalCard.new(
               title: strapi_data[:title],
               body_blocks: to_content_block(strapi_data[:textContent]),
               image: to_image(strapi_data, :image, default_size: :small),
@@ -358,7 +358,7 @@ module Cms
           end
 
           def self.to_numbered_icon_list(strapi_data)
-            DynamicComponents::Blocks::NumberedIconList.new(
+            Models::DynamicComponents::Blocks::NumberedIconList.new(
               title: strapi_data[:title],
               title_icon: to_image(strapi_data, :titleIcon),
               points: strapi_data[:points].map { to_content_block(_1[:textContent]) },
@@ -367,7 +367,7 @@ module Cms
           end
 
           def self.to_question_and_answer(strapi_data)
-            DynamicComponents::Blocks::QuestionAndAnswer.new(
+            Models::DynamicComponents::Blocks::QuestionAndAnswer.new(
               question: strapi_data[:question],
               answer: to_content_block(strapi_data[:answer]),
               aside_sections: extract_aside_sections(strapi_data),
@@ -378,7 +378,7 @@ module Cms
           end
 
           def self.to_split_horizontal_card(strapi_data)
-            DynamicComponents::Blocks::SplitHorizontalCard.new(
+            Models::DynamicComponents::Blocks::SplitHorizontalCard.new(
               card_content: to_content_block(strapi_data[:cardContent]),
               aside_content: to_content_block(strapi_data[:asideContent]),
               aside_icon: to_image(strapi_data, :asideIcon),
@@ -390,7 +390,7 @@ module Cms
           end
 
           def self.to_testimonial_row(strapi_data)
-            DynamicComponents::Blocks::TestimonialRow.new(
+            Models::DynamicComponents::Blocks::TestimonialRow.new(
               title: strapi_data[:title],
               background_color: extract_color_name(strapi_data, :backgroundColor),
               testimonials: strapi_data[:testimonials].map { to_testimonial(_1) }
@@ -398,7 +398,7 @@ module Cms
           end
 
           def self.to_text_with_asides(strapi_data)
-            DynamicComponents::Blocks::TextWithAsides.new(
+            Models::DynamicComponents::Blocks::TextWithAsides.new(
               blocks: to_content_block(strapi_data[:textContent]),
               asides: extract_aside_sections(strapi_data),
               background_color: extract_color_name(strapi_data, :bkColor)

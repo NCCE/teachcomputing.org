@@ -6,24 +6,24 @@ module Cms
           attr_accessor :resource_name, :resource_filter
 
           QUERY_MAPS = {
-            DynamicComponents::ContentBlocks::QuestionBankForm => Components::ContentBlocks::QuestionBankForm,
-            Models::AsideComponents::Aside => Aside,
-            Models::BlogComponents::BlogPreview => BlogPreview,
-            Models::BlogComponents::SimpleTitle => SimpleField,
-            Models::DynamicZoneComponents::DynamicZone => DynamicZone,
-            Models::DynamicZoneComponents::EnrichmentDynamicZone => EnrichmentDynamicZone,
-            Models::DynamicZoneComponents::HomepageDynamicZone => HomepageDynamicZone,
-            Models::EmailComponents::EmailTemplate => EmailTemplate,
-            Models::EnrichmentComponents::EnrichmentList => EnrichmentList,
-            Models::HeaderComponents::HeaderMenu => HeaderMenu,
-            Models::ImageComponents::FeaturedImage => FeaturedImage,
-            Models::MetaComponents::PageTitle => PageTitle,
-            Models::MetaComponents::Seo => Seo,
-            Models::MetaComponents::Slug => Slug,
-            Models::MetaComponents::WebPagePreview => WebPagePreview,
-            Models::TextComponents::TextBlock => SimpleField,
-            Models::TextComponents::TextBlockWithoutWrapper => SimpleField,
-            Models::TextComponents::TextField => SimpleField
+            Models::DynamicComponents::ContentBlocks::QuestionBankForm => Components::ContentBlocks::QuestionBankForm,
+            Models::Collections::Aside => Aside,
+            Models::Collections::BlogPreview => BlogPreview,
+            Models::Meta::SimpleTitle => SimpleField,
+            Models::DynamicZones::DynamicZone => DynamicZone,
+            Models::DynamicZones::EnrichmentDynamicZone => EnrichmentDynamicZone,
+            Models::DynamicZones::HomepageDynamicZone => HomepageDynamicZone,
+            Models::Collections::EmailTemplate => EmailTemplate,
+            Models::Collections::EnrichmentList => EnrichmentList,
+            Models::Meta::HeaderMenu => HeaderMenu,
+            Models::Images::FeaturedImage => FeaturedImage,
+            Models::Meta::PageTitle => PageTitle,
+            Models::Meta::Seo => Seo,
+            Models::Data::Slug => Slug,
+            Models::Data::WebPagePreview => WebPagePreview,
+            Models::Text::TextBlock => SimpleField,
+            Models::Text::TextBlockWithoutWrapper => SimpleField,
+            Models::Data::TextField => SimpleField
           }.freeze
 
           def initialize(collection_class, resource_filter = "slug")

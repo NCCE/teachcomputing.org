@@ -7,7 +7,7 @@ RSpec.describe Cms::NumericCardComponent, type: :component do
     render_inline(described_class.new(
       title: nil,
       number: 1,
-      text_content: Cms::Mocks::TextComponents::RichBlocks.as_model
+      text_content: Cms::Mocks::Text::RichBlocks.as_model
     ))
   end
 

@@ -58,11 +58,11 @@ module StrapiStubs
   end
 
   def stub_strapi_media_upload
-    stub_request(:post, /^https:\/\/strapi.teachcomputing.org\/api\/upload/).to_return_json(body: Cms::Mocks::ImageComponents::Image.generate_raw_data)
+    stub_request(:post, /^https:\/\/strapi.teachcomputing.org\/api\/upload/).to_return_json(body: Cms::Mocks::Images::Image.generate_raw_data)
   end
 
   def stub_strapi_media_query
-    stub_request(:get, /^https:\/\/strapi.teachcomputing.org\/api\/upload\/files/).to_return_json(body: [Cms::Mocks::ImageComponents::Image.generate_raw_data])
+    stub_request(:get, /^https:\/\/strapi.teachcomputing.org\/api\/upload\/files/).to_return_json(body: [Cms::Mocks::Images::Image.generate_raw_data])
   end
 
   def stub_strapi_update(resource_key)
@@ -189,7 +189,7 @@ module StrapiStubs
     end
   end
 
-  def stub_strapi_email_template(key, email_template: Cms::Mocks::EmailComponents::EmailTemplate.generate_raw_data)
+  def stub_strapi_email_template(key, email_template: Cms::Mocks::Collections::EmailTemplate.generate_raw_data)
     if as_graphql
       stub_strapi_graphql_query("emailTemplates", email_template, unique_key: key)
     else

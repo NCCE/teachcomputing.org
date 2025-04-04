@@ -6,7 +6,7 @@ module Cms
           class AsideSection < StrapiMock
             attribute(:slug) { Faker::Internet.slug }
             attribute(:title) { Faker::Lorem.sentence }
-            attribute(:content) { [TextComponents::TextBlock.generate_raw_data] }
+            attribute(:content) { [Text::TextBlock.generate_raw_data] }
             attribute(:showHeadingLine) { true }
             attribute(:asideIcons) { [] }
 

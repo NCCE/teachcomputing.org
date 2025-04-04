@@ -9,8 +9,8 @@ module Cms
 
               attribute(:title) { Faker::Lorem.sentence }
               attribute(:linkUrl) { Faker::Internet.url }
-              attribute(:cardContent) { TextComponents::RichBlocks.generate_data }
-              attribute(:theme) { {data: MetaComponents::ColorScheme.generate_data} }
+              attribute(:cardContent) { Text::RichBlocks.generate_data }
+              attribute(:theme) { {data: Meta::ColorScheme.generate_data} }
             end
           end
         end

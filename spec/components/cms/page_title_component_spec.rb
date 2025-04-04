@@ -35,7 +35,7 @@ RSpec.describe Cms::PageTitleComponent, type: :component do
 
   context "With Media" do
     before do
-      render_inline(described_class.new(title: "Page title", sub_text: "Sub text for the page", title_image: Cms::Mocks::ImageComponents::Image.as_model))
+      render_inline(described_class.new(title: "Page title", sub_text: "Sub text for the page", title_image: Cms::Mocks::Images::Image.as_model))
     end
 
     it "renders the title" do
@@ -57,7 +57,7 @@ RSpec.describe Cms::PageTitleComponent, type: :component do
 
   context "With video" do
     before do
-      render_inline(described_class.new(title: "Page title", sub_text: "Sub text for the page", title_image: Cms::Mocks::ImageComponents::Image.as_model, title_video_url: "https://www.youtube.com/watch?v=aYYcHSESJxo"))
+      render_inline(described_class.new(title: "Page title", sub_text: "Sub text for the page", title_image: Cms::Mocks::Images::Image.as_model, title_video_url: "https://www.youtube.com/watch?v=aYYcHSESJxo"))
     end
 
     it "renders the title" do

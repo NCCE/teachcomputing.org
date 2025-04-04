@@ -4,8 +4,8 @@ module Cms
       module Mocks
         module Collections
           class EnrichmentPage < StrapiMock
-            attribute(:pageTitle) { MetaComponents::PageTitle.generate_data }
-            attribute(:seo) { MetaComponents::Seo.generate_data }
+            attribute(:pageTitle) { Meta::PageTitle.generate_data }
+            attribute(:seo) { Meta::Seo.generate_data }
             attribute(:slug) { Faker::Internet.slug }
             attribute(:featuredSectionTitle) { Faker::Lorem.sentence }
             attribute(:allSectionTitle) { Faker::Lorem.sentence }

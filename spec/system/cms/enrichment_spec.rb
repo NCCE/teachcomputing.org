@@ -18,7 +18,7 @@ RSpec.describe("Enrichment Page", type: [:system]) do
         terms: {data: [autumn_term]},
         age_groups: {data: [ks1]},
         type: {data: challenge},
-        rich_title: Cms::Mocks::TextComponents::RichBlocks.single_line("Featured Item")
+        rich_title: Cms::Mocks::Text::RichBlocks.single_line("Featured Item")
       ),
       Cms::Mocks::Collections::Enrichment.generate_raw_data(
         terms: {data: [autumn_term]},

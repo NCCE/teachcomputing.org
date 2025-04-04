@@ -6,7 +6,7 @@ module Cms
           class PrimaryGlossaryTableItems < StrapiMock
             attribute(:term) { Faker::Lorem.word }
             attribute(:keyStage) { Faker::Lorem.word }
-            attribute(:definition) { TextComponents::RichBlocks.generate_data }
+            attribute(:definition) { Text::RichBlocks.generate_data }
           end
         end
       end

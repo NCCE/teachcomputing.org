@@ -6,8 +6,8 @@ module Cms
           module Blocks
             class FullWidthBanner < StrapiMock
               strapi_component "blocks.full-width-banner"
-              attribute(:textContent) { TextComponents::RichBlocks.generate_data }
-              attribute(:image) { ImageComponents::Image.generate_data }
+              attribute(:textContent) { Text::RichBlocks.generate_data }
+              attribute(:image) { Images::Image.generate_data }
               attribute(:imageLink) { Faker::Internet.url }
               attribute(:backgroundColor) { {name: "white"} }
               attribute(:imageSide) { "right" }

@@ -4,14 +4,14 @@ module Cms
       module Factories
         module ParameterFactory
           def self.generate_parameters(model_class)
-            if model_class == Cms::Models::MetaComponents::Seo
+            if model_class == Cms::Models::Meta::Seo
               {
                 populate: {featuredImage: {populate: [:alternativeText]}},
                 fields: [:title, :description]
               }
-            elsif model_class == Models::ImageComponents::FeaturedImage
+            elsif model_class == Models::Images::FeaturedImage
               {populate: [:alternativeText, :caption]}
-            elsif model_class == Models::EnrichmentComponents::EnrichmentList
+            elsif model_class == Models::Collections::EnrichmentList
               {
                 populate: {
                   partner_icon: {populate: [:alternativeText]},
@@ -20,7 +20,7 @@ module Cms
                   type: {populate: {icon: {populate: [:alternativeText]}}}
                 }
               }
-            elsif model_class == Models::BlogComponents::BlogPreview
+            elsif model_class == Models::Collections::BlogPreview
               {
                 populate: {featuredImage: {populate: [:alternativeText]}},
                 fields: [:title, :excerpt, :publishDate, :slug, :publishedAt, :createdAt, :updatedAt],
@@ -29,7 +29,7 @@ module Cms
                   publishDate: {"$lt": DateTime.now.strftime}
                 }
               }
-            elsif model_class == Models::EmailComponents::EmailTemplate
+            elsif model_class == Models::Collections::EmailTemplate
               {
                 programme: {field: [:slug]},
                 emailContent: {
@@ -43,17 +43,17 @@ module Cms
                   }
                 }
               }
-            elsif model_class == Models::MetaComponents::WebPagePreview
+            elsif model_class == Models::Data::WebPagePreview
               {
                 populate: {seo: {fields: [:title, :description]}},
                 fields: [:slug, :publishedAt, :createdAt, :updatedAt]
               }
-            elsif model_class == Models::MetaComponents::PageTitle
+            elsif model_class == Models::Meta::PageTitle
               {
                 fields: [:title],
                 populate: {titleImage: {populate: [:alternativeText]}}
               }
-            elsif model_class == Models::AsideComponents::Aside
+            elsif model_class == Models::Collections::Aside
               {
                 fields: [:slug, :title, :showHeadingLine],
                 titleIcon: {populate: [:alternativeText]},
@@ -70,7 +70,7 @@ module Cms
                   }
                 }
               }
-            elsif model_class == Models::DynamicZoneComponents::DynamicZone
+            elsif model_class == Models::DynamicZones::DynamicZone
               {
                 on: {
                   "blocks.text-with-asides": ComponentParameterFactory.text_with_asides_parameters,

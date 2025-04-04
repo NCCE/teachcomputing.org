@@ -8,7 +8,7 @@ RSpec.describe Cms::HorizontalCardWithAsidesComponent, type: :component do
       stub_strapi_aside_section("test-aside")
 
       render_inline(described_class.new(
-        text: Cms::Mocks::TextComponents::RichBlocks.as_model,
+        text: Cms::Mocks::Text::RichBlocks.as_model,
         aside_sections: [{slug: "test-aside"}]
       ))
     end
@@ -28,7 +28,7 @@ RSpec.describe Cms::HorizontalCardWithAsidesComponent, type: :component do
       stub_strapi_aside_section("test-aside2")
 
       render_inline(described_class.new(
-        text: Cms::Mocks::TextComponents::RichBlocks.as_model,
+        text: Cms::Mocks::Text::RichBlocks.as_model,
         aside_sections: [{slug: "test-aside"}, {slug: "test-aside2"}]
       ))
     end
@@ -42,7 +42,7 @@ RSpec.describe Cms::HorizontalCardWithAsidesComponent, type: :component do
         stub_strapi_aside_section("test-aside")
 
         render_inline(described_class.new(
-          text: Cms::Mocks::TextComponents::RichBlocks.as_model,
+          text: Cms::Mocks::Text::RichBlocks.as_model,
           aside_sections: [{slug: "test-aside"}],
           background_color: "orange"
         ))
@@ -58,7 +58,7 @@ RSpec.describe Cms::HorizontalCardWithAsidesComponent, type: :component do
         stub_strapi_aside_section("test-aside")
 
         render_inline(described_class.new(
-          text: Cms::Mocks::TextComponents::RichBlocks.as_model,
+          text: Cms::Mocks::Text::RichBlocks.as_model,
           aside_sections: [{slug: "test-aside"}],
           color_theme: "standard"
         ))
@@ -74,7 +74,7 @@ RSpec.describe Cms::HorizontalCardWithAsidesComponent, type: :component do
         stub_strapi_aside_section("test-aside")
 
         render_inline(described_class.new(
-          text: Cms::Mocks::TextComponents::RichBlocks.as_model,
+          text: Cms::Mocks::Text::RichBlocks.as_model,
           aside_sections: [{slug: "test-aside"}],
           button: Cms::Mocks::DynamicComponents::Buttons::NcceButton.as_model
         ))

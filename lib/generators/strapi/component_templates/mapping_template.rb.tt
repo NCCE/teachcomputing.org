@@ -1,5 +1,5 @@
 module Cms
-  module DynamicComponents
+ module Models module DynamicComponents
     module <%= @component_type_class %>
       class <%= @component_name_class %>
         attr_accessor <%= @rails_param_names.map{":#{_1}"}.join(", ") %>

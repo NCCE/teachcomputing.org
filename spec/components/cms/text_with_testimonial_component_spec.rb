@@ -6,7 +6,7 @@ RSpec.describe Cms::TextWithTestimonialComponent, type: :component do
   context "right side testimonial no buttons" do
     before do
       render_inline(described_class.new(
-        text_content: Cms::Mocks::TextComponents::RichBlocks.as_model,
+        text_content: Cms::Mocks::Text::RichBlocks.as_model,
         testimonial: Cms::Mocks::DynamicComponents::ContentBlocks::Testimonial.as_model,
         testimonial_side: "right",
         background_color: "purple",
@@ -30,7 +30,7 @@ RSpec.describe Cms::TextWithTestimonialComponent, type: :component do
   context "left side testimonial with buttons" do
     before do
       render_inline(described_class.new(
-        text_content: Cms::Mocks::TextComponents::RichBlocks.as_model,
+        text_content: Cms::Mocks::Text::RichBlocks.as_model,
         testimonial: Cms::Mocks::DynamicComponents::ContentBlocks::Testimonial.as_model,
         testimonial_side: "left",
         background_color: "purple",

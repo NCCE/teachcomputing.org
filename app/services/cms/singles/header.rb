@@ -3,7 +3,7 @@ module Cms
     class Header < Resource
       def self.resource_attribute_mappings
         [
-          {model: Models::HeaderComponents::HeaderMenu, key: :dropDowns}
+          {model: Models::Meta::HeaderMenu, key: :dropDowns}
         ]
       end
 

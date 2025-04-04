@@ -13,7 +13,7 @@ module Cms
 
       def self.resource_attribute_mappings
         [
-          {model: Models::AsideComponents::Aside, key: nil}
+          {model: Models::Collections::Aside, key: nil}
         ]
       end
 

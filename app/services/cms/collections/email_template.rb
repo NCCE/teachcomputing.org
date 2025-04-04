@@ -5,13 +5,13 @@ module Cms
 
       def self.collection_attribute_mapping
         [
-          {model: Models::EmailComponents::EmailTemplate, key: nil, param_name: :template}
+          {model: Models::Collections::EmailTemplate, key: nil, param_name: :template}
         ]
       end
 
       def self.resource_attribute_mappings
         [
-          {model: Models::EmailComponents::EmailTemplate, key: nil, param_name: :template}
+          {model: Models::Collections::EmailTemplate, key: nil, param_name: :template}
         ]
       end
 

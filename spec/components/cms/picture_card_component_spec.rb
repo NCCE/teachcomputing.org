@@ -4,13 +4,13 @@ require "rails_helper"
 
 RSpec.describe Cms::PictureCardComponent, type: :component do
   let(:title) { Faker::Lorem.word }
-  let(:body_text) { Cms::Mocks::TextComponents::RichBlocks.as_model }
+  let(:body_text) { Cms::Mocks::Text::RichBlocks.as_model }
 
   context "has all the values defined" do
     before do
       render_inline(described_class.new(
         title: title,
-        image: Cms::Mocks::ImageComponents::Image.as_model,
+        image: Cms::Mocks::Images::Image.as_model,
         color_theme: "standard",
         body_text: body_text,
         link: Faker::Internet.url
@@ -46,7 +46,7 @@ RSpec.describe Cms::PictureCardComponent, type: :component do
     before do
       render_inline(described_class.new(
         title: title,
-        image: Cms::Mocks::ImageComponents::Image.as_model,
+        image: Cms::Mocks::Images::Image.as_model,
         body_text: body_text
       ))
     end

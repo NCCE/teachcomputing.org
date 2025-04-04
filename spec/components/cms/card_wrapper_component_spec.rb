@@ -50,7 +50,7 @@ RSpec.describe Cms::CardWrapperComponent, type: :component do
     before do
       render_inline(described_class.new(
         title: "Section Title",
-        intro_text: Cms::Mocks::TextComponents::RichBlocks.as_model,
+        intro_text: Cms::Mocks::Text::RichBlocks.as_model,
         cards_per_row: 3,
         cards_block: resource_cards(1).cards_block,
         background_color: "light-grey"

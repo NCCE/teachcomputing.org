@@ -8,7 +8,7 @@ module Cms
               strapi_component "blocks.question-and-answer"
 
               attribute(:question) { Faker::Lorem.sentence }
-              attribute(:answer) { TextComponents::RichBlocks.generate_data }
+              attribute(:answer) { Text::RichBlocks.generate_data }
               attribute(:asideSections) { Collections::AsideSection.generate_aside_list }
               attribute(:answerIcons) { [] }
               attribute(:asideAlignment) { :top }

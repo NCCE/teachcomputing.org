@@ -3,13 +3,13 @@
 require "rails_helper"
 
 RSpec.describe Cms::ResourceCardComponent, type: :component do
-  let(:body_text) { Cms::Mocks::TextComponents::RichBlocks.as_model }
+  let(:body_text) { Cms::Mocks::Text::RichBlocks.as_model }
 
   context "has all the values defined" do
     before do
       render_inline(described_class.new(
         title: "Card Title",
-        icon: Cms::Mocks::ImageComponents::Image.as_model,
+        icon: Cms::Mocks::Images::Image.as_model,
         color_theme: "standard",
         body_text: body_text,
         button_text: "Click here",

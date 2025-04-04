@@ -8,8 +8,8 @@ module Cms
               strapi_component "blocks.programme-picture-card"
 
               attribute(:title) { Faker::Lorem.sentence }
-              attribute(:textContent) { RichBlocks.generate_data }
-              attribute(:image) { {data: Image.generate_raw_data} }
+              attribute(:textContent) { Mocks::Text::RichBlocks.generate_data }
+              attribute(:image) { {data: Mocks::Images::Image.generate_raw_data} }
               attribute(:loggedOutLinkTitle) { Faker::Lorem.sentence }
               attribute(:loggedOutLink) { Faker::Internet.url }
               attribute(:enrolledLinkTitle) { Faker::Lorem.sentence }

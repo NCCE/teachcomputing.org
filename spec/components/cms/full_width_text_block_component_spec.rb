@@ -5,7 +5,7 @@ require "rails_helper"
 RSpec.describe Cms::FullWidthTextBlockComponent, type: :component do
   context "without background color" do
     before do
-      render_inline(described_class.new(blocks: Cms::Mocks::TextComponents::RichBlocks.as_model, background_color: nil, show_bottom_border: false))
+      render_inline(described_class.new(blocks: Cms::Mocks::Text::RichBlocks.as_model, background_color: nil, show_bottom_border: false))
     end
 
     it "renders govuk grid row" do
@@ -20,7 +20,7 @@ RSpec.describe Cms::FullWidthTextBlockComponent, type: :component do
   context "with background color and border" do
     before do
       render_inline(described_class.new(
-        blocks: Cms::Mocks::TextComponents::RichBlocks.as_model,
+        blocks: Cms::Mocks::Text::RichBlocks.as_model,
         background_color: "light-grey",
         show_bottom_border: true
       ))

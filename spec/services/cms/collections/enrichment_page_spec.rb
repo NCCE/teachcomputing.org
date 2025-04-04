@@ -2,10 +2,10 @@ require "rails_helper"
 
 RSpec.describe Cms::Collections::EnrichmentPage do
   let(:required_models) {
-    [Cms::Models::MetaComponents::Slug, Cms::Models::MetaComponents::Seo, Cms::Models::MetaComponents::PageTitle,
-      Cms::Models::DynamicZoneComponents::EnrichmentDynamicZone, Cms::Models::EnrichmentComponents::EnrichmentList,
-      Cms::Models::TextComponents::TextField, Cms::Models::TextComponents::TextField, Cms::Models::TextComponents::TextField,
-      Cms::Models::TextComponents::TextField, Cms::Models::TextComponents::TextField]
+    [Cms::Models::Data::Slug, Cms::Models::Meta::Seo, Cms::Models::Meta::PageTitle,
+      Cms::Models::DynamicZones::EnrichmentDynamicZone, Cms::Models::Collections::EnrichmentList,
+      Cms::Models::Data::TextField, Cms::Models::Data::TextField, Cms::Models::Data::TextField,
+      Cms::Models::Data::TextField, Cms::Models::Data::TextField]
   }
 
   before do

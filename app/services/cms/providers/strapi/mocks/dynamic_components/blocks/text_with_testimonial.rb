@@ -7,7 +7,7 @@ module Cms
             class TextWithTestimonial < StrapiMock
               strapi_component "blocks.text-with-testimonial"
 
-              attribute(:textContent) { TextComponents::RichBlocks.generate_data }
+              attribute(:textContent) { Text::RichBlocks.generate_data }
               attribute(:buttons) { [] }
               attribute(:testimonial) { ContentBlocks::Testimonial.generate_data }
               attribute(:testimonialSide) { "left" }

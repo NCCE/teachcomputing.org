@@ -4,7 +4,7 @@ RSpec.describe Cms::Providers::Strapi::Client do
   let(:page_class) {
     dbl = class_double("Cms::Pages::TestPage")
     allow(dbl).to receive(:resource_attribute_mappings).and_return([
-      {model: Cms::Models::BlogComponents::SimpleTitle, key: :title}
+      {model: Cms::Models::Meta::SimpleTitle, key: :title}
     ])
     allow(dbl).to receive(:resource_key).and_return("test-page")
     dbl
@@ -13,11 +13,11 @@ RSpec.describe Cms::Providers::Strapi::Client do
   let(:collection_class) {
     dbl = class_double("Cms::Collections::TestCollection")
     allow(dbl).to receive(:resource_attribute_mappings).and_return([
-      {model: Cms::Models::BlogComponents::SimpleTitle, key: :title}
+      {model: Cms::Models::Meta::SimpleTitle, key: :title}
     ])
     allow(dbl).to receive(:resource_key).and_return("test-collection")
     allow(dbl).to receive(:collection_attribute_mappings).and_return([
-      {model: Cms::Models::BlogComponents::SimpleTitle, key: :title}
+      {model: Cms::Models::Meta::SimpleTitle, key: :title}
     ])
     dbl
   }
@@ -34,7 +34,7 @@ RSpec.describe Cms::Providers::Strapi::Client do
     stub_strapi_get_single_entity("test-page")
     response = client.one(page_class)
     expect(response[:id]).to eq(1)
-    expect(response[:data_models].first).to be_a Cms::Models::BlogComponents::SimpleTitle
+    expect(response[:data_models].first).to be_a Cms::Models::Meta::SimpleTitle
   end
 
   it "calls all with query parameter adds filter" do
@@ -113,8 +113,8 @@ RSpec.describe Cms::Providers::Strapi::Client do
   context "creates populate params" do
     let(:mappings) {
       [
-        {model: Cms::Models::BlogComponents::SimpleTitle, key: :title},
-        {model: Cms::Models::ImageComponents::FeaturedImage, key: :featuredImage}
+        {model: Cms::Models::Meta::SimpleTitle, key: :title},
+        {model: Cms::Models::Images::FeaturedImage, key: :featuredImage}
       ]
     }
     it "adds versions when preview requested" do

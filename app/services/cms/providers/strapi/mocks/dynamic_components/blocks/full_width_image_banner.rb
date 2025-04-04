@@ -7,10 +7,10 @@ module Cms
             class FullWidthImageBanner < StrapiMock
               strapi_component "blocks.full-width-image-banner"
 
-              attribute(:backgroundImage) { ImageComponents::Image.generate_raw_data }
+              attribute(:backgroundImage) { Images::Image.generate_raw_data }
               attribute(:overlayTitle) { Faker::Lorem.sentence }
-              attribute(:overlayText) { TextComponents::RichBlocks.generate_data }
-              attribute(:overlayIcon) { ImageComponents::Image.generate_raw_data }
+              attribute(:overlayText) { Text::RichBlocks.generate_data }
+              attribute(:overlayIcon) { Images::Image.generate_raw_data }
               attribute(:overlaySide) { "right" }
             end
           end

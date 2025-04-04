@@ -8,7 +8,7 @@ module Cms
               strapi_component "blocks.resource-card-section"
               attribute(:cardsPerRow) { 3 }
               attribute(:sectionTitle) { Faker::Lorem.sentence }
-              attribute(:introText) { TextComponents::RichBlocks.generate_data }
+              attribute(:introText) { Text::RichBlocks.generate_data }
               attribute(:colorTheme) { nil }
               attribute(:resourceCards) { Array.new(3) { DynamicComponents::ContentBlocks::ResourceCard.generate_data } }
             end

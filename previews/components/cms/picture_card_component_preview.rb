@@ -22,7 +22,7 @@ class Cms::PictureCardComponentPreview < ViewComponent::Preview
     card_section = Cms::Mocks::DynamicComponents::Blocks::PictureCardSection.as_model(
       picture_cards: Array.new(3) {
                        Cms::Mocks::DynamicComponents::ContentBlocks::PictureCard.generate_data(
-                         color_theme: {data: Cms::Mocks::MetaComponents::ColorScheme.generate_data(name: "standard")}
+                         color_theme: {data: Cms::Mocks::Meta::ColorScheme.generate_data(name: "standard")}
                        )
                      }
     )
@@ -39,7 +39,7 @@ class Cms::PictureCardComponentPreview < ViewComponent::Preview
     card_section = Cms::Mocks::DynamicComponents::Blocks::PictureCardSection.as_model(
       picture_cards: Array.new(3) {
                        Cms::Mocks::DynamicComponents::ContentBlocks::PictureCard.generate_data(
-                         color_theme: {data: Cms::Mocks::MetaComponents::ColorScheme.generate_data(name: "standard")}
+                         color_theme: {data: Cms::Mocks::Meta::ColorScheme.generate_data(name: "standard")}
                        )
                      }
     )

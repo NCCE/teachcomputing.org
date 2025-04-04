@@ -8,7 +8,7 @@ module Cms
               strapi_component "content-blocks.numeric-card"
 
               attribute(:title) { nil }
-              attribute(:textContent) { TextComponents::RichBlocks.generate_data }
+              attribute(:textContent) { Text::RichBlocks.generate_data }
             end
           end
         end

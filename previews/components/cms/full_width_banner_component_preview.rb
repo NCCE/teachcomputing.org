@@ -3,10 +3,10 @@
 class Cms::FullWidthBannerComponentPreview < ViewComponent::Preview
   def default
     render(Cms::FullWidthBannerComponent.new(
-      text_content: Cms::Mocks::TextComponents::RichBlocks.as_model,
+      text_content: Cms::Mocks::Text::RichBlocks.as_model,
       title: "Banner title",
       background_color: :white,
-      image: Cms::Mocks::ImageComponents::Image.as_model,
+      image: Cms::Mocks::Images::Image.as_model,
       image_side: "left",
       image_link: nil,
       buttons: []
@@ -16,9 +16,9 @@ class Cms::FullWidthBannerComponentPreview < ViewComponent::Preview
   def with_button
     render(Cms::FullWidthBannerComponent.new(
       title: "Banner title",
-      text_content: Cms::Mocks::TextComponents::RichBlocks.as_model,
+      text_content: Cms::Mocks::Text::RichBlocks.as_model,
       background_color: :white,
-      image: Cms::Mocks::ImageComponents::Image.as_model,
+      image: Cms::Mocks::Images::Image.as_model,
       image_side: "left",
       image_link: nil,
       buttons: [Cms::Mocks::DynamicComponents::Buttons::NcceButton.as_model]
@@ -28,9 +28,9 @@ class Cms::FullWidthBannerComponentPreview < ViewComponent::Preview
   def with_i_belong_flag
     render(Cms::FullWidthBannerComponent.new(
       title: "Banner title",
-      text_content: Cms::Mocks::TextComponents::RichBlocks.as_model,
+      text_content: Cms::Mocks::Text::RichBlocks.as_model,
       background_color: :white,
-      image: Cms::Mocks::ImageComponents::Image.as_model,
+      image: Cms::Mocks::Images::Image.as_model,
       image_side: "right",
       image_link: nil,
       buttons: [Cms::Mocks::DynamicComponents::Buttons::NcceButton.as_model],
@@ -41,9 +41,9 @@ class Cms::FullWidthBannerComponentPreview < ViewComponent::Preview
   def with_corner_flourish
     render(Cms::FullWidthBannerComponent.new(
       title: "Banner title",
-      text_content: Cms::Mocks::TextComponents::RichBlocks.as_model,
+      text_content: Cms::Mocks::Text::RichBlocks.as_model,
       background_color: :white,
-      image: Cms::Mocks::ImageComponents::Image.as_model,
+      image: Cms::Mocks::Images::Image.as_model,
       image_side: "left",
       image_link: nil,
       buttons: [Cms::Mocks::DynamicComponents::Buttons::NcceButton.as_model],

@@ -6,7 +6,7 @@ class Cms::DynamicZoneComponent < ViewComponent::Base
   end
 
   def needs_padding?
-    @cms_models.any? { _1.instance_of?(Cms::DynamicComponents::Blocks::StickyDashboardBar) }
+    @cms_models.any? { _1.instance_of?(Cms::Models::DynamicComponents::Blocks::StickyDashboardBar) }
   end
 
   def classes
