@@ -4,8 +4,8 @@ require "rails_helper"
 
 RSpec.describe Cms::CardWrapperComponent, type: :component do
   def resource_cards(number_of_cards)
-    Cms::Mocks::ResourceCardSection.as_model(resource_cards: Array.new(number_of_cards) {
-      Cms::Mocks::ResourceCard.generate_data
+    Cms::Mocks::DynamicComponents::Blocks::ResourceCardSection.as_model(resource_cards: Array.new(number_of_cards) {
+      Cms::Mocks::DynamicComponents::ContentBlocks::ResourceCard.generate_data
     })
   end
 
@@ -50,7 +50,7 @@ RSpec.describe Cms::CardWrapperComponent, type: :component do
     before do
       render_inline(described_class.new(
         title: "Section Title",
-        intro_text: Cms::Mocks::RichBlocks.as_model,
+        intro_text: Cms::Mocks::Text::RichBlocks.as_model,
         cards_per_row: 3,
         cards_block: resource_cards(1).cards_block,
         background_color: "light-grey"
@@ -100,7 +100,7 @@ RSpec.describe Cms::CardWrapperComponent, type: :component do
   end
 
   context "is a picture card" do
-    let(:picture_card) { Cms::Mocks::PictureCardSection.as_model }
+    let(:picture_card) { Cms::Mocks::DynamicComponents::Blocks::PictureCardSection.as_model }
     before do
       render_inline(described_class.new(
         title: nil,

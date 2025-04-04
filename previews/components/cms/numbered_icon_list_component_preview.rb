@@ -2,7 +2,7 @@
 
 class Cms::NumberedIconListComponentPreview < ViewComponent::Preview
   def default
-    numbered_icon_list = Cms::Mocks::NumberedIconList.as_model
+    numbered_icon_list = Cms::Mocks::DynamicComponents::Blocks::NumberedIconList.as_model
     render(Cms::NumberedIconListComponent.new(
       title: numbered_icon_list.title,
       title_icon: numbered_icon_list.title_icon,

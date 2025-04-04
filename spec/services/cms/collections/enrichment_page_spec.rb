@@ -2,8 +2,10 @@ require "rails_helper"
 
 RSpec.describe Cms::Collections::EnrichmentPage do
   let(:required_models) {
-    [Cms::Models::Slug, Cms::Models::Seo, Cms::Models::PageTitle, Cms::Models::EnrichmentDynamicZone, Cms::Models::EnrichmentList,
-      Cms::Models::TextField, Cms::Models::TextField, Cms::Models::TextField, Cms::Models::TextField, Cms::Models::TextField]
+    [Cms::Models::Data::Slug, Cms::Models::Meta::Seo, Cms::Models::Meta::PageTitle,
+      Cms::Models::DynamicZones::EnrichmentDynamicZone, Cms::Models::Collections::EnrichmentList,
+      Cms::Models::Data::TextField, Cms::Models::Data::TextField, Cms::Models::Data::TextField,
+      Cms::Models::Data::TextField, Cms::Models::Data::TextField]
   }
 
   before do
@@ -25,8 +27,8 @@ RSpec.describe Cms::Collections::EnrichmentPage do
   context "slug" do
     before do
       enrichment_pages = [
-        Cms::Mocks::EnrichmentPage.generate_raw_data(slug: "test-enrichment-page-slug"),
-        Cms::Mocks::EnrichmentPage.generate_raw_data(slug: "second-test-enrichment-page-slug")
+        Cms::Mocks::Collections::EnrichmentPage.generate_raw_data(slug: "test-enrichment-page-slug"),
+        Cms::Mocks::Collections::EnrichmentPage.generate_raw_data(slug: "second-test-enrichment-page-slug")
       ]
       stub_strapi_enrichment_collection(enrichment_pages:)
     end
@@ -38,7 +40,7 @@ RSpec.describe Cms::Collections::EnrichmentPage do
     end
 
     it "should return correctly for single page" do
-      stub_strapi_enrichment_page("single-enrichment-page", enrichment_page: Cms::Mocks::EnrichmentPage.generate_raw_data(slug: "single-enrichment-page"))
+      stub_strapi_enrichment_page("single-enrichment-page", enrichment_page: Cms::Mocks::Collections::EnrichmentPage.generate_raw_data(slug: "single-enrichment-page"))
       page = described_class.get("single-enrichment-page")
       expect(page.slug).to eq("single-enrichment-page")
     end

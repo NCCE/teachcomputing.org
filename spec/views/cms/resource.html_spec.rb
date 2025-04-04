@@ -3,9 +3,9 @@ require "rails_helper"
 RSpec.describe("cms/resource", type: :view) do
   before do
     stub_strapi_header
-    stub_strapi_blog_post("test-blog", blog: Cms::Mocks::Blog.generate_raw_data(
+    stub_strapi_blog_post("test-blog", blog: Cms::Mocks::Collections::Blog.generate_raw_data(
       slug: "test-blog",
-      seo: Cms::Mocks::Seo.generate_data(title: "some SEO content", description: "testing")
+      seo: Cms::Mocks::Meta::Seo.generate_data(title: "some SEO content", description: "testing")
     ))
     @resource = Cms::Collections::Blog.get("test-blog")
     assign(:wrapper_class, "cms-blogs-test-blog")

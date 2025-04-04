@@ -2,7 +2,7 @@ class Cms::CardWrapperComponentPreview < ViewComponent::Preview
   layout "full-width"
 
   def one_card_per_row
-    card_section = Cms::Mocks::ResourceCardSection.as_model
+    card_section = Cms::Mocks::DynamicComponents::Blocks::ResourceCardSection.as_model
 
     render(Cms::CardWrapperComponent.new(
       title: card_section.title,
@@ -13,7 +13,7 @@ class Cms::CardWrapperComponentPreview < ViewComponent::Preview
   end
 
   def two_cards_per_row
-    card_section = Cms::Mocks::ResourceCardSection.as_model
+    card_section = Cms::Mocks::DynamicComponents::Blocks::ResourceCardSection.as_model
 
     render(Cms::CardWrapperComponent.new(
       title: card_section.title,
@@ -24,7 +24,7 @@ class Cms::CardWrapperComponentPreview < ViewComponent::Preview
   end
 
   def three_cards_per_row
-    card_section = Cms::Mocks::ResourceCardSection.as_model
+    card_section = Cms::Mocks::DynamicComponents::Blocks::ResourceCardSection.as_model
 
     render(Cms::CardWrapperComponent.new(
       title: card_section.title,

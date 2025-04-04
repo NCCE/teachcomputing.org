@@ -17,7 +17,7 @@ RSpec.describe Cms::Collections::Programme do
     let(:slug) { "programme-resource-test" }
     let!(:programme) { create(:programme, slug:) }
     before do
-      mock_data = Cms::Mocks::Programme.generate_raw_data(slug:)
+      mock_data = Cms::Mocks::Collections::Programme.generate_raw_data(slug:)
       stub_strapi_programme(slug, programme: mock_data)
     end
 

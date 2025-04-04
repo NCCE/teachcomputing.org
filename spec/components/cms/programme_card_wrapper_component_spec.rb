@@ -6,7 +6,7 @@ RSpec.describe Cms::ProgrammeCardWrapperComponent, type: :component do
   let!(:programme) { create(:i_belong) }
 
   def programme_cards(number_of_cards)
-    Cms::Mocks::ProgrammePictureCardSection.as_model(programme_cards: Array.new(number_of_cards) {
+    Cms::Mocks::DynamicComponents::Blocks::ProgrammePictureCardSection.as_model(programme_cards: Array.new(number_of_cards) {
       Cms::Mocks::DynamicComponents::ContentBlocks::ProgrammePictureCard.generate_data
     })
   end
@@ -39,7 +39,7 @@ RSpec.describe Cms::ProgrammeCardWrapperComponent, type: :component do
     before do
       render_inline(described_class.new(
         title: "Section Title",
-        intro_text: Cms::Mocks::RichBlocks.as_model,
+        intro_text: Cms::Mocks::Text::RichBlocks.as_model,
         cards_per_row: 3,
         cards_block: programme_cards(1).cards_block,
         background_color: "light-grey",

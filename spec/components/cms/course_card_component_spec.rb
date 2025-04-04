@@ -15,8 +15,8 @@ RSpec.describe Cms::CourseCardComponent, type: :component do
         title: "Learn how to teach computing",
         banner_text: "Banner text",
         course: course,
-        description: Cms::Mocks::RichBlocks.as_model,
-        image: Cms::Mocks::Image.as_model
+        description: Cms::Mocks::Text::RichBlocks.as_model,
+        image: Cms::Mocks::Images::Image.as_model
       ))
     end
 
@@ -43,8 +43,8 @@ RSpec.describe Cms::CourseCardComponent, type: :component do
         title: nil,
         banner_text: "Banner text",
         course:,
-        description: Cms::Mocks::RichBlocks.as_model,
-        image: Cms::Mocks::Image.as_model
+        description: Cms::Mocks::Text::RichBlocks.as_model,
+        image: Cms::Mocks::Images::Image.as_model
       ))
     end
 
@@ -59,8 +59,8 @@ RSpec.describe Cms::CourseCardComponent, type: :component do
         title: nil,
         banner_text: "Banner text",
         course: nil,
-        description: Cms::Mocks::RichBlocks.as_model,
-        image: Cms::Mocks::Image.as_model
+        description: Cms::Mocks::Text::RichBlocks.as_model,
+        image: Cms::Mocks::Images::Image.as_model
       ))
     end
 
@@ -76,7 +76,7 @@ RSpec.describe Cms::CourseCardComponent, type: :component do
         banner_text: "Banner text",
         course:,
         description: nil,
-        image: Cms::Mocks::Image.as_model
+        image: Cms::Mocks::Images::Image.as_model
       ))
     end
 

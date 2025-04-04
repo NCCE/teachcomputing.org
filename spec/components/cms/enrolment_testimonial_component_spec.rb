@@ -23,7 +23,7 @@ RSpec.describe Cms::EnrolmentTestimonialComponent, type: :component do
       allow_any_instance_of(AuthenticationHelper).to receive(:current_user).and_return(nil)
       render_inline(described_class.new(
         title: Faker::Lorem.sentence,
-        testimonial: Cms::Mocks::Testimonial.as_model,
+        testimonial: Cms::Mocks::DynamicComponents::ContentBlocks::Testimonial.as_model,
         enrolled_aside: enrolled_aside_slug,
         enrol_aside: enrol_aside_slug,
         programme_slug: programme.slug,
@@ -45,7 +45,7 @@ RSpec.describe Cms::EnrolmentTestimonialComponent, type: :component do
       allow_any_instance_of(AuthenticationHelper).to receive(:current_user).and_return(unenrolled_user)
       render_inline(described_class.new(
         title: Faker::Lorem.sentence,
-        testimonial: Cms::Mocks::Testimonial.as_model,
+        testimonial: Cms::Mocks::DynamicComponents::ContentBlocks::Testimonial.as_model,
         enrolled_aside: enrolled_aside_slug,
         enrol_aside: enrol_aside_slug,
         programme_slug: programme.slug,
@@ -67,7 +67,7 @@ RSpec.describe Cms::EnrolmentTestimonialComponent, type: :component do
       allow_any_instance_of(AuthenticationHelper).to receive(:current_user).and_return(enrolled_user)
       render_inline(described_class.new(
         title: Faker::Lorem.sentence,
-        testimonial: Cms::Mocks::Testimonial.as_model,
+        testimonial: Cms::Mocks::DynamicComponents::ContentBlocks::Testimonial.as_model,
         enrolled_aside: enrolled_aside_slug,
         enrol_aside: enrol_aside_slug,
         programme_slug: programme.slug,

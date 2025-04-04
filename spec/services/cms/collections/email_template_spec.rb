@@ -15,13 +15,13 @@ RSpec.describe Cms::Collections::EmailTemplate do
 
   it "should have the correct models" do
     models = described_class.resource_attribute_mappings.collect { _1[:model] }
-    expect(models).to eq([Cms::Models::EmailTemplate])
+    expect(models).to eq([Cms::Models::Collections::EmailTemplate])
   end
 
   describe "#template" do
     it "should return the template" do
       email_template = described_class.get("email-template-collection-test")
-      expect(email_template.template).to be_instance_of(Cms::Models::EmailTemplate)
+      expect(email_template.template).to be_instance_of(Cms::Models::Collections::EmailTemplate)
     end
   end
 end

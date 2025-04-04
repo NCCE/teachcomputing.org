@@ -5,7 +5,7 @@ RSpec.describe Cms::Resource do
     Class.new(described_class) do
       def self.resource_attribute_mappings
         [
-          {model: Cms::Models::SimpleTitle, key: :title}
+          {model: Cms::Models::Meta::SimpleTitle, key: :title}
         ]
       end
 
@@ -66,7 +66,7 @@ RSpec.describe Cms::Resource do
         it "calling resource_view should return the correct component" do
           stub_strapi_get_single_entity("cms-resource-test")
           response = test_class.get
-          expect(response.data_models.first).to be_a Cms::Models::SimpleTitle
+          expect(response.data_models.first).to be_a Cms::Models::Meta::SimpleTitle
         end
 
         it "should raise error when calling all" do
@@ -101,13 +101,13 @@ RSpec.describe Cms::Resource do
 
             def self.collection_attribute_mappings
               [
-                {key: :title, model: Cms::Models::SimpleTitle}
+                {key: :title, model: Cms::Models::Meta::SimpleTitle}
               ]
             end
 
             def self.resource_attribute_mappings
               [
-                {key: :title, model: Cms::Models::SimpleTitle}
+                {key: :title, model: Cms::Models::Meta::SimpleTitle}
               ]
             end
 
@@ -133,11 +133,11 @@ RSpec.describe Cms::Resource do
 
         describe "#param_name" do
           it "should use key as param_name" do
-            expect(collection_class.param_name({key: :title, model: Cms::Models::SimpleTitle})).to eq(:title)
+            expect(collection_class.param_name({key: :title, model: Cms::Models::Meta::SimpleTitle})).to eq(:title)
           end
 
           it "should use param_name as name when specified" do
-            expect(collection_class.param_name({key: :title, model: Cms::Models::SimpleTitle, param_name: :something})).to eq(:something)
+            expect(collection_class.param_name({key: :title, model: Cms::Models::Meta::SimpleTitle, param_name: :something})).to eq(:something)
           end
         end
 
@@ -154,7 +154,7 @@ RSpec.describe Cms::Resource do
         it "calling collection_view should create component" do
           response = collection_class.all(1, 10)
           resource = response.resources.first
-          expect(resource.data_models.first).to be_a Cms::Models::SimpleTitle
+          expect(resource.data_models.first).to be_a Cms::Models::Meta::SimpleTitle
         end
 
         it "calling get should return single record" do
@@ -176,7 +176,7 @@ RSpec.describe Cms::Resource do
 
         it "should respond data model for mapping key" do
           response = collection_class.get("test-post")
-          expect(response.title).to be_a Cms::Models::SimpleTitle
+          expect(response.title).to be_a Cms::Models::Meta::SimpleTitle
         end
 
         context "should cache results" do
@@ -234,7 +234,7 @@ RSpec.describe Cms::Resource do
   describe "#all_records" do
     describe "with multiple records" do
       before do
-        blogs = Array.new(210) { Cms::Mocks::Blog.generate_raw_data }
+        blogs = Array.new(210) { Cms::Mocks::Collections::Blog.generate_raw_data }
 
         stub_strapi_blog_collection(blogs:, page: 1, page_size: 100)
         stub_strapi_blog_collection(blogs:, page: 2, page_size: 100)
@@ -248,7 +248,7 @@ RSpec.describe Cms::Resource do
 
     describe "with one record" do
       before do
-        blogs = [Cms::Mocks::Blog.generate_raw_data]
+        blogs = [Cms::Mocks::Collections::Blog.generate_raw_data]
 
         stub_strapi_blog_collection(blogs:, page: 1, page_size: 100)
       end

@@ -5,8 +5,8 @@ require "rails_helper"
 RSpec.describe Cms::TestimonialComponent, type: :component do
   let(:name) { Faker::Name.name }
   let(:job_title) { Faker::Job.title }
-  let(:avatar) { Cms::Mocks::Image.as_model }
-  let(:quote) { Cms::Mocks::RichBlocks.as_model }
+  let(:avatar) { Cms::Mocks::Images::Image.as_model }
+  let(:quote) { Cms::Mocks::Text::RichBlocks.as_model }
 
   before do
     render_inline(described_class.new(

@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Cms::QuestionBankFromComponentPreview < ViewComponent::Preview
+class Cms::QuestionBankFormComponentPreview < ViewComponent::Preview
   def default
     render(Cms::QuestionBankFormComponent.new(
       form_name: "Google Form",

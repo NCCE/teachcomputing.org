@@ -4,7 +4,7 @@ RSpec.describe ProgrammeStatusComponent, type: :component do
   let(:programme) { create(:primary_certificate) }
 
   before do
-    stub_strapi_programme(programme.slug, programme: Cms::Mocks::Programme.generate_raw_data(
+    stub_strapi_programme(programme.slug, programme: Cms::Mocks::Collections::Programme.generate_raw_data(
       status_pending_title: "Pending title",
       status_completed_title: "Completed title"
     ))

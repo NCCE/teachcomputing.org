@@ -4,7 +4,7 @@ require "rails_helper"
 
 RSpec.describe Cms::IconRowComponent, type: :component do
   before do
-    render_inline(described_class.new(icons: Array.new(2) { Cms::Mocks::Icon.as_model }, background_color: nil))
+    render_inline(described_class.new(icons: Array.new(2) { Cms::Mocks::DynamicComponents::ContentBlocks::Icon.as_model }, background_color: nil))
   end
 
   it "should render images" do

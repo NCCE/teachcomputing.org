@@ -51,14 +51,14 @@ RSpec.describe CmsMailer, type: :mailer do
     ]
   }
   let(:email_template) {
-    Cms::Mocks::EmailTemplate.generate_raw_data(
+    Cms::Mocks::Collections::EmailTemplate.generate_raw_data(
       subject:,
       slug:,
       email_content:
     )
   }
   let(:email_template_merge_subject) {
-    Cms::Mocks::EmailTemplate.generate_raw_data(
+    Cms::Mocks::Collections::EmailTemplate.generate_raw_data(
       subject: "Congrats {first_name} you did {last_cpd_title}",
       slug: slug_with_merge_subject,
       email_content:

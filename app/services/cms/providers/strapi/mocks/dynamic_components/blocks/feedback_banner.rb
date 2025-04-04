@@ -8,7 +8,7 @@ module Cms
               strapi_component "blocks.feedback-banner"
 
               attribute(:title) { Faker::Lorem.sentence }
-              attribute(:button) { Cms::Mocks::NcceButton.generate_data }
+              attribute(:button) { Cms::Mocks::DynamicComponents::Buttons::NcceButton.generate_data }
             end
           end
         end

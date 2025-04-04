@@ -3,7 +3,7 @@
 class Cms::ButtonBlockComponentPreview < ViewComponent::Preview
   def with_padding_not_full_width_left_align
     render(Cms::ButtonBlockComponent.new(
-      buttons: Array.new(2) { Cms::Mocks::NcceButton.as_model },
+      buttons: Array.new(2) { Cms::Mocks::DynamicComponents::Buttons::NcceButton.as_model },
       background_color: nil,
       padding: true,
       full_width: false,
@@ -13,7 +13,7 @@ class Cms::ButtonBlockComponentPreview < ViewComponent::Preview
 
   def with_padding_full_width_center
     render(Cms::ButtonBlockComponent.new(
-      buttons: Array.new(2) { Cms::Mocks::NcceButton.as_model },
+      buttons: Array.new(2) { Cms::Mocks::DynamicComponents::Buttons::NcceButton.as_model },
       background_color: nil,
       padding: true,
       full_width: true,
@@ -23,7 +23,7 @@ class Cms::ButtonBlockComponentPreview < ViewComponent::Preview
 
   def with_padding_not_full_width_center
     render(Cms::ButtonBlockComponent.new(
-      buttons: Array.new(2) { Cms::Mocks::NcceButton.as_model },
+      buttons: Array.new(2) { Cms::Mocks::DynamicComponents::Buttons::NcceButton.as_model },
       background_color: nil,
       padding: true,
       full_width: false,
@@ -33,7 +33,7 @@ class Cms::ButtonBlockComponentPreview < ViewComponent::Preview
 
   def with_padding_full_width_right
     render(Cms::ButtonBlockComponent.new(
-      buttons: Array.new(2) { Cms::Mocks::NcceButton.as_model },
+      buttons: Array.new(2) { Cms::Mocks::DynamicComponents::Buttons::NcceButton.as_model },
       background_color: nil,
       padding: true,
       full_width: true,
@@ -43,7 +43,7 @@ class Cms::ButtonBlockComponentPreview < ViewComponent::Preview
 
   def with_padding_not_full_width_right
     render(Cms::ButtonBlockComponent.new(
-      buttons: Array.new(2) { Cms::Mocks::NcceButton.as_model },
+      buttons: Array.new(2) { Cms::Mocks::DynamicComponents::Buttons::NcceButton.as_model },
       background_color: nil,
       padding: true,
       full_width: false,

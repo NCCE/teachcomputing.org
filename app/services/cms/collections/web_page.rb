@@ -22,16 +22,16 @@ module Cms
 
       def self.collection_attribute_mappings
         [
-          {model: Cms::Models::WebPagePreview, key: nil}
+          {model: Models::Data::WebPagePreview, key: nil}
         ]
       end
 
       def self.resource_attribute_mappings
         [
-          {model: Cms::Models::Slug, key: nil},
-          {model: Cms::Models::PageTitle, key: :pageTitle},
-          {model: Cms::Models::Seo, key: :seo},
-          {model: Cms::Models::DynamicZone, key: :pageContent}
+          {model: Models::Data::Slug, key: nil},
+          {model: Models::Meta::PageTitle, key: :pageTitle},
+          {model: Models::Meta::Seo, key: :seo},
+          {model: Models::DynamicZones::DynamicZone, key: :pageContent}
         ]
       end
 
