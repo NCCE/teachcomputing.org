@@ -1,6 +1,6 @@
 module Cms
   module Models
-  module DynamicComponents
+    module DynamicComponents
       module Blocks
         class CurriculumKeyStages
           attr_accessor :title, :background_color
