@@ -2,21 +2,27 @@ require "rails_helper"
 
 RSpec.describe "fields/achievement_list_field/show", type: :view do
   let(:user) { create(:user) }
+  let(:programme) { create(:primary_certificate) }
   let(:completed_achievement) { create(:completed_achievement, user:, evidence: ["I did the thing. \n This is more on a new line. \n Testing another line in the text."]) }
   let(:ongoing_achievement) { create(:achievement, user:) }
   let(:rejected_achievement) { create(:rejected_achievement, user:) }
+  let!(:programme_activities) {
+    create(:programme_activity, programme:, activity: completed_achievement.activity)
+    create(:programme_activity, programme:, activity: ongoing_achievement.activity)
+    create(:programme_activity, programme:, activity: rejected_achievement.activity)
+  }
 
   before do
     completed_achievement
     ongoing_achievement
     rejected_achievement
-    field = instance_double(
+    user.reload
+    render partial: subject, locals: {field: instance_double(
       "AchievementListField",
       attribute: :achievements,
       data: user.achievements,
       state_list: StateMachines::AchievementStateMachine.states
-    )
-    render partial: subject, locals: {field:}
+    )}
   end
 
   it "should list achievments" do

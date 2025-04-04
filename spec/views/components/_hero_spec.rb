@@ -83,4 +83,14 @@ RSpec.describe("components/_hero", type: :view) do
       expect(rendered).to have_css(".hero__heading-wrapper--full-width", count: 1)
     end
   end
+
+  context "when display_i_belong_flag is passed in " do
+    before do
+      render template: "components/_hero", locals: {hero_title: hero_title, display_i_belong_flag: true}
+    end
+
+    it "should display the i belong flag" do
+      expect(rendered).to have_css(".i-belong-hero__area--logo")
+    end
+  end
 end
