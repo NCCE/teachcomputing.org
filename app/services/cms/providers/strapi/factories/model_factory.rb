@@ -119,13 +119,13 @@ module Cms
           end
 
           def self.to_featured_image(strapi_data, _all_data, size = :large)
-            return nil if strapi_data[:data]
-
+            return nil unless strapi_data[:data][:attributes]
+            image_data = strapi_data[:data][:attributes]
             {
-              url: strapi_data[:url],
-              alt: strapi_data[:alternativeText],
-              caption: strapi_data[:caption],
-              formats: strapi_data[:formats],
+              url: image_data[:url],
+              alt: image_data[:alternativeText],
+              caption: image_data[:caption],
+              formats: image_data[:formats],
               size:
             }
           end
