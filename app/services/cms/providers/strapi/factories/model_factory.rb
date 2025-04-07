@@ -68,7 +68,7 @@ module Cms
               title: strapi_data[:title],
               excerpt: strapi_data[:excerpt],
               publish_date: strapi_data[:publishDate],
-              featured_image: strapi_data[:featuredImage][:data].nil? ? nil : Models::Images::FeaturedImage.new(**to_featured_image(strapi_data[:featuredImage][:data][:attributes], nil, :small)),
+              featured_image: strapi_data[:featuredImage][:data].nil? ? nil : Models::Images::FeaturedImage.new(**to_featured_image(strapi_data[:featuredImage], nil, :small)),
               slug: strapi_data[:slug]
             }
           end
@@ -119,7 +119,7 @@ module Cms
           end
 
           def self.to_featured_image(strapi_data, _all_data, size = :large)
-            return nil unless strapi_data[:data][:attributes]
+            return nil unless strapi_data.dig(:data, :attributes)
             image_data = strapi_data[:data][:attributes]
             {
               url: image_data[:url],

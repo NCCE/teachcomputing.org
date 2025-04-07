@@ -1,7 +1,7 @@
 require "rails_helper"
 
 RSpec.describe Cms::Models::Images::FeaturedImage do
-  it "should render a Cms::ImageComponent" do
+  it "should render a FeaturedImageComponent" do
     @comp = Cms::Providers::Strapi::Factories::ModelFactory.process_model(
       {model: Cms::Models::Images::FeaturedImage, key: :featuredImage},
       {featuredImage: {data: Cms::Mocks::Images::Image.generate_raw_data}}
