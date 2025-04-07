@@ -6,8 +6,8 @@ RSpec.describe Strapi::ComponentGenerator, type: :generator do
   let(:tmp_dir) { Rails.root.join("tmp/gen_test") }
   let(:query_file_path) { file_path("app/services/cms/providers/strapi/queries/components/blocks/gen_test.rb") }
   let(:query_test_path) { file_path("spec/services/cms/providers/strapi/queries/components/blocks/gen_test_spec.rb") }
-  let(:mapping_file_path) { file_path("app/services/cms/dynamic_components/blocks/gen_test.rb") }
-  let(:mapping_test_path) { file_path("spec/services/cms/dynamic_components/blocks/gen_test_spec.rb") }
+  let(:mapping_file_path) { file_path("app/services/cms/models/dynamic_components/blocks/gen_test.rb") }
+  let(:mapping_test_path) { file_path("spec/services/cms/models/dynamic_components/blocks/gen_test_spec.rb") }
   let(:mock_path) { file_path("app/services/cms/providers/strapi/mocks/dynamic_components/blocks/gen_test.rb") }
 
   tests Strapi::ComponentGenerator
