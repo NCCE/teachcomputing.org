@@ -22,7 +22,7 @@ module Cms
 
       def self.collection_attribute_mappings
         [
-          {model: Cms::Models::Data::WebPagePreview, key: nil}
+          {model: Models::Data::WebPagePreview, key: nil}
         ]
       end
 

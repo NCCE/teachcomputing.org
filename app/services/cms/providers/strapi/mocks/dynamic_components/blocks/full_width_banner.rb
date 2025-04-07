@@ -10,10 +10,12 @@ module Cms
               attribute(:image) { Images::Image.generate_data }
               attribute(:imageLink) { Faker::Internet.url }
               attribute(:backgroundColor) { {name: "white"} }
+              attribute(:boxColor) { {name: "white"} }
               attribute(:imageSide) { "right" }
               attribute(:buttons) { nil }
-              attribute(:i_belong_flag) { false }
-              attribute(:corner_flourish) { false }
+              attribute(:iBelongFlag) { false }
+              attribute(:cornerFlourish) { false }
+              attribute(:imageFit) { false }
             end
           end
         end

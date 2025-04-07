@@ -8,10 +8,10 @@ module Cms
               strapi_component "blocks.programme-picture-card-section"
 
               attribute(:sectionTitle) { Faker::Lorem.sentence }
-              attribute(:introText) { Mocks::Text::RichBlocks.generate_data }
+              attribute(:introText) { Text::RichBlocks.generate_data }
               attribute(:cardsPerRow) { 3 }
               attribute(:prog) { {data: {attributes: {slug: "i-belong"}}} }
-              attribute(:programmeCards) { Array.new(3) { Mocks::DynamicComponents::ContentBlocks::ProgrammePictureCard.generate_data } }
+              attribute(:programmeCards) { Array.new(3) { DynamicComponents::ContentBlocks::ProgrammePictureCard.generate_data } }
             end
           end
         end

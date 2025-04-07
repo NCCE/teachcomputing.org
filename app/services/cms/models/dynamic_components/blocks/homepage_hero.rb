@@ -12,7 +12,7 @@ module Cms
           end
 
           def render
-            HomepageHeroComponent.new(title:, house_content:, buttons:)
+            Cms::HomepageHeroComponent.new(title:, house_content:, buttons:)
           end
         end
       end

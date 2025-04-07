@@ -6,24 +6,24 @@ module Cms
           attr_accessor :resource_name, :resource_filter
 
           QUERY_MAPS = {
-            Models::DynamicComponents::ContentBlocks::QuestionBankForm => Components::ContentBlocks::QuestionBankForm,
             Models::Collections::Aside => Aside,
             Models::Collections::BlogPreview => BlogPreview,
-            Models::Meta::SimpleTitle => SimpleField,
+            Models::Collections::EmailTemplate => EmailTemplate,
+            Models::Collections::EnrichmentList => EnrichmentList,
+            Models::Data::Slug => Slug,
+            Models::Data::TextField => SimpleField,
+            Models::Data::WebPagePreview => WebPagePreview,
+            Models::DynamicComponents::ContentBlocks::QuestionBankForm => Components::ContentBlocks::QuestionBankForm,
             Models::DynamicZones::DynamicZone => DynamicZone,
             Models::DynamicZones::EnrichmentDynamicZone => EnrichmentDynamicZone,
             Models::DynamicZones::HomepageDynamicZone => HomepageDynamicZone,
-            Models::Collections::EmailTemplate => EmailTemplate,
-            Models::Collections::EnrichmentList => EnrichmentList,
-            Models::Meta::HeaderMenu => HeaderMenu,
             Models::Images::FeaturedImage => FeaturedImage,
+            Models::Meta::HeaderMenu => HeaderMenu,
             Models::Meta::PageTitle => PageTitle,
             Models::Meta::Seo => Seo,
-            Models::Data::Slug => Slug,
-            Models::Data::WebPagePreview => WebPagePreview,
+            Models::Meta::SimpleTitle => SimpleField,
             Models::Text::TextBlock => SimpleField,
-            Models::Text::TextBlockWithoutWrapper => SimpleField,
-            Models::Data::TextField => SimpleField
+            Models::Text::TextBlockWithoutWrapper => SimpleField
           }.freeze
 
           def initialize(collection_class, resource_filter = "slug")
