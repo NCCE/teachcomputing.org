@@ -39,11 +39,11 @@ module Strapi
     end
 
     def create_data_file
-      template("mapping_template.rb.tt", File.join(BASE_PATH, "dynamic_components", @component_type_filename, "#{@component_filename}.rb"))
+      template("mapping_template.rb.tt", File.join(BASE_PATH, "models/dynamic_components", @component_type_filename, "#{@component_filename}.rb"))
     end
 
     def create_data_text
-      template("mapping_test_template.rb.tt", File.join(TEST_BASE_PATH, "dynamic_components", @component_type_filename, "#{@component_filename}_spec.rb"))
+      template("mapping_test_template.rb.tt", File.join(TEST_BASE_PATH, "models/dynamic_components", @component_type_filename, "#{@component_filename}_spec.rb"))
     end
 
     def run_view_component_generator
