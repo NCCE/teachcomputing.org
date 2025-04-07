@@ -12,7 +12,7 @@ module StrapiStubs
   end
 
   def stub_strapi_blog_post(slug, blog: nil)
-    blog_post = blog.presence || Cms::Mocks::Blog.generate_raw_data(slug:)
+    blog_post = blog.presence || Cms::Mocks::Collections::Blog.generate_raw_data(slug:)
     if as_graphql
       stub_strapi_graphql_query("blogs", blog_post)
     else
@@ -20,12 +20,12 @@ module StrapiStubs
     end
   end
 
-  def stub_strapi_get_single_resource(resource_key, data: Cms::Mocks::Blog.generate_raw_data)
+  def stub_strapi_get_single_resource(resource_key, data: Cms::Mocks::Collections::Blog.generate_raw_data)
     stub_request(:get, /^https:\/\/strapi.teachcomputing.org\/api\/#{resource_key}?/).to_return_json(body: {data: data})
   end
 
   def stub_strapi_get_single_unpublished_blog_post(resource_key)
-    unpublished_post = Cms::Mocks::Blog.generate_raw_data(slug: resource_key, publish_date: nil, published_at: nil)
+    unpublished_post = Cms::Mocks::Collections::Blog.generate_raw_data(slug: resource_key, publish_date: nil, published_at: nil)
     if as_graphql
       stub_strapi_graphql_query("blogs", unpublished_post)
     else
@@ -37,7 +37,7 @@ module StrapiStubs
 
   def stub_strapi_get_collection_entity(resource_key)
     stub_request(:get, /^https:\/\/strapi.teachcomputing.org\/api\/#{resource_key}?/).to_return_json(body: to_strapi_collection(
-      Array.new(5) { Cms::Mocks::BlogTag.generate_raw_data }
+      Array.new(5) { Cms::Mocks::Collections::BlogTag.generate_raw_data }
     ))
   end
 
@@ -58,11 +58,11 @@ module StrapiStubs
   end
 
   def stub_strapi_media_upload
-    stub_request(:post, /^https:\/\/strapi.teachcomputing.org\/api\/upload/).to_return_json(body: Cms::Mocks::Image.generate_raw_data)
+    stub_request(:post, /^https:\/\/strapi.teachcomputing.org\/api\/upload/).to_return_json(body: Cms::Mocks::Images::Image.generate_raw_data)
   end
 
   def stub_strapi_media_query
-    stub_request(:get, /^https:\/\/strapi.teachcomputing.org\/api\/upload\/files/).to_return_json(body: [Cms::Mocks::Image.generate_raw_data])
+    stub_request(:get, /^https:\/\/strapi.teachcomputing.org\/api\/upload\/files/).to_return_json(body: [Cms::Mocks::Images::Image.generate_raw_data])
   end
 
   def stub_strapi_update(resource_key)
@@ -89,7 +89,7 @@ module StrapiStubs
 
   def stub_strapi_blog_collection(blogs: nil, page: 1, page_size: 10)
     blog_list = if blogs.nil?
-      Array.new(5) { Cms::Mocks::Blog.generate_raw_data }
+      Array.new(5) { Cms::Mocks::Collections::Blog.generate_raw_data }
     else
       blogs
     end
@@ -102,7 +102,7 @@ module StrapiStubs
   end
 
   def stub_strapi_blog_collection_with_tag(tag)
-    blogs = Array.new(5) { Cms::Mocks::Blog.generate_raw_data }
+    blogs = Array.new(5) { Cms::Mocks::Collections::Blog.generate_raw_data }
     if as_graphql
       stub_strapi_graphql_collection_query("blogs", blogs)
     else
@@ -111,7 +111,7 @@ module StrapiStubs
   end
 
   def stub_strapi_aside_section(key, aside_data: {})
-    aside_section = Cms::Mocks::AsideSection.generate_raw_data(slug: key, **aside_data)
+    aside_section = Cms::Mocks::Collections::AsideSection.generate_raw_data(slug: key, **aside_data)
     if as_graphql
       stub_strapi_graphql_query("asideSections", aside_section, unique_key: key)
     else
@@ -128,7 +128,7 @@ module StrapiStubs
   end
 
   def stub_strapi_enrichment_page(key, enrichment_page: nil)
-    enrichment_page = enrichment_page.presence || Cms::Mocks::EnrichmentPage.generate_raw_data(slug: key)
+    enrichment_page = enrichment_page.presence || Cms::Mocks::Collections::EnrichmentPage.generate_raw_data(slug: key)
     if as_graphql
       stub_strapi_graphql_query("enrichmentPages", enrichment_page)
     else
@@ -137,7 +137,7 @@ module StrapiStubs
     end
   end
 
-  def stub_strapi_enrichment_collection(enrichment_pages: Array.new(2) { Cms::Mocks::EnrichmentPage.generate_raw_data })
+  def stub_strapi_enrichment_collection(enrichment_pages: Array.new(2) { Cms::Mocks::Collections::EnrichmentPage.generate_raw_data })
     if as_graphql
       stub_strapi_graphql_collection_query("enrichmentPages", enrichment_pages)
     else
@@ -147,7 +147,7 @@ module StrapiStubs
   end
 
   def stub_strapi_primary_computing_glossary_table_collection(table: nil, page: 1, page_size: 10)
-    table_list = table.presence || Array.new(5) { Cms::Mocks::PrimaryGlossaryTableItems.generate_raw_data }
+    table_list = table.presence || Array.new(5) { Cms::Mocks::Collections::PrimaryGlossaryTableItems.generate_raw_data }
     if as_graphql
       stub_strapi_graphql_collection_query("primaryComputingGlossaryTables", table_list, page:, page_size:)
     else
@@ -165,7 +165,7 @@ module StrapiStubs
   end
 
   def stub_strapi_web_page_collection(web_pages: nil)
-    web_page_list = web_pages.presence || Array.new(5) { Cms::Mocks::WebPage.generate_raw_data }
+    web_page_list = web_pages.presence || Array.new(5) { Cms::Mocks::Collections::WebPage.generate_raw_data }
     if as_graphql
       stub_strapi_graphql_collection_query("webPages", web_page_list)
     else
@@ -173,7 +173,7 @@ module StrapiStubs
     end
   end
 
-  def stub_strapi_web_page(key, page: Cms::Mocks::WebPage.generate_raw_data)
+  def stub_strapi_web_page(key, page: Cms::Mocks::Collections::WebPage.generate_raw_data)
     if as_graphql
       stub_strapi_graphql_query("webPages", page)
     else
@@ -189,7 +189,7 @@ module StrapiStubs
     end
   end
 
-  def stub_strapi_email_template(key, email_template: Cms::Mocks::EmailTemplate.generate_raw_data)
+  def stub_strapi_email_template(key, email_template: Cms::Mocks::Collections::EmailTemplate.generate_raw_data)
     if as_graphql
       stub_strapi_graphql_query("emailTemplates", email_template, unique_key: key)
     else
@@ -197,7 +197,7 @@ module StrapiStubs
     end
   end
 
-  def stub_strapi_programme(key, programme: Cms::Mocks::Programme.generate_raw_data)
+  def stub_strapi_programme(key, programme: Cms::Mocks::Collections::Programme.generate_raw_data)
     if as_graphql
       stub_strapi_graphql_query("programmes", programme)
     else
@@ -205,13 +205,13 @@ module StrapiStubs
     end
   end
 
-  def stub_strapi_header(header: Cms::Mocks::Header.generate_raw_data)
+  def stub_strapi_header(header: Cms::Mocks::Singles::Header.generate_raw_data)
     if as_graphql
       stub_strapi_graphql_query("header", header, singular: true)
     end
   end
 
-  def stub_strapi_homepage(homepage: Cms::Mocks::Homepage.generate_raw_data)
+  def stub_strapi_homepage(homepage: Cms::Mocks::Singles::Homepage.generate_raw_data)
     if as_graphql
       stub_strapi_graphql_query("homepage", homepage, singular: true)
     end

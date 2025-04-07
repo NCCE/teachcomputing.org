@@ -6,24 +6,24 @@ module Cms
           attr_accessor :resource_name, :resource_filter
 
           QUERY_MAPS = {
-            DynamicComponents::ContentBlocks::QuestionBankForm => Components::ContentBlocks::QuestionBankForm,
-            Models::Aside => Aside,
-            Models::BlogPreview => BlogPreview,
-            Models::DynamicZone => DynamicZone,
-            Models::EmailTemplate => EmailTemplate,
-            Models::EnrichmentDynamicZone => EnrichmentDynamicZone,
-            Models::EnrichmentList => EnrichmentList,
-            Models::FeaturedImage => FeaturedImage,
-            Models::HeaderMenu => HeaderMenu,
-            Models::HomepageDynamicZone => HomepageDynamicZone,
-            Models::PageTitle => PageTitle,
-            Models::Seo => Seo,
-            Models::SimpleTitle => SimpleField,
-            Models::Slug => Slug,
-            Models::TextBlock => SimpleField,
-            Models::TextBlockWithoutWrapper => SimpleField,
-            Models::TextField => SimpleField,
-            Models::WebPagePreview => WebPagePreview
+            Models::Collections::Aside => Aside,
+            Models::Collections::BlogPreview => BlogPreview,
+            Models::Collections::EmailTemplate => EmailTemplate,
+            Models::Collections::EnrichmentList => EnrichmentList,
+            Models::Data::Slug => Slug,
+            Models::Data::TextField => SimpleField,
+            Models::Data::WebPagePreview => WebPagePreview,
+            Models::DynamicComponents::ContentBlocks::QuestionBankForm => Components::ContentBlocks::QuestionBankForm,
+            Models::DynamicZones::DynamicZone => DynamicZone,
+            Models::DynamicZones::EnrichmentDynamicZone => EnrichmentDynamicZone,
+            Models::DynamicZones::HomepageDynamicZone => HomepageDynamicZone,
+            Models::Images::FeaturedImage => FeaturedImage,
+            Models::Meta::HeaderMenu => HeaderMenu,
+            Models::Meta::PageTitle => PageTitle,
+            Models::Meta::Seo => Seo,
+            Models::Meta::SimpleTitle => SimpleField,
+            Models::Text::TextBlock => SimpleField,
+            Models::Text::TextBlockWithoutWrapper => SimpleField
           }.freeze
 
           def initialize(collection_class, resource_filter = "slug")

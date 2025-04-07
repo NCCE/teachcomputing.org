@@ -2,9 +2,9 @@ class Cms::ResourceCardComponentPreview < ViewComponent::Preview
   layout "full-width"
 
   def default
-    card_section = Cms::Mocks::ResourceCardSection.as_model(
+    card_section = Cms::Mocks::DynamicComponents::Blocks::ResourceCardSection.as_model(
       resource_cards: Array.new(3) {
-                        Cms::Mocks::ResourceCard.generate_data(
+                        Cms::Mocks::DynamicComponents::ContentBlocks::ResourceCard.generate_data(
                           color_theme: nil
                         )
                       }
@@ -19,11 +19,11 @@ class Cms::ResourceCardComponentPreview < ViewComponent::Preview
   end
 
   def with_icons
-    card_section = Cms::Mocks::ResourceCardSection.as_model(
+    card_section = Cms::Mocks::DynamicComponents::Blocks::ResourceCardSection.as_model(
       resource_cards: Array.new(3) {
-                        Cms::Mocks::ResourceCard.generate_data(
-                          color_theme: {data: Cms::Mocks::ColorScheme.generate_data(name: "standard")},
-                          icon: {data: Cms::Mocks::Image.generate_raw_data}
+                        Cms::Mocks::DynamicComponents::ContentBlocks::ResourceCard.generate_data(
+                          color_theme: {data: Cms::Mocks::Meta::ColorScheme.generate_data(name: "standard")},
+                          icon: {data: Cms::Mocks::Images::Image.generate_raw_data}
                         )
                       }
     )
@@ -36,10 +36,10 @@ class Cms::ResourceCardComponentPreview < ViewComponent::Preview
   end
 
   def no_title
-    card_section = Cms::Mocks::ResourceCardSection.as_model(
+    card_section = Cms::Mocks::DynamicComponents::Blocks::ResourceCardSection.as_model(
       resource_cards: Array.new(3) {
-                        Cms::Mocks::ResourceCard.generate_data(
-                          color_theme: {data: Cms::Mocks::ColorScheme.generate_data(name: "standard")},
+                        Cms::Mocks::DynamicComponents::ContentBlocks::ResourceCard.generate_data(
+                          color_theme: {data: Cms::Mocks::Meta::ColorScheme.generate_data(name: "standard")},
                           title: nil
                         )
                       }
@@ -53,10 +53,10 @@ class Cms::ResourceCardComponentPreview < ViewComponent::Preview
   end
 
   def with_color_theme
-    card_section = Cms::Mocks::ResourceCardSection.as_model(
+    card_section = Cms::Mocks::DynamicComponents::Blocks::ResourceCardSection.as_model(
       resource_cards: Array.new(3) {
-                        Cms::Mocks::ResourceCard.generate_data(
-                          color_theme: {data: Cms::Mocks::ColorScheme.generate_data(name: "standard")}
+                        Cms::Mocks::DynamicComponents::ContentBlocks::ResourceCard.generate_data(
+                          color_theme: {data: Cms::Mocks::Meta::ColorScheme.generate_data(name: "standard")}
                         )
                       }
     )
@@ -70,10 +70,10 @@ class Cms::ResourceCardComponentPreview < ViewComponent::Preview
   end
 
   def with_button
-    card_section = Cms::Mocks::ResourceCardSection.as_model(
+    card_section = Cms::Mocks::DynamicComponents::Blocks::ResourceCardSection.as_model(
       resource_cards: Array.new(3) {
-                        Cms::Mocks::ResourceCard.generate_data(
-                          color_theme: {data: Cms::Mocks::ColorScheme.generate_data(name: "standard")},
+                        Cms::Mocks::DynamicComponents::ContentBlocks::ResourceCard.generate_data(
+                          color_theme: {data: Cms::Mocks::Meta::ColorScheme.generate_data(name: "standard")},
                           button_text: "Click here",
                           button_link: "https://www.google.com"
                         )

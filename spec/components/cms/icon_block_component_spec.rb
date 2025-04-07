@@ -3,9 +3,9 @@
 require "rails_helper"
 
 RSpec.describe Cms::IconBlockComponent, type: :component do
-  let(:icon_block_one_icon) { Cms::Mocks::IconBlocks.as_model }
+  let(:icon_block_one_icon) { Cms::Mocks::DynamicComponents::ContentBlocks::IconBlocks.as_model }
 
-  let(:icon_block_two_icons) { Cms::Mocks::IconBlocks.as_model(icon_count: 2) }
+  let(:icon_block_two_icons) { Cms::Mocks::DynamicComponents::ContentBlocks::IconBlocks.as_model(icon_count: 2) }
 
   context "with one icon" do
     before do

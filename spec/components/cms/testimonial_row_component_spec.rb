@@ -4,7 +4,7 @@ require "rails_helper"
 
 RSpec.describe Cms::TestimonialRowComponent, type: :component do
   context "Without title and background" do
-    let(:testimonials) { Array.new(2) { Cms::Mocks::Testimonial.as_model } }
+    let(:testimonials) { Array.new(2) { Cms::Mocks::DynamicComponents::ContentBlocks::Testimonial.as_model } }
 
     before do
       render_inline(described_class.new(
@@ -29,7 +29,7 @@ RSpec.describe Cms::TestimonialRowComponent, type: :component do
 
   context "With title and background" do
     let(:title) { Faker::Lorem.sentence }
-    let(:testimonials) { Array.new(3) { Cms::Mocks::Testimonial.as_model } }
+    let(:testimonials) { Array.new(3) { Cms::Mocks::DynamicComponents::ContentBlocks::Testimonial.as_model } }
     let(:background_color) { "light-grey" }
 
     before do

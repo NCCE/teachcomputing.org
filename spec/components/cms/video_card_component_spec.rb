@@ -8,11 +8,11 @@ RSpec.describe Cms::VideoCardComponent, type: :component do
   context "standard layout" do
     before do
       render_inline(described_class.new(
-        video: Cms::Mocks::DynamicComponents::EmbeddedVideo.as_model,
+        video: Cms::Mocks::DynamicComponents::ContentBlocks::EmbeddedVideo.as_model,
         title: "Card title",
         name: "John Smith",
         job_title: "Head of IT",
-        text_content: Cms::Mocks::RichBlocks.as_model,
+        text_content: Cms::Mocks::Text::RichBlocks.as_model,
         color_theme: "standard"
       ))
     end
@@ -49,11 +49,11 @@ RSpec.describe Cms::VideoCardComponent, type: :component do
   context "with no name job title or color theme" do
     before do
       render_inline(described_class.new(
-        video: Cms::Mocks::DynamicComponents::EmbeddedVideo.as_model,
+        video: Cms::Mocks::DynamicComponents::ContentBlocks::EmbeddedVideo.as_model,
         title: "Card title",
         name: nil,
         job_title: nil,
-        text_content: Cms::Mocks::RichBlocks.as_model,
+        text_content: Cms::Mocks::Text::RichBlocks.as_model,
         color_theme: nil
       ))
     end

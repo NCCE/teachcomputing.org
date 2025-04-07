@@ -3,7 +3,7 @@ class Cms::HorizontalCardWithAsidesComponentPreview < ViewComponent::Preview
 
   def default
     render(Cms::HorizontalCardWithAsidesComponent.new(
-      text: Cms::Mocks::RichBlocks.as_model,
+      text: Cms::Mocks::Text::RichBlocks.as_model,
       aside_sections: [],
       background_color: "light-grey",
       color_theme: "standard"

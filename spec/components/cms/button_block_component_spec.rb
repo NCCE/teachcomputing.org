@@ -6,7 +6,7 @@ RSpec.describe Cms::ButtonBlockComponent, type: :component do
   context "left alignment and no padding and not full width" do
     before do
       render_inline(described_class.new(
-        buttons: Array.new(2) { Cms::Mocks::NcceButton.as_model },
+        buttons: Array.new(2) { Cms::Mocks::DynamicComponents::Buttons::NcceButton.as_model },
         background_color: "purple",
         padding: false,
         alignment: "left",
@@ -38,7 +38,7 @@ RSpec.describe Cms::ButtonBlockComponent, type: :component do
   context "right alignment and no padding and full width" do
     before do
       render_inline(described_class.new(
-        buttons: Array.new(2) { Cms::Mocks::NcceButton.as_model },
+        buttons: Array.new(2) { Cms::Mocks::DynamicComponents::Buttons::NcceButton.as_model },
         background_color: "purple",
         padding: false,
         alignment: "right",
@@ -66,7 +66,7 @@ RSpec.describe Cms::ButtonBlockComponent, type: :component do
   context "right alignment and padding and full width" do
     before do
       render_inline(described_class.new(
-        buttons: Array.new(2) { Cms::Mocks::NcceButton.as_model },
+        buttons: Array.new(2) { Cms::Mocks::DynamicComponents::Buttons::NcceButton.as_model },
         background_color: "purple",
         padding: true,
         alignment: "center",

@@ -3,8 +3,8 @@ module Cms
     class Homepage < Resource
       def self.resource_attribute_mappings
         [
-          {model: Cms::Models::Seo, key: :seo},
-          {model: Cms::Models::HomepageDynamicZone, key: :content}
+          {model: Cms::Models::Meta::Seo, key: :seo},
+          {model: Cms::Models::DynamicZones::HomepageDynamicZone, key: :content}
         ]
       end
 

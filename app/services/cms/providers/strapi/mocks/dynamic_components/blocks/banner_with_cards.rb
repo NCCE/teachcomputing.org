@@ -8,7 +8,7 @@ module Cms
               strapi_component "blocks.banner-with-cards"
 
               attribute(:title) { Faker::Lorem.sentence }
-              attribute(:textContent) { RichBlocks.generate_data }
+              attribute(:textContent) { Text::RichBlocks.generate_data }
               attribute(:bkColor) { nil }
               attribute(:cards) { Array.new(2) { ContentBlocks::HorizontalLinkCard.generate_data } }
             end

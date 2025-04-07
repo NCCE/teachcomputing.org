@@ -7,7 +7,7 @@ RSpec.describe Cms::LinkWithIconComponent, type: :component do
     render_inline(described_class.new(
       url: "https://www.google.com",
       link_text: "Link to google",
-      icon: Cms::Mocks::Image.as_model
+      icon: Cms::Mocks::Images::Image.as_model
     ))
   end
 

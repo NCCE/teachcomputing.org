@@ -28,28 +28,28 @@ module Cms
           end
 
           def self.to_link(strapi_data)
-            DynamicComponents::ContentBlocks::Link.new(
+            Models::DynamicComponents::ContentBlocks::Link.new(
               link_text: strapi_data[:linkText],
               url: strapi_data[:url]
             )
           end
 
           def self.to_linked_picture(strapi_data)
-            DynamicComponents::LinkedPicture.new(
+            Models::DynamicComponents::ContentBlocks::LinkedPicture.new(
               image: to_image(strapi_data, :image),
               link: strapi_data[:link]
             )
           end
 
           def self.to_enrol_button(strapi_data)
-            DynamicComponents::EnrolButton.new(
+            Models::DynamicComponents::Buttons::EnrolButton.new(
               button_text: strapi_data[:buttonText],
               programme_slug: strapi_data[:programme][:data][:attributes][:slug]
             )
           end
 
           def self.to_link_with_icon(strapi_data)
-            DynamicComponents::LinkWithIcon.new(
+            Models::DynamicComponents::ContentBlocks::LinkWithIcon.new(
               url: strapi_data[:url],
               link_text: strapi_data[:linkText],
               icon: ModelFactory.to_image(strapi_data, :icon, default_size: :small)

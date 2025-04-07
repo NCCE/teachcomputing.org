@@ -62,6 +62,26 @@ a:not([class]) {
   }
 }
 
+.white-bg {
+  .ncce-link {
+    &:link,
+    &:visited {
+      color: $hyper-link-blue;
+    }
+    &:hover {
+      color: $grey-dark-x;
+    }
+    &:focus {
+      background-color: transparent;
+      color: $grey-dark-x;
+    }
+    &:active {
+      background-color: transparent;
+      color: $grey-dark-x;
+    }
+  }
+}
+
 .ncce-link__icon {
   height: 30px;
   margin-right: 10px;

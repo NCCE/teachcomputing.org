@@ -21,7 +21,7 @@ RSpec.describe("Primary certificate page") do
     allow_any_instance_of(AuthenticationHelper).to receive(:current_user).and_return(user)
     allow_any_instance_of(ActionController::Base).to receive(:protect_against_forgery?).and_return(true)
 
-    mock_data = Cms::Mocks::Programme.generate_raw_data(slug: programme.slug)
+    mock_data = Cms::Mocks::Collections::Programme.generate_raw_data(slug: programme.slug)
     stub_strapi_programme(programme.slug, programme: mock_data)
     stub_strapi_aside_section("primary-certificate-need-help")
     stub_strapi_aside_section("primary-dashboard-cpd-section")

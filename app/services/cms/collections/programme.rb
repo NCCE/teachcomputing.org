@@ -9,11 +9,11 @@ module Cms
 
       def self.resource_attribute_mappings
         [
-          {model: Models::Slug, key: nil, param_name: :slug},
-          {model: Models::TextField, key: :statusPendingTitle},
-          {model: Models::TextBlockWithoutWrapper, key: :statusPendingText},
-          {model: Models::TextField, key: :statusCompletedTitle},
-          {model: Models::TextBlockWithoutWrapper, key: :statusCompletedText}
+          {model: Models::Data::Slug, key: nil, param_name: :slug},
+          {model: Models::Data::TextField, key: :statusPendingTitle},
+          {model: Models::Text::TextBlockWithoutWrapper, key: :statusPendingText},
+          {model: Models::Data::TextField, key: :statusCompletedTitle},
+          {model: Models::Text::TextBlockWithoutWrapper, key: :statusCompletedText}
         ]
       end
 

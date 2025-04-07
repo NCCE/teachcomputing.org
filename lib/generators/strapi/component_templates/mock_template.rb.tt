@@ -2,14 +2,16 @@ module Cms
   module Providers
     module Strapi
       module Mocks
-        module DynamicComponents
-          module <%= @component_type_class %>
-            class <%= @component_name_class %> < StrapiMock
-              strapi_component "blocks.<%= @component_strapi_name %>"
+        module Models 
+          module DynamicComponents
+            module <%= @component_type_class %>
+              class <%= @component_name_class %> < StrapiMock
+                strapi_component "blocks.<%= @component_strapi_name %>"
 
-              <%- @strapi_params.each do |param| -%>
-              attribute(:<%= param %>) { } 
-              <%- end -%>
+                <%- @strapi_params.each do |param| -%>
+                attribute(:<%= param %>) { } 
+                <%- end -%>
+              end
             end
           end
         end

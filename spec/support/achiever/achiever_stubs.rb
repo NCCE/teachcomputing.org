@@ -19,6 +19,16 @@ module AchieverStubs
       "https://stemraspberrypiapi.dev3.smartmembership.net/smartconnector.smartconnector.svc/JSON/Get?Page=1&RecordCount=1000&cmd=OptionsetAgeGroups").to_return(body: json_response)
   end
 
+  def stub_failed_course_templates
+    json_response = File.read("spec/support/achiever/failure.json")
+    stub_request(:get,
+      "https://stemraspberrypiapi.dev3.smartmembership.net/smartconnector.smartconnector.svc/JSON/Get?HideFromweb=0&Page=1&ProgrammeName=ncce&RecordCount=1000&cmd=CourseTemplatesListingByProgramme").to_return(body: json_response)
+    stub_request(:get,
+      "https://stemraspberrypiapi.dev3.smartmembership.net/smartconnector.smartconnector.svc/JSON/Get?HideFromweb=0&Page=1&ProgrammeName=PDLP&RecordCount=1000&cmd=CourseTemplatesListingByProgramme").to_return(body: json_response)
+    stub_request(:get,
+      "https://stemraspberrypiapi.dev3.smartmembership.net/smartconnector.smartconnector.svc/JSON/Get?HideFromweb=0&Page=1&ProgrammeName=Computing%20Clusters&RecordCount=1000&cmd=CourseTemplatesListingByProgramme").to_return(body: json_response)
+  end
+
   def stub_course_templates
     json_response = File.new("spec/support/achiever/courses/templates.json")
     stub_request(:get,

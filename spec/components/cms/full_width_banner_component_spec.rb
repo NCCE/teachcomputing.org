@@ -6,8 +6,8 @@ RSpec.describe Cms::FullWidthBannerComponent, type: :component do
   context "standard layout" do
     before do
       render_inline(described_class.new(
-        text_content: Cms::Mocks::RichBlocks.as_model,
-        image: Cms::Mocks::Image.as_model,
+        text_content: Cms::Mocks::Text::RichBlocks.as_model,
+        image: Cms::Mocks::Images::Image.as_model,
         image_side: "left",
         image_link: "https://www.teachcomputing.test/test-page",
         title: nil,
@@ -54,8 +54,8 @@ RSpec.describe Cms::FullWidthBannerComponent, type: :component do
 
     before do
       render_inline(described_class.new(
-        text_content: Cms::Mocks::RichBlocks.as_model,
-        image: Cms::Mocks::Image.as_model,
+        text_content: Cms::Mocks::Text::RichBlocks.as_model,
+        image: Cms::Mocks::Images::Image.as_model,
         image_side: "right",
         image_link: nil,
         title:
@@ -74,8 +74,8 @@ RSpec.describe Cms::FullWidthBannerComponent, type: :component do
   context "with border" do
     before do
       render_inline(described_class.new(
-        text_content: Cms::Mocks::RichBlocks.as_model,
-        image: Cms::Mocks::Image.as_model,
+        text_content: Cms::Mocks::Text::RichBlocks.as_model,
+        image: Cms::Mocks::Images::Image.as_model,
         image_side: :left,
         image_link: nil,
         title: nil,
@@ -91,13 +91,13 @@ RSpec.describe Cms::FullWidthBannerComponent, type: :component do
   context "with button" do
     before do
       render_inline(described_class.new(
-        text_content: Cms::Mocks::RichBlocks.as_model,
-        image: Cms::Mocks::Image.as_model,
+        text_content: Cms::Mocks::Text::RichBlocks.as_model,
+        image: Cms::Mocks::Images::Image.as_model,
         image_side: :left,
         image_link: nil,
         title: nil,
         show_bottom_border: true,
-        buttons: [Cms::Mocks::NcceButton.as_model]
+        buttons: [Cms::Mocks::DynamicComponents::Buttons::NcceButton.as_model]
       ))
     end
 
@@ -109,8 +109,8 @@ RSpec.describe Cms::FullWidthBannerComponent, type: :component do
   context "with i belong flag" do
     before do
       render_inline(described_class.new(
-        text_content: Cms::Mocks::RichBlocks.as_model,
-        image: Cms::Mocks::Image.as_model,
+        text_content: Cms::Mocks::Text::RichBlocks.as_model,
+        image: Cms::Mocks::Images::Image.as_model,
         image_side: "left",
         image_link: nil,
         title: nil,
@@ -127,8 +127,8 @@ RSpec.describe Cms::FullWidthBannerComponent, type: :component do
   context "with corner flourish on the left" do
     before do
       render_inline(described_class.new(
-        text_content: Cms::Mocks::RichBlocks.as_model,
-        image: Cms::Mocks::Image.as_model,
+        text_content: Cms::Mocks::Text::RichBlocks.as_model,
+        image: Cms::Mocks::Images::Image.as_model,
         image_side: "left",
         image_link: nil,
         title: nil,
@@ -146,8 +146,8 @@ RSpec.describe Cms::FullWidthBannerComponent, type: :component do
   context "with corner flourish on the right" do
     before do
       render_inline(described_class.new(
-        text_content: Cms::Mocks::RichBlocks.as_model,
-        image: Cms::Mocks::Image.as_model,
+        text_content: Cms::Mocks::Text::RichBlocks.as_model,
+        image: Cms::Mocks::Images::Image.as_model,
         image_side: "right",
         image_link: nil,
         title: nil,
@@ -165,8 +165,8 @@ RSpec.describe Cms::FullWidthBannerComponent, type: :component do
   context "with box color" do
     before do
       render_inline(described_class.new(
-        text_content: Cms::Mocks::RichBlocks.as_model,
-        image: Cms::Mocks::Image.as_model,
+        text_content: Cms::Mocks::Text::RichBlocks.as_model,
+        image: Cms::Mocks::Images::Image.as_model,
         image_side: "left",
         image_link: nil,
         title: nil,
@@ -185,8 +185,8 @@ RSpec.describe Cms::FullWidthBannerComponent, type: :component do
     context "contain" do
       before do
         render_inline(described_class.new(
-          text_content: Cms::Mocks::RichBlocks.as_model,
-          image: Cms::Mocks::Image.as_model,
+          text_content: Cms::Mocks::Text::RichBlocks.as_model,
+          image: Cms::Mocks::Images::Image.as_model,
           image_side: "left",
           image_link: nil,
           title: nil,
@@ -204,8 +204,8 @@ RSpec.describe Cms::FullWidthBannerComponent, type: :component do
     context "cover" do
       before do
         render_inline(described_class.new(
-          text_content: Cms::Mocks::RichBlocks.as_model,
-          image: Cms::Mocks::Image.as_model,
+          text_content: Cms::Mocks::Text::RichBlocks.as_model,
+          image: Cms::Mocks::Images::Image.as_model,
           image_side: "left",
           image_link: nil,
           title: nil,

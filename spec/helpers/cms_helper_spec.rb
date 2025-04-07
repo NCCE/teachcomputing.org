@@ -3,7 +3,7 @@ require "rails_helper"
 describe CmsHelper, type: :helper do
   context("cms_image") do
     let(:small_image) {
-      Cms::Models::Image.new(
+      Cms::Models::Images::Image.new(
         url: "http://media.teachcomputing.org/an-image.png",
         alt: "",
         caption: "",
@@ -17,7 +17,7 @@ describe CmsHelper, type: :helper do
     }
 
     let(:medium_image) {
-      Cms::Models::Image.new(
+      Cms::Models::Images::Image.new(
         url: "http://media.teachcomputing.org/an-image.png",
         alt: "",
         caption: "",
@@ -31,7 +31,7 @@ describe CmsHelper, type: :helper do
     }
 
     let(:image_missing_format) {
-      Cms::Models::Image.new(
+      Cms::Models::Images::Image.new(
         url: "http://media.teachcomputing.org/an-image.png",
         alt: "",
         caption: "",

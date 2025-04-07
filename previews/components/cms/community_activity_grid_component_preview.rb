@@ -5,7 +5,7 @@ class Cms::CommunityActivityGridComponentPreview < ViewComponent::Preview
     render(
       Cms::CommunityActivityGridComponent.new(
         title: "Step two: Developing your teaching practice",
-        intro: Cms::Mocks::RichBlocks.as_model,
+        intro: Cms::Mocks::Text::RichBlocks.as_model,
         programme_activity_group_slug: "primary-develop-practice"
       )
     )

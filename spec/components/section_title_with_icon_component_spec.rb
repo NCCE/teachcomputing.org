@@ -46,7 +46,7 @@ RSpec.describe SectionTitleWithIconComponent, type: :component do
   context "with icon" do
     let(:text) { Faker::Lorem.sentence }
     before do
-      render_inline(described_class.new(text:, icon: Cms::Mocks::Image.as_model))
+      render_inline(described_class.new(text:, icon: Cms::Mocks::Images::Image.as_model))
     end
 
     it "should render component" do

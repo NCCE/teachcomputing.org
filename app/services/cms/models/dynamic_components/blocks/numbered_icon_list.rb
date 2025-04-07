@@ -1,0 +1,22 @@
+module Cms
+  module Models
+    module DynamicComponents
+      module Blocks
+        class NumberedIconList
+          attr_accessor :title, :title_icon, :points, :aside_sections
+
+          def initialize(title:, title_icon:, points:, aside_sections:)
+            @title = title
+            @title_icon = title_icon
+            @points = points
+            @aside_sections = aside_sections
+          end
+
+          def render
+            Cms::NumberedIconListComponent.new(title:, title_icon:, points:, aside_sections:)
+          end
+        end
+      end
+    end
+  end
+end

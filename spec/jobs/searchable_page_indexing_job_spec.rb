@@ -32,20 +32,20 @@ RSpec.describe SearchablePageIndexingJob, type: :job do
     end
 
     it "should create searchable pages if they are pulled from strapi" do
-      blogs = Array.new(210) { Cms::Mocks::Blog.generate_raw_data }
-      blogs << Cms::Mocks::Blog.generate_raw_data(slug: "tech-for-success",
+      blogs = Array.new(210) { Cms::Mocks::Collections::Blog.generate_raw_data }
+      blogs << Cms::Mocks::Collections::Blog.generate_raw_data(slug: "tech-for-success",
         excerpt: blog_excerpt,
         title: "Education and industry unite at key event championing gender equity in computer science")
 
-      web_pages = [Cms::Mocks::WebPage.generate_raw_data(
+      web_pages = [Cms::Mocks::Collections::WebPage.generate_raw_data(
         slug: "test-page",
-        seo: Cms::Mocks::Seo.generate_data(title: "Test Page", description: page_excerpt)
+        seo: Cms::Mocks::Meta::Seo.generate_data(title: "Test Page", description: page_excerpt)
       )]
-      web_pages += Array.new(2) { Cms::Mocks::WebPage.generate_raw_data }
+      web_pages += Array.new(2) { Cms::Mocks::Collections::WebPage.generate_raw_data }
 
-      enrichment_pages = [Cms::Mocks::EnrichmentPage.generate_raw_data(
+      enrichment_pages = [Cms::Mocks::Collections::EnrichmentPage.generate_raw_data(
         slug: "enrichment-test",
-        seo: Cms::Mocks::Seo.generate_data(title: "Enrichment Test", description: enrichment_excerpt)
+        seo: Cms::Mocks::Meta::Seo.generate_data(title: "Enrichment Test", description: enrichment_excerpt)
       )]
 
       stub_strapi_blog_collection(blogs:, page: 1, page_size: 100)

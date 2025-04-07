@@ -8,7 +8,7 @@ RSpec.describe Cms::ImageComponent, type: :component do
   context "with link" do
     before do
       render_inline(described_class.new(
-        Cms::Mocks::Image.as_model,
+        Cms::Mocks::Images::Image.as_model,
         link: "https://www.google.com"
       ))
     end
@@ -29,7 +29,7 @@ RSpec.describe Cms::ImageComponent, type: :component do
   context "without caption" do
     before do
       render_inline(described_class.new(
-        Cms::Mocks::Image.as_model,
+        Cms::Mocks::Images::Image.as_model,
         show_caption: false
       ))
     end
@@ -42,7 +42,7 @@ RSpec.describe Cms::ImageComponent, type: :component do
   context "with caption" do
     before do
       render_inline(described_class.new(
-        Cms::Mocks::Image.as_model(caption:),
+        Cms::Mocks::Images::Image.as_model(caption:),
         show_caption: true
       ))
     end
@@ -59,7 +59,7 @@ RSpec.describe Cms::ImageComponent, type: :component do
   context "with caption but show_caption is false" do
     before do
       render_inline(described_class.new(
-        Cms::Mocks::Image.as_model(caption:),
+        Cms::Mocks::Images::Image.as_model(caption:),
         show_caption: false
       ))
     end
@@ -77,7 +77,7 @@ RSpec.describe Cms::ImageComponent, type: :component do
     context "as string" do
       before do
         render_inline(described_class.new(
-          Cms::Mocks::Image.as_model(caption:),
+          Cms::Mocks::Images::Image.as_model(caption:),
           classes: "another-class"
         ))
       end
@@ -90,7 +90,7 @@ RSpec.describe Cms::ImageComponent, type: :component do
     context "as array" do
       before do
         render_inline(described_class.new(
-          Cms::Mocks::Image.as_model(caption:),
+          Cms::Mocks::Images::Image.as_model(caption:),
           classes: ["another-class", "second-class"]
         ))
       end
