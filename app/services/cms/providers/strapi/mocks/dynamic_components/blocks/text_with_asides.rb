@@ -8,7 +8,7 @@ module Cms
               strapi_component "blocks.text-with-asides"
 
               attribute(:textContent) { Text::RichBlocks.generate_data }
-              attribute(:asides) { Collections::AsideSection.generate_aside_list }
+              attribute(:asideSections) { Collections::AsideSection.generate_aside_list }
               attribute(:bkColor) { Meta::ColorScheme.generate_data(name: "light_grey") }
             end
           end

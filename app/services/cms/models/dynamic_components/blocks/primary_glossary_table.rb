@@ -3,6 +3,8 @@ module Cms
     module DynamicComponents
       module Blocks
         class PrimaryGlossaryTable
+          include ContainsCached
+
           attr_accessor :title
 
           def initialize(title:)
@@ -11,6 +13,10 @@ module Cms
 
           def render
             PrimaryGlossaryTableComponent.new(title:)
+          end
+
+          def clear_cache
+            Cms::Collections::PrimaryGlossaryTableItems.clear_cache
           end
         end
       end

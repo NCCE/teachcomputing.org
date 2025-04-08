@@ -22,7 +22,6 @@ class CmsController < ApplicationController
 
   def web_page_refresh
     Cms::Collections::WebPage.clear_cache(params[:page_slug])
-    Cms::Collections::AsideSection.clear_cache
     redirect_to request.fullpath.sub(%r{/refresh$}, "")
   end
 

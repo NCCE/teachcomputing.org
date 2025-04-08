@@ -175,7 +175,7 @@ module StrapiStubs
 
   def stub_strapi_web_page(key, page: Cms::Mocks::Collections::WebPage.generate_raw_data)
     if as_graphql
-      stub_strapi_graphql_query("webPages", page)
+      stub_strapi_graphql_query("webPages", page, unique_key: key)
     else
       stub_request(:get, /^https:\/\/strapi.teachcomputing.org\/api\/web-pages\/#{key}/).to_return_json(body: {data: page})
     end

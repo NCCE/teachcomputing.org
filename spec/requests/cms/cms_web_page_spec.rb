@@ -48,11 +48,6 @@ RSpec.describe CmsController do
       expect(response).to redirect_to("/primary-early-careers")
     end
 
-    it "reloads aside cache" do
-      expect(Cms::Collections::AsideSection).to receive(:clear_cache)
-      get "/primary-early-careers/refresh"
-    end
-
     it "reloads page cache" do
       expect(Cms::Collections::WebPage).to receive(:clear_cache).with("primary-early-careers")
       get "/primary-early-careers/refresh"

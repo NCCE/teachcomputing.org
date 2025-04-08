@@ -108,11 +108,18 @@ module Cms
       all_records
     end
 
-    def self.clear_cache(key = nil)
+    def self.clear_cache(key = nil, page_size: 100, params: {})
       if key
+        record = get(key)
+        record.data_models.each do |model|
+          model.clear_cache if model.respond_to?(:clear_cache)
+        end
         Rails.cache.delete("#{resource_key}-#{key}", namespace: "cms")
       else
-        Rails.cache.delete_matched(/#{resource_key}.*/, namespace: "cms")
+        page_count = (all_records.count / page_size.to_f).ceil
+        (1..page_count).each do |page|
+          Rails.cache.delete(cache_key(page, page_size, params), namespace: "cms")
+        end
       end
     end
 
