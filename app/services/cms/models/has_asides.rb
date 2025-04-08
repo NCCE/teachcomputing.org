@@ -10,7 +10,7 @@ module Cms
       end
 
       def aside_slugs
-        @aside_sections.map{ _1[:slug] }
+        @aside_sections.map { _1[:slug] }
       end
 
       def clear_cache

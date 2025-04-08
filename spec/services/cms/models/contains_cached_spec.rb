@@ -1,4 +1,3 @@
-
 require "rails_helper"
 
 RSpec.describe Cms::Models::ContainsCached do
@@ -7,12 +6,11 @@ RSpec.describe Cms::Models::ContainsCached do
       page: Cms::Mocks::Collections::WebPage.generate_raw_data(
         page_content: [
           Cms::Mocks::DynamicComponents::Blocks::TextWithAsides.generate_raw_data(
-            aside_sections: Cms::Mocks::Collections::AsideSection.generate_aside_list(aside_slugs: ['test-aside', 'other-aside'])
+            aside_sections: Cms::Mocks::Collections::AsideSection.generate_aside_list(aside_slugs: ["test-aside", "other-aside"])
           ),
           Cms::Mocks::DynamicComponents::Blocks::PrimaryGlossaryTable.generate_raw_data
         ]
-      )
-    )
+      ))
 
     stub_strapi_aside_section("test-aside")
     stub_strapi_aside_section("other-aside")
