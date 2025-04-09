@@ -14,13 +14,8 @@ class Cms::CurriculumKeyStagesComponent < ViewComponent::Base
     end
   end
 
-  def box_classes(key_stage)
-    classes = ["curriculum-card"]
-    classes << if ["1", "2"].include?(key_stage.level)
-      cms_color_theme_class("orange", "left")
-    else
-      cms_color_theme_class("green", "left")
-    end
+  def box_classes
+    ["curriculum-card", cms_color_theme_class("green", "left")]
   end
 
   def render?

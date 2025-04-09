@@ -11,6 +11,7 @@ module Cms
               attribute(:image) { Images::Image.generate_data }
               attribute(:imageSide) { "left" }
               attribute(:bkColor) { Meta::ColorScheme.generate_data(name: "light_grey") }
+              attribute(:banner) { nil }
             end
           end
         end

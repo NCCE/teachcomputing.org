@@ -13,6 +13,7 @@ module Cms
               attribute(:boxColor) { Meta::ColorScheme.generate_data(name: "white") }
               attribute(:video) { DynamicComponents::ContentBlocks::EmbeddedVideo.generate_data }
               attribute(:leftColumnButton) { DynamicComponents::Buttons::NcceButton.generate_data }
+              attribute(:videoSide) { "left" }
             end
           end
         end

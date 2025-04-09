@@ -1,6 +1,7 @@
 .numbered-points {
   list-style: none;
   counter-reset: numbered-points-counter;
+  padding-left: 40px;
   
   li{
     counter-increment: numbered-points-counter;

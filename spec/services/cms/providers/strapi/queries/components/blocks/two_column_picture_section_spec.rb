@@ -7,5 +7,6 @@ RSpec.describe Cms::Providers::Strapi::Queries::Components::Blocks::TwoColumnPic
       image
       imageSide
       bkColor
+      banner
     ]
 end

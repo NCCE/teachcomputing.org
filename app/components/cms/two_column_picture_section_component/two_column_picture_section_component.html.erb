@@ -4,8 +4,11 @@
       <div class="tc-row-half">
         <%= render @image.render %>
       </div>
-      <div class="tc-row-half">
+      <div class="tc-row-half tc-half-row__with-banner">
         <%= render @text.render %>
+        <% if @banner %>
+          <%= render @banner.render %>
+        <% end %>
       </div>
     <% end %>
   <% end %>

@@ -1,22 +1,19 @@
 <%= render GovGridRowComponent.new(background_color: @background_color, additional_classes: "cms-two-column-video-section-component") do |row|  %>
   <%= row.with_column("full") do %>
     <%= content_tag :div, class: content_background_color_classes do %>
-      <div class="tc-row-half">
-        <%= render @left_column_content.render %>
+      <%= content_tag :div, class: left_column_classes do %>
+        <%= render @video.render if @video_side == "left" %>
+        <%= render @left_column_content.render if @left_column_content %>
         <% if @left_column_button %>
           <div class="cms-button-container">
             <%= render @left_column_button.render %>
           </div>
         <% end %>
-      </div>
-      <div class="tc-row-half cms-two-column-video-section-component__video-wrapper">
-        <%= render @video.render %>
-        <% if @right_column_content %>
-          <div class="cms-two-column-video-section-component__right-text">
-            <%= render @right_column_content.render %>
-          </div>
-        <% end %>
-      </div>
+      <% end %>
+      <%= content_tag :div, class: right_column_classes do %>
+        <%= render @video.render if @video_side == "right" %>
+        <%= render @right_column_content.render if @right_column_content %>
+      <% end %>
     <% end %>
   <% end %>
 <% end %>

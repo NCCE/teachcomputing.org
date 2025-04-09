@@ -9,5 +9,6 @@ RSpec.describe Cms::Providers::Strapi::Queries::Components::Blocks::TwoColumnVid
       video
       leftColumnButton
       boxColor
+      videoSide
     ]
 end

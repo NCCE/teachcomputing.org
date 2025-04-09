@@ -15,6 +15,7 @@ module Cms
                   #{SharedFields.color_theme(:bkColor)}
                   #{SharedFields.color_theme(:boxColor)}
                   #{Buttons::NcceButton.embed(:leftColumnButton)}
+                  videoSide
                 GRAPHQL
               end
             end

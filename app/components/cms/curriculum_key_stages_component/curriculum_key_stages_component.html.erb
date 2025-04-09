@@ -4,7 +4,7 @@
     <div class="govuk-grid-row">
       <% @key_stages.each do |key_stage| %>
         <div class="govuk-grid-column-one-quarter">
-          <%= content_tag :div, class: box_classes(key_stage) do %>
+          <%= content_tag :div, class: box_classes do %>
             <h3 class="govuk-heading-m curriculum-card__title">
               <%= link_to key_stage.title, curriculum_key_stage_units_path(key_stage_slug: key_stage.slug), class: 'govuk-link ncce-link' %>
             </h3>
