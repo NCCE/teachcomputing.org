@@ -1,8 +1,7 @@
 # frozen_string_literal: true
 
 class Cms::SideBannerComponent < ViewComponent::Base
-
-  def initialize(text_content:, icon:, banner_color: nil, side: 'right')
+  def initialize(text_content:, icon:, banner_color: nil, side: "right")
     @text_content = text_content
     @icon = icon
     @banner_color = banner_color
@@ -22,5 +21,4 @@ class Cms::SideBannerComponent < ViewComponent::Base
   def content_classes
     ["cms-side-banner__content", "cms-side-banner__content--#{@side}"]
   end
-
 end

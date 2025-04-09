@@ -8,7 +8,7 @@ class Cms::TwoColumnPictureSectionComponent < ViewComponent::Base
     @background_color = background_color
     @banner = banner
     if @banner
-      @banner.side = @image_side == "right" ? "left" : "right"
+      @banner.side = (@image_side == "right") ? "left" : "right"
     end
   end
 

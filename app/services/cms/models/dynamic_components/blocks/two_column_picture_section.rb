@@ -19,7 +19,7 @@ module Cms
               image:,
               image_side:,
               background_color:,
-              banner:,
+              banner:
             )
           end
         end

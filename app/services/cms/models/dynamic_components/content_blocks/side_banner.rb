@@ -9,7 +9,7 @@ module Cms
             @text_content = text_content
             @icon = icon
             @banner_color = banner_color
-            @side = 'right'
+            @side = "right"
           end
 
           def render

@@ -3,7 +3,6 @@
 require "rails_helper"
 
 RSpec.describe Cms::SideBannerComponent, type: :component do
-
   context "with defaults" do
     before do
       render_inline(described_class.new(
@@ -53,7 +52,7 @@ RSpec.describe Cms::SideBannerComponent, type: :component do
     before do
       render_inline(described_class.new(
         text_content: Cms::Mocks::Text::RichBlocks.as_model,
-        icon: Cms::Mocks::Images::Image.as_model,
+        icon: Cms::Mocks::Images::Image.as_model
       ))
     end
 
