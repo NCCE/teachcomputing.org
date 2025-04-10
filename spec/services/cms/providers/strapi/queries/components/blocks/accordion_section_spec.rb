@@ -6,6 +6,6 @@ RSpec.describe Cms::Providers::Strapi::Queries::Components::Blocks::AccordionSec
       id
       title
       bkColor
-      accordionBlock
+      accordionBlocks
     ]
 end

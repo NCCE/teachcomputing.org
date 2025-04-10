@@ -4,8 +4,8 @@
   }
 
   .govuk-accordion__section-button {
-    font-weight: 500;
-    font-size: 19px;
+    @include govuk-font($size: 19, $weight: bold);
+
     font-family: $font-family-heading;
     padding-bottom: 0px !important;
   }

@@ -12,7 +12,7 @@ module Cms
                   id
                   title
                   #{SharedFields.color_theme(:bkColor)}
-                  #{ContentBlocks::AccordionBlock.embed(:accordionBlock)}
+                  #{ContentBlocks::AccordionBlock.embed(:accordionBlocks)}
                 GRAPHQL
               end
             end

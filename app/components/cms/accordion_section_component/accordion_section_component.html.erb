@@ -4,7 +4,7 @@
       <h2 class="govuk-heading-m"><%= @title %></h2>
     <% end %>
     <div class="cms-accordion-section-component govuk-accordion govuk-body" data-module="govuk-accordion" id="accordion-section-<%= @id %>">
-      <% @accordion_block.each do |block| %>
+      <% @accordion_blocks.each do |block| %>
         <%= render block.render  %>
       <% end %>
     </div>

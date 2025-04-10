@@ -72,20 +72,20 @@ module Cms
             when "curriculum-key-stages"
               to_curriculum_key_stages(strapi_data)
             when "accordion-section"
-              to_accordion_section(strapi_data, to_accordion_block(strapi_data[:accordionBlock]))
+              to_accordion_section(strapi_data, to_accordion_block_array(strapi_data[:accordionBlocks]))
             end
           end
 
-          def self.to_accordion_section(strapi_data, accordion_block)
+          def self.to_accordion_section(strapi_data, accordion_blocks)
             Models::DynamicComponents::Blocks::AccordionSection.new(
               id: strapi_data[:id],
               title: strapi_data[:title],
               background_color: extract_color_name(strapi_data, :bkColor),
-              accordion_block: accordion_block
+              accordion_blocks:
             )
           end
 
-          def self.to_accordion_block(strapi_data)
+          def self.to_accordion_block_array(strapi_data)
             strapi_data.map do |accordion_block|
               Models::DynamicComponents::ContentBlocks::AccordionBlock.new(
                 heading: accordion_block[:heading],
