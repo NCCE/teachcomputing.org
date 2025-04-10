@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class Cms::TwoColumnVideoSectionComponent < ViewComponent::Base
-  def initialize(left_column_content:, video:, right_column_content: nil, background_color: nil, left_column_button: nil, box_color: nil, video_side: "left")
+  def initialize(left_column_content:, video:, right_column_content: nil, background_color: nil, left_column_button: nil, box_color: nil, video_side: "left", section_title: nil)
     @left_column_content = left_column_content
     @video = video
     @right_column_content = right_column_content
@@ -9,6 +9,7 @@ class Cms::TwoColumnVideoSectionComponent < ViewComponent::Base
     @left_column_button = left_column_button
     @box_color = box_color
     @video_side = video_side
+    @section_title = section_title
   end
 
   def left_column_classes

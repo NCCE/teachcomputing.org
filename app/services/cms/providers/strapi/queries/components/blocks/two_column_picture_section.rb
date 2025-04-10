@@ -13,7 +13,8 @@ module Cms
                   tcp__imageSide: imageSide
                   tcp__image: #{SharedFields.image_fields(:image)}
                   #{SharedFields.color_theme(:bkColor)}
-                  #{ContentBlocks::SideBanner.embed(:banner)}
+                  #{EmbedBlocks::SideBanner.embed(:banner)}
+                  #{EmbedBlocks::SectionTitle.embed(:gridRowTitle)}
                 GRAPHQL
               end
             end

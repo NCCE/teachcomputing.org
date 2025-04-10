@@ -16,6 +16,7 @@ module Cms
                   #{SharedFields.color_theme(:boxColor)}
                   #{Buttons::NcceButton.embed(:leftColumnButton)}
                   videoSide
+                  #{EmbedBlocks::SectionTitle.embed(:gridRowTitle)}
                 GRAPHQL
               end
             end

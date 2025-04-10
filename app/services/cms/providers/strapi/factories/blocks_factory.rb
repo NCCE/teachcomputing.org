@@ -163,7 +163,8 @@ module Cms
               image: to_image(strapi_data, :image),
               image_side: strapi_data[:imageSide],
               background_color: extract_color_name(strapi_data, :bkColor),
-              banner: strapi_data[:banner].nil? ? nil : ContentBlockFactory.to_side_banner(strapi_data[:banner])
+              banner: EmbedBlocksFactory.to_side_banner(strapi_data, :banner),
+              section_title: EmbedBlocksFactory.to_section_title(strapi_data)
             )
           end
 
@@ -175,7 +176,8 @@ module Cms
               background_color: extract_color_name(strapi_data, :bkColor),
               left_column_button: to_ncce_button(strapi_data[:leftColumnButton]),
               box_color: extract_color_name(strapi_data, :boxColor),
-              video_side: strapi_data[:videoSide]
+              video_side: strapi_data[:videoSide],
+              section_title: EmbedBlocksFactory.to_section_title(strapi_data)
             )
           end
 

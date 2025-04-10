@@ -3,15 +3,14 @@ module Cms
     module Strapi
       module Queries
         module Components
-          module ContentBlocks
-            class SideBanner < BaseComponentQuery
-              def self.name = "ComponentContentBlocksSideBanner"
+          module EmbedBlocks
+            class SectionTitle < BaseComponentQuery
+              def self.name = "ComponentContentBlocksSectionTitle"
 
               def self.base_fields
                 <<~GRAPHQL.freeze
-                  textContent
+                  title
                   #{SharedFields.image_fields(:icon)}
-                  #{SharedFields.color_theme(:bannerColor)}
                 GRAPHQL
               end
             end

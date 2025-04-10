@@ -1,7 +1,7 @@
 module Cms
   module Models
     module DynamicComponents
-      module ContentBlocks
+      module EmbedBlocks
         class SideBanner
           attr_accessor :text_content, :icon, :banner_color, :side
 

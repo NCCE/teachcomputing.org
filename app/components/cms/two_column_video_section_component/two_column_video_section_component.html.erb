@@ -1,4 +1,7 @@
 <%= render GovGridRowComponent.new(background_color: @background_color, additional_classes: "cms-two-column-video-section-component") do |row|  %>
+
+  <%= row.with_section_title(**@section_title.mappings) if @section_title %>
+
   <%= row.with_column("full") do %>
     <%= content_tag :div, class: content_background_color_classes do %>
       <%= content_tag :div, class: left_column_classes do %>

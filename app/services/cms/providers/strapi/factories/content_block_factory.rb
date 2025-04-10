@@ -24,17 +24,7 @@ module Cms
               to_embedded_video(strapi_data)
             when "link"
               to_link(strapi_data)
-            when "side-banner"
-              to_side_banner(strapi_data)
             end
-          end
-
-          def self.to_side_banner(strapi_data)
-            Models::DynamicComponents::ContentBlocks::SideBanner.new(
-              text_content: to_content_block(strapi_data[:textContent]),
-              icon: to_image(strapi_data, :icon, default_size: :small),
-              banner_color: extract_color_name(strapi_data, :bannerColor)
-            )
           end
 
           def self.to_link(strapi_data)

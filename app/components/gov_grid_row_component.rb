@@ -4,6 +4,7 @@ class GovGridRowComponent < ViewComponent::Base
   delegate :govuk_padding_classes, :govuk_margin_classes,
     to: :helpers
 
+  renders_one :section_title, SectionTitleWithIconComponent
   renders_many :columns, "GovGridColumnComponent"
 
   def initialize(background_color: nil, padding: {}, margin: {}, additional_classes: nil)

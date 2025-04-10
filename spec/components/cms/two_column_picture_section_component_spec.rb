@@ -10,7 +10,8 @@ RSpec.describe Cms::TwoColumnPictureSectionComponent, type: :component do
         image: Cms::Mocks::Images::Image.as_model,
         image_side: "left",
         background_color: nil,
-        banner: nil
+        banner: nil,
+        section_title: nil
       ))
     end
 
@@ -38,7 +39,8 @@ RSpec.describe Cms::TwoColumnPictureSectionComponent, type: :component do
         image: Cms::Mocks::Images::Image.as_model,
         image_side: "right",
         background_color: nil,
-        banner: nil
+        banner: nil,
+        section_title: nil
       ))
     end
 
@@ -54,7 +56,8 @@ RSpec.describe Cms::TwoColumnPictureSectionComponent, type: :component do
         image: Cms::Mocks::Images::Image.as_model,
         image_side: "left",
         background_color: "orange",
-        banner: nil
+        banner: nil,
+        section_title: nil
       ))
     end
 
@@ -71,7 +74,8 @@ RSpec.describe Cms::TwoColumnPictureSectionComponent, type: :component do
           image: Cms::Mocks::Images::Image.as_model,
           image_side: "left",
           background_color: "orange",
-          banner: Cms::Mocks::DynamicComponents::ContentBlocks::SideBanner.as_model
+          banner: Cms::Mocks::DynamicComponents::EmbedBlocks::SideBanner.as_model,
+          section_title: nil
         ))
       end
 
@@ -87,7 +91,8 @@ RSpec.describe Cms::TwoColumnPictureSectionComponent, type: :component do
           image: Cms::Mocks::Images::Image.as_model,
           image_side: "right",
           background_color: "orange",
-          banner: Cms::Mocks::DynamicComponents::ContentBlocks::SideBanner.as_model
+          banner: Cms::Mocks::DynamicComponents::EmbedBlocks::SideBanner.as_model,
+          section_title: nil
         ))
       end
 

@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class Cms::TwoColumnPictureSectionComponent < ViewComponent::Base
-  def initialize(text:, image:, image_side:, background_color:, banner:)
+  def initialize(text:, image:, image_side:, background_color:, banner:, section_title:)
     @text = text
     @image = image
     @image_side = image_side
@@ -10,6 +10,7 @@ class Cms::TwoColumnPictureSectionComponent < ViewComponent::Base
     if @banner
       @banner.side = (@image_side == "right") ? "left" : "right"
     end
+    @section_title = section_title
   end
 
   def image_align_classes
