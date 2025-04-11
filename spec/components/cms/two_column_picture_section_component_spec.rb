@@ -66,6 +66,23 @@ RSpec.describe Cms::TwoColumnPictureSectionComponent, type: :component do
     end
   end
 
+  context "with section title" do
+    before do
+      render_inline(described_class.new(
+        text: Cms::Mocks::Text::RichBlocks.as_model,
+        image: Cms::Mocks::Images::Image.as_model,
+        image_side: "left",
+        background_color: "orange",
+        banner: nil,
+        section_title: Cms::Mocks::DynamicComponents::EmbedBlocks::SectionTitle.as_model(title: "Section title")
+      ))
+    end
+
+    it "renders the section title" do
+      expect(page).to have_css("h2.govuk-heading-m", text: "Section title")
+    end
+  end
+
   context "with banner" do
     context "image on left" do
       before do

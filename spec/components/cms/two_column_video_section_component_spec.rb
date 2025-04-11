@@ -88,4 +88,18 @@ RSpec.describe Cms::TwoColumnVideoSectionComponent, type: :component do
       expect(page).to have_css(".govuk-button")
     end
   end
+
+  context "with heading" do
+    before do
+      render_inline(described_class.new(
+        left_column_content: Cms::Mocks::Text::RichBlocks.as_model,
+        video: Cms::Mocks::DynamicComponents::ContentBlocks::EmbeddedVideo.as_model,
+        section_title: Cms::Mocks::DynamicComponents::EmbedBlocks::SectionTitle.as_model(title: "Section title")
+      ))
+    end
+
+    it "renders the section title" do
+      expect(page).to have_css("h2.govuk-heading-m", text: "Section title")
+    end
+  end
 end

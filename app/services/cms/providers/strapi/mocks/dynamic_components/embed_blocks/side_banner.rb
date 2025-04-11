@@ -5,14 +5,12 @@ module Cms
         module DynamicComponents
           module EmbedBlocks
             class SideBanner < StrapiMock
-              strapi_component "embed-blocks.side-banner"
-
               attribute(:textContent) { Text::RichBlocks.generate_data }
               attribute(:icon) { nil }
               attribute(:bannerColor) { {data: Meta::ColorScheme.generate_data(name: "orange")} }
 
-              def self.as_model(key: :banner)
-                Factories::EmbedBlocksFactory.to_side_banner({key => generate_data})
+              def self.as_model(key: :banner, **)
+                Factories::EmbedBlocksFactory.to_side_banner({key => generate_data}, **)
               end
             end
           end
