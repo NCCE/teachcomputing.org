@@ -37,7 +37,7 @@ module Cms
           end
 
           def self.to_accordion_block(strapi_data)
-            Models::DynamicComponents::Blocks::AccordionBlock.new(
+            Models::DynamicComponents::ContentBlocks::AccordionBlock.new(
               heading: strapi_data[:heading],
               summary_text: strapi_data[:summaryText],
               text_content: strapi_data[:textContent]

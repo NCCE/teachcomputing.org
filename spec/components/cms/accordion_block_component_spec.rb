@@ -4,7 +4,7 @@ require "rails_helper"
 
 RSpec.describe Cms::AccordionBlockComponent, type: :component do
   let(:heading) { Faker::Lorem.word }
-  let(:text_content) { Cms::Mocks::RichBlocks.as_model }
+  let(:text_content) { Cms::Mocks::Text::RichBlocks.as_model }
 
   context "without summary text" do
     before do

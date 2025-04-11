@@ -12,7 +12,7 @@ RSpec.describe Cms::AccordionSectionComponent, type: :component do
       background_color: "light-grey",
       accordion_blocks: Array.new(2) {
         Cms::Mocks::DynamicComponents::ContentBlocks::AccordionBlock.as_model(
-          text_content: Cms::Mocks::RichBlocks.as_model
+          text_content: Cms::Mocks::Text::RichBlocks.as_model
         )
       }
     ))
