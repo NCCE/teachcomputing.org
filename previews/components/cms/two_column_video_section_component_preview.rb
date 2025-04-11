@@ -41,4 +41,15 @@ class Cms::TwoColumnVideoSectionComponentPreview < ViewComponent::Preview
       box_color: "white"
     )
   end
+
+  def with_section_title
+    render Cms::TwoColumnVideoSectionComponent.new(
+      left_column_content: Cms::Mocks::Text::RichBlocks.as_model,
+      video: Cms::Mocks::DynamicComponents::ContentBlocks::EmbeddedVideo.as_model,
+      left_column_button: Cms::Mocks::DynamicComponents::Buttons::NcceButton.as_model,
+      background_color: "isaac",
+      box_color: "white",
+      section_title: Cms::Mocks::DynamicComponents::EmbedBlocks::SectionTitle.as_model(title: "Section title")
+    )
+  end
 end
