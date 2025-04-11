@@ -4,17 +4,18 @@ require "rails_helper"
 
 RSpec.describe Cms::AccordionSectionComponent, type: :component do
   let(:title) { Faker::Lorem.word }
+  let(:accordion_blocks) {
+    Cms::Providers::Strapi::Factories::BlocksFactory.to_accordion_block_array(
+      Array.new(2) { Cms::Mocks::DynamicComponents::ContentBlocks::AccordionBlock.generate_raw_data }
+    )
+  }
 
   before do
     render_inline(described_class.new(
       id: 1,
       title:,
       background_color: "light-grey",
-      accordion_blocks: Array.new(2) {
-        Cms::Mocks::DynamicComponents::ContentBlocks::AccordionBlock.as_model(
-          text_content: Cms::Mocks::Text::RichBlocks.as_model
-        )
-      }
+      accordion_blocks:
     ))
   end
 
@@ -30,7 +31,7 @@ RSpec.describe Cms::AccordionSectionComponent, type: :component do
     expect(page).to have_css(".light-grey-bg")
   end
 
-  it "assigns the id to the component" do
+  it "assigns the cms id" do
     expect(page).to have_css("#accordion-section-1")
   end
 end

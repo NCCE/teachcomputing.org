@@ -6,11 +6,10 @@ class Cms::AccordionSectionComponentPreview < ViewComponent::Preview
       id: 1,
       title: Faker::Lorem.sentence,
       background_color: nil,
-      accordion_blocks: Array.new(4) {
-        Cms::Mocks::DynamicComponents::ContentBlocks::AccordionBlock.as_model(
-          text_content: Cms::Mocks::RichBlocks.as_model
-        )
-      }
+      accordion_blocks:
+      Cms::Providers::Strapi::Factories::BlocksFactory.to_accordion_block_array(
+        Array.new(3) { Cms::Mocks::DynamicComponents::ContentBlocks::AccordionBlock.generate_raw_data }
+      )
     ))
   end
 end

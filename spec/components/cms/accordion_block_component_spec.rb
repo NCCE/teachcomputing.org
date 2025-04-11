@@ -9,6 +9,7 @@ RSpec.describe Cms::AccordionBlockComponent, type: :component do
   context "without summary text" do
     before do
       render_inline(described_class.new(
+        id: 1,
         heading:,
         summary_text: nil,
         text_content:
@@ -17,6 +18,10 @@ RSpec.describe Cms::AccordionBlockComponent, type: :component do
 
     it "renders the heading text" do
       expect(page).to have_text(heading)
+    end
+
+    it "assigns the cms id" do
+      expect(page).to have_css("#accordion-default-content-1")
     end
 
     it "renders the text content" do
@@ -33,6 +38,7 @@ RSpec.describe Cms::AccordionBlockComponent, type: :component do
 
     before do
       render_inline(described_class.new(
+        id: 2,
         heading:,
         summary_text:,
         text_content:
@@ -41,6 +47,10 @@ RSpec.describe Cms::AccordionBlockComponent, type: :component do
 
     it "renders the summary text" do
       expect(page).to have_text(summary_text)
+    end
+
+    it "assigns the cms id" do
+      expect(page).to have_css("#accordion-with-summary-sections-summary-2")
     end
   end
 end

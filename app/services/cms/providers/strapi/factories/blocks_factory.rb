@@ -88,6 +88,7 @@ module Cms
           def self.to_accordion_block_array(strapi_data)
             strapi_data.map do |accordion_block|
               Models::DynamicComponents::ContentBlocks::AccordionBlock.new(
+                id: accordion_block[:id],
                 heading: accordion_block[:heading],
                 summary_text: accordion_block[:summaryText],
                 text_content: to_content_block(accordion_block[:textContent])

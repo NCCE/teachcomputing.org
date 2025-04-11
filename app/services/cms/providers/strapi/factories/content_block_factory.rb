@@ -24,8 +24,6 @@ module Cms
               to_embedded_video(strapi_data)
             when "link"
               to_link(strapi_data)
-            when "accordion-block"
-              to_accordion_block(strapi_data)
             end
           end
 
@@ -33,14 +31,6 @@ module Cms
             Models::DynamicComponents::ContentBlocks::Link.new(
               link_text: strapi_data[:linkText],
               url: strapi_data[:url]
-            )
-          end
-
-          def self.to_accordion_block(strapi_data)
-            Models::DynamicComponents::ContentBlocks::AccordionBlock.new(
-              heading: strapi_data[:heading],
-              summary_text: strapi_data[:summaryText],
-              text_content: strapi_data[:textContent]
             )
           end
 

@@ -7,6 +7,7 @@ module Cms
             class AccordionBlock < StrapiMock
               strapi_component "content-blocks.accordion-block"
 
+              attribute(:id) { 1 }
               attribute(:heading) { Faker::Lorem.word }
               attribute(:summaryText) { Faker::Lorem.sentence }
               attribute(:textContent) { Text::RichBlocks.generate_data }
