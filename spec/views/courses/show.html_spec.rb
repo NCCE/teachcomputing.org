@@ -1,12 +1,15 @@
 require "rails_helper"
 
 RSpec.describe("courses/show", type: :view) do
-  let(:cs_accelerator) { create(:cs_accelerator) }
+  let!(:cs_accelerator) { create(:cs_accelerator) }
+  let!(:i_belong) { create(:i_belong) }
   let(:course) { Achiever::Course::Template.all.first }
   let(:activity) { create(:activity, :stem_learning, :with_course_video, stem_activity_code: course.activity_code) }
+  let(:i_belong_course) { Achiever::Course::Template.all.last }
+  let(:i_belong_activity) { create(:activity, stem_activity_code: i_belong_course.activity_code) }
+  let(:programme_activity) { create(:programme_activity, activity: i_belong_activity, programme: i_belong) }
 
   before do
-    cs_accelerator
     stub_duration_units
     stub_course_templates
 
@@ -77,5 +80,28 @@ RSpec.describe("courses/show", type: :view) do
     expect(view).to have_received(:sanitize_stem_html).with(course.how_will_you_learn)
     expect(view).to have_received(:sanitize_stem_html).with(course.course_leaders)
     expect(view).to have_received(:sanitize_stem_html).with(course.outcomes)
+  end
+
+  context "I Belong Course" do
+    before do
+      stub_duration_units
+      stub_course_templates
+
+      programme_activity
+
+      assign(:course, i_belong_course)
+      assign(:activity, i_belong_activity)
+      assign(:other_courses, [])
+      assign(:age_groups, {})
+      assign(:occurrences, [])
+      assign(:programmes, Programme.enrollable)
+
+      stub_template("courses/_aside-booking.html.erb" => "")
+    end
+
+    it "should display the I Belong flag" do
+      render
+      expect(rendered).to have_css(".i-belong-hero__area--logo")
+    end
   end
 end

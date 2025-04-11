@@ -149,7 +149,7 @@ module AchieverStubs
 
   def stub_occurrence_details
     json_response = File.new("spec/support/achiever/courses/occurrence_details.json")
-    uri_template = Addressable::Template.new "https://stemraspberrypiapi.dev3.smartmembership.net/smartconnector.smartconnector.svc/JSON/Get?ID=1&Page=1&RecordCount=1000&cmd=CourseDetails"
+    uri_template = Addressable::Template.new "https://stemraspberrypiapi.dev3.smartmembership.net/smartconnector.smartconnector.svc/JSON/Get?ID={id}&Page=1&RecordCount=1000&cmd=CourseDetails"
     stub_request(:get, uri_template).to_return(body: json_response)
   end
 

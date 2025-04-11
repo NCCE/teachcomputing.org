@@ -77,9 +77,13 @@
                   <p class="govuk-body-s govuk-!-margin-top-5"><%= group.web_copy_course_requirements %></p>
                   <% group.programme_activities.includes(:activity).where(activity: { id: @recommended_community_activity_ids }).each do |programme_activity| %>
                     <div class="ncce-pathway-courses__course">
-                      <p class="ncce-pathway-courses__link">
-                        <%= link_to strip_tags(programme_activity.activity.title), programme_activity.activity.public_copy_title_url, class: 'ncce-link govuk-heading-s' %>
-                      </p>
+                      <% if programme_activity.activity.public_copy_title_url %>
+                        <p class="ncce-pathway-courses__link">
+                          <%= link_to strip_tags(programme_activity.activity.title), programme_activity.activity.public_copy_title_url, class: 'ncce-link govuk-heading-s' %>
+                        </p>
+                      <% else %>
+                        <p class="govuk-heading-s"><%= strip_tags(programme_activity.activity.title) %></p>
+                      <% end %>
                       <p class="govuk-body-s">
                         <%= sanitize programme_activity.activity.public_copy_description %>
                       </p>

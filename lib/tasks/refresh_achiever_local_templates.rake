@@ -32,11 +32,11 @@ namespace :achiever do
     end
 
     resources = [
-      {path: Achiever::Course::Template::RESOURCE_PATH, params: Achiever::Course::Template::QUERY_STRINGS},
-      {path: Achiever::Course::Occurrence::FACE_TO_FACE_RESOURCE_PATH, params: Achiever::Course::Occurrence::QUERY_STRINGS},
-      {path: Achiever::Course::Occurrence::ONLINE_RESOURCE_PATH, params: Achiever::Course::Occurrence::QUERY_STRINGS},
+      {path: Achiever::Course::Template::RESOURCE_PATH, params: Achiever::Course::Template::QUERY_STRINGS.merge(ProgrammeName: "ncce")},
+      {path: Achiever::Course::Occurrence::FACE_TO_FACE_RESOURCE_PATH, params: Achiever::Course::Occurrence::QUERY_STRINGS.merge(ProgrammeName: "ncce", Date: Time.zone.today.strftime("%F"))},
+      {path: Achiever::Course::Occurrence::ONLINE_RESOURCE_PATH, params: Achiever::Course::Occurrence::QUERY_STRINGS.merge(ProgrammeName: "ncce")},
       {path: Achiever::Course::OccurrenceDetails::RESOURCE_PATH, params: {
-        Page: "1", RecordCount: "1000", ProgrammeName: "ncce", ID: "5e91e211-cd0a-ea11-a811-000d3a86d545"
+        Page: "1", RecordCount: "1000", ID: "5e91e211-cd0a-ea11-a811-000d3a86d545"
       }}, # this is a random course
       {path: Achiever::Course::Delegate::RESOURCE_PATH, params: {
         Page: "1", RecordCount: "1000", ProgrammeName: "ncce", CONTACTNO: "89085e3f-d60e-eb11-a813-000d3a86f6ce"
