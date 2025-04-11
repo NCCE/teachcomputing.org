@@ -47,7 +47,7 @@
         reopen_button_text: reopen_button_text,
         show_corner_decoration: false,
         class_name: 'community-evidence-submission-modal-component--modal',
-        reopen_button_class: @achievement&.rejected? ? 'ncce-button--white_black_border green-chevron' : "#{@button_class} ncce-button-chevron"
+        reopen_button_class: @achievement&.rejected? ? 'ncce-button--white_black_border ncce-button-chevron ncce-button-chevron--green' : "#{@button_class} ncce-button-chevron"
       ) do |component| %>
         <%= component.with_confirmation do %>
           <%= render ModalComponent.new(
