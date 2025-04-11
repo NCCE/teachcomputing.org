@@ -7,7 +7,7 @@ FactoryBot.define do
     sequence(:stem_course_template_no) { SecureRandom.uuid }
     category { "face-to-face" }
     provider { "stem-learning" }
-    sequence(:stem_activity_code) { |n| "CP#{n}" }
+    sequence(:stem_activity_code, 1000) { |n| "CP#{n}" }
     always_on { false }
     retired { false }
     self_verification_info { nil }
