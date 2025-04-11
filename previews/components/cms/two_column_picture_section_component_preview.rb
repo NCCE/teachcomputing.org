@@ -7,6 +7,7 @@ class Cms::TwoColumnPictureSectionComponentPreview < ViewComponent::Preview
       image: Cms::Mocks::Images::Image.as_model,
       image_side: "left",
       banner: nil,
+      section_title: nil,
       background_color: nil
     )
   end
@@ -17,6 +18,7 @@ class Cms::TwoColumnPictureSectionComponentPreview < ViewComponent::Preview
       image: Cms::Mocks::Images::Image.as_model,
       image_side: "right",
       banner: nil,
+      section_title: nil,
       background_color: nil
     )
   end
@@ -27,6 +29,7 @@ class Cms::TwoColumnPictureSectionComponentPreview < ViewComponent::Preview
       image: Cms::Mocks::Images::Image.as_model,
       image_side: "left",
       banner: nil,
+      section_title: nil,
       background_color: "orange"
     )
   end
