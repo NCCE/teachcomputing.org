@@ -6,6 +6,7 @@ class ApplicationController < ActionController::Base
   before_action :authenticate
   before_action :access_cms_header
   before_action :access_cms_footer
+  before_action :access_cms_site_wide_notification
 
   def authenticate
     return unless ENV["BASIC_AUTH_PASSWORD"]
@@ -25,6 +26,12 @@ class ApplicationController < ActionController::Base
     @cms_footer = Cms::Singles::Footer.get
   rescue ActiveRecord::RecordNotFound
     @cms_footer = nil
+  end
+
+  def access_cms_site_wide_notification
+    @cms_site_wide_notification = Cms::Singles::SiteWideBanner.get
+  rescue ActiveRecord::RecordNotFound
+    @cms_site_wide_notification = nil
   end
 
   def authenticate_user!

@@ -61,4 +61,7 @@
       </div>
     </nav>
   </div>
+  <% if @cms_site_wide_notification %>
+    <%= render @cms_site_wide_notification.data_models.first.render %>
+  <% end %>
 </header>
