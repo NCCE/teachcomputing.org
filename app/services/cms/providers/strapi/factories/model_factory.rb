@@ -25,7 +25,8 @@ module Cms
             Models::Text::TextBlock => :to_text_block,
             Models::Text::TextBlockWithoutWrapper => :to_text_block_without_wrapper,
             Models::Data::TextField => :to_text_field,
-            Models::Data::WebPagePreview => :to_web_page_preview
+            Models::Data::WebPagePreview => :to_web_page_preview,
+            Models::Meta::SiteWideBanner => :to_site_wide_banner
           }
 
           def self.process_model(mapping, all_data)
@@ -205,6 +206,10 @@ module Cms
 
           def self.to_simple_title(strapi_data, _all_data)
             {title: strapi_data}
+          end
+
+          def self.to_site_wide_banner(strapi_data, _all_data)
+            {text_content: strapi_data}
           end
 
           def self.to_slug(strapi_data, _all_data)

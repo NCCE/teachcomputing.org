@@ -75,6 +75,9 @@ module Cms
           client.one(self, resource_id)
         end
       end
+
+      return nil if data.nil? && resource_key.to_sym == :siteWideBanner
+
       new(**data)
     end
 
