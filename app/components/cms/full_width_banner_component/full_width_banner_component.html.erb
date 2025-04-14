@@ -22,7 +22,7 @@
       <%= content_tag :div, class: box_classes do %>
         <%= render @text_content.render %>
 
-        <% if @buttons %>
+        <% if @buttons.any? %>
           <div class="cms-full-width-banner__content-buttons cms-button-container">
             <% @buttons.each do |button| %>
               <%= render button.render %>
