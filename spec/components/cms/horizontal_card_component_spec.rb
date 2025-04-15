@@ -144,6 +144,30 @@ RSpec.describe Cms::HorizontalCardComponent, type: :component do
     end
   end
 
+  context "has buttons" do
+    let(:buttons) { Array.new(2) { Cms::Mocks::DynamicComponents::Buttons::NcceButton.as_model } }
+    before do
+      render_inline(described_class.new(
+        title: "Page title",
+        body_blocks: Cms::Mocks::Text::RichBlocks.as_model,
+        image: nil,
+        image_link: nil,
+        color_theme: nil,
+        icon_block: nil,
+        buttons:
+      ))
+    end
+
+    it "has the buttons text" do
+      expect(page).to have_css(".govuk-button", text: buttons.first.title)
+      expect(page).to have_css(".govuk-button", text: buttons.second.title)
+    end
+
+    it "has the button wrapper" do
+      expect(page).to have_css(".cms-button-container")
+    end
+  end
+
   context "with spacing" do
     # Cannot test the spacing rendered on the page, as the ! in the class name breaks Nokogiri
     # Instead we will make sure that the padding method returns the correct values

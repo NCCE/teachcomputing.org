@@ -12,5 +12,6 @@ RSpec.describe Cms::Providers::Strapi::Queries::Components::Blocks::HorizontalCa
       spacing
       externalTitle
       bkColor
+      buttons
     ]
 end

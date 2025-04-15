@@ -379,7 +379,8 @@ module Cms
               icon_block: to_icon_block(strapi_data[:iconBlock]),
               spacing: strapi_data[:spacing],
               external_title: strapi_data[:externalTitle],
-              background_color: extract_color_name(strapi_data, :bkColor)
+              background_color: extract_color_name(strapi_data, :bkColor),
+              buttons: strapi_data[:buttons] ? strapi_data[:buttons].map { to_ncce_button(_1) } : [],
             )
           end
 

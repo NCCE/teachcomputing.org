@@ -18,6 +18,7 @@ module Cms
                   spacing
                   externalTitle
                   #{SharedFields.color_theme("bkColor")}
+                  #{Buttons::NcceButton.embed("buttons")}
                 GRAPHQL
               end
             end
