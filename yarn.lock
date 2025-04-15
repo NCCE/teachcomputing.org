@@ -6269,14 +6269,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"fast-xml-parser@npm:^3.19.0":
-  version: 3.21.1
-  resolution: "fast-xml-parser@npm:3.21.1"
+"fast-xml-parser@npm:^4.4.1":
+  version: 4.5.3
+  resolution: "fast-xml-parser@npm:4.5.3"
   dependencies:
-    strnum: ^1.0.4
+    strnum: ^1.1.1
   bin:
-    xml2js: cli.js
-  checksum: 73b9c907a424cc2f9b11a8a2f1b7448d936f1db6fa574b85cbe4be9739c2f77d99a827bb27d738a0db0047b20c71a5d663f64937fbdb9c38977fc6cd145221d2
+    fxparser: src/cli/cli.js
+  checksum: cd6a184941ec6c23f9e6b514421a3f396cfdff5f4a8c7c27bd0eff896edb4a2b55c27da16f09b789663613dfc4933602b9b71ac3e9d1d2ddcc0492fc46c8fa52
   languageName: node
   linkType: hard
 
@@ -7936,12 +7936,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"is-svg@npm:4.3.1":
-  version: 4.3.1
-  resolution: "is-svg@npm:4.3.1"
+"is-svg@npm:5.1.0":
+  version: 5.1.0
+  resolution: "is-svg@npm:5.1.0"
   dependencies:
-    fast-xml-parser: ^3.19.0
-  checksum: 584fc7422e912a15ae9d4c449ac2ff531a98ab87cba362af188d02f78c0b0a1f489e10021285e5708eb793ee41d910c7caf915c07e54f1989d76bf1f701b2833
+    fast-xml-parser: ^4.4.1
+  checksum: 9ea9a076cce6c77fd4b2d7422be7e411f253f25c013eff8d6c21b324dfc31e27c1d31ed4dde993970e091f1317263a0470fcc02e8c0e876157fcc9efcce31389
   languageName: node
   linkType: hard
 
@@ -9045,7 +9045,7 @@ __metadata:
     flatpickr: ^4.6.9
     govuk-frontend: 5.4.0
     install: ^0.13.0
-    is-svg: 4.3.1
+    is-svg: 5.1.0
     lint-staged: ^15.2.10
     node-sass-glob-importer: ^5.3.2
     prettier: ^3.5.3
@@ -12439,10 +12439,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"strnum@npm:^1.0.4":
-  version: 1.0.5
-  resolution: "strnum@npm:1.0.5"
-  checksum: 651b2031db5da1bf4a77fdd2f116a8ac8055157c5420f5569f64879133825915ad461513e7202a16d7fec63c54fd822410d0962f8ca12385c4334891b9ae6dd2
+"strnum@npm:^1.1.1":
+  version: 1.1.2
+  resolution: "strnum@npm:1.1.2"
+  checksum: a85219eda13e97151c95e343a9e5960eacfb0a0ff98104b4c9cb7a212e3008bddf0c9714c9c37c2e508be78e741a04afc80027c2dc18509d1b5ffd4c37191fc2
   languageName: node
   linkType: hard
 
