@@ -380,7 +380,7 @@ module Cms
               spacing: strapi_data[:spacing],
               external_title: strapi_data[:externalTitle],
               background_color: extract_color_name(strapi_data, :bkColor),
-              buttons: strapi_data[:buttons] ? strapi_data[:buttons].map { to_ncce_button(_1) } : [],
+              buttons: strapi_data[:buttons] ? strapi_data[:buttons].map { to_ncce_button(_1) } : []
             )
           end
 
