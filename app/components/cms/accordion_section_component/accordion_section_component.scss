@@ -1,0 +1,16 @@
+.cms-accordion-section-component {
+  .govuk-accordion {
+    font-family: $font-family-body;
+  }
+
+  .govuk-accordion__section-button {
+    @include govuk-font($size: 19, $weight: bold);
+
+    font-family: $font-family-heading;
+    padding-bottom: 0px !important;
+  }
+
+  .govuk-accordion__section-button:hover {
+    background-color: $concrete !important;
+  }
+}
