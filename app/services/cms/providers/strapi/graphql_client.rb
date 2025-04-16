@@ -34,6 +34,9 @@ module Cms
           data = clean_aliases(response.original_hash)
 
           results = data[:data][resource_class.graphql_key.to_sym][:data]
+
+          return nil if resource_class.graphql_key.to_sym == :siteWideBanner && results.nil?
+
           raise ActiveRecord::RecordNotFound if results.empty?
 
           record = if resource_class.is_collection
