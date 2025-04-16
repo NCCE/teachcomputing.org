@@ -4,7 +4,7 @@
 
   <%= row.with_column("full") do %>
     <%= content_tag :div, class: content_background_color_classes do %>
-      <%= content_tag :div, class: left_column_classes do %>
+      <%= content_tag :div, class: column_classes("left") do %>
         <%= render @video.render if @video_side == "left" %>
         <%= render @left_column_content.render if @left_column_content %>
         <% if @left_column_button %>
@@ -13,7 +13,7 @@
           </div>
         <% end %>
       <% end %>
-      <%= content_tag :div, class: right_column_classes do %>
+      <%= content_tag :div, class: column_classes("right") do %>
         <%= render @video.render if @video_side == "right" %>
         <%= render @right_column_content.render if @right_column_content %>
       <% end %>

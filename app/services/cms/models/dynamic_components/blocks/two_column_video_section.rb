@@ -24,7 +24,8 @@ module Cms
               background_color:,
               left_column_button:,
               box_color:,
-              section_title:
+              section_title:,
+              video_side:
             )
           end
         end

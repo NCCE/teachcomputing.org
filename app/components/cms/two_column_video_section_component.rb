@@ -12,15 +12,9 @@ class Cms::TwoColumnVideoSectionComponent < ViewComponent::Base
     @section_title = section_title
   end
 
-  def left_column_classes
+  def column_classes(side)
     classes = ["tc-row-half"]
-    classes << "cms-two-column-video-section-component__video-wrapper" if @video_side == "left"
-    classes
-  end
-
-  def right_column_classes
-    classes = ["tc-row-half"]
-    classes << "cms-two-column-video-section-component__video-wrapper" if @video_side == "right"
+    classes << "cms-two-column-video-section-component__video-wrapper" if @video_side == side
     classes
   end
 
