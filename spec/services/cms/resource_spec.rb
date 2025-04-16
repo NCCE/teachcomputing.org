@@ -205,14 +205,14 @@ RSpec.describe Cms::Resource do
             expect(Rails.cache.exist?("cms-collection-resource-test-1-10", namespace: "cms")).to be true
           end
 
-          it "clear cache should clear all instances of resource keys" do
+          it "clear cache should clear only paginated instances of resource keys" do
             stub_strapi_get_collection_entity("cms-collection-resource-test")
             stub_strapi_get_single_resource("cms-collection-resource-test/test-post")
             collection_class.all(1, 10)
             collection_class.get("test-post")
-            collection_class.clear_cache
+            collection_class.clear_cache(page_size: 10)
             expect(Rails.cache.exist?("cms-collection-resource-test-1-10", namespace: "cms")).to be false
-            expect(Rails.cache.exist?("cms-collection-resource-test-test-post", namespace: "cms")).to be false
+            expect(Rails.cache.exist?("cms-collection-resource-test-test-post", namespace: "cms")).to be true
           end
         end
       end

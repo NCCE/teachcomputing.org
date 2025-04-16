@@ -2,14 +2,14 @@ module Cms
   module Models
     module DynamicComponents
       module Blocks
-        class NumberedIconList
-          attr_accessor :title, :title_icon, :points, :aside_sections
+        class NumberedIconList < HasAsides
+          attr_accessor :title, :title_icon, :points
 
           def initialize(title:, title_icon:, points:, aside_sections:)
+            super(aside_sections)
             @title = title
             @title_icon = title_icon
             @points = points
-            @aside_sections = aside_sections
           end
 
           def render

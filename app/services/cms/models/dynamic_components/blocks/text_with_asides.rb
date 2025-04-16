@@ -2,17 +2,17 @@ module Cms
   module Models
     module DynamicComponents
       module Blocks
-        class TextWithAsides
-          attr_accessor :blocks, :asides, :background_color
+        class TextWithAsides < HasAsides
+          attr_accessor :blocks, :background_color
 
           def initialize(blocks:, asides:, background_color:)
+            super(asides)
             @blocks = blocks
-            @asides = asides
             @background_color = background_color
           end
 
           def render
-            Cms::TextWithAsidesComponent.new(blocks:, asides:, background_color:)
+            Cms::TextWithAsidesComponent.new(blocks:, asides: @aside_sections, background_color:)
           end
         end
       end
