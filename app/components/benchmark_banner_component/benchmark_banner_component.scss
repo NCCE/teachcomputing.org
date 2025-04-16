@@ -38,7 +38,7 @@
   }
 
   @include govuk-media-query($from: desktop) {
-    width: calc(((100vw - 960px)/2) + (960px * 0.333) - 30px);
+    width: calc(((100vw - $govuk-page-width)/2) + 290px);
     min-width: 270px;
     position: absolute;
     right: 0px;

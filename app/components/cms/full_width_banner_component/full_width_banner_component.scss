@@ -51,6 +51,18 @@
       }
     }
 
+    &--icon {
+      flex: 0 0 50px;
+
+      .cms-image {
+        justify-content: center;
+        img {
+          width: 30px;
+          height: auto;
+        }
+      }
+    }
+
     &--with-flag {
       position: absolute;
       top: 0;

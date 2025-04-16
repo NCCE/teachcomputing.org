@@ -24,7 +24,7 @@ RSpec.describe Cms::FullWidthBannerComponent, type: :component do
     end
 
     it "render box with white background" do
-      expect(page).to have_css(".cms-full-width-banner__content.white-bg")
+      expect(page).to have_css(".cms-full-width-banner.white-bg")
     end
 
     it "should have image" do
@@ -177,7 +177,7 @@ RSpec.describe Cms::FullWidthBannerComponent, type: :component do
     end
 
     it "render box with purple background" do
-      expect(page).to have_css(".cms-full-width-banner__content.purple-bg")
+      expect(page).to have_css(".cms-full-width-banner.purple-bg")
     end
   end
 

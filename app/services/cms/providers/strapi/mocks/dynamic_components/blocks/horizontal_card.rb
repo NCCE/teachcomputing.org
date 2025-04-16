@@ -15,6 +15,7 @@ module Cms
               attribute(:iconBlock) { DynamicComponents::ContentBlocks::IconBlocks.generate_data }
               attribute(:spacing) { "First" }
               attribute(:externalTitle) { nil }
+              attribute(:buttons) { [] }
             end
           end
         end

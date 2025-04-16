@@ -7,6 +7,13 @@
       <div class="horizontal-card-component__content">
         <h3 class="govuk-heading-m"><%= @title %></h3>
         <%= render @body_blocks.render %>
+        <% if @buttons.any? %>
+          <div class="horizontal-card-component__content-buttons cms-button-container">
+            <% @buttons.each do |button| %>
+              <%= render button.render %>
+            <% end %>
+          </div>
+        <% end %>
         <%= render @icon_block.render if @icon_block&.icons&.any? %>
       </div>
       <% if @image %>

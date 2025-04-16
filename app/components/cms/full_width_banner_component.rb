@@ -19,7 +19,7 @@ class Cms::FullWidthBannerComponent < ViewComponent::Base
   end
 
   def box_classes
-    ["cms-full-width-banner__content", "#{@box_color}-bg"]
+    ["cms-full-width-banner__content"]
   end
 
   def wrapper_classes
@@ -30,7 +30,7 @@ class Cms::FullWidthBannerComponent < ViewComponent::Base
   end
 
   def banner_classes
-    classes = ["cms-full-width-banner"]
+    classes = ["cms-full-width-banner", "#{@box_color}-bg"]
     classes << "right-align" if @image_side == "right"
     classes
   end

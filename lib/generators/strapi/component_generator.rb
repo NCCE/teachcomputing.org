@@ -92,7 +92,7 @@ module Strapi
     def method_defintion
       <<~RUBY
         def self.to_#{@component_filename}(strapi_data)
-          DynamicComponents::Blocks::#{@component_name_class}.new(
+          DynamicComponents::#{@component_type_class}::#{@component_name_class}.new(
             #{@strapi_params.map { "#{_1.underscore}: strapi_data[:#{_1}]" }.join(",\n\s\s\s\s")}
           )
         end

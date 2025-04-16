@@ -132,6 +132,7 @@ class Cms::RichTextBlockComponent < ViewComponent::Base
       classes = ["govuk-list"]
       classes << "govuk-list--bullet" if tag == :ul
       classes << "govuk-list--number" if tag == :ol
+      classes << @options[:list_class] if @options[:list_class]
       classes.join(" ")
     end
   end

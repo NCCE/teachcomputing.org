@@ -25,14 +25,8 @@ RSpec.describe Cms::CurriculumKeyStagesComponent, type: :component do
       expect(page).to have_css(".curriculum-card", count: 4)
     end
 
-    it "sets key_stage 1 and 2 cards to orange" do
-      expect(page).to have_css(".cms-color-theme__border--orange-left", text: "Key Stage 1")
-      expect(page).to have_css(".cms-color-theme__border--orange-left", text: "Key Stage 2")
-    end
-
-    it "sets key_stage 3 and 4 cards to green" do
-      expect(page).to have_css(".cms-color-theme__border--green-left", text: "Key Stage 3")
-      expect(page).to have_css(".cms-color-theme__border--green-left", text: "Key Stage 4")
+    it "sets key_stage cards to green" do
+      expect(page).to have_css(".cms-color-theme__border--green-left", count: 4)
     end
   end
 

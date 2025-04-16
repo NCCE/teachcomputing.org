@@ -1,0 +1,25 @@
+.cms-side-banner {
+  display: flex;
+
+  &--left {
+    justify-content: flex-end;
+  }
+
+  &__content {
+    padding: 1rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 5px;
+  }
+
+  &__image {
+    .cms-image {
+      img {
+        height: 30px;
+        width: 30px;
+        object-fit: contain;
+      }
+    }
+  }
+}

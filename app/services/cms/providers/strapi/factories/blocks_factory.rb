@@ -162,18 +162,22 @@ module Cms
               text: to_content_block(strapi_data[:textContent]),
               image: to_image(strapi_data, :image),
               image_side: strapi_data[:imageSide],
-              background_color: extract_color_name(strapi_data, :bkColor)
+              background_color: extract_color_name(strapi_data, :bkColor),
+              banner: EmbedBlocksFactory.to_side_banner(strapi_data, :banner),
+              section_title: EmbedBlocksFactory.to_section_title(strapi_data)
             )
           end
 
           def self.to_two_column_video_section(strapi_data)
             Models::DynamicComponents::Blocks::TwoColumnVideoSection.new(
-              left_column_content: to_content_block(strapi_data[:leftColumnContent]),
+              left_column_content: to_content_block(strapi_data[:leftColumnContent], list_class: "numbered-points"),
               video: to_embedded_video(strapi_data[:video]),
-              right_column_content: to_content_block(strapi_data[:rightColumnContent]),
+              right_column_content: to_content_block(strapi_data[:rightColumnContent], list_class: "numbered-points"),
               background_color: extract_color_name(strapi_data, :bkColor),
               left_column_button: to_ncce_button(strapi_data[:leftColumnButton]),
-              box_color: extract_color_name(strapi_data, :boxColor)
+              box_color: extract_color_name(strapi_data, :boxColor),
+              video_side: strapi_data[:videoSide],
+              section_title: EmbedBlocksFactory.to_section_title(strapi_data)
             )
           end
 
@@ -375,7 +379,8 @@ module Cms
               icon_block: to_icon_block(strapi_data[:iconBlock]),
               spacing: strapi_data[:spacing],
               external_title: strapi_data[:externalTitle],
-              background_color: extract_color_name(strapi_data, :bkColor)
+              background_color: extract_color_name(strapi_data, :bkColor),
+              buttons: strapi_data[:buttons] ? strapi_data[:buttons].map { to_ncce_button(_1) } : []
             )
           end
 
