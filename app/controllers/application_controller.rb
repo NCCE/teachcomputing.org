@@ -29,9 +29,26 @@ class ApplicationController < ActionController::Base
   end
 
   def access_cms_site_wide_notification
-    @cms_site_wide_notification = Cms::Singles::SiteWideBanner.get
-  rescue ActiveRecord::RecordNotFound
-    @cms_site_wide_notification = nil
+    @cms_site_wide_banner = Cms::Collections::SiteWideBanner.all_records
+
+    current_time = Time.now.utc
+
+    active_banners = @cms_site_wide_banner.select do |banner|
+      start_time = Time.parse(banner.data_models[1].value)
+      end_time = Time.parse(banner.data_models[2].value) rescue nil
+
+      if start_time && end_time
+        current_time >= start_time && current_time <= end_time
+      elsif start_time && end_time.nil?
+        current_time >= start_time
+      else
+        false
+      end
+    end
+
+    active_banners.sort_by! { |banner| Time.parse(banner.data_models[1].value) }.reverse!
+
+    @current_notification = active_banners.first&.data_models&.first
   end
 
   def authenticate_user!

@@ -1,6 +1,6 @@
 module Cms
   module Models
-    module Meta
+    module Collections
       class SiteWideBanner
         attr_reader :text_content
 
