@@ -6,6 +6,8 @@ module Cms
           def self.embed(name)
             <<~GRAPHQL.freeze
               textContent
+              startTime
+              endTime
             GRAPHQL
           end
         end

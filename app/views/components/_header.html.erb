@@ -61,7 +61,7 @@
       </div>
     </nav>
   </div>
-  <% if @cms_site_wide_notification %>
-    <%= render @cms_site_wide_notification.data_models.first.render %>
+  <% if @current_notification %>
+    <%= render Cms::SiteWideBannerComponent.new(text_content: @current_notification) %>
   <% end %>
 </header>
