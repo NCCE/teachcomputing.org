@@ -159,7 +159,7 @@ Rails.application.routes.draw do
   get "/courses/:id(/:name)", action: :show, controller: "courses", as: "course"
 
   # get "/curriculum", to: "curriculum/key_stages#index", as: :curriculum_key_stages
-  get "/curriculum", to: "pages#web_page_resource", as: :curriculum_key_stages, defaults: {page_slug: "curriculum"}
+  get "/curriculum", to: "cms#web_page_resource", as: :curriculum_key_stages, defaults: {page_slug: "curriculum"}
   get "/curriculum/files/:slug", to: "curriculum/file_redirect#redirect_to_file", as: :curriculum_file_redirect
   get "/curriculum/:key_stage_slug", to: "curriculum/key_stages#show", as: :curriculum_key_stage_units
   get "/curriculum/:key_stage_slug/:unit_slug", to: "curriculum/units#show", as: :curriculum_key_stage_unit
