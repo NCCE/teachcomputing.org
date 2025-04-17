@@ -1,6 +1,0 @@
-<%= content_tag :div, class: ['ncce-aside', 'bursary-component', { 'bursary-component--no-margin': !@bottom_margin, "#{@class_name}": @class_name.present? }] do %>
-  <h2 class="govuk-heading-s question-banks-component__title govuk-!-padding-bottom-1"><%= t('.title') %></h2>
-    <p class="govuk-body-s ncce-aside__text">
-      <%= @text || t('.text') %>
-    </p>
-<% end %>
