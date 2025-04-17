@@ -47,7 +47,7 @@ class SearchableSitePages
   end
 
   def build_curriculum_pages
-    path curriculum_key_stages_path, "Teach Computing Curriculum", "Everything you need to teach computing at key stages 1 to 4"
+    # path curriculum_key_stages_path, "Teach Computing Curriculum", "Everything you need to teach computing at key stages 1 to 4"
 
     CurriculumClient::Queries::KeyStage.all.key_stages.each do |key_stage|
       path curriculum_key_stage_units_path(key_stage_slug: key_stage.slug), "#{key_stage.title} resources", key_stage.description
