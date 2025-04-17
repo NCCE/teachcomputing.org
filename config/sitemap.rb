@@ -41,7 +41,6 @@ SitemapGenerator::Sitemap.create do
   add "/school-trusts", changefreq: "monthly"
   add "/secondary-certificate", changefreq: "monthly"
   add "/secondary-certification", changefreq: "monthly"
-  add "/secondary-question-banks", changefreq: "monthly"
   add "/secondary-senior-leaders", changefreq: "monthly"
   add "/secondary-teachers", changefreq: "monthly"
   add "/subject-knowledge", changefreq: "monthly"

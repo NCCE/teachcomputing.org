@@ -206,7 +206,7 @@ Rails.application.routes.draw do
   get "/computing-teaching-schools-support", to: redirect("/gcse-cs-support")
   get "/isaac-computer-science", to: "pages#isaac_computer_science", as: :about_isaac_computer_science, defaults: {page_slug: "isaac-computer-science"}
   # get "/gender-balance", to: "pages#page", as: :gender_balance, defaults: {page_slug: "gender-balance"}
-  get "/secondary-question-banks", to: "pages#page", as: :secondary_question_banks, defaults: {page_slug: "secondary-question-banks"}
+  # get "/secondary-question-banks", to: "pages#page", as: :secondary_question_banks, defaults: {page_slug: "secondary-question-banks"}
   get "/powerupthedigitalgeneration", to: redirect("/supporting-partners")
   get "/impact-and-evaluation", to: "pages#page", as: :impact, defaults: {page_slug: "impact-and-evaluation"}
   get "/a-level-computer-science", to: redirect("/isaac-computer-science")
