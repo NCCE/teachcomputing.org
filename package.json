@@ -35,7 +35,7 @@
     "sass-loader": "^10.5.2",
     "trix": "^2.1",
     "turbolinks": "^5.2.0",
-    "webpack": "^4.46.0",
+    "webpack": "^5.99.6",
     "webpack-cli": "^3.3.12",
     "yargs-parser": "^21.1"
   },
