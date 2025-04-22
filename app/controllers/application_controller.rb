@@ -34,21 +34,13 @@ class ApplicationController < ActionController::Base
     current_time = Time.now.utc
 
     active_banners = @cms_site_wide_banner.select do |banner|
-      start_time = Time.parse(banner.data_models[1].value)
-      end_time = Time.parse(banner.data_models[2].value) rescue nil
+      start_time = Time.parse(banner.start_time.value)
+      end_time = Time.parse(banner.end_time.value)
 
-      if start_time && end_time
-        current_time >= start_time && current_time <= end_time
-      elsif start_time && end_time.nil?
-        current_time >= start_time
-      else
-        false
-      end
+      current_time >= start_time && current_time <= end_time
     end
 
-    active_banners.sort_by! { |banner| Time.parse(banner.data_models[1].value) }.reverse!
-
-    @current_notification = active_banners.first&.data_models&.first
+    @current_notification = active_banners.first
   end
 
   def authenticate_user!

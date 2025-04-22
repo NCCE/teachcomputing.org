@@ -239,7 +239,7 @@ module StrapiStubs
     end
   end
 
-  def stub_strapi_site_wide_banner(banner: Cms::Mocks::Collections::SiteWideBanner.generate_raw_data )
+  def stub_strapi_site_wide_banner(banner: Array.new(3) {Cms::Mocks::Collections::SiteWideBanner.generate_raw_data})
     if as_graphql
       stub_strapi_graphql_collection_query("siteWideBanners", banner)
     end

@@ -18,6 +18,9 @@ module Cms
               filter[:publishDate] = {key_type("lt") => DateTime.now.strftime}
               filter[:featured] = {key_type("eq") => query[:featured]} if query&.dig(:featured)
               filter[:blog_tags] = {slug: {key_type("eq") => query[:tag]}} if query&.dig(:tag)
+            elsif collection_class == Cms::Collections::SiteWideBanner
+              current_time = DateTime.now.strftime
+              filter[:endTime] = {key_type("gte") => current_time}
             end
             filter
           end
