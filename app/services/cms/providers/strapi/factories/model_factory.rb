@@ -22,6 +22,7 @@ module Cms
             Models::Meta::Seo => :to_seo,
             Models::Meta::SimpleTitle => :to_simple_title,
             Models::Data::Slug => :to_slug,
+            Models::Text::RichHeader => :to_rich_header,
             Models::Text::TextBlock => :to_text_block,
             Models::Text::TextBlockWithoutWrapper => :to_text_block_without_wrapper,
             Models::Data::TextField => :to_text_field,
@@ -193,6 +194,10 @@ module Cms
               form_name: strapi_data[:formName],
               links: strapi_data[:links].map { Models::DynamicComponents::ContentBlocks::Link.new(url: _1[:url], link_text: _1[:linkText]) }
             }
+          end
+
+          def self.to_rich_header(strapi_data, _all_data)
+            {blocks: process_block_data(strapi_data)}
           end
 
           def self.to_seo(strapi_data, _all_data)
