@@ -5,17 +5,17 @@ module Cms
 
       def self.resource_attribute_mappings
         [
-          {model: Models::Text::TextBlockWithoutWrapper, key: :textContent},
-          {model: Models::Data::TextField, key: :startTime},
-          {model: Models::Data::TextField, key: :endTime}
+          {model: Models::Text::RichHeader, key: :textContent, param_name: :text_content},
+          {model: Models::Data::TextField, key: :startTime, param_name: :start_time},
+          {model: Models::Data::TextField, key: :endTime, param_name: :end_time}
         ]
       end
 
       def self.collection_attribute_mappings
         [
-          {model: Models::Text::TextBlockWithoutWrapper, key: :textContent},
-          {model: Models::Data::TextField, key: :startTime},
-          {model: Models::Data::TextField, key: :endTime}
+          {model: Models::Text::RichHeader, key: :textContent, param_name: :text_content},
+          {model: Models::Data::TextField, key: :startTime, param_name: :start_time},
+          {model: Models::Data::TextField, key: :endTime, param_name: :end_time}
         ]
       end
 
@@ -26,6 +26,8 @@ module Cms
       def self.graphql_key = "siteWideBanners"
 
       def self.resource_key = "site-wide-banners"
+
+      def self.sort = "startTime:desc"
     end
   end
 end
