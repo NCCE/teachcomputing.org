@@ -61,7 +61,6 @@
       </div>
     </nav>
   </div>
-  <% if @current_notification %>
-    <%= render Cms::SiteWideBannerComponent.new(text_content: @current_notification) %>
-  <% end %>
+
+  <%= render Cms::SiteWideBannerComponent.new(current_notification: @current_notification) %>
 </header>

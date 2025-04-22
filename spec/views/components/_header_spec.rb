@@ -63,4 +63,28 @@ RSpec.describe("components/_header", type: :view) do
       expect(rendered).not_to have_css(".govuk-header__navigation-item", text: "Your progress")
     end
   end
+
+  context "when site wide banner is not active" do
+    before do
+      stub_strapi_site_wide_banner
+      assign(:current_notification, nil)
+      render
+    end
+
+    it "does not render the cms site wide banner component" do
+      expect(rendered).not_to have_css(".cms-site-wide-banner-component")
+    end
+  end
+
+  context "when site wide banner is active" do
+    before do
+      stub_strapi_site_wide_banner
+      assign(:current_notification, Cms::Collections::SiteWideBanner.all_records.first)
+      render
+    end
+
+    it "does render the cms site wide banner component" do
+      expect(rendered).to have_css(".cms-site-wide-banner-component")
+    end
+  end
 end
