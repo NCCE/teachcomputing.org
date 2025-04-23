@@ -2,7 +2,7 @@ require "rails_helper"
 
 RSpec.describe Cms::SiteWideBannerComponent, type: :component do
   context "with banner present" do
-    let(:current_notification) {Cms::Collections::SiteWideBanner.all_records.first}
+    let(:current_notification) { Cms::Collections::SiteWideBanner.all_records.first }
 
     before do
       stub_strapi_site_wide_banner
