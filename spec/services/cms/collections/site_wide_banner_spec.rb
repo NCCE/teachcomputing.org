@@ -5,6 +5,10 @@ RSpec.describe Cms::Collections::SiteWideBanner do
     expect(described_class.cache_expiry).to eq(5.minutes)
   end
 
+  it "should have correct resource_key" do
+    expect(described_class.resource_key).to eq("site-wide-banners")
+  end
+
   it_should_behave_like "a strapi graphql collection single query", %w[textContent startTime endTime]
   it_should_behave_like "a strapi graphql collection all query", %w[textContent startTime endTime]
 end
