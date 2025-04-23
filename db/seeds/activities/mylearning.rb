@@ -1103,3 +1103,18 @@ Activity.find_or_initialize_by(stem_course_template_no: "a83fd7af-f5ff-ef11-bae3
 
   activity.programmes = [secondary_certificate]
 end.save!
+
+########################################################################################################################
+
+Activity.find_or_initialize_by(stem_course_template_no: "37e3a85a-911b-f011-998a-6045bd0da0e9").tap do |activity|
+  activity.title = "Established leaders of secondary computing"
+  activity.credit = 60
+  activity.slug = "established-leaders-of-secondary-computing-online"
+  activity.category = "online"
+  activity.self_certifiable = false
+  activity.provider = "stem-learning"
+  activity.stem_activity_code = "CO411B"
+  activity.always_on = true
+
+  activity.programmes = [secondary_certificate]
+end.save!
