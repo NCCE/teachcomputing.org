@@ -6,5 +6,6 @@ RSpec.describe Cms::Providers::Strapi::Queries::SiteWideBanner do
       startTime
       endTime
       textContent
-    ]}
+    ]
+  }
 end
