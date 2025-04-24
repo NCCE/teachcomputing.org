@@ -21,7 +21,7 @@ class EnrolmentConfirmationComponentPreview < ViewComponent::Preview
       current_user: User.last,
       programme: Programme.primary_certificate,
       full_width: false,
-      button_text: Faker::Lorem.words(number: 4)
+      logged_in_button_text: Faker::Lorem.words(number: 4)
     ))
   end
 

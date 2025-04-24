@@ -9,6 +9,8 @@ module Cms
             case component_name
             when "ncce-button"
               to_ncce_button(strapi_data)
+            when "enrol-button"
+              to_enrol_button(strapi_data)
             end
           end
         end
