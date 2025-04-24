@@ -77,6 +77,14 @@ module Cms
               )
             end
 
+            def to_enrol_button(strapi_data)
+              Models::DynamicComponents::Buttons::EnrolButton.new(
+                logged_out_button_text: strapi_data[:loggedOutButtonText],
+                logged_in_button_text: strapi_data[:loggedInButtonText],
+                programme_slug: strapi_data[:programme][:data][:attributes][:slug]
+              )
+            end
+
             def to_icon(icon_data)
               Models::DynamicComponents::ContentBlocks::Icon.new(
                 text: icon_data[:iconText],

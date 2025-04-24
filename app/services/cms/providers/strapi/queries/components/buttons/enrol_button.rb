@@ -3,14 +3,15 @@ module Cms
     module Strapi
       module Queries
         module Components
-          module ContentBlocks
+          module Buttons
             class EnrolButton < BaseComponentQuery
-              def self.name = "ComponentContentBlocksEnrolButton"
+              def self.name = "ComponentButtonsEnrolButton"
 
               def self.base_fields
                 <<~GRAPHQL.freeze
                   #{SharedFields.programme_slug}
-                  buttonText
+                  loggedOutButtonText
+                  loggedInButtonText
                 GRAPHQL
               end
             end
