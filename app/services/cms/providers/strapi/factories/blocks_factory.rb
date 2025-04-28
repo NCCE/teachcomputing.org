@@ -73,6 +73,8 @@ module Cms
               to_curriculum_key_stages(strapi_data)
             when "accordion-section"
               to_accordion_section(strapi_data, to_accordion_block_array(strapi_data[:accordionBlocks]))
+            when "programme-resource-card-section"
+              to_programme_card_wrapper(strapi_data)
             end
           end
 
@@ -318,16 +320,47 @@ module Cms
             end
           end
 
+          def self.to_programme_resource_card_array(strapi_data, programme)
+            byebug
+            strapi_data.map do |card_data|
+              button = if card_data[:loggedOutButtonText] && card_data[:loggedInButtonText]
+                Models::DynamicComponents::Buttons::EnrolButton.new(
+                  logged_out_button_text: card_data[:loggedOutButtonText],
+                  logged_in_button_text: card_data[:loggedInButtonText],
+                  programme_slug: programme.slug
+                )
+              end
+
+              Models::DynamicComponents::ContentBlocks::ProgrammeResourceCard.new(
+                title: card_data[:title],
+                logged_out_text_content: to_content_block(card_data[:loggedOutTextContent]),
+                not_enrolled_text_content: to_content_block(card_data[:notEnrolledTextContent]),
+                enrolled_text_content: to_content_block(card_data[:enrolledTextContent]),
+                programme: programme,
+                color_theme: extract_color_name(card_data, :clr),
+                button:
+              )
+            end
+          end
+
           def self.to_programme_card_wrapper(strapi_data, title_as_paragraph: false)
             programme_slug = extract_programme_slug(strapi_data, :prog)
             programme = Programme.find_by(slug: programme_slug)
 
+            byebug
+
+            cards_block = if strapi_data[:programmeCards].present?
+              to_programme_picture_card_array(strapi_data[:programmeCards], programme)
+            elsif strapi_data[:resourceCards].present?
+              to_programme_resource_card_array(strapi_data[:resourceCards], programme)
+            end
+
             Models::DynamicComponents::Blocks::ProgrammeCardWrapper.new(
               title: strapi_data[:sectionTitle],
               intro_text: to_content_block(strapi_data[:introText].presence || []),
-              cards_block: to_programme_picture_card_array(strapi_data[:programmeCards], programme),
+              cards_block: cards_block,
               cards_per_row: strapi_data[:cardsPerRow].presence || 3,
-              background_color: extract_color_name(strapi_data, :bkColor),
+              background_color: extract_color_name(strapi_data, :bkC),
               title_as_paragraph:,
               programme:
             )
