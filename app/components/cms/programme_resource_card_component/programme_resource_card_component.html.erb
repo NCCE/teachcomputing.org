@@ -1,0 +1,7 @@
+<%= content_tag :div, class: wrapper_classes do %>
+  <h2 class="govuk-heading-m"><%= @title %></h2>
+  <%= render text_content.render %>
+  <% if @button %>
+    <%= render @button.render %>
+  <% end %>
+<% end %>
