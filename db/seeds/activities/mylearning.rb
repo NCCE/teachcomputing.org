@@ -1118,3 +1118,78 @@ Activity.find_or_initialize_by(stem_course_template_no: "37e3a85a-911b-f011-998a
 
   activity.programmes = [secondary_certificate]
 end.save!
+
+########################################################################################################################
+
+Activity.find_or_initialize_by(stem_course_template_no: "b3b2601b-e420-f011-998a-0022481add34").tap do |activity|
+  activity.title = "AI in primary computing"
+  activity.credit = 15
+  activity.slug = "ai-in-primary-computing-online"
+  activity.category = "online"
+  activity.self_certifiable = false
+  activity.provider = "stem-learning"
+  activity.stem_activity_code = "CO408"
+  activity.always_on = true
+
+  activity.programmes = [primary_certificate]
+end.save!
+
+########################################################################################################################
+
+Activity.find_or_initialize_by(stem_course_template_no: "e201eba4-f520-f011-998a-0022481add34").tap do |activity|
+  activity.title = "Effective computing transition from key stage 2 to key stage 3"
+  activity.credit = 15
+  activity.slug = "effective-computing-transition-from-key-stage-2-to-key-stage-3-online"
+  activity.category = "online"
+  activity.self_certifiable = false
+  activity.provider = "stem-learning"
+  activity.stem_activity_code = "CO415"
+  activity.always_on = true
+
+  activity.programmes = [primary_certificate]
+end.save!
+
+########################################################################################################################
+
+Activity.find_or_initialize_by(stem_course_template_no: "0cef34f4-f920-f011-998a-0022481add34").tap do |activity|
+  activity.title = "Leading primary computing - module 3"
+  activity.credit = 60
+  activity.slug = "leading-primary-computing-module-3-online"
+  activity.category = "online"
+  activity.self_certifiable = false
+  activity.provider = "stem-learning"
+  activity.stem_activity_code = "CO009"
+  activity.always_on = true
+
+  activity.programmes = [primary_certificate]
+end.save!
+
+########################################################################################################################
+
+Activity.find_or_initialize_by(stem_course_template_no: "47374939-fb20-f011-998a-0022481add34").tap do |activity|
+  activity.title = "Supporting autistic pupils in primary computing"
+  activity.credit = 60
+  activity.slug = "supporting-autistic-pupils-in-primary-computing-online"
+  activity.category = "online"
+  activity.self_certifiable = false
+  activity.provider = "stem-learning"
+  activity.stem_activity_code = "CO291"
+  activity.always_on = true
+
+  activity.programmes = [primary_certificate]
+end.save!
+
+########################################################################################################################
+
+Activity.find_or_initialize_by(stem_course_template_no: "3b4de055-f020-f011-998a-0022481add34").tap do |activity|
+  activity.title = "Algorithms and programming in key stage 1"
+  activity.credit = 60
+  activity.slug = "algorithms-and-programming-in-key-stage-1-online"
+  activity.category = "online"
+  activity.self_certifiable = false
+  activity.provider = "stem-learning"
+  activity.stem_activity_code = "CO019"
+  activity.always_on = true
+
+  activity.programmes = [primary_certificate]
+end.save!
