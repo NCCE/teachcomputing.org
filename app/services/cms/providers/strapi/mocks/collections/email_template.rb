@@ -8,6 +8,7 @@ module Cms
             attribute(:slug) { Faker::Internet.slug }
             attribute(:emailContent) { [] }
             attribute(:activityState) { "active" }
+            attribute(:enrolled) { true }
             attribute(:programme) {
               {data: {attributes: {slug: "primary-certificate"}}}
             }
