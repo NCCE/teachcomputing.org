@@ -320,14 +320,15 @@ module Cms
             end
           end
 
-          def self.to_programme_resource_card_array(strapi_data, programme)
-            byebug
+          def self.to_programme_resource_card_array(strapi_data, programme_slug)
+            programme = Programme.find_by(slug: programme_slug)
+
             strapi_data.map do |card_data|
               button = if card_data[:loggedOutButtonText] && card_data[:loggedInButtonText]
                 Models::DynamicComponents::Buttons::EnrolButton.new(
                   logged_out_button_text: card_data[:loggedOutButtonText],
                   logged_in_button_text: card_data[:loggedInButtonText],
-                  programme_slug: programme.slug
+                  programme_slug:
                 )
               end
 
@@ -347,12 +348,10 @@ module Cms
             programme_slug = extract_programme_slug(strapi_data, :prog)
             programme = Programme.find_by(slug: programme_slug)
 
-            byebug
-
             cards_block = if strapi_data[:programmeCards].present?
               to_programme_picture_card_array(strapi_data[:programmeCards], programme)
             elsif strapi_data[:resourceCards].present?
-              to_programme_resource_card_array(strapi_data[:resourceCards], programme)
+              to_programme_resource_card_array(strapi_data[:resourceCards], programme_slug)
             end
 
             Models::DynamicComponents::Blocks::ProgrammeCardWrapper.new(

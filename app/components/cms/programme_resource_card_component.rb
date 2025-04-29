@@ -3,7 +3,7 @@
 class Cms::ProgrammeResourceCardComponent < ViewComponent::Base
   delegate :current_user, :cms_color_theme_class, to: :helpers
 
-  def initialize(title:, logged_out_text_content:, not_enrolled_text_content:, enrolled_text_content:, programme:, color_theme:, button:)
+  def initialize(title:, logged_out_text_content:, not_enrolled_text_content:, enrolled_text_content:, programme:, color_theme: nil, button: nil)
     @title = title
     @logged_out_text_content = logged_out_text_content
     @not_enrolled_text_content = not_enrolled_text_content
