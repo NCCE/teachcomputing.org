@@ -5,7 +5,7 @@ module Cms
         module Components
           module Blocks
             class ProgrammePictureCardSection < BaseComponentQuery
-              def self.name = "ComponentBlocksProgrammePictureCardSection"
+              def self.name = "ComponentBlocksProgPictureCardSecs"
 
               def self.base_fields
                 <<~GRAPHQL.freeze
@@ -13,6 +13,7 @@ module Cms
                   introText
                   #{SharedFields.programme_slug("prog")}
                   #{ContentBlocks::ProgrammePictureCard.embed(:programmeCards)}
+                  #{SharedFields.color_theme("bkColor")}
                 GRAPHQL
               end
             end

@@ -9,6 +9,6 @@ RSpec.describe Cms::Providers::Strapi::Queries::Components::ContentBlocks::Progr
       enrolledTextContent
       loggedOutButtonText
       loggedInButtonText
-      clr
+      clrTheme
     ]
 end

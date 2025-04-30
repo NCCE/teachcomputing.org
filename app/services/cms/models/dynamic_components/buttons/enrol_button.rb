@@ -5,10 +5,10 @@ module Cms
         class EnrolButton
           attr_accessor :logged_out_button_text, :logged_in_button_text, :programme
 
-          def initialize(logged_out_button_text:, logged_in_button_text:, programme_slug:)
+          def initialize(logged_out_button_text:, logged_in_button_text:, programme:)
             @logged_out_button_text = logged_out_button_text
             @logged_in_button_text = logged_in_button_text
-            @programme = Programme.find_by(slug: programme_slug)
+            @programme = programme
           end
 
           def render

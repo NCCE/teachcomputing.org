@@ -5,7 +5,7 @@ module Cms
         module Components
           module ContentBlocks
             class ProgrammeResourceCard < BaseComponentQuery
-              def self.name = "ComponentProgrammeResourceCard"
+              def self.name = "ComponentProgResourceCard"
 
               def self.base_fields
                 <<~GRAPHQL.freeze
@@ -15,7 +15,7 @@ module Cms
                   enrolledTextContent
                   loggedOutButtonText
                   loggedInButtonText
-                  #{SharedFields.color_theme(:clr)}
+                  #{SharedFields.color_theme(:clrTheme)}
                 GRAPHQL
               end
             end
