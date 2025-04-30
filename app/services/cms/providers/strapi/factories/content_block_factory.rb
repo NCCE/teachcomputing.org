@@ -16,8 +16,6 @@ module Cms
               to_linked_picture(strapi_data)
             when "testimonial"
               to_testimonial(strapi_data)
-            when "enrol-button"
-              to_enrol_button(strapi_data)
             when "link-with-icon"
               to_link_with_icon(strapi_data)
             when "embedded-video"
@@ -38,13 +36,6 @@ module Cms
             Models::DynamicComponents::ContentBlocks::LinkedPicture.new(
               image: to_image(strapi_data, :image),
               link: strapi_data[:link]
-            )
-          end
-
-          def self.to_enrol_button(strapi_data)
-            Models::DynamicComponents::Buttons::EnrolButton.new(
-              button_text: strapi_data[:buttonText],
-              programme_slug: strapi_data[:programme][:data][:attributes][:slug]
             )
           end
 

@@ -4,7 +4,7 @@ module Cms
       module Queries
         class Aside
           CONTENT_COMPONENTS = [
-            Components::ContentBlocks::EnrolButton,
+            Components::Buttons::EnrolButton,
             Components::ContentBlocks::FileLink,
             Components::Buttons::NcceButton,
             Components::ContentBlocks::LinkedPicture,

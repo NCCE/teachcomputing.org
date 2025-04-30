@@ -29,7 +29,7 @@
         <p class="govuk-body">If you are confident in your A level subject knowledge, once you've enrolled you can complete the test to achieve your certificate. If you are less experienced, we recommend you access CPD to strengthen your knowledge in preparation for the test.</p>
         <%= render EnrolmentConfirmationComponent.new(
               programme: Programme.a_level,
-              button_text: "Enrol to gain access to the test",
+              logged_in_button_text: "Enrol to gain access to the test",
               logged_out_button_text: "Log in to enrol",
               full_width: false
             ) %>

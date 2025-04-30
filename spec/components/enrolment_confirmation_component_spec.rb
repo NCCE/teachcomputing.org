@@ -69,7 +69,7 @@ RSpec.describe EnrolmentConfirmationComponent, type: :component do
       allow_any_instance_of(AuthenticationHelper).to receive(:current_user).and_return(user)
       render_inline(described_class.new(
         programme: primary_certificate,
-        button_text: "Click here to enrol",
+        logged_in_button_text: "Click here to enrol",
         full_width: false,
         pathway:
       ))

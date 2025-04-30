@@ -4,14 +4,14 @@ module Cms
       module Mocks
         module DynamicComponents
           module Blocks
-            class ProgrammePictureCardSection < StrapiMock
-              strapi_component "blocks.prog-picture-card-secs"
+            class ProgrammeResourceCardSection < StrapiMock
+              strapi_component "blocks.prog-resource-card-secs"
 
               attribute(:sectionTitle) { Faker::Lorem.sentence }
               attribute(:introText) { Text::RichBlocks.generate_data }
               attribute(:cardsPerRow) { 3 }
               attribute(:prog) { {data: {attributes: {slug: "i-belong"}}} }
-              attribute(:programmeCards) { Array.new(3) { DynamicComponents::ContentBlocks::ProgrammePictureCard.generate_data } }
+              attribute(:resourceCards) { Array.new(3) { DynamicComponents::ContentBlocks::ProgrammeResourceCard.generate_data } }
             end
           end
         end

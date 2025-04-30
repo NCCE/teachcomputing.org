@@ -5,7 +5,7 @@ module Cms
         module DynamicComponents
           module ContentBlocks
             class ProgrammePictureCard < StrapiMock
-              strapi_component "blocks.programme-picture-card"
+              strapi_component "content-blocks.programme-picture-card"
 
               attribute(:title) { Faker::Lorem.sentence }
               attribute(:textContent) { Mocks::Text::RichBlocks.generate_data }

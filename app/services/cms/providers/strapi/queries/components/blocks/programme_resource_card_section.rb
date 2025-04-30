@@ -4,15 +4,15 @@ module Cms
       module Queries
         module Components
           module Blocks
-            class ProgrammePictureCardSection < BaseComponentQuery
-              def self.name = "ComponentBlocksProgPictureCardSecs"
+            class ProgrammeResourceCardSection < BaseComponentQuery
+              def self.name = "ComponentBlocksProgResourceCardSecs"
 
               def self.base_fields
                 <<~GRAPHQL.freeze
-                  ibc__sectionTitle: sectionTitle
+                  rcs__sectionTitle: sectionTitle
                   introText
                   #{SharedFields.programme_slug("prog")}
-                  #{ContentBlocks::ProgrammePictureCard.embed(:programmeCards)}
+                  #{ContentBlocks::ProgrammeResourceCard.embed(:resourceCards)}
                   #{SharedFields.color_theme("bkColor")}
                 GRAPHQL
               end
