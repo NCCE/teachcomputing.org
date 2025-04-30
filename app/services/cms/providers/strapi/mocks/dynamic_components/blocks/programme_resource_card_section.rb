@@ -5,7 +5,7 @@ module Cms
         module DynamicComponents
           module Blocks
             class ProgrammeResourceCardSection < StrapiMock
-              strapi_component "blocks.programme-resource-card-section"
+              strapi_component "blocks.prog-resource-card-secs"
 
               attribute(:sectionTitle) { Faker::Lorem.sentence }
               attribute(:introText) { Text::RichBlocks.generate_data }

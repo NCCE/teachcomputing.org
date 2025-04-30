@@ -7,7 +7,8 @@ module Cms
             class EnrolButton < StrapiMock
               strapi_component "content-blocks.enrol-button"
 
-              attribute(:buttonText) { Faker::Lorem.word }
+              attribute(:loggedOutButtonText) { Faker::Lorem.word }
+              attribute(:loggedInButtonText) { Faker::Lorem.word }
               attribute(:programme) { {data: {attributes: {slug: "primary-certificate"}}} }
             end
           end

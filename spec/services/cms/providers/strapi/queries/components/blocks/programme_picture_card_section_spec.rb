@@ -7,5 +7,6 @@ RSpec.describe Cms::Providers::Strapi::Queries::Components::Blocks::ProgrammePic
       introText
       programmeCards
       prog
+      bkColor
     ]
 end

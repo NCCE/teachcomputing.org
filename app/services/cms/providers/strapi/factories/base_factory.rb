@@ -77,11 +77,20 @@ module Cms
               )
             end
 
-            def to_enrol_button(strapi_data)
+            def to_enrol_button(strapi_data, programme = nil)
+              return nil if strapi_data[:loggedOutButtonText].blank? && strapi_data[:loggedInButtonText].blank?
+
+              unless programme
+                slug = strapi_data.dig(:programme, :data, :attributes, :slug)
+                return nil if slug.nil?
+
+                programme = Programme.find_by(slug:)
+              end
+
               Models::DynamicComponents::Buttons::EnrolButton.new(
                 logged_out_button_text: strapi_data[:loggedOutButtonText],
                 logged_in_button_text: strapi_data[:loggedInButtonText],
-                programme_slug: strapi_data[:programme][:data][:attributes][:slug]
+                programme:
               )
             end
 

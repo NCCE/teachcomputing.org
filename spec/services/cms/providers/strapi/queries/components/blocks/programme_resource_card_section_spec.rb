@@ -7,6 +7,6 @@ RSpec.describe Cms::Providers::Strapi::Queries::Components::Blocks::ProgrammeRes
       introText
       resourceCards
       prog
-      bkC
+      bkColor
     ]
 end

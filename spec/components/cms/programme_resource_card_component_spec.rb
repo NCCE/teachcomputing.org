@@ -5,12 +5,11 @@ require "rails_helper"
 RSpec.describe Cms::ProgrammeResourceCardComponent, type: :component do
   let(:user) { create(:user) }
   let!(:programme) { create(:i_belong) }
+  let(:logged_out_text_content) { Cms::Mocks::Text::RichBlocks.as_model }
+  let(:enrolled_text_content) { Cms::Mocks::Text::RichBlocks.as_model }
+  let(:not_enrolled_text_content) { Cms::Mocks::Text::RichBlocks.as_model }
 
   context "when no logged in user" do
-    let(:logged_out_text_content) { Cms::Mocks::Text::RichBlocks.as_model }
-    let(:enrolled_text_content) { Cms::Mocks::Text::RichBlocks.as_model }
-    let(:not_enrolled_text_content) { Cms::Mocks::Text::RichBlocks.as_model }
-
     before do
       render_inline(described_class.new(
         title: "Card title",
@@ -35,10 +34,6 @@ RSpec.describe Cms::ProgrammeResourceCardComponent, type: :component do
   end
 
   context "when not enrolled user" do
-    let(:logged_out_text_content) { Cms::Mocks::Text::RichBlocks.as_model }
-    let(:enrolled_text_content) { Cms::Mocks::Text::RichBlocks.as_model }
-    let(:not_enrolled_text_content) { Cms::Mocks::Text::RichBlocks.as_model }
-
     before do
       allow_any_instance_of(AuthenticationHelper).to receive(:current_user).and_return(user)
 
@@ -58,9 +53,6 @@ RSpec.describe Cms::ProgrammeResourceCardComponent, type: :component do
 
   context "when enrolled user" do
     let!(:user_programme_enrolment) { create(:user_programme_enrolment, user:, programme:) }
-    let(:logged_out_text_content) { Cms::Mocks::Text::RichBlocks.as_model }
-    let(:enrolled_text_content) { Cms::Mocks::Text::RichBlocks.as_model }
-    let(:not_enrolled_text_content) { Cms::Mocks::Text::RichBlocks.as_model }
 
     before do
       allow_any_instance_of(AuthenticationHelper).to receive(:current_user).and_return(user)
@@ -70,7 +62,7 @@ RSpec.describe Cms::ProgrammeResourceCardComponent, type: :component do
         logged_out_text_content:,
         enrolled_text_content:,
         not_enrolled_text_content:,
-        programme: programme
+        programme:
       ))
     end
 
@@ -80,14 +72,11 @@ RSpec.describe Cms::ProgrammeResourceCardComponent, type: :component do
   end
 
   context "with button" do
-    let(:logged_out_text_content) { Cms::Mocks::Text::RichBlocks.as_model }
-    let(:enrolled_text_content) { Cms::Mocks::Text::RichBlocks.as_model }
-    let(:not_enrolled_text_content) { Cms::Mocks::Text::RichBlocks.as_model }
     let(:button) {
       Cms::Models::DynamicComponents::Buttons::EnrolButton.new(
         logged_out_button_text: "Logged out",
         logged_in_button_text: "Logged in",
-        programme_slug: "i-belong"
+        programme:
       )
     }
 
@@ -152,17 +141,13 @@ RSpec.describe Cms::ProgrammeResourceCardComponent, type: :component do
   end
 
   context "with color theme" do
-    let(:logged_out_text_content) { Cms::Mocks::Text::RichBlocks.as_model }
-    let(:enrolled_text_content) { Cms::Mocks::Text::RichBlocks.as_model }
-    let(:not_enrolled_text_content) { Cms::Mocks::Text::RichBlocks.as_model }
-
     before do
       render_inline(described_class.new(
         title: "Card title",
         logged_out_text_content:,
         enrolled_text_content:,
         not_enrolled_text_content:,
-        programme: programme,
+        programme:,
         color_theme: "i-belong"
       ))
     end
