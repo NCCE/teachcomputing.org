@@ -58,7 +58,6 @@ module Cms
           new_text
         end
 
-
         def time_diff_words(date)
           from_time = date.to_time
           to_time = DateTime.now.to_time
