@@ -59,11 +59,15 @@ module Cms
         end
 
         def time_diff_words(date)
-          diff = DateTime.now.to_i - date.to_i
-          months = diff / (60 * 60 * 24 * 30)
+          from_time = date.to_time
+          to_time = DateTime.now.to_time
+
+          months = (to_time.year * 12 + to_time.month) - (from_time.year * 12 + from_time.month)
           months = 1 if months == 0
+
           if months >= 12
-            "#{months / 12} #{"year".pluralize(months / 12)}"
+            years = months / 12
+            "#{years} #{"year".pluralize(years)}"
           else
             "#{months} #{"month".pluralize(months)}"
           end
