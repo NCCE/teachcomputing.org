@@ -49,10 +49,9 @@ module Cms
           achievements = user.sorted_completed_cpd_achievements_by(programme: @programme)
           if achievements.any?
             achievement = achievements.last
-            last_cpd_completed_ago = distance_of_time_in_words(achievement.updated_at, DateTime.now)
 
             merges += [
-              ["{last_cpd_completed_ago}", last_cpd_completed_ago],
+              ["{last_cpd_completed_ago}", time_ago_in_words(achievement.updated_at)],
               ["{last_cpd_completed_year}", "in #{achievement.updated_at.year}"],
               ["{last_cpd_title}", achievement.activity.title]
             ]
