@@ -92,7 +92,7 @@ RSpec.describe Cms::Models::Collections::EmailTemplate do
       travel_back
     end
 
-    it "should replace achievement placeholders using distance_of_time_in_words" do
+    it "should replace achievement placeholders using time_ago_in_words" do
       content = @model.process_blocks(text_content, user)
       text = content.dig(2, :children, 0, :text)
       expect(text).to eq("You completed Past activity about 1 month ago.")
