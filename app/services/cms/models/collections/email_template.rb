@@ -2,6 +2,8 @@ module Cms
   module Models
     module Collections
       class EmailTemplate
+        include ActionView::Helpers::DateHelper
+
         attr_accessor :slug, :email_content, :programme, :completed_programme_activity_groups, :activity_state, :enrolled
 
         def initialize(slug:, subject:, email_content:, programme_slug:, completed_programme_activity_group_slugs:, activity_state:, enrolled:)
@@ -47,8 +49,10 @@ module Cms
           achievements = user.sorted_completed_cpd_achievements_by(programme: @programme)
           if achievements.any?
             achievement = achievements.last
+            last_cpd_completed_ago = distance_of_time_in_words(achievement.updated_at, DateTime.now)
+
             merges += [
-              ["{last_cpd_completed_ago}", time_diff_words(achievement.updated_at)],
+              ["{last_cpd_completed_ago}", last_cpd_completed_ago],
               ["{last_cpd_completed_year}", "in #{achievement.updated_at.year}"],
               ["{last_cpd_title}", achievement.activity.title]
             ]
@@ -56,21 +60,6 @@ module Cms
           new_text = text.dup # to unfreeze the string
           merges.each { new_text.gsub!(_1[0], _1[1]) }
           new_text
-        end
-
-        def time_diff_words(date)
-          from_time = date.to_time
-          to_time = DateTime.now.to_time
-
-          months = (to_time.year * 12 + to_time.month) - (from_time.year * 12 + from_time.month)
-          months = 1 if months == 0
-
-          if months >= 12
-            years = months / 12
-            "#{years} #{"year".pluralize(years)}"
-          else
-            "#{months} #{"month".pluralize(months)}"
-          end
         end
       end
     end

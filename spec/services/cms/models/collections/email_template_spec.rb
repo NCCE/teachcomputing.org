@@ -35,6 +35,15 @@ RSpec.describe Cms::Models::Collections::EmailTemplate do
             type: "text"
           }
         ]
+      },
+      {
+        type: "paragraph",
+        children: [
+          {
+            text: "You completed {last_cpd_title} {last_cpd_completed_ago} ago.",
+            type: "text"
+          }
+        ]
       }
     ]
   }
@@ -67,21 +76,26 @@ RSpec.describe Cms::Models::Collections::EmailTemplate do
     expect(text).to eq("Frodo should click this link")
   end
 
-  context "time_diff_words" do
-    it "should return months" do
-      expect(@model.time_diff_words(3.months.ago)).to eq("3 months")
+  context "with achievement" do
+    let(:activity) { create(:activity, title: "Past activity") }
+    let!(:achievement) { create(:completed_achievement, activity:, user:) }
+    let(:updated_at) { DateTime.parse("2025-04-01") }
+
+    before do
+      allow(achievement).to receive(:updated_at).and_return(updated_at)
+      allow(user).to receive(:sorted_completed_cpd_achievements_by).and_return([achievement])
+
+      travel_to DateTime.parse("2025-05-01")
     end
 
-    it "should return month when only one" do
-      expect(@model.time_diff_words(1.months.ago)).to eq("1 month")
+    after do
+      travel_back
     end
 
-    it "should return year when over 12 months" do
-      expect(@model.time_diff_words(12.months.ago)).to eq("1 year")
-    end
-
-    it "should return years when over 24 months" do
-      expect(@model.time_diff_words(25.months.ago)).to eq("2 years")
+    it "should replace achievement placeholders using distance_of_time_in_words" do
+      content = @model.process_blocks(text_content, user)
+      text = content.dig(2, :children, 0, :text)
+      expect(text).to eq("You completed Past activity about 1 month ago.")
     end
   end
 
