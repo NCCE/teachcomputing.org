@@ -58,8 +58,9 @@
             <%= render model.render %>
           <% end %>
         <% end %>
-  
       </div>
     </nav>
   </div>
+
+  <%= render Cms::SiteWideBannerComponent.new(current_notification: @current_notification) %>
 </header>

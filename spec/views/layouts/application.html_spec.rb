@@ -3,6 +3,7 @@ require "rails_helper"
 RSpec.describe("layouts/application", type: :view) do
   before do
     stub_strapi_header
+    stub_strapi_site_wide_banner
     render
   end
 

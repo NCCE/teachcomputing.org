@@ -100,10 +100,12 @@ RSpec.configure do |config|
   config.before(:each, type: :system) do
     driven_by selenium_driver
     stub_strapi_header
+    stub_strapi_site_wide_banner
   end
 
   config.before(:each, type: :request) do
     stub_strapi_header
+    stub_strapi_site_wide_banner
   end
 
   config.after(:each, js: true, type: :system) do |_spec|

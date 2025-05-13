@@ -68,6 +68,7 @@ module Cms
           client.one(self, resource_id)
         end
       end
+
       new(**data)
     end
 
