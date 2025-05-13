@@ -4,7 +4,7 @@ module Cms
       module Mocks
         module Collections
           class SiteWideBanner < StrapiMock
-            attribute(:textContent) { Text::RichBlocks.as_model }
+            attribute(:textContent) { Text::RichBlocks.generate_data }
             attribute(:startTime) { Faker::Time.backward(days: 2) }
             attribute(:endTime) { Faker::Time.forward(days: 2) }
           end
