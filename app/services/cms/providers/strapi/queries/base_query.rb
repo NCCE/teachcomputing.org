@@ -26,8 +26,7 @@ module Cms
             Models::Meta::SimpleTitle => SimpleField,
             Models::Text::RichHeader => SimpleField,
             Models::Text::TextBlock => SimpleField,
-            Models::Text::TextBlockWithoutWrapper => SimpleField,
-            Models::Collections::SiteWideBanner => SiteWideBanner
+            Models::Text::TextBlockWithoutWrapper => SimpleField
           }.freeze
 
           def initialize(collection_class, resource_filter = "slug")
