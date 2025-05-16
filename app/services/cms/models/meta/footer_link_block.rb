@@ -9,13 +9,13 @@ module Cms
         end
 
         def process_blocks
-          @link_block.each do |block|
-            block
+          @link_block.map do |block|
+            {
+              links: block[:links].map do |link|
+                link
+              end
+            }
           end
-        end
-
-        def render
-          Cms::FooterComponent.new(link_block:)
         end
       end
     end
