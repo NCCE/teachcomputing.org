@@ -161,7 +161,20 @@ module Cms
             {
               link_block: strapi_data.map do |link|
                 {
-                  links: link[:link].map { |l| {link_text: l[:linkText], url: l[:url], icon: l[:icon]} }
+                  links: link[:link].map {
+                    Models::DynamicComponents::ContentBlocks::LinkWithIcon.new(
+                      link_text: _1[:linkText],
+                      url: _1[:url],
+                      icon: _1[:icon].dig(:data).nil? ? nil : Models::Images::Image.new(
+                        url: _1[:icon][:data][:attributes][:url],
+                        alt: _1[:icon][:data][:attributes][:alternativeText],
+                        caption: _1[:icon][:data][:attributes][:caption],
+                        default_size: :small,
+                        formats: _1[:icon][:data][:attributes][:formats]
+                      ),
+                      additional_classes: ["govuk-footer__link", "ncce-link", "ncce-link--on-dark"]
+                    )
+                  }
                 }
               end
             }

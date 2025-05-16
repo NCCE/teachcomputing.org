@@ -2,7 +2,8 @@ require "rails_helper"
 
 RSpec.describe("components/_footer", type: :view) do
   before do
-    render
+    stub_strapi_footer
+    assign(:cms_footer, Cms::Singles::Footer.get)
   end
 
   it "has a contact link" do
