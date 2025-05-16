@@ -1,6 +1,6 @@
 .cms-text-with-testimonial {
   .cms-button-container {
-    width: 80%;
+    width: 100%;
     @include govuk-media-query($until: tablet) {
       width: 100%;
     }
