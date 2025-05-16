@@ -10,6 +10,7 @@ module Cms
               attribute(:linkText) { Faker::Lorem.sentence }
               attribute(:url) { Faker::Internet.url }
               attribute(:icon) { Images::Image.generate_raw_data }
+              attribute(:additional_classes) {}
             end
           end
         end

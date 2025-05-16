@@ -227,6 +227,12 @@ module StrapiStubs
     end
   end
 
+  def stub_strapi_footer(footer: Cms::Mocks::Singles::Footer.generate_raw_data)
+    if as_graphql
+      stub_strapi_graphql_query("footer", footer, singular: true)
+    end
+  end
+
   def stub_strapi_homepage(homepage: Cms::Mocks::Singles::Homepage.generate_raw_data)
     if as_graphql
       stub_strapi_graphql_query("homepage", homepage, singular: true)
