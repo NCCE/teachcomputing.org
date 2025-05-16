@@ -18,6 +18,8 @@ module Cms
             Models::DynamicZones::EnrichmentDynamicZone => EnrichmentDynamicZone,
             Models::DynamicZones::HomepageDynamicZone => HomepageDynamicZone,
             Models::Images::FeaturedImage => FeaturedImage,
+            Models::Images::Image => Image,
+            Models::Meta::FooterLinkBlock => FooterLinkBlock,
             Models::Meta::HeaderMenu => HeaderMenu,
             Models::Meta::PageTitle => PageTitle,
             Models::Meta::Seo => Seo,
