@@ -1,0 +1,24 @@
+<%= render GovGridRowComponent.new(additional_classes: "cms-footer-component", padding: {top: 0, bottom: 0}) do |row| %>
+  <%= row.with_column("full") do %>
+    <div class="cms-footer-component-wrapper">
+      <div>
+        <%= render company_logo.render %>
+        <p class="govuk-body-s cms-footer-component--funding-text">Funded by</p>
+        <%= render funding_logo.render %>
+      </div>
+
+      <% link_blocks.each do |block| %>
+        <div class="cms-footer-component__link-block">
+          <% block[:links].each do |link| %>
+            <div>
+              <%= link_to link[:link_text], link[:url], class: "govuk-footer__link ncce-link ncce-link--on-dark" %>
+              <% if link[:icon][:data] %>
+                ICON
+              <% end %>
+            </div>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+<% end %>
