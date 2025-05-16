@@ -5,7 +5,9 @@ module Cms
         [
           {model: Models::Images::Image, key: :companyLogo},
           {model: Models::Images::Image, key: :funderLogo},
-          {model: Models::Meta::FooterLinkBlock, key: :linkBlock }
+          {model: Models::Data::TextField, key: :companyLogoLink},
+          {model: Models::Data::TextField, key: :funderLogoLink},
+          {model: Models::Meta::FooterLinkBlock, key: :linkBlock}
         ]
       end
 

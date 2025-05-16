@@ -2,20 +2,18 @@
   <%= row.with_column("full") do %>
     <div class="cms-footer-component-wrapper">
       <div>
-        <%= render company_logo.render %>
+        <a href="<%= company_url %>">
+          <%= render company_logo.render %>
+        </a>
         <p class="govuk-body-s cms-footer-component--funding-text">Funded by</p>
-        <%= render funding_logo.render %>
+        <a href="<%= funding_url %>">
+          <%= render funding_logo.render %>
+        </a>
       </div>
-
       <% link_blocks.each do |block| %>
         <div class="cms-footer-component__link-block">
           <% block[:links].each do |link| %>
-            <div>
-              <%= link_to link[:link_text], link[:url], class: "govuk-footer__link ncce-link ncce-link--on-dark" %>
-              <% if link[:icon][:data] %>
-                ICON
-              <% end %>
-            </div>
+            <%= render link.render %>
           <% end %>
         </div>
       <% end %>
