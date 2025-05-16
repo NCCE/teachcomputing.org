@@ -5,6 +5,7 @@ class ApplicationController < ActionController::Base
 
   before_action :authenticate
   before_action :access_cms_header
+  before_action :access_cms_footer
 
   def authenticate
     return unless ENV["BASIC_AUTH_PASSWORD"]
@@ -18,6 +19,12 @@ class ApplicationController < ActionController::Base
     @cms_header = Cms::Singles::Header.get
   rescue ActiveRecord::RecordNotFound
     @cms_header = nil
+  end
+
+  def access_cms_footer
+    @cms_footer = Cms::Singles::Footer.get
+  rescue ActiveRecord::RecordNotFound
+    @cms_footer = nil
   end
 
   def authenticate_user!
