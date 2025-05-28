@@ -43,7 +43,7 @@
       %>
     </p>
   <% end %>
-  <% if @aside_icons %>
+  <% if @aside_icons&.icons&.any? %>
     <%= render Cms::IconBlockComponent.new(icons: @aside_icons.icons) %>
   <% end %>
 </div>

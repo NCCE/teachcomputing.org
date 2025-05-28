@@ -1,10 +1,6 @@
 .aside-component {
   @include govuk-media-query($until: tablet) {
-    margin-top: $wrapper-xl-space;
-  }
-
-  @include govuk-media-query($from: tablet) {
-    @include bottom-margined;
+    margin: 2rem 0 0;
   }
 
   &.with-heading-line {
@@ -13,13 +9,23 @@
     border-top-width: 3px;
     padding-top: 1rem;
   }
+
+  .icon-wrapper {
+    @include govuk-media-query($from: tablet) {
+      margin-bottom: 2rem;
+    }
+  }
+
+  .button {
+    margin-bottom: 2rem;
+  }
 }
 
 .aside-component__heading {
 
   .with-icon {
     display: flex;
-    img { 
+    img {
       margin-right: 0.5rem;
       max-height: 1.5rem;
       filter: invert(56%) sepia(31%) saturate(4411%) hue-rotate(360deg) brightness(102%) contrast(105%);
@@ -30,7 +36,7 @@
     display: flex;
     justify-content: space-between;
 
-    img { 
+    img {
       max-height: 1.5rem;
       margin-right: 0.5rem;
     }
@@ -38,6 +44,10 @@
 }
 
 .aside-component__cms-content {
+  @include govuk-media-query($from: tablet) {
+    margin-bottom: 2rem;
+  }
+
   p, ul {
     @include govuk-font($size: 16);
 
@@ -45,14 +55,14 @@
       margin-bottom: 0px;
     }
   }
-  
+
   .button {
     width: 250px;
     margin: 1rem 0 0;
   }
 
   img {
-    width: 100%; 
+    width: 100%;
     height: auto;
     margin-bottom: 5px;
     box-shadow: 0px 0px 4px 0px #00000040;
