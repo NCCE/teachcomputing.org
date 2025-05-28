@@ -98,7 +98,7 @@ RSpec.describe UserProgrammeCourseBookingsWithAsidesComponent, type: :component 
       end
 
       it "renders the course icon" do
-        expect(page).to have_css("[class^='icon']")
+        expect(page).to have_css(".icon-map-pin")
       end
 
       it "renders the course duration" do
