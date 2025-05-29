@@ -2,19 +2,15 @@ module Cms
   module Models
     module Meta
       class FooterLinkBlock
-        attr_accessor :link_block
+        attr_accessor :link_blocks
 
-        def initialize(link_block:)
-          @link_block = link_block
+        def initialize(link_blocks:)
+          @link_blocks = link_blocks
         end
 
         def process_blocks
-          @link_block.map do |block|
-            {
-              links: block[:links].map do |link|
-                link
-              end
-            }
+          @link_blocks.map do |block|
+            block
           end
         end
       end

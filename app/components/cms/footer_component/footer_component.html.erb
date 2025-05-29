@@ -12,8 +12,8 @@
       </div>
       <% link_blocks.each do |block| %>
         <div class="cms-footer-component__link-block">
-          <% block[:links].each do |link| %>
-            <%= render link.render %>
+          <% block.each do |link| %>
+            <%= render link.render(additional_classes: ["govuk-footer__link", "ncce-link", "ncce-link--on-dark"]) %>
           <% end %>
         </div>
       <% end %>
