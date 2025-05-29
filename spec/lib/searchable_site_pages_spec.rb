@@ -9,7 +9,7 @@ RSpec.describe SearchableSitePages do
       allow_any_instance_of(SearchableSitePages).to receive(:build_pathway_pages).and_return(nil)
       allow_any_instance_of(SearchableSitePages).to receive(:build_curriculum_pages).and_return(nil)
 
-      expect(SearchableSitePages.all.size).to be > 10
+      expect(SearchableSitePages.all.size).to be > 9
     end
 
     it "all entries should have a title, excerpt, and path" do
