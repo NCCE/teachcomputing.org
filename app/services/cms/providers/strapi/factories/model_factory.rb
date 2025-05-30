@@ -14,7 +14,9 @@ module Cms
             Models::DynamicZones::EnrichmentDynamicZone => :to_dynamic_zone,
             Models::Collections::EnrichmentList => :to_enrichment_list,
             Models::Images::FeaturedImage => :to_featured_image,
+            Models::Images::Image => :to_image,
             Models::Meta::HeaderMenu => :to_menu,
+            Models::Meta::FooterLinkBlock => :to_footer,
             Models::DynamicZones::HomepageDynamicZone => :to_dynamic_zone,
             Models::Meta::PageTitle => :to_page_title,
             Models::Meta::Seo => :to_seo,
@@ -131,12 +133,45 @@ module Cms
             }
           end
 
+          def self.to_image(strapi_data, _all_data, default_size = :medium)
+            return nil unless strapi_data.dig(:data, :attributes)
+
+            image_data = strapi_data[:data][:attributes]
+            {
+              url: image_data[:url],
+              alt: image_data[:alternativeText],
+              caption: image_data[:caption],
+              formats: image_data[:formats],
+              default_size:
+            }
+          end
+
           def self.to_menu(strapi_data, _all_data)
             {
               menu_items: strapi_data.map do |menu_item|
                 {
                   label: menu_item[:label],
                   menu_items: menu_item[:menuItems].map { {label: _1[:label], url: _1[:url]} }
+                }
+              end
+            }
+          end
+
+          def self.to_footer(strapi_data, _all_data)
+            {
+              link_blocks: strapi_data.map do |link|
+                link[:link].map {
+                  Models::DynamicComponents::ContentBlocks::LinkWithIcon.new(
+                    link_text: _1[:linkText],
+                    url: _1[:url],
+                    icon: _1[:icon].dig(:data).nil? ? nil : Models::Images::Image.new(
+                      url: _1[:icon][:data][:attributes][:url],
+                      alt: _1[:icon][:data][:attributes][:alternativeText],
+                      caption: _1[:icon][:data][:attributes][:caption],
+                      default_size: :small,
+                      formats: _1[:icon][:data][:attributes][:formats]
+                    )
+                  )
                 }
               end
             }
