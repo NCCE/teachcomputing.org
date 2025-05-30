@@ -160,7 +160,6 @@ module Cms
           def self.to_footer(strapi_data, _all_data)
             {
               link_blocks: strapi_data.map do |link|
-                byebug
                 link[:link].map {
                   Models::DynamicComponents::ContentBlocks::LinkWithIcon.new(
                     link_text: _1[:linkText],
@@ -171,7 +170,7 @@ module Cms
                       caption: _1[:icon][:data][:attributes][:caption],
                       default_size: :small,
                       formats: _1[:icon][:data][:attributes][:formats]
-                    ),
+                    )
                   )
                 }
               end

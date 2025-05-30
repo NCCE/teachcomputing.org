@@ -1,5 +1,5 @@
 <footer class="govuk-footer ncce-footer">
   <% if @cms_footer %>
-    <%= render Cms::FooterComponent.new(data: @cms_footer) %>
+    <%= render Cms::FooterComponent.new(data: @cms_footer.data_models) %>
   <% end %>
 </footer>
