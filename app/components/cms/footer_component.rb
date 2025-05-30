@@ -30,7 +30,7 @@ class Cms::FooterComponent < ViewComponent::Base
   private
 
   def data_models_by_type(type)
-    data.data_models.select { |model| model.is_a?(type) }
+    data.select { |model| model.is_a?(type) }
   end
 
   def find_text_field(index)
