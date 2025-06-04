@@ -2,15 +2,15 @@
   <%= row.with_column("full") do %>
     <div class="cms-footer-component-wrapper">
       <div>
-        <a href="<%= company_url %>">
-          <%= render company_logo.render %>
+        <a href="<%= get_model(:company_logo_link).value %>">
+          <%= render get_model(:company_logo).render %>
         </a>
         <p class="govuk-body-s cms-footer-component--funding-text">Funded by</p>
-        <a href="<%= funding_url %>">
-          <%= render funding_logo.render %>
+        <a href="<%= get_model(:funder_logo_link).value %>">
+          <%= render get_model(:funder_logo).render %>
         </a>
       </div>
-      <% link_blocks.each do |block| %>
+      <% get_model(:link_block).link_blocks.each do |block| %>
         <div class="cms-footer-component__link-block">
           <% block.each do |link| %>
             <%= render link.render(additional_classes: ["govuk-footer__link", "ncce-link", "ncce-link--on-dark"]) %>
