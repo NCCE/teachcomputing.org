@@ -23,6 +23,13 @@ module Cms
       data_models[index]
     end
 
+    def get_model(key)
+      index = self.class.param_indexes[key]
+      return nil unless index
+
+      data_models[index]
+    end
+
     def self.param_name(mapping)
       return mapping[:param_name] if mapping.has_key?(:param_name)
       mapping[:key].to_s.underscore.to_sym
