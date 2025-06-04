@@ -3,18 +3,11 @@
 require "rails_helper"
 
 RSpec.describe Cms::FooterComponent, type: :component do
+  let(:data) { Cms::Singles::Footer.get }
+
   before do
-    render_inline(described_class.new(data: [
-      Cms::Models::Data::TextField.new(value: Faker::Lorem.word),
-      Cms::Models::Data::TextField.new(value: Faker::Lorem.word),
-      Cms::Mocks::Images::Image.as_model,
-      Cms::Mocks::Images::Image.as_model,
-      Cms::Models::Meta::FooterLinkBlock.new(
-        link_blocks: Array.new(4) do
-          Array.new(5) { Cms::Mocks::DynamicComponents::ContentBlocks::LinkWithIcon.as_model }
-        end
-      )
-    ]))
+    stub_strapi_footer
+    render_inline(described_class.new(data:))
   end
 
   it "renders the component" do
@@ -23,6 +16,14 @@ RSpec.describe Cms::FooterComponent, type: :component do
 
   it "renders company and funder logo images" do
     expect(page).to have_css("img", count: 2)
+  end
+
+  it "has the company logo link" do
+    expect(page).to have_link(href: data.get_model(:company_logo_link).value)
+  end
+
+  it "has the funder logo link" do
+    expect(page).to have_link(href: data.get_model(:funder_logo_link).value)
   end
 
   it "renders the link blocks" do
