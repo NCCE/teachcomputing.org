@@ -7,12 +7,6 @@ module Cms
         def initialize(link_blocks:)
           @link_blocks = link_blocks
         end
-
-        def process_blocks
-          @link_blocks.map do |block|
-            block
-          end
-        end
       end
     end
   end
