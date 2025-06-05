@@ -1182,9 +1182,9 @@ end.save!
 ########################################################################################################################
 
 Activity.find_or_initialize_by(stem_course_template_no: "3b4de055-f020-f011-998a-0022481add34").tap do |activity|
-  activity.title = "Algorithms and programming in key stage 1"
-  activity.credit = 60
-  activity.slug = "algorithms-and-programming-in-key-stage-1-online"
+  activity.title = "Developing algorithms and programming in key stage 1"
+  activity.credit = 30
+  activity.slug = "developing-algorithms-and-programming-in-key-stage-1-online"
   activity.category = "online"
   activity.self_certifiable = false
   activity.provider = "stem-learning"
