@@ -10,6 +10,7 @@ module Achiever
         next unless activity
 
         achievement = fetch_achievement(activity_id: activity.id, user_id: user.id)
+        next unless achievement
         next if achievement.current_state == "complete"
 
         case course.attendance_status
@@ -45,10 +46,11 @@ module Achiever
     end
 
     def fetch_achievement(activity_id:, user_id:)
-      Achievement.find_or_create_by(activity_id: activity_id, user_id: user_id) do |achievement|
-        achievement.activity_id = activity_id
-        achievement.user_id = user_id
-      end
+      Achievement.find_or_create_by!(activity_id: activity_id, user_id: user_id)
+    rescue ActiveRecord::RecordInvalid => e
+      Sentry.set_tags(activity_id: activity_id, user_id: user_id)
+      Sentry.capture_exception(e)
+      nil
     end
 
     def run_jobs(user)
