@@ -87,6 +87,18 @@ class Achiever::Course::Template
       Achiever::Request.resource(RESOURCE_PATH, QUERY_STRINGS.merge(ProgrammeName: programme_name), false)
     end.uniq { _1["Template.COURSETEMPLATENO"].downcase }
 
+    if templates.empty?
+      Sentry.capture_message(
+        "No templates returned from Achiever API",
+        level: :error,
+        extra: {
+          programme_names: PROGRAMME_NAMES,
+          resource_path: RESOURCE_PATH,
+          query_strings: QUERY_STRINGS
+        }
+      )
+    end
+
     templates.filter_map do |template|
       activity = activities[template["Template.COURSETEMPLATENO"].downcase]
 
