@@ -107,8 +107,7 @@ class Achiever::Course::Template
       ) do
         templates_to_cache = _all
 
-        # prompt a developer to check the caching context
-        Sentry.capture_message("Caching #{templates_to_cache.size} achiever template cache(s)", level: :error)
+        Rails.logger.info("Caching #{templates_to_cache.size} achiever template cache(s)")
 
         templates_to_cache
       end
