@@ -48,6 +48,7 @@ module Achiever
     def fetch_achievement(activity_id:, user_id:)
       Achievement.find_or_create_by!(activity_id: activity_id, user_id: user_id)
     rescue ActiveRecord::RecordInvalid => e
+      Rails.logger.info "[FetchUsersCompletedCoursesFromAchieverJob] Validation failed: #{e.record.errors.full_messages.join(', ')}, activity_id: #{activity_id}, user_id: #{user_id}"
       Sentry.set_tags(activity_id: activity_id, user_id: user_id)
       Sentry.capture_exception(e)
       nil
