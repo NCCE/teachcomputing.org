@@ -5,10 +5,9 @@ class CmsMailer < ApplicationMailer
 
     begin
       @template = Cms::Collections::EmailTemplate.get(@template_slug).template
-
       @subject = @template.subject(@user)
 
-      mail(to: @user.email, subject: @subject)
+      mail(to: @user, subject: @subject, record_sent_mail: true, mailer_type: @template_slug)
     rescue ActiveRecord::RecordNotFound
       Sentry.capture_message("Failed to load the email template #{@template_slug}")
     end
