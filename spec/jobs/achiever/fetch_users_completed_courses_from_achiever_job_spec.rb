@@ -5,6 +5,9 @@ RSpec.describe Achiever::FetchUsersCompletedCoursesFromAchieverJob, type: :job d
 
   let(:user) { create(:user) }
   let(:activity_one) { create(:activity, stem_course_template_no: "92f4f86e-0237-4ecc-a905-2f6c62d6b5ae") }
+  let(:activity_two) { create(:activity, stem_course_template_no: "92f4f86e-0237-4ecc-a905-2f6c62d6b511") }
+  let(:achievement) { create(:achievement, activity_id: activity_one.id, user_id: user.id) }
+  let(:achievement_two) { create(:achievement, activity_id: activity_two.id, user_id: user.id) }
 
   before do
     # Issue with in-build argument checker in rpsec - https://github.com/rspec/rspec/issues/104
@@ -99,6 +102,52 @@ RSpec.describe Achiever::FetchUsersCompletedCoursesFromAchieverJob, type: :job d
       it "does not create an achievement" do
         perform_job
         expect(user.achievements.where(activity_id: "b15f8b07-2d8c-4eeb-8f22-1e4b5c86c148").exists?).to eq false
+      end
+    end
+  end
+
+  describe "sentry rescue handling" do
+    context "with achievement completion exception" do
+      before do
+        allow(Sentry).to receive(:capture_exception)
+        allow(Achievement).to receive(:find_or_create_by!).and_return(achievement)
+        allow(achievement).to receive(:complete!).and_raise(Statesman::TransitionConflictError.new("Conflict"))
+      end
+
+      it "captures transition conflict error in sentry" do
+        perform_job
+        expect(Sentry).to have_received(:capture_exception).with(an_instance_of(Statesman::TransitionConflictError))
+      end
+    end
+
+    context "with achievement drop exception" do
+      before do
+        allow(Sentry).to receive(:capture_exception)
+        allow(Achievement).to receive(:find_or_create_by!).and_return(achievement_two)
+        allow(achievement_two).to receive(:drop!).and_raise(Statesman::TransitionConflictError.new("Conflict"))
+      end
+
+      it "captures transition conflict error in sentry" do
+        perform_job
+        expect(Sentry).to have_received(:capture_exception).with(an_instance_of(Statesman::TransitionConflictError))
+      end
+    end
+
+    context "with achievement validation exception" do
+      before do
+        create(:activity, stem_course_template_no: "92f4f86e-0237-4ecc-a905-2f6c62d6b5ae")
+        allow(Rails.logger).to receive(:info)
+        allow(Sentry).to receive(:capture_exception)
+
+        invalid_achievement = Achievement.new
+        invalid_achievement.errors.add(:base, "Test validation error")
+
+        allow(Achievement).to receive(:find_or_create_by!).and_raise(ActiveRecord::RecordInvalid.new(invalid_achievement))
+      end
+
+      it "captures validation error in sentry" do
+        perform_job
+        expect(Sentry).to have_received(:capture_exception).with(an_instance_of(ActiveRecord::RecordInvalid))
       end
     end
   end
