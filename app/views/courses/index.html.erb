@@ -1,18 +1,11 @@
 <% meta_tag :title, 'Courses - Teach Computing' %>
-<%= render 'components/hero', hero_title: 'Computing courses for teachers', glyph_position: 'bottom', colour: 'lime-green' %>
+<%= render Cms::PageTitleComponent.new(title: "Computing courses for teachers") %>
 <div data-controller="course-filter">
   <%= render GovGridRowComponent.new(padding: {bottom: 2}) do |row| %>
-    <%= row.with_column("two-thirds") do %>
-      <p class="govuk-body">
+    <%= row.with_column("full") do %>
+      <p class="govuk-heading-m">
         Discover our range of professional development courses, designed to help you teach computing. Courses cover key stages 1 to 4 and cater for all levels of knowledge.
       </p>
-    <% end %>
-    <%= row.with_column("one-third") do %>
-      <%= render AsideComponent.new(title: "Costs") do |component| %>
-        <% component.with_body do %>
-          <p class="govuk-body">All our online courses are free to all educators. Additional fees are applicable to residential courses and are stated at the point of booking. </p>
-        <% end %>
-      <% end %>
     <% end %>
   <% end %>
 
@@ -21,10 +14,14 @@
       <div class="govuk-main-wrapper ncce-courses__results-wrapper">
         <div class="govuk-grid-row">
           <div class="govuk-grid-column-one-third-from-desktop ncce-courses__filters-wrapper govuk-!-margin-bottom-3">
+            <%= render AsideComponent.new(title: "Costs") do |component| %>
+              <% component.with_body do %>
+                <p class="govuk-body">All our online courses are free to all educators. Additional fees are applicable to residential courses and are stated at the point of booking. </p>
+              <% end %>
+            <% end %>
             <%= render 'courses/aside-filters' %>
           </div>
           <div class="govuk-grid-column-two-thirds-from-desktop">
-
             <div data-course-filter-target="results">
               <%= render 'courses/courses-list' %>
             </div>
