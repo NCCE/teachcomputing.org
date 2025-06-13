@@ -25,10 +25,7 @@ RSpec.describe("courses/index", type: :view) do
   end
 
   it "has a title" do
-    expect(rendered).to have_css(
-      ".govuk-heading-xl",
-      text: "Computing courses for teachers"
-    )
+    expect(rendered).to have_css(".govuk-heading-l", text: "Computing courses for teachers")
   end
 
   it "renders the courses_list partial" do

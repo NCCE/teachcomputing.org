@@ -51,6 +51,12 @@
 
   /* Move the title inside the filter box on mobile */
   &-title--desktop {
+    border-top-color: $orange;
+    border-top-style: solid;
+    border-top-width: 3px;
+    padding-top: 1rem;
+    margin-top: 2rem;
+
     @include govuk-media-query($until: desktop) {
       display: none;
     }
