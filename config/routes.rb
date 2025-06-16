@@ -8,15 +8,30 @@ Rails.application.routes.draw do
     end
   end
   namespace :admin do
-    root to: "pathways#index"
-    resources :badges
+    root to: "achievements#index"
+
+    achievement_actions = Rails.env.production? ? %i[index show] : %i[index show create new destroy update]
+    resources :achievements, only: achievement_actions do
+      member do
+        post :reject_evidence
+      end
+    end
+
     resources :activities
+    resources :assessment_attempts, only: %i[index show]
+    resources :assessment_attempt_transitions
+    resources :badges
     resources :pathways
     resources :pathway_activities
-    resources :hubs
-    resources :hub_regions
+    resources :programmes, only: [:index]
+    resources :reports, only: [:index] do
+      collection do
+        get :by_programme
+        post :report_results
+      end
+    end
+    resources :sent_emails, only: %i[index show]
     resources :support_audits, only: %i[index show update edit]
-
     resources :users, only: %i[index create show edit perform_sync perform_reset update] do
       get "/perform_sync/:user_id", to: "users#perform_sync", as: :perform_sync
       get "/perform_reset/:user_id", to: "users#perform_reset_tests", as: :perform_reset
@@ -28,21 +43,6 @@ Rails.application.routes.draw do
         get :generate_certificate
       end
     end
-    achievement_actions = Rails.env.production? ? %i[index show] : %i[index show create new destroy update]
-    resources :achievements, only: achievement_actions do
-      member do
-        post :reject_evidence
-      end
-    end
-    resources :assessment_attempts, only: %i[index show]
-    resources :assessment_attempt_transitions
-    resources :reports, only: [:index] do
-      collection do
-        get :by_programme
-        post :report_results
-      end
-    end
-    resources :sent_emails, only: %i[index show]
   end
 
   namespace :api do
