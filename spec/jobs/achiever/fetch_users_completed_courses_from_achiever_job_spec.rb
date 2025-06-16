@@ -145,9 +145,10 @@ RSpec.describe Achiever::FetchUsersCompletedCoursesFromAchieverJob, type: :job d
         allow(Achievement).to receive(:find_or_create_by!).and_raise(ActiveRecord::RecordInvalid.new(invalid_achievement))
       end
 
-      it "captures validation error in sentry" do
+      it "captures validation error in sentry and rails logger" do
         perform_job
         expect(Sentry).to have_received(:capture_exception).with(an_instance_of(ActiveRecord::RecordInvalid))
+        expect(Rails.logger).to have_received(:info).with(/validation error/i)
       end
     end
   end
