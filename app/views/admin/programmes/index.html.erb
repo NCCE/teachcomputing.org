@@ -1,0 +1,13 @@
+<header class="main-content__header">
+  <h1 class="main-content__page-title">
+    Programmes
+  </h1>
+</header>
+
+<section class="main-content__body">
+  <ul>
+    <% @programmes.each do |programme| %>
+      <li><%= link_to programme.title, admin_programme_path(programme.id) %></li>
+    <% end %>
+  </ul>
+</section>
