@@ -1,13 +1,15 @@
 <header class="main-content__header">
   <h1 class="main-content__page-title">
-    Programme Report: <%= @programme.title %> 
+    Programme Report: <%= @programme.title %>
   </h1>
 </header>
 
 <section class="main-content__body">
 
+
+
   <%= form_with(url: report_results_admin_reports_path(programme_id: @programme.id), local: true) do |form| %>
-    <%= fields_for :query do |qform| %> 
+    <%= fields_for :query do |qform| %>
       <div>
         <%= qform.label :enrolled %>
         <%= qform.check_box :enrolled %>
@@ -26,7 +28,7 @@
       <% end %>
     <% end %>
 
-    <%= form.submit "Run Query" %>
+    <%= form.submit "Run Query" %>  <%= link_to "Back", admin_reports_path, class: "button"%>
 
   <% end %>
 
