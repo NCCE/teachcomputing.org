@@ -23,7 +23,7 @@ Rails.application.routes.draw do
     resources :badges
     resources :pathways
     resources :pathway_activities
-    resources :programmes, only: [:index]
+    resources :programmes, only: [:index, :show]
     resources :reports, only: [:index] do
       collection do
         get :by_programme

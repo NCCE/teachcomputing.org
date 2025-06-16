@@ -1,0 +1,21 @@
+<header class="main-content__header">
+  <h1 class="main-content__page-title"><%= @programme.title %></h1>
+</header>
+
+<section class="main-content__body">
+  <h1>Programme activity groupings</h1>
+  <table>
+    <tr>
+      <th>Title</th>
+      <th>Activities</th>
+      <th>Required for completion</th>
+    </tr>
+    <% @programme.programme_activity_groupings.each do |grouping| %>
+      <tr>
+        <td><%= grouping.title %></td>
+        <td><%= grouping.activities.count %></td>
+        <td><%= grouping.required_for_completion %></td>
+      </tr>
+    <% end %>
+  </table>
+</section>
