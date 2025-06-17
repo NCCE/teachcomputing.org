@@ -11,7 +11,10 @@ module Admin
     end
 
     def show
-      @programme = Programme.find(params[:id])
+      @programme = Programme.includes(
+        programme_activity_groupings: :activities,
+        pathways: {pathway_activities: :activity}
+      ).find(params[:id])
     end
   end
 end

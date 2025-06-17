@@ -2,20 +2,74 @@
   <h1 class="main-content__page-title"><%= @programme.title %></h1>
 </header>
 
-<section class="main-content__body">
-  <h1>Programme activity groupings</h1>
-  <table>
-    <tr>
-      <th>Title</th>
-      <th>Activities</th>
-      <th>Required for completion</th>
-    </tr>
-    <% @programme.programme_activity_groupings.each do |grouping| %>
+<% if @programme.programme_activity_groupings.any? %>
+  <section class="main-content__body">
+    <h1>Programme activity groupings</h1>
+    <table>
       <tr>
-        <td><%= grouping.title %></td>
-        <td><%= grouping.activities.count %></td>
-        <td><%= grouping.required_for_completion %></td>
+        <th>Title</th>
+        <th>Activity count</th>
+        <th>Activities</th>
+        <th>Required for completion</th>
       </tr>
-    <% end %>
-  </table>
-</section>
+      <% @programme.programme_activity_groupings.each do |grouping| %>
+        <tr>
+          <td><%= grouping.title %></td>
+          <td><%= grouping.activities.count %></td>
+          <td>
+            <select>
+              <% grouping.activities.sort_by(&:title).each do |activity| %>
+                <option><%= strip_tags(activity.title) %> - <%= activity.category %></option>
+              <% end%>
+            </select>
+          </td>
+          <td><%= grouping.required_for_completion %></td>
+        </tr>
+      <% end %>
+    </table>
+  </section>
+<% end %>
+
+<% if @programme.pathways.any? && @programme != Programme::primary_certificate %> <!-- Primary no longer uses pathways -->
+  <section class="main-content__body">
+    <h1>Pathways</h1>
+    <table>
+      <tr>
+        <th>Title</th>
+        <th>Activity count</th>
+        <th>Activities</th>
+      </tr>
+      <% @programme.pathways.each do |pathway| %>
+        <tr>
+          <td><%= pathway.title %></td>
+          <td><%= pathway.pathway_activities.count %></td>
+          <td>
+            <select>
+              <% pathway.pathway_activities.sort_by(&:title).each do |activity| %>
+                <option><%= strip_tags(activity.title) %> - <%= activity.category %></option>
+              <% end%>
+            </select>
+          </td>
+        </tr>
+      <% end %>
+    </table>
+  </section>
+<% end %>
+
+<% if @programme.assessment.present? %>
+  <section class="main-content__body">
+    <h1>Programme assessments</h1>
+    <table>
+      <tr>
+        <th>Classmarker test ID</th>
+        <th>Assessment link</th>
+        <th>Required pass percentage</th>
+      </tr>
+      <tr>
+        <td><%= @programme.assessment.class_marker_test_id %></td>
+        <td><%= link_to @programme.assessment.link, @programme.assessment.link %></td>
+        <td><%= @programme.assessment.required_pass_percentage.to_i %>%</td>
+      </tr>
+    </table>
+  </section>
+<% end %>
