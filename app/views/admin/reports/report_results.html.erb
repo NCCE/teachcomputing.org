@@ -2,11 +2,10 @@
   <h1 class="main-content__page-title">
     Programme Report: <%= @programme.title %>
   </h1>
+  <%= link_to "Back", by_programme_admin_reports_path(programme_id: @programme.id), class: "button" %>
 </header>
 
 <section class="main-content__body">
-  <%= link_to "Back", by_programme_admin_reports_path(programme_id: @programme.id), class: "button" %>
-  <br/><br/>
   <% if @users %>
     <h1>Results</h1>
     <h2>Matching users: <%= @users.uniq.count %></h2>
@@ -24,7 +23,6 @@
           </tr>
         <% end %>
       </tbody>
-
     </table>
   <% end %>
 </section>
