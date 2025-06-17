@@ -1,5 +1,6 @@
 <header class="main-content__header">
   <h1 class="main-content__page-title"><%= @programme.title %></h1>
+  <%= link_to "Back", admin_programmes_path, class: "button" %>
 </header>
 
 <% if @programme.programme_activity_groupings.any? %>
