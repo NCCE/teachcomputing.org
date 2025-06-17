@@ -36,6 +36,21 @@ RSpec.describe "Admin::ProgrammesController" do
     it "should render correct template" do
       expect(response).to render_template("index")
     end
+
+    it "displays all available programmes" do
+      programmes = [
+        Programme.cs_accelerator,
+        Programme.primary_certificate,
+        Programme.secondary_certificate,
+        Programme.i_belong,
+        Programme.a_level
+      ].compact.sort_by(&:title)
+
+      programmes.each do |programme|
+        expected_link = link_to(programme.title, admin_programme_path(programme.id))
+        expect(response.body).to include(expected_link)
+      end
+    end
   end
 
   describe "GET #show" do
