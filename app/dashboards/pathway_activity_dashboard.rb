@@ -59,7 +59,7 @@ class PathwayActivityDashboard < BaseDashboard
   # Overwrite this method to customize how pathway activities are displayed
   # across all pages of the admin dashboard.
   #
-  # def display_resource(pathway_activity)
-  #   "PathwayActivity ##{pathway_activity.id}"
-  # end
+  def display_resource(pathway_activity)
+    "#{pathway_activity.activity.stem_activity_code} - #{pathway_activity.activity.title}"
+  end
 end
