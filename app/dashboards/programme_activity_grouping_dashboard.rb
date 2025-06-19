@@ -12,8 +12,6 @@ class ProgrammeActivityGroupingDashboard < Administrate::BaseDashboard
     id: Field::String,
     activities: Field::HasMany,
     community: Field::Boolean,
-    metadata: Field::String.with_options(searchable: false),
-    objectives: Field::String.with_options(searchable: false),
     programme: Field::BelongsTo,
     programme_activities: Field::HasMany,
     progress_bar_title: Field::String,
@@ -43,10 +41,8 @@ class ProgrammeActivityGroupingDashboard < Administrate::BaseDashboard
     title
     progress_bar_title
     programme
-    web_copy
     community
-    metadata
-    objectives
+    web_copy
     programme_activities
   ].freeze
 
@@ -57,13 +53,10 @@ class ProgrammeActivityGroupingDashboard < Administrate::BaseDashboard
     title
     activities
     community
-    metadata
-    objectives
     programme
     programme_activities
     progress_bar_title
     required_for_completion
-    sort_key
     web_copy
   ].freeze
 
