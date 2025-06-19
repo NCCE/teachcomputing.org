@@ -83,6 +83,6 @@ class ProgrammeActivityGroupingDashboard < Administrate::BaseDashboard
   # across all pages of the admin dashboard.
   #
   def display_resource(programme_activity_grouping)
-    "#{programme_activity_grouping.title}"
+    programme_activity_grouping.title.to_s
   end
 end
