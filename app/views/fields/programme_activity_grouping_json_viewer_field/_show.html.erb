@@ -1,0 +1,6 @@
+<% field.data.each do |v| %>
+  <%= content_tag :dl, class: ['attribute--nested'] do %>
+    <dt class='attribute-label attribute--inline'><%= v.first %>:</dt>
+    <dd class='attribute-data attribute-data--reduce-margin attribute--inline'><%= "#{v.last}" %></dd>
+  <% end %>
+<% end %>

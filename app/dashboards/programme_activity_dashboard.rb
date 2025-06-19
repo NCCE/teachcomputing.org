@@ -1,4 +1,6 @@
-class PathwayActivityDashboard < BaseDashboard
+require "administrate/base_dashboard"
+
+class ProgrammeActivityDashboard < Administrate::BaseDashboard
   # ATTRIBUTE_TYPES
   # a hash that describes the type of each of the model's fields.
   #
@@ -6,12 +8,14 @@ class PathwayActivityDashboard < BaseDashboard
   # which determines how the attribute is displayed
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
-    pathway: Field::BelongsTo,
+    id: Field::String,
     activity: Field::BelongsTo,
-    id: Field::String.with_options(searchable: false),
-    supplementary: Field::Boolean,
-    created_at: FORMATTED_DATE_TIME,
-    updated_at: FORMATTED_DATE_TIME
+    legacy: Field::Boolean,
+    order: Field::Number,
+    programme: Field::BelongsTo,
+    programme_activity_grouping: Field::BelongsTo,
+    created_at: Field::DateTime,
+    updated_at: Field::DateTime
   }.freeze
 
   # COLLECTION_ATTRIBUTES
@@ -20,17 +24,20 @@ class PathwayActivityDashboard < BaseDashboard
   # By default, it's limited to four items to reduce clutter on index pages.
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = %i[
-    pathway
     activity
-    supplementary
+    legacy
+    order
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = %i[
-    pathway
+    id
     activity
-    supplementary
+    legacy
+    order
+    programme
+    programme_activity_grouping
     created_at
     updated_at
   ].freeze
@@ -39,9 +46,11 @@ class PathwayActivityDashboard < BaseDashboard
   # an array of attributes that will be displayed
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = %i[
-    pathway
     activity
-    supplementary
+    legacy
+    order
+    programme
+    programme_activity_grouping
   ].freeze
 
   # COLLECTION_FILTERS
@@ -56,10 +65,10 @@ class PathwayActivityDashboard < BaseDashboard
   #   }.freeze
   COLLECTION_FILTERS = {}.freeze
 
-  # Overwrite this method to customize how pathway activities are displayed
+  # Overwrite this method to customize how programme activities are displayed
   # across all pages of the admin dashboard.
   #
-  def display_resource(pathway_activity)
-    "#{pathway_activity.activity.stem_activity_code} - #{pathway_activity.activity.title}"
+  def display_resource(programme_activity)
+    programme_activity.activity.title
   end
 end

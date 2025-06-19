@@ -1,0 +1,14 @@
+<div class="field-unit field-unit--jsonb field-unit--optional">
+  <table>
+    <% field.data.each do |k, v| %>
+      <tr>
+        <td>
+          <%= f.label "web_copy[#{k}]", k.humanize %>
+        </td>
+        <td>
+          <%= f.text_field "web_copy[#{k}]", value: v %>
+        </td>
+      </tr>
+    <% end %>
+  </table>
+</div>

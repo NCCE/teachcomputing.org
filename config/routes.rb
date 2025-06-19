@@ -32,6 +32,8 @@ Rails.application.routes.draw do
     end
     resources :sent_emails, only: %i[index show]
     resources :support_audits, only: %i[index show update edit]
+    resources :programme_activity_groupings
+
     resources :users, only: %i[index create show edit perform_sync perform_reset update] do
       get "/perform_sync/:user_id", to: "users#perform_sync", as: :perform_sync
       get "/perform_reset/:user_id", to: "users#perform_reset_tests", as: :perform_reset
