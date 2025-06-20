@@ -2,9 +2,9 @@
   <table>
     <% field.data.each do |k, v| %>
       <tr>
-        <td>
+        <th>
           <%= f.label "web_copy[#{k}]", k.humanize %>
-        </td>
+        </th>
         <td>
           <%= f.text_field "web_copy[#{k}]", value: v %>
         </td>
