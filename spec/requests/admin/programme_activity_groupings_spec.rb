@@ -8,8 +8,7 @@ RSpec.describe "Admin::ProgrammeActivityGroupingsController" do
         aside_slug: "test-slug",
         subtitle: "Complete the activities in this section",
         step_number: "three"
-      }
-    )
+      })
   end
 
   before do
