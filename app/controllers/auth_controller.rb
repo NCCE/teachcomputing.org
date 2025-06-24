@@ -9,6 +9,8 @@ class AuthController < ApplicationController
     session[:user_id] = user.id
 
     if user_exists
+      Achiever::FetchUsersCompletedCoursesFromAchieverJob.perform_later(user)
+
       flash[:notice] = "Welcome back, good to see you again!"
       redirect_to course_booking_uri || dashboard_path
     else
@@ -16,7 +18,6 @@ class AuthController < ApplicationController
       redirect_to course_booking_uri ? "#{course_booking_uri}?firstLogin=true" : dashboard_path(firstLogin: true)
     end
 
-    Achiever::FetchUsersCompletedCoursesFromAchieverJob.perform_later(user)
   rescue => e
     Sentry.with_scope do |scope|
       scope.set_context("CustomClaim", {
