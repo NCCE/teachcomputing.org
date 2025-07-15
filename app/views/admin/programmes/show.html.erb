@@ -16,11 +16,14 @@
       <% @programme.programme_activity_groupings.each do |grouping| %>
         <tr>
           <td><%= grouping.title %></td>
-          <td><%= grouping.activities.count %></td>
+          <td><%= grouping.activities.size %></td>
           <td>
             <select>
               <% grouping.activities.sort_by(&:title).each do |activity| %>
-                <option><%= strip_tags(activity.title) %> - <%= activity.category %></option>
+                <option>
+                  <%= "#{activity.stem_activity_code} - " if activity.stem_activity_code %>
+                  <%= strip_tags(activity.title) %> - <%= activity.category %>
+                </option>
               <% end%>
             </select>
           </td>
@@ -47,7 +50,10 @@
           <td>
             <select>
               <% pathway.pathway_activities.sort_by(&:title).each do |activity| %>
-                <option><%= strip_tags(activity.title) %> - <%= activity.category %></option>
+                <option>
+                  <%= "#{activity.stem_activity_code} - " if activity.stem_activity_code %>
+                  <%= strip_tags(activity.title) %> - <%= activity.category %>
+                </option>
               <% end%>
             </select>
           </td>
