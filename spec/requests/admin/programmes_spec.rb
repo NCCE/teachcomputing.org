@@ -68,7 +68,7 @@ RSpec.describe "Admin::ProgrammesController" do
       end
 
       it "should render programme activity groupings activity count" do
-        expect(response.body).to include(programme.programme_activity_groupings.first.activities.count.to_s)
+        expect(response.body).to include(programme.programme_activity_groupings.first.activities.size.to_s)
       end
 
       it "should render activities" do
@@ -89,7 +89,7 @@ RSpec.describe "Admin::ProgrammesController" do
       end
 
       it "should render pathway activity count" do
-        expect(response.body).to include(programme.pathways.first.pathway_activities.count.to_s)
+        expect(response.body).to include(programme.pathways.first.pathway_activities.size.to_s)
       end
 
       it "should render activities" do
