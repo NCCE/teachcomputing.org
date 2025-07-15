@@ -43,7 +43,7 @@
       <% @programme.pathways.each do |pathway| %>
         <tr>
           <td><%= pathway.title %></td>
-          <td><%= pathway.pathway_activities.count %></td>
+          <td><%= pathway.pathway_activities.size %></td>
           <td>
             <select>
               <% pathway.pathway_activities.sort_by(&:title).each do |activity| %>
