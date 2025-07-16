@@ -54,7 +54,7 @@
     "stylelint-order": "^6.0.4",
     "stylelint-prettier": "^3.0.0",
     "stylelint-scss": "^6.10",
-    "webpack-dev-server": "^3.11.2"
+    "webpack-dev-server": "^5.2.2"
   },
   "scripts": {
     "setup": "sh ./scripts/setup.sh",
