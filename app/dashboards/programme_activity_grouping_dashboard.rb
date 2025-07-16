@@ -42,8 +42,8 @@ class ProgrammeActivityGroupingDashboard < Administrate::BaseDashboard
     progress_bar_title
     programme
     community
-    web_copy
     programme_activities
+    web_copy
   ].freeze
 
   # FORM_ATTRIBUTES
