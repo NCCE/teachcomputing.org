@@ -1358,3 +1358,48 @@ Activity.find_or_initialize_by(stem_course_template_no: "2c924b42-c825-f011-8c4e
 
   activity.programmes = [secondary_certificate]
 end.save!
+
+########################################################################################################################
+
+Activity.find_or_initialize_by(stem_course_template_no: "e6f311a2-8347-f011-877a-6045bd0e1f8c").tap do |activity|
+  activity.title = "Introduction to the Crumble in key stage 2"
+  activity.credit = 20
+  activity.slug = "introduction-to-the-crumble-in-key-stage-2-online"
+  activity.category = "online"
+  activity.self_certifiable = false
+  activity.provider = "stem-learning"
+  activity.stem_activity_code = "CO252"
+  activity.always_on = true
+
+  activity.programmes = [primary_certificate]
+end.save!
+
+########################################################################################################################
+
+Activity.find_or_initialize_by(stem_course_template_no: "efda4963-9b47-f011-877a-002248c763ad").tap do |activity|
+  activity.title = "Implementing the Teach Computing curriculum in your primary school"
+  activity.credit = 60
+  activity.slug = "implementing-the-teach-computing-curriculum-in-your-primary-school-online"
+  activity.category = "online"
+  activity.self_certifiable = false
+  activity.provider = "stem-learning"
+  activity.stem_activity_code = "CO255"
+  activity.always_on = true
+
+  activity.programmes = [primary_certificate]
+end.save!
+
+########################################################################################################################
+
+Activity.find_or_initialize_by(stem_course_template_no: "d6225144-4748-f011-877a-6045bd0b0fca").tap do |activity|
+  activity.title = "Introduction to the Bee-bot in key stage 1"
+  activity.credit = 20
+  activity.slug = "introduction-to-the-bee-bot-in-key-stage-1-online"
+  activity.category = "online"
+  activity.self_certifiable = false
+  activity.provider = "stem-learning"
+  activity.stem_activity_code = "CO256"
+  activity.always_on = true
+
+  activity.programmes = [primary_certificate]
+end.save!
