@@ -24,6 +24,7 @@ Rails.application.routes.draw do
     resources :pathways
     resources :pathway_activities
     resources :programmes, only: [:index, :show]
+    resources :programme_activity_groupings, only: %i[index show update edit]
     resources :reports, only: [:index] do
       collection do
         get :by_programme
@@ -32,7 +33,6 @@ Rails.application.routes.draw do
     end
     resources :sent_emails, only: %i[index show]
     resources :support_audits, only: %i[index show update edit]
-    resources :programme_activity_groupings, only: %i[index show update edit]
 
     resources :users, only: %i[index create show edit perform_sync perform_reset update] do
       get "/perform_sync/:user_id", to: "users#perform_sync", as: :perform_sync
