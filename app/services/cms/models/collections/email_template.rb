@@ -14,7 +14,7 @@ module Cms
           @programme = Programme.find_by(slug: @programme_slug)
           @completed_programme_activity_group_slugs = completed_programme_activity_group_slugs
           @completed_programme_activity_groups = if completed_programme_activity_group_slugs
-            completed_programme_activity_group_slugs.each { ProgrammeActivityGrouping.find_by(cms_slug: _1) }
+            completed_programme_activity_group_slugs.map { ProgrammeActivityGrouping.find_by(cms_slug: _1) }
           else
             []
           end
