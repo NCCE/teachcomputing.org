@@ -112,7 +112,7 @@ group :test do
   gem "rspec_junit_formatter"
   gem "rspec-mocks"
   gem "rspec-rails"
-  gem "selenium-webdriver", "~> 3.142.7"
+  gem "selenium-webdriver", "~> 4.35.0"
   gem "shoulda-callback-matchers"
   gem "shoulda-matchers"
   gem "simplecov"
