@@ -166,7 +166,6 @@ GEM
       rack-test (>= 0.6.3)
       regexp_parser (>= 1.5, < 3.0)
       xpath (~> 3.2)
-    childprocess (3.0.0)
     choice (0.2.0)
     climate_control (1.2.0)
     cloudflare-rails (6.2.0)
@@ -603,7 +602,7 @@ GEM
       rexml
     ruby-progressbar (1.13.0)
     ruby-rc4 (0.1.5)
-    rubyzip (2.3.2)
+    rubyzip (3.0.2)
     sassc (2.4.0)
       ffi (~> 1.9)
     sassc-rails (2.1.2)
@@ -616,9 +615,12 @@ GEM
       parser
     securerandom (0.4.1)
     selectize-rails (0.12.6)
-    selenium-webdriver (3.142.7)
-      childprocess (>= 0.5, < 4.0)
-      rubyzip (>= 1.2.2)
+    selenium-webdriver (4.35.0)
+      base64 (~> 0.2)
+      logger (~> 1.4)
+      rexml (~> 3.2, >= 3.2.5)
+      rubyzip (>= 1.2.2, < 4.0)
+      websocket (~> 1.0)
     semantic_range (3.0.0)
     sentry-rails (5.23.0)
       railties (>= 5.0)
@@ -743,6 +745,7 @@ GEM
       railties (>= 5.2)
       semantic_range (>= 2.3.0)
     webrick (1.9.1)
+    websocket (1.2.11)
     websocket-driver (0.7.7)
       base64
       websocket-extensions (>= 0.1.0)
@@ -834,7 +837,7 @@ DEPENDENCIES
   rspec_junit_formatter
   ruby-debug-ide
   scout_apm
-  selenium-webdriver (~> 3.142.7)
+  selenium-webdriver (~> 4.35.0)
   sentry-rails
   sentry-ruby
   sentry-sidekiq
