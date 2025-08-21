@@ -138,7 +138,7 @@ RSpec.describe("Curriculum Ratings", type: :system) do
       describe "when a reason is given for a positive rating" do
         before do
           find("[name=commit]").click
-          fill_in id: "comment", with: "I just loves it here soo much"
+          fill_in id: "comment", with: "It was good"
           find("[name=commit]").click
         end
 
