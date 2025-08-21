@@ -44,7 +44,7 @@ Capybara.default_max_wait_time = 5
 Capybara.register_driver selenium_driver do |app|
   options = ::Selenium::WebDriver::Chrome::Options.new
 
-  options.add_argument("headless=new")
+  options.add_argument("--headless=new")
   options.add_argument("--disable-dev-shm-usage") # without this you may get Selenium::WebDriver::Error::InvalidSessionError
   options.add_argument("--disable-extensions")
   options.add_argument("--no-sandbox")
@@ -111,7 +111,7 @@ RSpec.configure do |config|
   end
 
   config.after(:each, js: true, type: :system) do |_spec|
-    errors = page.driver.browser.manage.logs.get(:browser)
+    errors = page.driver.browser.logs.get(:browser)
       .select { |e| e.level == "SEVERE" && e.message.present? }
       .map(&:message)
       .to_a
