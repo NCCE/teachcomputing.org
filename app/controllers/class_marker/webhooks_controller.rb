@@ -4,7 +4,7 @@ class ClassMarker::WebhooksController < ApplicationController
   before_action :verify_hmac_signature
 
   def assessment
-    UpdateUserAssessmentAttemptFromClassMarkerJob.perform_later(request[:test][:test_id], request[:result][:cm_user_id], request[:result][:percentage])
+    UpdateUserAssessmentAttemptFromClassMarkerJob.perform_later(params[:test][:test_id], params[:result][:cm_user_id], params[:result][:percentage])
     head :ok
   end
 
