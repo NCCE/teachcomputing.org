@@ -33,9 +33,9 @@ module Curriculum
       raise NoMethodError unless respond_to?(:client, true)
 
       response = client.update_rating(
-        id: request[:rating_id],
+        id: params[:rating_id],
         key: :comment,
-        value: request[:comment].gsub('"', '\"')
+        value: params[:comment].gsub('"', '\"')
       )
 
       render json: {
@@ -48,11 +48,11 @@ module Curriculum
       raise NoMethodError unless respond_to?(:client, true)
 
       response = client.update_rating(
-        id: request[:rating_id],
+        id: params[:rating_id],
         key: :choices,
-        value: request[:rating_choices]
+        value: params[:rating_choices]
       )
-      response.rating_id = request[:rating_id]
+      response.rating_id = params[:rating_id]
       render json: {
         origin: __method__.to_s,
         data: response
