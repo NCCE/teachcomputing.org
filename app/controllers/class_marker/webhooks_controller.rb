@@ -1,10 +1,19 @@
 class ClassMarker::WebhooksController < ApplicationController
   skip_before_action :verify_authenticity_token, :authenticate
 
-  before_action :verify_hmac_signature
 
   def assessment
-    UpdateUserAssessmentAttemptFromClassMarkerJob.perform_later(params[:test][:test_id], params[:result][:cm_user_id], params[:result][:percentage])
+    test_id = params.dig(:test, :test_id)
+    cm_user_id = params.dig(:result, :cm_user_id)
+    percentage = params.dig(:result, :percentage)
+
+    if test_id.blank? || cm_user_id.blank? || percentage.blank?
+      Sentry.capture_message("Classmarker webhook missing parameters", extra: {received_params: params.to_unsafe_h})
+      head :bad_request
+      return
+    end
+
+    UpdateUserAssessmentAttemptFromClassMarkerJob.perform_later(test_id, cm_user_id, percentage)
     head :ok
   end
 
