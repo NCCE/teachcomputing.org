@@ -1,7 +1,6 @@
 class ClassMarker::WebhooksController < ApplicationController
   skip_before_action :verify_authenticity_token, :authenticate
 
-
   def assessment
     test_id = params.dig(:test, :test_id)
     cm_user_id = params.dig(:result, :cm_user_id)
