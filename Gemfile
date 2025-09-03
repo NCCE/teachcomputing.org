@@ -53,7 +53,7 @@ gem "sentry-sidekiq"
 gem "sidekiq"
 gem "sitemap_generator"
 gem "stackprof"
-gem "statesman", "= 10.0.0" # Pinned due to bug https://github.com/gocardless/statesman/issues/509
+gem "statesman", "13.0.0" # Pinned due to bug https://github.com/gocardless/statesman/issues/509
 gem "terser"
 gem "turbolinks"
 gem "uglifier"
