@@ -6342,17 +6342,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"fast-xml-parser@npm:^3.19.0":
-  version: 3.21.1
-  resolution: "fast-xml-parser@npm:3.21.1"
-  dependencies:
-    strnum: ^1.0.4
-  bin:
-    xml2js: cli.js
-  checksum: 73b9c907a424cc2f9b11a8a2f1b7448d936f1db6fa574b85cbe4be9739c2f77d99a827bb27d738a0db0047b20c71a5d663f64937fbdb9c38977fc6cd145221d2
-  languageName: node
-  linkType: hard
-
 "fastest-levenshtein@npm:^1.0.16":
   version: 1.0.16
   resolution: "fastest-levenshtein@npm:1.0.16"
@@ -8073,15 +8062,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"is-svg@npm:4.3.1":
-  version: 4.3.1
-  resolution: "is-svg@npm:4.3.1"
-  dependencies:
-    fast-xml-parser: ^3.19.0
-  checksum: 584fc7422e912a15ae9d4c449ac2ff531a98ab87cba362af188d02f78c0b0a1f489e10021285e5708eb793ee41d910c7caf915c07e54f1989d76bf1f701b2833
-  languageName: node
-  linkType: hard
-
 "is-symbol@npm:^1.0.2, is-symbol@npm:^1.0.3":
   version: 1.0.4
   resolution: "is-symbol@npm:1.0.4"
@@ -9205,7 +9185,6 @@ __metadata:
     flatpickr: ^4.6.9
     govuk-frontend: 5.4.0
     install: ^0.13.0
-    is-svg: 4.3.1
     lint-staged: ^15.2.10
     node-sass-glob-importer: ^5.3.2
     prettier: ^3.5.3
@@ -12629,13 +12608,6 @@ __metadata:
   version: 3.1.1
   resolution: "strip-json-comments@npm:3.1.1"
   checksum: 492f73e27268f9b1c122733f28ecb0e7e8d8a531a6662efbd08e22cccb3f9475e90a1b82cab06a392f6afae6d2de636f977e231296400d0ec5304ba70f166443
-  languageName: node
-  linkType: hard
-
-"strnum@npm:^1.0.4":
-  version: 1.0.5
-  resolution: "strnum@npm:1.0.5"
-  checksum: 651b2031db5da1bf4a77fdd2f116a8ac8055157c5420f5569f64879133825915ad461513e7202a16d7fec63c54fd822410d0962f8ca12385c4334891b9ae6dd2
   languageName: node
   linkType: hard
 
