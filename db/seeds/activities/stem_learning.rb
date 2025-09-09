@@ -2940,3 +2940,15 @@ Activity.find_or_initialize_by(stem_course_template_no: "d20a4f49-edcc-ef11-b8e8
 
   activity.programmes = [secondary_certificate]
 end.save!
+
+Activity.find_or_initialize_by(stem_course_template_no: "d56154f7-378a-f011-b4cc-002248c763ad").tap do |activity|
+  activity.title = "Experienced leaders of primary computing"
+  activity.slug = "experienced-leaders-of-primary-computing"
+  activity.category = "face-to-face"
+  activity.remote_delivered_cpd = false
+  activity.provider = "stem-learning"
+  activity.stem_activity_code = "CP020"
+  activity.credit = 160
+
+  activity.programmes = [primary_certificate]
+end.save!
