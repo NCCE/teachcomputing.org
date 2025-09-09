@@ -12,7 +12,7 @@ services:
           - strapi.teachcomputing.test
 
   db:
-    image: postgres:14
+    image: postgres:17
     volumes:
       - pg-data:/var/lib/postgresql/data
     ports:
