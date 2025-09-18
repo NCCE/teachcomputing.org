@@ -79,7 +79,7 @@ jobs:
           name: Database setup
           command: bin/rails db:schema:load --trace
       - browser-tools/install-browser-tools:
-          chrome-version: 128.0.6613.84 # https://github.com/CircleCI-Public/browser-tools-orb/issues/108#issuecomment-1958532112
+          chrome-version: latest
           replace-existing-chrome: true
       - run:
           name: Run rspec
