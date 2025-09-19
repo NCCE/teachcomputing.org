@@ -1391,21 +1391,6 @@ end.save!
 
 ########################################################################################################################
 
-Activity.find_or_initialize_by(stem_course_template_no: "6d35d662-d40e-f011-9989-6045bd0c58e0").tap do |activity|
-  activity.title = "Teaching programming with the micro:bit"
-  activity.credit = 60
-  activity.slug = "teaching-programming-with-the-micro-bit-online"
-  activity.category = "online"
-  activity.self_certifiable = false
-  activity.provider = "stem-learning"
-  activity.stem_activity_code = "CO018"
-  activity.always_on = true
-
-  activity.programmes = [primary_certificate]
-end.save!
-
-########################################################################################################################
-
 Activity.find_or_initialize_by(stem_course_template_no: "d6225144-4748-f011-877a-6045bd0b0fca").tap do |activity|
   activity.title = "Introduction to the Bee-bot in key stage 1"
   activity.credit = 20
@@ -1414,6 +1399,21 @@ Activity.find_or_initialize_by(stem_course_template_no: "d6225144-4748-f011-877a
   activity.self_certifiable = false
   activity.provider = "stem-learning"
   activity.stem_activity_code = "CO256"
+  activity.always_on = true
+
+  activity.programmes = [primary_certificate]
+end.save!
+
+########################################################################################################################
+
+Activity.find_or_initialize_by(stem_course_template_no: "6d35d662-d40e-f011-9989-6045bd0c58e0").tap do |activity|
+  activity.title = "Teaching programming with the micro:bit"
+  activity.credit = 60
+  activity.slug = "teaching-programming-with-the-micro-bit-online"
+  activity.category = "online"
+  activity.self_certifiable = false
+  activity.provider = "stem-learning"
+  activity.stem_activity_code = "CO018"
   activity.always_on = true
 
   activity.programmes = [primary_certificate]
