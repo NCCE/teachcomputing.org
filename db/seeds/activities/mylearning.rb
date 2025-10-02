@@ -1406,7 +1406,7 @@ end.save!
 
 ########################################################################################################################
 
-# CO018 was seeded with the incorrect template number - removing here and reseeding
+# CO018 was seeded with the incorrect template number - removing here and reseeding with correct ID
 Activity.find_by(stem_course_template_no: "6d35d662-d40e-f011-9989-6045bd0c58e0")&.destroy
 
 Activity.find_or_initialize_by(stem_course_template_no: "17011822-0667-f011-bec3-6045bd0b0fca").tap do |activity|
