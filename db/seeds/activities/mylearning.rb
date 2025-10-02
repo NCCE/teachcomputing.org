@@ -1406,7 +1406,10 @@ end.save!
 
 ########################################################################################################################
 
-Activity.find_or_initialize_by(stem_course_template_no: "6d35d662-d40e-f011-9989-6045bd0c58e0").tap do |activity|
+# CO018 was seeded with the incorrect template number - removing here and reseeding
+Activity.find_by(stem_course_template_no: "6d35d662-d40e-f011-9989-6045bd0c58e0")&.destroy
+
+Activity.find_or_initialize_by(stem_course_template_no: "17011822-0667-f011-bec3-6045bd0b0fca").tap do |activity|
   activity.title = "Teaching programming with the micro:bit"
   activity.credit = 60
   activity.slug = "teaching-programming-with-the-micro-bit-online"
