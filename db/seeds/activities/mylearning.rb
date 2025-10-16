@@ -568,7 +568,7 @@ end.save!
 
 Activity.find_or_initialize_by(stem_course_template_no: "071de4a9-f7f8-ef11-bae2-0022481add34").tap do |activity|
   activity.title = "Block-based programming for KS3 computing"
-  activity.credit = 60
+  activity.credit = 20
   activity.slug = "block-based-programming-for-ks3-computing-online"
   activity.category = "online"
   activity.self_certifiable = false
@@ -576,7 +576,7 @@ Activity.find_or_initialize_by(stem_course_template_no: "071de4a9-f7f8-ef11-bae2
   activity.stem_activity_code = "CO237"
   activity.always_on = true
 
-  activity.programmes = [secondary_certificate]
+  activity.programmes = [cs_accelerator]
 end.save!
 
 ########################################################################################################################
@@ -1288,7 +1288,7 @@ end.save!
 
 Activity.find_or_initialize_by(stem_course_template_no: "6f5e9497-c325-f011-8c4e-6045bd0c58e0").tap do |activity|
   activity.title = "Python programming: working with data"
-  activity.credit = 15
+  activity.credit = 20
   activity.slug = "python-programming-working-with-data-online"
   activity.category = "online"
   activity.self_certifiable = false
@@ -1296,7 +1296,7 @@ Activity.find_or_initialize_by(stem_course_template_no: "6f5e9497-c325-f011-8c4e
   activity.stem_activity_code = "CO433"
   activity.always_on = true
 
-  activity.programmes = [secondary_certificate]
+  activity.programmes = [cs_accelerator]
 end.save!
 
 ########################################################################################################################
@@ -1348,7 +1348,7 @@ end.save!
 
 Activity.find_or_initialize_by(stem_course_template_no: "2c924b42-c825-f011-8c4e-6045bd0c58e0").tap do |activity|
   activity.title = "The internet and cyber security"
-  activity.credit = 15
+  activity.credit = 20
   activity.slug = "the-internet-and-cyber-security-online"
   activity.category = "online"
   activity.self_certifiable = false
@@ -1356,7 +1356,7 @@ Activity.find_or_initialize_by(stem_course_template_no: "2c924b42-c825-f011-8c4e
   activity.stem_activity_code = "CO432"
   activity.always_on = true
 
-  activity.programmes = [secondary_certificate]
+  activity.programmes = [cs_accelerator]
 end.save!
 
 ########################################################################################################################
