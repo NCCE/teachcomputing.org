@@ -53,9 +53,9 @@ RSpec.describe("courses/_aside-booking", type: :view) do
           )
         end
 
-        it "renders link to STEM Learning booking page using occurence" do
+        it "renders link to STEM Learning booking page" do
           occurence = occurrences.first
-          expected_link = "https://ncce-www-stage-int.stem.org.uk/cpdredirect/#{occurence.course_occurrence_no}"
+          expected_link = "https://cpd.stem.org.uk/app/#{activity.stem_activity_code}"
           expect(rendered).to have_link("Join", href: expected_link)
         end
 
@@ -96,7 +96,7 @@ RSpec.describe("courses/_aside-booking", type: :view) do
           end
 
           it "renders link to STEM Learning booking page" do
-            expected_link = "https://ncce-www-stage-int.stem.org.uk/cpdredirect/#{activity.stem_course_template_no}"
+            expected_link = "https://cpd.stem.org.uk/app/#{activity.stem_activity_code}"
             expect(rendered).to have_link("Join this course", href: expected_link)
           end
 
@@ -114,7 +114,7 @@ RSpec.describe("courses/_aside-booking", type: :view) do
           end
 
           it "renders link to STEM Learning booking page" do
-            expected_link = "https://ncce-www-stage-int.stem.org.uk/cpdredirect/#{activity.stem_course_template_no}"
+            expected_link = "https://cpd.stem.org.uk/app/#{activity.stem_activity_code}"
             expect(rendered).to have_link("Join this course", href: expected_link)
           end
 
@@ -288,7 +288,7 @@ RSpec.describe("courses/_aside-booking", type: :view) do
 
               expect(rendered).to have_link(
                 "Book",
-                href: "https://ncce-www-stage-int.stem.org.uk/cpdredirect/#{occurrence.course_occurrence_no}"
+                href: "https://cpd.stem.org.uk/app/#{activity.stem_activity_code}"
               )
             end
           end
@@ -452,7 +452,7 @@ RSpec.describe("courses/_aside-booking", type: :view) do
 
               expect(rendered).to have_link(
                 "Book",
-                href: "https://ncce-www-stage-int.stem.org.uk/cpdredirect/#{occurrence.course_occurrence_no}"
+                href: "https://cpd.stem.org.uk/app/#{activity.stem_activity_code}"
               )
             end
           end

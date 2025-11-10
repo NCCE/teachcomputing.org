@@ -79,8 +79,8 @@ class LiveBookingPresenter
     )
   end
 
-  def booking_path(occurrence_id)
-    "#{Rails.application.config.stem_course_redirect}/cpdredirect/#{occurrence_id}"
+  def booking_path(stem_activity_code)
+    "#{Rails.application.config.stem_course_redirect}/app/#{stem_activity_code}"
   end
 
   def address(occurrence)
