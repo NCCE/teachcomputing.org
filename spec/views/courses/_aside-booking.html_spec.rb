@@ -54,7 +54,6 @@ RSpec.describe("courses/_aside-booking", type: :view) do
         end
 
         it "renders link to STEM Learning booking page" do
-          occurence = occurrences.first
           expected_link = "https://cpd.stem.org.uk/app/#{activity.stem_activity_code}"
           expect(rendered).to have_link("Join", href: expected_link)
         end
