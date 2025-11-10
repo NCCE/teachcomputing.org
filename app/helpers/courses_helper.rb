@@ -44,8 +44,8 @@ module CoursesHelper
     "£#{sorted_fees[0].fee}"
   end
 
-  def stem_course_link(course_template_no)
-    "#{Rails.application.config.stem_course_redirect}/cpdredirect/#{course_template_no}"
+  def stem_course_link(course_activity_code)
+    "#{Rails.application.config.stem_course_redirect}/app/#{course_activity_code}"
   end
 
   def stripped_summary(string)
