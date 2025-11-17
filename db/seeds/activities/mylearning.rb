@@ -1421,3 +1421,18 @@ Activity.find_or_initialize_by(stem_course_template_no: "17011822-0667-f011-bec3
 
   activity.programmes = [primary_certificate]
 end.save!
+
+########################################################################################################################
+
+Activity.find_or_initialize_by(stem_course_template_no: "9ec74010-0967-f011-bec3-6045bd0b0fca").tap do |activity|
+  activity.title = "Effective computing in key stage 1"
+  activity.credit = 30
+  activity.slug = "effective-computing-in-key-stage-1-online"
+  activity.category = "online"
+  activity.self_certifiable = false
+  activity.provider = "stem-learning"
+  activity.stem_activity_code = "CO410"
+  activity.always_on = true
+
+  activity.programmes = [primary_certificate]
+end.save!
