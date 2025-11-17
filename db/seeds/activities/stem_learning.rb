@@ -2952,3 +2952,14 @@ Activity.find_or_initialize_by(stem_course_template_no: "d56154f7-378a-f011-b4cc
 
   activity.programmes = [primary_certificate]
 end.save!
+
+Activity.find_or_initialize_by(stem_course_template_no: "7f65d74c-0dbf-f011-bbd3-7c1e522d2740").tap do |activity|
+  activity.title = "I Belong in Computing Conference"
+  activity.slug = "i-belong-in-computing-conference"
+  activity.category = "face-to-face"
+  activity.remote_delivered_cpd = false
+  activity.provider = "stem-learning"
+  activity.stem_activity_code = "CP400"
+  activity.credit = 80
+
+end.save!
