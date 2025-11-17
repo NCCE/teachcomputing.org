@@ -4,7 +4,7 @@ en:
       show:
         page_title: "Secondary certificate - Teach Computing"
         introduction:
-          html: "These courses and activities have been picked so you can develop your teaching and enrich pupils' experience of the computing curriculum. You'll also get the opportunity to engage with the wider support network available in secondary computing.<br><br>Through the required training and activities, and by completing the %{subject_knowledge}, you'll achieve our Secondary Computing Teaching certificate, demonstrating your commitment to improving computing education in your school."
+          html: "These courses and activities have been picked so you can develop your teaching and enrich pupils' experience of the computing curriculum. You'll also get the opportunity to engage with the wider support network available in secondary computing.<br><br>Through the required training and activities, and by completing the %{subject_knowledge}, you'll achieve our Teach secondary computing certificate, demonstrating your commitment to improving computing education in your school."
         feedback_text: "What can we do better?"
         support_aside:
           hub_link_text: "Contact your local Computing Hub"
