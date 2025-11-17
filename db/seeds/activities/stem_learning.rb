@@ -2961,5 +2961,4 @@ Activity.find_or_initialize_by(stem_course_template_no: "7f65d74c-0dbf-f011-bbd3
   activity.provider = "stem-learning"
   activity.stem_activity_code = "CP400"
   activity.credit = 80
-
 end.save!
