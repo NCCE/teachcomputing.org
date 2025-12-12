@@ -1258,7 +1258,7 @@ end.save!
 
 Activity.find_or_initialize_by(stem_course_template_no: "f552acb6-b125-f011-8c4e-6045bd0c58e0").tap do |activity|
   activity.title = "AI and Ethics in GCSE computer science"
-  activity.credit = 15
+  activity.credit = 20
   activity.slug = "ai-and-ethics-in-gcse-computer-science-online"
   activity.category = "online"
   activity.self_certifiable = false
@@ -1303,7 +1303,7 @@ end.save!
 
 Activity.find_or_initialize_by(stem_course_template_no: "faadd61b-5c2a-f011-8c4e-002248c763ad").tap do |activity|
   activity.title = "Representing algorithms using flowcharts and pseudocode"
-  activity.credit = 15
+  activity.credit = 20
   activity.slug = "representing-algorithms-using-flowcharts-and-pseudocode-online"
   activity.category = "online"
   activity.self_certifiable = false
