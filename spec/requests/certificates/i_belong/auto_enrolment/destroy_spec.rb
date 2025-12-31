@@ -23,7 +23,7 @@ RSpec.describe Certificates::CSAccelerator::AutoEnrolmentsController do
         user_enrolment = user.user_programme_enrolments.find_by(programme: programme)
 
         expect { unenroll }
-          .to change { user_enrolment.current_state }
+          .to change { user_enrolment.reload.current_state }
           .from("enrolled")
           .to("unenrolled")
       end
