@@ -4,7 +4,7 @@
       <div class="benchmark-bordered-card__content">
         <h2 class="govuk-heading-m bordered-card__title">
           <% if card[:title_link] %>
-            <a class="govuk-link--no-underline" href="<%= card[:title_link] %>"><%= card[:title] %></a>
+            <a class="ncce-link govuk-link--no-underline" href="<%= card[:title_link] %>"><%= card[:title] %></a>
           <% else %>
             <%= card[:title] %>
           <% end %>
