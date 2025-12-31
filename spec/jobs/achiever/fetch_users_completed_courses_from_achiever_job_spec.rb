@@ -78,7 +78,7 @@ RSpec.describe Achiever::FetchUsersCompletedCoursesFromAchieverJob, type: :job d
         it "sets the state to complete if it is fully attended" do
           activity_three = create(:activity, stem_course_template_no: "92f4f86e-0237-4ecc-a905-2f6c62d6b5aw")
           achievement = create(:achievement, activity_id: activity_three.id, user_id: user.id)
-          expect { perform_job }.to change { achievement.current_state }.to("complete")
+          expect { perform_job }.to change { achievement.reload.current_state }.to("complete")
         end
       end
     end
