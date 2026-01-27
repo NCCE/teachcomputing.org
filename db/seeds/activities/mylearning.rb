@@ -1571,3 +1571,18 @@ Activity.find_or_initialize_by(stem_course_template_no: "cf9db2b1-3cf5-f011-8406
 
   activity.programmes = [secondary_certificate]
 end.save!
+
+########################################################################################################################
+
+Activity.find_or_initialize_by(stem_course_template_no: "39494dd2-3ef5-f011-8406-7c1e52792b8b").tap do |activity|
+  activity.title = "Diagnostic assessment for GCSE computer science"
+  activity.credit = 15
+  activity.slug = "diagnostic-assessment-for-gcse-computer-science-online"
+  activity.category = "online"
+  activity.self_certifiable = false
+  activity.provider = "stem-learning"
+  activity.stem_activity_code = "CO412"
+  activity.always_on = true
+
+  activity.programmes = [secondary_certificate]
+end.save!
