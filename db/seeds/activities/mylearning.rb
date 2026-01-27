@@ -1511,3 +1511,18 @@ Activity.find_or_initialize_by(stem_course_template_no: "f0e25f6d-f9f2-f011-8406
 
   activity.programmes = [secondary_certificate]
 end.save!
+
+########################################################################################################################
+
+Activity.find_or_initialize_by(stem_course_template_no: "ce25355d-fbf2-f011-8406-7c1e52792b8b").tap do |activity|
+  activity.title = "Collaboration in KS3 programming"
+  activity.credit = 60
+  activity.slug = "collaboration-in-ks3-programming-online"
+  activity.category = "online"
+  activity.self_certifiable = false
+  activity.provider = "stem-learning"
+  activity.stem_activity_code = "CO437"
+  activity.always_on = true
+
+  activity.programmes = [secondary_certificate]
+end.save!
