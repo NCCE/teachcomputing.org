@@ -1601,3 +1601,18 @@ Activity.find_or_initialize_by(stem_course_template_no: "d6aff500-49f5-f011-8406
 
   activity.programmes = [secondary_certificate]
 end.save!
+
+########################################################################################################################
+
+Activity.find_or_initialize_by(stem_course_template_no: "b64082f3-4af5-f011-8406-7c1e52792b8b").tap do |activity|
+  activity.title = "Functional programming crash course"
+  activity.credit = 60
+  activity.slug = "functional-programming-crash-course-online"
+  activity.category = "online"
+  activity.self_certifiable = false
+  activity.provider = "stem-learning"
+  activity.stem_activity_code = "CO508"
+  activity.always_on = true
+
+  activity.programmes = [secondary_certificate]
+end.save!
