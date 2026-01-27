@@ -1541,3 +1541,18 @@ Activity.find_or_initialize_by(stem_course_template_no: "0acab231-fdf2-f011-8406
 
   activity.programmes = [secondary_certificate]
 end.save!
+
+########################################################################################################################
+
+Activity.find_or_initialize_by(stem_course_template_no: "8e37f90b-fff2-f011-8406-7c1e52792b8b").tap do |activity|
+  activity.title = "Databases for A-level Computer Science"
+  activity.credit = 30
+  activity.slug = "databases-for-a-level-computer-science-online"
+  activity.category = "online"
+  activity.self_certifiable = false
+  activity.provider = "stem-learning"
+  activity.stem_activity_code = "CO507"
+  activity.always_on = true
+
+  activity.programmes = [secondary_certificate]
+end.save!
