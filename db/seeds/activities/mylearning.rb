@@ -1496,3 +1496,18 @@ Activity.find_or_initialize_by(stem_course_template_no: "6305d87d-2ef2-f011-8406
 
   activity.programmes = [cs_accelerator]
 end.save!
+
+########################################################################################################################
+
+Activity.find_or_initialize_by(stem_course_template_no: "f0e25f6d-f9f2-f011-8406-7c1e52792b8b").tap do |activity|
+  activity.title = "Assessment and progression in KS3 computing"
+  activity.credit = 60
+  activity.slug = "assessment-and-progression-in-ks3-computing-online"
+  activity.category = "online"
+  activity.self_certifiable = false
+  activity.provider = "stem-learning"
+  activity.stem_activity_code = "CO901"
+  activity.always_on = true
+
+  activity.programmes = [secondary_certificate]
+end.save!
