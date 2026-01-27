@@ -1481,3 +1481,18 @@ Activity.find_or_initialize_by(stem_course_template_no: "3051456e-24f2-f011-8406
 
   activity.programmes = [cs_accelerator]
 end.save!
+
+########################################################################################################################
+
+Activity.find_or_initialize_by(stem_course_template_no: "6305d87d-2ef2-f011-8406-7ced8d6c1d11").tap do |activity|
+  activity.title = "Search and sort algorithms"
+  activity.credit = 20
+  activity.slug = "search-and-sort-algorithms-online"
+  activity.category = "online"
+  activity.self_certifiable = false
+  activity.provider = "stem-learning"
+  activity.stem_activity_code = "CO430"
+  activity.always_on = true
+
+  activity.programmes = [cs_accelerator]
+end.save!
