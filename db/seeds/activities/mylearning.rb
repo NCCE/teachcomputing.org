@@ -1631,3 +1631,18 @@ Activity.find_or_initialize_by(stem_course_template_no: "c1b85258-4df5-f011-8406
 
   activity.programmes = [secondary_certificate]
 end.save!
+
+########################################################################################################################
+
+Activity.find_or_initialize_by(stem_course_template_no: "1b161882-50f5-f011-8406-7c1e52792b8b").tap do |activity|
+  activity.title = "Introduction to the Raspberry Pi Pico - KS4 Computing"
+  activity.credit = 20
+  activity.slug = "introduction-to-the-raspberry-pi-pico-ks4-computing-online"
+  activity.category = "online"
+  activity.self_certifiable = false
+  activity.provider = "stem-learning"
+  activity.stem_activity_code = "CO254"
+  activity.always_on = true
+
+  activity.programmes = [secondary_certificate]
+end.save!
