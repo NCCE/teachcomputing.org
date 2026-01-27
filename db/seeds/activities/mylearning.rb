@@ -1616,3 +1616,18 @@ Activity.find_or_initialize_by(stem_course_template_no: "b64082f3-4af5-f011-8406
 
   activity.programmes = [secondary_certificate]
 end.save!
+
+########################################################################################################################
+
+Activity.find_or_initialize_by(stem_course_template_no: "c1b85258-4df5-f011-8406-7c1e52792b8b").tap do |activity|
+  activity.title = "Introduction to the micro bit - KS3 computing"
+  activity.credit = 20
+  activity.slug = "introduction-to-the-microbit-ks3-computing-online"
+  activity.category = "online"
+  activity.self_certifiable = false
+  activity.provider = "stem-learning"
+  activity.stem_activity_code = "CO253"
+  activity.always_on = true
+
+  activity.programmes = [secondary_certificate]
+end.save!
