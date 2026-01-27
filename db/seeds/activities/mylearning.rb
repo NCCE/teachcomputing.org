@@ -1661,3 +1661,18 @@ Activity.find_or_initialize_by(stem_course_template_no: "92aec8e5-e7f5-f011-8407
 
   activity.programmes = [secondary_certificate]
 end.save!
+
+########################################################################################################################
+
+Activity.find_or_initialize_by(stem_course_template_no: "51998446-e9f5-f011-8407-6045bdd0e9cb").tap do |activity|
+  activity.title = "Teaching GCSE computer science: developing knowledge and understanding"
+  activity.credit = 60
+  activity.slug = "teaching-gcse-computer-science-developing-knowledge-and-understanding-online"
+  activity.category = "online"
+  activity.self_certifiable = false
+  activity.provider = "stem-learning"
+  activity.stem_activity_code = "CO241"
+  activity.always_on = true
+
+  activity.programmes = [secondary_certificate]
+end.save!
