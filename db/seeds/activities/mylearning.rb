@@ -1560,7 +1560,7 @@ end.save!
 ########################################################################################################################
 
 Activity.find_or_initialize_by(stem_course_template_no: "cf9db2b1-3cf5-f011-8406-7c1e52792b8b").tap do |activity|
-  activity.title = "Data-driven IT projects in secondary computing"
+  activity.title = "Data driven IT projects in secondary computing"
   activity.credit = 60
   activity.slug = "data-driven-it-projects-in-secondary-computing-online"
   activity.category = "online"
