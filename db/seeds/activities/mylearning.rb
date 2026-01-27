@@ -1646,3 +1646,18 @@ Activity.find_or_initialize_by(stem_course_template_no: "1b161882-50f5-f011-8406
 
   activity.programmes = [secondary_certificate]
 end.save!
+
+########################################################################################################################
+
+Activity.find_or_initialize_by(stem_course_template_no: "92aec8e5-e7f5-f011-8407-6045bdd0e9cb").tap do |activity|
+  activity.title = "KS4 computing for all"
+  activity.credit = 60
+  activity.slug = "ks4-computing-for-all-online"
+  activity.category = "online"
+  activity.self_certifiable = false
+  activity.provider = "stem-learning"
+  activity.stem_activity_code = "CO900"
+  activity.always_on = true
+
+  activity.programmes = [secondary_certificate]
+end.save!
