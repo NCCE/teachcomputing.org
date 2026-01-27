@@ -1451,3 +1451,18 @@ Activity.find_or_initialize_by(stem_course_template_no: "8b96c71c-8af0-f011-8406
 
   activity.programmes = [cs_accelerator]
 end.save!
+
+########################################################################################################################
+
+Activity.find_or_initialize_by(stem_course_template_no: "4e9383de-8bf0-f011-8406-7c1e5279232c").tap do |activity|
+  activity.title = "Maths in computer science"
+  activity.credit = 20
+  activity.slug = "maths-in-computer-science-online"
+  activity.category = "online"
+  activity.self_certifiable = false
+  activity.provider = "stem-learning"
+  activity.stem_activity_code = "CO434"
+  activity.always_on = true
+
+  activity.programmes = [cs_accelerator]
+end.save!
