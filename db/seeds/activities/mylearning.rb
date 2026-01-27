@@ -1586,3 +1586,18 @@ Activity.find_or_initialize_by(stem_course_template_no: "39494dd2-3ef5-f011-8406
 
   activity.programmes = [secondary_certificate]
 end.save!
+
+########################################################################################################################
+
+Activity.find_or_initialize_by(stem_course_template_no: "d6aff500-49f5-f011-8406-7c1e52792b8b").tap do |activity|
+  activity.title = "Enriching secondary computing with STEM Ambassadors in your region"
+  activity.credit = 10
+  activity.slug = "enriching-secondary-computing-with-stem-ambassadors-in-your-region-online"
+  activity.category = "online"
+  activity.self_certifiable = false
+  activity.provider = "stem-learning"
+  activity.stem_activity_code = "CO446"
+  activity.always_on = true
+
+  activity.programmes = [secondary_certificate]
+end.save!
