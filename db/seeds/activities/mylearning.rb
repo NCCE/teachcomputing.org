@@ -1436,3 +1436,18 @@ Activity.find_or_initialize_by(stem_course_template_no: "9ec74010-0967-f011-bec3
 
   activity.programmes = [primary_certificate]
 end.save!
+
+########################################################################################################################
+
+Activity.find_or_initialize_by(stem_course_template_no: "8b96c71c-8af0-f011-8406-7c1e5279232c").tap do |activity|
+  activity.title = "Fundamentals of computer networks"
+  activity.credit = 20
+  activity.slug = "fundamentals-of-computer-networks-online"
+  activity.category = "online"
+  activity.self_certifiable = false
+  activity.provider = "stem-learning"
+  activity.stem_activity_code = "CO422"
+  activity.always_on = true
+
+  activity.programmes = [cs_accelerator]
+end.save!
