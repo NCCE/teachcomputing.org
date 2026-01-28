@@ -1649,6 +1649,12 @@ end.save!
 
 ########################################################################################################################
 
+# CO241 and CO900 had wrong template numbers - removing old versions
+Activity.find_by(stem_course_template_no: "92aec8e5-e7f5-f011-8407-6045bdd0e9cb")&.destroy
+Activity.find_by(stem_course_template_no: "51998446-e9f5-f011-8407-6045bdd0e9cb")&.destroy
+
+########################################################################################################################
+
 Activity.find_or_initialize_by(stem_course_template_no: "c9386569-e7f5-f011-8407-6045bdd0e9cb").tap do |activity|
   activity.title = "KS4 computing for all"
   activity.credit = 60
