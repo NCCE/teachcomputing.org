@@ -1649,7 +1649,7 @@ end.save!
 
 ########################################################################################################################
 
-Activity.find_or_initialize_by(stem_course_template_no: "92aec8e5-e7f5-f011-8407-6045bdd0e9cb").tap do |activity|
+Activity.find_or_initialize_by(stem_course_template_no: "c9386569-e7f5-f011-8407-6045bdd0e9cb").tap do |activity|
   activity.title = "KS4 computing for all"
   activity.credit = 60
   activity.slug = "ks4-computing-for-all-online"
@@ -1664,7 +1664,7 @@ end.save!
 
 ########################################################################################################################
 
-Activity.find_or_initialize_by(stem_course_template_no: "51998446-e9f5-f011-8407-6045bdd0e9cb").tap do |activity|
+Activity.find_or_initialize_by(stem_course_template_no: "5e4a6f79-e8f5-f011-8407-6045bdd0e9cb").tap do |activity|
   activity.title = "Teaching GCSE computer science: developing knowledge and understanding"
   activity.credit = 60
   activity.slug = "teaching-gcse-computer-science-developing-knowledge-and-understanding-online"
