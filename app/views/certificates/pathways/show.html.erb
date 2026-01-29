@@ -75,7 +75,7 @@
 
                 <div data-expander-target="expander" class="expander">
                   <p class="govuk-body-s govuk-!-margin-top-5"><%= group.web_copy_course_requirements %></p>
-                  <% group.programme_activities.includes(:activity).where(activity: { id: @recommended_community_activity_ids }).each do |programme_activity| %>
+                  <% group.programme_activities.includes(:activity).where(activity: { id: @recommended_community_activity_ids }, legacy: false).each do |programme_activity| %>
                     <div class="ncce-pathway-courses__course">
                       <% if programme_activity.activity.public_copy_title_url %>
                         <p class="ncce-pathway-courses__link">
