@@ -76,7 +76,6 @@ secondary.programme_activity_groupings.find_or_initialize_by(title: "Support you
   activities = [
     {slug: "gain-accreditation-as-a-professional-development-leader", legacy: false},
     {slug: "work-with-local-business-and-industry-to-inspire-inclusive-computing", legacy: false},
-    {slug: "lead-your-school-into-a-computing-cluster-and-develop-an-action-plan-with-a-cluster-advisor", legacy: false},
     {slug: "join-and-present-at-your-local-computing-at-school-community", legacy: false},
     {slug: "become-an-i-belong-champion", legacy: false},
     {slug: "undertake-the-initial-assessment-of-your-school-using-computing-quality-framework", legacy: false},
@@ -89,7 +88,7 @@ secondary.programme_activity_groupings.find_or_initialize_by(title: "Support you
     {slug: "provide-feedback-on-a-cas-resource", legacy: true},
     {slug: "complete-a-cs-accelerator-course", legacy: true},
     {slug: "contribute-to-online-discussion-secondary", legacy: true},
-
+    {slug: "lead-your-school-into-a-computing-cluster-and-develop-an-action-plan-with-a-cluster-advisor", legacy: true},
     {slug: "work-with-your-local-computing-hub-to-develop-a-school-level-action-plan-for-professional-development", legacy: true}
   ]
 
