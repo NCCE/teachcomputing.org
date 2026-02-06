@@ -123,4 +123,14 @@ RSpec.describe Programmes::SecondaryCertificate do
       expect(secondary_certificate.certificate_path).to eq "/certificate/secondary-certificate/view-certificate"
     end
   end
+
+  describe "#excluded_shared_activity_ids" do
+    it "returns activity IDs for legacy shared activities that should be hidden" do
+      legacy_activity = create(:activity, slug: "support-other-teachers-and-earn-a-stem-community-participation-badge")
+      other_activity = create(:activity, slug: "some-other-activity")
+
+      expect(secondary_certificate.excluded_shared_activity_ids).to eq([legacy_activity.id])
+      expect(secondary_certificate.excluded_shared_activity_ids).not_to include(other_activity.id)
+    end
+  end
 end
