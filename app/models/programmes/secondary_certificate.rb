@@ -72,5 +72,11 @@ module Programmes
     def certificate_path
       certificate_secondary_certificate_path
     end
+
+    def excluded_shared_activity_ids
+      @excluded_shared_activity_ids ||= Activity.where(slug: [
+        "support-other-teachers-and-earn-a-stem-community-participation-badge"
+      ]).pluck(:id)
+    end
   end
 end
