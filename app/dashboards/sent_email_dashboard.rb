@@ -18,6 +18,7 @@ class SentEmailDashboard < BaseDashboard
   COLLECTION_ATTRIBUTES = %i[
     created_at
     user
+    mailer_type
     subject
   ].freeze
 
@@ -25,6 +26,7 @@ class SentEmailDashboard < BaseDashboard
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = %i[
     user
+    mailer_type
     subject
     created_at
   ].freeze
