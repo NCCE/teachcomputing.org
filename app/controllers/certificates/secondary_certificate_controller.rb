@@ -63,8 +63,8 @@ module Certificates
         .not_in_state(:dropped)
         .sort_complete_first
 
-        excluded_ids = @programme.excluded_shared_activity_ids
-        achievements = achievements.where.not(activity_id: excluded_ids) if excluded_ids.any?
+      excluded_ids = @programme.excluded_shared_activity_ids
+      achievements = achievements.where.not(activity_id: excluded_ids) if excluded_ids.any?
 
       achievements
     end
