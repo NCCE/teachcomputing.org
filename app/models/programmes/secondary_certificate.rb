@@ -76,7 +76,7 @@ module Programmes
     def excluded_shared_activity_ids
       @excluded_shared_activity_ids ||= Activity.where(slug: [
         "support-other-teachers-and-earn-a-stem-community-participation-badge"
-      ]).pluck(:id)
+      ]).ids
     end
   end
 end
