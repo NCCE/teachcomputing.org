@@ -70,7 +70,7 @@ RSpec.describe LiveBookingPresenter do
       it "links to the course booking path" do
         expect(
           described_class.new.course_button([], "FAKE_COURSE_ID")
-        ).to match(/href="https:\/\/ncce-www-stage-int.stem.org.uk\/cpdredirect\/FAKE_COURSE_ID"/)
+        ).to match(/href="https:\/\/cpd.stem.org.uk\/app\/FAKE_COURSE_ID"/)
       end
 
       it 'says "View course"' do
@@ -84,7 +84,7 @@ RSpec.describe LiveBookingPresenter do
       it "links to the course booking path" do
         expect(
           described_class.new.course_button(Array.new(20), "FAKE_COURSE_ID")
-        ).to match(/href="https:\/\/ncce-www-stage-int.stem.org.uk\/cpdredirect\/FAKE_COURSE_ID"/)
+        ).to match(/href="https:\/\/cpd.stem.org.uk\/app\/FAKE_COURSE_ID"/)
       end
 
       it 'says "See more dates"' do
@@ -107,7 +107,7 @@ RSpec.describe LiveBookingPresenter do
     it "is the full URI of the stem website booking" do
       expect(
         described_class.new.booking_path("FAKE_COURSE_ID")
-      ).to eq "https://ncce-www-stage-int.stem.org.uk/cpdredirect/FAKE_COURSE_ID"
+      ).to eq "https://cpd.stem.org.uk/app/FAKE_COURSE_ID"
     end
   end
 
