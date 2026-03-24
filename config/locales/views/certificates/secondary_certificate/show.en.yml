@@ -11,3 +11,7 @@ en:
           title: "Need some help?"
           text:
             html: "For support with this certificate or technical issues:<br />%{email_link}"
+        evidence_guide_aside:
+          title: "More on making positive impact on young people and supporting professional community."
+          text: "Explore examples and tips on submitting evidence for activities in each activity section."
+          link_text: "Teach secondary computing certificate evidence guide"

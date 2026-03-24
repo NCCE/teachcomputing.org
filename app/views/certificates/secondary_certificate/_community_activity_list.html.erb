@@ -1,0 +1,9 @@
+<% @community_groups.each do |group| %>
+  <p id="<%= group.id %>" class="govuk-body ncce-activity-list__title <%= add_group_complete_icon_class(current_user, group) %>">
+    <strong>Choose at least <%= group.required_for_completion.humanize %> activity</strong> to <%= group.title.downcase %>
+  </p>
+  <%= render CommunityActivityListComponent.new(
+    programme_activity_grouping: group,
+    community_achievements: @community_achievements,
+  ) %>
+<% end%>
