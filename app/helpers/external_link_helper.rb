@@ -222,4 +222,8 @@ module ExternalLinkHelper
   def local_hub_professional_development_form_url
     "https://forms.office.com/pages/responsepage.aspx?id=8MSlGfdLSE2oGxZmua5L9VL53rMMyRtKnHXwxiNRaSRUMDcwVElaTFBFWlY0QkI2M1lZVzNBQktYUCQlQCN0PWcu"
   end
+
+  def secondary_certificate_evidence_guide_url
+    "https://media.teachcomputing.org/Teach_secondary_computing_certificate_Evidence_Guide_V1_2_37745edb6b.pdf"
+  end
 end
