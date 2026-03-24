@@ -1,7 +1,7 @@
 <p id="<%= @professional_development_groups.first&.id %>" class="govuk-body ncce-activity-list__title govuk-!-margin-top-8 <%= add_groups_complete_icon_class(current_user, @professional_development_groups) %>">
   <%= t('.development.title.html') %>
 </p>
-<ul class="govuk-list ncce-activity-list ncce-activity-list--programme" role="list">
+<ul class="govuk-list ncce-activity-list ncce-activity-list--programme">
   <li class="ncce-activity-list__item">
     <div class="ncce-activity-list__item-content">
       <%= t('.any_course_prompt') %>
