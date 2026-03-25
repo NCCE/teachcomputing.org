@@ -28,7 +28,7 @@ class UserProgrammeAssessment
   def can_take_test_at
     return 0 if @failed_attempts.nil? || @failed_attempts.last.nil? || less_than_two_failed_attempts?
 
-    @failed_attempts.last.last_transition.created_at + 48.hours
+    [@failed_attempts.last.last_transition.created_at.to_i - 48.hours.ago.to_i, 0].max
   end
 
   def currently_taking_test?
