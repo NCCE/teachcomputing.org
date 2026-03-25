@@ -87,6 +87,7 @@ group :development do
   gem "awesome_print"
   gem "better_errors"
   gem "binding_of_caller"
+  gem "bullet"
   gem "erb_lint", require: false
   gem "listen"
   gem "rack-mini-profiler"

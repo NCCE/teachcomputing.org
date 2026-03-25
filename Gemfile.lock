@@ -136,6 +136,9 @@ GEM
       msgpack (~> 1.2)
     brakeman (6.0.1)
     builder (3.3.0)
+    bullet (8.1.0)
+      activesupport (>= 3.0.0)
+      uniform_notifier (~> 1.11)
     byebug (12.0.0)
     capybara (3.40.0)
       addressable
@@ -423,14 +426,14 @@ GEM
       ttfunk (~> 1.7)
     prettyprint (0.2.0)
     prism (1.9.0)
-    pry (0.14.2)
+    pry (0.15.2)
       coderay (~> 1.1)
       method_source (~> 1.0)
     pry-byebug (3.11.0)
       byebug (~> 12.0)
       pry (>= 0.13, < 0.16)
-    pry-rails (0.3.9)
-      pry (>= 0.10.4)
+    pry-rails (0.3.11)
+      pry (>= 0.13.0)
     pry-rescue (1.6.0)
       interception (>= 0.5)
       pry (>= 0.12.0)
@@ -701,6 +704,7 @@ GEM
       unf_ext
     unf_ext (0.0.8.2)
     unicode-display_width (2.5.0)
+    uniform_notifier (1.18.0)
     uri (1.0.4)
     useragent (0.16.11)
     version_gem (1.1.3)
@@ -754,6 +758,7 @@ DEPENDENCIES
   binding_of_caller
   bootsnap (>= 1.5.1)
   brakeman
+  bullet
   byebug
   capybara
   climate_control
