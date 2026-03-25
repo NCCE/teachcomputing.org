@@ -1,14 +1,14 @@
 require "active_support/core_ext/integer/time"
 
 Rails.application.configure do
-  config.after_initialize do
-    Bullet.enable = true
-    Bullet.alert = true
-    Bullet.bullet_logger = true
-    Bullet.console = true
-    Bullet.rails_logger = true
-    Bullet.add_footer = true
-  end
+  #config.after_initialize do
+  #  Bullet.enable = true
+  #  Bullet.alert = true
+  #  Bullet.bullet_logger = true
+  #  Bullet.console = true
+  #  Bullet.rails_logger = true
+  #  Bullet.add_footer = true
+  #end
 
   # Settings specified here will take precedence over those in config/application.rb.
 
@@ -104,9 +104,8 @@ Rails.application.configure do
   config.hosts << /([a-z0-9.])+\.rpfdev\.com/
   config.hosts << "web"
   config.hosts << "teachcomputing.test"
-  config.autoload_paths << "lib"
 
-  config.view_component.preview_paths << "#{Rails.root}/previews/components"
+  config.view_component.previews.paths << "#{Rails.root}/previews/components"
   config.view_component.preview_route = "/rails/components"
   config.view_component.generate.sidecar = true
 

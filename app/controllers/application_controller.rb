@@ -44,7 +44,7 @@ class ApplicationController < ActionController::Base
   end
 
   def authenticate_user!
-    redirect_to(helpers.create_account_url) unless current_user
+    redirect_to(helpers.create_account_url, allow_other_host: true) unless current_user
   end
 
   def redirect_to_dashboard

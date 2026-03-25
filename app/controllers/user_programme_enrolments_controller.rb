@@ -28,7 +28,7 @@ class UserProgrammeEnrolmentsController < ApplicationController
       flash[:error] = "Failed to update user details."
     end
 
-    redirect_to helpers.safe_redirect_url(request.referrer) || dashboard_path
+    redirect_to helpers.safe_redirect_url(request.referrer) || dashboard_path, allow_other_host: true
   end
 
   def destroy

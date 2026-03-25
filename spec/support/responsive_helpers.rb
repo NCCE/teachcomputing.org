@@ -1,6 +1,6 @@
 module ResponsiveHelpers
   def resize_window_to_mobile
-    resize_window_by([375, 667]) # iPhone SE
+    resize_window_by([375, 800]) # iPhone SE
   end
 
   def resize_window_to_tablet
@@ -8,7 +8,7 @@ module ResponsiveHelpers
   end
 
   def resize_window_to_desktop
-    resize_window_by([1280, 800]) # Laptop with MDPI
+    resize_window_by([1280, 1024]) # Laptop with MDPI
   end
 
   private

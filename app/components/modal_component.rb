@@ -8,7 +8,6 @@ class ModalComponent < ViewComponent::Base
   attr_reader :expanded, :title, :reopen_button_text, :show_corner_decoration, :class_name, :reopen_button_class, :modal_id
 
   def initialize(title:, expanded: false, reopen_button_text: nil, show_corner_decoration: true, class_name: nil, reopen_button_class: nil, z_index: 1000, modal_id: SecureRandom.hex(6), data: {})
-    super
     @expanded = expanded
     @title = title
     @reopen_button_text = reopen_button_text
