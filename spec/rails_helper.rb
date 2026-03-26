@@ -21,6 +21,10 @@ SimpleCov.start "rails" do
   end
 end
 
+SimpleCov.at_exit do
+  SimpleCov.result.format!
+end
+
 ENV["RAILS_ENV"] ||= "test"
 Dotenv.overload(".env.test") # Ensure .env.test is used in dev environments
 

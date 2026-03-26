@@ -86,11 +86,8 @@ jobs:
       - run:
           name: Run rspec
           command: |
-            rm -f spec/examples.txt
-            mkdir -p ~/rspec
-            set -o pipefail
-            bundle exec rspec --format progress --format RspecJunitFormatter -o ~/rspec/rspec.xml 2>&1 | tee ~/rspec/output.log
-            echo "RSpec exit code: ${PIPESTATUS[0]}"
+            mkdir ~/rspec
+            bundle exec rspec --format progress --format RspecJunitFormatter -o ~/rspec/rspec.xml
       - store_test_results:
           path: ~/rspec
       - store_artifacts:
