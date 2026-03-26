@@ -12,7 +12,7 @@ module TeachComputing
     config.action_dispatch.cookies_same_site_protection = :lax
 
     # Initialize configuration defaults for originally generated Rails version.
-    config.load_defaults 6.0
+    config.load_defaults 7.1
 
     config.active_support.to_time_preserves_timezone = :zone
 
