@@ -81,7 +81,7 @@ Rails.application.configure do
   # Suppress logger output for asset requests.
   config.assets.quiet = true
 
-  config.action_mailer.preview_path = "#{Rails.root}/previews/mailers"
+  config.action_mailer.preview_paths = ["#{Rails.root}/previews/mailers"]
   config.action_mailer.asset_host = "http://localhost:3000"
   config.action_mailer.default_url_options = {host: "http://localhost:3000"}
 
