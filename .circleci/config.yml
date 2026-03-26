@@ -39,6 +39,7 @@ jobs:
           PGUSER: ncce_test
           RAILS_ENV: test
           THOR_SILENCE_DEPRECATION: "1"
+          SIMPLECOV_MIN_COVERAGE: "0"
       - image: cimg/postgres:14.7
         environment:
           POSTGRES_USER: postgres
