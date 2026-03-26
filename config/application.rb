@@ -14,6 +14,9 @@ module TeachComputing
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 7.1
 
+    # Preserve rails-ujs remote form behaviour for existing AJAX forms
+    config.action_view.form_with_generates_remote_forms = true
+
     config.active_support.to_time_preserves_timezone = :zone
 
     config.active_support.cache_format_version = 7.1
