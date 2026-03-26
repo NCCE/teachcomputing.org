@@ -1,7 +1,7 @@
 <p id="<%= @professional_development_groups.first&.id %>" class="govuk-body ncce-activity-list__title govuk-!-margin-top-8 <%= add_groups_complete_icon_class(current_user, @professional_development_groups) %>">
   <%= t('.development.title.html') %>
 </p>
-<ul class="govuk-list ncce-activity-list ncce-activity-list--programme" role="list">
+<ul class="govuk-list ncce-activity-list ncce-activity-list--programme">
   <li class="ncce-activity-list__item">
     <div class="ncce-activity-list__item-content">
       <%= t('.any_course_prompt') %>
@@ -34,13 +34,3 @@
     </li>
   <% end %>
 </ul>
-
-<% @community_groups.each do |group| %>
-  <p id="<%= group.id %>" class="govuk-body ncce-activity-list__title <%= add_group_complete_icon_class(current_user, group) %>">
-    <strong>Choose at least <%= group.required_for_completion.humanize %> activity</strong> to <%= group.title.downcase %>
-  </p>
-  <%= render CommunityActivityListComponent.new(
-    programme_activity_grouping: group,
-    community_achievements: @community_achievements,
-  ) %>
-<% end %>

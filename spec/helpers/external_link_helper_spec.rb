@@ -58,6 +58,7 @@ RSpec.describe ExternalLinkHelper do
     cas_communities_url
     local_hub_professional_development_form_url
     stem_primary_ambassadors_url
+    secondary_certificate_evidence_guide_url
   ].each do |external_link_method|
     describe "##{external_link_method}" do
       it "should return a string" do

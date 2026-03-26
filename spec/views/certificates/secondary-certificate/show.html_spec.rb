@@ -61,4 +61,8 @@ RSpec.describe("certificates/secondary_certificate/show", type: :view) do
   it "has feedback form" do
     expect(rendered).to have_css(".feedback-component__heading", text: "What can we do better?")
   end
+
+  it "has the evidence guide" do
+    expect(rendered).to have_css(".aside-component__heading", text: "More on making positive impact on young people and supporting professional community.")
+  end
 end
