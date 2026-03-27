@@ -81,7 +81,7 @@ Rails.application.configure do
   # Suppress logger output for asset requests.
   config.assets.quiet = true
 
-  config.action_mailer.preview_path = "#{Rails.root}/previews/mailers"
+  config.action_mailer.preview_paths = ["#{Rails.root}/previews/mailers"]
   config.action_mailer.asset_host = "http://localhost:3000"
   config.action_mailer.default_url_options = {host: "http://localhost:3000"}
 
@@ -104,9 +104,8 @@ Rails.application.configure do
   config.hosts << /([a-z0-9.])+\.rpfdev\.com/
   config.hosts << "web"
   config.hosts << "teachcomputing.test"
-  config.autoload_paths << "lib"
 
-  config.view_component.preview_paths << "#{Rails.root}/previews/components"
+  config.view_component.previews.paths << "#{Rails.root}/previews/components"
   config.view_component.preview_route = "/rails/components"
   config.view_component.generate.sidecar = true
 

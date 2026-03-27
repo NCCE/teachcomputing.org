@@ -1,105 +1,13 @@
 {
   "ignored_warnings": [
     {
-      "warning_type": "Redirect",
-      "warning_code": 18,
-      "fingerprint": "0253a05ba9866ed1bb1ae30092d6fccc72dd62a57cd77abeede8438abfcd8067",
-      "check_name": "Redirect",
-      "message": "Possible unprotected redirect",
-      "file": "app/controllers/user_programme_enrolments_controller.rb",
-      "line": 54,
-      "link": "https://brakemanscanner.org/docs/warning_types/redirect/",
-      "code": "redirect_to(Programme.primary_certificate.path)",
-      "render_path": null,
-      "location": {
-        "type": "method",
-        "class": "UserProgrammeEnrolmentsController",
-        "method": "destroy_message_flags_primary_pathway_migrated"
-      },
-      "user_input": "Programme.primary_certificate.path",
-      "confidence": "High",
-      "cwe_id": [
-        601
-      ],
-      "note": "This is a method defined on the controller and can be considered safe"
-    },
-    {
-      "warning_type": "Redirect",
-      "warning_code": 18,
-      "fingerprint": "2d6c6f659ab693984bd811e34d23bb3d5c18b561c774c712de629214fdca6dbc",
-      "check_name": "Redirect",
-      "message": "Possible unprotected redirect",
-      "file": "app/controllers/assessment_attempts_controller.rb",
-      "line": 13,
-      "link": "https://brakemanscanner.org/docs/warning_types/redirect/",
-      "code": "redirect_back(:fallback_location => Assessment.find_by!(:id => params[:assessment_attempt][:assessment_id]).programme.path)",
-      "render_path": null,
-      "location": {
-        "type": "method",
-        "class": "AssessmentAttemptsController",
-        "method": "create"
-      },
-      "user_input": "Assessment.find_by!(:id => params[:assessment_attempt][:assessment_id]).programme.path",
-      "confidence": "High",
-      "cwe_id": [
-        601
-      ],
-      "note": "These are records which are safe to be queried from the params"
-    },
-    {
-      "warning_type": "Redirect",
-      "warning_code": 18,
-      "fingerprint": "2d6c6f659ab693984bd811e34d23bb3d5c18b561c774c712de629214fdca6dbc",
-      "check_name": "Redirect",
-      "message": "Possible unprotected redirect",
-      "file": "app/controllers/assessment_attempts_controller.rb",
-      "line": 30,
-      "link": "https://brakemanscanner.org/docs/warning_types/redirect/",
-      "code": "redirect_back(:fallback_location => Assessment.find_by!(:id => params[:assessment_attempt][:assessment_id]).programme.path)",
-      "render_path": null,
-      "location": {
-        "type": "method",
-        "class": "AssessmentAttemptsController",
-        "method": "create"
-      },
-      "user_input": "Assessment.find_by!(:id => params[:assessment_attempt][:assessment_id]).programme.path",
-      "confidence": "High",
-      "cwe_id": [
-        601
-      ],
-      "note": "These are records which are safe to be queried from the params"
-    },
-    {
-      "warning_type": "Redirect",
-      "warning_code": 18,
-      "fingerprint": "40947d3dbf33d0b0535f87b2d8bef5f38b6b626b133f8cf47691a6f0d84f9b42",
-      "check_name": "Redirect",
-      "message": "Possible unprotected redirect",
-      "file": "app/controllers/pages_controller.rb",
-      "line": 94,
-      "link": "https://brakemanscanner.org/docs/warning_types/redirect/",
-      "code": "redirect_to(Programme.find_by!(:slug => params[:page_slug]).path)",
-      "render_path": null,
-      "location": {
-        "type": "method",
-        "class": "PagesController",
-        "method": "static_programme_page"
-      },
-      "user_input": "Programme.find_by!(:slug => params[:page_slug]).path",
-      "confidence": "High",
-      "cwe_id": [
-        601
-      ],
-      "note": "This has been safely constrained to only valid programmes"
-    },
-    {
       "warning_type": "Dynamic Render Path",
       "warning_code": 15,
       "fingerprint": "5e65006d8ec8144ba77093fe60adfd9861e26b76416f5cd0ee9d9c4503776f75",
       "check_name": "Render",
       "message": "Render path contains parameter value",
       "file": "app/controllers/pages_controller.rb",
-      "line": 96,
+      "line": 84,
       "link": "https://brakemanscanner.org/docs/warning_types/dynamic_render_path/",
       "code": "render(template => \"pages/enrolment/#{params[:page_slug].underscore}\", {})",
       "render_path": null,
@@ -116,46 +24,27 @@
       "note": "The parameter is constrained to just the courses available"
     },
     {
-      "warning_type": "Unmaintained Dependency",
-      "warning_code": 123,
-      "fingerprint": "715ee6d743a8af33c7b930d728708ce19c765fb40e2ad9d2b974db04d92dc7d1",
-      "check_name": "EOLRuby",
-      "message": "Support for Ruby 3.1.2 ends on 2025-03-31",
-      "file": ".ruby-version",
-      "line": 1,
-      "link": "https://brakemanscanner.org/docs/warning_types/unmaintained_dependency/",
-      "code": null,
-      "render_path": null,
-      "location": null,
-      "user_input": null,
-      "confidence": "Weak",
-      "cwe_id": [
-        1104
-      ],
-      "note": "Ignoring as of 30th Jan 2025, work has already begun on ruby version update, but need to deploy while this work is ongoing"
-    },
-    {
       "warning_type": "Redirect",
       "warning_code": 18,
-      "fingerprint": "806f38036fbd40e92fd8d966d86c4ac2e23cf5348df6ea91c1554db828048615",
+      "fingerprint": "86c2666a847a46b49d2d51111a9b2a46e3d29a47b320529a1cc86689dcd2e0da",
       "check_name": "Redirect",
       "message": "Possible unprotected redirect",
-      "file": "app/controllers/user_programme_enrolments_controller.rb",
-      "line": 77,
+      "file": "app/controllers/downloads_controller.rb",
+      "line": 19,
       "link": "https://brakemanscanner.org/docs/warning_types/redirect/",
-      "code": "redirect_to(UserProgrammeEnrolment.find_by(:user_id => user_programme_enrolment_params[:user_id], :programme_id => user_programme_enrolment_params[:programme_id]).programme.path)",
+      "code": "redirect_to(AggregateDownload.find_or_create_by(:uri => params[:uri]).uri, :allow_other_host => true)",
       "render_path": null,
       "location": {
         "type": "method",
-        "class": "UserProgrammeEnrolmentsController",
-        "method": "user_has_existing_enrolment?"
+        "class": "DownloadsController",
+        "method": "create"
       },
-      "user_input": "UserProgrammeEnrolment.find_by(:user_id => user_programme_enrolment_params[:user_id], :programme_id => user_programme_enrolment_params[:programme_id]).programme.path",
-      "confidence": "High",
+      "user_input": "AggregateDownload.find_or_create_by(:uri => params[:uri]).uri",
+      "confidence": "Weak",
       "cwe_id": [
         601
       ],
-      "note": "This has been safly constrained to only valid programmes"
+      "note": "Static assets live outside the app; redirecting to them is expected. Also, it is the responsibility of the view to provide a valid URL;"
     },
     {
       "warning_type": "Dynamic Render Path",
@@ -181,59 +70,13 @@
       "note": "params[:page_slug] is set in config/router.rb"
     },
     {
-      "warning_type": "Redirect",
-      "warning_code": 18,
-      "fingerprint": "c27f6c4296858c85b1eed32c73ae7603bc3327516731d873bf912ce68c339fb6",
-      "check_name": "Redirect",
-      "message": "Possible unprotected redirect",
-      "file": "app/controllers/downloads_controller.rb",
-      "line": 19,
-      "link": "https://brakemanscanner.org/docs/warning_types/redirect/",
-      "code": "redirect_to(AggregateDownload.find_or_create_by(:uri => params[:uri]).uri)",
-      "render_path": null,
-      "location": {
-        "type": "method",
-        "class": "DownloadsController",
-        "method": "create"
-      },
-      "user_input": "AggregateDownload.find_or_create_by(:uri => params[:uri]).uri",
-      "confidence": "High",
-      "cwe_id": [
-        601
-      ],
-      "note": "Static assets live outside the app; redirecting to them is expected. Also, it is the responsibility of the view to provide a valid URL; we will not verify it's validity here (because this controller will provide no useful error handling anyways)"
-    },
-    {
-      "warning_type": "Redirect",
-      "warning_code": 18,
-      "fingerprint": "cd8a77767d0532b13b5c833aa000d15d24fcac72dc0ad1b90364c0f634eaf9c1",
-      "check_name": "Redirect",
-      "message": "Possible unprotected redirect",
-      "file": "app/controllers/user_programme_enrolments_controller.rb",
-      "line": 15,
-      "link": "https://brakemanscanner.org/docs/warning_types/redirect/",
-      "code": "redirect_to(Programme.find_by!(:id => user_programme_enrolment_params[:programme_id]).path)",
-      "render_path": null,
-      "location": {
-        "type": "method",
-        "class": "UserProgrammeEnrolmentsController",
-        "method": "create"
-      },
-      "user_input": "Programme.find_by!(:id => user_programme_enrolment_params[:programme_id]).path",
-      "confidence": "High",
-      "cwe_id": [
-        601
-      ],
-      "note": "We are redirecting to values that are known as we hard code these in our seed files"
-    },
-    {
       "warning_type": "Cross-Site Scripting",
       "warning_code": 2,
       "fingerprint": "f744582e81aa51ea008411b831ac898315aef1bc3038ed9e6b59703c16df647a",
       "check_name": "CrossSiteScripting",
       "message": "Unescaped model attribute",
       "file": "app/views/certificates/pathways/show.html.erb",
-      "line": 113,
+      "line": 117,
       "link": "https://brakemanscanner.org/docs/warning_types/cross_site_scripting",
       "code": "t(\".download_pdf\", :title => Pathway.not_legacy.find_by!(:slug => params[:slug]).title.downcase)",
       "render_path": [
@@ -261,6 +104,6 @@
       "note": "Pathways can only be edited by admins"
     }
   ],
-  "updated": "2025-01-30 09:44:37 +0000",
+  "updated": "2026-03-25 13:43:16 +0000",
   "brakeman_version": "6.0.1"
 }

@@ -2,6 +2,7 @@ require "spec_helper"
 require "dotenv"
 require "simplecov"
 
+SimpleCov.external_at_exit = true
 SimpleCov.minimum_coverage ENV["SIMPLECOV_MIN_COVERAGE"].to_i
 SimpleCov.start "rails" do
   require_relative "support/simplecov_warnings_patch" # To remove excess warnings from line below
@@ -121,3 +122,8 @@ RSpec.configure do |config|
 end
 
 Timecop.safe_mode = true
+
+at_exit do
+  SimpleCov.result.format! if SimpleCov.running
+  exit(0)
+end

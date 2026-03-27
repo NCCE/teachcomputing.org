@@ -5,7 +5,7 @@ module Diagnostics
       before_action :track_visit!, only: [:show]
 
       def show
-        redirect_to helpers.class_marker_diagnostic_url(current_user)
+        redirect_to helpers.class_marker_diagnostic_url(current_user), allow_other_host: true
       end
 
       private

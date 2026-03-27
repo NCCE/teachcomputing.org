@@ -9,7 +9,7 @@
     <% end %>
   <% end %>
 
-  <%= form_with url: course_filter_path, method: :get, class: 'ncce-courses__filter-form', data: { action: "ajax:success->course-filter#handleResults", 'course-filter-target': "form" } do %>
+  <%= form_with url: course_filter_path, method: :get, local: false, class: 'ncce-courses__filter-form', data: { action: "ajax:success->course-filter#handleResults", 'course-filter-target': "form" } do %>
     <div class="govuk-width-container ncce-courses__container" data-course-filter-target="resultsContainer" id="results-top">
       <div class="govuk-main-wrapper ncce-courses__results-wrapper">
         <div class="govuk-grid-row">
