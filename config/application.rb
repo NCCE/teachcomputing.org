@@ -12,7 +12,7 @@ module TeachComputing
     config.action_dispatch.cookies_same_site_protection = :lax
 
     # Initialize configuration defaults for originally generated Rails version.
-    config.load_defaults 8.0
+    config.load_defaults 8.1
 
     # Preserve rails-ujs remote form behaviour for existing AJAX forms
     config.action_view.form_with_generates_remote_forms = true
