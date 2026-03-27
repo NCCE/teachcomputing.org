@@ -1,5 +1,4 @@
 require_relative "boot"
-require "ostruct"
 require "logger"
 require "rails/all"
 
