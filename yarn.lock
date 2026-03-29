@@ -13076,11 +13076,11 @@ __metadata:
   linkType: hard
 
 "trix@npm:^2.1":
-  version: 2.1.17
-  resolution: "trix@npm:2.1.17"
+  version: 2.1.18
+  resolution: "trix@npm:2.1.18"
   dependencies:
     dompurify: ^3.2.5
-  checksum: b9c97cc9af460cfc47edd4d08e6bcf0421cfe5f6143fb2efa6675b64c3a021a685e3ec174f3f13cbf6216b0a6a9f8cd15bdebda750c77df5b64b2144da39bf0d
+  checksum: 71aa27dd16214a5177570bcd1ed1efb864d9110fb2b03b413532a04db0e49a79a3656c40969e15cbbcf92344aeb99619712fc9f1545503294c98f08cf039803b
   languageName: node
   linkType: hard
 
