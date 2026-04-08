@@ -2,8 +2,6 @@
 Sitemap: https://static.teachcomputing.org/sitemaps/sitemap.xml.gz
 User-agent: SemrushBot
 Disallow: /
-User-agent: SemrushBot
-Disallow: /
 User-agent: SiteAuditBot
 Disallow: /
 User-agent: SemrushBot-BA
