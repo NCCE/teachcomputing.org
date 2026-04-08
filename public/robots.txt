@@ -18,3 +18,5 @@ User-agent: SplitSignalBot
 Disallow: /
 User-agent: SemrushBot-COUB
 Disallow: /
+User-agent: *
+Disallow: /cdn-cgi/
