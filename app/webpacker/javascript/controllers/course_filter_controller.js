@@ -155,6 +155,9 @@ export default class extends ApplicationController {
   }
 
   processValueChanges(ev) {
+    // Location filter HTML removed but logic retained for potential re-enablement in the future
+    if (!this.hasFaceToFaceFilterTarget) return;
+
     const { currentTarget } = ev;
     const value = currentTarget.value;
     const checked = currentTarget.getAttribute('checked');
