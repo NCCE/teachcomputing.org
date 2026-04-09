@@ -17,16 +17,6 @@ export default class extends ApplicationController {
     'filterCount',
     'filterCount2',
     'viewResultsCount',
-    'faceToFaceFilter',
-    'distanceFilter',
-    'geocodedLocation',
-    'geocodingError',
-    'locationSearch',
-    'radiusSelect',
-    'nationwideCourses',
-    'showNationwideCourses',
-    'hideNationwideCourses',
-    'moreCourses',
     'backToFilter',
   ];
   menuClass = '';
@@ -36,10 +26,7 @@ export default class extends ApplicationController {
   hiddenClass = '';
   openModifier = '';
   intervalId = null;
-  locationFiltering = false;
-  rangeFiltering = false;
   didScroll = false;
-  faceToFaceValue = '';
 
   initialize() {
     this.menuClass = 'ncce-courses__filter-form-toggle';
@@ -48,7 +35,6 @@ export default class extends ApplicationController {
     this.hiddenClass = 'hidden';
     this.openModifier = '--open';
     this.didScroll = false;
-    this.faceToFaceValue = 'face_to_face'
 
     this.openFilterFormOnDesktop();
 
@@ -115,14 +101,6 @@ export default class extends ApplicationController {
     this.sendSelectEvent(ev, 'Certificate');
   }
 
-  locationSearched(ev) {
-    this.sendGTMEvent('click', 'Search location');
-  }
-
-  dateRangeSearched(ev) {
-    this.sendGTMEvent('click', 'Search date range')
-  }
-
   sendSelectEvent(ev, type) {
     const { currentTarget } = ev;
     this.sendGTMEvent('selected', `${type} dropdown - ${currentTarget.value}`);
@@ -154,38 +132,6 @@ export default class extends ApplicationController {
     this.sendGTMEvent(gtmEvent, currentTarget.value);
   }
 
-  processValueChanges(ev) {
-    // Location filter HTML removed but logic retained for potential re-enablement in the future
-    if (!this.hasFaceToFaceFilterTarget) return;
-
-    const { currentTarget } = ev;
-    const value = currentTarget.value;
-    const checked = currentTarget.getAttribute('checked');
-    if (checked) {
-      if (value === this.faceToFaceValue) {
-        this.hideFaceToFaceFilter();
-      }
-    } else {
-      if (value === this.faceToFaceValue) {
-        this.showFaceToFaceFilter();
-      }
-    }
-  }
-
-  addRangeFilter(ev) {
-    if (this.rangeFiltering === false) {
-      this.filterCount++;
-      this.rangeFiltering = true;
-    }
-  }
-
-  addLocationFilter(ev) {
-    if (this.locationFiltering === false) {
-      this.filterCount++;
-      this.locationFiltering = true;
-    }
-  }
-
   updateFilterCount() {
     if (this.filterCount > 0) {
       this.filterCountTarget.classList.remove(this.hiddenClass);
@@ -211,19 +157,6 @@ export default class extends ApplicationController {
 
     loadingBar.toggle(this.hiddenClass);
     courseList.toggle(this.hiddenClass);
-  }
-
-  showNationwideCourses() {
-    this.nationwideCoursesTarget.classList.remove(this.hiddenClass);
-    this.showNationwideCoursesTarget.classList.add(this.hiddenClass);
-    this.hideNationwideCoursesTarget.classList.remove(this.hiddenClass);
-  }
-
-  hideNationwideCourses() {
-    this.showNationwideCoursesTarget.classList.remove(this.hiddenClass);
-    this.hideNationwideCoursesTarget.classList.add(this.hiddenClass);
-    this.moreCoursesTarget.scrollIntoView(true);
-    this.nationwideCoursesTarget.classList.add(this.hiddenClass);
   }
 
   /** This is to prevent some of the jumpiness on desktop as the page resizes */
@@ -262,20 +195,9 @@ export default class extends ApplicationController {
     let res = JSON.parse(xhr.response)
     this.resultsTarget.innerHTML = res.results;
 
-    if (res.location_search) {
-      if (res.geocoded_successfully) {
-        this.geocodedLocationTarget.innerText = res.geocoded_location;
-        this.hideGeocodingError();
-        this.showDistanceFilter();
-      } else {
-        this.hideDistanceFilter();
-        this.showGeocodingError();
-      }
-    }
     // Set the count on the view results button on mobile
     this.viewResultsCountTarget.innerText =
       this.resultsCountTarget.innerText.replace('Showing', 'View');
-
 
     this.updateFilterCount();
   }
@@ -305,58 +227,6 @@ export default class extends ApplicationController {
       this.openFilterForm();
     }
     this.scrollToTop();
-  }
-
-  expandSearch() {
-    let lastValue = this.radiusSelectTarget.options[this.radiusSelectTarget.options.length - 1].value;
-    this.radiusSelectTarget.value = lastValue;
-    this.filter();
-  }
-
-  showFaceToFaceFilter() {
-    const classes = this.faceToFaceFilterTarget.classList;
-    if (classes.contains(this.hiddenClass)) {
-      this.faceToFaceFilterTarget.classList.remove(this.hiddenClass);
-    }
-  }
-
-  hideFaceToFaceFilter() {
-    const classes = this.faceToFaceFilterTarget.classList;
-    if (!classes.contains(this.hiddenClass)) {
-      this.faceToFaceFilterTarget.classList.add(this.hiddenClass);
-      this.locationSearchTarget.value = '';
-      this.locationFiltering = false;
-      this.hideDistanceFilter();
-      this.hideGeocodingError();
-    }
-  }
-
-  showDistanceFilter() {
-    const classes = this.distanceFilterTarget.classList;
-    if (classes.contains(this.hiddenClass)) {
-      this.distanceFilterTarget.classList.remove(this.hiddenClass);
-    }
-  }
-
-  hideDistanceFilter() {
-    const classes = this.distanceFilterTarget.classList;
-    if (!classes.contains(this.hiddenClass)) {
-      this.distanceFilterTarget.classList.add(this.hiddenClass);
-    }
-  }
-
-  showGeocodingError() {
-    const classes = this.geocodingErrorTarget.classList;
-    if (classes.contains(this.hiddenClass)) {
-      this.geocodingErrorTarget.classList.remove(this.hiddenClass);
-    }
-  }
-
-  hideGeocodingError() {
-    const classes = this.geocodingErrorTarget.classList;
-    if (!classes.contains(this.hiddenClass)) {
-      this.geocodingErrorTarget.classList.add(this.hiddenClass);
-    }
   }
 
   pageScrolled() {
