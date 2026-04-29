@@ -14,7 +14,7 @@ module Cms
             Models::DynamicZones::EnrichmentDynamicZone => :to_dynamic_zone,
             Models::Collections::EnrichmentList => :to_enrichment_list,
             Models::Images::FeaturedImage => :to_featured_image,
-            Models::Images::Image => :to_image,
+            Models::Images::Image => :to_image_hash,
             Models::Meta::HeaderMenu => :to_menu,
             Models::Meta::FooterLinkBlock => :to_footer,
             Models::DynamicZones::HomepageDynamicZone => :to_dynamic_zone,
@@ -134,7 +134,7 @@ module Cms
             }
           end
 
-          def self.to_image(strapi_data, _all_data, default_size = :medium)
+          def self.to_image_hash(strapi_data, _all_data, default_size = :medium)
             return nil unless strapi_data.dig(:data, :attributes)
 
             image_data = strapi_data[:data][:attributes]
