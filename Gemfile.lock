@@ -188,7 +188,7 @@ GEM
     crass (1.0.6)
     csv (3.3.2)
     dalli (3.2.5)
-    date (3.4.1)
+    date (3.5.1)
     debase (0.2.8)
       debase-ruby_core_source (>= 3.3.6)
     debase-ruby_core_source (3.4.1)
@@ -394,7 +394,7 @@ GEM
     nenv (0.3.0)
     net-http (0.6.0)
       uri
-    net-imap (0.5.8)
+    net-imap (0.5.14)
       date
       net-protocol
     net-pop (0.1.2)
@@ -710,7 +710,7 @@ GEM
     thread_safe (0.3.6)
     tilt (2.6.1)
     timecop (0.9.10)
-    timeout (0.4.3)
+    timeout (0.6.1)
     ttfunk (1.7.0)
     turbolinks (5.2.1)
       turbolinks-source (~> 5.2)
