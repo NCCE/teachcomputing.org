@@ -7,7 +7,7 @@ module Cms
             class StickyDashboardBar < StrapiMock
               strapi_component "blocks.sticky-dashboard-bar"
 
-              attribute(:programme) { {data: {attributes: {slug: "primary-certificate"}}} }
+              attribute(:programme) { {slug: "primary-certificate"} }
             end
           end
         end

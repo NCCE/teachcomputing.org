@@ -9,7 +9,7 @@ module Cms
 
               attribute(:title) { Faker::Lorem.sentence }
               attribute(:intro) { Text::RichBlocks.generate_data }
-              attribute(:group) { {data: {attributes: {slug: "group-slug"}}} }
+              attribute(:group) { {slug: "group-slug"} }
             end
           end
         end

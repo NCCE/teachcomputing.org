@@ -15,7 +15,7 @@ module Cms
               attribute(:colorTheme) { Meta::ColorScheme.generate_data(name: "standard") }
               attribute(:aside_title) { Faker::Lorem.sentence }
               attribute(:aside_icon) { Images::Image.generate_raw_data }
-              attribute(:programme) { {data: {attributes: {slug: "primary-certificate"}}} }
+              attribute(:programme) { {slug: "primary-certificate"} }
             end
           end
         end

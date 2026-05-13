@@ -9,12 +9,8 @@ module Cms
             attribute(:emailContent) { [] }
             attribute(:activityState) { "active" }
             attribute(:enrolled) { true }
-            attribute(:programme) {
-              {data: {attributes: {slug: "primary-certificate"}}}
-            }
-            attribute(:completedGroupings) {
-              {data: [{attributes: {slug: "primary-all-courses"}}]}
-            }
+            attribute(:programme) { {slug: "primary-certificate"} }
+            attribute(:completedGroupings) { [{slug: "primary-all-courses"}] }
           end
         end
       end
