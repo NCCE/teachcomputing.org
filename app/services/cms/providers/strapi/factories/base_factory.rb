@@ -9,19 +9,15 @@ module Cms
 
           module ClassMethods
             def extract_aside_sections(strapi_data, param_name: :asideSections)
-              if strapi_data.dig(param_name, :data)
-                Array.wrap(strapi_data[param_name][:data]).collect { _1[:attributes] }
-              else
-                []
-              end
+              Array.wrap(strapi_data[param_name]).compact
             end
 
             def extract_color_name(strapi_data, key)
-              strapi_data[key][:data][:attributes][:name] if strapi_data.dig(key, :data)
+              strapi_data.dig(key, :name)
             end
 
             def extract_programme_slug(strapi_data, key)
-              strapi_data[key][:data][:attributes][:slug] if strapi_data.dig(key, :data)
+              strapi_data.dig(key, :slug)
             end
 
             def as_image(image_data, default_size = :medium)
@@ -50,10 +46,9 @@ module Cms
             end
 
             def to_image(strapi_data, image_key, default_size: :medium)
-              if strapi_data.dig(image_key, :data)
-                image_data = strapi_data[image_key][:data][:attributes]
-                as_image(image_data, default_size)
-              end
+              field = strapi_data[image_key]
+              return nil unless field&.dig(:url)
+              as_image(field, default_size)
             end
 
             def to_testimonial(strapi_data)
@@ -81,7 +76,7 @@ module Cms
               return nil if strapi_data[:loggedOutButtonText].blank? && strapi_data[:loggedInButtonText].blank?
 
               unless programme
-                slug = strapi_data.dig(:programme, :data, :attributes, :slug)
+                slug = strapi_data.dig(:programme, :slug)
                 return nil if slug.nil?
 
                 programme = Programme.find_by(slug:)
