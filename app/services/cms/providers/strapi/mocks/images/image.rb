@@ -30,10 +30,7 @@ module Cms
             end
 
             def self.generate_raw_data(caption: nil)
-              {
-                id: 1,
-                attributes: generate_data
-              }
+              {id: 1}.merge(generate_data(caption:))
             end
 
             def self.generate_data(caption: nil)

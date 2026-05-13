@@ -35,7 +35,7 @@ module Cms
                 end
                 data.merge!(generate_data(**values))
               else
-                data[:attributes] = generate_data(**values)
+                data.merge!(generate_data(**values))
               end
               data
             end
