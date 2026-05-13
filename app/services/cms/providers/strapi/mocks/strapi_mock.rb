@@ -33,10 +33,8 @@ module Cms
                 else
                   data[:__typename] = "Component#{@component_key.gsub(/[.-]/, "_").camelize}"
                 end
-                data.merge!(generate_data(**values))
-              else
-                data.merge!(generate_data(**values))
               end
+              data.merge!(generate_data(**values))
               data
             end
 
