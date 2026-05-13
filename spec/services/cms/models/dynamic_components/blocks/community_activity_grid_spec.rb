@@ -6,7 +6,7 @@ RSpec.describe Cms::Models::DynamicComponents::Blocks::CommunityActivityGrid do
 
   before do
     data = Cms::Mocks::DynamicComponents::Blocks::CommunityActivityGrid.generate_raw_data(
-      group: {data: {attributes: {slug: cms_slug}}}
+      group: {slug: cms_slug}
     )
     @list = Cms::Providers::Strapi::Factories::ComponentFactory.process_component(data)
   end

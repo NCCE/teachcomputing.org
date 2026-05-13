@@ -254,11 +254,7 @@ module StrapiStubs
   def stub_strapi_graphql_query(resource_name, record, unique_key: nil, singular: false)
     stub_strapi_schema
     response = {}
-    response[resource_name] = if singular
-      {data: record}
-    else
-      {data: Array.wrap(record)}
-    end
+    response[resource_name] = singular ? record : Array.wrap(record)
     stub = stub_request(:post, /^https:\/\/strapi.teachcomputing.org\/graphql/)
       .with(body: /#{resource_name}/)
       .to_return_json(body: {data: response})
@@ -271,7 +267,7 @@ module StrapiStubs
   def stub_strapi_graphql_collection_query(resource_name, records, page: 1, page_size: 100)
     stub_strapi_schema
     response = {}
-    response[resource_name] = to_strapi_collection(records, page:, page_size:)
+    response[resource_name] = records.slice(((page - 1) * page_size)...((page * page_size))) || []
     stub_request(:post, /^https:\/\/strapi.teachcomputing.org\/graphql/)
       .with(body: /#{resource_name}.*page:\s*#{page}/)
       .to_return_json(body: {data: response})
@@ -280,7 +276,7 @@ module StrapiStubs
   def stub_strapi_graphql_collection_query_missing(resource_name)
     stub_strapi_schema
     response = {}
-    response[resource_name] = to_strapi_collection([])
+    response[resource_name] = []
     stub_request(:post, /^https:\/\/strapi.teachcomputing.org\/graphql/)
       .with(body: /#{resource_name}/)
       .to_return_json(body: {data: response})
@@ -289,7 +285,7 @@ module StrapiStubs
   def stub_strapi_graphql_query_missing(resource_name)
     stub_strapi_schema
     response = {}
-    response[resource_name] = {data: []}
+    response[resource_name] = []
     stub_request(:post, /^https:\/\/strapi.teachcomputing.org\/graphql/)
       .with(body: /#{resource_name}/)
       .to_return_json(body: {data: response})
