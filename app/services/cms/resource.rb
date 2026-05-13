@@ -110,7 +110,7 @@ module Cms
         records = all(page, per_page, params:)
         all_records += records.resources
 
-        break if (page * per_page) > records.total_records
+        break if records.resources.size < per_page
         page += 1
       end
       all_records
