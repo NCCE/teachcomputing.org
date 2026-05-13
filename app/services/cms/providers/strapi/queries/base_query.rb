@@ -67,20 +67,11 @@ module Cms
             <<~GRAPHQL.freeze
               query {
                 #{resource_name}(#{param_strings.join(" ")}) {
-                  meta {
-                    pagination {
-                      page pageSize pageCount total
-                    }
-                  }
-                  data {
-                    id
-                    attributes {
-                      updatedAt
-                      createdAt
-                      publishedAt
-                      #{build_collection_fields.join("\n")}
-                    }
-                  }
+                  documentId
+                  updatedAt
+                  createdAt
+                  publishedAt
+                  #{build_collection_fields.join("\n")}
                 }
               }
             GRAPHQL
@@ -98,15 +89,11 @@ module Cms
             <<~GRAPHQL.freeze
               query {
                 #{resource_name} #{filter_string} {
-                  data {
-                    #{"id" if @collection_class.is_collection}
-                    attributes {
-                      updatedAt
-                      createdAt
-                      publishedAt
-                      #{build_resource_fields.join("\n")}
-                    }
-                  }
+                  #{"documentId" if @collection_class.is_collection}
+                  updatedAt
+                  createdAt
+                  publishedAt
+                  #{build_resource_fields.join("\n")}
                 }
               }
             GRAPHQL

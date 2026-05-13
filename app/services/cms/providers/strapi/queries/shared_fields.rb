@@ -6,11 +6,7 @@ module Cms
           def self.by_slug(key)
             <<~GRAPHQL.freeze
               #{key} {
-                data {
-                  attributes {
-                    slug
-                  }
-                }
+                slug
               }
             GRAPHQL
           end
@@ -31,11 +27,7 @@ module Cms
           def self.color_theme(name)
             <<~GRAPHQL.freeze
               #{name} {
-                data {
-                  attributes {
-                    name
-                  }
-                }
+                name
               }
             GRAPHQL
           end
@@ -47,27 +39,21 @@ module Cms
           def self.image_fields(name)
             <<~GRAPHQL.freeze
               #{name} {
-                data {
-                  id
-                  attributes {
-                    name
-                    alternativeText
-                    caption
-                    width
-                    height
-                    formats
-                    hash
-                    ext
-                    mime
-                    size
-                    url
-                    previewUrl
-                    provider
-                    provider_metadata
-                    createdAt
-                    updatedAt
-                  }
-                }
+                url
+                alternativeText
+                caption
+                formats
+              }
+            GRAPHQL
+          end
+
+          def self.file_fields(name)
+            <<~GRAPHQL.freeze
+              #{name} {
+                url
+                name
+                size
+                updatedAt
               }
             GRAPHQL
           end

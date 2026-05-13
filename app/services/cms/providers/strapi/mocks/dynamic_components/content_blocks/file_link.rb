@@ -7,7 +7,7 @@ module Cms
             class FileLink < StrapiMock
               strapi_component "content-blocks.file-link"
 
-              attribute(:file) { {data: File.generate_raw_data} }
+              attribute(:file) { File.generate_raw_data }
             end
 
             class File < StrapiMock
