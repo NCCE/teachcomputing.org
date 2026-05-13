@@ -19,21 +19,12 @@ RSpec.shared_examples "a strapi graphql query" do |options|
     base_fragment.selections.find { _1.name == key }
   }
 
-  let(:data_fragment) {
-    fragment.selections.find { _1.name == "data" }
-  }
-
   let(:query_attributes) {
-    attributes_field = data_fragment.selections.find { _1.name == "attributes" }
-    attributes_field.selections.map(&:name)
+    fragment.selections.map(&:name)
   }
 
   it "should include key" do
     expect(fragment).to be_truthy
-  end
-
-  it "should include data" do
-    expect(data_fragment).to be_truthy
   end
 
   required_fields.each do |field|
@@ -115,13 +106,8 @@ RSpec.shared_examples "a strapi graphql collection single query" do |required_fi
     parsed_fragment.definitions.first.selections.first
   }
 
-  let(:data_fragment) {
-    base_fragment.selections.find { _1.name == "data" }
-  }
-
   let(:query_attributes) {
-    attributes_field = data_fragment.selections.find { _1.name == "attributes" }
-    attributes_field.selections.map(&:name)
+    base_fragment.selections.map(&:name)
   }
 
   required_fields.each do |field|
@@ -139,13 +125,8 @@ RSpec.shared_examples "a strapi graphql collection all query" do |required_field
     parsed_fragment.definitions.first.selections.first
   }
 
-  let(:data_fragment) {
-    base_fragment.selections.find { _1.name == "data" }
-  }
-
   let(:query_attributes) {
-    attributes_field = data_fragment.selections.find { _1.name == "attributes" }
-    attributes_field.selections.map(&:name)
+    base_fragment.selections.map(&:name)
   }
 
   required_fields.each do |field|
