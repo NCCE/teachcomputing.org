@@ -33,9 +33,9 @@ module Cms
 
           data = clean_aliases(response.original_hash)
 
-          results = data[:data][resource_class.graphql_key.to_sym][:data]
+          results = data[:data][resource_class.graphql_key.to_sym]
 
-          raise ActiveRecord::RecordNotFound if results.empty?
+          raise ActiveRecord::RecordNotFound if results.nil? || (results.is_a?(Array) && results.empty?)
 
           record = if resource_class.is_collection
             results.first
