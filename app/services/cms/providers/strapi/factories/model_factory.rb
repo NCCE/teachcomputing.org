@@ -71,7 +71,7 @@ module Cms
               title: strapi_data[:title],
               excerpt: strapi_data[:excerpt],
               publish_date: strapi_data[:publishDate],
-              featured_image: strapi_data[:featuredImage][:data].nil? ? nil : Models::Images::FeaturedImage.new(**to_featured_image(strapi_data[:featuredImage], nil, :small)),
+              featured_image: (fi = to_featured_image(strapi_data[:featuredImage], nil, :small)) ? Models::Images::FeaturedImage.new(**fi) : nil,
               slug: strapi_data[:slug]
             }
           end
@@ -84,9 +84,9 @@ module Cms
             {
               slug: strapi_data[:slug],
               subject: strapi_data[:subject],
-              programme_slug: strapi_data[:programme][:data][:attributes][:slug],
+              programme_slug: strapi_data.dig(:programme, :slug),
               email_content: strapi_data[:emailContent].map { ComponentFactory.process_component(_1) }.compact,
-              completed_programme_activity_group_slugs: strapi_data.dig(:completedGroupings, :data).nil? ? nil : strapi_data[:completedGroupings][:data].collect { _1[:attributes][:slug] },
+              completed_programme_activity_group_slugs: Array(strapi_data[:completedGroupings]).map { _1[:slug] },
               activity_state: strapi_data[:activityState],
               enrolled: strapi_data[:enrolled]
             }
@@ -94,7 +94,7 @@ module Cms
 
           def self.to_enrichment_list(strapi_data, all_data)
             {
-              enrichments: strapi_data[:data].map { to_enrichment(_1[:attributes]) }.compact,
+              enrichments: Array(strapi_data).map { to_enrichment(_1) }.compact,
               featured_title: all_data[:featuredSectionTitle],
               all_title: all_data[:allSectionTitle],
               type_filter_placeholder: all_data[:typeFilterPlaceholder],
@@ -105,15 +105,15 @@ module Cms
 
           def self.to_enrichment(strapi_data)
             return nil if strapi_data[:publishedAt].nil? && Rails.env.production?
-            type_data = strapi_data[:type][:data][:attributes]
+            type_data = strapi_data[:type]
             Models::Collections::Enrichment.new(
               title: Models::Text::RichHeader.new(blocks: strapi_data[:rich_title]),
               details: strapi_data[:rich_details],
               link: strapi_data[:link],
               featured: strapi_data[:featured],
               i_belong: strapi_data[:i_belong],
-              terms: strapi_data.dig(:terms, :data).map { _1[:attributes][:name] },
-              age_groups: strapi_data.dig(:age_groups, :data).map { _1[:attributes][:name] },
+              terms: Array(strapi_data[:terms]).map { _1[:name] },
+              age_groups: Array(strapi_data[:age_groups]).map { _1[:name] },
               partner_icon: to_image(strapi_data, :partner_icon, default_size: :small),
               type: Models::Collections::EnrichmentType.new(
                 name: type_data[:name],
@@ -123,26 +123,23 @@ module Cms
           end
 
           def self.to_featured_image(strapi_data, _all_data, size = :large)
-            return nil unless strapi_data.dig(:data, :attributes)
-            image_data = strapi_data[:data][:attributes]
+            return nil unless strapi_data&.dig(:url)
             {
-              url: image_data[:url],
-              alt: image_data[:alternativeText],
-              caption: image_data[:caption],
-              formats: image_data[:formats],
+              url: strapi_data[:url],
+              alt: strapi_data[:alternativeText],
+              caption: strapi_data[:caption],
+              formats: strapi_data[:formats],
               size:
             }
           end
 
           def self.to_image_hash(strapi_data, _all_data, default_size = :medium)
-            return nil unless strapi_data.dig(:data, :attributes)
-
-            image_data = strapi_data[:data][:attributes]
+            return nil unless strapi_data&.dig(:url)
             {
-              url: image_data[:url],
-              alt: image_data[:alternativeText],
-              caption: image_data[:caption],
-              formats: image_data[:formats],
+              url: strapi_data[:url],
+              alt: strapi_data[:alternativeText],
+              caption: strapi_data[:caption],
+              formats: strapi_data[:formats],
               default_size:
             }
           end
@@ -162,15 +159,16 @@ module Cms
             {
               link_blocks: strapi_data.map do |link|
                 link[:link].map {
+                  icon = _1[:icon]
                   Models::DynamicComponents::ContentBlocks::LinkWithIcon.new(
                     link_text: _1[:linkText],
                     url: _1[:url],
-                    icon: _1[:icon].dig(:data).nil? ? nil : Models::Images::Image.new(
-                      url: _1[:icon][:data][:attributes][:url],
-                      alt: _1[:icon][:data][:attributes][:alternativeText],
-                      caption: _1[:icon][:data][:attributes][:caption],
+                    icon: icon&.dig(:url) && Models::Images::Image.new(
+                      url: icon[:url],
+                      alt: icon[:alternativeText],
+                      caption: icon[:caption],
                       default_size: :small,
-                      formats: _1[:icon][:data][:attributes][:formats]
+                      formats: icon[:formats]
                     )
                   )
                 }
