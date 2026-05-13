@@ -5,17 +5,19 @@ module Cms
         private
 
         def to_paginated_response(collection_class, data)
+          items = data.is_a?(Array) ? data : data[:data]
+          pagination = data.is_a?(Hash) ? (data.dig(:meta, :pagination) || {}) : {}
           {
-            resources: data.map { map_collection(collection_class, _1) },
-            page: 1,
-            page_size: data.size,
-            page_number: 1,
-            total_records: data.size
+            resources: items.map { map_collection(collection_class, _1) },
+            page: pagination[:page] || 1,
+            page_size: pagination[:pageSize] || items.size,
+            page_number: pagination[:pageCount] || 1,
+            total_records: pagination[:total] || items.size
           }
         end
 
         def map_collection(collection_class, data)
-          to_resource(data[:documentId], data, process_models(collection_class.collection_attribute_mappings, data))
+          to_resource(data[:documentId] || data[:id], data, process_models(collection_class.collection_attribute_mappings, data))
         end
 
         def map_resource(resource_class, data, has_preview = false, preview_key = nil)
@@ -29,7 +31,7 @@ module Cms
 
           raise ActiveRecord::RecordNotFound if !has_preview && attributes[:publishedAt].blank?
 
-          to_resource(data[:documentId], attributes, process_models(resource_class.resource_attribute_mappings, attributes), preview: has_preview)
+          to_resource(data[:documentId] || data[:id], attributes, process_models(resource_class.resource_attribute_mappings, attributes), preview: has_preview)
         end
 
         def process_models(mappings, data)
