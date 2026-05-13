@@ -6,30 +6,21 @@ module Cms
           def self.embed(name)
             <<~GRAPHQL.freeze
               #{name} (pagination: {limit: 100}) {
-                data {
-                  id
-                  attributes {
-                    publishedAt
-                    createdAt
-                    updatedAt
-                    #{SharedFields.image_fields(:partner_icon)}
-                    i_belong
-                    link
-                    featured
-                    terms { data { attributes { name }}}
-                    type {
-                      data {
-                        attributes {
-                          name
-                          #{SharedFields.image_fields(:icon)}
-                        }
-                      }
-                    }
-                    age_groups { data { attributes { name }}}
-                    rich_title
-                    rich_details
-                  }
+                publishedAt
+                createdAt
+                updatedAt
+                #{SharedFields.image_fields(:partner_icon)}
+                i_belong
+                link
+                featured
+                terms { name }
+                type {
+                  name
+                  #{SharedFields.image_fields(:icon)}
                 }
+                age_groups { name }
+                rich_title
+                rich_details
               }
             GRAPHQL
           end
