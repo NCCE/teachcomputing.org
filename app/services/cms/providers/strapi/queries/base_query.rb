@@ -66,12 +66,20 @@ module Cms
             ]
             <<~GRAPHQL.freeze
               query {
-                #{resource_name}(#{param_strings.join(" ")}) {
-                  documentId
-                  updatedAt
-                  createdAt
-                  publishedAt
-                  #{build_collection_fields.join("\n")}
+                #{resource_name}_connection(#{param_strings.join(" ")}) {
+                  nodes {
+                    documentId
+                    updatedAt
+                    createdAt
+                    publishedAt
+                    #{build_collection_fields.join("\n")}
+                  }
+                  pageInfo {
+                    total
+                    page
+                    pageSize
+                    pageCount
+                  }
                 }
               }
             GRAPHQL

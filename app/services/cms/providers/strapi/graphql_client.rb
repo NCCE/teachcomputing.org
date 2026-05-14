@@ -17,7 +17,8 @@ module Cms
           raise ActiveRecord::RecordNotFound if response.errors.any?
 
           data = clean_aliases(response.original_hash)
-          to_paginated_response(collection_class, data[:data][collection_class.graphql_key.to_sym])
+          connection_key = :"#{collection_class.graphql_key}_connection"
+          to_paginated_response(collection_class, data[:data][connection_key])
         end
 
         def one(resource_class, resource_id = nil, preview: false, preview_key: nil)

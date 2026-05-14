@@ -5,8 +5,11 @@ module Cms
         private
 
         def to_paginated_response(collection_class, data)
-          items = data.is_a?(Array) ? data : data[:data]
-          pagination = data.is_a?(Hash) ? (data.dig(:meta, :pagination) || {}) : {}
+          items, pagination = if data.key?(:nodes)
+            [data[:nodes], data[:pageInfo] || {}]
+          else
+            [data[:data], data.dig(:meta, :pagination) || {}]
+          end
           {
             resources: items.map { map_collection(collection_class, _1) },
             page: pagination[:page] || 1,
