@@ -126,7 +126,8 @@ RSpec.shared_examples "a strapi graphql collection all query" do |required_field
   }
 
   let(:query_attributes) {
-    base_fragment.selections.map(&:name)
+    nodes = base_fragment.selections.find { _1.name == "nodes" }
+    nodes.selections.map(&:name)
   }
 
   required_fields.each do |field|
