@@ -67,11 +67,12 @@ module Cms
           end
 
           def self.to_blog_preview(strapi_data, _all_data)
+            featured_image_data = to_featured_image(strapi_data[:featuredImage], nil, :small)
             {
               title: strapi_data[:title],
               excerpt: strapi_data[:excerpt],
               publish_date: strapi_data[:publishDate],
-              featured_image: (fi = to_featured_image(strapi_data[:featuredImage], nil, :small)) ? Models::Images::FeaturedImage.new(**fi) : nil,
+              featured_image: featured_image_data ? Models::Images::FeaturedImage.new(**featured_image_data) : nil,
               slug: strapi_data[:slug]
             }
           end
