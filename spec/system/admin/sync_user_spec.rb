@@ -4,6 +4,7 @@ RSpec.describe "Stem user sync", type: :system do
   before do
     ENV["BYPASS_ADMINISTRATE_CF_AUTH"] = "true"
     stub_delegate
+    stub_attendance_sets
   end
 
   after do
