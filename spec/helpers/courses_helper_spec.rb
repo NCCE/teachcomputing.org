@@ -371,4 +371,32 @@ describe CoursesHelper, type: :helper do
       expect(helper.course_duration_text(course_template)).to eq("5 hours")
     end
   end
+
+  describe "#always_on_access_expired?" do
+    let(:always_on_activity) { create(:activity, always_on: true) }
+    let(:regular_activity)   { create(:activity, always_on: false) }
+
+    it "returns false when activity is nil" do
+      expect(helper.always_on_access_expired?(user, nil)).to be false
+    end
+
+    it "returns false for a non-always_on activity" do
+      create(:achievement, user: user, activity: regular_activity, created_at: 2.years.ago)
+      expect(helper.always_on_access_expired?(user, regular_activity)).to be false
+    end
+
+    it "returns false when no achievement exists" do
+      expect(helper.always_on_access_expired?(user, always_on_activity)).to be false
+    end
+
+    it "returns false when achievement is under 1 year old" do
+      create(:achievement, user: user, activity: always_on_activity, created_at: 6.months.ago)
+      expect(helper.always_on_access_expired?(user, always_on_activity)).to be false
+    end
+
+    it "returns true when achievement is over 1 year old" do
+      create(:achievement, user: user, activity: always_on_activity, created_at: 2.years.ago)
+      expect(helper.always_on_access_expired?(user, always_on_activity)).to be true
+    end
+  end
 end
