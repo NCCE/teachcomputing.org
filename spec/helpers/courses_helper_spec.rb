@@ -374,7 +374,7 @@ describe CoursesHelper, type: :helper do
 
   describe "#always_on_access_expired?" do
     let(:always_on_activity) { create(:activity, always_on: true) }
-    let(:regular_activity)   { create(:activity, always_on: false) }
+    let(:regular_activity) { create(:activity, always_on: false) }
 
     it "returns false when activity is nil" do
       expect(helper.always_on_access_expired?(user, nil)).to be false
