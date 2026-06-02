@@ -29,12 +29,12 @@ programme.pathways.find_or_initialize_by(slug: "curriculum-leadership").tap do |
 
   pathway.save!
 
-  cpds = %w[CO411A CO478 CO444 CO439 CO413 CO411A CO249 CO247 CO248 CP448 CP440 CO700 CP446 CO222 CP468 CP212 CO230]
+  cpds = %w[CO411A CO478 CO444 CO439 CO413 CO411A CO249 CO247 CO248 CP448 CO440 CO700 CP446 CO222 CP468 CP212 CO230]
   cpds.each do |cpd|
     maybe_attach_activity_to_pathway(pathway, stem_activity_code: cpd)
   end
 
-  remove_cpds = %w[CP247 CP248 CP249 CP211 CP411 CP413 CP439 CP444 CP478]
+  remove_cpds = %w[CP247 CP248 CP249 CP211 CP411 CP413 CP439 CP444 CP478 CP440]
 
   remove_cpds.each do |cpd|
     maybe_detach_activity_from_pathway(pathway, stem_activity_code: cpd)
@@ -91,9 +91,15 @@ programme.pathways.find_or_initialize_by(slug: "supporting-other-teachers").tap 
 
   pathway.save!
 
-  cpds = %w[CP207 CP437 CP447 CP448 CO222 CO215 CP468 CP440 CP446]
+  cpds = %w[CP207 CP437 CP447 CP448 CO222 CO215 CP468 CO440 CP446]
   cpds.each do |cpd|
     maybe_attach_activity_to_pathway(pathway, stem_activity_code: cpd)
+  end
+
+  remove_cpds = %w[CP440]
+
+  remove_cpds.each do |cpd|
+    maybe_detach_activity_from_pathway(pathway, stem_activity_code: cpd)
   end
 
   activities = [
@@ -145,12 +151,12 @@ programme.pathways.find_or_initialize_by(slug: "championing-diversity-and-inclus
 
   pathway.save!
 
-  cpds = %w[CO249 CP440 CO700 CP448 CP437 CP291 CP414]
+  cpds = %w[CO249 CO440 CO700 CP448 CP437 CP291 CP414]
   cpds.each do |cpd|
     maybe_attach_activity_to_pathway(pathway, stem_activity_code: cpd)
   end
 
-  remove_cpds = %w[CP249]
+  remove_cpds = %w[CP249 CP440]
 
   remove_cpds.each do |cpd|
     maybe_detach_activity_from_pathway(pathway, stem_activity_code: cpd)
