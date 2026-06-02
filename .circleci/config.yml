@@ -26,6 +26,7 @@ jobs:
           command: bundle exec standardrb
 
   test:
+    resource_class: large
     working_directory: ~/teachcomputing
     docker:
       - image: cimg/ruby:3.3.11-node
