@@ -30,7 +30,7 @@ jobs:
     docker:
       - image: cimg/ruby:3.3.11-node
         environment:
-          BUNDLE_JOBS: "3"
+          BUNDLE_JOBS: "1"
           BUNDLE_RETRY: "3"
           BUNDLE_PATH: vendor/bundle
           CREDENTIALS_ENV: test
