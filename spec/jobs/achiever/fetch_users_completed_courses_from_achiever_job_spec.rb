@@ -104,6 +104,18 @@ RSpec.describe Achiever::FetchUsersCompletedCoursesFromAchieverJob, type: :job d
         expect(user.achievements.where(activity_id: "b15f8b07-2d8c-4eeb-8f22-1e4b5c86c148").exists?).to eq false
       end
     end
+
+    context "when a template has both a cancelled and an enrolled occurrence" do
+      let!(:re_enrolled_activity) { create(:activity, stem_course_template_no: "92f4f86e-0237-4ecc-a905-2f6c62d6b544") }
+
+      before { stub_delegate_re_enrolled }
+
+      it "keeps the achievement as enrolled" do
+        perform_job
+        achievement = Achievement.find_by(activity_id: re_enrolled_activity.id, user_id: user.id)
+        expect(achievement.current_state).to eq "enrolled"
+      end
+    end
   end
 
   describe "sentry rescue handling" do

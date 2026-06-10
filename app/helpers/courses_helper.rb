@@ -88,6 +88,22 @@ module CoursesHelper
     achievement.current_state.to_sym
   end
 
+  def always_on_access_expired?(user, activity)
+    return false unless activity&.always_on
+
+    achievement = Achievement.find_by(user_id: user.id, activity_id: activity.id)
+    return false unless achievement
+
+    achievement.created_at < 1.year.ago
+  end
+
+  def should_rejoin_course?(user, activity, course)
+    return false unless user
+    return false unless course.online_cpd
+
+    user_achievement_state(user, activity) == :enrolled && !always_on_access_expired?(user, activity)
+  end
+
   def other_courses_on_programme(courses, course, programme, how_many = 3)
     course_ids = programme.activities.online.zip(programme.activities.face_to_face).flatten.compact.pluck(:stem_course_template_no)
 

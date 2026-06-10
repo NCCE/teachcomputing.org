@@ -49,22 +49,35 @@
       </div>
     <% elsif user_achievement_state(current_user, @activity) == :enrolled && @course.online_cpd %>
       <h2 class="govuk-heading-m ncce-aside__title"><%= @booking.enrolled_title %></h2>
-      <%= @booking.enrolled_introduction(@started) %></p>
 
-      <% if @booking.enrolled_button_title(@start_date) %>
-        <p class="govuk-body">
-          <%= link_to(
-            @booking.enrolled_button_title(@start_date),
-            Rails.configuration.mylearning_dashboard_url,
-            class: 'govuk-button button--aside',
-            draggable: 'false',
-            data: { event_action: 'click', event_category: 'course details', event_label: 'continue online course' },
-            target: :_blank
-          ) %>
+      <% if always_on_access_expired?(current_user, @activity) %>
+        <p class="govuk-body-m ncce-aside__expiry-heading govuk-!-font-weight-bold">
+          <%= image_pack_tag "media/images/icons/info.svg" %>
+          Your access to this course on MyLearning has expired
         </p>
-      <% end %>
+        <p class="govuk-body-s ncce-aside__text">
+          To keep learning, please contact
+          <%= link_to "support@stem.org.uk", "mailto:support@stem.org.uk", class: "govuk-link" %>,
+          who can re-enrol you and restore your access.
+        </p>
+      <% else %>
+        <%= @booking.enrolled_introduction(@started) %>
 
-      <%= render('start-date', date: @start_date) if (@start_date && !@started) %>
+        <% if @booking.enrolled_button_title(@start_date) %>
+          <p class="govuk-body">
+            <%= link_to(
+              @booking.enrolled_button_title(@start_date),
+              Rails.configuration.mylearning_dashboard_url,
+              class: 'govuk-button button--aside',
+              draggable: 'false',
+              data: { event_action: 'click', event_category: 'course details', event_label: 'continue online course' },
+              target: :_blank
+            ) %>
+          </p>
+        <% end %>
+
+        <%= render('start-date', date: @start_date) if (@start_date && !@started) %>
+      <% end %>
     <% elsif user_achievement_state(current_user, @activity) == :enrolled && !@course.online_cpd %>
        <h2 class="govuk-heading-m ncce-aside__title"><%= @booking.enrolled_title %></h2>
        <p class="govuk-body-s ncce-aside__text"><%= @booking.introduction %></p>
@@ -140,7 +153,7 @@
 
   <%= render ProviderLogosComponent.new(dashboard: false, no_top_border: current_user.blank? || @course.online_cpd)%>
 
-  <% if current_user && user_achievement_state(current_user, @activity) == :enrolled && @course.online_cpd %>
+  <% if should_rejoin_course?(current_user, @activity, @course) %>
     <p class='govuk-body-s ncce-booking-list__progress'>
       Can't see the progress of your course? You may need to rejoin the course.
     </p>

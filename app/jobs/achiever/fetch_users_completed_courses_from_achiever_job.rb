@@ -4,7 +4,14 @@ module Achiever
 
     def perform(user)
       any_marked_as_attended = false
-      Achiever::Course::Delegate.find_by_achiever_contact_number(user.stem_achiever_contact_no).each do |course|
+      delegate_courses = Achiever::Course::Delegate.find_by_achiever_contact_number(user.stem_achiever_contact_no)
+
+      active_enrolments = delegate_courses
+        .select { |c| c.attendance_status == "enrolled" }
+        .map(&:course_template_no)
+        .to_set
+
+      delegate_courses.each do |course|
         activity = course_activity(stem_course_template_no: course.course_template_no, user_id: user.id)
         Rails.logger.warn "Could not find activity with template #{course.course_template_no} and occ #{course.course_occurence_no} for user #{user.stem_achiever_contact_no}" unless activity
         next unless activity
@@ -23,6 +30,7 @@ module Achiever
             Sentry.capture_exception(e)
           end
         when "cancelled"
+          next if active_enrolments.include?(course.course_template_no)
           begin
             achievement.drop!
           rescue Statesman::TransitionConflictError => e
