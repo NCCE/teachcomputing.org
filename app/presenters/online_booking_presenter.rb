@@ -81,8 +81,8 @@ class OnlineBookingPresenter
     "You will be taken to the MyLearning platform for further details."
   end
 
-  def booking_path(stem_course_id)
-    "#{Rails.application.config.stem_course_redirect}/cpdredirect/#{stem_course_id}"
+  def booking_path(stem_activity_code)
+    "#{Rails.application.config.stem_course_redirect}/app/#{stem_activity_code}"
   end
 
   def show_stem_occurrence_list(always_on)

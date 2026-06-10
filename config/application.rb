@@ -59,7 +59,7 @@ module TeachComputing
     config.stem_credentials_access_token = ENV["STEM_CREDENTIALS_ACCESS_TOKEN_KEY"]
     config.stem_credentials_refresh_token = ENV["STEM_CREDENTIALS_REFRESH_TOKEN_KEY"]
 
-    config.stem_course_redirect = ENV["STEM_COURSE_REDIRECT"]
+    config.stem_course_redirect = ENV["STEM_CPD_STORE_REDIRECT"]
 
     # default is true
     config.secure_cookies = ENV["SECURE_COOKIES"] != "off"
