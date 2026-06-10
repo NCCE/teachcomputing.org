@@ -260,10 +260,10 @@ describe CoursesHelper, type: :helper do
                   preload="none" tabindex="-1"
                   src="/Videos/video.mp4">
                   <source src="/Videos/video.mp4"
-                    type="video/mp4"></source>
+                    type="video/mp4">
                   <track class="track"
                     src="/Videos/captions.vtt" kind="captions"
-                    srclang="EN" label="English"></track>
+                    srclang="EN" label="English">
                 </video>'
 
       expect(helper.sanitize_stem_html(video).gsub(/\s/, "")).to eq video.to_s.gsub(/\s/, "")

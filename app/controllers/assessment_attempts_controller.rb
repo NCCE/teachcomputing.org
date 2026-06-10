@@ -18,7 +18,7 @@ class AssessmentAttemptsController < ApplicationController
 
     if assessment_attempt.save
       ExpireAssessmentAttemptJob.set(wait: 2.hours).perform_later(assessment_attempt)
-      redirect_to assessment_url(assessment_attempt.user)
+      redirect_to assessment_url(assessment_attempt.user), allow_other_host: true
     else
       flash[:error] =
         if assessment_attempt&.errors&.any?
