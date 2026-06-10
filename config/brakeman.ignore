@@ -183,13 +183,13 @@
     {
       "warning_type": "Redirect",
       "warning_code": 18,
-      "fingerprint": "c27f6c4296858c85b1eed32c73ae7603bc3327516731d873bf912ce68c339fb6",
+      "fingerprint": "86c2666a847a46b49d2d51111a9b2a46e3d29a47b320529a1cc86689dcd2e0da",
       "check_name": "Redirect",
       "message": "Possible unprotected redirect",
       "file": "app/controllers/downloads_controller.rb",
       "line": 19,
       "link": "https://brakemanscanner.org/docs/warning_types/redirect/",
-      "code": "redirect_to(AggregateDownload.find_or_create_by(:uri => params[:uri]).uri)",
+      "code": "redirect_to(AggregateDownload.find_or_create_by(:uri => params[:uri]).uri, :allow_other_host => true)",
       "render_path": null,
       "location": {
         "type": "method",
