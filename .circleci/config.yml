@@ -92,11 +92,18 @@ jobs:
           name: Run rspec
           command: |
             mkdir ~/rspec
+            set +e
             bundle exec rspec --format progress --format RspecJunitFormatter -o ~/rspec/rspec.xml 2>&1 | tee /tmp/rspec.log
             EXIT=${PIPESTATUS[0]}
             echo "=== RSpec exit code: $EXIT ==="
-            echo "=== Spec load errors ==="
-            grep -A 3 "An error occurred while loading" /tmp/rspec.log || echo "None"
+            echo "=== Load error count ==="
+            grep -c "An error occurred while loading" /tmp/rspec.log || echo "0"
+            echo "=== Load error details ==="
+            grep -A 5 "An error occurred while loading" /tmp/rspec.log || echo "None"
+            echo "=== Errors outside examples ==="
+            grep "errors occurred outside of examples" /tmp/rspec.log || echo "None"
+            echo "=== RSpec summary ==="
+            grep -E "^[0-9]+ examples?" /tmp/rspec.log || echo "Not found"
             exit $EXIT
       - store_test_results:
           path: ~/rspec
