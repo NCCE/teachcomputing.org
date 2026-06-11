@@ -1,104 +1,95 @@
 GEM
   remote: https://rubygems.org/
   specs:
-    actioncable (7.1.5.2)
-      actionpack (= 7.1.5.2)
-      activesupport (= 7.1.5.2)
+    action_text-trix (2.1.19)
+      railties
+    actioncable (8.1.3)
+      actionpack (= 8.1.3)
+      activesupport (= 8.1.3)
       nio4r (~> 2.0)
       websocket-driver (>= 0.6.1)
       zeitwerk (~> 2.6)
-    actionmailbox (7.1.5.2)
-      actionpack (= 7.1.5.2)
-      activejob (= 7.1.5.2)
-      activerecord (= 7.1.5.2)
-      activestorage (= 7.1.5.2)
-      activesupport (= 7.1.5.2)
-      mail (>= 2.7.1)
-      net-imap
-      net-pop
-      net-smtp
-    actionmailer (7.1.5.2)
-      actionpack (= 7.1.5.2)
-      actionview (= 7.1.5.2)
-      activejob (= 7.1.5.2)
-      activesupport (= 7.1.5.2)
-      mail (~> 2.5, >= 2.5.4)
-      net-imap
-      net-pop
-      net-smtp
+    actionmailbox (8.1.3)
+      actionpack (= 8.1.3)
+      activejob (= 8.1.3)
+      activerecord (= 8.1.3)
+      activestorage (= 8.1.3)
+      activesupport (= 8.1.3)
+      mail (>= 2.8.0)
+    actionmailer (8.1.3)
+      actionpack (= 8.1.3)
+      actionview (= 8.1.3)
+      activejob (= 8.1.3)
+      activesupport (= 8.1.3)
+      mail (>= 2.8.0)
       rails-dom-testing (~> 2.2)
-    actionpack (7.1.5.2)
-      actionview (= 7.1.5.2)
-      activesupport (= 7.1.5.2)
+    actionpack (8.1.3)
+      actionview (= 8.1.3)
+      activesupport (= 8.1.3)
       nokogiri (>= 1.8.5)
-      racc
       rack (>= 2.2.4)
       rack-session (>= 1.0.1)
       rack-test (>= 0.6.3)
       rails-dom-testing (~> 2.2)
       rails-html-sanitizer (~> 1.6)
-    actiontext (7.1.5.2)
-      actionpack (= 7.1.5.2)
-      activerecord (= 7.1.5.2)
-      activestorage (= 7.1.5.2)
-      activesupport (= 7.1.5.2)
+      useragent (~> 0.16)
+    actiontext (8.1.3)
+      action_text-trix (~> 2.1.15)
+      actionpack (= 8.1.3)
+      activerecord (= 8.1.3)
+      activestorage (= 8.1.3)
+      activesupport (= 8.1.3)
       globalid (>= 0.6.0)
       nokogiri (>= 1.8.5)
-    actionview (7.1.5.2)
-      activesupport (= 7.1.5.2)
+    actionview (8.1.3)
+      activesupport (= 8.1.3)
       builder (~> 3.1)
       erubi (~> 1.11)
       rails-dom-testing (~> 2.2)
       rails-html-sanitizer (~> 1.6)
-    activejob (7.1.5.2)
-      activesupport (= 7.1.5.2)
+    activejob (8.1.3)
+      activesupport (= 8.1.3)
       globalid (>= 0.3.6)
-    activemodel (7.1.5.2)
-      activesupport (= 7.1.5.2)
-    activerecord (7.1.5.2)
-      activemodel (= 7.1.5.2)
-      activesupport (= 7.1.5.2)
+    activemodel (8.1.3)
+      activesupport (= 8.1.3)
+    activerecord (8.1.3)
+      activemodel (= 8.1.3)
+      activesupport (= 8.1.3)
       timeout (>= 0.4.0)
-    activestorage (7.1.5.2)
-      actionpack (= 7.1.5.2)
-      activejob (= 7.1.5.2)
-      activerecord (= 7.1.5.2)
-      activesupport (= 7.1.5.2)
+    activestorage (8.1.3)
+      actionpack (= 8.1.3)
+      activejob (= 8.1.3)
+      activerecord (= 8.1.3)
+      activesupport (= 8.1.3)
       marcel (~> 1.0)
     activestorage-validator (0.4.0)
       rails (>= 6.1.0)
-    activesupport (7.1.5.2)
+    activesupport (8.1.3)
       base64
-      benchmark (>= 0.3)
       bigdecimal
-      concurrent-ruby (~> 1.0, >= 1.0.2)
+      concurrent-ruby (~> 1.0, >= 1.3.1)
       connection_pool (>= 2.2.5)
       drb
       i18n (>= 1.6, < 2)
+      json
       logger (>= 1.4.2)
       minitest (>= 5.1)
-      mutex_m
       securerandom (>= 0.3)
-      tzinfo (~> 2.0)
+      tzinfo (~> 2.0, >= 2.0.5)
+      uri (>= 0.13.1)
     addressable (2.9.0)
       public_suffix (>= 2.0.2, < 8.0)
-    administrate (0.20.1)
-      actionpack (>= 6.0, < 8.0)
-      actionview (>= 6.0, < 8.0)
-      activerecord (>= 6.0, < 8.0)
-      jquery-rails (~> 4.6.0)
+    administrate (1.0.0)
+      actionpack (>= 6.0, < 9.0)
+      actionview (>= 6.0, < 9.0)
+      activerecord (>= 6.0, < 9.0)
       kaminari (~> 1.2.2)
-      sassc-rails (~> 2.1)
-      selectize-rails (~> 0.6)
     administrate-field-active_storage (1.0.6)
       administrate (>= 0.2.2)
       rails (>= 7.0)
-    administrate-field-jsonb (0.4.6)
-      administrate (< 1.0.0)
+    administrate-field-jsonb (0.4.8)
+      administrate (< 2.0)
       rails (>= 4.2)
-    administrate-field-nested_has_many (2.1.0)
-      administrate (>= 0.19, < 1)
-      cocoon (~> 1.2, >= 1.2.11)
     ast (2.4.3)
     attr_encrypted (4.2.0)
       encryptor (~> 3.0.0)
@@ -169,12 +160,11 @@ GEM
       xpath (~> 3.2)
     choice (0.2.0)
     climate_control (1.2.0)
-    cloudflare-rails (6.2.0)
-      actionpack (>= 7.1.0, < 8.1.0)
-      activesupport (>= 7.1.0, < 8.1.0)
-      railties (>= 7.1.0, < 8.1.0)
+    cloudflare-rails (7.0.0)
+      actionpack (>= 7.2.0, < 8.2.0)
+      activesupport (>= 7.2.0, < 8.2.0)
+      railties (>= 7.2.0, < 8.2.0)
       zeitwerk (>= 2.5.0)
-    cocoon (1.2.15)
     coderay (1.1.3)
     coercible (1.0.0)
       descendants_tracker (~> 0.0.1)
@@ -287,7 +277,7 @@ GEM
     geocoder (1.8.5)
       base64 (>= 0.1.0)
       csv (>= 3.0.0)
-    globalid (1.2.1)
+    globalid (1.4.0)
       activesupport (>= 6.1)
     graphlient (0.8.0)
       faraday (~> 2.0)
@@ -331,10 +321,6 @@ GEM
       reline (>= 0.4.2)
     jaro_winkler (1.5.6)
     jmespath (1.6.2)
-    jquery-rails (4.6.0)
-      rails-dom-testing (>= 1, < 3)
-      railties (>= 4.2.0)
-      thor (>= 0.14, < 2.0)
     json (2.7.1)
     jwt (2.7.1)
     kaminari (1.2.2)
@@ -368,12 +354,13 @@ GEM
       crass (~> 1.0.2)
       nokogiri (>= 1.12.0)
     lumberjack (1.2.9)
-    mail (2.8.1)
+    mail (2.9.1)
+      logger
       mini_mime (>= 0.1.1)
       net-imap
       net-pop
       net-smtp
-    marcel (1.0.4)
+    marcel (1.2.1)
     matrix (0.4.3)
     memcachier (0.0.2)
     method_source (1.1.0)
@@ -390,7 +377,6 @@ GEM
     msgpack (1.8.0)
     multi_json (1.15.0)
     multi_xml (0.6.0)
-    mutex_m (0.3.0)
     nenv (0.3.0)
     net-http (0.6.0)
       uri
@@ -431,6 +417,7 @@ GEM
     omniauth-rails_csrf_protection (1.0.1)
       actionpack (>= 4.2)
       omniauth (~> 2.0)
+    ostruct (0.6.3)
     pagy (6.4.3)
     parallel (1.24.0)
     parser (3.3.11.1)
@@ -485,20 +472,20 @@ GEM
       rack (>= 1.3)
     rackup (2.2.1)
       rack (>= 3)
-    rails (7.1.5.2)
-      actioncable (= 7.1.5.2)
-      actionmailbox (= 7.1.5.2)
-      actionmailer (= 7.1.5.2)
-      actionpack (= 7.1.5.2)
-      actiontext (= 7.1.5.2)
-      actionview (= 7.1.5.2)
-      activejob (= 7.1.5.2)
-      activemodel (= 7.1.5.2)
-      activerecord (= 7.1.5.2)
-      activestorage (= 7.1.5.2)
-      activesupport (= 7.1.5.2)
+    rails (8.1.3)
+      actioncable (= 8.1.3)
+      actionmailbox (= 8.1.3)
+      actionmailer (= 8.1.3)
+      actionpack (= 8.1.3)
+      actiontext (= 8.1.3)
+      actionview (= 8.1.3)
+      activejob (= 8.1.3)
+      activemodel (= 8.1.3)
+      activerecord (= 8.1.3)
+      activestorage (= 8.1.3)
+      activesupport (= 8.1.3)
       bundler (>= 1.15.0)
-      railties (= 7.1.5.2)
+      railties (= 8.1.3)
     rails-controller-testing (1.0.5)
       actionpack (>= 5.0.1.rc1)
       actionview (>= 5.0.1.rc1)
@@ -518,13 +505,14 @@ GEM
     rails-html-sanitizer (1.6.2)
       loofah (~> 2.21)
       nokogiri (>= 1.15.7, != 1.16.7, != 1.16.6, != 1.16.5, != 1.16.4, != 1.16.3, != 1.16.2, != 1.16.1, != 1.16.0.rc1, != 1.16.0)
-    railties (7.1.5.2)
-      actionpack (= 7.1.5.2)
-      activesupport (= 7.1.5.2)
-      irb
+    railties (8.1.3)
+      actionpack (= 8.1.3)
+      activesupport (= 8.1.3)
+      irb (~> 1.13)
       rackup (>= 1.0.0)
       rake (>= 12.2)
       thor (~> 1.0, >= 1.2.2)
+      tsort (>= 0.2)
       zeitwerk (~> 2.6)
     rainbow (3.1.1)
     rake (13.3.0)
@@ -618,7 +606,6 @@ GEM
     scout_apm (6.2.0)
       parser
     securerandom (0.4.1)
-    selectize-rails (0.12.6)
     selenium-webdriver (4.35.0)
       base64 (~> 0.2)
       logger (~> 1.4)
@@ -711,6 +698,7 @@ GEM
     tilt (2.6.1)
     timecop (0.9.10)
     timeout (0.6.1)
+    tsort (0.2.0)
     ttfunk (1.7.0)
     turbolinks (5.2.1)
       turbolinks-source (~> 5.2)
@@ -725,11 +713,12 @@ GEM
     unicode-display_width (2.5.0)
     uniform_notifier (1.16.0)
     uri (1.0.4)
+    useragent (0.16.11)
     version_gem (1.1.3)
-    view_component (3.11.0)
-      activesupport (>= 5.2.0, < 8.0)
-      concurrent-ruby (~> 1.0)
-      method_source (~> 1.0)
+    view_component (4.12.0)
+      actionview (>= 7.1.0)
+      activesupport (>= 7.1.0)
+      concurrent-ruby (~> 1)
     virtus (1.0.5)
       axiom-types (~> 0.1)
       coercible (~> 1.0)
@@ -750,7 +739,7 @@ GEM
       railties (>= 5.2)
       semantic_range (>= 2.3.0)
     websocket (1.2.11)
-    websocket-driver (0.8.0)
+    websocket-driver (0.8.2)
       base64
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.5)
@@ -766,10 +755,9 @@ PLATFORMS
 
 DEPENDENCIES
   activestorage-validator
-  administrate (~> 0.20.0)
+  administrate
   administrate-field-active_storage
   administrate-field-jsonb
-  administrate-field-nested_has_many
   attr_encrypted
   audited
   awesome_print
@@ -779,7 +767,7 @@ DEPENDENCIES
   binding_of_caller
   bootsnap (>= 1.5.1)
   brakeman
-  bullet (~> 7.1.0)
+  bullet
   byebug
   capybara
   climate_control
@@ -817,6 +805,7 @@ DEPENDENCIES
   omniauth-auth0
   omniauth-oauth2
   omniauth-rails_csrf_protection
+  ostruct
   pagy
   pg
   pg_search
@@ -829,7 +818,7 @@ DEPENDENCIES
   rack-attack
   rack-cors
   rack-mini-profiler
-  rails (~> 7.1.0)
+  rails (~> 8.0)
   rails-controller-testing
   rails-erd
   rails-healthcheck
@@ -840,6 +829,7 @@ DEPENDENCIES
   rspec-rails
   rspec_junit_formatter
   ruby-debug-ide
+  sassc-rails
   scout_apm
   selenium-webdriver (~> 4.35.0)
   sentry-rails
@@ -853,6 +843,7 @@ DEPENDENCIES
   solargraph
   spring
   spring-watcher-listen
+  sprockets-rails
   stackprof
   standard
   standard-rails
