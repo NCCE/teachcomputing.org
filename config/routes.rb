@@ -32,7 +32,7 @@ Rails.application.routes.draw do
     end
     resources :sent_emails, only: %i[index show]
     resources :support_audits, only: %i[index show update edit]
-    resources :users, only: %i[index create show edit perform_sync perform_reset update] do
+    resources :users, only: %i[index create show edit update] do
       get "/perform_sync/:user_id", to: "users#perform_sync", as: :perform_sync
       get "/perform_reset/:user_id", to: "users#perform_reset_tests", as: :perform_reset
       get "/generate_assessment_attempt", to: "users#generate_assessment_attempt", as: :generate_assessment_attempt unless Rails.env.production?
@@ -247,5 +247,10 @@ Rails.application.routes.draw do
   get "/blog", to: "cms#blog", as: :cms_posts
   get "/blog/articles", to: redirect(path: "/blog")
   get "/blog/:page_slug", to: "cms#blog_resource", as: :cms_post
+  if Rails.env.development? || Rails.env.staging?
+    get "/rails/components", to: "view_components#index"
+    get "/rails/components/*path", to: "view_components#previews"
+  end
+
   get "/*page_slug", to: "cms#web_page_resource", as: :cms_page
 end
