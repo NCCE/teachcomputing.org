@@ -64,8 +64,6 @@ Rails.application.configure do
   config.i18n.raise_on_missing_translations = true
 
   config.assets.css_compressor = nil
-  config.sass.style = :compressed
-  config.sass.line_comments = false
 
   config.middleware.use Rack::Attack
 
