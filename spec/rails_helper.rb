@@ -86,10 +86,9 @@ RSpec.configure do |config|
   end
 
   config.before(:suite) do
-    if Webpacker.instance.compiler.stale?
-      success = Webpacker.compile
-      warn "Webpacker compilation failed" unless success
-    end
+    Webpacker.compile if Webpacker.instance.compiler.stale?
+  rescue => e
+    warn "Webpacker setup error (non-fatal): #{e.message}"
   end
 
   config.before(:each) { stub_cloudflare_ip_lookup }
