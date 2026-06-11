@@ -21,14 +21,12 @@ SimpleCov.start "rails" do
   end
 end
 
-# Diagnostic hook: runs just before SimpleCov's at_exit (LIFO order).
-# Remove once the root cause of the spurious exit code 1 is identified.
-at_exit do
-  next if $!.nil?
-  next if $!.is_a?(SystemExit) && $!.status == 0
-
-  warn "[SimpleCov diagnostic] $! = #{$!.class}: #{$!.message}"
-  warn $!.backtrace.first(10).join("\n") if $!.respond_to?(:backtrace) && $!.backtrace
+# Capybara's Selenium driver calls exit() in its at_exit hook to quit Chrome, which
+# sets $! to SystemExit before SimpleCov's at_exit runs. SimpleCov's default handler
+# treats any non-nil $! as a "previous error" and skips report generation, causing a
+# spurious exit code 1. Override it to always generate the report.
+SimpleCov.at_exit do
+  SimpleCov.result.format!
 end
 
 ENV["RAILS_ENV"] ||= "test"
