@@ -21,16 +21,6 @@ SimpleCov.start "rails" do
   end
 end
 
-# Diagnostic: runs just before SimpleCov's at_exit (LIFO). Remove once root cause is identified.
-at_exit do
-  if $!
-    warn "[diagnostic] at_exit $! = #{$!.class}: #{$!.message} (status=#{$!.status if $!.respond_to?(:status)})"
-    warn "[diagnostic] backtrace:\n#{$!.backtrace&.first(15)&.join("\n")}"
-  else
-    warn "[diagnostic] at_exit $! is nil — clean exit"
-  end
-end
-
 ENV["RAILS_ENV"] ||= "test"
 Dotenv.overload(".env.test") # Ensure .env.test is used in dev environments
 
