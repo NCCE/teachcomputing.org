@@ -21,6 +21,16 @@ SimpleCov.start "rails" do
   end
 end
 
+# Diagnostic hook: runs just before SimpleCov's at_exit (LIFO order).
+# Remove once the root cause of the spurious exit code 1 is identified.
+at_exit do
+  next if $!.nil?
+  next if $!.is_a?(SystemExit) && $!.status == 0
+
+  warn "[SimpleCov diagnostic] $! = #{$!.class}: #{$!.message}"
+  warn $!.backtrace.first(10).join("\n") if $!.respond_to?(:backtrace) && $!.backtrace
+end
+
 ENV["RAILS_ENV"] ||= "test"
 Dotenv.overload(".env.test") # Ensure .env.test is used in dev environments
 
