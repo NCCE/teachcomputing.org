@@ -21,13 +21,6 @@ SimpleCov.start "rails" do
   end
 end
 
-# Capybara's Selenium driver calls exit() in its at_exit hook to quit Chrome, which
-# sets $! to SystemExit before SimpleCov's at_exit runs. SimpleCov's default handler
-# treats any non-nil $! as a "previous error" and skips report generation, causing a
-# spurious exit code 1. Override it to always generate the report.
-SimpleCov.at_exit do
-  SimpleCov.result.format!
-end
 
 ENV["RAILS_ENV"] ||= "test"
 Dotenv.overload(".env.test") # Ensure .env.test is used in dev environments
