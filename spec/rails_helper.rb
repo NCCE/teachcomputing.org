@@ -9,10 +9,10 @@ SimpleCov.singleton_class.prepend(Module.new do
     err = $ERROR_INFO
     if err
       status = err.is_a?(SystemExit) ? err.status : "N/A"
-      $stderr.puts "[SC Debug] $! = #{err.class} (status=#{status}): #{err.message}"
-      $stderr.puts "[SC Debug] backtrace: #{err.backtrace&.first(3)&.join(" | ")}"
+      warn "[SC Debug] $! = #{err.class} (status=#{status}): #{err.message}"
+      warn "[SC Debug] backtrace: #{err.backtrace&.first(3)&.join(" | ")}"
     else
-      $stderr.puts "[SC Debug] $! is nil (clean exit)"
+      warn "[SC Debug] $! is nil (clean exit)"
     end
     super
   end
@@ -62,6 +62,15 @@ require File.expand_path("../config/environment", __dir__)
 
 abort("The Rails environment is running in production mode!") if Rails.env.production?
 require "rspec/rails"
+
+RSpec::Core::Runner.prepend(Module.new do
+  def exit_code(examples_passed = false)
+    result = super
+    warn "[Runner Debug] exit_code: examples_passed=#{examples_passed}, non_example_failure=#{@world.non_example_failure}, result=#{result}"
+    result
+  end
+end)
+
 require "webmock/rspec"
 require "rspec/json_expectations"
 require "capybara/rspec"
