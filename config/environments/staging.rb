@@ -2,7 +2,7 @@ Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
   # Code is not reloaded between requests.
-  config.cache_classes = true
+  config.enable_reloading = false
 
   # Eager load code on boot. This eager loads most of Rails and
   # your application in memory, allowing both threaded web servers
@@ -25,8 +25,6 @@ Rails.application.configure do
   # Compress JavaScripts and CSS.
   config.assets.js_compressor = :terser
   config.assets.css_compressor = nil
-  config.sass.style = :compressed
-  config.sass.line_comments = false
 
   # Do not fallback to assets pipeline if a precompiled asset is missed.
   config.assets.compile = false
@@ -80,7 +78,7 @@ Rails.application.configure do
 
   config.action_mailer.show_previews = true
   config.action_mailer.asset_host = "https://staging.teachcomputing.org"
-  config.action_mailer.preview_path = "#{Rails.root}/previews/mailers"
+  config.action_mailer.preview_paths = ["#{Rails.root}/previews/mailers"]
   config.action_mailer.default_url_options = {host: "https://staging.teachcomputing.org"}
   config.action_mailer.smtp_settings = {
     address: "smtp.mandrillapp.com",
@@ -126,9 +124,9 @@ Rails.application.configure do
 
   config.middleware.use Rack::Attack
 
-  config.view_component.preview_paths << "#{Rails.root}/previews/components"
-  config.view_component.preview_route = "/rails/components"
-  config.view_component.show_previews = true
+  config.view_component.previews.paths << "#{Rails.root}/previews/components"
+  config.view_component.previews.route = "/rails/components"
+  config.view_component.previews.enabled = true
 
   # Enable secure cookies (will only work on https)
   config.session_store :cookie_store,
