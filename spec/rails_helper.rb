@@ -8,12 +8,32 @@ SimpleCov.singleton_class.prepend(Module.new do
   def exit_status_from_exception
     err = $ERROR_INFO
     if err
-      $stderr.puts "[SC Debug] $! = #{err.class}: #{err.message}"
+      status = err.is_a?(SystemExit) ? err.status : "N/A"
+      $stderr.puts "[SC Debug] $! = #{err.class} (status=#{status}): #{err.message}"
       $stderr.puts "[SC Debug] backtrace: #{err.backtrace&.first(3)&.join(" | ")}"
     else
       $stderr.puts "[SC Debug] $! is nil (clean exit)"
     end
     super
+  end
+
+  # Capybara's at_exit calls `exit @exit_status` to preserve the test suite exit code,
+  # which SimpleCov sees as a "previous error" and short-circuits without processing
+  # coverage. This override always runs coverage and exits with the max of both statuses.
+  def run_exit_tasks!
+    error_exit_status = exit_status_from_exception
+    at_exit.call
+
+    coverage_exit_status = 0
+    if ready_to_process_results?
+      coverage_exit_status = process_result(result)
+      if coverage_exit_status.positive? && print_error_status
+        warn("SimpleCov failed with exit #{coverage_exit_status} due to a coverage related error")
+      end
+    end
+
+    final_exit_status = [error_exit_status.to_i, coverage_exit_status].max
+    Kernel.exit(final_exit_status) if final_exit_status.positive?
   end
 end)
 
