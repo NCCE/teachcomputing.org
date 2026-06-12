@@ -84,35 +84,10 @@ jobs:
           chrome-version: latest
           replace-existing-chrome: true
       - run:
-          name: Spec file count
-          command: |
-            echo "=== Spec files on disk ==="
-            find spec -name "*_spec.rb" | wc -l
-      - run:
           name: Run rspec
           command: |
             mkdir ~/rspec
-            set +e
-            bundle exec rspec --format progress --format RspecJunitFormatter -o ~/rspec/rspec.xml 2>&1 | tee /tmp/rspec.log
-            EXIT=${PIPESTATUS[0]}
-            echo "=== RSpec exit code: $EXIT ==="
-            echo "=== Runner debug ==="
-            grep "\[Runner Debug\]\|\[Reporter Debug\]\|\[Exit Trace\]" /tmp/rspec.log || echo "None"
-            echo "=== Load error count ==="
-            grep -c "An error occurred while loading" /tmp/rspec.log || echo "0"
-            echo "=== Load error details ==="
-            grep -A 5 "An error occurred while loading" /tmp/rspec.log || echo "None"
-            echo "=== Suite/context hook errors ==="
-            grep "An error occurred in" /tmp/rspec.log || echo "None"
-            echo "=== Errors outside examples ==="
-            grep "error occurred outside of examples" /tmp/rspec.log || echo "None"
-            echo "=== RSpec summary ==="
-            grep -E "^[0-9]+ examples?" /tmp/rspec.log || echo "Not found"
-            echo "=== Pending examples ==="
-            grep -E "^[0-9]+ pending" /tmp/rspec.log || echo "None"
-            echo "=== JUnit formatter exit ==="
-            grep -i "junit\|xml\|format" /tmp/rspec.log | tail -5 || echo "None"
-            exit $EXIT
+            bundle exec rspec --format progress --format RspecJunitFormatter -o ~/rspec/rspec.xml
       - store_test_results:
           path: ~/rspec
       - store_artifacts:
