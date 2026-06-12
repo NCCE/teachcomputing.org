@@ -3,6 +3,20 @@ require "dotenv"
 require "simplecov"
 
 SimpleCov.minimum_coverage ENV["SIMPLECOV_MIN_COVERAGE"].to_i
+
+SimpleCov.singleton_class.prepend(Module.new do
+  def exit_status_from_exception
+    err = $ERROR_INFO
+    if err
+      $stderr.puts "[SC Debug] $! = #{err.class}: #{err.message}"
+      $stderr.puts "[SC Debug] backtrace: #{err.backtrace&.first(3)&.join(" | ")}"
+    else
+      $stderr.puts "[SC Debug] $! is nil (clean exit)"
+    end
+    super
+  end
+end)
+
 SimpleCov.start "rails" do
   require_relative "support/simplecov_warnings_patch" # To remove excess warnings from line below
   enable_coverage_for_eval
