@@ -3,40 +3,6 @@ require "dotenv"
 require "simplecov"
 
 SimpleCov.minimum_coverage ENV["SIMPLECOV_MIN_COVERAGE"].to_i
-
-SimpleCov.singleton_class.prepend(Module.new do
-  def exit_status_from_exception
-    err = $ERROR_INFO
-    if err
-      status = err.is_a?(SystemExit) ? err.status : "N/A"
-      warn "[SC Debug] $! = #{err.class} (status=#{status}): #{err.message}"
-      warn "[SC Debug] backtrace: #{err.backtrace&.first(3)&.join(" | ")}"
-    else
-      warn "[SC Debug] $! is nil (clean exit)"
-    end
-    super
-  end
-
-  # Capybara's at_exit calls `exit @exit_status` to preserve the test suite exit code,
-  # which SimpleCov sees as a "previous error" and short-circuits without processing
-  # coverage. This override always runs coverage and exits with the max of both statuses.
-  def run_exit_tasks!
-    error_exit_status = exit_status_from_exception
-    at_exit.call
-
-    coverage_exit_status = 0
-    if ready_to_process_results?
-      coverage_exit_status = process_result(result)
-      if coverage_exit_status.positive? && print_error_status
-        warn("SimpleCov failed with exit #{coverage_exit_status} due to a coverage related error")
-      end
-    end
-
-    final_exit_status = [error_exit_status.to_i, coverage_exit_status].max
-    Kernel.exit(final_exit_status) if final_exit_status.positive?
-  end
-end)
-
 SimpleCov.start "rails" do
   require_relative "support/simplecov_warnings_patch" # To remove excess warnings from line below
   enable_coverage_for_eval
@@ -62,35 +28,6 @@ require File.expand_path("../config/environment", __dir__)
 
 abort("The Rails environment is running in production mode!") if Rails.env.production?
 require "rspec/rails"
-
-RSpec::Core::Runner.prepend(Module.new do
-  def exit_code(examples_passed = false)
-    result = super
-    warn "[Runner Debug] exit_code: examples_passed=#{examples_passed}, non_example_failure=#{@world.non_example_failure}, result=#{result}"
-    result
-  end
-end)
-
-RSpec::Core::Reporter.prepend(Module.new do
-  def finish
-    warn "[Reporter Debug] finish() starting, scope=#{RSpec.current_scope}"
-    super
-    warn "[Reporter Debug] finish() completed"
-  rescue => e
-    warn "[Reporter Debug] finish() raised #{e.class}: #{e.message}"
-    raise
-  end
-end)
-
-TracePoint.new(:raise) do |tp|
-  ex = tp.raised_exception
-  next unless ex.is_a?(SystemExit) && ex.status != 0
-
-  scope = RSpec.respond_to?(:current_scope) ? RSpec.current_scope : :unknown
-  warn "[Exit Trace] SystemExit(#{ex.status}) at #{tp.path}:#{tp.lineno}, scope=#{scope}"
-  warn "[Exit Trace] caller: #{caller.first(8).join(" | ")}"
-end.enable
-
 require "webmock/rspec"
 require "rspec/json_expectations"
 require "capybara/rspec"
