@@ -247,10 +247,5 @@ Rails.application.routes.draw do
   get "/blog", to: "cms#blog", as: :cms_posts
   get "/blog/articles", to: redirect(path: "/blog")
   get "/blog/:page_slug", to: "cms#blog_resource", as: :cms_post
-  if Rails.env.development? || Rails.env.staging?
-    get "/rails/components", to: "view_components#index"
-    get "/rails/components/*path", to: "view_components#previews"
-  end
-
   get "/*page_slug", to: "cms#web_page_resource", as: :cms_page
 end
