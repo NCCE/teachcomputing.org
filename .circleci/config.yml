@@ -97,7 +97,7 @@ jobs:
             EXIT=${PIPESTATUS[0]}
             echo "=== RSpec exit code: $EXIT ==="
             echo "=== Runner debug ==="
-            grep "\[Runner Debug\]" /tmp/rspec.log || echo "None"
+            grep "\[Runner Debug\]\|\[Reporter Debug\]\|\[Exit Trace\]" /tmp/rspec.log || echo "None"
             echo "=== Load error count ==="
             grep -c "An error occurred while loading" /tmp/rspec.log || echo "0"
             echo "=== Load error details ==="

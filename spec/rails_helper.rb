@@ -71,6 +71,26 @@ RSpec::Core::Runner.prepend(Module.new do
   end
 end)
 
+RSpec::Core::Reporter.prepend(Module.new do
+  def finish
+    warn "[Reporter Debug] finish() starting, scope=#{RSpec.current_scope}"
+    super
+    warn "[Reporter Debug] finish() completed"
+  rescue => e
+    warn "[Reporter Debug] finish() raised #{e.class}: #{e.message}"
+    raise
+  end
+end)
+
+TracePoint.new(:raise) do |tp|
+  ex = tp.raised_exception
+  next unless ex.is_a?(SystemExit) && ex.status != 0
+
+  scope = RSpec.respond_to?(:current_scope) ? RSpec.current_scope : :unknown
+  warn "[Exit Trace] SystemExit(#{ex.status}) at #{tp.path}:#{tp.lineno}, scope=#{scope}"
+  warn "[Exit Trace] caller: #{caller.first(8).join(" | ")}"
+end.enable
+
 require "webmock/rspec"
 require "rspec/json_expectations"
 require "capybara/rspec"
