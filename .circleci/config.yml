@@ -96,10 +96,14 @@ jobs:
             bundle exec rspec --format progress --format RspecJunitFormatter -o ~/rspec/rspec.xml 2>&1 | tee /tmp/rspec.log
             EXIT=${PIPESTATUS[0]}
             echo "=== RSpec exit code: $EXIT ==="
+            echo "=== Runner debug ==="
+            grep "\[Runner Debug\]" /tmp/rspec.log || echo "None"
             echo "=== Load error count ==="
             grep -c "An error occurred while loading" /tmp/rspec.log || echo "0"
             echo "=== Load error details ==="
             grep -A 5 "An error occurred while loading" /tmp/rspec.log || echo "None"
+            echo "=== Suite/context hook errors ==="
+            grep "An error occurred in" /tmp/rspec.log || echo "None"
             echo "=== Errors outside examples ==="
             grep "error occurred outside of examples" /tmp/rspec.log || echo "None"
             echo "=== RSpec summary ==="
