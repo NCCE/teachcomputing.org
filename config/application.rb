@@ -22,6 +22,10 @@ module TeachComputing
     # the gem is updated or we migrate off rails-ujs in Phase 3.
     config.action_controller.urlsafe_csrf_tokens = false
 
+    # Rails 7.1 default freezes $LOAD_PATH which breaks gems that modify it after boot.
+    # Keep old behaviour until Phase 3.
+    config.add_autoload_paths_to_load_path = true
+
     # Please, add to the `ignore` list any other `lib` subdirectories that do
     # not contain `.rb` files, or that should not be reloaded or eager loaded.
     # Common ones are `templates`, `generators`, or `middleware`, for example.
