@@ -17,15 +17,6 @@ module TeachComputing
     # Keep Rails UJS remote form behavior until Phase 3 (importmap/turbo migration).
     config.action_view.form_with_generates_remote_forms = true
 
-    # omniauth-rails_csrf_protection delegates config options but not class attributes,
-    # so urlsafe_csrf_tokens is never picked up by its TokenVerifier. Keep false until
-    # the gem is updated or we migrate off rails-ujs in Phase 3.
-    config.action_controller.urlsafe_csrf_tokens = false
-
-    # Rails 7.1 default freezes $LOAD_PATH which breaks gems that modify it after boot.
-    # Keep old behaviour until Phase 3.
-    config.add_autoload_paths_to_load_path = true
-
     # Please, add to the `ignore` list any other `lib` subdirectories that do
     # not contain `.rb` files, or that should not be reloaded or eager loaded.
     # Common ones are `templates`, `generators`, or `middleware`, for example.
