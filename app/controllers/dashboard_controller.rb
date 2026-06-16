@@ -23,13 +23,8 @@ class DashboardController < ApplicationController
   end
 
   def enrolments
-    programmes = [
-      Programme.primary_certificate,
-      Programme.secondary_certificate,
-      Programme.cs_accelerator,
-      Programme.a_level,
-      Programme.i_belong
-    ]
+    programme_slugs = %w[primary-certificate secondary-certificate subject-knowledge a-level-certificate i-belong]
+    programmes = Programme.where(slug: programme_slugs).to_a
 
     user_enrolments = current_user.enrolments.includes(:programme)
 
