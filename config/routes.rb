@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   Healthcheck.routes(self)
-  root to: "cms#home", action: :home
+  root to: "cms#home"
 
   resources :achievements, only: %i[create destroy update] do
     collection do
@@ -34,10 +34,12 @@ Rails.application.routes.draw do
     resources :support_audits, only: %i[index show update edit]
     resources :users, only: %i[index create show edit update] do
       member do
-        get :perform_sync
-        get :perform_reset
-        get :generate_assessment_attempt unless Rails.env.production?
-        post :process_assessment_attempt unless Rails.env.production?
+        get "perform_sync", to: "users#perform_sync"
+        get "perform_reset", to: "users#perform_reset"
+        unless Rails.env.production?
+          get "generate_assessment_attempt", to: "users#generate_assessment_attempt"
+          post "process_assessment_attempt", to: "users#process_assessment_attempt"
+        end
       end
     end
     resources :user_programme_enrolments, only: %i[index show edit update] do
