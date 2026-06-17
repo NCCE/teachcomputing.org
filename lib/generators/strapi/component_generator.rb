@@ -53,17 +53,6 @@ module Strapi
         behavior: :invoke,
         destination_root:
       )
-    # Rails 8.1's Generators.invoke calls `exit 1` when the generator isn't
-    # found, so SystemExit must be caught here or it kills the process
-    rescue SystemExit, StandardError
-      puts <<~HEREDOC
-        #{"*" * 80}
-        Unable to create component, please run this command seperatly
-
-        rails generate view_component:component Cms::#{@component_name_class} #{@rails_param_names.join(" ")} --test-framework=rspec
-        #{"*" * 80}
-
-      HEREDOC
     end
 
     def print_method_defintions
