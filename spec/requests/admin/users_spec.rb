@@ -22,7 +22,7 @@ RSpec.describe Admin::UsersController do
     end
   end
 
-  describe "GET #perform_reset" do
+  describe "GET #perform_reset_tests" do
     before do
       allow(User).to receive(:find_by_email).and_return(admin_user)
       allow(Support::UserUtilities).to receive(:reset_tests).and_return([])
@@ -30,7 +30,7 @@ RSpec.describe Admin::UsersController do
 
     context "when reset tests result is empty" do
       it "calls the reset service and redirects back with a notice" do
-        get perform_reset_admin_user_path(user)
+        get perform_reset_tests_admin_user_path(user)
 
         expect(response).to redirect_to(admin_users_path(user.id))
         expect(flash[:notice]).to eq("Nothing to do!")
@@ -46,7 +46,7 @@ RSpec.describe Admin::UsersController do
       end
 
       it "calls the reset service and redirects to edit the last support audit" do
-        get perform_reset_admin_user_path(user)
+        get perform_reset_tests_admin_user_path(user)
 
         expect(response).to redirect_to(edit_admin_support_audit_path(id: support_audit.id))
       end

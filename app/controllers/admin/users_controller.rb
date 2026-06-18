@@ -10,7 +10,7 @@ module Admin
       )
     end
 
-    def perform_reset
+    def perform_reset_tests
       admin_user = User.find_by_email(ENV.fetch("DEFAULT_ADMIN_EMAIL"))
       result = Support::UserUtilities.reset_tests(params[:id])
 
