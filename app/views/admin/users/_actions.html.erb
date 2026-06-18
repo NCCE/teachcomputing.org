@@ -9,9 +9,9 @@
     <br/><br/>
     <%= link_to(
       t(".reset.label"),
-      perform_reset_admin_user_path(resource),
+      perform_reset_tests_admin_user_path(resource),
       class: "button"
-    ) if accessible_action?(resource, :perform_reset) %>
+    ) if accessible_action?(resource, :perform_reset_tests) %>
     <br/><br/>
     <%= link_to(
       'Generate Assessment Attempt',
