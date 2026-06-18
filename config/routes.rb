@@ -35,7 +35,7 @@ Rails.application.routes.draw do
     resources :users, only: %i[index create show edit update] do
       member do
         get "perform_sync", to: "users#perform_sync"
-        get "perform_reset", to: "users#perform_reset"
+        get "perform_reset_tests", to: "users#perform_reset_tests"
         unless Rails.env.production?
           get "generate_assessment_attempt", to: "users#generate_assessment_attempt"
           post "process_assessment_attempt", to: "users#process_assessment_attempt"
