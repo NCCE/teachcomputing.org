@@ -13,7 +13,7 @@ gem "aws-sdk-s3", require: false
 gem "bootsnap", ">= 1.5.1", require: false
 gem "cloudflare-rails"
 gem "combine_pdf", ">= 1.0.18"
-gem "connection_pool"
+gem "connection_pool", "~> 2.4"
 gem "dalli"
 gem "enumerize"
 gem "faraday"
