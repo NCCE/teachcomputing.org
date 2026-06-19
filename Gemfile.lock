@@ -773,7 +773,7 @@ DEPENDENCIES
   climate_control
   cloudflare-rails
   combine_pdf (>= 1.0.18)
-  connection_pool
+  connection_pool (~> 2.4)
   dalli
   debase
   dotenv-rails
