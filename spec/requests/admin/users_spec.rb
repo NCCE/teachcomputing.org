@@ -15,7 +15,7 @@ RSpec.describe Admin::UsersController do
     end
 
     it "calls the sync service and redirects back with a notice" do
-      get admin_user_perform_sync_path(user_id: user.id)
+      get perform_sync_admin_user_path(user)
 
       expect(response).to redirect_to(admin_users_path(user_id: user.id))
       expect(flash[:notice]).to eq("Sync complete")
@@ -30,7 +30,7 @@ RSpec.describe Admin::UsersController do
 
     context "when reset tests result is empty" do
       it "calls the reset service and redirects back with a notice" do
-        get admin_user_perform_reset_path(user_id: user.id)
+        get perform_reset_tests_admin_user_path(user)
 
         expect(response).to redirect_to(admin_users_path(user.id))
         expect(flash[:notice]).to eq("Nothing to do!")
@@ -46,7 +46,7 @@ RSpec.describe Admin::UsersController do
       end
 
       it "calls the reset service and redirects to edit the last support audit" do
-        get admin_user_perform_reset_path(user_id: user.id)
+        get perform_reset_tests_admin_user_path(user)
 
         expect(response).to redirect_to(edit_admin_support_audit_path(id: support_audit.id))
       end
@@ -55,7 +55,7 @@ RSpec.describe Admin::UsersController do
 
   context "GET #generate_assessment_attempt" do
     before do
-      get admin_user_generate_assessment_attempt_path(user_id: user.id)
+      get generate_assessment_attempt_admin_user_path(user)
     end
 
     it "should render correct template" do
@@ -66,7 +66,7 @@ RSpec.describe Admin::UsersController do
   context "POST #process_assessment_attempt" do
     context "with passing score" do
       before do
-        post admin_user_process_assessment_attempt_path(user_id: user.id), params: {
+        post process_assessment_attempt_admin_user_path(user), params: {
           assessment_id: assessment.id,
           score: 85
         }
@@ -84,7 +84,7 @@ RSpec.describe Admin::UsersController do
 
     context "with failing score" do
       before do
-        post admin_user_process_assessment_attempt_path(user_id: user.id), params: {
+        post process_assessment_attempt_admin_user_path(user), params: {
           assessment_id: assessment.id,
           score: 25
         }

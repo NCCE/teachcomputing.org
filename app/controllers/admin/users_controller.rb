@@ -1,7 +1,7 @@
 module Admin
   class UsersController < Admin::ApplicationController
     def perform_sync
-      user_id = params[:user_id]
+      user_id = params[:id]
       Support::UserUtilities.sync(user_id)
 
       redirect_back(
@@ -12,11 +12,11 @@ module Admin
 
     def perform_reset_tests
       admin_user = User.find_by_email(ENV.fetch("DEFAULT_ADMIN_EMAIL"))
-      result = Support::UserUtilities.reset_tests(params[:user_id])
+      result = Support::UserUtilities.reset_tests(params[:id])
 
       if result.empty?
         redirect_back(
-          fallback_location: admin_users_path(params[:user_id]),
+          fallback_location: admin_users_path(params[:id]),
           flash: {notice: I18n.t("admin.users.actions.reset.empty")}
         )
       else
@@ -26,11 +26,11 @@ module Admin
     end
 
     def generate_assessment_attempt
-      @user = User.find(params[:user_id])
+      @user = User.find(params[:id])
     end
 
     def process_assessment_attempt
-      @user = User.find(params[:user_id])
+      @user = User.find(params[:id])
       assessment = Assessment.find(params[:assessment_id])
       if assessment.activity
         achievement = assessment.activity.achievements.find_or_initialize_by(user_id: @user.id)

@@ -70,12 +70,12 @@ RSpec.describe("certificates/cs_accelerator/_csa-test") do
       user_programme_assessment = instance_double(UserProgrammeAssessment)
 
       allow(user_programme_assessment).to receive(:currently_taking_test?).and_return(false)
-      allow(user_programme_assessment).to receive(:can_take_test_at).and_return(time + 1.day)
+      allow(user_programme_assessment).to receive(:can_take_test_at).and_return(1.day.to_i)
       allow(user_programme_assessment).to receive(:failed_num_attempts).and_return(1)
 
       render partial: "csa-test", locals: {user_programme_assessment:}
 
-      expect(rendered).to have_content("Your second attempt at the test can be done after 1am on Thursday.")
+      expect(rendered).to have_content("Your second attempt at the test can be done after 12pm on Thursday.")
     end
   end
 end
