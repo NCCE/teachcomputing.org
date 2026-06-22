@@ -16,7 +16,7 @@ module Admin
 
       if result.empty?
         redirect_back(
-          fallback_location: admin_users_path(params[:id]),
+          fallback_location: admin_user_path(params[:id]),
           flash: {notice: I18n.t("admin.users.actions.reset.empty")}
         )
       else
