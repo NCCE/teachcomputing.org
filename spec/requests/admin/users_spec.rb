@@ -32,7 +32,7 @@ RSpec.describe Admin::UsersController do
       it "calls the reset service and redirects back with a notice" do
         get perform_reset_tests_admin_user_path(user)
 
-        expect(response).to redirect_to(admin_users_path(user.id))
+        expect(response).to redirect_to(admin_user_path(user))
         expect(flash[:notice]).to eq("Nothing to do!")
       end
     end
