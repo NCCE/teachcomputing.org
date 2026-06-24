@@ -172,4 +172,33 @@ RSpec.describe CmsMailer, type: :mailer do
         .with("Failed to load the email template #{missing_slug}")
     end
   end
+
+  describe "with user who already received the email" do
+    let(:sent_email) { create(:sent_email, user:, mailer_type: slug, subject:) }
+
+    before do
+      sent_email
+    end
+
+    it "does not send the email" do
+      @mail = described_class.with(user_id: user.id, template_slug: slug).send_template
+
+      expect {
+        @mail.deliver_now
+      }.not_to change { ActionMailer::Base.deliveries.count }
+    end
+  end
+
+  describe "sent email tracking" do
+    before do
+      described_class.with(user_id: user.id, template_slug: slug).send_template.deliver_now
+    end
+
+    it "records the correct details in sent email" do
+      sent_email = SentEmail.last
+      expect(sent_email.user).to eq(user)
+      expect(sent_email.mailer_type).to eq(slug)
+      expect(sent_email.subject).to eq(subject)
+    end
+  end
 end
