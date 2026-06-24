@@ -20,29 +20,30 @@
                   <%= @booking.address(occurrence) %>
                 </span>
                 <span class='ncce-booking-list__button_wrapper'>
-                  <%= link_to(
-                    @booking.booking_button_title,
-                    @booking.booking_path(occurrence.course_occurrence_no),
-                    class: 'govuk-button button',
-                    draggable: 'false',
-                    data: { event_action: 'click', event_category: 'course details', event_label: 'join course' },
-                    target: :_blank
-                  ) %>
+
                 </span>
               </div>
             </li>
           <% end %>
+          <%= link_to(
+            @booking.authenticated_title,
+            @booking.booking_path(@activity.stem_activity_code),
+            class: 'govuk-button button--aside govuk-!-margin-top-4',
+            draggable: 'false',
+            data: { event_action: 'click', event_category: 'course details', event_label: 'join online course' },
+            target: :_blank
+            ) %>
           </ul>
         <% else %>
           <p class="govuk-body">
             <%= link_to(
-                @booking.authenticated_title,
-                @booking.booking_path(@activity.stem_course_template_no),
-                class: 'govuk-button button--aside',
-                draggable: 'false',
-                data: { event_action: 'click', event_category: 'course details', event_label: 'join online course' },
-                target: :_blank
-                ) %>
+              @booking.authenticated_title,
+              @booking.booking_path(@activity.stem_activity_code),
+              class: 'govuk-button button--aside',
+              draggable: 'false',
+              data: { event_action: 'click', event_category: 'course details', event_label: 'join online course' },
+              target: :_blank
+              ) %>
           </p>
           <%= render('start-date', date: @start_date) if (@start_date && !@started)  %>
         <% end %>
