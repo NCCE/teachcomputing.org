@@ -24,7 +24,7 @@ module Cms
         def one(resource_class, resource_id = nil, preview: false, preview_key: nil)
           query = Queries::BaseQuery.new(resource_class)
           begin
-            response = @connection.execute(query.single_query(resource_id))
+            response = @connection.execute(query.single_query(resource_id, preview:))
           rescue => e
             Sentry.capture_exception(e)
             raise ActiveRecord::RecordNotFound

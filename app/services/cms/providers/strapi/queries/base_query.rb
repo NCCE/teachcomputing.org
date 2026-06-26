@@ -85,18 +85,20 @@ module Cms
             GRAPHQL
           end
 
-          def single_query(id = nil)
+          def single_query(id = nil, preview: false)
             filters = {}
             if @collection_class.is_collection
               raise StandardError if id.nil?
               filters[resource_filter] = {eq: id}
             end
-            filter_string = if filters.any?
-              "(#{query_string(:filters, filters)})"
-            end
+            args = []
+            args << query_string(:filters, filters) if filters.any?
+            # Ask Strapi for the draft version so unpublished pages are visible in preview.
+            args << "status: DRAFT" if preview
+            arg_string = "(#{args.join(" ")})" if args.any?
             <<~GRAPHQL.freeze
               query {
-                #{resource_name} #{filter_string} {
+                #{resource_name} #{arg_string} {
                   #{"documentId" if @collection_class.is_collection}
                   updatedAt
                   createdAt
