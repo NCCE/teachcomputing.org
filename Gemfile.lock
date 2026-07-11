@@ -246,7 +246,7 @@ GEM
       rubocop
       smart_properties
     erubi (1.13.1)
-    excon (1.2.5)
+    excon (1.5.0)
       logger
     execjs (2.10.0)
     factory_bot (6.2.1)
