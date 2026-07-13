@@ -52,7 +52,7 @@ export default class extends Controller {
     const comment = ev.currentTarget.elements.namedItem('comment')
     if (comment && !comment.value) {
       this.preventFormSubmission(ev)
-      this.showPage(5)
+      this.showPage(4)
     }
   }
 
