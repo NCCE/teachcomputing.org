@@ -31,12 +31,8 @@ RSpec.describe("certificates/secondary_certificate/complete", type: :view) do
     expect(rendered).to have_css(".ncce-programmes-activity__title", text: "Your learning journey")
   end
 
-  it "has the Twitter section" do
+  it "has a share section" do
     expect(rendered).to have_css(".ncce-aside__title", text: "Share your success")
-  end
-
-  it "has the Twitter share button" do
-    expect(rendered).to have_link("Share on Twitter", href: "https://twitter.com/intent/tweet?text=#{CGI.escape "I have completed the Teach secondary computing programme from @WeAreComputing. Find out more #{secondary_url}"}")
   end
 
   it "has the Facebook share button" do
