@@ -17,14 +17,12 @@ en:
           title: "Share your success"
           text:
             html: "Do you know someone who would benefit from this programme? Invite them to join, and discuss what you've learnt with someone you know.<br><br>
-            Follow us on %{twitter_follow_link}, %{facebook_follow_link} or %{linkedin_follow_link} and tag us when sharing your achievement<br><br>
-            %{twitter_share_link}%{facebook_share_link}%{linkedin_share_link}"
+            Follow us on %{facebook_follow_link} or %{linkedin_follow_link} and tag us when sharing your achievement<br><br>
+            %{facebook_share_link}%{linkedin_share_link}"
           follow:
-            twitter: "Twitter"
             facebook: "Facebook"
             linkedin: "LinkedIn"
           share:
-            twitter: "Share on Twitter"
             facebook: "Share on Facebook"
             linkedin: "Share on LinkedIn"
         next_steps:
