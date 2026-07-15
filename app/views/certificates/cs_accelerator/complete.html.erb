@@ -1,6 +1,5 @@
 <% meta_tag :title, 'KS3 and GCSE - Teach Computing' %>
 <%= render 'pages/certification/hero', full_width: true  %>
-<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 <div class="light-grey-bg">
   <div class="govuk-width-container">
     <div class="govuk-main-wrapper govuk-main-wrapper--xl">
@@ -73,13 +72,7 @@
             title: t('.share_aside.title'),
             class_name: 'share-aside',
             text: t('.share_aside.text.html',
-              twitter_follow_link: link_to(
-                t('.share_aside.follow.twitter'),
-                'https://twitter.com/WeAreComputing?ref_src=twsrc%5Etfw',
-                class: 'ncce-link',
-                data: tracking_data('follow on social').merge(related: 'WeAreComputing', dnt: true, lang: 'en'),
-                target: '_blank'
-              ),
+
               facebook_follow_link: link_to(
                 t('.share_aside.follow.facebook'),
                 'https://www.facebook.com/WeAreComputing/',
@@ -92,13 +85,6 @@
                 'https://www.linkedin.com/company/national-centre-for-computing-education',
                 class: 'ncce-link',
                 data: tracking_data('follow on social').merge(related: 'WeAreComputing', dnt: true, lang: 'en'),
-                target: '_blank'
-              ),
-              twitter_share_link: link_to(
-                t('.share_aside.share.twitter'),
-                'https://twitter.com/intent/tweet?text=I%20have%20completed%20the%20Computer%20Science%20Accelerator%20from%20%40WeAreComputing.%20Sign%20up:%20https://teachcomputing.org%2Fsubject-knowledge',
-                class: 'govuk-link ncce-link complete_social complete_social--x',
-                data: tracking_data('share on social').merge(related: 'WeAreComputing', dnt: true, lang: 'en', size: 'large'),
                 target: '_blank'
               ),
               facebook_share_link: link_to(
