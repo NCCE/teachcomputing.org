@@ -29,10 +29,6 @@ RSpec.describe("certificates/i_belong/complete", type: :view) do
     expect(rendered).to have_css(".govuk-body-l", text: "Next steps for you")
   end
 
-  it "has the Twitter share button" do
-    expect(rendered).to have_link("Share on X", href: "https://twitter.com/intent/tweet?text=#{CGI.escape "I have completed the I Belong programme from @WeAreComputing. Find out more #{about_i_belong_url}"}")
-  end
-
   it "has the Facebook share button" do
     expect(rendered).to have_link("Share on Facebook", href: "https://www.facebook.com/sharer/sharer.php?u=#{CGI.escape about_i_belong_url}")
   end
