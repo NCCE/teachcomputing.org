@@ -71,12 +71,8 @@ RSpec.describe("certificates/cs_accelerator/complete") do
       expect(rendered).to have_link("Download our GCSE Specification Map", href: "https://static.teachcomputing.org/GCSE_specifications_to_CSA_course_map.pdf")
     end
 
-    it "has the Twitter section" do
+    it "has a share section" do
       expect(rendered).to have_css(".share-aside .aside-component__heading", text: "Share your success")
-    end
-
-    it "has the Twitter share button" do
-      expect(rendered).to have_link("Share on Twitter", href: "https://twitter.com/intent/tweet?text=I%20have%20completed%20the%20Computer%20Science%20Accelerator%20from%20%40WeAreComputing.%20Sign%20up:%20https://teachcomputing.org%2Fsubject-knowledge")
     end
 
     it "has the Facebook share button" do
