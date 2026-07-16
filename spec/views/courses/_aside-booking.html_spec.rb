@@ -54,7 +54,7 @@ RSpec.describe("courses/_aside-booking", type: :view) do
         end
 
         it "renders link to STEM Learning booking page" do
-          expected_link = "https://cpd.stem.org.uk/app/#{activity.stem_activity_code}"
+          expected_link = "#{ENV.fetch("STEM_CPD_STORE_REDIRECT")}/search/#{activity.stem_activity_code}"
           expect(rendered).to have_link("Join", href: expected_link)
         end
 
@@ -95,7 +95,7 @@ RSpec.describe("courses/_aside-booking", type: :view) do
           end
 
           it "renders link to STEM Learning booking page" do
-            expected_link = "https://cpd.stem.org.uk/app/#{activity.stem_activity_code}"
+            expected_link = "#{ENV.fetch("STEM_CPD_STORE_REDIRECT")}/search/#{activity.stem_activity_code}"
             expect(rendered).to have_link("Join this course", href: expected_link)
           end
 
@@ -113,7 +113,7 @@ RSpec.describe("courses/_aside-booking", type: :view) do
           end
 
           it "renders link to STEM Learning booking page" do
-            expected_link = "https://cpd.stem.org.uk/app/#{activity.stem_activity_code}"
+            expected_link = "#{ENV.fetch("STEM_CPD_STORE_REDIRECT")}/search/#{activity.stem_activity_code}"
             expect(rendered).to have_link("Join this course", href: expected_link)
           end
 
@@ -292,7 +292,7 @@ RSpec.describe("courses/_aside-booking", type: :view) do
 
             expect(rendered).to have_link(
               "Book",
-              href: "https://cpd.stem.org.uk/app/#{activity.stem_activity_code}",
+              href: "#{ENV.fetch("STEM_CPD_STORE_REDIRECT")}/search/#{activity.stem_activity_code}",
               count: 1
             )
           end
@@ -461,7 +461,7 @@ RSpec.describe("courses/_aside-booking", type: :view) do
 
             expect(rendered).to have_link(
               "Book",
-              href: "https://cpd.stem.org.uk/app/#{activity.stem_activity_code}",
+              href: "#{ENV.fetch("STEM_CPD_STORE_REDIRECT")}/search/#{activity.stem_activity_code}",
               count: 1
             )
           end

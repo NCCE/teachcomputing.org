@@ -82,7 +82,7 @@ class OnlineBookingPresenter
   end
 
   def booking_path(stem_activity_code)
-    "#{Rails.application.config.stem_course_redirect}/app/#{stem_activity_code}"
+    "#{Rails.application.config.stem_course_redirect}/search/#{stem_activity_code}"
   end
 
   def show_stem_occurrence_list(always_on)
