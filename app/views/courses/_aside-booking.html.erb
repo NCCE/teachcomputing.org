@@ -19,12 +19,10 @@
                 <span class='govuk-body-s govuk-!-margin-bottom-0 ncce-booking-list__address'>
                   <%= @booking.address(occurrence) %>
                 </span>
-                <span class='ncce-booking-list__button_wrapper'>
-
-                </span>
               </div>
             </li>
           <% end %>
+          </ul>
           <%= link_to(
             @booking.authenticated_title,
             @booking.booking_path(@activity.stem_activity_code),
@@ -33,7 +31,6 @@
             data: { event_action: 'click', event_category: 'course details', event_label: 'join online course' },
             target: :_blank
             ) %>
-          </ul>
         <% else %>
           <p class="govuk-body">
             <%= link_to(
