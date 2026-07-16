@@ -284,12 +284,17 @@ RSpec.describe("courses/_aside-booking", type: :view) do
               expect(rendered).to have_css(
                 ".ncce-booking-list__address", text: live_booking_presenter.address(occurrence)
               )
-
-              expect(rendered).to have_link(
-                "Book",
-                href: "https://cpd.stem.org.uk/app/#{activity.stem_activity_code}"
-              )
             end
+          end
+
+          it "does not show a booking link against each occurence, only one below the list" do
+            expect(rendered).to have_css(".ncce-booking-list__item a", count: 0)
+
+            expect(rendered).to have_link(
+              "Book",
+              href: "https://cpd.stem.org.uk/app/#{activity.stem_activity_code}",
+              count: 1
+            )
           end
 
           it "does not show the 'See more dates' button if there are less than 20 items" do
@@ -448,12 +453,17 @@ RSpec.describe("courses/_aside-booking", type: :view) do
               expect(rendered).to have_css(
                 ".ncce-booking-list__address", text: "Live remote training"
               )
-
-              expect(rendered).to have_link(
-                "Book",
-                href: "https://cpd.stem.org.uk/app/#{activity.stem_activity_code}"
-              )
             end
+          end
+
+          it "does not show a booking link against each occurence, only one below the list" do
+            expect(rendered).to have_css(".ncce-booking-list__item a", count: 0)
+
+            expect(rendered).to have_link(
+              "Book",
+              href: "https://cpd.stem.org.uk/app/#{activity.stem_activity_code}",
+              count: 1
+            )
           end
         end
       end
