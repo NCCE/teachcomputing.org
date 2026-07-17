@@ -45,7 +45,7 @@ module CoursesHelper
   end
 
   def stem_course_link(course_activity_code)
-    "#{Rails.application.config.stem_course_redirect}/search/#{course_activity_code}"
+    "#{Rails.application.config.stem_course_redirect}/course/#{course_activity_code}"
   end
 
   def stripped_summary(string)
