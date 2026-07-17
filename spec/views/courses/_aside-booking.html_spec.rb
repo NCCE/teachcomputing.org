@@ -53,9 +53,8 @@ RSpec.describe("courses/_aside-booking", type: :view) do
           )
         end
 
-        it "renders link to STEM Learning booking page using occurence" do
-          occurence = occurrences.first
-          expected_link = "https://ncce-www-stage-int.stem.org.uk/cpdredirect/#{occurence.course_occurrence_no}"
+        it "renders link to STEM Learning booking page" do
+          expected_link = "#{ENV.fetch("STEM_CPD_STORE_REDIRECT")}/course/#{activity.stem_activity_code}"
           expect(rendered).to have_link("Join", href: expected_link)
         end
 
@@ -96,7 +95,7 @@ RSpec.describe("courses/_aside-booking", type: :view) do
           end
 
           it "renders link to STEM Learning booking page" do
-            expected_link = "https://ncce-www-stage-int.stem.org.uk/cpdredirect/#{activity.stem_course_template_no}"
+            expected_link = "#{ENV.fetch("STEM_CPD_STORE_REDIRECT")}/course/#{activity.stem_activity_code}"
             expect(rendered).to have_link("Join this course", href: expected_link)
           end
 
@@ -114,7 +113,7 @@ RSpec.describe("courses/_aside-booking", type: :view) do
           end
 
           it "renders link to STEM Learning booking page" do
-            expected_link = "https://ncce-www-stage-int.stem.org.uk/cpdredirect/#{activity.stem_course_template_no}"
+            expected_link = "#{ENV.fetch("STEM_CPD_STORE_REDIRECT")}/course/#{activity.stem_activity_code}"
             expect(rendered).to have_link("Join this course", href: expected_link)
           end
 
@@ -285,12 +284,17 @@ RSpec.describe("courses/_aside-booking", type: :view) do
               expect(rendered).to have_css(
                 ".ncce-booking-list__address", text: live_booking_presenter.address(occurrence)
               )
-
-              expect(rendered).to have_link(
-                "Book",
-                href: "https://ncce-www-stage-int.stem.org.uk/cpdredirect/#{occurrence.course_occurrence_no}"
-              )
             end
+          end
+
+          it "does not show a booking link against each occurence, only one below the list" do
+            expect(rendered).to have_css(".ncce-booking-list__item a", count: 0)
+
+            expect(rendered).to have_link(
+              "Book",
+              href: "#{ENV.fetch("STEM_CPD_STORE_REDIRECT")}/course/#{activity.stem_activity_code}",
+              count: 1
+            )
           end
 
           it "does not show the 'See more dates' button if there are less than 20 items" do
@@ -299,6 +303,27 @@ RSpec.describe("courses/_aside-booking", type: :view) do
 
           it "does not show the 'View course' button if there are occurences" do
             expect(rendered).not_to have_link("View course")
+          end
+        end
+
+        context "when there are no occurrences" do
+          let(:occurrences) { [] }
+
+          before do
+            assign(:booking, live_booking_presenter)
+            assign(:occurrences, occurrences)
+            assign(:course, course)
+            assign(:activity, activity)
+
+            render
+          end
+
+          it "prompts the user that further instances will be scheduled soon" do
+            expect(rendered).to have_css(".ncce-aside__title", text: "Further instances will be scheduled soon.")
+          end
+
+          it "does not render a booking button" do
+            expect(rendered).not_to have_link("Book")
           end
         end
       end
@@ -449,12 +474,17 @@ RSpec.describe("courses/_aside-booking", type: :view) do
               expect(rendered).to have_css(
                 ".ncce-booking-list__address", text: "Live remote training"
               )
-
-              expect(rendered).to have_link(
-                "Book",
-                href: "https://ncce-www-stage-int.stem.org.uk/cpdredirect/#{occurrence.course_occurrence_no}"
-              )
             end
+          end
+
+          it "does not show a booking link against each occurence, only one below the list" do
+            expect(rendered).to have_css(".ncce-booking-list__item a", count: 0)
+
+            expect(rendered).to have_link(
+              "Book",
+              href: "#{ENV.fetch("STEM_CPD_STORE_REDIRECT")}/course/#{activity.stem_activity_code}",
+              count: 1
+            )
           end
         end
       end
