@@ -86,7 +86,10 @@ class LiveBookingPresenter
   def address(occurrence)
     return "Live remote training" if occurrence.remote_delivered_cpd
 
-    "#{occurrence.address_venue_name}, #{occurrence.address_town}, #{occurrence.address_postcode}"
+    # Remove any blank parts of the address
+    [occurrence.address_venue_name, occurrence.address_town, occurrence.address_postcode]
+      .reject(&:blank?)
+      .join(", ")
   end
 
   # @return [Boolean] true: always show this
