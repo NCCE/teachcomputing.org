@@ -305,6 +305,27 @@ RSpec.describe("courses/_aside-booking", type: :view) do
             expect(rendered).not_to have_link("View course")
           end
         end
+
+        context "when there are no occurrences" do
+          let(:occurrences) { [] }
+
+          before do
+            assign(:booking, live_booking_presenter)
+            assign(:occurrences, occurrences)
+            assign(:course, course)
+            assign(:activity, activity)
+
+            render
+          end
+
+          it "prompts the user that further instances will be scheduled soon" do
+            expect(rendered).to have_css(".ncce-aside__title", text: "Further instances will be scheduled soon.")
+          end
+
+          it "does not render a booking button" do
+            expect(rendered).not_to have_link("Book")
+          end
+        end
       end
 
       context "when the user is enrolled on a course" do
