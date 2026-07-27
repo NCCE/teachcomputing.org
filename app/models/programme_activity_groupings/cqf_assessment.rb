@@ -1,0 +1,2 @@
+class ProgrammeActivityGroupings::CqfAssessment < ProgrammeActivityGrouping
+end
