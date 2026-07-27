@@ -6,6 +6,8 @@ RSpec.describe("certificates/secondary_certificate/show", type: :view) do
   let(:secondary_certificate) { create(:secondary_certificate) }
   let(:professional_development_groups) { create_list(:programme_activity_grouping, 2, :with_activities, sort_key: 1, programme: secondary_certificate) }
   let(:community_groups) { create_list(:programme_activity_grouping, 2, :with_activities, sort_key: 4, community: true, programme: secondary_certificate) }
+  let(:cqf_group) { create(:programme_activity_groupings_cqf_assessment, :with_activities, programme: secondary_certificate) }
+  let(:pd_group) { create(:programme_activity_groupings_professional_development_activity, :with_activities, programme: secondary_certificate) }
   let(:pathway) { create(:pathway, programme: secondary_certificate, title: "Developing", pdf_link: "developing.pdf") }
   let(:pathway_2) { create(:pathway, programme: secondary_certificate, title: "Specialising", pdf_link: "specialising.pdf") }
   let(:pathways) { [pathway, pathway_2] }
@@ -17,6 +19,8 @@ RSpec.describe("certificates/secondary_certificate/show", type: :view) do
     assign(:online_achievements, [])
     assign(:professional_development_groups, professional_development_groups)
     assign(:community_groups, community_groups)
+    assign(:cqf_group, cqf_group)
+    assign(:pd_group, pd_group)
 
     upe = create(:user_programme_enrolment, user_id: user.id, programme_id: secondary_certificate.id, pathway_id: pathway.id)
     recommended_activities = upe.pathway.pathway_activities
@@ -34,7 +38,7 @@ RSpec.describe("certificates/secondary_certificate/show", type: :view) do
   end
 
   it "has correct list setup" do
-    expect(rendered).to have_css(".ncce-activity-list--programme", count: 3)
+    expect(rendered).to have_css(".ncce-activity-list--programme", count: 5)
   end
 
   it "has an intro" do
@@ -51,7 +55,7 @@ RSpec.describe("certificates/secondary_certificate/show", type: :view) do
   end
 
   it "shows all activities" do
-    expect(rendered).to have_css(".ncce-activity-list__item", count: 4)
+    expect(rendered).to have_css(".ncce-activity-list__item", count: 6)
   end
 
   it "has support information" do
