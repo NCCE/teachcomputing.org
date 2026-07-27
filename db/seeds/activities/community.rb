@@ -316,6 +316,27 @@ Activity.find_or_initialize_by(slug: "participate-fully-in-an-ncce-curriculum-en
   }]
 end.save!
 
+Activity.find_or_initialize_by(slug: "implement-your-professional-development-in-the-classroom-and-evaluate-via-the-impact-toolkit-secondary").tap do |activity|
+  activity.title = "Implement and evaluate your professional development in the classroom"
+  activity.credit = 10
+  activity.slug = "implement-your-professional-development-in-the-classroom-and-evaluate-via-the-impact-toolkit-secondary"
+  activity.category = "community"
+  activity.provider = "stem-learning"
+  activity.self_certifiable = true
+  activity.description = "Think not only about your actions but also about <a href='https://www.stem.org.uk/about-us/impact-and-evaluation/impact-toolkit'>collecting evidence</a> of how the changes you make impact you, your colleagues, and your students. Use the available <a href='https://community.stem.org.uk/helpfaqs/cpdtools'>CPD implementation tools and techniques</a> to evaluate this impact."
+  activity.public_copy_description = "Think not only about your actions but also about <a href='https://www.stem.org.uk/about-us/impact-and-evaluation/impact-toolkit'>collecting evidence</a> of how the changes you make impact you, your colleagues, and your students. Use the available <a href='https://community.stem.org.uk/helpfaqs/cpdtools'>CPD implementation tools and techniques</a> to evaluate this impact."
+  activity.public_copy_title_url = impact_toolkit_url
+  activity.self_verification_info = nil
+  activity.public_copy_evidence = [{
+    brief: "Evidence guidance:",
+    bullets: [
+      "Add information on how you’ve implemented what you’ve learnt from CPD into your classroom.",
+      "Explain how the changes you made have impacted you, your colleagues, and your students.",
+      "If you applied knowledge from a residential course, explain how you used the <a href='https://www.stem.org.uk/about-us/impact-and-evaluation/impact-toolkit'>Impact Toolkit</a> to evaluate your learning. For some courses you may also be asked to make an action plan and reflect on the impact of your CPD after the course."
+    ]
+  }]
+end.save!
+
 Activity.find_or_initialize_by(slug: "implement-your-professional-development-in-the-classroom-and-evaluate-via-the-impact-toolkit").tap do |activity|
   activity.title = "Implement and evaluate your professional development in the classroom"
   activity.credit = 10
@@ -732,6 +753,26 @@ Activity.find_or_initialize_by(slug: "gain-accreditation-as-a-professional-devel
     bullets: [
       "Reflect on what makes CPD effective and how its impact can be evaluated as well as the strategies and tools you’ll need when <a href='#{leading_professional_development_url}'>leading learning</a> with teachers.",
       "Include the title of the specific <a href='#{leading_professional_development_url}'>accreditation</a> that you have gained."
+    ]
+  }]
+end.save!
+
+Activity.find_or_initialize_by(slug: "undertake-the-initial-assessment-of-your-school-using-computing-quality-framework-secondary").tap do |activity|
+  activity.title = "Undertake the initial assessment of your school using <a href='#{computing_quality_framework_url}'>Computing Quality Framework</a>"
+  activity.credit = 10
+  activity.slug = "undertake-the-initial-assessment-of-your-school-using-computing-quality-framework-secondary"
+  activity.category = "community"
+  activity.provider = "stem-learning"
+  activity.self_certifiable = true
+  activity.description = "Review your <a href='#{computing_quality_framework_url}'>school’s progress</a> in developing an exemplary computing curriculum and work towards achieving the <a href='#{computing_quality_framework_url}'>Computing Quality Mark.</a>"
+  activity.public_copy_description = "Review your <a href='#{computing_quality_framework_url}'>school’s progress</a> in developing an exemplary computing curriculum and work towards achieving the <a href='#{computing_quality_framework_url}'>Computing Quality Mark.</a>"
+  activity.public_copy_title_url = computing_quality_framework_url
+  activity.self_verification_info = nil
+  activity.public_copy_evidence = [{
+    brief: "Evidence guidance:",
+    bullets: [
+      "How were you involved in the initial assessment?",
+      "Include your average level across all benchmarks of the CQF. You can also add a link to a sharing folder with a screenshot of your school’s initial assessment graph. Make sure the viewing permissions are open to anyone with the link."
     ]
   }]
 end.save!
