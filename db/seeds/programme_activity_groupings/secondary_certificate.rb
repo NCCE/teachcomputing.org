@@ -26,6 +26,36 @@ secondary.programme_activity_groupings.find_by(title: "Develop your subject know
 secondary.programme_activity_groupings.find_by(title: "Develop your teaching practice")&.destroy
 secondary.programme_activity_groupings.find_by(title: "Develop computing in your community")&.destroy
 
+secondary.programme_activity_groupings.find_or_initialize_by(title: "Undertake the initial assessment of your school using Computing Quality Framework").becomes!(ProgrammeActivityGroupings::CqfAssessment).tap do |group|
+  group.sort_key = 0
+  group.cms_slug = "secondary-cqf"
+  group.required_for_completion = 1
+  group.programme_id = secondary.id
+  group.community = false
+  group.progress_bar_title = "Complete the Computing Quality Framework assessment"
+  group.web_copy_course_requirements = "Complete this activity"
+
+  group.save!
+
+  maybe_detach_activity_from_grouping(group, "undertake-the-initial-assessment-of-your-school-using-computing-quality-framework")
+  maybe_attach_activity_to_grouping(group, "undertake-the-initial-assessment-of-your-school-using-computing-quality-framework-secondary", 1, legacy: false)
+end.save!
+
+secondary.programme_activity_groupings.find_or_initialize_by(title: "Implement and evaluate your professional development in the classroom").becomes!(ProgrammeActivityGroupings::ProfessionalDevelopmentActivity).tap do |group|
+  group.sort_key = 1
+  group.cms_slug = "secondary-pd-activity"
+  group.required_for_completion = 1
+  group.programme_id = secondary.id
+  group.community = false
+  group.progress_bar_title = "Implement and evaluate your professional development"
+  group.web_copy_course_requirements = "Complete this activity"
+
+  group.save!
+
+  maybe_detach_activity_from_grouping(group, "implement-your-professional-development-in-the-classroom-and-evaluate-via-the-impact-toolkit")
+  maybe_attach_activity_to_grouping(group, "implement-your-professional-development-in-the-classroom-and-evaluate-via-the-impact-toolkit-secondary", 1, legacy: false)
+end.save!
+
 secondary.programme_activity_groupings.find_or_initialize_by(title: "Make a positive impact on young people in computing").tap do |group|
   group.title = "Make a positive impact on young people in computing"
   group.sort_key = 3
@@ -42,7 +72,6 @@ secondary.programme_activity_groupings.find_or_initialize_by(title: "Make a posi
   activities = [
     {slug: "raise-aspirations-with-a-stem-ambassador-visit", legacy: false},
     {slug: "participate-fully-in-an-ncce-curriculum-enrichment-oppertunity", legacy: false},
-    {slug: "implement-your-professional-development-in-the-classroom-and-evaluate-via-the-impact-toolkit", legacy: false},
     {slug: "download-and-use-isaac-computer-science-classroom-resources-and-displays", legacy: false},
     {slug: "download-and-use-the-ncce-teaching-and-assessment-resources-in-your-classroom", legacy: false},
     {slug: "complete-the-i-belong-programme-as-a-school", legacy: false},
@@ -78,7 +107,6 @@ secondary.programme_activity_groupings.find_or_initialize_by(title: "Support you
     {slug: "work-with-local-business-and-industry-to-inspire-inclusive-computing", legacy: false},
     {slug: "join-and-present-at-your-local-computing-at-school-community", legacy: false},
     {slug: "become-an-i-belong-champion", legacy: false},
-    {slug: "undertake-the-initial-assessment-of-your-school-using-computing-quality-framework", legacy: false},
     {slug: "support-other-teachers-and-earn-a-stem-community-participation-badge-secondary", legacy: false},
 
     # Legacy activities
