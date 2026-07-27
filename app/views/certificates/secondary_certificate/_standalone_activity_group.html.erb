@@ -1,0 +1,11 @@
+<% title_classes = ["govuk-body", "ncce-activity-list__title"] %>
+<% title_classes << "govuk-!-margin-top-8" if local_assigns[:margin_top] %>
+<% title_classes << add_group_complete_icon_class(current_user, group) %>
+
+<p id="<%= group.id %>" class="<%= title_classes.select(&:present?).join(" ") %>">
+  <strong><%= group.title %></strong>
+</p>
+<%= render CommunityActivityListComponent.new(
+  programme_activity_grouping: group,
+  community_achievements: @community_achievements
+) %>

@@ -9,6 +9,8 @@
         '.introduction.html',
         subject_knowledge: link_to('Subject knowledge certificate', cs_accelerator_path)
       ) %></p>
+      <%= render 'standalone_activity_group', group: @cqf_group, margin_top: true %>
+      <%= render 'standalone_activity_group', group: @pd_group %>
       <%= render 'professional_development_groups_list' %>
     <% end %>
     <%= row.with_column("one-third") do %>
