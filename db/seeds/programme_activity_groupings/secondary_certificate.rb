@@ -2,11 +2,8 @@ secondary = Programme.secondary_certificate
 
 puts "Creating Programme Activity Groupings for Secondary"
 
-## The numbering of the groupings starts at 2 for historical reasons: group_one with sort_key 1 existed when users were required
-## to complete 2 courses, one from each of groups 1 and 2.
-
 secondary.programme_activity_groupings.find_or_initialize_by(title: "All courses").becomes!(ProgrammeActivityGroupings::CreditCounted).tap do |group|
-  group.sort_key = 2
+  group.sort_key = 0
   group.cms_slug = "secondary-all-courses"
   group.required_for_completion = 1
   group.programme_id = secondary.id
@@ -26,13 +23,13 @@ secondary.programme_activity_groupings.find_by(title: "Develop your subject know
 secondary.programme_activity_groupings.find_by(title: "Develop your teaching practice")&.destroy
 secondary.programme_activity_groupings.find_by(title: "Develop computing in your community")&.destroy
 
-secondary.programme_activity_groupings.find_or_initialize_by(title: "Undertake the initial assessment of your school using Computing Quality Framework").becomes!(ProgrammeActivityGroupings::CqfAssessment).tap do |group|
-  group.sort_key = 0
-  group.cms_slug = "secondary-cqf"
+secondary.programme_activity_groupings.find_or_initialize_by(cms_slug: "secondary-cqf").becomes!(ProgrammeActivityGroupings::CqfAssessment).tap do |group|
+  group.title = "Progress through the Computing Quality Framework"
+  group.sort_key = 1
   group.required_for_completion = 1
   group.programme_id = secondary.id
   group.community = false
-  group.progress_bar_title = "Complete the Computing Quality Framework assessment"
+  group.progress_bar_title = "Progress through the CQF"
   group.web_copy_course_requirements = "Complete this activity"
 
   group.save!
@@ -41,9 +38,9 @@ secondary.programme_activity_groupings.find_or_initialize_by(title: "Undertake t
   maybe_attach_activity_to_grouping(group, "undertake-the-initial-assessment-of-your-school-using-computing-quality-framework-secondary", 1, legacy: false)
 end.save!
 
-secondary.programme_activity_groupings.find_or_initialize_by(title: "Implement and evaluate your professional development in the classroom").becomes!(ProgrammeActivityGroupings::ProfessionalDevelopmentActivity).tap do |group|
-  group.sort_key = 1
-  group.cms_slug = "secondary-pd-activity"
+secondary.programme_activity_groupings.find_or_initialize_by(cms_slug: "secondary-pd-activity").becomes!(ProgrammeActivityGroupings::ProfessionalDevelopmentActivity).tap do |group|
+  group.title = "Implement and evaluate your professional development in the classroom"
+  group.sort_key = 2
   group.required_for_completion = 1
   group.programme_id = secondary.id
   group.community = false
