@@ -1,0 +1,2 @@
+class ProgrammeActivityGroupings::ProfessionalDevelopmentActivity < ProgrammeActivityGrouping
+end
