@@ -29,7 +29,7 @@ secondary.programme_activity_groupings.find_or_initialize_by(cms_slug: "secondar
   group.required_for_completion = 1
   group.programme_id = secondary.id
   group.community = false
-  group.progress_bar_title = "Progress through the CQF"
+  group.progress_bar_title = "Progress through the Computing Quality Framework"
   group.web_copy_course_requirements = "Complete this activity"
 
   group.save!
