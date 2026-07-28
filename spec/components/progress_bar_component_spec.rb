@@ -8,7 +8,6 @@ RSpec.describe ProgressBarComponent, type: :component do
 
   let(:primary_certificate) { create(:primary_certificate) }
   let(:secondary_certificate) { create(:secondary_certificate) }
-  let!(:cs_accelerator) { create(:cs_accelerator) }
 
   let!(:primary_programme_activity_groupings) do
     [
@@ -317,7 +316,7 @@ RSpec.describe ProgressBarComponent, type: :component do
       end
 
       it "renders the objectives" do
-        expect(page).to have_css(".progress-bar-component__objective", count: 4)
+        expect(page).to have_css(".progress-bar-component__objective", count: 3)
       end
 
       it "does not have primary spacing class" do
@@ -346,8 +345,8 @@ RSpec.describe ProgressBarComponent, type: :component do
         expect(page).to have_css("p", text: "Body text")
       end
 
-      it "renders the programme completion required objective" do
-        expect(page).to have_text("Complete the KS3 and GCSE computer science subject knowledge")
+      it "does not render a programme completion required objective" do
+        expect(page).not_to have_text("Complete the KS3 and GCSE computer science subject knowledge")
       end
     end
   end
