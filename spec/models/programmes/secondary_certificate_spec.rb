@@ -74,7 +74,7 @@ RSpec.describe Programmes::SecondaryCertificate do
   end
 
   describe "#programme_objectives" do
-    it "returns the programme activity groupings ordered by sort_key, with no KS3 completion objective" do
+    it "returns the programme activity groupings ordered by sort_key" do
       pags = create_list(:programme_activity_grouping, 3, programme: secondary_certificate)
 
       pags.each_with_index do |pag, index|
@@ -82,7 +82,6 @@ RSpec.describe Programmes::SecondaryCertificate do
       end
 
       expect(secondary_certificate.programme_objectives).to eq pags
-      expect(secondary_certificate.programme_objectives).not_to include(an_instance_of(ProgrammeObjectives::ProgrammeCompletionRequired))
     end
   end
 
