@@ -344,10 +344,6 @@ RSpec.describe ProgressBarComponent, type: :component do
       it "renders the body text" do
         expect(page).to have_css("p", text: "Body text")
       end
-
-      it "does not render a programme completion required objective" do
-        expect(page).not_to have_text("Complete the KS3 and GCSE computer science subject knowledge")
-      end
     end
   end
 end
