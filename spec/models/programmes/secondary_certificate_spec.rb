@@ -24,7 +24,7 @@ RSpec.describe Programmes::SecondaryCertificate do
     end
 
     context "when the user has completed one activity from each group" do
-      it "returns true, regardless of CS Accelerator completion" do
+      it "returns true" do
         programme_activity_groupings.each do |group|
           create(:achievement, user_id: user.id, activity_id: group.programme_activities.first.activity.id).transition_to(:complete)
         end
