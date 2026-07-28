@@ -20,21 +20,19 @@ module ReportGeneration
         .group_by(&:user_id)
 
       programmes.each do |programme|
-        cpd_index = programme.secondary_certificate? ? 1 : 0
-
         users_completed_cpd_component =
           programme
-            .programme_objectives[cpd_index]
+            .programme_objectives[0]
             &.users_completed(users:)
 
         users_completed_first_community_component =
           programme
-            .programme_objectives[cpd_index + 1]
+            .programme_objectives[1]
             &.users_completed(users:)
 
         users_completed_second_community_component =
           programme
-            .programme_objectives[cpd_index + 2]
+            .programme_objectives[2]
             &.users_completed(users:)
 
         users_completed_programme = UserProgrammeEnrolment
