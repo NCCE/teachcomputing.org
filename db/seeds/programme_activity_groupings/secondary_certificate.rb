@@ -64,6 +64,9 @@ secondary.programme_activity_groupings.find_or_initialize_by(cms_slug: "secondar
 
   group.save!
 
+  maybe_detach_activity_from_grouping(group, "undertake-the-initial-assessment-of-your-school-using-computing-quality-framework")
+  maybe_detach_activity_from_grouping(group, "implement-your-professional-development-in-the-classroom-and-evaluate-via-the-impact-toolkit")
+
   # Activities should never be removed, only marked as legacy
   # Combines the former "Make a positive impact on young people in computing" and
   # "Support your professional community" groupings into one (ENG-1531)
@@ -79,8 +82,6 @@ secondary.programme_activity_groupings.find_or_initialize_by(cms_slug: "secondar
     {slug: "support-other-teachers-and-earn-a-stem-community-participation-badge-secondary", legacy: false},
 
     # Legacy activities
-    {slug: "undertake-the-initial-assessment-of-your-school-using-computing-quality-framework", legacy: true},
-    {slug: "implement-your-professional-development-in-the-classroom-and-evaluate-via-the-impact-toolkit", legacy: true},
     {slug: "complete-the-i-belong-programme-as-a-school", legacy: true},
     {slug: "provide-feedback-on-our-curriculum-resources", legacy: true},
     {slug: "provide-feedback-on-a-cas-resource", legacy: true},
