@@ -79,6 +79,8 @@ secondary.programme_activity_groupings.find_or_initialize_by(cms_slug: "secondar
     {slug: "support-other-teachers-and-earn-a-stem-community-participation-badge-secondary", legacy: false},
 
     # Legacy activities
+    {slug: "undertake-the-initial-assessment-of-your-school-using-computing-quality-framework", legacy: true},
+    {slug: "implement-your-professional-development-in-the-classroom-and-evaluate-via-the-impact-toolkit", legacy: true},
     {slug: "complete-the-i-belong-programme-as-a-school", legacy: true},
     {slug: "provide-feedback-on-our-curriculum-resources", legacy: true},
     {slug: "provide-feedback-on-a-cas-resource", legacy: true},
