@@ -5,10 +5,7 @@
   <%= render ProgressBarComponent.new(programme: @programme) %>
   <%= render GovGridRowComponent.new(padding: {top: 0, bottom: 0}) do |row| %>
     <%= row.with_column("two-thirds") do %>
-      <p class="govuk-body-m"><%= t(
-        '.introduction.html',
-        subject_knowledge: link_to('Subject knowledge certificate', cs_accelerator_path)
-      ) %></p>
+      <p class="govuk-body-m"><%= t('.introduction.html') %></p>
       <%= render 'professional_development_groups_list' %>
       <%= render 'standalone_activity_group', group: @cqf_group %>
       <%= render 'standalone_activity_group', group: @pd_group %>
