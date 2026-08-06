@@ -26,6 +26,7 @@ RSpec.describe("courses/_aside-booking", type: :view) do
     before do
       allow_any_instance_of(AuthenticationHelper)
         .to receive(:current_user).and_return(user)
+      allow(Rails.application.config).to receive(:stem_cpd_store_enabled).and_return(true)
     end
 
     context "when its an online course" do
@@ -306,6 +307,24 @@ RSpec.describe("courses/_aside-booking", type: :view) do
           end
         end
 
+        context "when the CPD store is disabled" do
+          before do
+            allow(Rails.application.config).to receive(:stem_cpd_store_enabled).and_return(false)
+            render
+          end
+
+          it "shows a booking link against each occurrence and not one below the list" do
+            occurrences.each do |occurrence|
+              expect(rendered).to have_link(
+                "Book",
+                href: live_booking_presenter.booking_path(occurrence.course_occurrence_no, activity.stem_activity_code)
+              )
+            end
+
+            expect(rendered).to have_css(".ncce-booking-list__item a", count: occurrences.count)
+          end
+        end
+
         context "when there are no occurrences" do
           let(:occurrences) { [] }
 
@@ -371,7 +390,7 @@ RSpec.describe("courses/_aside-booking", type: :view) do
         end
 
         it "display a booking path" do
-          expect(rendered).to have_link("Go to course", href: live_booking_presenter.booking_path("cf8903f9-91a2-4d08-ba41-596ea05b498d"))
+          expect(rendered).to have_link("Go to course", href: live_booking_presenter.booking_path("cf8903f9-91a2-4d08-ba41-596ea05b498d", activity.stem_activity_code))
         end
 
         it "displays aside title" do
@@ -434,7 +453,7 @@ RSpec.describe("courses/_aside-booking", type: :view) do
         end
 
         it "display a booking path" do
-          expect(rendered).to have_link("Go to course", href: live_booking_presenter.booking_path("cf8903f9-91a2-4d08-ba41-596ea05b498d"))
+          expect(rendered).to have_link("Go to course", href: live_booking_presenter.booking_path("cf8903f9-91a2-4d08-ba41-596ea05b498d", activity.stem_activity_code))
         end
 
         it "lists the providers" do
@@ -487,6 +506,24 @@ RSpec.describe("courses/_aside-booking", type: :view) do
             )
           end
         end
+
+        context "when the CPD store is disabled" do
+          before do
+            allow(Rails.application.config).to receive(:stem_cpd_store_enabled).and_return(false)
+            render
+          end
+
+          it "shows a booking link against each occurrence and not one below the list" do
+            occurrences_remote.each do |occurrence|
+              expect(rendered).to have_link(
+                "Book",
+                href: live_booking_presenter.booking_path(occurrence.course_occurrence_no, activity.stem_activity_code)
+              )
+            end
+
+            expect(rendered).to have_css(".ncce-booking-list__item a", count: occurrences_remote.count)
+          end
+        end
       end
 
       context "when a user is enrolled on a course" do
@@ -529,7 +566,7 @@ RSpec.describe("courses/_aside-booking", type: :view) do
         end
 
         it "display a booking path" do
-          expect(rendered).to have_link("Go to course", href: live_booking_presenter.booking_path("cf8903f9-91a2-4d08-ba41-596ea05b498d"))
+          expect(rendered).to have_link("Go to course", href: live_booking_presenter.booking_path("cf8903f9-91a2-4d08-ba41-596ea05b498d", activity.stem_activity_code))
         end
       end
 
@@ -573,7 +610,7 @@ RSpec.describe("courses/_aside-booking", type: :view) do
         end
 
         it "display a booking path" do
-          expect(rendered).to have_link("Go to course", href: live_booking_presenter.booking_path("cf8903f9-91a2-4d08-ba41-596ea05b498d"))
+          expect(rendered).to have_link("Go to course", href: live_booking_presenter.booking_path("cf8903f9-91a2-4d08-ba41-596ea05b498d", activity.stem_activity_code))
         end
       end
     end

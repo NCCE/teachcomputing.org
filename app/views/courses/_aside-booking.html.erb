@@ -20,13 +20,25 @@
                   <%= @booking.address(occurrence) %>
                 </span>
               </div>
+              <% unless Rails.application.config.stem_cpd_store_enabled %>
+                <span class='ncce-booking-list__button_wrapper'>
+                  <%= link_to(
+                    @booking.booking_button_title,
+                    @booking.booking_path(occurrence.course_occurrence_no, @activity.stem_activity_code),
+                    class: 'govuk-button button',
+                    draggable: 'false',
+                    data: { event_action: 'click', event_category: 'course details', event_label: 'join course' },
+                    target: :_blank
+                  ) %>
+                </span>
+              <% end %>
             </li>
           <% end %>
           </ul>
-          <% unless @occurrences.empty? %>
+          <% if Rails.application.config.stem_cpd_store_enabled && !@occurrences.empty? %>
             <%= link_to(
               @booking.authenticated_title,
-              @booking.booking_path(@activity.stem_activity_code),
+              @booking.booking_path(@activity.stem_course_template_no, @activity.stem_activity_code),
               class: 'govuk-button button--aside govuk-!-margin-top-4',
               draggable: 'false',
               data: { event_action: 'click', event_category: 'course details', event_label: 'join online course' },
@@ -37,7 +49,7 @@
           <p class="govuk-body">
             <%= link_to(
               @booking.authenticated_title,
-              @booking.booking_path(@activity.stem_activity_code),
+              @booking.booking_path(@activity.stem_course_template_no, @activity.stem_activity_code),
               class: 'govuk-button button--aside',
               draggable: 'false',
               data: { event_action: 'click', event_category: 'course details', event_label: 'join online course' },
@@ -93,7 +105,7 @@
                    <%="#{@user_occurrence.address_venue_name}"%><br> <%="#{@user_occurrence.address_line_one}"%><br><%="#{@user_occurrence.address_town}"%><br><%="#{@user_occurrence.address_postcode}" %>
                  <% end %>
                  <br>
-                 <%= link_to 'Go to course', @booking.booking_path(@user_occurrence.course_occurence_no), class: 'govuk-!-font-weight-bold ncce-link' %>
+                 <%= link_to 'Go to course', @booking.booking_path(@user_occurrence.course_occurence_no, @activity.stem_activity_code), class: 'govuk-!-font-weight-bold ncce-link' %>
                </span>
            </li>
          <% end %>
@@ -113,7 +125,7 @@
                   <%="#{@user_occurrence.address_venue_name}"%><br> <%="#{@user_occurrence.address_line_one}"%><br><%="#{@user_occurrence.address_town}"%><br><%="#{@user_occurrence.address_postcode}" %>
                 <% end %>
                 <br>
-                <%= link_to 'Go to course', @booking.booking_path(@user_occurrence.course_occurence_no), class: 'govuk-!-font-weight-bold ncce-link' %>
+                <%= link_to 'Go to course', @booking.booking_path(@user_occurrence.course_occurence_no, @activity.stem_activity_code), class: 'govuk-!-font-weight-bold ncce-link' %>
               </span>
           </li>
         <% end %>
