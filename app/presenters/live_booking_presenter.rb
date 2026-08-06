@@ -67,21 +67,21 @@ class LiveBookingPresenter
     date.strftime("#{date.day.ordinalize} %B %Y, %A %H:%M").to_s
   end
 
-  def course_button(occurrences, course_template_no, stem_activity_code)
+  def course_button(occurrences, course_template_no, course_activity_code)
     return unless occurrences.blank? || occurrences.count >= 20
 
     link_to(
       occurrences.blank? ? "View course" : "See more dates",
-      booking_path(course_template_no, stem_activity_code),
+      booking_path(course_template_no, course_activity_code),
       class: "govuk-button button button--full-width",
       draggable: "false",
       target: :_blank
     )
   end
 
-  def booking_path(legacy_id, stem_activity_code)
+  def booking_path(legacy_id, course_activity_code)
     if Rails.application.config.stem_cpd_store_enabled
-      "#{Rails.application.config.stem_cpd_store_redirect}/course/#{stem_activity_code}"
+      "#{Rails.application.config.stem_cpd_store_redirect}/course/#{course_activity_code}"
     else
       "#{Rails.application.config.stem_course_redirect}/cpdredirect/#{legacy_id}"
     end
