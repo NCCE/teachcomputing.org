@@ -1,9 +1,9 @@
 module DashboardHelper
   def get_date_string(achievement)
     if achievement.current_state == :complete.to_s
-      "Completed on #{achievement.created_at.strftime("%b %Y")}"
+      "Completed on #{achievement.last_transition.created_at.strftime("%b %Y")}"
     else
-      "Enrolled on #{achievement.updated_at.strftime("%b %Y")}"
+      "Enrolled on #{achievement.created_at.strftime("%b %Y")}"
     end
   end
 
