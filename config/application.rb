@@ -12,7 +12,7 @@ module TeachComputing
     config.action_dispatch.cookies_same_site_protection = :lax
 
     # Initialize configuration defaults for originally generated Rails version.
-    config.load_defaults 7.1
+    config.load_defaults 8.1
 
     # Keep Rails UJS remote form behavior until Phase 3 (importmap/turbo migration).
     config.action_view.form_with_generates_remote_forms = true
