@@ -8,7 +8,7 @@ class AchievementDashboard < BaseDashboard
   ATTRIBUTE_TYPES = {
     activity: GroupedActivityListField,
     user: Field::BelongsTo,
-    stem_activity_code: Field::String,
+    stem_activity_code: NonSearchableStringField,
     self_verification_info: Field::String,
     current_state: ValidStatePickerField,
     id: Field::String,
