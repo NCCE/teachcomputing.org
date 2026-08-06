@@ -71,4 +71,26 @@ RSpec.describe OnlineBookingPresenter do
   describe "completed_button_introduction" do
     it { expect(described_class.new.completed_button_introduction).to eq("You will be taken to the MyLearning platform for further details.") }
   end
+
+  describe "#booking_path" do
+    context "when the CPD store is enabled" do
+      before { allow(Rails.application.config).to receive(:stem_cpd_store_enabled).and_return(true) }
+
+      it "is the full URI of the CPD store booking" do
+        expect(
+          described_class.new.booking_path("FAKE_COURSE_ID", "FAKE_ACTIVITY_CODE")
+        ).to eq "#{ENV.fetch("STEM_CPD_STORE_REDIRECT")}/course/FAKE_ACTIVITY_CODE"
+      end
+    end
+
+    context "when the CPD store is disabled" do
+      before { allow(Rails.application.config).to receive(:stem_cpd_store_enabled).and_return(false) }
+
+      it "is the full URI of the legacy STEM Learning booking" do
+        expect(
+          described_class.new.booking_path("FAKE_COURSE_ID", "FAKE_ACTIVITY_CODE")
+        ).to eq "#{ENV.fetch("STEM_COURSE_REDIRECT")}/cpdredirect/FAKE_COURSE_ID"
+      end
+    end
+  end
 end

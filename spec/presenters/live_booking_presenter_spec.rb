@@ -67,29 +67,17 @@ RSpec.describe LiveBookingPresenter do
 
   describe "#course_button" do
     context "when no occurrences" do
-      it "links to the course booking path" do
-        expect(
-          described_class.new.course_button([], "FAKE_COURSE_ID")
-        ).to match(/href="#{Regexp.escape(ENV.fetch("STEM_CPD_STORE_REDIRECT"))}\/course\/FAKE_COURSE_ID"/)
-      end
-
       it 'says "View course"' do
         expect(
-          described_class.new.course_button([], "FAKE_COURSE_ID")
+          described_class.new.course_button([], "FAKE_COURSE_ID", "FAKE_ACTIVITY_CODE")
         ).to match(/>View course<\/a>/)
       end
     end
 
     context "when 20 occurrences" do
-      it "links to the course booking path" do
-        expect(
-          described_class.new.course_button(Array.new(20), "FAKE_COURSE_ID")
-        ).to match(/href="#{Regexp.escape(ENV.fetch("STEM_CPD_STORE_REDIRECT"))}\/course\/FAKE_COURSE_ID"/)
-      end
-
       it 'says "See more dates"' do
         expect(
-          described_class.new.course_button(Array.new(20), "FAKE_COURSE_ID")
+          described_class.new.course_button(Array.new(20), "FAKE_COURSE_ID", "FAKE_ACTIVITY_CODE")
         ).to match(/>See more dates<\/a>/)
       end
     end
@@ -97,17 +85,51 @@ RSpec.describe LiveBookingPresenter do
     context "when < 20 occurrences" do
       it "is nil" do
         expect(
-          described_class.new.course_button(Array.new(19), "FAKE_COURSE_ID")
+          described_class.new.course_button(Array.new(19), "FAKE_COURSE_ID", "FAKE_ACTIVITY_CODE")
         ).to be_nil
+      end
+    end
+
+    context "when the CPD store is enabled" do
+      before { allow(Rails.application.config).to receive(:stem_cpd_store_enabled).and_return(true) }
+
+      it "links to the CPD store booking path" do
+        expect(
+          described_class.new.course_button([], "FAKE_COURSE_ID", "FAKE_ACTIVITY_CODE")
+        ).to match(/href="#{Regexp.escape(ENV.fetch("STEM_CPD_STORE_REDIRECT"))}\/course\/FAKE_ACTIVITY_CODE"/)
+      end
+    end
+
+    context "when the CPD store is disabled" do
+      before { allow(Rails.application.config).to receive(:stem_cpd_store_enabled).and_return(false) }
+
+      it "links to the legacy STEM Learning booking path" do
+        expect(
+          described_class.new.course_button([], "FAKE_COURSE_ID", "FAKE_ACTIVITY_CODE")
+        ).to match(/href="#{Regexp.escape(ENV.fetch("STEM_COURSE_REDIRECT"))}\/cpdredirect\/FAKE_COURSE_ID"/)
       end
     end
   end
 
   describe "#booking_path" do
-    it "is the full URI of the stem website booking" do
-      expect(
-        described_class.new.booking_path("FAKE_COURSE_ID")
-      ).to eq "#{ENV.fetch("STEM_CPD_STORE_REDIRECT")}/course/FAKE_COURSE_ID"
+    context "when the CPD store is enabled" do
+      before { allow(Rails.application.config).to receive(:stem_cpd_store_enabled).and_return(true) }
+
+      it "is the full URI of the CPD store booking" do
+        expect(
+          described_class.new.booking_path("FAKE_COURSE_ID", "FAKE_ACTIVITY_CODE")
+        ).to eq "#{ENV.fetch("STEM_CPD_STORE_REDIRECT")}/course/FAKE_ACTIVITY_CODE"
+      end
+    end
+
+    context "when the CPD store is disabled" do
+      before { allow(Rails.application.config).to receive(:stem_cpd_store_enabled).and_return(false) }
+
+      it "is the full URI of the legacy STEM Learning booking" do
+        expect(
+          described_class.new.booking_path("FAKE_COURSE_ID", "FAKE_ACTIVITY_CODE")
+        ).to eq "#{ENV.fetch("STEM_COURSE_REDIRECT")}/cpdredirect/FAKE_COURSE_ID"
+      end
     end
   end
 
