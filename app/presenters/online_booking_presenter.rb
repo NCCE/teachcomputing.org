@@ -81,9 +81,9 @@ class OnlineBookingPresenter
     "You will be taken to the MyLearning platform for further details."
   end
 
-  def booking_path(legacy_id, stem_activity_code)
+  def booking_path(legacy_id, course_activity_code)
     if Rails.application.config.stem_cpd_store_enabled
-      "#{Rails.application.config.stem_cpd_store_redirect}/course/#{stem_activity_code}"
+      "#{Rails.application.config.stem_cpd_store_redirect}/course/#{course_activity_code}"
     else
       "#{Rails.application.config.stem_course_redirect}/cpdredirect/#{legacy_id}"
     end

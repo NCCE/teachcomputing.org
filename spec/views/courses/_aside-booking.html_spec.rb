@@ -55,7 +55,7 @@ RSpec.describe("courses/_aside-booking", type: :view) do
         end
 
         it "renders link to STEM Learning booking page" do
-          expected_link = "#{ENV.fetch("STEM_CPD_STORE_REDIRECT")}/course/#{activity.stem_activity_code}"
+          expected_link = "#{ENV.fetch("STEM_CPD_STORE_REDIRECT")}/course/#{online_course_not_always_on.activity_code}"
           expect(rendered).to have_link("Join", href: expected_link)
         end
 
@@ -96,7 +96,7 @@ RSpec.describe("courses/_aside-booking", type: :view) do
           end
 
           it "renders link to STEM Learning booking page" do
-            expected_link = "#{ENV.fetch("STEM_CPD_STORE_REDIRECT")}/course/#{activity.stem_activity_code}"
+            expected_link = "#{ENV.fetch("STEM_CPD_STORE_REDIRECT")}/course/#{online_course_always_on.activity_code}"
             expect(rendered).to have_link("Join this course", href: expected_link)
           end
 
@@ -114,7 +114,7 @@ RSpec.describe("courses/_aside-booking", type: :view) do
           end
 
           it "renders link to STEM Learning booking page" do
-            expected_link = "#{ENV.fetch("STEM_CPD_STORE_REDIRECT")}/course/#{activity.stem_activity_code}"
+            expected_link = "#{ENV.fetch("STEM_CPD_STORE_REDIRECT")}/course/#{online_course_always_on.activity_code}"
             expect(rendered).to have_link("Join this course", href: expected_link)
           end
 
@@ -293,7 +293,7 @@ RSpec.describe("courses/_aside-booking", type: :view) do
 
             expect(rendered).to have_link(
               "Book",
-              href: "#{ENV.fetch("STEM_CPD_STORE_REDIRECT")}/course/#{activity.stem_activity_code}",
+              href: "#{ENV.fetch("STEM_CPD_STORE_REDIRECT")}/course/#{course.activity_code}",
               count: 1
             )
           end
@@ -317,7 +317,7 @@ RSpec.describe("courses/_aside-booking", type: :view) do
             occurrences.each do |occurrence|
               expect(rendered).to have_link(
                 "Book",
-                href: live_booking_presenter.booking_path(occurrence.course_occurrence_no, activity.stem_activity_code)
+                href: live_booking_presenter.booking_path(occurrence.course_occurrence_no, course.activity_code)
               )
             end
 
@@ -390,7 +390,7 @@ RSpec.describe("courses/_aside-booking", type: :view) do
         end
 
         it "display a booking path" do
-          expect(rendered).to have_link("Go to course", href: live_booking_presenter.booking_path("cf8903f9-91a2-4d08-ba41-596ea05b498d", activity.stem_activity_code))
+          expect(rendered).to have_link("Go to course", href: live_booking_presenter.booking_path("cf8903f9-91a2-4d08-ba41-596ea05b498d", course.activity_code))
         end
 
         it "displays aside title" do
@@ -453,7 +453,7 @@ RSpec.describe("courses/_aside-booking", type: :view) do
         end
 
         it "display a booking path" do
-          expect(rendered).to have_link("Go to course", href: live_booking_presenter.booking_path("cf8903f9-91a2-4d08-ba41-596ea05b498d", activity.stem_activity_code))
+          expect(rendered).to have_link("Go to course", href: live_booking_presenter.booking_path("cf8903f9-91a2-4d08-ba41-596ea05b498d", course.activity_code))
         end
 
         it "lists the providers" do
@@ -501,7 +501,7 @@ RSpec.describe("courses/_aside-booking", type: :view) do
 
             expect(rendered).to have_link(
               "Book",
-              href: "#{ENV.fetch("STEM_CPD_STORE_REDIRECT")}/course/#{activity.stem_activity_code}",
+              href: "#{ENV.fetch("STEM_CPD_STORE_REDIRECT")}/course/#{course.activity_code}",
               count: 1
             )
           end
@@ -517,7 +517,7 @@ RSpec.describe("courses/_aside-booking", type: :view) do
             occurrences_remote.each do |occurrence|
               expect(rendered).to have_link(
                 "Book",
-                href: live_booking_presenter.booking_path(occurrence.course_occurrence_no, activity.stem_activity_code)
+                href: live_booking_presenter.booking_path(occurrence.course_occurrence_no, course.activity_code)
               )
             end
 
@@ -566,7 +566,7 @@ RSpec.describe("courses/_aside-booking", type: :view) do
         end
 
         it "display a booking path" do
-          expect(rendered).to have_link("Go to course", href: live_booking_presenter.booking_path("cf8903f9-91a2-4d08-ba41-596ea05b498d", activity.stem_activity_code))
+          expect(rendered).to have_link("Go to course", href: live_booking_presenter.booking_path("cf8903f9-91a2-4d08-ba41-596ea05b498d", remote_course.activity_code))
         end
       end
 
@@ -610,7 +610,7 @@ RSpec.describe("courses/_aside-booking", type: :view) do
         end
 
         it "display a booking path" do
-          expect(rendered).to have_link("Go to course", href: live_booking_presenter.booking_path("cf8903f9-91a2-4d08-ba41-596ea05b498d", activity.stem_activity_code))
+          expect(rendered).to have_link("Go to course", href: live_booking_presenter.booking_path("cf8903f9-91a2-4d08-ba41-596ea05b498d", remote_course.activity_code))
         end
       end
     end
