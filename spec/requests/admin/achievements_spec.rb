@@ -31,6 +31,42 @@ RSpec.describe "Admin::AchievementsController" do
     it "renders the correct template" do
       expect(response).to render_template("index")
     end
+
+    context "when searching" do
+      let(:matching_activity) { create(:activity, stem_activity_code: "CP123", title: "Matching activity") }
+      let(:matching_user) { create(:user, email: "matching-user@example.com") }
+      let(:matching_achievement) { create(:achievement, activity: matching_activity, user: matching_user) }
+      let(:non_matching_achievement) { create(:achievement, activity: create(:activity, stem_activity_code: "CP999", title: "Other activity"), user: create(:user, email: "other-user@example.com")) }
+
+      before do
+        matching_achievement
+        non_matching_achievement
+      end
+
+      it "finds achievements by activity stem_activity_code" do
+        get admin_achievements_path(search: "CP123")
+
+        expect(response).to have_http_status(:ok)
+        expect(response.body).to include("Matching activity")
+        expect(response.body).not_to include("Other activity")
+      end
+
+      it "finds achievements by partial activity title" do
+        get admin_achievements_path(search: "Matching activ")
+
+        expect(response).to have_http_status(:ok)
+        expect(response.body).to include("Matching activity")
+        expect(response.body).not_to include("Other activity")
+      end
+
+      it "finds achievements by user email" do
+        get admin_achievements_path(search: matching_user.email)
+
+        expect(response).to have_http_status(:ok)
+        expect(response.body).to include(matching_user.email)
+        expect(response.body).not_to include("other-user@example.com")
+      end
+    end
   end
 
   describe "GET #new" do
