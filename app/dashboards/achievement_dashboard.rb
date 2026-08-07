@@ -12,7 +12,7 @@ class AchievementDashboard < BaseDashboard
     user: Field::BelongsTo.with_options(
       searchable: true, searchable_fields: %w[email first_name last_name]
     ),
-    stem_activity_code: NonSearchableStringField,
+    stem_activity_code: Field::String.with_options(searchable: false),
     self_verification_info: Field::String,
     current_state: ValidStatePickerField,
     id: Field::String,
