@@ -35,6 +35,11 @@ class ProgrammeActivityGrouping < ApplicationRecord
     objectives_progress_bar_stages
   end
 
+  def activities_for_pathway(recommended_activity_ids)
+    scope = programme_activities.includes(:activity).where(legacy: false)
+    community? ? scope.where(activity: {id: recommended_activity_ids}) : scope
+  end
+
   # completion counted
   def users_completed(users:)
     users_achievement_activity_ids = fetch_users_achievement_activity_ids(users:)
