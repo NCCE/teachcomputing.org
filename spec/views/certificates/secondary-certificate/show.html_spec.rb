@@ -67,6 +67,6 @@ RSpec.describe("certificates/secondary_certificate/show", type: :view) do
   end
 
   it "has the evidence guide" do
-    expect(rendered).to have_css(".aside-component__heading", text: "More on making positive impact on young people and supporting professional community.")
+    expect(rendered).to have_css(".aside-component__heading", text: "Top tips for achieving your certificate")
   end
 end
