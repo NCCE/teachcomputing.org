@@ -317,22 +317,22 @@ Activity.find_or_initialize_by(slug: "participate-fully-in-an-ncce-curriculum-en
 end.save!
 
 Activity.find_or_initialize_by(slug: "implement-your-professional-development-in-the-classroom-and-evaluate-via-the-impact-toolkit-secondary").tap do |activity|
-  activity.title = "Implement and evaluate your professional development in the classroom"
+  activity.title = "Implement and evaluate your professional learning in the classroom and school"
   activity.credit = 10
   activity.slug = "implement-your-professional-development-in-the-classroom-and-evaluate-via-the-impact-toolkit-secondary"
   activity.category = "community"
   activity.provider = "stem-learning"
   activity.self_certifiable = true
-  activity.description = "Think not only about your actions but also about <a href='https://www.stem.org.uk/about-us/impact-and-evaluation/impact-toolkit'>collecting evidence</a> of how the changes you make impact you, your colleagues, and your students. Use the available <a href='https://community.stem.org.uk/helpfaqs/cpdtools'>CPD implementation tools and techniques</a> to evaluate this impact."
-  activity.public_copy_description = "Think not only about your actions but also about <a href='https://www.stem.org.uk/about-us/impact-and-evaluation/impact-toolkit'>collecting evidence</a> of how the changes you make impact you, your colleagues, and your students. Use the available <a href='https://community.stem.org.uk/helpfaqs/cpdtools'>CPD implementation tools and techniques</a> to evaluate this impact."
+  activity.description = "Think not only about your actions but also about <a href='https://www.stem.org.uk/about-us/impact-and-evaluation/impact-toolkit'>collecting evidence</a> of how the changes you make impact you, your colleagues, and your students. Use the available <a href='https://community.stem.org.uk/helpfaqs/cpdtools'>CPD implementation tools and techniques</a> when evaluating impact."
+  activity.public_copy_description = "Think not only about your actions but also about <a href='https://www.stem.org.uk/about-us/impact-and-evaluation/impact-toolkit'>collecting evidence</a> of how the changes you make impact you, your colleagues, and your students. Use the available <a href='https://community.stem.org.uk/helpfaqs/cpdtools'>CPD implementation tools and techniques</a> when evaluating impact."
   activity.public_copy_title_url = impact_toolkit_url
   activity.self_verification_info = nil
   activity.public_copy_evidence = [{
     brief: "Evidence guidance:",
     bullets: [
-      "Add information on how you’ve implemented what you’ve learnt from CPD into your classroom.",
-      "Explain how the changes you made have impacted you, your colleagues, and your students.",
-      "If you applied knowledge from a residential course, explain how you used the <a href='https://www.stem.org.uk/about-us/impact-and-evaluation/impact-toolkit'>Impact Toolkit</a> to evaluate your learning. For some courses you may also be asked to make an action plan and reflect on the impact of your CPD after the course."
+      "Add information on how you’ve implemented what you learnt from CPD into your classroom.",
+      "Explain how the CPD has influenced one of the following: classroom practice, curriculum design, assessment, departmental leadership.",
+      "Tell us about the impact this has had on your students."
     ]
   }]
 end.save!
@@ -758,21 +758,22 @@ Activity.find_or_initialize_by(slug: "gain-accreditation-as-a-professional-devel
 end.save!
 
 Activity.find_or_initialize_by(slug: "undertake-the-initial-assessment-of-your-school-using-computing-quality-framework-secondary").tap do |activity|
-  activity.title = "Undertake the initial assessment of your school using <a href='#{computing_quality_framework_url}'>Computing Quality Framework</a>"
+  activity.title = "Assess your computing provision using the <a href='#{computing_quality_framework_url}'>Computing Quality Framework</a>"
   activity.credit = 10
   activity.slug = "undertake-the-initial-assessment-of-your-school-using-computing-quality-framework-secondary"
   activity.category = "community"
   activity.provider = "stem-learning"
   activity.self_certifiable = true
-  activity.description = "Review your <a href='#{computing_quality_framework_url}'>school’s progress</a> in developing an exemplary computing curriculum and work towards achieving the <a href='#{computing_quality_framework_url}'>Computing Quality Mark.</a>"
-  activity.public_copy_description = "Review your <a href='#{computing_quality_framework_url}'>school’s progress</a> in developing an exemplary computing curriculum and work towards achieving the <a href='#{computing_quality_framework_url}'>Computing Quality Mark.</a>"
+  activity.description = "Demonstrate your <a href='#{computing_quality_framework_url}'>school’s progress</a> in developing an exemplary computing curriculum and work towards achieving the <a href='#{computing_quality_mark_url}'>Computing Quality Mark.</a>"
+  activity.public_copy_description = "Demonstrate your <a href='#{computing_quality_framework_url}'>school’s progress</a> in developing an exemplary computing curriculum and work towards achieving the <a href='#{computing_quality_mark_url}'>Computing Quality Mark.</a>"
   activity.public_copy_title_url = computing_quality_framework_url
   activity.self_verification_info = nil
   activity.public_copy_evidence = [{
     brief: "Evidence guidance:",
     bullets: [
-      "How were you involved in the initial assessment?",
-      "Include your average level across all benchmarks of the CQF. You can also add a link to a sharing folder with a screenshot of your school’s initial assessment graph. Make sure the viewing permissions are open to anyone with the link."
+      "What is your school's name and school's URN?",
+      "How were you involved in the Computing Quality Framework assessment of your school?",
+      "Include your school's average level across all benchmarks of the Computing Quality Framework."
     ]
   }]
 end.save!
