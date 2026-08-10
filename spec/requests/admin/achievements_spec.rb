@@ -63,7 +63,8 @@ RSpec.describe "Admin::AchievementsController" do
         get admin_achievements_path(search: matching_user.email)
 
         expect(response).to have_http_status(:ok)
-        expect(response.body).to include(matching_user.email)
+        expect(response.body).to include("Matching activity")
+        expect(response.body).not_to include("Other activity")
         expect(response.body).not_to include("other-user@example.com")
       end
     end
