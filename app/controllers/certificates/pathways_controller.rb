@@ -13,7 +13,7 @@ class Certificates::PathwaysController < ApplicationController
     @recommended_activities = recommended_activities - @recommended_community_activities
 
     @cpd_group = @programme.programme_activity_groupings.not_community.order(:sort_key).first
-    @community_groups = @programme.programme_activity_groupings.community.order(:sort_key)
+    @objective_groups = @programme.programme_activity_groupings.where.not(id: @cpd_group.id).order(:sort_key)
   end
 
   def set_pathway
