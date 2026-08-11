@@ -73,14 +73,6 @@ class OnlineBookingPresenter
     course_started ? "Continue on MyLearning" : nil
   end
 
-  def completed_button_title
-    "Visit MyLearning"
-  end
-
-  def completed_button_introduction
-    "You will be taken to the MyLearning platform for further details."
-  end
-
   def booking_path(stem_course_id)
     "#{Rails.application.config.stem_course_redirect}/cpdredirect/#{stem_course_id}"
   end

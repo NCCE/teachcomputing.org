@@ -100,7 +100,6 @@
        </ul>
     <% elsif user_achievement_state(current_user, @activity) == :complete && !@course.online_cpd %>
       <h2 class="govuk-heading-m ncce-aside__title"><%= @booking.completed_title %></h2>
-      <p class="govuk-body-s ncce-aside__text"><%= @booking.introduction %></p>
       <ul class="govuk-list ncce-booking-list">
         <% if  @user_occurrence.present? %>
           <li class="ncce-booking-details">
@@ -112,25 +111,12 @@
                 <% unless @course.remote_delivered_cpd %>
                   <%="#{@user_occurrence.address_venue_name}"%><br> <%="#{@user_occurrence.address_line_one}"%><br><%="#{@user_occurrence.address_town}"%><br><%="#{@user_occurrence.address_postcode}" %>
                 <% end %>
-                <br>
-                <%= link_to 'Go to course', @booking.booking_path(@user_occurrence.course_occurence_no), class: 'govuk-!-font-weight-bold ncce-link' %>
               </span>
           </li>
         <% end %>
       </ul>
     <% elsif user_achievement_state(current_user, @activity) == :complete && @course.online_cpd %>
       <h2 class="govuk-heading-m ncce-aside__title"><%= @booking.completed_title %></h2>
-      <p class="govuk-body-s ncce-aside__text"><%= @booking.completed_button_introduction %></p>
-      <p class="govuk-body">
-        <%= link_to(
-          @booking.completed_button_title,
-          Rails.configuration.mylearning_dashboard_url,
-          class: 'govuk-button button--aside',
-          draggable: 'false',
-          data: { event_action: 'click', event_category: 'course details', event_label: 'view online course' },
-          target: :_blank
-        ) %>
-      </p>
     <% end %>
   <% else # not logged in %>
     <% if !@course.online_cpd && @occurrences.empty? %>

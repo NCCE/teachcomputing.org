@@ -63,12 +63,4 @@ RSpec.describe OnlineBookingPresenter do
   describe "unauthenticated_booking_button_title" do
     it { expect(described_class.new.unauthenticated_booking_button_title).to eq("Login to join") }
   end
-
-  describe "completed_button_title" do
-    it { expect(described_class.new.completed_button_title).to eq("Visit MyLearning") }
-  end
-
-  describe "completed_button_introduction" do
-    it { expect(described_class.new.completed_button_introduction).to eq("You will be taken to the MyLearning platform for further details.") }
-  end
 end

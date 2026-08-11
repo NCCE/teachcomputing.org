@@ -52,14 +52,6 @@ class LiveBookingPresenter
     raise NotImplementedError
   end
 
-  def completed_button_introduction
-    raise NotImplementedError
-  end
-
-  def completed_button_title
-    raise NotImplementedError
-  end
-
   def activity_date(start_date, _end_date)
     return if start_date.blank?
 

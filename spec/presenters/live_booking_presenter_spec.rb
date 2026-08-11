@@ -47,18 +47,6 @@ RSpec.describe LiveBookingPresenter do
     end
   end
 
-  describe "#completed_button_introduction" do
-    it "is not implemented" do
-      expect { described_class.new.completed_button_introduction }.to raise_error(NotImplementedError)
-    end
-  end
-
-  describe "#completed_button_title" do
-    it "is not implemented" do
-      expect { described_class.new.completed_button_title }.to raise_error(NotImplementedError)
-    end
-  end
-
   describe "#activity_date" do
     it "reformats a date and time string" do
       expect(described_class.new.activity_date("01/06/2023 10:30:55", "01/06/1023 16:30:55")).to eq "1st June 2023, Thursday 10:30"
