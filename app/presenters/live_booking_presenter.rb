@@ -67,12 +67,12 @@ class LiveBookingPresenter
     date.strftime("#{date.day.ordinalize} %B %Y, %A %H:%M").to_s
   end
 
-  def course_button(occurrences, occurrence_id, course_template_no)
+  def course_button(occurrences, course_template_no)
     return unless occurrences.blank? || occurrences.count >= 20
 
     link_to(
       occurrences.blank? ? "View course" : "See more dates",
-      booking_path(occurrence_id, course_template_no),
+      booking_path(course_template_no, course_template_no),
       class: "govuk-button button button--full-width",
       draggable: "false",
       target: :_blank
