@@ -78,8 +78,14 @@ RSpec.describe OnlineBookingPresenter do
 
       it "is the full URI of the CPD store booking" do
         expect(
-          described_class.new.booking_path("FAKE_COURSE_ID", "FAKE_ACTIVITY_CODE")
-        ).to eq "#{ENV.fetch("STEM_CPD_STORE_REDIRECT")}/course/FAKE_ACTIVITY_CODE"
+          described_class.new.booking_path("FAKE_COURSE_ID", "FAKE_TEMPLATE_ID")
+        ).to eq "#{ENV.fetch("STEM_CPD_STORE_URL")}/course/FAKE_TEMPLATE_ID"
+      end
+
+      it "includes the instance code as a query param when given" do
+        expect(
+          described_class.new.booking_path("FAKE_COURSE_ID", "FAKE_TEMPLATE_ID", "FAKE_INSTANCE_CODE")
+        ).to eq "#{ENV.fetch("STEM_CPD_STORE_URL")}/course/FAKE_TEMPLATE_ID?instance=FAKE_INSTANCE_CODE"
       end
     end
 
@@ -88,7 +94,7 @@ RSpec.describe OnlineBookingPresenter do
 
       it "is the full URI of the legacy STEM Learning booking" do
         expect(
-          described_class.new.booking_path("FAKE_COURSE_ID", "FAKE_ACTIVITY_CODE")
+          described_class.new.booking_path("FAKE_COURSE_ID", "FAKE_TEMPLATE_ID")
         ).to eq "#{ENV.fetch("STEM_COURSE_REDIRECT")}/cpdredirect/FAKE_COURSE_ID"
       end
     end
