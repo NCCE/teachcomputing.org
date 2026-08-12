@@ -39,12 +39,12 @@ secondary.programme_activity_groupings.find_or_initialize_by(cms_slug: "secondar
 end.save!
 
 secondary.programme_activity_groupings.find_or_initialize_by(cms_slug: "secondary-pd-activity").becomes!(ProgrammeActivityGroupings::ProfessionalDevelopmentActivity).tap do |group|
-  group.title = "Implement and evaluate your professional development in the classroom"
+  group.title = "Show how you have implemented your professional learning"
   group.sort_key = 2
   group.required_for_completion = 1
   group.programme_id = secondary.id
   group.community = false
-  group.progress_bar_title = "Implement and evaluate your professional development"
+  group.progress_bar_title = "Implement and evaluate your professional learning"
   group.web_copy_course_requirements = "Complete this activity"
 
   group.save!
@@ -54,12 +54,12 @@ secondary.programme_activity_groupings.find_or_initialize_by(cms_slug: "secondar
 end.save!
 
 secondary.programme_activity_groupings.find_or_initialize_by(cms_slug: "secondary-positive-impact").tap do |group|
-  group.title = "Make an impact on young people and professional community"
+  group.title = "Make an impact on young people and/or professional community"
   group.sort_key = 3
   group.required_for_completion = 1
   group.programme_id = secondary.id
   group.community = true
-  group.progress_bar_title = "Make an impact on young people and your professional community"
+  group.progress_bar_title = "Make an impact on young people and/or your professional community"
   group.web_copy_course_requirements = "Choose at least one activity"
 
   group.save!
