@@ -14,7 +14,13 @@ module Certificates
       @pathways = Pathway.ordered_by_programme(@programme.slug).not_legacy
       @available_pathways_for_user = @pathways.filter { |pathway| pathway.slug != user_pathway.slug }
 
-      @professional_development_groups = @programme.programme_activity_groupings.not_community.order(:sort_key)
+      @cqf_group = ProgrammeActivityGroupings::CqfAssessment.find_by(programme: @programme)
+      @pd_group = ProgrammeActivityGroupings::ProfessionalDevelopmentActivity.find_by(programme: @programme)
+
+      standalone_grouping_ids = [@cqf_group.id, @pd_group.id]
+
+      @professional_development_groups = @programme.programme_activity_groupings.not_community
+        .where.not(id: standalone_grouping_ids).order(:sort_key)
       @community_groups = @programme.programme_activity_groupings.community.order(:sort_key)
 
       assign_recommended_activities

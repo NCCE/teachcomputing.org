@@ -2,8 +2,6 @@ require "rails_helper"
 
 RSpec.describe Programmes::SecondaryCertificate do
   let(:user) { create(:user) }
-  let(:cs_accelerator) { create(:cs_accelerator) }
-  let(:cs_accelerator_enrolment) { create(:user_programme_enrolment, user_id: user.id, programme_id: cs_accelerator.id) }
   let(:secondary_certificate) { create(:secondary_certificate) }
   let(:programme_activity_groupings) { create_list(:programme_activity_grouping, 3, :with_activities, programme: secondary_certificate) }
 
@@ -16,7 +14,6 @@ RSpec.describe Programmes::SecondaryCertificate do
   describe "#user_meets_completion_requirement?" do
     before do
       user
-      cs_accelerator
       programme_activity_groupings
     end
 
@@ -26,30 +23,13 @@ RSpec.describe Programmes::SecondaryCertificate do
       end
     end
 
-    context "when the user hasn't completed CSA" do
-      context "when the user has completed one activity from each group" do
-        it "returns false" do
-          programme_activity_groupings.each do |group|
-            create(:achievement, user_id: user.id, activity_id: group.programme_activities.first.activity.id).transition_to(:complete)
-          end
-
-          expect(secondary_certificate.user_meets_completion_requirement?(user)).to eq false
+    context "when the user has completed one activity from each group" do
+      it "returns true" do
+        programme_activity_groupings.each do |group|
+          create(:achievement, user_id: user.id, activity_id: group.programme_activities.first.activity.id).transition_to(:complete)
         end
-      end
-    end
 
-    context "when the user has completed CSA" do
-      context "when the user has completed one activity from each group" do
-        it "returns true" do
-          allow_any_instance_of(Programmes::CSAccelerator).to receive(:user_meets_completion_requirement?).with(user).and_return(true)
-          cs_accelerator_enrolment.transition_to :complete
-
-          programme_activity_groupings.each do |group|
-            create(:achievement, user_id: user.id, activity_id: group.programme_activities.first.activity.id).transition_to(:complete)
-          end
-
-          expect(secondary_certificate.user_meets_completion_requirement?(user)).to eq true
-        end
+        expect(secondary_certificate.user_meets_completion_requirement?(user)).to eq true
       end
     end
   end
@@ -94,15 +74,14 @@ RSpec.describe Programmes::SecondaryCertificate do
   end
 
   describe "#programme_objectives" do
-    it "returns one PO::PCR and any PAGs" do
+    it "returns the programme activity groupings ordered by sort_key" do
       pags = create_list(:programme_activity_grouping, 3, programme: secondary_certificate)
 
       pags.each_with_index do |pag, index|
         pag.update(sort_key: index + 1)
       end
 
-      expect(secondary_certificate.programme_objectives.first).to be_a ProgrammeObjectives::ProgrammeCompletionRequired
-      expect(secondary_certificate.programme_objectives[1..]).to eq pags
+      expect(secondary_certificate.programme_objectives).to eq pags
     end
   end
 
