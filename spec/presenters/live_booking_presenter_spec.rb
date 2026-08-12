@@ -69,7 +69,7 @@ RSpec.describe LiveBookingPresenter do
     context "when no occurrences" do
       it 'says "View course"' do
         expect(
-          described_class.new.course_button([], "FAKE_COURSE_ID", "FAKE_ACTIVITY_CODE")
+          described_class.new.course_button([], "FAKE_COURSE_ID", "FAKE_TEMPLATE_ID")
         ).to match(/>View course<\/a>/)
       end
     end
@@ -77,7 +77,7 @@ RSpec.describe LiveBookingPresenter do
     context "when 20 occurrences" do
       it 'says "See more dates"' do
         expect(
-          described_class.new.course_button(Array.new(20), "FAKE_COURSE_ID", "FAKE_ACTIVITY_CODE")
+          described_class.new.course_button(Array.new(20), "FAKE_COURSE_ID", "FAKE_TEMPLATE_ID")
         ).to match(/>See more dates<\/a>/)
       end
     end
@@ -85,7 +85,7 @@ RSpec.describe LiveBookingPresenter do
     context "when < 20 occurrences" do
       it "is nil" do
         expect(
-          described_class.new.course_button(Array.new(19), "FAKE_COURSE_ID", "FAKE_ACTIVITY_CODE")
+          described_class.new.course_button(Array.new(19), "FAKE_COURSE_ID", "FAKE_TEMPLATE_ID")
         ).to be_nil
       end
     end
@@ -95,8 +95,8 @@ RSpec.describe LiveBookingPresenter do
 
       it "links to the CPD store booking path" do
         expect(
-          described_class.new.course_button([], "FAKE_COURSE_ID", "FAKE_ACTIVITY_CODE")
-        ).to match(/href="#{Regexp.escape(ENV.fetch("STEM_CPD_STORE_REDIRECT"))}\/course\/FAKE_ACTIVITY_CODE"/)
+          described_class.new.course_button([], "FAKE_COURSE_ID", "FAKE_TEMPLATE_ID")
+        ).to match(/href="#{Regexp.escape(ENV.fetch("STEM_CPD_STORE_URL"))}\/course\/FAKE_TEMPLATE_ID"/)
       end
     end
 
@@ -105,7 +105,7 @@ RSpec.describe LiveBookingPresenter do
 
       it "links to the legacy STEM Learning booking path" do
         expect(
-          described_class.new.course_button([], "FAKE_COURSE_ID", "FAKE_ACTIVITY_CODE")
+          described_class.new.course_button([], "FAKE_COURSE_ID", "FAKE_TEMPLATE_ID")
         ).to match(/href="#{Regexp.escape(ENV.fetch("STEM_COURSE_REDIRECT"))}\/cpdredirect\/FAKE_COURSE_ID"/)
       end
     end
@@ -117,8 +117,14 @@ RSpec.describe LiveBookingPresenter do
 
       it "is the full URI of the CPD store booking" do
         expect(
-          described_class.new.booking_path("FAKE_COURSE_ID", "FAKE_ACTIVITY_CODE")
-        ).to eq "#{ENV.fetch("STEM_CPD_STORE_REDIRECT")}/course/FAKE_ACTIVITY_CODE"
+          described_class.new.booking_path("FAKE_COURSE_ID", "FAKE_TEMPLATE_ID")
+        ).to eq "#{ENV.fetch("STEM_CPD_STORE_URL")}/course/FAKE_TEMPLATE_ID"
+      end
+
+      it "includes the instance code as a query param when given" do
+        expect(
+          described_class.new.booking_path("FAKE_COURSE_ID", "FAKE_TEMPLATE_ID", "FAKE_INSTANCE_CODE")
+        ).to eq "#{ENV.fetch("STEM_CPD_STORE_URL")}/course/FAKE_TEMPLATE_ID?instance=FAKE_INSTANCE_CODE"
       end
     end
 
@@ -127,7 +133,7 @@ RSpec.describe LiveBookingPresenter do
 
       it "is the full URI of the legacy STEM Learning booking" do
         expect(
-          described_class.new.booking_path("FAKE_COURSE_ID", "FAKE_ACTIVITY_CODE")
+          described_class.new.booking_path("FAKE_COURSE_ID", "FAKE_TEMPLATE_ID")
         ).to eq "#{ENV.fetch("STEM_COURSE_REDIRECT")}/cpdredirect/FAKE_COURSE_ID"
       end
     end
