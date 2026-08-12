@@ -46,7 +46,7 @@ module CoursesHelper
 
   def stem_course_link(course_template_no, course_activity_code)
     if Rails.application.config.stem_cpd_store_enabled
-      "#{Rails.application.config.stem_cpd_store_redirect}/course/#{course_activity_code}"
+      "#{Rails.application.config.stem_cpd_store_url}/course/#{course_activity_code}"
     else
       "#{Rails.application.config.stem_course_redirect}/cpdredirect/#{course_template_no}"
     end

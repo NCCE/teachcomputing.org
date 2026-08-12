@@ -89,7 +89,7 @@ describe CoursesHelper, type: :helper do
       before { allow(Rails.application.config).to receive(:stem_cpd_store_enabled).and_return(true) }
 
       it "returns the link to the course page on the CPD store" do
-        expect(helper.stem_course_link("01de2624", "CP448")).to eq "#{ENV.fetch("STEM_CPD_STORE_REDIRECT")}/course/CP448"
+        expect(helper.stem_course_link("01de2624", "CP448")).to eq "#{ENV.fetch("STEM_CPD_STORE_URL")}/course/CP448"
       end
     end
 
