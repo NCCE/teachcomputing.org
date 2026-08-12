@@ -61,7 +61,7 @@ module TeachComputing
     config.stem_credentials_refresh_token = ENV["STEM_CREDENTIALS_REFRESH_TOKEN_KEY"]
 
     config.stem_course_redirect = ENV["STEM_COURSE_REDIRECT"]
-    config.stem_cpd_store_redirect = ENV["STEM_CPD_STORE_REDIRECT"]
+    config.stem_cpd_store_url = ENV["STEM_CPD_STORE_URL"]
     config.stem_cpd_store_enabled = ENV["STEM_CPD_STORE_ENABLED"] == "true"
 
     # default is true
