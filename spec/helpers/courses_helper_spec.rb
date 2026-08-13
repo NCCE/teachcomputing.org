@@ -89,7 +89,8 @@ describe CoursesHelper, type: :helper do
       before { allow(Rails.application.config).to receive(:stem_cpd_store_enabled).and_return(true) }
 
       it "returns the link to the course page on the CPD store" do
-        expect(helper.stem_course_link("CP448")).to eq "#{ENV.fetch("STEM_CPD_STORE_URL")}/course/CP448"
+        expect(helper.stem_course_link("f47ac10b-58cc-4372-a567-0e02b2c3d479"))
+          .to eq "#{ENV.fetch("STEM_CPD_STORE_URL")}/course/f47ac10b-58cc-4372-a567-0e02b2c3d479"
       end
     end
 
@@ -97,7 +98,8 @@ describe CoursesHelper, type: :helper do
       before { allow(Rails.application.config).to receive(:stem_cpd_store_enabled).and_return(false) }
 
       it "returns the link to the course page on stem.org.uk" do
-        expect(helper.stem_course_link("CP448")).to eq "#{ENV.fetch("STEM_COURSE_REDIRECT")}/cpdredirect/CP448"
+        expect(helper.stem_course_link("f47ac10b-58cc-4372-a567-0e02b2c3d479"))
+          .to eq "#{ENV.fetch("STEM_COURSE_REDIRECT")}/cpdredirect/f47ac10b-58cc-4372-a567-0e02b2c3d479"
       end
     end
   end
