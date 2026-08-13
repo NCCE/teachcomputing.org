@@ -57,7 +57,7 @@ RSpec.describe("courses/_aside-booking", type: :view) do
         it "renders a booking link for each occurrence" do
           occurrences.each do |occurrence|
             expected_link = online_booking_presenter.booking_path(
-              occurrence.course_occurrence_no, occurrence.course_template_no, occurrence.course_occurrence_no
+              course_template_no: occurrence.course_template_no, occurrence_id: occurrence.course_occurrence_no
             )
             expect(rendered).to have_link("Join", href: expected_link)
           end
@@ -102,7 +102,7 @@ RSpec.describe("courses/_aside-booking", type: :view) do
           end
 
           it "renders link to STEM Learning booking page" do
-            expected_link = "#{ENV.fetch("STEM_CPD_STORE_URL")}/course/#{activity.stem_course_template_no}"
+            expected_link = "#{ENV.fetch("STEM_CPD_STORE_URL")}/course/#{online_course_always_on.course_template_no}"
             expect(rendered).to have_link("Join this course", href: expected_link)
           end
 
@@ -120,7 +120,7 @@ RSpec.describe("courses/_aside-booking", type: :view) do
           end
 
           it "renders link to STEM Learning booking page" do
-            expected_link = "#{ENV.fetch("STEM_CPD_STORE_URL")}/course/#{activity.stem_course_template_no}"
+            expected_link = "#{ENV.fetch("STEM_CPD_STORE_URL")}/course/#{online_course_always_on.course_template_no}"
             expect(rendered).to have_link("Join this course", href: expected_link)
           end
 
@@ -297,7 +297,7 @@ RSpec.describe("courses/_aside-booking", type: :view) do
           it "shows a booking link against each occurrence" do
             occurrences.each do |occurrence|
               expected_link = live_booking_presenter.booking_path(
-                occurrence.course_occurrence_no, occurrence.course_template_no, occurrence.course_occurrence_no
+                course_template_no: occurrence.course_template_no, occurrence_id: occurrence.course_occurrence_no
               )
               expect(rendered).to have_link("Book", href: expected_link)
             end
@@ -351,7 +351,7 @@ RSpec.describe("courses/_aside-booking", type: :view) do
           occurrences.each do |occurrence|
             expect(rendered).to have_link(
               "Book",
-              href: live_booking_presenter.booking_path(occurrence.course_occurrence_no, occurrence.course_template_no)
+              href: live_booking_presenter.booking_path(course_template_no: occurrence.course_template_no, occurrence_id: occurrence.course_occurrence_no)
             )
           end
 
@@ -402,7 +402,7 @@ RSpec.describe("courses/_aside-booking", type: :view) do
         end
 
         it "display a booking path" do
-          expect(rendered).to have_link("Go to course", href: live_booking_presenter.booking_path("cf8903f9-91a2-4d08-ba41-596ea05b498d", "cf8903f9-91a2-4d08-ba41-596ea05b498d", "cf8903f9-91a2-4d08-ba41-596ea05b498d"))
+          expect(rendered).to have_link("Go to course", href: live_booking_presenter.booking_path(course_template_no: "cf8903f9-91a2-4d08-ba41-596ea05b498d", occurrence_id: "cf8903f9-91a2-4d08-ba41-596ea05b498d"))
         end
 
         it "displays aside title" do
@@ -465,7 +465,7 @@ RSpec.describe("courses/_aside-booking", type: :view) do
         end
 
         it "display a booking path" do
-          expect(rendered).to have_link("Go to course", href: live_booking_presenter.booking_path("cf8903f9-91a2-4d08-ba41-596ea05b498d", "cf8903f9-91a2-4d08-ba41-596ea05b498d", "cf8903f9-91a2-4d08-ba41-596ea05b498d"))
+          expect(rendered).to have_link("Go to course", href: live_booking_presenter.booking_path(course_template_no: "cf8903f9-91a2-4d08-ba41-596ea05b498d", occurrence_id: "cf8903f9-91a2-4d08-ba41-596ea05b498d"))
         end
 
         it "lists the providers" do
@@ -511,7 +511,7 @@ RSpec.describe("courses/_aside-booking", type: :view) do
           it "shows a booking link against each occurrence" do
             occurrences_remote.each do |occurrence|
               expected_link = live_booking_presenter.booking_path(
-                occurrence.course_occurrence_no, occurrence.course_template_no, occurrence.course_occurrence_no
+                course_template_no: occurrence.course_template_no, occurrence_id: occurrence.course_occurrence_no
               )
               expect(rendered).to have_link("Book", href: expected_link)
             end
@@ -538,7 +538,7 @@ RSpec.describe("courses/_aside-booking", type: :view) do
           occurrences_remote.each do |occurrence|
             expect(rendered).to have_link(
               "Book",
-              href: live_booking_presenter.booking_path(occurrence.course_occurrence_no, occurrence.course_template_no)
+              href: live_booking_presenter.booking_path(course_template_no: occurrence.course_template_no, occurrence_id: occurrence.course_occurrence_no)
             )
           end
 
@@ -586,7 +586,7 @@ RSpec.describe("courses/_aside-booking", type: :view) do
         end
 
         it "display a booking path" do
-          expect(rendered).to have_link("Go to course", href: live_booking_presenter.booking_path("cf8903f9-91a2-4d08-ba41-596ea05b498d", "cf8903f9-91a2-4d08-ba41-596ea05b498d", "cf8903f9-91a2-4d08-ba41-596ea05b498d"))
+          expect(rendered).to have_link("Go to course", href: live_booking_presenter.booking_path(course_template_no: "cf8903f9-91a2-4d08-ba41-596ea05b498d", occurrence_id: "cf8903f9-91a2-4d08-ba41-596ea05b498d"))
         end
       end
 
@@ -630,7 +630,7 @@ RSpec.describe("courses/_aside-booking", type: :view) do
         end
 
         it "display a booking path" do
-          expect(rendered).to have_link("Go to course", href: live_booking_presenter.booking_path("cf8903f9-91a2-4d08-ba41-596ea05b498d", "cf8903f9-91a2-4d08-ba41-596ea05b498d", "cf8903f9-91a2-4d08-ba41-596ea05b498d"))
+          expect(rendered).to have_link("Go to course", href: live_booking_presenter.booking_path(course_template_no: "cf8903f9-91a2-4d08-ba41-596ea05b498d", occurrence_id: "cf8903f9-91a2-4d08-ba41-596ea05b498d"))
         end
       end
     end
