@@ -56,6 +56,22 @@ RSpec.describe Achiever::Request do
             .to eq([])
         end
       end
+
+      context "when in development" do
+        before do
+          allow(Rails).to receive(:env) { "development".inquiry }
+          allow(Achiever::Connection).to receive(:dev_cache_store).and_return(ActiveSupport::Cache::MemoryStore.new)
+        end
+
+        it "uses the dev cache even when cache: false is passed, so Achiever::Course::Template::_all doesn't bypass it" do
+          stub_course_templates
+
+          2.times { described_class.resource("Get?cmd=CourseTemplatesListingByProgramme", template_query_strings, false) }
+
+          expect(WebMock).to have_requested(:get,
+            "https://stemraspberrypiapi.dev3.smartmembership.net/smartconnector.smartconnector.svc/JSON/Get?HideFromweb=0&Page=1&ProgrammeName=ncce&RecordCount=1000&cmd=CourseTemplatesListingByProgramme").once
+        end
+      end
     end
   end
 end
