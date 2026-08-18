@@ -54,14 +54,26 @@ class Achiever::Request
       return local_response(resource_path) if ActiveRecord::Type::Boolean.new.cast(ENV.fetch("ACHIEVER_USE_LOCAL_TEMPLATES", "false")) && Rails.env.development?
       return api.get("#{resource_path}&#{query_string}") unless cache
 
+      key = "#{resource_path}&#{query_string}"
+      return dev_cached_request(key, cache_expiry) if Rails.env.development?
+
       Rails.cache.fetch(
-        "#{resource_path}&#{query_string}",
+        key,
         expires_in: cache_expiry,
         race_condition_ttl:,
         namespace: "achiever"
       ) do
-        api.get("#{resource_path}&#{query_string}")
+        api.get(key)
       end
+    end
+
+    def dev_cached_request(key, cache_expiry)
+      cached = Achiever::Connection.dev_cache_store.read(key, namespace: "achiever")
+      return cached if cached
+
+      response = api.get(key)
+      Achiever::Connection.dev_cache_store.write(key, response, expires_in: cache_expiry, namespace: "achiever") if response.body.present?
+      response
     end
 
     def success?(response, parsed_response)
