@@ -243,9 +243,9 @@ RSpec.describe("courses/_aside-booking", type: :view) do
             expect(rendered).not_to have_text "April"
           end
 
-          it "links to MyLearning" do
+          it "does not link to MyLearning" do
             render
-            expect(rendered).to have_link("Visit MyLearning", href: "https://moodle.example.com/my/")
+            expect(rendered).not_to have_link("Visit MyLearning")
           end
         end
       end
@@ -445,10 +445,6 @@ RSpec.describe("courses/_aside-booking", type: :view) do
           expect(rendered).to have_text("You’ve completed this course")
         end
 
-        it "displays more stem learning text" do
-          expect(rendered).to have_text("You will be taken to the STEM Learning website to see further details.")
-        end
-
         it "displays the date of the occurance" do
           expect(rendered).to have_text("15th January 2099, Thursday 00:00")
         end
@@ -464,8 +460,8 @@ RSpec.describe("courses/_aside-booking", type: :view) do
           expect(rendered).to have_text("YO10 5DD")
         end
 
-        it "display a booking path" do
-          expect(rendered).to have_link("Go to course", href: live_booking_presenter.booking_path(course_template_no: "cf8903f9-91a2-4d08-ba41-596ea05b498d", occurrence_id: "cf8903f9-91a2-4d08-ba41-596ea05b498d"))
+        it "does not display a booking path" do
+          expect(rendered).not_to have_link("Go to course")
         end
 
         it "lists the providers" do
@@ -629,8 +625,8 @@ RSpec.describe("courses/_aside-booking", type: :view) do
           expect(rendered).to have_no_text("National STEM Learning Centre, University of York, York, YO10 5DD")
         end
 
-        it "display a booking path" do
-          expect(rendered).to have_link("Go to course", href: live_booking_presenter.booking_path(course_template_no: "cf8903f9-91a2-4d08-ba41-596ea05b498d", occurrence_id: "cf8903f9-91a2-4d08-ba41-596ea05b498d"))
+        it "does not display a booking path" do
+          expect(rendered).not_to have_link("Go to course")
         end
       end
     end

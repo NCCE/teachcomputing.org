@@ -73,14 +73,6 @@ class OnlineBookingPresenter
     course_started ? "Continue on MyLearning" : nil
   end
 
-  def completed_button_title
-    "Visit MyLearning"
-  end
-
-  def completed_button_introduction
-    "You will be taken to the MyLearning platform for further details."
-  end
-
   def booking_path(course_template_no:, occurrence_id: nil)
     if Rails.application.config.stem_cpd_store_enabled
       path = "#{Rails.application.config.stem_cpd_store_url}/course/#{course_template_no}"
