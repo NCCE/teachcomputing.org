@@ -2,8 +2,6 @@
 #
 # has a similar API to OnlineBookingPresenter, though a few of those instance methods aren't implemented here
 class LiveBookingPresenter
-  include ActionView::Helpers::UrlHelper
-
   def title
     "Book this course"
   end
@@ -59,26 +57,22 @@ class LiveBookingPresenter
     date.strftime("#{date.day.ordinalize} %B %Y, %A %H:%M").to_s
   end
 
-  def course_button(occurrences, course_template_no)
-    return unless occurrences.blank? || occurrences.count >= 20
-
-    link_to(
-      occurrences.blank? ? "View course" : "See more dates",
-      booking_path(course_template_no),
-      class: "govuk-button button button--full-width",
-      draggable: "false",
-      target: :_blank
-    )
-  end
-
-  def booking_path(occurrence_id)
-    "#{Rails.application.config.stem_course_redirect}/cpdredirect/#{occurrence_id}"
+  def booking_path(course_template_no:, occurrence_id: nil)
+    if Rails.application.config.stem_cpd_store_enabled
+      path = "#{Rails.application.config.stem_cpd_store_url}/course/#{course_template_no}"
+      occurrence_id.present? ? "#{path}?instance=#{occurrence_id}" : path
+    else
+      "#{Rails.application.config.stem_course_redirect}/cpdredirect/#{occurrence_id || course_template_no}"
+    end
   end
 
   def address(occurrence)
     return "Live remote training" if occurrence.remote_delivered_cpd
 
-    "#{occurrence.address_venue_name}, #{occurrence.address_town}, #{occurrence.address_postcode}"
+    # Remove any blank parts of the address
+    [occurrence.address_venue_name, occurrence.address_town, occurrence.address_postcode]
+      .reject(&:blank?)
+      .join(", ")
   end
 
   # @return [Boolean] true: always show this

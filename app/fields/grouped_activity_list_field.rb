@@ -1,6 +1,6 @@
-require "administrate/field/base"
+require "administrate/field/belongs_to"
 
-class GroupedActivityListField < Administrate::Field::Base
+class GroupedActivityListField < Administrate::Field::BelongsTo
   def grouped_by_category
     Activity.includes([:programmes]).all.group_by(&:category).each_with_object([]) do |(cat, acts), arr|
       arr << [cat, acts.sort_by(&:title).map {

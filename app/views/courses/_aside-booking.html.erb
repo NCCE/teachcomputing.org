@@ -22,7 +22,7 @@
                 <span class='ncce-booking-list__button_wrapper'>
                   <%= link_to(
                     @booking.booking_button_title,
-                    @booking.booking_path(occurrence.course_occurrence_no),
+                    @booking.booking_path(course_template_no: occurrence.course_template_no, occurrence_id: occurrence.course_occurrence_no),
                     class: 'govuk-button button',
                     draggable: 'false',
                     data: { event_action: 'click', event_category: 'course details', event_label: 'join course' },
@@ -36,13 +36,13 @@
         <% else %>
           <p class="govuk-body">
             <%= link_to(
-                @booking.authenticated_title,
-                @booking.booking_path(@activity.stem_course_template_no),
-                class: 'govuk-button button--aside',
-                draggable: 'false',
-                data: { event_action: 'click', event_category: 'course details', event_label: 'join online course' },
-                target: :_blank
-                ) %>
+              @booking.authenticated_title,
+              @booking.booking_path(course_template_no: @course.course_template_no),
+              class: 'govuk-button button--aside',
+              draggable: 'false',
+              data: { event_action: 'click', event_category: 'course details', event_label: 'join online course' },
+              target: :_blank
+              ) %>
           </p>
           <%= render('start-date', date: @start_date) if (@start_date && !@started)  %>
         <% end %>
@@ -93,7 +93,7 @@
                    <%="#{@user_occurrence.address_venue_name}"%><br> <%="#{@user_occurrence.address_line_one}"%><br><%="#{@user_occurrence.address_town}"%><br><%="#{@user_occurrence.address_postcode}" %>
                  <% end %>
                  <br>
-                 <%= link_to 'Go to course', @booking.booking_path(@user_occurrence.course_occurence_no), class: 'govuk-!-font-weight-bold ncce-link' %>
+                 <%= link_to 'Go to course', @booking.booking_path(course_template_no: @user_occurrence.course_template_no, occurrence_id: @user_occurrence.course_occurence_no), class: 'govuk-!-font-weight-bold ncce-link' %>
                </span>
            </li>
          <% end %>

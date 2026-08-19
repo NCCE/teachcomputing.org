@@ -26,6 +26,7 @@ RSpec.describe("courses/_aside-booking", type: :view) do
     before do
       allow_any_instance_of(AuthenticationHelper)
         .to receive(:current_user).and_return(user)
+      allow(Rails.application.config).to receive(:stem_cpd_store_enabled).and_return(true)
     end
 
     context "when its an online course" do
@@ -53,10 +54,15 @@ RSpec.describe("courses/_aside-booking", type: :view) do
           )
         end
 
-        it "renders link to STEM Learning booking page using occurence" do
-          occurence = occurrences.first
-          expected_link = "https://ncce-www-stage-int.stem.org.uk/cpdredirect/#{occurence.course_occurrence_no}"
-          expect(rendered).to have_link("Join", href: expected_link)
+        it "renders a booking link for each occurrence" do
+          occurrences.each do |occurrence|
+            expected_link = online_booking_presenter.booking_path(
+              course_template_no: occurrence.course_template_no, occurrence_id: occurrence.course_occurrence_no
+            )
+            expect(rendered).to have_link("Join", href: expected_link)
+          end
+
+          expect(rendered).to have_css(".ncce-booking-list__item a", count: occurrences.count)
         end
 
         it "does not show the 'View course' button" do
@@ -96,7 +102,7 @@ RSpec.describe("courses/_aside-booking", type: :view) do
           end
 
           it "renders link to STEM Learning booking page" do
-            expected_link = "https://ncce-www-stage-int.stem.org.uk/cpdredirect/#{activity.stem_course_template_no}"
+            expected_link = "#{ENV.fetch("STEM_CPD_STORE_URL")}/course/#{online_course_always_on.course_template_no}"
             expect(rendered).to have_link("Join this course", href: expected_link)
           end
 
@@ -114,7 +120,7 @@ RSpec.describe("courses/_aside-booking", type: :view) do
           end
 
           it "renders link to STEM Learning booking page" do
-            expected_link = "https://ncce-www-stage-int.stem.org.uk/cpdredirect/#{activity.stem_course_template_no}"
+            expected_link = "#{ENV.fetch("STEM_CPD_STORE_URL")}/course/#{online_course_always_on.course_template_no}"
             expect(rendered).to have_link("Join this course", href: expected_link)
           end
 
@@ -285,12 +291,18 @@ RSpec.describe("courses/_aside-booking", type: :view) do
               expect(rendered).to have_css(
                 ".ncce-booking-list__address", text: live_booking_presenter.address(occurrence)
               )
-
-              expect(rendered).to have_link(
-                "Book",
-                href: "https://ncce-www-stage-int.stem.org.uk/cpdredirect/#{occurrence.course_occurrence_no}"
-              )
             end
+          end
+
+          it "shows a booking link against each occurrence" do
+            occurrences.each do |occurrence|
+              expected_link = live_booking_presenter.booking_path(
+                course_template_no: occurrence.course_template_no, occurrence_id: occurrence.course_occurrence_no
+              )
+              expect(rendered).to have_link("Book", href: expected_link)
+            end
+
+            expect(rendered).to have_css(".ncce-booking-list__item a", count: occurrences.count)
           end
 
           it "does not show the 'See more dates' button if there are less than 20 items" do
@@ -300,6 +312,50 @@ RSpec.describe("courses/_aside-booking", type: :view) do
           it "does not show the 'View course' button if there are occurences" do
             expect(rendered).not_to have_link("View course")
           end
+        end
+
+        context "when there are no occurrences" do
+          let(:occurrences) { [] }
+
+          before do
+            assign(:booking, live_booking_presenter)
+            assign(:occurrences, occurrences)
+            assign(:course, course)
+            assign(:activity, activity)
+
+            render
+          end
+
+          it "prompts the user that further instances will be scheduled soon" do
+            expect(rendered).to have_css(".ncce-aside__title", text: "Further instances will be scheduled soon.")
+          end
+
+          it "does not render a booking button" do
+            expect(rendered).not_to have_link("Book")
+          end
+        end
+      end
+
+      context "when the CPD store is disabled" do
+        before do
+          allow(Rails.application.config).to receive(:stem_cpd_store_enabled).and_return(false)
+          assign(:booking, live_booking_presenter)
+          assign(:occurrences, occurrences)
+          assign(:course, course)
+          assign(:activity, activity)
+
+          render
+        end
+
+        it "shows a booking link against each occurrence using the legacy STEM Learning booking path" do
+          occurrences.each do |occurrence|
+            expect(rendered).to have_link(
+              "Book",
+              href: live_booking_presenter.booking_path(course_template_no: occurrence.course_template_no, occurrence_id: occurrence.course_occurrence_no)
+            )
+          end
+
+          expect(rendered).to have_css(".ncce-booking-list__item a", count: occurrences.count)
         end
       end
 
@@ -346,7 +402,7 @@ RSpec.describe("courses/_aside-booking", type: :view) do
         end
 
         it "display a booking path" do
-          expect(rendered).to have_link("Go to course", href: live_booking_presenter.booking_path("cf8903f9-91a2-4d08-ba41-596ea05b498d"))
+          expect(rendered).to have_link("Go to course", href: live_booking_presenter.booking_path(course_template_no: "cf8903f9-91a2-4d08-ba41-596ea05b498d", occurrence_id: "cf8903f9-91a2-4d08-ba41-596ea05b498d"))
         end
 
         it "displays aside title" do
@@ -445,13 +501,44 @@ RSpec.describe("courses/_aside-booking", type: :view) do
               expect(rendered).to have_css(
                 ".ncce-booking-list__address", text: "Live remote training"
               )
-
-              expect(rendered).to have_link(
-                "Book",
-                href: "https://ncce-www-stage-int.stem.org.uk/cpdredirect/#{occurrence.course_occurrence_no}"
-              )
             end
           end
+
+          it "shows a booking link against each occurrence" do
+            occurrences_remote.each do |occurrence|
+              expected_link = live_booking_presenter.booking_path(
+                course_template_no: occurrence.course_template_no, occurrence_id: occurrence.course_occurrence_no
+              )
+              expect(rendered).to have_link("Book", href: expected_link)
+            end
+
+            expect(rendered).to have_css(".ncce-booking-list__item a", count: occurrences_remote.count)
+          end
+        end
+      end
+
+      context "when the CPD store is disabled" do
+        before do
+          allow_any_instance_of(AuthenticationHelper).to receive(:current_user).and_return(user)
+          allow(Rails.application.config).to receive(:stem_cpd_store_enabled).and_return(false)
+
+          assign(:course, course)
+          assign(:booking, live_booking_presenter)
+          assign(:occurrences, occurrences_remote)
+          assign(:activity, activity)
+
+          render
+        end
+
+        it "shows a booking link against each occurrence using the legacy STEM Learning booking path" do
+          occurrences_remote.each do |occurrence|
+            expect(rendered).to have_link(
+              "Book",
+              href: live_booking_presenter.booking_path(course_template_no: occurrence.course_template_no, occurrence_id: occurrence.course_occurrence_no)
+            )
+          end
+
+          expect(rendered).to have_css(".ncce-booking-list__item a", count: occurrences_remote.count)
         end
       end
 
@@ -495,7 +582,7 @@ RSpec.describe("courses/_aside-booking", type: :view) do
         end
 
         it "display a booking path" do
-          expect(rendered).to have_link("Go to course", href: live_booking_presenter.booking_path("cf8903f9-91a2-4d08-ba41-596ea05b498d"))
+          expect(rendered).to have_link("Go to course", href: live_booking_presenter.booking_path(course_template_no: "cf8903f9-91a2-4d08-ba41-596ea05b498d", occurrence_id: "cf8903f9-91a2-4d08-ba41-596ea05b498d"))
         end
       end
 

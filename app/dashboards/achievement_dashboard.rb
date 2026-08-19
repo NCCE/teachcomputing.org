@@ -6,9 +6,13 @@ class AchievementDashboard < BaseDashboard
   # which determines how the attribute is displayed
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
-    activity: GroupedActivityListField,
-    user: Field::BelongsTo,
-    stem_activity_code: Field::String,
+    activity: GroupedActivityListField.with_options(
+      searchable: true, searchable_fields: %w[stem_activity_code title]
+    ),
+    user: Field::BelongsTo.with_options(
+      searchable: true, searchable_fields: %w[email first_name last_name]
+    ),
+    stem_activity_code: Field::String.with_options(searchable: false),
     self_verification_info: Field::String,
     current_state: ValidStatePickerField,
     id: Field::String,
