@@ -39,9 +39,9 @@ RSpec.describe User do
     it { is_expected.to validate_presence_of(:stem_achiever_contact_no) }
     it { is_expected.to validate_presence_of(:stem_credentials_access_token) }
     it { is_expected.to validate_presence_of(:stem_credentials_expires_at) }
-    it { is_expected.to validate_presence_of(:stem_user_id) }
     it { is_expected.to validate_presence_of(:email) }
-    it { is_expected.to validate_uniqueness_of(:stem_user_id) }
+    it { is_expected.to validate_uniqueness_of(:stem_achiever_contact_no).case_insensitive }
+    it { is_expected.to validate_uniqueness_of(:stem_user_id).allow_nil }
     it { is_expected.to validate_uniqueness_of(:teacher_reference_number) }
   end
 
