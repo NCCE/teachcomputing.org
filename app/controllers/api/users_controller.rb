@@ -9,7 +9,11 @@ module Api
     end
 
     def forget
-      user = User.find_by!(stem_user_id: params[:stem_user_id])
+      user = if params[:stem_achiever_contact_no].present?
+        User.find_by!(stem_achiever_contact_no: params[:stem_achiever_contact_no])
+      else
+        User.find_by!(stem_user_id: params[:stem_user_id])
+      end
       user.forget!
       render json: as_json(user)
     end

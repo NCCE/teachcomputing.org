@@ -116,5 +116,20 @@ RSpec.describe Api::UsersController do
         expect(achievement.supporting_evidence.attached?).to be false
       end
     end
+
+    describe "DELETE #forget looked up by stem_achiever_contact_no" do
+      before do
+        delete "/api/users/forget", params: {stem_achiever_contact_no: user.stem_achiever_contact_no}, headers: token_headers
+      end
+
+      it "returns 200 status" do
+        expect(response).to have_http_status(:ok)
+      end
+
+      it "flags the user as forgotten" do
+        updated_user = User.find(user.id)
+        expect(updated_user.forgotten).to be true
+      end
+    end
   end
 end
