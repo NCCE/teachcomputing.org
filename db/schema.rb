@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_08_19_124651) do
+ActiveRecord::Schema[8.1].define(version: 2026_08_20_090000) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
   enable_extension "pgcrypto"
@@ -469,12 +469,13 @@ ActiveRecord::Schema[8.1].define(version: 2026_08_19_124651) do
     t.string "last_name"
     t.datetime "last_sign_in_at", precision: nil
     t.string "school_name"
-    t.uuid "stem_achiever_contact_no"
+    t.uuid "stem_achiever_contact_no", null: false
     t.string "stem_achiever_organisation_no"
     t.datetime "stem_credentials_expires_at", precision: nil
     t.string "stem_user_id"
     t.string "teacher_reference_number"
     t.datetime "updated_at", precision: nil, null: false
+    t.index ["stem_achiever_contact_no"], name: "index_users_on_stem_achiever_contact_no", unique: true
     t.index ["stem_user_id"], name: "index_users_on_stem_user_id", unique: true
     t.index ["teacher_reference_number"], name: "index_users_on_teacher_reference_number", unique: true
   end
