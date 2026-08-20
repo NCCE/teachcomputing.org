@@ -52,16 +52,32 @@ class Achiever::Request
 
     def perform_request(query_string, resource_path, cache, cache_expiry, race_condition_ttl = nil)
       return local_response(resource_path) if ActiveRecord::Type::Boolean.new.cast(ENV.fetch("ACHIEVER_USE_LOCAL_TEMPLATES", "false")) && Rails.env.development?
-      return api.get("#{resource_path}&#{query_string}") unless cache
+
+      key = "#{resource_path}&#{query_string}"
+
+      # `cache: false` only opts a caller out of Rails.cache (e.g. Achiever::Course::Template::_all,
+      # which is itself wrapped in an outer Rails.cache.fetch in production/staging). The dev file
+      # cache has no such outer layer, so it should still apply regardless of that flag.
+      return dev_cached_request(key, cache_expiry) if Rails.env.development?
+      return api.get(key) unless cache
 
       Rails.cache.fetch(
-        "#{resource_path}&#{query_string}",
+        key,
         expires_in: cache_expiry,
         race_condition_ttl:,
         namespace: "achiever"
       ) do
-        api.get("#{resource_path}&#{query_string}")
+        api.get(key)
       end
+    end
+
+    def dev_cached_request(key, cache_expiry)
+      cached = Achiever::Connection.dev_cache_store.read(key, namespace: "achiever")
+      return cached if cached
+
+      response = api.get(key)
+      Achiever::Connection.dev_cache_store.write(key, response, expires_in: cache_expiry, namespace: "achiever") if response.body.present?
+      response
     end
 
     def success?(response, parsed_response)
