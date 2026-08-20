@@ -45,7 +45,7 @@ If you want to skip the OAuth flow you can set `BYPASS_OAUTH` to `true` in your 
 
 Teachcomputing communicates with Stem's staging Dynamics API which is used to populate the course list, and user enrolments etc.
 
-By default the development environment doesn't connect to Dynamics: instead it stubs those responses thanks to this variable `ACHIEVER_USE_LOCAL_TEMPLATES=true`  in `.env.defaults`. See [Offline Dynamics below.](#Offline Dynamics)
+By default the development environment connects to Stem's preprod Dynamics API and caches responses to disk (see below) so repeated requests don't round-trip. If you don't have preprod VPN/Dynamics access, set `ACHIEVER_USE_LOCAL_TEMPLATES=true` in `.env` to stub responses instead. See [Offline Dynamics below.](#Offline Dynamics)
 
 If you have access to connect to a real Dynamics Smart Connector API installation, you'll need to add credentials to `.env` (find staging and preprod credentials in the nonprod section of the heroku project in the terraform repo)
 
@@ -60,9 +60,15 @@ If your IP address is whitelisted, set `PROXY_URL=''` in `.env`. If not, one opt
 
 There are two commands `yarn start-tunnel` and `yarn stop-tunnel` that are wrappers to manage the proxy locally, `yarn start` (below) utilises this to create the tunnel when the stack is brought up. It is important to have this setup for testing, however please see the 'Offline Dynamics' section below for how to run this offline.
 
+If your IP isn't whitelisted (e.g. you're not on the VPN) and the proxy isn't set up, requests to preprod fail silently with an empty response body rather than a clear error — course data will just appear empty. If you hit this, either connect via the proxy/VPN or fall back to `ACHIEVER_USE_LOCAL_TEMPLATES=true` below.
+
+#### Response caching in development
+
+Course/enrolment API responses are cached to disk at `tmp/cache/achiever` for up to a day so local development doesn't hit preprod on every page load. This persists across `yarn stop`/`yarn start`. If data looks wrong or stale, clear it with `rm -rf tmp/cache/achiever`.
+
 ### Offline Dynamics
 
-To develop offline, removing the need for the proxy and a third party API, you can set the following environment variables in your `.env`:
+Local templates are a fallback for developing without preprod VPN/Dynamics access, removing the need for the proxy and a third party API. To use them, set the following environment variables in your `.env`:
 
 ```
 ACHIEVER_USE_LOCAL_TEMPLATES=true
