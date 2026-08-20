@@ -35,9 +35,7 @@ class User < ApplicationRecord
   alias_method :support_audits, :audits
 
   def self.from_auth(id, credentials, info)
-    user = where(stem_achiever_contact_no: info.achiever_contact_no)
-      .order(last_sign_in_at: :desc)
-      .first_or_initialize
+    user = where(stem_achiever_contact_no: info.achiever_contact_no).first_or_initialize
 
     users_with_new_email_count = User.where(email: info.email.downcase).count
 
