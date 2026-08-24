@@ -25,7 +25,7 @@ secondary.programme_activity_groupings.find_by(title: "Develop computing in your
 
 secondary.programme_activity_groupings.find_or_initialize_by(cms_slug: "secondary-cqf").becomes!(ProgrammeActivityGroupings::CqfAssessment).tap do |group|
   group.title = "Progress through the Computing Quality Framework"
-  group.sort_key = 1
+  group.sort_key = 2
   group.required_for_completion = 1
   group.programme_id = secondary.id
   group.community = false
@@ -40,7 +40,7 @@ end.save!
 
 secondary.programme_activity_groupings.find_or_initialize_by(cms_slug: "secondary-pd-activity").becomes!(ProgrammeActivityGroupings::ProfessionalDevelopmentActivity).tap do |group|
   group.title = "Show how you have implemented your professional learning"
-  group.sort_key = 2
+  group.sort_key = 1
   group.required_for_completion = 1
   group.programme_id = secondary.id
   group.community = false
