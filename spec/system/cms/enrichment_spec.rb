@@ -12,30 +12,30 @@ RSpec.describe("Enrichment Page", type: [:system]) do
   let(:resource) { Cms::Mocks::Collections::EnrichmentType.generate_raw_data(name: "Resource") }
 
   let(:enrichments) {
-    {data: [
+    [
       Cms::Mocks::Collections::Enrichment.generate_raw_data(
         featured: true,
-        terms: {data: [autumn_term]},
-        age_groups: {data: [ks1]},
-        type: {data: challenge},
+        terms: [autumn_term],
+        age_groups: [ks1],
+        type: challenge,
         rich_title: Cms::Mocks::Text::RichBlocks.single_line("Featured Item")
       ),
       Cms::Mocks::Collections::Enrichment.generate_raw_data(
-        terms: {data: [autumn_term]},
-        age_groups: {data: [ks2]},
-        type: {data: challenge}
+        terms: [autumn_term],
+        age_groups: [ks2],
+        type: challenge
       ),
       Cms::Mocks::Collections::Enrichment.generate_raw_data(
-        terms: {data: [summer_term]},
-        age_groups: {data: [ks1]},
-        type: {data: resource}
+        terms: [summer_term],
+        age_groups: [ks1],
+        type: resource
       ),
       Cms::Mocks::Collections::Enrichment.generate_raw_data(
-        terms: {data: [summer_term, autumn_term]},
-        age_groups: {data: [ks1]},
-        type: {data: resource}
+        terms: [summer_term, autumn_term],
+        age_groups: [ks1],
+        type: resource
       )
-    ]}
+    ]
   }
 
   before do

@@ -16,7 +16,7 @@ class DownloadsController < ApplicationController
     aggregate_download.downloads << download
 
     if download.save
-      redirect_to aggregate_download.uri
+      redirect_to aggregate_download.uri, allow_other_host: true
     else
       flash[:error] = "There was a problem creating download. Please contact support"
     end

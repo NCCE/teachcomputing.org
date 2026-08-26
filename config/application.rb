@@ -12,9 +12,10 @@ module TeachComputing
     config.action_dispatch.cookies_same_site_protection = :lax
 
     # Initialize configuration defaults for originally generated Rails version.
-    config.load_defaults 6.0
+    config.load_defaults 8.1
 
-    config.active_support.cache_format_version = 7.1
+    # Keep Rails UJS remote form behavior until Phase 3 (importmap/turbo migration).
+    config.action_view.form_with_generates_remote_forms = true
 
     # Please, add to the `ignore` list any other `lib` subdirectories that do
     # not contain `.rb` files, or that should not be reloaded or eager loaded.
@@ -60,6 +61,8 @@ module TeachComputing
     config.stem_credentials_refresh_token = ENV["STEM_CREDENTIALS_REFRESH_TOKEN_KEY"]
 
     config.stem_course_redirect = ENV["STEM_COURSE_REDIRECT"]
+    config.stem_cpd_store_url = ENV["STEM_CPD_STORE_URL"]
+    config.stem_cpd_store_enabled = ENV["STEM_CPD_STORE_ENABLED"] == "true"
 
     # default is true
     config.secure_cookies = ENV["SECURE_COOKIES"] != "off"

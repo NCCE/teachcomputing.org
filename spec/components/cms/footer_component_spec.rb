@@ -15,7 +15,9 @@ RSpec.describe Cms::FooterComponent, type: :component do
   end
 
   it "renders company and funder logo images" do
-    expect(page).to have_css("img", count: 2)
+    within(".cms-footer-component-wrapper > div:first-child") do
+      expect(page).to have_css("img", count: 2)
+    end
   end
 
   it "has the company logo link" do

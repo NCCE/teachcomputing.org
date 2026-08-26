@@ -17,6 +17,17 @@ $aside-padding: 1rem;
   }
 }
 
+.ncce-aside__expiry-heading {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+
+  img {
+    width: 2.5rem;
+    height: 2.5rem;
+  }
+}
+
 .ncce-aside--borderless {
   padding-top: $aside-padding;
 }

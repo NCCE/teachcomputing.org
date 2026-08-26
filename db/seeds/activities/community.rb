@@ -798,14 +798,13 @@ end.save!
 
 Activity.find_or_initialize_by(slug: "join-and-present-at-your-local-computing-at-school-community").tap do |activity|
   activity.title = "Join one of the Computing at School Communities and present at a community meeting"
-  activity.title = "Join one of the Computing at School Communities and present at a community meeting"
   activity.credit = 10
   activity.slug = "join-and-present-at-your-local-computing-at-school-community"
   activity.category = "community"
   activity.provider = "stem-learning"
   activity.self_certifiable = true
-  activity.description = "<a href='#{cas_communities_url}'>Computing at School</a> (CAS) Communities are a great way to connect with other teachers, share resources, join discussions in the forums or share something you've created. Join a local event and offer your insights, ideas and expertise to colleagues. "
-  activity.public_copy_description = "<a href='#{cas_communities_url}'>Computing at School</a> (CAS) Communities are a great way to connect with other teachers, share resources, join discussions in the forums or share something you've created. Join a local event and offer your insights, ideas and expertise to colleagues. "
+  activity.description = "<a href='#{cas_communities_url}'>Computing at School</a> (CAS) Communities are a great way to connect with other teachers, share resources, join discussions in the forums or share something you've created. Present at a community meeting to offer your insights, ideas and expertise to colleagues."
+  activity.public_copy_description = "<a href='#{cas_communities_url}'>Computing at School</a> (CAS) Communities are a great way to connect with other teachers, share resources, join discussions in the forums or share something you've created. Present at a community meeting to offer your insights, ideas and expertise to colleagues."
   activity.public_copy_title_url = cas_communities_url
   activity.self_verification_info = nil
   activity.public_copy_evidence = [{

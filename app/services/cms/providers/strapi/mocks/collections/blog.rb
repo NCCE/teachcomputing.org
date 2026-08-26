@@ -10,7 +10,7 @@ module Cms
             attribute(:excerpt) { Faker::Lorem.paragraph }
             attribute(:seo) { Meta::Seo.generate_raw_data }
             attribute(:title) { Faker::Lorem.sentence }
-            attribute(:featuredImage) { {data: Images::Image.generate_raw_data} }
+            attribute(:featuredImage) { Images::Image.generate_raw_data }
           end
         end
       end

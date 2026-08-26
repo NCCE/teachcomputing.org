@@ -11,13 +11,7 @@ module Cms
             attribute(:asideIcons) { [] }
 
             def self.generate_aside_list(aside_slugs: [])
-              aside_slugs.map! do |slug|
-                {
-                  id: Faker::Number.number,
-                  slug:
-                }
-              end
-              {data: aside_slugs.map { {attributes: _1} }}
+              aside_slugs.map { |slug| {id: Faker::Number.number, slug:} }
             end
           end
         end

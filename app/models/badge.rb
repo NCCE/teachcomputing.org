@@ -4,7 +4,7 @@ class Badge < ApplicationRecord
   validates :academic_year, presence: true, format: /\A\d{4}-\d{2}\z/
   validates :trigger_type, presence: true
 
-  enum trigger_type: [:cpd, :completion]
+  enum :trigger_type, [:cpd, :completion]
 
   scope :active, -> { where(active: true) }
 end

@@ -1,5 +1,6 @@
 {
   "name": "teachcomputing",
+  "stack": "heroku-26",
   "scripts": {
     "postdeploy": "bin/rails db:migrate"
   },

@@ -9,7 +9,7 @@ module Cms
 
               attribute(:loggedOutButtonText) { Faker::Lorem.word }
               attribute(:loggedInButtonText) { Faker::Lorem.word }
-              attribute(:programme) { {data: {attributes: {slug: "primary-certificate"}}} }
+              attribute(:programme) { {slug: "primary-certificate"} }
             end
           end
         end

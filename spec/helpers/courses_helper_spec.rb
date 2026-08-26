@@ -85,8 +85,22 @@ describe CoursesHelper, type: :helper do
   end
 
   describe("#stem_course_link") do
-    it "returns the link to the course page on stem.org.uk" do
-      expect(helper.stem_course_link("01de2624")).to eq "#{ENV.fetch("STEM_COURSE_REDIRECT")}/cpdredirect/01de2624"
+    context "when the CPD store is enabled" do
+      before { allow(Rails.application.config).to receive(:stem_cpd_store_enabled).and_return(true) }
+
+      it "returns the link to the course page on the CPD store" do
+        expect(helper.stem_course_link("f47ac10b-58cc-4372-a567-0e02b2c3d479"))
+          .to eq "#{ENV.fetch("STEM_CPD_STORE_URL")}/course/f47ac10b-58cc-4372-a567-0e02b2c3d479"
+      end
+    end
+
+    context "when the CPD store is disabled" do
+      before { allow(Rails.application.config).to receive(:stem_cpd_store_enabled).and_return(false) }
+
+      it "returns the link to the course page on stem.org.uk" do
+        expect(helper.stem_course_link("f47ac10b-58cc-4372-a567-0e02b2c3d479"))
+          .to eq "#{ENV.fetch("STEM_COURSE_REDIRECT")}/cpdredirect/f47ac10b-58cc-4372-a567-0e02b2c3d479"
+      end
     end
   end
 
@@ -260,10 +274,10 @@ describe CoursesHelper, type: :helper do
                   preload="none" tabindex="-1"
                   src="/Videos/video.mp4">
                   <source src="/Videos/video.mp4"
-                    type="video/mp4"></source>
+                    type="video/mp4">
                   <track class="track"
                     src="/Videos/captions.vtt" kind="captions"
-                    srclang="EN" label="English"></track>
+                    srclang="EN" label="English">
                 </video>'
 
       expect(helper.sanitize_stem_html(video).gsub(/\s/, "")).to eq video.to_s.gsub(/\s/, "")
@@ -369,6 +383,34 @@ describe CoursesHelper, type: :helper do
       stub_course_templates
       stub_duration_units
       expect(helper.course_duration_text(course_template)).to eq("5 hours")
+    end
+  end
+
+  describe "#always_on_access_expired?" do
+    let(:always_on_activity) { create(:activity, always_on: true) }
+    let(:regular_activity) { create(:activity, always_on: false) }
+
+    it "returns false when activity is nil" do
+      expect(helper.always_on_access_expired?(user, nil)).to be false
+    end
+
+    it "returns false for a non-always_on activity" do
+      create(:achievement, user: user, activity: regular_activity, created_at: 2.years.ago)
+      expect(helper.always_on_access_expired?(user, regular_activity)).to be false
+    end
+
+    it "returns false when no achievement exists" do
+      expect(helper.always_on_access_expired?(user, always_on_activity)).to be false
+    end
+
+    it "returns false when achievement is under 1 year old" do
+      create(:achievement, user: user, activity: always_on_activity, created_at: 6.months.ago)
+      expect(helper.always_on_access_expired?(user, always_on_activity)).to be false
+    end
+
+    it "returns true when achievement is over 1 year old" do
+      create(:achievement, user: user, activity: always_on_activity, created_at: 2.years.ago)
+      expect(helper.always_on_access_expired?(user, always_on_activity)).to be true
     end
   end
 end

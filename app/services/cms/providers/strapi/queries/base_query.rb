@@ -66,47 +66,44 @@ module Cms
             ]
             <<~GRAPHQL.freeze
               query {
-                #{resource_name}(#{param_strings.join(" ")}) {
-                  meta {
-                    pagination {
-                      page pageSize pageCount total
-                    }
+                #{resource_name}_connection(#{param_strings.join(" ")}) {
+                  nodes {
+                    documentId
+                    updatedAt
+                    createdAt
+                    publishedAt
+                    #{build_collection_fields.join("\n")}
                   }
-                  data {
-                    id
-                    attributes {
-                      updatedAt
-                      createdAt
-                      publishedAt
-                      #{build_collection_fields.join("\n")}
-                    }
+                  pageInfo {
+                    total
+                    page
+                    pageSize
+                    pageCount
                   }
                 }
               }
             GRAPHQL
           end
 
-          def single_query(id = nil)
+          def single_query(id = nil, preview: false)
             filters = {}
             if @collection_class.is_collection
               raise StandardError if id.nil?
               filters[resource_filter] = {eq: id}
             end
-            filter_string = if filters.any?
-              "(#{query_string(:filters, filters)})"
-            end
+            args = []
+            args << query_string(:filters, filters) if filters.any?
+            # Ask Strapi for the draft version so unpublished pages are visible in preview.
+            args << "status: DRAFT" if preview
+            arg_string = "(#{args.join(" ")})" if args.any?
             <<~GRAPHQL.freeze
               query {
-                #{resource_name} #{filter_string} {
-                  data {
-                    #{"id" if @collection_class.is_collection}
-                    attributes {
-                      updatedAt
-                      createdAt
-                      publishedAt
-                      #{build_resource_fields.join("\n")}
-                    }
-                  }
+                #{resource_name} #{arg_string} {
+                  #{"documentId" if @collection_class.is_collection}
+                  updatedAt
+                  createdAt
+                  publishedAt
+                  #{build_resource_fields.join("\n")}
                 }
               }
             GRAPHQL

@@ -4,8 +4,8 @@ module Cms
       module Mocks
         module Singles
           class Footer < StrapiMock
-            attribute(:companyLogo) { {data: Mocks::Images::Image.generate_raw_data} }
-            attribute(:funderLogo) { {data: Mocks::Images::Image.generate_raw_data} }
+            attribute(:companyLogo) { Mocks::Images::Image.generate_raw_data }
+            attribute(:funderLogo) { Mocks::Images::Image.generate_raw_data }
             attribute(:companyLogoLink) { Faker::Internet.url }
             attribute(:funderLogoLink) { Faker::Internet.url }
             attribute(:linkBlock) { Array.new(4) { FooterLinkBlock.generate_data } }

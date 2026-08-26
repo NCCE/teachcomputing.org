@@ -17,13 +17,14 @@ module Cms
           raise ActiveRecord::RecordNotFound if response.errors.any?
 
           data = clean_aliases(response.original_hash)
-          to_paginated_response(collection_class, data[:data][collection_class.graphql_key.to_sym])
+          connection_key = :"#{collection_class.graphql_key}_connection"
+          to_paginated_response(collection_class, data[:data][connection_key])
         end
 
         def one(resource_class, resource_id = nil, preview: false, preview_key: nil)
           query = Queries::BaseQuery.new(resource_class)
           begin
-            response = @connection.execute(query.single_query(resource_id))
+            response = @connection.execute(query.single_query(resource_id, preview:))
           rescue => e
             Sentry.capture_exception(e)
             raise ActiveRecord::RecordNotFound
@@ -33,9 +34,9 @@ module Cms
 
           data = clean_aliases(response.original_hash)
 
-          results = data[:data][resource_class.graphql_key.to_sym][:data]
+          results = data[:data][resource_class.graphql_key.to_sym]
 
-          raise ActiveRecord::RecordNotFound if results.empty?
+          raise ActiveRecord::RecordNotFound if results.nil? || (results.is_a?(Array) && results.empty?)
 
           record = if resource_class.is_collection
             results.first

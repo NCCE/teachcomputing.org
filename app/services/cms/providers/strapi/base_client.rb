@@ -5,31 +5,36 @@ module Cms
         private
 
         def to_paginated_response(collection_class, data)
+          items, pagination = if data.key?(:nodes)
+            [data[:nodes], data[:pageInfo] || {}]
+          else
+            [data[:data], data.dig(:meta, :pagination) || {}]
+          end
           {
-            resources: data[:data].map { map_collection(collection_class, _1) },
-            page: data[:meta][:pagination][:page],
-            page_size: data[:meta][:pagination][:pageSize],
-            page_number: data[:meta][:pagination][:pageCount],
-            total_records: data[:meta][:pagination][:total]
+            resources: items.map { map_collection(collection_class, _1) },
+            page: pagination[:page] || 1,
+            page_size: pagination[:pageSize] || items.size,
+            page_number: pagination[:pageCount] || 1,
+            total_records: pagination[:total] || items.size
           }
         end
 
         def map_collection(collection_class, data)
-          to_resource(data[:id], data[:attributes], process_models(collection_class.collection_attribute_mappings, data[:attributes]))
+          to_resource(data[:documentId] || data[:id], data, process_models(collection_class.collection_attribute_mappings, data))
         end
 
         def map_resource(resource_class, data, has_preview = false, preview_key = nil)
-          attributes = if has_preview && data[:attributes].has_key?(:versions) # deal with the fact plugin doesnt return versions for some models
-            versions = data[:attributes][:versions][:data]
-            version_to_show = versions.find { _1[:attributes][:versionNumber].to_s == preview_key } || versions.last
-            version_to_show[:attributes]
+          attributes = if has_preview && data.key?(:versions)
+            versions = data[:versions]
+            version_to_show = versions.find { _1[:versionNumber].to_s == preview_key } || versions.last
+            version_to_show
           else
-            data[:attributes]
+            data
           end
 
           raise ActiveRecord::RecordNotFound if !has_preview && attributes[:publishedAt].blank?
 
-          to_resource(data[:id], attributes, process_models(resource_class.resource_attribute_mappings, attributes), preview: has_preview)
+          to_resource(data[:documentId] || data[:id], attributes, process_models(resource_class.resource_attribute_mappings, attributes), preview: has_preview)
         end
 
         def process_models(mappings, data)

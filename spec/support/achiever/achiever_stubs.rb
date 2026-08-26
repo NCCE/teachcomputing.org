@@ -82,6 +82,12 @@ module AchieverStubs
     stub_request(:get, uri_template).to_return(body: json_response)
   end
 
+  def stub_delegate_re_enrolled
+    json_response = File.new("spec/support/achiever/courses/delegate_re_enrolled.json")
+    uri_template = Addressable::Template.new "https://stemraspberrypiapi.dev3.smartmembership.net/smartconnector.smartconnector.svc/JSON/Get?CONTACTNO={contact_no}&Page=1&ProgrammeName=ncce&RecordCount=1000&cmd=CoursesForCurrentDelegateByProgramme"
+    stub_request(:get, uri_template).to_return(body: json_response)
+  end
+
   def stub_duration_units
     json_response = File.new("spec/support/achiever/courses/duration_units.json")
     stub_request(:get,

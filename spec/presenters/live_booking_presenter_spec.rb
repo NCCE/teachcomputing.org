@@ -47,67 +47,43 @@ RSpec.describe LiveBookingPresenter do
     end
   end
 
-  describe "#completed_button_introduction" do
-    it "is not implemented" do
-      expect { described_class.new.completed_button_introduction }.to raise_error(NotImplementedError)
-    end
-  end
-
-  describe "#completed_button_title" do
-    it "is not implemented" do
-      expect { described_class.new.completed_button_title }.to raise_error(NotImplementedError)
-    end
-  end
-
   describe "#activity_date" do
     it "reformats a date and time string" do
       expect(described_class.new.activity_date("01/06/2023 10:30:55", "01/06/1023 16:30:55")).to eq "1st June 2023, Thursday 10:30"
     end
   end
 
-  describe "#course_button" do
-    context "when no occurrences" do
-      it "links to the course booking path" do
-        expect(
-          described_class.new.course_button([], "FAKE_COURSE_ID")
-        ).to match(/href="https:\/\/ncce-www-stage-int.stem.org.uk\/cpdredirect\/FAKE_COURSE_ID"/)
-      end
-
-      it 'says "View course"' do
-        expect(
-          described_class.new.course_button([], "FAKE_COURSE_ID")
-        ).to match(/>View course<\/a>/)
-      end
-    end
-
-    context "when 20 occurrences" do
-      it "links to the course booking path" do
-        expect(
-          described_class.new.course_button(Array.new(20), "FAKE_COURSE_ID")
-        ).to match(/href="https:\/\/ncce-www-stage-int.stem.org.uk\/cpdredirect\/FAKE_COURSE_ID"/)
-      end
-
-      it 'says "See more dates"' do
-        expect(
-          described_class.new.course_button(Array.new(20), "FAKE_COURSE_ID")
-        ).to match(/>See more dates<\/a>/)
-      end
-    end
-
-    context "when < 20 occurrences" do
-      it "is nil" do
-        expect(
-          described_class.new.course_button(Array.new(19), "FAKE_COURSE_ID")
-        ).to be_nil
-      end
-    end
-  end
-
   describe "#booking_path" do
-    it "is the full URI of the stem website booking" do
-      expect(
-        described_class.new.booking_path("FAKE_COURSE_ID")
-      ).to eq "https://ncce-www-stage-int.stem.org.uk/cpdredirect/FAKE_COURSE_ID"
+    context "when the CPD store is enabled" do
+      before { allow(Rails.application.config).to receive(:stem_cpd_store_enabled).and_return(true) }
+
+      it "is the full URI of the CPD store booking when there is no specific occurrence" do
+        expect(
+          described_class.new.booking_path(course_template_no: "FAKE_TEMPLATE_ID")
+        ).to eq "#{ENV.fetch("STEM_CPD_STORE_URL")}/course/FAKE_TEMPLATE_ID"
+      end
+
+      it "includes the occurrence id as an instance query param when given" do
+        expect(
+          described_class.new.booking_path(course_template_no: "FAKE_TEMPLATE_ID", occurrence_id: "FAKE_OCCURRENCE_ID")
+        ).to eq "#{ENV.fetch("STEM_CPD_STORE_URL")}/course/FAKE_TEMPLATE_ID?instance=FAKE_OCCURRENCE_ID"
+      end
+    end
+
+    context "when the CPD store is disabled" do
+      before { allow(Rails.application.config).to receive(:stem_cpd_store_enabled).and_return(false) }
+
+      it "is the full URI of the legacy STEM Learning booking using the occurrence id" do
+        expect(
+          described_class.new.booking_path(course_template_no: "FAKE_TEMPLATE_ID", occurrence_id: "FAKE_OCCURRENCE_ID")
+        ).to eq "#{ENV.fetch("STEM_COURSE_REDIRECT")}/cpdredirect/FAKE_OCCURRENCE_ID"
+      end
+
+      it "falls back to the course template no when there is no specific occurrence" do
+        expect(
+          described_class.new.booking_path(course_template_no: "FAKE_TEMPLATE_ID")
+        ).to eq "#{ENV.fetch("STEM_COURSE_REDIRECT")}/cpdredirect/FAKE_TEMPLATE_ID"
+      end
     end
   end
 

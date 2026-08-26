@@ -5,7 +5,7 @@ module Curriculum
       file_upload = CurriculumClient::Queries::FileUpload.one(slug).file_upload
 
       if file_upload && file_upload.file.present?
-        redirect_to file_upload.file
+        redirect_to file_upload.file, allow_other_host: true
       else
         render plain: "File not found", status: :not_found
       end

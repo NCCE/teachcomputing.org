@@ -32,7 +32,7 @@ class CoursesController < ApplicationController
     begin
       @course = Achiever::Course::Template.find_by_activity_code(params[:id])
     rescue ActiveRecord::RecordNotFound
-      activity = Activity.find_by!(stem_activity_code: params[:id])
+      activity = Activity.find_by!(stem_activity_code: params[:id].upcase)
 
       if activity.replaced_by
         return redirect_to course_path(id: activity.replaced_by.stem_activity_code, name: activity.replaced_by.title.parameterize)

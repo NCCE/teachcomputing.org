@@ -10,7 +10,7 @@ module Cms
             when "text-block"
               to_content_block(strapi_data[:textContent])
             when "file-link"
-              file_data = strapi_data.dig(:file, :data) ? strapi_data[:file][:data][:attributes] : nil
+              file_data = strapi_data[:file]
               to_file(file_data) if file_data
             when "linked-picture"
               to_linked_picture(strapi_data)

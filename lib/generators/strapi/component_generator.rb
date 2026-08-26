@@ -48,20 +48,11 @@ module Strapi
 
     def run_view_component_generator
       Rails::Generators.invoke(
-        "component",
+        "view_component:component",
         ["Cms::#{@component_name_class}", *@rails_param_names, "--test-framework=rspec", "--sidecar", "--preview"].compact,
-        behaviour: :invoke,
+        behavior: :invoke,
         destination_root:
       )
-    rescue
-      puts <<~HEREDOC
-        #{"*" * 80}
-        Unable to create component, please run this command seperatly
-
-        rails generate component Cms::#{@component_name_class} #{@rails_param_names.join(" ")} --test-framework=rspec
-        #{"*" * 80}
-
-      HEREDOC
     end
 
     def print_method_defintions

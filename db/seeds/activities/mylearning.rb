@@ -380,6 +380,7 @@ Activity.find_or_initialize_by(stem_course_template_no: "6abeb4f1-c9ee-ef11-9341
   activity.provider = "stem-learning"
   activity.stem_activity_code = "CO454"
   activity.always_on = true
+  activity.course_video_url = "https://www.youtube.com/watch?v=AMxnRlfRr80"
 
   activity.programmes = [primary_certificate]
 end.save!
@@ -440,6 +441,7 @@ Activity.find_or_initialize_by(stem_course_template_no: "dfe72774-e4ea-ef11-9342
   activity.provider = "stem-learning"
   activity.stem_activity_code = "CO007"
   activity.always_on = true
+  activity.course_video_url = "https://www.youtube.com/watch?v=MHgZFHKZWOw"
 
   activity.programmes = [primary_certificate]
 end.save!
@@ -515,6 +517,7 @@ Activity.find_or_initialize_by(stem_course_template_no: "891a93e4-e8ea-ef11-9341
   activity.provider = "stem-learning"
   activity.stem_activity_code = "CO455"
   activity.always_on = true
+  activity.course_video_url = "https://www.youtube.com/watch?v=SG0see5NEsE"
 
   activity.programmes = [primary_certificate]
 end.save!
@@ -650,6 +653,7 @@ Activity.find_or_initialize_by(stem_course_template_no: "399f8d65-e8f8-ef11-bae2
   activity.provider = "stem-learning"
   activity.stem_activity_code = "CO005"
   activity.always_on = true
+  activity.course_video_url = "https://www.youtube.com/watch?v=URs3cpOcFXs"
 
   activity.programmes = [primary_certificate]
 end.save!
@@ -665,6 +669,7 @@ Activity.find_or_initialize_by(stem_course_template_no: "40967a7e-eaf8-ef11-bae2
   activity.provider = "stem-learning"
   activity.stem_activity_code = "CO008"
   activity.always_on = true
+  activity.course_video_url = "https://www.youtube.com/watch?v=d5L0E09H_OU"
 
   activity.programmes = [primary_certificate]
 end.save!
@@ -785,6 +790,7 @@ Activity.find_or_initialize_by(stem_course_template_no: "85468e71-b3f9-ef11-bae2
   activity.provider = "stem-learning"
   activity.stem_activity_code = "CO442"
   activity.always_on = true
+  activity.course_video_url = "https://www.youtube.com/watch?v=TS4DSwYhDd8"
 
   activity.programmes = [secondary_certificate]
 end.save!
@@ -845,6 +851,7 @@ Activity.find_or_initialize_by(stem_course_template_no: "d12b85a4-abf9-ef11-bae2
   activity.provider = "stem-learning"
   activity.stem_activity_code = "CO223"
   activity.always_on = true
+  activity.course_video_url = "https://www.youtube.com/watch?v=hzRe7gojx4g"
 
   activity.programmes = [cs_accelerator]
 end.save!
@@ -860,6 +867,7 @@ Activity.find_or_initialize_by(stem_course_template_no: "4eff3a06-adf9-ef11-bae2
   activity.provider = "stem-learning"
   activity.stem_activity_code = "CO438"
   activity.always_on = true
+  activity.course_video_url = "https://www.youtube.com/watch?v=KlHkCqlqnbI"
 
   activity.programmes = [cs_accelerator]
 end.save!
@@ -875,6 +883,7 @@ Activity.find_or_initialize_by(stem_course_template_no: "b56c8818-b2f9-ef11-bae2
   activity.provider = "stem-learning"
   activity.stem_activity_code = "CO428"
   activity.always_on = true
+  activity.course_video_url = "https://www.youtube.com/watch?v=KlHkCqlqnbI"
 
   activity.programmes = [cs_accelerator]
 end.save!
@@ -1130,6 +1139,7 @@ Activity.find_or_initialize_by(stem_course_template_no: "b3b2601b-e420-f011-998a
   activity.provider = "stem-learning"
   activity.stem_activity_code = "CO408"
   activity.always_on = true
+  activity.course_video_url = "https://www.youtube.com/watch?v=ZsMuxYL-KhU"
 
   activity.programmes = [primary_certificate]
 end.save!

@@ -45,7 +45,11 @@ module CoursesHelper
   end
 
   def stem_course_link(course_template_no)
-    "#{Rails.application.config.stem_course_redirect}/cpdredirect/#{course_template_no}"
+    if Rails.application.config.stem_cpd_store_enabled
+      "#{Rails.application.config.stem_cpd_store_url}/course/#{course_template_no}"
+    else
+      "#{Rails.application.config.stem_course_redirect}/cpdredirect/#{course_template_no}"
+    end
   end
 
   def stripped_summary(string)
@@ -86,6 +90,22 @@ module CoursesHelper
     return :not_enrolled unless achievement
 
     achievement.current_state.to_sym
+  end
+
+  def always_on_access_expired?(user, activity)
+    return false unless activity&.always_on
+
+    achievement = Achievement.find_by(user_id: user.id, activity_id: activity.id)
+    return false unless achievement
+
+    achievement.created_at < 1.year.ago
+  end
+
+  def should_rejoin_course?(user, activity, course)
+    return false unless user
+    return false unless course.online_cpd
+
+    user_achievement_state(user, activity) == :enrolled && !always_on_access_expired?(user, activity)
   end
 
   def other_courses_on_programme(courses, course, programme, how_many = 3)

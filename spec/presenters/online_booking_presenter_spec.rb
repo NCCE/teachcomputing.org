@@ -64,11 +64,37 @@ RSpec.describe OnlineBookingPresenter do
     it { expect(described_class.new.unauthenticated_booking_button_title).to eq("Login to join") }
   end
 
-  describe "completed_button_title" do
-    it { expect(described_class.new.completed_button_title).to eq("Visit MyLearning") }
-  end
+  describe "#booking_path" do
+    context "when the CPD store is enabled" do
+      before { allow(Rails.application.config).to receive(:stem_cpd_store_enabled).and_return(true) }
 
-  describe "completed_button_introduction" do
-    it { expect(described_class.new.completed_button_introduction).to eq("You will be taken to the MyLearning platform for further details.") }
+      it "is the full URI of the CPD store booking when there is no specific occurrence" do
+        expect(
+          described_class.new.booking_path(course_template_no: "FAKE_TEMPLATE_ID")
+        ).to eq "#{ENV.fetch("STEM_CPD_STORE_URL")}/course/FAKE_TEMPLATE_ID"
+      end
+
+      it "includes the occurrence id as an instance query param when given" do
+        expect(
+          described_class.new.booking_path(course_template_no: "FAKE_TEMPLATE_ID", occurrence_id: "FAKE_OCCURRENCE_ID")
+        ).to eq "#{ENV.fetch("STEM_CPD_STORE_URL")}/course/FAKE_TEMPLATE_ID?instance=FAKE_OCCURRENCE_ID"
+      end
+    end
+
+    context "when the CPD store is disabled" do
+      before { allow(Rails.application.config).to receive(:stem_cpd_store_enabled).and_return(false) }
+
+      it "is the full URI of the legacy STEM Learning booking using the occurrence id" do
+        expect(
+          described_class.new.booking_path(course_template_no: "FAKE_TEMPLATE_ID", occurrence_id: "FAKE_OCCURRENCE_ID")
+        ).to eq "#{ENV.fetch("STEM_COURSE_REDIRECT")}/cpdredirect/FAKE_OCCURRENCE_ID"
+      end
+
+      it "falls back to the course template no when there is no specific occurrence" do
+        expect(
+          described_class.new.booking_path(course_template_no: "FAKE_TEMPLATE_ID")
+        ).to eq "#{ENV.fetch("STEM_COURSE_REDIRECT")}/cpdredirect/FAKE_TEMPLATE_ID"
+      end
+    end
   end
 end

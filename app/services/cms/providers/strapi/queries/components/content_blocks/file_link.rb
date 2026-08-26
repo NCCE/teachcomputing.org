@@ -9,7 +9,7 @@ module Cms
 
               def self.base_fields
                 <<~GRAPHQL.freeze
-                  #{SharedFields.image_fields(:file)}
+                  #{SharedFields.file_fields(:file)}
                 GRAPHQL
               end
             end

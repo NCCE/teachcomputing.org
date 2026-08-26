@@ -34,7 +34,7 @@ module Cms
             when "community-activity-list"
               to_community_activity_list(strapi_data)
             when "sticky-dashboard-bar"
-              Models::DynamicComponents::Blocks::StickyDashboardBar.new(programme_slug: strapi_data[:programme][:data][:attributes][:slug])
+              Models::DynamicComponents::Blocks::StickyDashboardBar.new(programme_slug: strapi_data[:programme][:slug])
             when "enrolment-testimonial"
               to_enrolment_testimonial(strapi_data)
             when "enrolment-split-course-card"
@@ -210,7 +210,7 @@ module Cms
               color_theme: extract_color_name(strapi_data, :colorTheme),
               aside_title: strapi_data[:asideTitle],
               aside_icon: to_image(strapi_data, :asideIcon),
-              programme_slug: strapi_data[:programme][:data][:attributes][:slug]
+              programme_slug: strapi_data[:programme][:slug]
             )
           end
 
@@ -221,7 +221,7 @@ module Cms
               enrolled_aside: extract_aside_sections(strapi_data, param_name: :enrolledAside),
               enrol_aside: extract_aside_sections(strapi_data, param_name: :enrolAside),
               background_color: extract_color_name(strapi_data, :bkColor),
-              programme_slug: strapi_data[:programme][:data][:attributes][:slug]
+              programme_slug: strapi_data[:programme][:slug]
             )
           end
 
@@ -229,7 +229,7 @@ module Cms
             Models::DynamicComponents::Blocks::CommunityActivityGrid.new(
               title: strapi_data[:title],
               intro: to_content_block(strapi_data[:intro]),
-              programme_activity_group_slug: strapi_data[:group][:data][:attributes][:slug]
+              programme_activity_group_slug: strapi_data[:group][:slug]
             )
           end
 

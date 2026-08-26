@@ -64,5 +64,34 @@ RSpec.describe Cms::Providers::Strapi::Queries::BaseQuery do
     it "should include filter" do
       expect(single_query).to include("filters: { slug: { eq: \"test-key\" } }")
     end
+
+    context "with preview" do
+      it "requests draft content for a collection" do
+        query = described_class.new(Cms::Collections::Blog).single_query("test-key", preview: true)
+        expect(query).to match(/status:\s*DRAFT/)
+      end
+
+      it "still includes the slug filter alongside the draft status" do
+        query = described_class.new(Cms::Collections::Blog).single_query("test-key", preview: true)
+        expect(query).to include("filters: { slug: { eq: \"test-key\" } }")
+        expect(query).to match(/status:\s*DRAFT/)
+      end
+
+      it "requests draft content for a single type that has no filters" do
+        query = described_class.new(Cms::Singles::Homepage).single_query(nil, preview: true)
+        expect(query).to match(/status:\s*DRAFT/)
+      end
+    end
+
+    context "without preview" do
+      it "does not request draft content for a single type" do
+        query = described_class.new(Cms::Singles::Homepage).single_query
+        expect(query).not_to match(/status:/)
+      end
+
+      it "does not request draft content for a collection" do
+        expect(single_query).not_to match(/status:/)
+      end
+    end
   end
 end

@@ -51,8 +51,6 @@
   <% end %>
 
   <%= row.with_column("one-third") do %>
-    <% if in_progress_courses.present? || completed_courses.present? %>
-        <%= render_parent %>
-    <% end %>
+    <%= render_parent %>
   <% end %>
 <% end %>

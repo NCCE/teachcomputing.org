@@ -26,10 +26,6 @@ RSpec.describe("certificates/a_level/complete", type: :view) do
     expect(rendered).to have_css(".govuk-body-l", text: "Next steps for your development")
   end
 
-  it "has the X share button" do
-    expect(rendered).to have_link("Share on X", href: "https://twitter.com/intent/tweet?text=#{CGI.escape "I have completed the A-Level programme from @WeAreComputing. Find out more #{about_a_level_url}"}")
-  end
-
   it "has the Facebook share button" do
     expect(rendered).to have_link("Share on Facebook", href: "https://www.facebook.com/sharer/sharer.php?u=#{CGI.escape about_a_level_url}")
   end

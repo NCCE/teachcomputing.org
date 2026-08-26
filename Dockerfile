@@ -1,4 +1,4 @@
-FROM ruby:3.3.6-alpine
+FROM ruby:3.3.11-alpine
 RUN apk update
 RUN apk --no-cache add curl build-base postgresql-dev tzdata nodejs chromium chromium-chromedriver python3 python3-dev py3-pip yarn procps bash bash-completion sudo openssh docker git less graphviz yaml-dev libffi-dev
 RUN pip install --upgrade pip --break-system-packages

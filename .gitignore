@@ -51,6 +51,7 @@ public/sitemap.xml.gz
 .history
 *.code-workspace
 .irb_history
+.claude
 
 /public/packs
 /public/packs-test

@@ -13,7 +13,7 @@ module Cms
               attribute(:enrolledTextContent) { Mocks::Text::RichBlocks.generate_data }
               attribute(:loggedOutButtonText) { Faker::Lorem.sentence }
               attribute(:loggedInButtonText) { Faker::Lorem.sentence }
-              attribute(:clr) { {data: Meta::ColorScheme.generate_data(name: "i-belong")} }
+              attribute(:clr) { Meta::ColorScheme.generate_data(name: "i-belong") }
             end
           end
         end
