@@ -224,6 +224,6 @@ module ExternalLinkHelper
   end
 
   def secondary_certificate_evidence_guide_url
-    "https://media.teachcomputing.org/Teach_secondary_computing_certificate_Evidence_Guide_V1_2_37745edb6b.pdf"
+    "https://media.teachcomputing.org/Teach_secondary_computing_certificate_Evidence_Guide_V2_75b21ec5f1.pdf"
   end
 end
