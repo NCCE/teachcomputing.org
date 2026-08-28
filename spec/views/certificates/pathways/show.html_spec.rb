@@ -35,7 +35,7 @@ RSpec.describe("certificates/pathways/show", type: :view) do
 
     assign(:recommended_activities, pathway_activities)
     assign(:cpd_group, cpd_group)
-    assign(:community_groups, [community_group])
+    assign(:objective_groups, [community_group])
   end
 
   context "with community title link" do

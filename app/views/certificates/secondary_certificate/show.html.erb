@@ -5,11 +5,11 @@
   <%= render ProgressBarComponent.new(programme: @programme) %>
   <%= render GovGridRowComponent.new(padding: {top: 0, bottom: 0}) do |row| %>
     <%= row.with_column("two-thirds") do %>
-      <p class="govuk-body-m"><%= t(
-        '.introduction.html',
-        subject_knowledge: link_to('Subject knowledge certificate', cs_accelerator_path)
-      ) %></p>
+      <p class="govuk-body-m"><%= t('.introduction.html') %></p>
       <%= render 'professional_development_groups_list' %>
+      <%= render 'standalone_activity_group', group: @pd_group %>
+      <%= render 'standalone_activity_group', group: @cqf_group %>
+      <%= render 'community_activity_list' %>
     <% end %>
     <%= row.with_column("one-third") do %>
       <%= render partial: 'pathway_aside', locals: {
@@ -22,22 +22,17 @@
           email_link: mail_to('info@teachcomputing.org', 'info@teachcomputing.org', class: 'ncce-link', data: tracking_data('Email'))
         ))
       %>
-      <div class="ncce-aside--borderless govuk-!-margin-bottom-6">
+      <div class="ncce-aside--borderless govuk-!-margin-bottom-7">
         <%= render FeedbackComponent.new(heading: t('.feedback_text'), area: :secondary_certificate) %>
       </div>
-    <% end %>
-  <% end %>
-  <%= render GovGridRowComponent.new(padding: {top: 0}) do |row| %>
-    <%= row.with_column("two-thirds") do %>
-      <%= render 'community_activity_list' %>
-    <% end %>
-    <%= row.with_column("one-third") do %>
-      <%= render AsideComponent.new(
-        title: t('.evidence_guide_aside.title'),
-        class_name: 'help-aside',
-        text: t('.evidence_guide_aside.text'),
-        link: {text: t('.evidence_guide_aside.link_text'), url: secondary_certificate_evidence_guide_url}
-      )%>
+      <div class="govuk-!-margin-bottom-6">
+        <%= render AsideComponent.new(
+          title: t('.evidence_guide_aside.title'),
+          class_name: 'help-aside',
+          text: t('.evidence_guide_aside.text'),
+          link: {text: t('.evidence_guide_aside.link_text'), url: secondary_certificate_evidence_guide_url}
+        )%>
+      </div>
     <% end %>
   <% end %>
 </div>
