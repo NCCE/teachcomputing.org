@@ -8,7 +8,7 @@ secondary.programme_activity_groupings.find_or_initialize_by(title: "All courses
   group.required_for_completion = 1
   group.programme_id = secondary.id
   group.progress_bar_title = "Complete professional development"
-  group.web_copy_course_requirements = "Complete one full day face-to-face, remote or online course, or a combination of short courses that amounts to 6+ hours of professional development."
+  group.web_copy_course_requirements = "Complete one full day course or a combination of short courses that amounts to 6+ hours of professional development. Please note that the CPD must be part of the Teach secondary certificate."
   group.required_credit_count = 50
 
   group.save!
