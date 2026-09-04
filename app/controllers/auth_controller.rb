@@ -3,7 +3,7 @@ class AuthController < ApplicationController
     auth = omniauth_params
     course_booking_uri = course_redirect_params
 
-    user_exists = User.exists?(stem_user_id: auth.info.stem_user_id)
+    user_exists = User.exists?(stem_achiever_contact_no: auth.info.achiever_contact_no)
     user = User.from_auth(auth.uid, auth.credentials, auth.info)
 
     session[:user_id] = user.id

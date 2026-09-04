@@ -2,7 +2,8 @@ require "rails_helper"
 
 RSpec.describe AuthController do
   let(:integration_key) { "13251241" }
-  let(:user) { create(:user, stem_user_id: integration_key) }
+  let(:achiever_contact_no) { "b44cb53f-c690-4535-bd79-89e893337ec6" }
+  let(:user) { create(:user, stem_user_id: integration_key, stem_achiever_contact_no: achiever_contact_no) }
   let(:auth0_hash) {
     OmniAuth::AuthHash.new(
       provider: "stem",
@@ -12,7 +13,7 @@ RSpec.describe AuthController do
         token: "14849048797785647933"
       },
       info: {
-        achiever_contact_no: "b44cb53f-c690-4535-bd79-89e893337ec6",
+        achiever_contact_no: achiever_contact_no,
         first_name: "Jane",
         last_name: "Doe",
         email: "user@example.com",
