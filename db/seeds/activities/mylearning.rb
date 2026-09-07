@@ -1692,3 +1692,33 @@ Activity.find_or_initialize_by(stem_course_template_no: "5e4a6f79-e8f5-f011-8407
 
   activity.programmes = [secondary_certificate]
 end.save!
+
+########################################################################################################################
+
+Activity.find_or_initialize_by(stem_course_template_no: "09a153b3-cf9b-f111-b8db-7ced8d3b2bf3").tap do |activity|
+  activity.title = "Developing digital literacy in primary computing"
+  activity.credit = 30
+  activity.slug = "developing-digital-literacy-in-primary-computing-online"
+  activity.category = "online"
+  activity.self_certifiable = false
+  activity.provider = "stem-learning"
+  activity.stem_activity_code = "CO045"
+  activity.always_on = true
+
+  activity.programmes = [primary_certificate]
+end.save!
+
+########################################################################################################################
+
+Activity.find_or_initialize_by(stem_course_template_no: "d772eb65-cc9b-f111-b8db-7ced8d3b2bf3").tap do |activity|
+  activity.title = "Developing children's understanding of data in primary computing"
+  activity.credit = 40
+  activity.slug = "developing-childrens-understanding-of-data-in-primary-computing-online"
+  activity.category = "online"
+  activity.self_certifiable = false
+  activity.provider = "stem-learning"
+  activity.stem_activity_code = "CO046"
+  activity.always_on = true
+
+  activity.programmes = [primary_certificate]
+end.save!
