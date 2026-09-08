@@ -58,12 +58,8 @@ class LiveBookingPresenter
   end
 
   def booking_path(course_template_no:, occurrence_id: nil)
-    if Rails.application.config.stem_cpd_store_enabled
-      path = "#{Rails.application.config.stem_cpd_store_url}/course/#{course_template_no}"
-      occurrence_id.present? ? "#{path}?instance=#{occurrence_id}" : path
-    else
-      "#{Rails.application.config.stem_course_redirect}/cpdredirect/#{occurrence_id || course_template_no}"
-    end
+    path = "#{Rails.application.config.stem_cpd_store_url}/course/#{course_template_no}"
+    occurrence_id.present? ? "#{path}?instance=#{occurrence_id}" : path
   end
 
   def address(occurrence)

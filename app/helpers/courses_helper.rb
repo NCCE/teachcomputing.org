@@ -45,11 +45,7 @@ module CoursesHelper
   end
 
   def stem_course_link(course_template_no)
-    if Rails.application.config.stem_cpd_store_enabled
-      "#{Rails.application.config.stem_cpd_store_url}/course/#{course_template_no}"
-    else
-      "#{Rails.application.config.stem_course_redirect}/cpdredirect/#{course_template_no}"
-    end
+    "#{Rails.application.config.stem_cpd_store_url}/course/#{course_template_no}"
   end
 
   def stripped_summary(string)
