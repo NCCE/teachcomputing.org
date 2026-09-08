@@ -26,7 +26,6 @@ RSpec.describe("courses/_aside-booking", type: :view) do
     before do
       allow_any_instance_of(AuthenticationHelper)
         .to receive(:current_user).and_return(user)
-      allow(Rails.application.config).to receive(:stem_cpd_store_enabled).and_return(true)
     end
 
     context "when its an online course" do
@@ -336,29 +335,6 @@ RSpec.describe("courses/_aside-booking", type: :view) do
         end
       end
 
-      context "when the CPD store is disabled" do
-        before do
-          allow(Rails.application.config).to receive(:stem_cpd_store_enabled).and_return(false)
-          assign(:booking, live_booking_presenter)
-          assign(:occurrences, occurrences)
-          assign(:course, course)
-          assign(:activity, activity)
-
-          render
-        end
-
-        it "shows a booking link against each occurrence using the legacy STEM Learning booking path" do
-          occurrences.each do |occurrence|
-            expect(rendered).to have_link(
-              "Book",
-              href: live_booking_presenter.booking_path(course_template_no: occurrence.course_template_no, occurrence_id: occurrence.course_occurrence_no)
-            )
-          end
-
-          expect(rendered).to have_css(".ncce-booking-list__item a", count: occurrences.count)
-        end
-      end
-
       context "when the user is enrolled on a course" do
         before do
           assign(:booking, live_booking_presenter)
@@ -514,31 +490,6 @@ RSpec.describe("courses/_aside-booking", type: :view) do
 
             expect(rendered).to have_css(".ncce-booking-list__item a", count: occurrences_remote.count)
           end
-        end
-      end
-
-      context "when the CPD store is disabled" do
-        before do
-          allow_any_instance_of(AuthenticationHelper).to receive(:current_user).and_return(user)
-          allow(Rails.application.config).to receive(:stem_cpd_store_enabled).and_return(false)
-
-          assign(:course, course)
-          assign(:booking, live_booking_presenter)
-          assign(:occurrences, occurrences_remote)
-          assign(:activity, activity)
-
-          render
-        end
-
-        it "shows a booking link against each occurrence using the legacy STEM Learning booking path" do
-          occurrences_remote.each do |occurrence|
-            expect(rendered).to have_link(
-              "Book",
-              href: live_booking_presenter.booking_path(course_template_no: occurrence.course_template_no, occurrence_id: occurrence.course_occurrence_no)
-            )
-          end
-
-          expect(rendered).to have_css(".ncce-booking-list__item a", count: occurrences_remote.count)
         end
       end
 
