@@ -11,8 +11,10 @@ module Api
     def forget
       user = if params[:stem_achiever_contact_no].present?
         User.find_by!(stem_achiever_contact_no: params[:stem_achiever_contact_no])
-      else
+      elsif params[:stem_user_id].present?
         User.find_by!(stem_user_id: params[:stem_user_id])
+      else
+        raise ActiveRecord::RecordNotFound
       end
       user.forget!
       render json: as_json(user)
