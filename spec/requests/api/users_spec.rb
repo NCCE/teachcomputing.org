@@ -131,5 +131,20 @@ RSpec.describe Api::UsersController do
         expect(updated_user.forgotten).to be true
       end
     end
+
+    describe "DELETE #forget with neither identifier passed" do
+      before do
+        user
+        delete "/api/users/forget", params: {}, headers: token_headers
+      end
+
+      it "returns 404 status" do
+        expect(response).to have_http_status(:not_found)
+      end
+
+      it "does not forget any user" do
+        expect(User.find(user.id).forgotten).to be false
+      end
+    end
   end
 end
