@@ -82,6 +82,8 @@ jobs:
       - browser-tools/install-browser-tools:
           chrome-version: latest
           replace-existing-chrome: true
+          install-firefox: false
+          install-geckodriver: false
       - run:
           name: Run rspec
           command: |
