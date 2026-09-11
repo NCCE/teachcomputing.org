@@ -3,6 +3,12 @@ class AuthController < ApplicationController
     auth = omniauth_params
     course_booking_uri = course_redirect_params
 
+    if auth.info.achiever_contact_no.blank?
+      Sentry.capture_message("User #{auth.uid} logged in with no Dynamics contact number", level: :warning)
+      flash[:error] = "Sorry, we were unable to log you in. Please try again or contact us for help."
+      return redirect_to root_path
+    end
+
     user_exists = User.exists?(stem_achiever_contact_no: auth.info.achiever_contact_no)
     user = User.from_auth(auth.uid, auth.credentials, auth.info)
 
