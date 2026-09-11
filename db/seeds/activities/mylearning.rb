@@ -1722,3 +1722,48 @@ Activity.find_or_initialize_by(stem_course_template_no: "d772eb65-cc9b-f111-b8db
 
   activity.programmes = [primary_certificate]
 end.save!
+
+########################################################################################################################
+
+Activity.find_or_initialize_by(stem_course_template_no: "eb96b236-14a6-f111-aaad-70a8a577f6a3").tap do |activity|
+  activity.title = "Preparing for KS4 computing"
+  activity.credit = 80
+  activity.slug = "preparing-for-ks4-computing-online"
+  activity.category = "online"
+  activity.self_certifiable = false
+  activity.provider = "stem-learning"
+  activity.stem_activity_code = "CO905"
+  activity.always_on = true
+
+  activity.programmes = [secondary_certificate]
+end.save!
+
+########################################################################################################################
+
+Activity.find_or_initialize_by(stem_course_template_no: "8f75ecd2-bba6-f111-aaac-70a8a5759a46").tap do |activity|
+  activity.title = "Supporting SEND students in secondary computing"
+  activity.credit = 80
+  activity.slug = "supporting-send-students-in-secondary-computing-online"
+  activity.category = "online"
+  activity.self_certifiable = false
+  activity.provider = "stem-learning"
+  activity.stem_activity_code = "CO906"
+  activity.always_on = true
+
+  activity.programmes = [secondary_certificate]
+end.save!
+
+########################################################################################################################
+
+Activity.find_or_initialize_by(stem_course_template_no: "217f11a7-b9a6-f111-aaac-70a8a5759a46").tap do |activity|
+  activity.title = "Data science in secondary computing"
+  activity.credit = 20
+  activity.slug = "data-science-in-secondary-computing-online"
+  activity.category = "online"
+  activity.self_certifiable = false
+  activity.provider = "stem-learning"
+  activity.stem_activity_code = "CO907"
+  activity.always_on = true
+
+  activity.programmes = [cs_accelerator]
+end.save!
