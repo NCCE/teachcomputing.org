@@ -41,16 +41,16 @@ programme.pathways.find_or_initialize_by(slug: "curriculum-leadership").tap do |
 
   activities = [
     # Make an impact on young people and professional community
-    "raise-aspirations-with-a-stem-ambassador-visit-secondary",
+    "raise-aspirations-with-a-stem-ambassador-visit",
     "participate-fully-in-an-ncce-curriculum-enrichment-oppertunity",
     "implement-your-professional-development-in-the-classroom-and-evaluate-via-the-impact-toolkit-secondary",
-    "download-and-use-the-ncce-teaching-and-assessment-resources-in-your-classroom-secondary",
-    "gain-accreditation-as-a-professional-development-leader-secondary",
+    "download-and-use-the-ncce-teaching-and-assessment-resources-in-your-classroom",
+    "gain-accreditation-as-a-professional-development-leader",
     "support-other-teachers-and-earn-a-stem-community-participation-badge-secondary",
     "undertake-the-initial-assessment-of-your-school-using-computing-quality-framework-secondary",
     "work-with-your-local-computing-hub-to-develop-a-school-level-action-plan-for-professional-development",
     "lead-your-school-into-a-computing-cluster-and-develop-an-action-plan-with-a-cluster-advisor",
-    "join-and-present-at-your-local-computing-at-school-community-secondary"
+    "join-and-present-at-your-local-computing-at-school-community"
   ]
 
   activities.each do |activity|
@@ -101,13 +101,13 @@ programme.pathways.find_or_initialize_by(slug: "supporting-other-teachers").tap 
 
   activities = [
     "participate-fully-in-an-ncce-curriculum-enrichment-oppertunity",
-    "download-and-use-the-ncce-teaching-and-assessment-resources-in-your-classroom-secondary",
+    "download-and-use-the-ncce-teaching-and-assessment-resources-in-your-classroom",
     "join-the-ib-encouraging-girls-into-cs-programme-and-become-an-ibc",
     # Make an impact on young people and professional community
-    "gain-accreditation-as-a-professional-development-leader-secondary",
+    "gain-accreditation-as-a-professional-development-leader",
     "undertake-the-initial-assessment-of-your-school-using-computing-quality-framework-secondary",
     "lead-your-school-into-a-computing-cluster-and-develop-an-action-plan-with-a-cluster-advisor",
-    "join-and-present-at-your-local-computing-at-school-community-secondary",
+    "join-and-present-at-your-local-computing-at-school-community",
     "support-other-teachers-and-earn-a-stem-community-participation-badge-secondary"
   ]
 
@@ -116,7 +116,7 @@ programme.pathways.find_or_initialize_by(slug: "supporting-other-teachers").tap 
   end
 
   remove_activities = [
-    "raise-aspirations-with-a-stem-ambassador-visit-secondary"
+    "raise-aspirations-with-a-stem-ambassador-visit"
   ]
 
   remove_activities.each do |activity|
@@ -159,17 +159,17 @@ programme.pathways.find_or_initialize_by(slug: "championing-diversity-and-inclus
   end
 
   activities = [
-    "raise-aspirations-with-a-stem-ambassador-visit-secondary",
+    "raise-aspirations-with-a-stem-ambassador-visit",
     "participate-fully-in-an-ncce-curriculum-enrichment-oppertunity",
     "implement-your-professional-development-in-the-classroom-and-evaluate-via-the-impact-toolkit-secondary",
     "download-and-use-isaac-computer-science-classroom-resources-and-displays",
     "complete-the-i-belong-programme-as-a-school",
     # Make an impact on young people and professional community
-    "gain-accreditation-as-a-professional-development-leader-secondary",
+    "gain-accreditation-as-a-professional-development-leader",
     "support-other-teachers-and-earn-a-stem-community-participation-badge-secondary",
     "work-with-local-business-and-industry-to-inspire-inclusive-computing",
     "lead-your-school-into-a-computing-cluster-and-develop-an-action-plan-with-a-cluster-advisor",
-    "join-and-present-at-your-local-computing-at-school-community-secondary",
+    "join-and-present-at-your-local-computing-at-school-community",
     "become-an-i-belong-champion"
   ]
 
@@ -221,17 +221,17 @@ programme.pathways.find_or_initialize_by(slug: "raising-student-attainment").tap
   end
 
   activities = [
-    "raise-aspirations-with-a-stem-ambassador-visit-secondary",
+    "raise-aspirations-with-a-stem-ambassador-visit",
     "participate-fully-in-an-ncce-curriculum-enrichment-oppertunity",
     "implement-your-professional-development-in-the-classroom-and-evaluate-via-the-impact-toolkit-secondary",
-    "download-and-use-the-ncce-teaching-and-assessment-resources-in-your-classroom-secondary",
+    "download-and-use-the-ncce-teaching-and-assessment-resources-in-your-classroom",
     # Make an impact on young people and professional community
-    "gain-accreditation-as-a-professional-development-leader-secondary",
+    "gain-accreditation-as-a-professional-development-leader",
     "support-other-teachers-and-earn-a-stem-community-participation-badge-secondary",
     "undertake-the-initial-assessment-of-your-school-using-computing-quality-framework-secondary",
     "work-with-your-local-computing-hub-to-develop-a-school-level-action-plan-for-professional-development",
     "lead-your-school-into-a-computing-cluster-and-develop-an-action-plan-with-a-cluster-advisor",
-    "join-and-present-at-your-local-computing-at-school-community-secondary"
+    "join-and-present-at-your-local-computing-at-school-community"
   ]
 
   activities.each do |activity|
@@ -280,11 +280,11 @@ programme.pathways.find_or_initialize_by(slug: "developing-teachers").tap do |pa
   end
 
   activities = [
-    "raise-aspirations-with-a-stem-ambassador-visit-secondary",
+    "raise-aspirations-with-a-stem-ambassador-visit",
     "participate-fully-in-an-ncce-curriculum-enrichment-oppertunity",
     "implement-your-professional-development-in-the-classroom-and-evaluate-via-the-impact-toolkit-secondary",
     # Make an impact on young people and professional community
-    "gain-accreditation-as-a-professional-development-leader-secondary",
+    "gain-accreditation-as-a-professional-development-leader",
     "support-other-teachers-and-earn-a-stem-community-participation-badge-secondary",
     "work-with-local-business-and-industry-to-inspire-inclusive-computing"
   ]

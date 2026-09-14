@@ -67,25 +67,17 @@ secondary.programme_activity_groupings.find_or_initialize_by(cms_slug: "secondar
   maybe_detach_activity_from_grouping(group, "undertake-the-initial-assessment-of-your-school-using-computing-quality-framework")
   maybe_detach_activity_from_grouping(group, "implement-your-professional-development-in-the-classroom-and-evaluate-via-the-impact-toolkit")
 
-  # Activities shared with Primary certificate are detached and replaced with a
-  # "-secondary" duplicate below, so completing one on Primary can't leak into
-  # Secondary's completion count (ENG-2015)
-  maybe_detach_activity_from_grouping(group, "raise-aspirations-with-a-stem-ambassador-visit")
-  maybe_detach_activity_from_grouping(group, "download-and-use-the-ncce-teaching-and-assessment-resources-in-your-classroom")
-  maybe_detach_activity_from_grouping(group, "gain-accreditation-as-a-professional-development-leader")
-  maybe_detach_activity_from_grouping(group, "join-and-present-at-your-local-computing-at-school-community")
-
   # Activities should never be removed, only marked as legacy
   # Combines the former "Make a positive impact on young people in computing" and
   # "Support your professional community" groupings into one (ENG-1531)
   activities = [
-    {slug: "raise-aspirations-with-a-stem-ambassador-visit-secondary", legacy: false},
+    {slug: "raise-aspirations-with-a-stem-ambassador-visit", legacy: false},
     {slug: "participate-fully-in-an-ncce-curriculum-enrichment-oppertunity", legacy: false},
     {slug: "download-and-use-isaac-computer-science-classroom-resources-and-displays", legacy: false},
-    {slug: "download-and-use-the-ncce-teaching-and-assessment-resources-in-your-classroom-secondary", legacy: false},
-    {slug: "gain-accreditation-as-a-professional-development-leader-secondary", legacy: false},
+    {slug: "download-and-use-the-ncce-teaching-and-assessment-resources-in-your-classroom", legacy: false},
+    {slug: "gain-accreditation-as-a-professional-development-leader", legacy: false},
     {slug: "work-with-local-business-and-industry-to-inspire-inclusive-computing", legacy: false},
-    {slug: "join-and-present-at-your-local-computing-at-school-community-secondary", legacy: false},
+    {slug: "join-and-present-at-your-local-computing-at-school-community", legacy: false},
     {slug: "become-an-i-belong-champion", legacy: false},
     {slug: "support-other-teachers-and-earn-a-stem-community-participation-badge-secondary", legacy: false},
 
