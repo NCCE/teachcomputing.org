@@ -249,6 +249,29 @@ Activity.find_or_create_by(slug: "complete-a-cs-accelerator-course") do |activit
   activity.booking_programme_slug = "cs-accelerator"
 end
 
+Activity.find_or_initialize_by(slug: "raise-aspirations-with-a-stem-ambassador-visit-secondary").tap do |activity|
+  activity.title = "Raise aspirations with a STEM Ambassador visit"
+  activity.credit = 10
+  activity.slug = "raise-aspirations-with-a-stem-ambassador-visit-secondary"
+  activity.category = "community"
+  activity.provider = "stem-learning"
+  activity.self_certifiable = true
+  activity.description = "<a href='#{stem_ambassadors_url}'>Arrange an in-person or online visit</a> for your classroom to help pupils understand real-world applications of computing and raise their career aspirations."
+  activity.public_copy_description = "<a href='#{stem_ambassadors_url}'>Arrange an in-person or online visit</a> for your classroom to help pupils understand real-world applications of computing and raise their career aspirations."
+  activity.public_copy_title_url = stem_ambassadors_url
+  activity.self_verification_info = nil
+  activity.public_copy_evidence = [{
+    brief: "Evidence guidance:",
+    bullets: [
+      "Add the date(s) and who the visit was aimed at. Include the age range of students involved.",
+      "What was the activity?",
+      "What topics were covered?",
+      "How many STEM Ambassadors attended, what their names were and which companies/universities etc. were they from?",
+      "What was the impact of the visit on your students? Share an example of student voice/comment if possible."
+    ]
+  }]
+end.save!
+
 Activity.find_or_initialize_by(slug: "raise-aspirations-with-a-stem-ambassador-visit").tap do |activity|
   activity.title = "Raise aspirations with a STEM Ambassador visit"
   activity.credit = 10
@@ -354,6 +377,34 @@ Activity.find_or_initialize_by(slug: "implement-your-professional-development-in
       "Add information on how you’ve implemented what you’ve learnt from CPD into your classroom.",
       "Explain how the changes you made have impacted you, your colleagues, and your students.",
       "If you applied knowledge from a residential course, explain how you used the <a href='https://www.stem.org.uk/about-us/impact-and-evaluation/impact-toolkit'>Impact Toolkit</a> to evaluate your learning. For some courses you may also be asked to make an action plan and reflect on the impact of your CPD after the course."
+    ]
+  }]
+end.save!
+
+Activity.find_or_initialize_by(slug: "download-and-use-the-ncce-teaching-and-assessment-resources-in-your-classroom-secondary").tap do |activity|
+  activity.title = "Reflect on the use of a NCCE teaching and assessment resource(s) in your classroom"
+  activity.credit = 10
+  activity.slug = "download-and-use-the-ncce-teaching-and-assessment-resources-in-your-classroom-secondary"
+  activity.category = "community"
+  activity.provider = "stem-learning"
+  activity.self_certifiable = true
+  activity.description = "Download and use a <a href='https://teachcomputing.org/curriculum'>Teach Computing Curriculum resource(s)</a>, then reflect on how you used and adapted it in the classroom."
+  activity.public_copy_description = "Download and use a <a href='https://teachcomputing.org/curriculum'>Teach Computing Curriculum resource(s)</a>, then reflect on how you used and adapted it in the classroom."
+  activity.public_copy_title_url = "https://teachcomputing.org/curriculum"
+  activity.self_verification_info = nil
+  activity.public_copy_evidence = [{
+    brief: "Evidence guidance:",
+    bullets: [
+      "Reflect on the use of the <a href='https://teachcomputing.org/curriculum'>Teach Computing Curriculum resource(s)</a>, including which year group you taught and when.",
+      "Include the unit, lesson and name of the resource(s) that you used. Include a link to the resource(s) on the Teach Computing website if possible."
+    ]
+  }]
+  activity.self_verification_info = nil
+  activity.public_copy_evidence = [{
+    brief: "Evidence guidance:",
+    bullets: [
+      "Reflect on the use of the <a href='https://teachcomputing.org/curriculum'>Teach Computing Curriculum resource(s)</a>, including which year group you taught and when.",
+      "Include the unit, lesson and name of the resource(s) that you used. Include a link to the resource(s) on the Teach Computing website if possible."
     ]
   }]
 end.save!
@@ -737,6 +788,26 @@ Activity.find_or_initialize_by(slug: "start-or-deliver-a-computing-related-club"
   activity.self_verification_info = "Please provide us with evidence of delivery"
 end.save!
 
+Activity.find_or_initialize_by(slug: "gain-accreditation-as-a-professional-development-leader-secondary").tap do |activity|
+  activity.title = "Gain <a href='#{leading_professional_development_url}'>accreditation</a> as a professional development leader"
+  activity.credit = 10
+  activity.slug = "gain-accreditation-as-a-professional-development-leader-secondary"
+  activity.category = "community"
+  activity.provider = "stem-learning"
+  activity.self_certifiable = true
+  activity.description = "Reflect on what makes CPD effective and how its impact can be evaluated as well as the strategies and tools you’ll need when <a href='#{leading_professional_development_url}'>leading learning</a> with teachers."
+  activity.public_copy_description = "Reflect on what makes CPD effective and how its impact can be evaluated as well as the strategies and tools you’ll need when <a href='#{leading_professional_development_url}'>leading learning</a> with teachers."
+  activity.public_copy_title_url = leading_professional_development_url
+  activity.self_verification_info = nil
+  activity.public_copy_evidence = [{
+    brief: "Evidence guidance:",
+    bullets: [
+      "Reflect on what makes CPD effective and how its impact can be evaluated as well as the strategies and tools you’ll need when <a href='#{leading_professional_development_url}'>leading learning</a> with teachers.",
+      "Include the title of the specific <a href='#{leading_professional_development_url}'>accreditation</a> that you have gained."
+    ]
+  }]
+end.save!
+
 Activity.find_or_initialize_by(slug: "gain-accreditation-as-a-professional-development-leader").tap do |activity|
   activity.title = "Gain <a href='#{leading_professional_development_url}'>accreditation</a> as a professional development leader"
   activity.credit = 10
@@ -834,6 +905,25 @@ Activity.find_or_initialize_by(slug: "lead-your-school-into-a-computing-cluster-
     brief: "Evidence guidance:",
     bullets: [
       "Please provide us with evidence of joining. Include the name of your school and your Cluster advisor."
+    ]
+  }]
+end.save!
+
+Activity.find_or_initialize_by(slug: "join-and-present-at-your-local-computing-at-school-community-secondary").tap do |activity|
+  activity.title = "Join one of the Computing at School Communities and present at a community meeting"
+  activity.credit = 10
+  activity.slug = "join-and-present-at-your-local-computing-at-school-community-secondary"
+  activity.category = "community"
+  activity.provider = "stem-learning"
+  activity.self_certifiable = true
+  activity.description = "<a href='#{cas_communities_url}'>Computing at School</a> (CAS) Communities are a great way to connect with other teachers, share resources, join discussions in the forums or share something you've created. Present at a community meeting to offer your insights, ideas and expertise to colleagues."
+  activity.public_copy_description = "<a href='#{cas_communities_url}'>Computing at School</a> (CAS) Communities are a great way to connect with other teachers, share resources, join discussions in the forums or share something you've created. Present at a community meeting to offer your insights, ideas and expertise to colleagues."
+  activity.public_copy_title_url = cas_communities_url
+  activity.self_verification_info = nil
+  activity.public_copy_evidence = [{
+    brief: "Evidence guidance:",
+    bullets: [
+      "Add information on what CAS community you’ve joined, what community meeting(s) you have participated in and elaborate on your presentation."
     ]
   }]
 end.save!
