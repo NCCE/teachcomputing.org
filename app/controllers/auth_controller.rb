@@ -4,7 +4,10 @@ class AuthController < ApplicationController
     course_booking_uri = course_redirect_params
 
     if auth.info.achiever_contact_no.blank?
-      Sentry.capture_message("User #{auth.uid} logged in with no Dynamics contact number", level: :warning)
+      Sentry.with_scope do |scope|
+        scope.set_context("CustomClaim", {email: auth.info.email, auth0_id: auth.uid})
+        Sentry.capture_message("User logged in with no Dynamics contact number", level: :warning)
+      end
       flash[:error] = "Sorry, we were unable to log you in. Please try again or contact us for help."
       return redirect_to root_path
     end
