@@ -97,7 +97,7 @@ RSpec.describe PrimaryMailer, type: :mailer do
   describe "completed_cpd_not_activities" do
     let(:user) { create(:user, first_name: "Tobias") }
     let(:mail) { PrimaryMailer.with(user: user).completed_cpd_not_activities }
-    let(:mail_subject) { "You're so close!" }
+    let(:mail_subject) { "Final step to receive your Teach primary computing certificate" }
 
     it "renders the headers" do
       expect(mail.subject).to eq(mail_subject)
