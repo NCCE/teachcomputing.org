@@ -153,10 +153,10 @@ class Programme < ApplicationRecord
   end
 
   def user_completed_cpd_not_community?(user)
-    cpd = programme_objectives.not_community
-    community = programme_objectives.community
+    # CPD is only the course-credit objective; every other objective counts as community here
+    cpd, community = programme_objectives.partition { _1.is_a?(ProgrammeActivityGroupings::CreditCounted) }
 
-    cpd.all? { _1.user_complete?(user) } &&
+    cpd.any? && cpd.all? { _1.user_complete?(user) } &&
       community.any? && !community.all? { _1.user_complete?(user) }
   end
 
