@@ -214,6 +214,53 @@ RSpec.describe Programme, type: :model do
     end
   end
 
+  describe "#user_completed_cpd_not_community?" do
+    let(:programme) { create(:primary_certificate) }
+    let!(:cpd_groupings) { create_list(:programme_activity_grouping, 2, :with_activities, programme:) }
+    let!(:community_groupings) { create_list(:programme_activity_grouping, 2, :with_activities, programme:, community: true) }
+
+    def complete_grouping(grouping)
+      create(:completed_achievement, user:, activity: grouping.programme_activities.first.activity)
+    end
+
+    context "when CPD is not fully complete" do
+      it "returns false" do
+        complete_grouping(cpd_groupings.first)
+        expect(programme.user_completed_cpd_not_community?(user)).to be false
+      end
+    end
+
+    context "when CPD is complete and no community objectives are complete" do
+      it "returns true" do
+        cpd_groupings.each { complete_grouping(_1) }
+        expect(programme.user_completed_cpd_not_community?(user)).to be true
+      end
+    end
+
+    context "when CPD is complete and some community objectives are complete" do
+      it "returns true" do
+        cpd_groupings.each { complete_grouping(_1) }
+        complete_grouping(community_groupings.first)
+        expect(programme.user_completed_cpd_not_community?(user)).to be true
+      end
+    end
+
+    context "when CPD and all community objectives are complete" do
+      it "returns false" do
+        (cpd_groupings + community_groupings).each { complete_grouping(_1) }
+        expect(programme.user_completed_cpd_not_community?(user)).to be false
+      end
+    end
+
+    context "when the programme has no community objectives" do
+      it "returns false" do
+        community_groupings.each(&:destroy)
+        cpd_groupings.each { complete_grouping(_1) }
+        expect(programme.user_completed_cpd_not_community?(user)).to be false
+      end
+    end
+  end
+
   describe "#enough_activities_for_test?" do
     it "returns 0" do
       expect(programmes[0].enough_activities_for_test?(user)).to be false

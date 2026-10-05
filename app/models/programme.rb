@@ -152,6 +152,14 @@ class Programme < ApplicationRecord
     programme_activity_groupings.order(:sort_key)
   end
 
+  def user_completed_cpd_not_community?(user)
+    cpd = programme_objectives.not_community
+    community = programme_objectives.community
+
+    cpd.all? { _1.user_complete?(user) } &&
+      community.any? && !community.all? { _1.user_complete?(user) }
+  end
+
   def programme_objectives_displayed_in_progress_bar
     programme_objectives.select { _1.objective_displayed_in_progress_bar? }
   end
