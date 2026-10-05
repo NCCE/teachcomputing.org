@@ -1,4 +1,6 @@
 class PrimaryMailer < ApplicationMailer
+  COMPLETED_CPD_NOT_ACTIVITIES_EMAIL = "primary_completed_cpd_not_activities_email".freeze
+
   def enrolled
     @user = params[:user]
     @programme = Programme.primary_certificate

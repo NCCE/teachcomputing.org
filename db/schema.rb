@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_08_20_090000) do
+ActiveRecord::Schema[8.1].define(version: 2026_09_25_105623) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
   enable_extension "pgcrypto"
@@ -402,7 +402,9 @@ ActiveRecord::Schema[8.1].define(version: 2026_08_20_090000) do
 
   create_table "sent_emails", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.datetime "created_at", precision: nil, null: false
+    t.datetime "last_sent_at"
     t.string "mailer_type", null: false
+    t.integer "send_count", default: 0, null: false
     t.string "subject", null: false
     t.datetime "updated_at", precision: nil, null: false
     t.uuid "user_id", null: false
