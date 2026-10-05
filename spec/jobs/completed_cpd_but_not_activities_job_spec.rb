@@ -9,7 +9,7 @@ RSpec.describe CompletedCpdButNotActivitiesJob, type: :job do
 
   before do
     allow_any_instance_of(Programmes::PrimaryCertificate)
-      .to receive(:user_completed_cpd_not_community?).with(user).and_return(true)
+      .to receive(:user_completed_cpd_with_objectives_remaining?).with(user).and_return(true)
   end
 
   def perform
@@ -41,7 +41,7 @@ RSpec.describe CompletedCpdButNotActivitiesJob, type: :job do
     context "when the user is not eligible" do
       before do
         allow_any_instance_of(Programmes::PrimaryCertificate)
-          .to receive(:user_completed_cpd_not_community?).with(user).and_return(false)
+          .to receive(:user_completed_cpd_with_objectives_remaining?).with(user).and_return(false)
       end
 
       it "does not send" do
@@ -134,7 +134,7 @@ RSpec.describe CompletedCpdButNotActivitiesJob, type: :job do
 
       before do
         allow_any_instance_of(Programmes::SecondaryCertificate)
-          .to receive(:user_completed_cpd_not_community?).with(user).and_return(true)
+          .to receive(:user_completed_cpd_with_objectives_remaining?).with(user).and_return(true)
       end
 
       it "sends and records against the secondary mailer type" do
