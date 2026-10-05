@@ -1,12 +1,38 @@
 <div class='mailer__content'>
   <p class='govuk-body'>Dear <%= @user.first_name %>,</p>
 
-  <p class='govuk-body'>Now that you have the necessary CPD under your belt, apply your learning by demonstrating a positive impact on young people in your school and taking an active role in your professional community.</p>
+  <p class='govuk-body'>You’ve now completed enough CPD to work towards your <%= link_to "Teach secondary computing certificate", secondary_url, class: "ncce-link" %> – well done!</p>
 
-  <p class='govuk-body'>You might have already engaged and completed some of the activities required to achieve your Teach secondary computing certificate. Remember to tick them off by submitting evidence on your dashboard.</p> 
-   
+  <p class='govuk-body'>When you complete this nationally recognised certificate, you evidence your ongoing commitment to professional development and your community.</p>
+
+  <p class='govuk-body'>By completing this certification, you are also:</p>
+  <ul class="govuk-list govuk-list--bullet">
+    <li>upgrading your skills and confidence in teaching this high-demand subject across the curriculum</li>
+    <li>saving time on lesson planning and gaining inspirational teaching ideas</li>
+    <li>learning how to implement best practice</li>
+  </ul>
+
+  <p class='govuk-body'>To receive your certificate, there’s one final step. You need to submit evidence for each of the activities on your dashboard:</p>
+  <ul class="govuk-list govuk-list--bullet">
+    <li>Implement and evaluate your professional learning</li>
+    <li>Assess your computing provision using the Computing Quality Framework</li>
+    <li>Make an impact on young people in computing and/or your professional community.</li>
+  </ul>
 
   <p class="govuk-body">
     <%= link_to "Check your dashboard", secondary_certificate_url, class: "govuk-button button" %>
   </p>
+
+  <p class='govuk-body'>You’re probably doing some of these activities as part of your everyday teaching. For example, using NCCE teaching resources in lessons, running or supporting an enrichment activity, reflecting on classroom practice, or progressing through the Computing Quality Framework.</p>
+
+  <p class='govuk-body'>When you visit your <%= link_to "dashboard", secondary_certificate_url, class: "ncce-link" %>, you’ll be able to choose activities from a list in each section and see guidance on what evidence to submit.</p>
+
+  <p class='govuk-body'>After submitting evidence for one activity in each section and passing the review, you can claim your Teach secondary computing certificate.</p>
+
+  <p class="govuk-body">
+    <%= link_to "Complete final step", secondary_certificate_url, class: "govuk-button button" %>
+  </p>
+
+  <p class="govuk-body"><strong>Not the right time?</strong></p>
+  <p class="govuk-body">If you don't want to continue on the programme at this time, let us know and we'll update our records. You can still re-enrol yourself in the future on <%= link_to "our website", secondary_certificate_url, class: "ncce-link" %>.</p>
 </div>

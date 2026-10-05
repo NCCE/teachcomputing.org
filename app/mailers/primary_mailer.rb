@@ -36,7 +36,7 @@ class PrimaryMailer < ApplicationMailer
   def completed_cpd_not_activities
     @user = params[:user]
     @programme = Programme.primary_certificate
-    @subject = "You're so close!"
+    @subject = "Final step to receive your Teach primary computing certificate"
 
     mail(to: @user, subject: @subject)
   end
