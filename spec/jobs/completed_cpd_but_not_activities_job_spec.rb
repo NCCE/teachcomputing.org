@@ -29,7 +29,11 @@ RSpec.describe CompletedCpdButNotActivitiesJob, type: :job do
       it "records the first send" do
         freeze_time do
           perform
-          expect(sent_email).to have_attributes(send_count: 1, last_sent_at: Time.current)
+          expect(sent_email).to have_attributes(
+            send_count: 1,
+            last_sent_at: Time.current,
+            subject: ActionMailer::Base.deliveries.last.subject
+          )
         end
       end
     end
