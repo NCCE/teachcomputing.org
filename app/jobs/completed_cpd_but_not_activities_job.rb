@@ -1,5 +1,4 @@
 class CompletedCpdButNotActivitiesJob < ApplicationJob
-  SUBJECT = "You're so close!".freeze
   MAX_SENDS = 4
   RESEND_INTERVAL = 3.months
 
@@ -17,9 +16,9 @@ class CompletedCpdButNotActivitiesJob < ApplicationJob
     return if sent_email.send_count >= MAX_SENDS
     return if sent_email.last_sent_at.present? && Time.current < sent_email.last_sent_at + RESEND_INTERVAL
 
-    programme.mailer.with(user:).completed_cpd_not_activities.deliver_now
+    message = programme.mailer.with(user:).completed_cpd_not_activities.deliver_now
 
     # Recorded after delivery so a failed send stays due and the next run retries it
-    sent_email.update!(subject: SUBJECT, send_count: sent_email.send_count + 1, last_sent_at: Time.current)
+    sent_email.update!(subject: message.subject, send_count: sent_email.send_count + 1, last_sent_at: Time.current)
   end
 end
