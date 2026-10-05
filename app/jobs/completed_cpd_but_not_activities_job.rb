@@ -10,7 +10,7 @@ class CompletedCpdButNotActivitiesJob < ApplicationJob
     enrolment = user.user_programme_enrolments.find_by(programme_id: programme.id)
 
     return if enrolment.nil? || !enrolment.in_state?(:enrolled)
-    return unless programme.user_completed_cpd_not_community?(user)
+    return unless programme.user_completed_cpd_with_objectives_remaining?(user)
 
     sent_email = SentEmail.find_or_initialize_by(user:, mailer_type: programme.mailer::COMPLETED_CPD_NOT_ACTIVITIES_EMAIL)
     return if sent_email.send_count >= MAX_SENDS

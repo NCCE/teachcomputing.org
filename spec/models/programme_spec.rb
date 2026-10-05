@@ -214,7 +214,7 @@ RSpec.describe Programme, type: :model do
     end
   end
 
-  describe "#user_completed_cpd_not_community?" do
+  describe "#user_completed_cpd_with_objectives_remaining?" do
     let(:programme) { create(:primary_certificate) }
     let!(:cpd_grouping) { create(:programme_activity_groupings_credit_counted, :with_activities, programme:, required_credit_count: 10) }
     let!(:community_groupings) { create_list(:programme_activity_grouping, 2, :with_activities, programme:, community: true) }
@@ -225,14 +225,14 @@ RSpec.describe Programme, type: :model do
 
     context "when CPD is not complete" do
       it "returns false" do
-        expect(programme.user_completed_cpd_not_community?(user)).to be false
+        expect(programme.user_completed_cpd_with_objectives_remaining?(user)).to be false
       end
     end
 
     context "when CPD is complete and no community objectives are complete" do
       it "returns true" do
         complete_grouping(cpd_grouping)
-        expect(programme.user_completed_cpd_not_community?(user)).to be true
+        expect(programme.user_completed_cpd_with_objectives_remaining?(user)).to be true
       end
     end
 
@@ -240,14 +240,14 @@ RSpec.describe Programme, type: :model do
       it "returns true" do
         complete_grouping(cpd_grouping)
         complete_grouping(community_groupings.first)
-        expect(programme.user_completed_cpd_not_community?(user)).to be true
+        expect(programme.user_completed_cpd_with_objectives_remaining?(user)).to be true
       end
     end
 
     context "when CPD and all community objectives are complete" do
       it "returns false" do
         [cpd_grouping, *community_groupings].each { complete_grouping(_1) }
-        expect(programme.user_completed_cpd_not_community?(user)).to be false
+        expect(programme.user_completed_cpd_with_objectives_remaining?(user)).to be false
       end
     end
 
@@ -255,14 +255,14 @@ RSpec.describe Programme, type: :model do
       it "returns false" do
         community_groupings.each(&:destroy)
         complete_grouping(cpd_grouping)
-        expect(programme.user_completed_cpd_not_community?(user)).to be false
+        expect(programme.user_completed_cpd_with_objectives_remaining?(user)).to be false
       end
     end
 
     context "when the programme has no CPD objective" do
       it "returns false" do
         cpd_grouping.destroy
-        expect(programme.user_completed_cpd_not_community?(user)).to be false
+        expect(programme.user_completed_cpd_with_objectives_remaining?(user)).to be false
       end
     end
 
@@ -271,17 +271,17 @@ RSpec.describe Programme, type: :model do
 
       it "returns true once CPD is complete, without them" do
         complete_grouping(cpd_grouping)
-        expect(programme.user_completed_cpd_not_community?(user)).to be true
+        expect(programme.user_completed_cpd_with_objectives_remaining?(user)).to be true
       end
 
       it "returns true while they are incomplete, even with the community objectives complete" do
         [cpd_grouping, *community_groupings].each { complete_grouping(_1) }
-        expect(programme.user_completed_cpd_not_community?(user)).to be true
+        expect(programme.user_completed_cpd_with_objectives_remaining?(user)).to be true
       end
 
       it "returns false once they and the community objectives are complete" do
         [cpd_grouping, pd_grouping, *community_groupings].each { complete_grouping(_1) }
-        expect(programme.user_completed_cpd_not_community?(user)).to be false
+        expect(programme.user_completed_cpd_with_objectives_remaining?(user)).to be false
       end
     end
   end
