@@ -9,12 +9,15 @@ class CompletedCpdButNotActivitiesJob < ApplicationJob
     programme = Programme.find(programme_id)
     enrolment = user.user_programme_enrolments.find_by(programme_id: programme.id)
 
+    return if user.forgotten?
     return if enrolment.nil? || !enrolment.in_state?(:enrolled)
-    return unless programme.user_completed_cpd_with_objectives_remaining?(user)
 
     sent_email = SentEmail.find_or_initialize_by(user:, mailer_type: programme.mailer::COMPLETED_CPD_NOT_ACTIVITIES_EMAIL)
     return if sent_email.send_count >= MAX_SENDS
     return if sent_email.last_sent_at.present? && Time.current < sent_email.last_sent_at + RESEND_INTERVAL
+
+    # Checked after the send history because it costs several queries per objective
+    return unless programme.user_completed_cpd_with_objectives_remaining?(user)
 
     message = programme.mailer.with(user:).completed_cpd_not_activities.deliver_now
 
