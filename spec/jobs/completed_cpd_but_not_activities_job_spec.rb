@@ -49,6 +49,11 @@ RSpec.describe CompletedCpdButNotActivitiesJob, type: :job do
       end
     end
 
+    it "does not send when the user has been forgotten" do
+      user.update!(forgotten: true)
+      expect { perform }.not_to change { ActionMailer::Base.deliveries.count }
+    end
+
     it "does not send when the user has no enrolment" do
       enrolment.destroy
       expect { perform }.not_to change { ActionMailer::Base.deliveries.count }
@@ -111,6 +116,12 @@ RSpec.describe CompletedCpdButNotActivitiesJob, type: :job do
 
       it "does not send" do
         expect { perform }.not_to change { ActionMailer::Base.deliveries.count }
+      end
+
+      it "skips the eligibility check" do
+        expect_any_instance_of(Programmes::PrimaryCertificate)
+          .not_to receive(:user_completed_cpd_with_objectives_remaining?)
+        perform
       end
     end
 
