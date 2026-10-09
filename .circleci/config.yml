@@ -2,7 +2,6 @@ version: 2.1
 
 orbs:
   ruby: circleci/ruby@1
-  browser-tools: circleci/browser-tools@1.5.1
 
 jobs:
   brakeman:
@@ -29,9 +28,9 @@ jobs:
     resource_class: large
     working_directory: ~/teachcomputing
     docker:
-      - image: cimg/ruby:3.3.11-node
+      - image: cimg/ruby:3.3.11-browsers
         environment:
-          BUNDLE_JOBS: "1"
+          BUNDLE_JOBS: "4"
           BUNDLE_RETRY: "3"
           BUNDLE_PATH: vendor/bundle
           CREDENTIALS_ENV: test
@@ -79,11 +78,24 @@ jobs:
       - run:
           name: Database setup
           command: bin/rails db:schema:load --trace
-      - browser-tools/install-browser-tools:
-          chrome-version: latest
-          replace-existing-chrome: true
-          install-firefox: false
-          install-geckodriver: false
+      - run:
+          name: Checksum Webpacker watched files
+          command: find app/webpacker app/components app/views/fields config/webpack yarn.lock package.json -type f | sort | xargs sha1sum > /tmp/webpacker-checksum
+      - restore_cache:
+          name: Restore Webpacker Cache
+          keys:
+            - webpacker-test-v1-{{ checksum "/tmp/webpacker-checksum" }}
+            - webpacker-test-v1-
+      - run:
+          name: Compile test assets
+          # Matches the NODE_ENV bin/webpack defaults to when rails_helper compiles; skipped if the restored cache is fresh
+          command: NODE_ENV=development bin/rails webpacker:compile
+      - save_cache:
+          name: Save Webpacker Cache
+          key: webpacker-test-v1-{{ checksum "/tmp/webpacker-checksum" }}
+          paths:
+            - public/packs-test
+            - tmp/cache/webpacker
       - run:
           name: Run rspec
           command: |
