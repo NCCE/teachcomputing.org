@@ -599,7 +599,7 @@ GEM
       rexml
     ruby-progressbar (1.13.0)
     ruby-rc4 (0.1.5)
-    rubyzip (3.0.2)
+    rubyzip (3.4.0)
     sassc (2.4.0)
       ffi (~> 1.9)
     sassc-rails (2.1.2)
