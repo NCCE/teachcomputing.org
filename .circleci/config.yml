@@ -26,6 +26,7 @@ jobs:
 
   test:
     resource_class: large
+    parallelism: 4
     working_directory: ~/teachcomputing
     docker:
       - image: cimg/ruby:3.3.11-browsers
@@ -98,18 +99,17 @@ jobs:
             - tmp/cache/webpacker
       - run:
           name: Run rspec
+          # Each parallel node runs a share of the spec files, balanced using timings from previous runs' stored test results
           command: |
             mkdir ~/rspec
-            bundle exec rspec --format progress --format RspecJunitFormatter -o ~/rspec/rspec.xml
+            TEST_FILES=$(circleci tests glob "spec/**/*_spec.rb" | circleci tests split --split-by=timings)
+            bundle exec rspec --format progress --format RspecJunitFormatter -o ~/rspec/rspec.xml $TEST_FILES
       - store_test_results:
           path: ~/rspec
       - store_artifacts:
           path: coverage
       - store_artifacts:
           path: tmp/screenshots
-      - persist_to_workspace:
-          root: ~/teachcomputing
-          paths: [coverage]
 
 workflows:
   version: 2
