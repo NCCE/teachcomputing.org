@@ -2962,3 +2962,27 @@ Activity.find_or_initialize_by(stem_course_template_no: "7f65d74c-0dbf-f011-bbd3
   activity.stem_activity_code = "CP400"
   activity.credit = 80
 end.save!
+
+Activity.find_or_initialize_by(stem_course_template_no: "448070b8-f1c3-f111-aaaf-70a8a57564cb").tap do |activity|
+  activity.title = "Leading primary computing - module 1 - live remote"
+  activity.slug = "leading-primary-computing-module-1-live-remote"
+  activity.category = "face-to-face"
+  activity.remote_delivered_cpd = true
+  activity.provider = "stem-learning"
+  activity.stem_activity_code = "CP603"
+  activity.credit = 60
+
+  activity.programmes = [primary_certificate]
+end.save!
+
+Activity.find_or_initialize_by(stem_course_template_no: "214e17d2-33c6-f111-a05c-70a8a54c19e7").tap do |activity|
+  activity.title = "Developing and supporting programming within your primary school"
+  activity.slug = "developing-and-supporting-programming-within-your-primary-school"
+  activity.category = "face-to-face"
+  activity.remote_delivered_cpd = true
+  activity.provider = "stem-learning"
+  activity.stem_activity_code = "CP604"
+  activity.credit = 60
+
+  activity.programmes = [primary_certificate]
+end.save!
