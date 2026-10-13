@@ -4,10 +4,10 @@ require "audited"
 class User < ApplicationRecord
   validates :first_name, presence: true
   validates :last_name, presence: true
-  validates :stem_achiever_contact_no, presence: true
+  validates :stem_achiever_contact_no, presence: true, uniqueness: true
   validates :stem_credentials_access_token, presence: true
   validates :stem_credentials_expires_at, presence: true
-  validates :stem_user_id, presence: true, uniqueness: true
+  validates :stem_user_id, uniqueness: true, allow_nil: true
   # WARNING: We are consiously choosing not to have a unique constraint on
   # emails
   validates :email, presence: true
@@ -35,7 +35,7 @@ class User < ApplicationRecord
   alias_method :support_audits, :audits
 
   def self.from_auth(id, credentials, info)
-    user = where(stem_user_id: info.stem_user_id).first_or_initialize
+    user = where(stem_achiever_contact_no: info.achiever_contact_no).first_or_initialize
 
     users_with_new_email_count = User.where(email: info.email.downcase).count
 
@@ -50,7 +50,7 @@ class User < ApplicationRecord
     end
 
     user.auth0_id = id
-    user.stem_user_id = info.stem_user_id
+    user.stem_user_id = info.stem_user_id if info.stem_user_id.present?
     user.first_name = info.first_name
     user.last_name = info.last_name
     user.email = info.email.downcase

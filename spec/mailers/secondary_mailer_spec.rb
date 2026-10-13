@@ -108,7 +108,7 @@ RSpec.describe SecondaryMailer, type: :mailer do
 
   describe "completed_cpd_not_activities" do
     let(:mail) { SecondaryMailer.with(user: user).completed_cpd_not_activities }
-    let(:mail_subject) { "You're so close!" }
+    let(:mail_subject) { "Final step to receive your Teach secondary computing certificate" }
 
     it "renders the headers" do
       expect(mail.subject).to eq(mail_subject)

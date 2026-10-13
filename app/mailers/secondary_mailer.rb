@@ -1,4 +1,6 @@
 class SecondaryMailer < ApplicationMailer
+  COMPLETED_CPD_NOT_ACTIVITIES_EMAIL = "secondary_completed_cpd_not_activities_email".freeze
+
   def enrolled
     @user = params[:user]
     @subject = "Welcome to Teach secondary computing"
@@ -29,7 +31,7 @@ class SecondaryMailer < ApplicationMailer
 
   def completed_cpd_not_activities
     @user = params[:user]
-    @subject = "You're so close!"
+    @subject = "Final step to receive your Teach secondary computing certificate"
 
     mail(to: @user, subject: @subject)
   end

@@ -10,6 +10,8 @@ class SentEmailDashboard < BaseDashboard
     user: Field::BelongsTo,
     subject: Field::String,
     mailer_type: Field::String,
+    send_count: Field::Number,
+    last_sent_at: FORMATTED_DATE_TIME,
     created_at: FORMATTED_DATE_TIME
   }.freeze
 
@@ -19,6 +21,8 @@ class SentEmailDashboard < BaseDashboard
     created_at
     user
     subject
+    send_count
+    last_sent_at
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
@@ -27,6 +31,8 @@ class SentEmailDashboard < BaseDashboard
     user
     subject
     created_at
+    send_count
+    last_sent_at
   ].freeze
 
   # FORM_ATTRIBUTES
