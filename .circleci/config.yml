@@ -25,7 +25,7 @@ jobs:
           command: bundle exec standardrb
 
   test:
-    resource_class: large
+    resource_class: medium
     parallelism: 4
     working_directory: ~/teachcomputing
     docker:
@@ -46,8 +46,6 @@ jobs:
           POSTGRES_PASSWORD: ""
     steps:
       - checkout
-      - attach_workspace:
-          at: ~/teachcomputing
       - run:
           name: Which bundler?
           command: bundle -v
@@ -104,12 +102,43 @@ jobs:
             mkdir ~/rspec
             TEST_FILES=$(circleci tests glob "spec/**/*_spec.rb" | circleci tests split --split-by=timings)
             bundle exec rspec --format progress --format RspecJunitFormatter -o ~/rspec/rspec.xml $TEST_FILES
+      - run:
+          name: Stash coverage results for this node
+          # Named per node so the 4 nodes' files don't collide in the workspace; the coverage job collates them
+          command: |
+            mkdir -p coverage_results
+            cp coverage/.resultset.json coverage_results/node-${CIRCLE_NODE_INDEX}.json
+      - persist_to_workspace:
+          root: ~/teachcomputing
+          paths:
+            - coverage_results
       - store_test_results:
           path: ~/rspec
       - store_artifacts:
-          path: coverage
-      - store_artifacts:
           path: tmp/screenshots
+
+  coverage:
+    # Same working_directory as test, as the stashed results record absolute paths to the source files
+    working_directory: ~/teachcomputing
+    docker:
+      - image: cimg/ruby:3.3.11
+        environment:
+          BUNDLE_PATH: vendor/bundle
+    steps:
+      - checkout
+      - attach_workspace:
+          at: ~/teachcomputing
+      - restore_cache:
+          keys:
+            - ncce-bundle-v2-{{ checksum "Gemfile.lock" }}
+      - run:
+          name: Bundle Install
+          command: bundle check || bundle install
+      - run:
+          name: Collate coverage from all test nodes
+          command: bundle exec ruby -e 'require "simplecov"; require "./spec/simplecov_profile"; SimpleCov.collate Dir["coverage_results/*.json"], "teachcomputing"'
+      - store_artifacts:
+          path: coverage
 
 workflows:
   version: 2
@@ -132,3 +161,6 @@ workflows:
   build_and_test:
     jobs:
       - test
+      - coverage:
+          requires:
+            - test
