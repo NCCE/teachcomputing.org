@@ -76,6 +76,10 @@ secondary.programme_activity_groupings.find_or_initialize_by(cms_slug: "secondar
   maybe_detach_activity_from_grouping(group, "gain-accreditation-as-a-professional-development-leader")
   maybe_detach_activity_from_grouping(group, "join-and-present-at-your-local-computing-at-school-community")
 
+  # Same leak for the original STEM Community badge activity, which is live on
+  # Primary. Secondary already has its "-secondary" version (ENG-2572).
+  maybe_detach_activity_from_grouping(group, "support-other-teachers-and-earn-a-stem-community-participation-badge")
+
   # Activities should never be removed, only marked as legacy
   # Combines the former "Make a positive impact on young people in computing" and
   # "Support your professional community" groupings into one (ENG-1531)
@@ -98,7 +102,6 @@ secondary.programme_activity_groupings.find_or_initialize_by(cms_slug: "secondar
     {slug: "contribute-to-online-discussion-secondary", legacy: true},
     {slug: "join-the-ib-encouraging-girls-into-cs-programme-and-become-an-ibc", legacy: true},
     {slug: "gain-accreditation-as-an-i-belong-champion", legacy: true},
-    {slug: "support-other-teachers-and-earn-a-stem-community-participation-badge", legacy: true},
     {slug: "lead-your-school-into-a-computing-cluster-and-develop-an-action-plan-with-a-cluster-advisor", legacy: true},
     {slug: "work-with-your-local-computing-hub-to-develop-a-school-level-action-plan-for-professional-development", legacy: true}
   ]
