@@ -49,6 +49,11 @@ primary_certificate.programme_activity_groupings.find_or_initialize_by(title: "D
 
   group.save!
 
+  # The original enrichment activity is live on Secondary, and legacy activities
+  # still count towards completion, so a Secondary completion leaked into
+  # Primary. Primary uses the "-primary" version instead (ENG-2572).
+  maybe_detach_activity_from_grouping(group, "participate-fully-in-an-ncce-curriculum-enrichment-oppertunity")
+
   # Activities should never be removed, only marked as legacy
   activities = [
     {slug: "raise-aspirations-with-a-stem-ambassador-visit", legacy: false},
@@ -60,8 +65,7 @@ primary_certificate.programme_activity_groupings.find_or_initialize_by(title: "D
     # Legacy activities
     {slug: "review-a-resource-on-cas", legacy: true},
     {slug: "host-or-attend-a-barefoot-workshop", legacy: true},
-    {slug: "attend-a-cas-community-meeting", legacy: true},
-    {slug: "participate-fully-in-an-ncce-curriculum-enrichment-oppertunity", legacy: true}
+    {slug: "attend-a-cas-community-meeting", legacy: true}
   ]
 
   activities.each_with_index do |activity, index|

@@ -63,16 +63,11 @@ module Certificates
     end
 
     def user_achievements(category)
-      achievements = current_user.achievements.belonging_to_programme(@programme).with_category(category)
+      current_user.achievements.belonging_to_programme(@programme).with_category(category)
         .includes(:activity)
         .without_category(:action)
         .not_in_state(:dropped)
         .sort_complete_first
-
-      excluded_ids = @programme.excluded_shared_activity_ids
-      achievements = achievements.where.not(activity_id: excluded_ids) if excluded_ids.any?
-
-      achievements
     end
 
     def complete_achievements
