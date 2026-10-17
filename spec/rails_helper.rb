@@ -1,24 +1,12 @@
 require "spec_helper"
 require "dotenv"
 require "simplecov"
+require_relative "simplecov_profile"
 
 SimpleCov.minimum_coverage ENV["SIMPLECOV_MIN_COVERAGE"].to_i
-SimpleCov.start "rails" do
-  require_relative "support/simplecov_warnings_patch" # To remove excess warnings from line below
-  enable_coverage_for_eval
-
-  add_group "Services", "app/services"
-  add_group "Presenters", "app/presenters"
-  add_group "Components", "app/components"
-  add_group "Views", "app/views"
-
-  current_branch = `git rev-parse --abbrev-ref HEAD`
-  changed_files = `git diff --name-only main...#{current_branch}`.split("\n")
-  add_group "Changed" do |source_file|
-    changed_files.detect do |filename|
-      source_file.filename.ends_with?(filename)
-    end
-  end
+SimpleCov.start "teachcomputing" do
+  # Labels each CI parallel node's results separately in the collated report
+  command_name "RSpec#{ENV["CIRCLE_NODE_INDEX"]}"
 end
 
 ENV["RAILS_ENV"] ||= "test"
