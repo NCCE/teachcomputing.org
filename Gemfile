@@ -71,6 +71,7 @@ group :development, :test do
   gem "debase"
   gem "dotenv-rails"
   gem "interception"
+  gem "parallel_tests"
   gem "pry"
   gem "pry-byebug", "~> 3.11.0"
   gem "pry-rails"
