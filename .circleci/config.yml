@@ -75,10 +75,6 @@ jobs:
           paths:
             - ~/.cache/yarn
       - run:
-          name: Set secret key base
-          # Without it, Rails generates tmp/local_secret.txt on boot, and the 4 parallel processes race to create it
-          command: echo "export SECRET_KEY_BASE=$(openssl rand -hex 64)" >> "$BASH_ENV"
-      - run:
           name: Wait for DB
           command: dockerize -wait tcp://localhost:5432 -timeout 1m
       - run:
@@ -86,20 +82,21 @@ jobs:
           # One database per rspec process (ncce_test, ncce_test2, ...). Not parallel:setup, as that also runs the seeds
           command: bin/rails parallel:create parallel:load_schema
       - run:
-          name: Checksum Webpacker watched files
-          command: find app/webpacker app/components app/views/fields config/webpack yarn.lock package.json -type f | sort | xargs sha1sum > /tmp/webpacker-checksum
+          name: Checksum Webpacker inputs
+          # Includes the Babel/PostCSS/Browserslist/Webpacker config that Webpacker's own freshness check ignores
+          command: find app/webpacker app/components app/views/fields config/webpack config/webpacker.yml babel.config.js postcss.config.js .browserslistrc yarn.lock package.json -type f | sort | xargs sha1sum > /tmp/webpacker-checksum
       - restore_cache:
           name: Restore Webpacker Cache
+          # Exact match only: a fallback would restore older packs that Webpacker can wrongly treat as up to date
           keys:
-            - webpacker-test-v1-{{ checksum "/tmp/webpacker-checksum" }}
-            - webpacker-test-v1-
+            - webpacker-test-v2-{{ checksum "/tmp/webpacker-checksum" }}
       - run:
           name: Compile test assets
           # Matches the NODE_ENV bin/webpack defaults to when rails_helper compiles; skipped if the restored cache is fresh
           command: NODE_ENV=development bin/rails webpacker:compile
       - save_cache:
           name: Save Webpacker Cache
-          key: webpacker-test-v1-{{ checksum "/tmp/webpacker-checksum" }}
+          key: webpacker-test-v2-{{ checksum "/tmp/webpacker-checksum" }}
           paths:
             - public/packs-test
             - tmp/cache/webpacker
@@ -117,7 +114,6 @@ jobs:
           key: parallel-runtime-v1-{{ .Revision }}
           paths:
             - tmp/parallel_runtime_rspec.log
-          when: always
       - store_test_results:
           path: tmp/rspec
       - store_artifacts:
