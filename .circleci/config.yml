@@ -75,6 +75,10 @@ jobs:
           paths:
             - ~/.cache/yarn
       - run:
+          name: Set secret key base
+          # Without it, Rails generates tmp/local_secret.txt on boot, and the 4 parallel processes race to create it
+          command: echo "export SECRET_KEY_BASE=$(openssl rand -hex 64)" >> "$BASH_ENV"
+      - run:
           name: Wait for DB
           command: dockerize -wait tcp://localhost:5432 -timeout 1m
       - run:
