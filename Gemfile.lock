@@ -423,6 +423,8 @@ GEM
     ostruct (0.6.3)
     pagy (6.4.3)
     parallel (1.24.0)
+    parallel_tests (5.8.0)
+      parallel
     parser (3.3.11.1)
       ast (~> 2.4.1)
       racc
@@ -812,6 +814,7 @@ DEPENDENCIES
   omniauth-rails_csrf_protection (~> 2.0)
   ostruct
   pagy
+  parallel_tests
   pg
   pg_search
   prawn
