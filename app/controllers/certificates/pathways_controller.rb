@@ -7,7 +7,7 @@ class Certificates::PathwaysController < ApplicationController
     @programme = @pathway.programme
     @current_user = current_user
 
-    recommended_activities = @pathway.pathway_activities.includes(:activity)
+    recommended_activities = @pathway.recommended_activities
     @recommended_community_activities = recommended_activities.filter { |pa| pa.activity.category == :community.to_s }
     @recommended_community_activity_ids = @recommended_community_activities.map { _1.activity.id }
     @recommended_activities = recommended_activities - @recommended_community_activities

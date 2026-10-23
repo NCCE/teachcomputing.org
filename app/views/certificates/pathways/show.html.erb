@@ -32,16 +32,17 @@
                 <div data-expander-target="expander" class="expander">
                   <p class="govuk-body-s govuk-!-margin-top-5"><%= @cpd_group.web_copy_course_requirements %></p>
                   <% @recommended_activities.each do |pa| %>
+                    <% activity = pa.activity.replaced_by || pa.activity %>
                     <div class="ncce-pathway-courses__course">
                       <h3 class="ncce-pathway-courses__link govuk-heading-s">
-                        <%= link_to pa.title, course_path(id: pa.stem_activity_code, name: pa.slug), class: 'ncce-link' if pa.stem_activity_code %>
+                        <%= link_to activity.title, course_path(id: activity.stem_activity_code, name: activity.slug), class: 'ncce-link' if activity.stem_activity_code %>
                       </h3>
 
                       <div class="ncce-grid__no-space-between">
-                        <p class="ncce-pathway-courses__location <%= activity_icon_class(pa) %> govuk-!-margin-top-0">
-                          <%= activity_type(pa) %>
+                        <p class="ncce-pathway-courses__location <%= activity_icon_class(activity) %> govuk-!-margin-top-0">
+                          <%= activity_type(activity) %>
                         </p>
-                        <% course = Achiever::Course::Template.maybe_find_by_activity_code(pa.stem_activity_code)%>
+                        <% course = Achiever::Course::Template.maybe_find_by_activity_code(activity.stem_activity_code)%>
                         <% if course %>
                           <p class="ncce-pathway-courses__location icon-clock govuk-!-margin-top-0">
                             <%= pluralize(course.duration_value, course.duration.downcase.chomp('s')) if course.duration.present? %>
