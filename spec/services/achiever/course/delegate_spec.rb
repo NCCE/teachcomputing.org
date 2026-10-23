@@ -58,6 +58,15 @@ RSpec.describe Achiever::Course::Delegate do
       it "contains instances of Achiever::Course::Delegate" do
         expect(described_class.find_by_achiever_contact_number("id-101").first).to be_an described_class
       end
+
+      [nil, ""].each do |blank_contact_no|
+        context "when the contact number is #{blank_contact_no.inspect}" do
+          it "returns an empty array without requesting Achiever" do
+            expect(Achiever::Request).not_to receive(:resource)
+            expect(described_class.find_by_achiever_contact_number(blank_contact_no)).to eq []
+          end
+        end
+      end
     end
   end
 end
