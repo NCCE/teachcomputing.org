@@ -6,6 +6,9 @@ class Achiever::Course::Delegate
   CACHE = false
 
   def self.find_by_achiever_contact_number(achiever_contact_no)
+    # Skip the Achiever call if there's no contact number
+    return [] if achiever_contact_no.blank?
+
     delegate_courses = PROGRAMME_NAMES.flat_map do |programme_name|
       query_strings = {
         Page: "1",
