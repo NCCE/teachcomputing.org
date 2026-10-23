@@ -28,4 +28,27 @@ RSpec.describe Certificates::PathwaysController do
       expect(response).to render_template("certificates/pathways/show")
     end
   end
+
+  describe "GET #show with a retired recommended activity" do
+    let(:replacement) { create(:activity, stem_activity_code: "CO437") }
+    let!(:retired) {
+      act = create(:activity, stem_activity_code: "CP437", replaced_by: replacement)
+      create(:pathway_activity, pathway:, activity: act)
+      act
+    }
+
+    before do
+      stub_course_templates
+      allow(Achiever::Course::Template).to receive(:maybe_find_by_activity_code).and_call_original
+      get pathway_path(slug: pathway.slug)
+    end
+
+    it "looks up the course template for the replacement activity" do
+      expect(Achiever::Course::Template).to have_received(:maybe_find_by_activity_code).with("CO437")
+    end
+
+    it "does not look up the course template for the retired activity" do
+      expect(Achiever::Course::Template).not_to have_received(:maybe_find_by_activity_code).with("CP437")
+    end
+  end
 end
