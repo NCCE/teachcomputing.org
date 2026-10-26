@@ -31,7 +31,7 @@ module Programmes
     end
 
     def bcs_logo
-      "media/images/logos/secondary-bcs.svg"
+      "logos/secondary-bcs.svg"
     end
 
     def pathways?

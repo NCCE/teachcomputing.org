@@ -27,12 +27,4 @@ class AsideComponent < ViewComponent::Base
     classes << @class_name if @class_name
     classes.join(" ")
   end
-
-  def aside_image_tag(file, *, **)
-    if file.start_with?("http://", "https://")
-      image_tag(file, *, **)
-    else
-      image_pack_tag(file, *, **)
-    end
-  end
 end

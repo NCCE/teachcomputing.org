@@ -14,7 +14,7 @@
         <div class="primary-dashboard-community-activity__activity-details">
           <div class="primary-dashboard-community-activity__activity-details-header">
             <div>
-              <%= image_pack_tag('media/images/icons/tick-green-dark.svg') %>
+              <%= image_tag('icons/tick-green-dark.svg') %>
             </div>
             <div>
               <p class="govuk-body-m govuk-!-margin-bottom-0"><%= strip_tags(upa.activity.title) %></p>
@@ -44,7 +44,7 @@
               <p class="govuk-body-m"><%= strip_tags(upa.activity.title) %></p>
             </div>
             <div>
-              <%= link_to image_pack_tag('media/images/icons/remove-activity-icon.svg'), "#",
+              <%= link_to image_tag('icons/remove-activity-icon.svg'), "#",
                 data: {
                   action: "primary-dashboard-community-activity-component#deleteActivitySelection",
                   achievement_id: upa.id

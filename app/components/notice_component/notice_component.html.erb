@@ -1,5 +1,5 @@
 <%= content_tag :div, class: ['notice-component', { "#{@class_name}": @class_name.present? }] do %>
-  <%= image_pack_tag @icon[:url], alt: @icon[:title], class: 'notice-component__icon' %>
+  <%= image_tag @icon[:url], alt: @icon[:title], class: 'notice-component__icon' %>
   <div class="notice-component__body">
     <h2 class="govuk-heading-m notice-component__title govuk-!-margin-bottom-3"><%= @title %></h2>
     <p class="govuk-body notice-component__text govuk-!-margin-bottom-0"><%= @text %></p>

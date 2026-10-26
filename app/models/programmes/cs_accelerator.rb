@@ -57,7 +57,7 @@ module Programmes
     end
 
     def bcs_logo
-      "media/images/logos/subject-knowledge-bcs.svg"
+      "logos/subject-knowledge-bcs.svg"
     end
 
     def course_achievements(user)

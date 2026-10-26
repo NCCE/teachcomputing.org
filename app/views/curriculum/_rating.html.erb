@@ -8,7 +8,7 @@
       <p class="govuk-body curriculum__rating--text">Did you find these resources useful?</p>
       <p class="curriculum__rating--thumb">
         <%= link_to(
-          image_pack_tag("media/images/resources/thumb_up.svg"),
+          image_tag("resources/thumb_up.svg"),
           send(path, :positive, id, user_id),
           alt: "thumb up",
           class: "curriculum__rating--thumb-up",
@@ -17,7 +17,7 @@
           data: { disable_with: true, action: 'ajax:success->rating#onRatingSuccessPositive' }
         ) %>
         <%= link_to(
-          image_pack_tag("media/images/resources/thumb_down.svg"),
+          image_tag("resources/thumb_down.svg"),
           send(path, :negative, id, user_id),
           alt: "thumb down",
           class: "curriculum__rating--thumb-down",

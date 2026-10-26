@@ -3,7 +3,7 @@
     <%= @text %>
   </p>
   <div class="testimonial__bio lp-testimonials__testimonial-bio">
-    <%= image_pack_tag @image, alt: @name, class: 'testimonial__image' %>
+    <%= image_tag @image, alt: @name, class: 'testimonial__image' %>
     <p class="govuk-body-s lp-testimonials__testimonial-bio-text">
       <% if @link_target.present? %>
         <strong class="name">
