@@ -179,7 +179,7 @@
 }
 
 .govuk-header__menu-button::after {
-  background-image: url('../images/icons/menu-open.svg');
+  background-image: url('../../assets/images/icons/menu-open.svg');
   background-position: center;
   background-repeat: no-repeat;
   background-size: 1rem;
@@ -193,7 +193,7 @@
 }
 
 .govuk-header__menu-button--open::after {
-  background-image: url('../images/icons/menu-close.svg');
+  background-image: url('../../assets/images/icons/menu-close.svg');
   background-position: center;
   background-repeat: no-repeat;
   background-size: 1.6rem;

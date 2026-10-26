@@ -74,7 +74,7 @@
     }
 
     @include govuk-media-query($from: desktop) {
-      background-image: url('../images/icons/line.svg');
+      background-image: url('../../assets/images/icons/line.svg');
       background-position: left center;
       background-repeat: no-repeat;
       background-size: 2px 20px;
@@ -95,7 +95,7 @@
     }
 
     &[aria-expanded='true'] .cms-header-menu__item-icon {
-      background-image: url('../images/icons/arrow-down-purple.svg');
+      background-image: url('../../assets/images/icons/arrow-down-purple.svg');
       @include govuk-media-query($from: desktop) {
         background-position: center 9px;
       }
@@ -120,7 +120,7 @@
     
 
     &-icon {
-      background-image: url('../images/icons/tick-white-no-border.svg');
+      background-image: url('../../assets/images/icons/tick-white-no-border.svg');
       background-position: 0 10px;
       background-repeat: no-repeat;
       background-size: 0.7rem;
@@ -161,7 +161,7 @@
 
   @media (any-hover: hover) {
     .cms-header-menu__item:hover .cms-header-menu__item-icon {
-      background-image: url('../images/icons/arrow-down-purple.svg');
+      background-image: url('../../assets/images/icons/arrow-down-purple.svg');
       @include govuk-media-query($from: desktop) {
         background-position: center 9px;
       }

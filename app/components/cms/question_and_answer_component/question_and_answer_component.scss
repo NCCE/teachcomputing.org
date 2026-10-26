@@ -24,7 +24,7 @@ $avatar_size: 32px;
 
     &:after {
       content: '';
-      background-image: url("../images/icons/question_avatar.svg");
+      background-image: url("../../assets/images/icons/question_avatar.svg");
       background-size: 100%;
       position: absolute;
       height: $avatar_size;
@@ -86,7 +86,7 @@ $avatar_size: 32px;
 
     &:after {
       content: '';
-      background-image: url("../images/icons/question_answer_avatar.svg");
+      background-image: url("../../assets/images/icons/question_answer_avatar.svg");
       background-size: 100%;
       position: absolute;
       height: $avatar_size;
@@ -133,7 +133,7 @@ $avatar_size: 32px;
       }
 
       &.answer-with-background {
-        background-image: url("../images/components/cms/question_and_answer_component/background_triangle.svg");
+        background-image: url("../../assets/images/components/cms/question_and_answer_component/background_triangle.svg");
         background-position: top right;
         background-repeat: no-repeat;
       }
