@@ -7,7 +7,7 @@
 
   &__column-left {
     flex: 1;
-    background-image: url("../../assets/images/hero/home-hero-left.svg");
+    background-image: url("/hero/home-hero-left.svg");
     background-position: left;
     background-size: cover;
 
@@ -21,7 +21,7 @@
 
   &__column-right {
     flex: 1;
-    background-image: url("../../assets/images/hero/home-hero-right.svg");
+    background-image: url("/hero/home-hero-right.svg");
     background-size: cover;
 
     @include govuk-media-query($until: desktop) {

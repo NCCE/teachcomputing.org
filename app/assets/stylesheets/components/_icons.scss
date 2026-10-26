@@ -1,0 +1,150 @@
+@mixin icon(
+  $image,
+  $position: left center,
+  $width: 20px,
+  $height: 20px,
+  $spacing: 7px
+) {
+  background-image: url($image);
+  background-position: $position;
+  background-repeat: no-repeat;
+  background-size: $width $height;
+  @if $position == left or $position == left top or $position == left bottom {
+    padding-left: $spacing + $width;
+  } @else if
+    $position ==
+    right or
+    $position ==
+    right
+    top or
+    $position ==
+    right
+    bottom
+  {
+    padding-right: $spacing + $width;
+  }
+}
+
+.icon-person {
+  @include icon('/icons/person.svg');
+}
+
+.icon-online {
+  @include icon('/icons/laptop.svg');
+}
+
+.icon-calendar {
+  @include icon('/icons/calendar.svg');
+}
+
+.icon-clock {
+  @include icon('/icons/clock.svg');
+}
+
+.icon-blank-circle {
+  @include icon('/icons/circle.svg');
+  background-size: 32px;
+  padding: 0;
+}
+
+.icon-pending-circle {
+  @include icon('/icons/icon-pending-circle.svg');
+  background-size: 32px;
+  padding: 0;
+}
+
+.icon-ticked-circle {
+  @include icon('/icons/complete-icon.svg');
+  background-size: 32px;
+  padding-left: 40px;
+}
+
+.icon-arrow-left {
+  @include icon('/icons/arrow_left.svg');
+  padding-left: 30px;
+  background-size: 25px;
+  display: block;
+  background-position: top left;
+}
+
+.icon-arrow-right {
+  @include icon('/icons/arrow_right.svg');
+  padding-left: 30px;
+  background-size: 25px;
+  display: block;
+  background-position: top left;
+}
+
+.icon-dotted-line {
+  @include icon('/icons/vertical_dotted_line.svg');
+  height: 32px;
+  background-size: 3.5px;
+  margin-left: 13px;
+
+  @include govuk-media-query($from: tablet) {
+    @include icon('/icons/progress_bar_line.svg');
+    background-size: 60px;
+    width: 60px;
+    height: 32px;
+    padding-left: 0px;
+    margin-left: 0px;
+    background-repeat: repeat-x;
+    background-position-y: 15px;
+  }
+}
+
+.icon-map-pin {
+  @include icon('/icons/map-pin.svg');
+}
+
+.icon-remote {
+  @include icon('/icons/icon-remote.svg');
+}
+
+.icon-resources {
+  @include icon('/icons/resources-purple.svg', left top, 30px, 30px, 10px);
+  min-height: 30px;
+}
+
+.icon-star {
+  @include icon('/icons/star.svg');
+}
+
+.icon-star-black {
+  @include icon('/icons/star-black.svg');
+}
+
+.icon-close {
+  @include icon('/icons/close.svg');
+
+  background-size: 24px 24px;
+}
+
+.icon-chart {
+  @include icon('/icons/chart.svg');
+
+  background-size: 22px 22px;
+}
+
+.icon-feedback {
+  @include icon('/icons/feedback.svg');
+}
+
+.icon-link-external {
+  @include icon('/icons/link-external.svg');
+}
+
+.icon-button-external {
+  @include icon(
+    '/icons/external-button.svg',
+    $position: right 0.75rem center,
+    $width: 24px,
+    $height: 24px
+  );
+
+  padding-right: 3rem !important;
+}
+
+.in-link {
+  margin-left: 0.5rem;
+}

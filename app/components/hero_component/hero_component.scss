@@ -87,7 +87,7 @@
 @mixin glyph($glyph) {
   &:after {
     @include govuk-media-query($from: tablet) {
-      background-image: url("../../assets/images/hero/glyph-#{$glyph}.svg");
+      background-image: url("/hero/glyph-#{$glyph}.svg");
       height: 155px;
       width: 155px;
     }

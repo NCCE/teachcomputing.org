@@ -26,6 +26,6 @@ echo "- Starting rails (with debugging enabled):"
 (trap 'kill 0' SIGINT;
   bundle exec rdebug-ide --skip_wait_for_start -h $HOST -p $DEBUG_PORT --dispatcher-port $DISPATCHER_PORT -- ./bin/rails s -b $HOST -p $PORT &
   bundle exec sidekiq > ./log/sidekiq.log &
-  ./scripts/webpack-docker-entrypoint.sh > ./log/webpack.log
+  ./scripts/css-docker-entrypoint.sh > ./log/css.log 2>&1
 )
 # ./bin/rails s -b $HOST -p $PORT
