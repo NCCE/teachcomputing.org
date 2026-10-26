@@ -1,4 +1,4 @@
-import { onPageLoad } from './utilities/loaders'
+import { onPageLoad } from 'utilities/loaders'
 
 function initialiseSections(className) {
   const menuItemToggleClass = className + '--closed'

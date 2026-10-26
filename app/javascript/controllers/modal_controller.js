@@ -1,4 +1,4 @@
-import ApplicationController from "./application_controller";
+import ApplicationController from "controllers/application_controller";
 
 export default class extends ApplicationController {
   // even if we have a confirmationTarget, we may still want to not show the

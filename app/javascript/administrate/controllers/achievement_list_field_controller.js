@@ -1,4 +1,4 @@
-import ApplicationController from "../../../webpacker/javascript/controllers/application_controller";
+import ApplicationController from "controllers/application_controller";
 
 export default class extends ApplicationController {
   static targets = ['stateFilter', 'programmeFilter', 'achievement'];

@@ -1,4 +1,4 @@
-import ApplicationController from "../../webpacker/javascript/controllers/application_controller"
+import ApplicationController from "controllers/application_controller"
 
 export default class ProgressComponentController extends ApplicationController {
   static targets = ["counter", "back", "continue", "submit", "step", "warning"]
