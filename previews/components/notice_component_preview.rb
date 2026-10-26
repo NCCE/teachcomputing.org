@@ -4,7 +4,7 @@ class NoticeComponentPreview < ViewComponent::Preview
       NoticeComponent.new(
         class_name: "lime-green-bg",
         icon: {
-          url: "media/images/icons/raspberry-pi.svg",
+          url: "icons/raspberry-pi.svg",
           title: "Raspberry Pi"
         },
         title: "Notice",

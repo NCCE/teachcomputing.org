@@ -6,7 +6,7 @@ RSpec.describe BenchmarkBannerComponent, type: :component do
       render_inline(
         described_class.new(
           icons: [
-            "media/images/pages/careers-support/benchmark_1.svg"
+            "pages/careers-support/benchmark_1.svg"
           ]
         )
       )
@@ -22,8 +22,8 @@ RSpec.describe BenchmarkBannerComponent, type: :component do
       render_inline(
         described_class.new(
           icons: [
-            "media/images/pages/careers-support/benchmark_1.svg",
-            "media/images/pages/careers-support/benchmark_2.svg"
+            "pages/careers-support/benchmark_1.svg",
+            "pages/careers-support/benchmark_2.svg"
           ]
         )
       )
@@ -39,7 +39,7 @@ RSpec.describe BenchmarkBannerComponent, type: :component do
       render_inline(
         described_class.new(
           icons: [
-            "media/images/pages/careers-support/benchmark_1.svg"
+            "pages/careers-support/benchmark_1.svg"
           ],
           align_right: true
         )

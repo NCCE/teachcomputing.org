@@ -7,7 +7,7 @@ RSpec.describe FullImageBannerComponent, type: :component do
         title: "Banner title",
         text: "Some random text",
         image: {
-          url: "media/images/pages/primary-toolkit/introduction_primary_computing.jpeg",
+          url: "pages/primary-toolkit/introduction_primary_computing.jpeg",
           alt: ""
         },
         background_color: "purple-bg",
@@ -31,7 +31,7 @@ RSpec.describe FullImageBannerComponent, type: :component do
         text: "Some random text",
         image_side: :right,
         image: {
-          url: "media/images/pages/primary-toolkit/introduction_primary_computing.jpeg",
+          url: "pages/primary-toolkit/introduction_primary_computing.jpeg",
           alt: ""
         },
         background_color: "purple-bg",

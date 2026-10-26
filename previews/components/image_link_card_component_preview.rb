@@ -4,7 +4,7 @@ class ImageLinkCardComponentPreview < ViewComponent::Preview
     card = {
       title_locale: "test.image_link_card.title",
       link_url: "https://www.example.com/",
-      image_path: "media/images/test/example.svg",
+      image_path: "test/example.svg",
       img_alt_locale: "test.image_link_card.img_alt",
       text_locale: "test.image_link_card.text_html"
     }

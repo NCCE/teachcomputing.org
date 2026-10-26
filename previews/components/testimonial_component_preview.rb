@@ -5,7 +5,7 @@ class TestimonialComponentPreview < ViewComponent::Preview
         name: "Mike Squance",
         text: "Teach computing in the best website to learn how to teach computing",
         bio: "Senior Ruby Developer",
-        image: "media/images/test/image.png"
+        image: "test/image.png"
       )
     )
   end
@@ -16,7 +16,7 @@ class TestimonialComponentPreview < ViewComponent::Preview
         name: "Mike Squance",
         text: "Teach computing in the best website to learn how to teach computing",
         bio: "Senior Ruby Developer",
-        image: "media/images/test/image.png",
+        image: "test/image.png",
         link_target: "http://www.teachcomputing.org"
       )
     )

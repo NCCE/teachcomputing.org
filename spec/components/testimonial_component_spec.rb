@@ -4,7 +4,7 @@ RSpec.describe TestimonialComponent, type: :component do
   let(:testimonial) do
     {
       text: Faker::Quote.matz,
-      image: "media/images/curriculum/curriculum.png",
+      image: "curriculum/curriculum.png",
       name: Faker::Games::ElderScrolls.name,
       link_target: "/foo",
       bio: "#{Faker::Games::ElderScrolls.race} at #{Faker::Games::ElderScrolls.city}"

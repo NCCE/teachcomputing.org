@@ -3,9 +3,9 @@
 class LogoButtonImageCardComponentPreview < ViewComponent::Preview
   def default
     params = {
-      logo: {path: "media/images/logos/isaac-logo.svg", alt: "Isaac Logo"},
+      logo: {path: "logos/isaac-logo.svg", alt: "Isaac Logo"},
       image: {
-        path: "media/images/pages/secondary-senior-leaders/teaching.png",
+        path: "pages/secondary-senior-leaders/teaching.png",
         alt: "A teacher teaching"
       },
       title: "Logo Button Image Card Component",
