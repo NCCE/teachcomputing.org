@@ -15,4 +15,6 @@ pin "@hotwired/stimulus", to: "stimulus.min.js"
 pin "@rails/ujs", to: "rails-ujs.esm.js"
 pin "flatpickr" # @4.6.13
 pin "govuk-frontend" # @5.4.0
-pin "turbolinks", preload: false # @5.2.0
+# Not "turbolinks.js": the turbolinks gem ships a non-ESM file with that name, and Propshaft
+# serves whichever is first in the asset paths (the gem's, on Heroku).
+pin "turbolinks", to: "turbolinks.esm.js", preload: false # @5.2.0
