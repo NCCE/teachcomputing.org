@@ -55,9 +55,7 @@ gem "sidekiq"
 gem "sitemap_generator"
 gem "stackprof"
 gem "stimulus-rails"
-# Not just JS: auto-includes Turbolinks::Redirection into every controller, so redirect_to
-# in a non-GET UJS (remote form) request responds with Turbolinks.visit(...). Remove with the move to Turbo.
-gem "turbolinks"
+gem "turbo-rails"
 gem "statesman", "13.1.0"
 gem "view_component"
 gem "wicked"
