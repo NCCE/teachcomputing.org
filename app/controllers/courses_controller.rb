@@ -11,7 +11,7 @@ class CoursesController < ApplicationController
     assign_params
     if ActiveModel::Type::Boolean.new.cast(params[:js_enabled])
       render json: {
-        results: render_to_string("courses/_courses-list", layout: false),
+        results: render_to_string("courses/_courses-list", layout: false, formats: [:html]),
         geocoded_location: @course_filter.search_location_formatted_address,
         location_search: @course_filter.location_search?,
         geocoded_successfully: @course_filter.geocoded_successfully?
