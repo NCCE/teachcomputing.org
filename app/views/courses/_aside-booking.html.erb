@@ -125,9 +125,9 @@
     <% else %>
       <h2 class="govuk-heading-m ncce-aside__title"><%= @booking.title %></h2>
       <p class="govuk-body-s ncce-aside__text"><%= @booking.unauthenticated_introduction %></p>
-      <p class="govuk-body">
-        <%= link_to @booking.unauthenticated_booking_button_title, "#{auth_url}?source_uri=#{CGI.escape(request.original_url)}", method: :post, class: 'govuk-button button--aside', draggable: 'false', data: { event_action: 'click', event_category: 'course details'} %>
-      </p>
+      <div class="govuk-body">
+        <%= log_in_button_to @booking.unauthenticated_booking_button_title, "#{auth_url}?source_uri=#{CGI.escape(request.original_url)}", class: 'govuk-button button--aside', data: { event_action: 'click', event_category: 'course details'} %>
+      </div>
       <p class="govuk-body">
         <%= link_to 'Create STEM Learning account', create_account_url,
           class: 'govuk-button button--aside--inverted', draggable: 'false',

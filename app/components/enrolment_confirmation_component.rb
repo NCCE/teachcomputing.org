@@ -3,7 +3,7 @@
 class EnrolmentConfirmationComponent < ViewComponent::Base
   attr_reader :logged_in_button_text, :logged_out_button_text
 
-  delegate :auth_url, :current_user, to: :helpers
+  delegate :auth_url, :current_user, :log_in_button_to, to: :helpers
 
   def initialize(programme:, full_width: true, logged_in_button_text: "Enrol", logged_out_button_text: "Log in", pathway: nil)
     @programme = programme

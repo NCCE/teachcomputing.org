@@ -13,11 +13,7 @@ RSpec.describe("pages/login", type: :view) do
     expect(rendered).to have_css(".ncce-login__button", text: "Log in")
   end
 
-  it "links to log in to a STEM Learning account" do
-    expect(rendered).to have_link("Log in", href: "/test/123")
-  end
-
-  it "login button uses POST" do
-    expect(rendered).to have_css('a[@href="/test/123"][@data-method="post"]', count: 1)
+  it "login button POSTs to log in to a STEM Learning account, outside of Turbo" do
+    expect(rendered).to have_css('form[action="/test/123"][method="post"][data-turbo="false"] button', text: "Log in", count: 1)
   end
 end

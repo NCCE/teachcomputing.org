@@ -38,6 +38,6 @@ RSpec.describe("pages/enrolment/i_belong", type: :view) do
   end
 
   it "has a log in to enrol button" do
-    expect(rendered).to have_link("Log in to enrol")
+    expect(rendered).to have_button("Log in to enrol")
   end
 end

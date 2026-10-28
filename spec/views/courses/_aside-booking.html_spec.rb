@@ -605,7 +605,7 @@ RSpec.describe("courses/_aside-booking", type: :view) do
 
       it "renders link to log in" do
         expected_link = "/auth/stem?source_uri=#{CGI.escape("http://test.host/courses")}"
-        expect(rendered).to have_link("Login to join", href: expected_link)
+        expect(rendered).to have_css("form[action='#{expected_link}'] button", text: "Login to join")
       end
 
       it "renders the start date" do

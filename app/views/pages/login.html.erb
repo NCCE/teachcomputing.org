@@ -10,9 +10,9 @@
           <p class="govuk-body">You may have been sent here from a STEM page but
             need to login. Please do this first, then it should return you to
             that page.</p>
-          <p class="govuk-body">
-            <%= link_to 'Log in', local_assigns[:auth_uri] || '/auth/stem', method: :post, class: 'govuk-button ncce-login__button button' %>
-          </p>
+          <div class="govuk-body">
+            <%= log_in_button_to 'Log in', local_assigns[:auth_uri] || auth_url, class: 'govuk-button ncce-login__button button' %>
+          </div>
         </div>
       </div>
     </div>
