@@ -51,7 +51,7 @@
     "attach": "docker exec -it teachcomputingorg-web-1",
     "purge-error-css": "yarn purgecss -con public/error-pages/application-error.html -css public/error-pages/errors.css -o public/error-pages/errors.css",
     "build:css": "yarn build:css:sass && yarn build:css:postcss",
-    "build:css:sass": "sass ./app/assets/stylesheets/application.scss:./tmp/css/application.css ./app/assets/stylesheets/administrate/application.scss:./app/assets/builds/administrate/application.css --no-source-map --load-path=node_modules --load-path=app/assets/stylesheets",
+    "build:css:sass": "sass ./app/assets/stylesheets/application.scss:./tmp/css/application.css ./app/assets/stylesheets/administrate/application.scss:./app/assets/builds/administrate/application.css --no-source-map --style=compressed --load-path=node_modules --load-path=app/assets/stylesheets",
     "build:css:postcss": "postcss ./tmp/css/application.css -o ./app/assets/builds/application.css"
   },
   "lint-staged": {
