@@ -15,7 +15,7 @@ RSpec.describe "Stem user sync", type: :system do
     u = create(:user)
     visit admin_users_path(u.id)
     click_link u.email
-    click_link "Sync with Stem"
+    click_button "Sync with Stem"
 
     expect(page).to have_text("Sync complete")
     expect(page).to have_text("Show #{u.email}")

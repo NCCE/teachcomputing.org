@@ -12,9 +12,8 @@
           send(path, :positive, id, user_id),
           alt: "thumb up",
           class: "curriculum__rating--thumb-up",
-          remote: true, 'aria-label': 'Thumbs up',
-          method: :post,
-          data: { disable_with: true, action: 'ajax:success->rating#onRatingSuccessPositive' }
+          'aria-label': 'Thumbs up',
+          data: { action: 'rating#ratePositive' }
         ) %>
         <%= link_to(
           image_tag("resources/thumb_down.svg"),
@@ -22,9 +21,7 @@
           alt: "thumb down",
           class: "curriculum__rating--thumb-down",
           'aria-label': 'Thumbs down',
-          remote: true,
-          method: :post,
-          data: { disable_with: true, action: 'ajax:success->rating#onRatingSuccessNegative' }
+          data: { action: 'rating#rateNegative' }
         ) %>
       </p>
     </div>
@@ -32,7 +29,7 @@
       <div class="ncce-courses__filters-wrapper curriculum__rating-choices govuk-!-padding-top-2 govuk-!-margin-bottom-2">
         <p class="govuk-body govuk-!-margin-bottom-1">What did you like?</p>
         <p class="govuk-body-s ncce-label--s">Select as many as are relevant</p>
-        <%= form_with(url: choices_path, method: 'post', remote: true, data: { disable_with: true, action: 'ajax:beforeSend->rating#onChoicesBeforeSend ajax:success->rating#onChoicesSuccess' }) do %>
+        <%= form_with(url: choices_path, method: 'post', data: { action: 'rating#submitChoices' }) do %>
           <div class="govuk-checkboxes govuk-!-margin-bottom-2" data-module="govuk-checkboxes">
             <div class="govuk-checkboxes__item ncce-checkboxes__item">
               <%= check_box_tag 'rating_choices[]', 'I felt supported', false, class: 'govuk-checkboxes__input ncce-checkboxes__input', id: "rating_choice_1" %>
@@ -67,7 +64,7 @@
       <div class="ncce-courses__filters-wrapper curriculum__rating-choices govuk-!-padding-top-2 govuk-!-margin-bottom-2">
         <p class="govuk-body govuk-!-margin-bottom-1">What did you dislike?</p>
         <p class="govuk-body-s ncce-label--s">Select as many as are relevant</p>
-        <%= form_with(url: choices_path, method: 'post', remote: true, data: { disable_with: true, action: 'ajax:beforeSend->rating#onChoicesBeforeSend ajax:success->rating#onChoicesSuccess' }) do %>
+        <%= form_with(url: choices_path, method: 'post', data: { action: 'rating#submitChoices' }) do %>
           <div class="govuk-checkboxes govuk-!-margin-bottom-2" data-module="govuk-checkboxes">
             <div class="govuk-checkboxes__item ncce-checkboxes__item">
               <%= check_box_tag 'rating_choices[]', 'Resource error', false, class: 'govuk-checkboxes__input ncce-checkboxes__input', id: "rating_choice_1_neg" %>
@@ -100,7 +97,7 @@
 
     <div class="rating_page rating_page--rows" data-rating-target="page">
       <p class="govuk-body govuk-!-margin-bottom-0" id="comment_title">Tell us more</p>
-      <%= form_with(url: comment_path, method: 'post', remote: true, data: { disable_with: true, action: 'ajax:beforeSend->rating#onCommentBeforeSend ajax:success->rating#onCommentSuccess' }) do %>
+      <%= form_with(url: comment_path, method: 'post', data: { action: 'rating#submitComment' }) do %>
         <%= hidden_field_tag :rating_id, :rating_id, value: '', 'data-rating-target': 'ratingId' %>
         <%= text_area_tag :comment, nil, placeholder: 'Your feedback helps improve our resource.', class: 'govuk-textarea curriculum__rating-textarea row rating_comment_placeholder' %>
         <%= submit_tag 'Submit', class: 'govuk-button button button--inline row govuk-!-margin-top-1' %>

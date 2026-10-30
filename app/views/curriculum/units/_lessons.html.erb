@@ -12,7 +12,7 @@
 										Download all lesson files <span class="lesson-download-button__meta-data">(<%= lesson.zipped_contents.size %>)</span>
 									<% end %>
 								<% else %>
-									<%= link_to 'Log in to download', "#{auth_url}?source_uri=#{CGI.escape(request.original_url)}", method: :post, :class => 'govuk-button button button--aside' %>
+									<%= log_in_button_to 'Log in to download', "#{auth_url}?source_uri=#{CGI.escape(request.original_url)}", class: 'govuk-button button button--aside' %>
 								<% end %>
 							<% end %>
 					</li>

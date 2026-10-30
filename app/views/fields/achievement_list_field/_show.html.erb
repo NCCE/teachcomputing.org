@@ -47,12 +47,11 @@
         <div class="achievement-evidence">
           <div class="evidence_header">
             <h3>Supplied Evidence</h3>
-            <%= link_to(
+            <%= button_to(
                   "Reject Evidence",
                   reject_evidence_admin_achievement_path(achievement),
                   class: "button button--danger",
-                  method: :reject_evidence,
-                  data: { confirm: t("administrate.actions.confirm") }
+                  data: { turbo_confirm: t("administrate.actions.confirm") }
                 ) %>
             </div>
           <div class="supplied-evidence">

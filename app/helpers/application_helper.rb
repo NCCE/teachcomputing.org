@@ -19,6 +19,12 @@ module ApplicationHelper
     "/auth/stem"
   end
 
+  # Log in needs a POST (omniauth-rails_csrf_protection), and must submit natively: OmniAuth redirects
+  # to the external sign-in site, which Turbo's fetch-based form submission can't follow.
+  def log_in_button_to(name, url = auth_url, **)
+    button_to(name, url, form: {data: {turbo: false}}, **)
+  end
+
   def news_url
     cms_posts_url(tag: :news)
   end

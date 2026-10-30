@@ -691,9 +691,9 @@ GEM
     timeout (0.6.1)
     tsort (0.2.0)
     ttfunk (1.7.0)
-    turbolinks (5.2.1)
-      turbolinks-source (~> 5.2)
-    turbolinks-source (5.2.0)
+    turbo-rails (2.0.23)
+      actionpack (>= 7.1.0)
+      railties (>= 7.1.0)
     tzinfo (2.0.6)
       concurrent-ruby (~> 1.0)
     unf (0.1.4)
@@ -834,7 +834,7 @@ DEPENDENCIES
   statesman (= 13.1.0)
   stimulus-rails
   timecop
-  turbolinks
+  turbo-rails
   view_component
   web-console (>= 3.3.0)
   webmock

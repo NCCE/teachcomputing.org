@@ -16,15 +16,15 @@
               <p class="govuk-body">Confirm your enrolment on the certificate, and then let's find you the perfect training course to get started with.</p>
             </div>
             <div>
-              <%= link_to "Confirm my enrolment", @programme.enrol_path(user_programme_enrolment: { user_id: current_user.id, programme_id: @programme.id, pathway_slug: @pathway&.slug }), method: :post, class: "govuk-button button", role: "button" %>
+              <%= button_to "Confirm my enrolment", @programme.enrol_path(user_programme_enrolment: { user_id: current_user.id, programme_id: @programme.id, pathway_slug: @pathway&.slug }), class: "govuk-button button" %>
             </div>
           </div>
         <% end %>
       <% end %>
     </div>
   <% else %>
-    <%= link_to logged_in_button_text, @programme.enrol_path(user_programme_enrolment: { user_id: current_user.id, programme_id: @programme.id, pathway_slug: @pathway&.slug }), method: :post, class: button_classes, role: "button" %>
+    <%= button_to logged_in_button_text, @programme.enrol_path(user_programme_enrolment: { user_id: current_user.id, programme_id: @programme.id, pathway_slug: @pathway&.slug }), class: button_classes %>
   <% end %>
 <% else %>
-  <%= link_to logged_out_button_text, auth_url, method: :post, class: button_classes, role: "button" %>
+  <%= log_in_button_to logged_out_button_text, auth_url, class: button_classes %>
 <% end %>

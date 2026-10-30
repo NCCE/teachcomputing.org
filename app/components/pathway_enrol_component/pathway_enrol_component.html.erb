@@ -7,12 +7,12 @@
     </ol>
     <% if current_user.nil? %>
       <%= link_to 'Create an account', create_account_url, class: 'govuk-button button button--aside button--margin-bottom' %>
-      <p class="govuk-body-s">
+      <div class="govuk-body-s">
         Already have a STEM learning account? Simply
-        <%= link_to 'log in', auth_url, method: :post %>
-      </p>
+        <%= log_in_button_to 'log in', auth_url, class: 'ncce-link-button' %>
+      </div>
     <% elsif programme.user_is_eligible?(current_user) %>
-      <%= link_to 'Enrol', programme.enrol_path(user_programme_enrolment: { user_id: current_user.id, programme_id: programme.id, pathway_slug: pathway.slug }), method: :post, class: 'govuk-button button button--full-width', role: 'button', draggable: 'false' %>
+      <%= button_to 'Enrol', programme.enrol_path(user_programme_enrolment: { user_id: current_user.id, programme_id: programme.id, pathway_slug: pathway.slug }), class: 'govuk-button button button--full-width' %>
     <% end %>
   <% end %>
 <% end %>

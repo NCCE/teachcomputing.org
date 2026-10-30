@@ -1,5 +1,4 @@
-import Rails from '@rails/ujs'
-import Turbolinks from 'turbolinks'
+import '@hotwired/turbo-rails'
 import { Application } from '@hotwired/stimulus'
 
 import AchievementListFieldController from "administrate/controllers/achievement_list_field_controller"
@@ -7,6 +6,3 @@ import AchievementListFieldController from "administrate/controllers/achievement
 const application = Application.start()
 
 application.register("achievement-list-field--achievement-list-field", AchievementListFieldController)
-
-Rails.start()
-Turbolinks.start()

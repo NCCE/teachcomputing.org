@@ -23,12 +23,14 @@ By default, it renders:
     </title>
 
     <%= csp_meta_tag %>
+    <%# Turbo prefetches links on hover; admin has links with side effects, and no need for the speed-up %>
+    <meta name="turbo-prefetch" content="false">
     <%= javascript_importmap_tags "administrate" %>
 
     <%= render "stylesheet" %>
     <%= csrf_meta_tags %>
 
-    <meta name="turbolinks-root" content="/admin">
+    <meta name="turbo-root" content="/admin">
   </head>
   <body>
     <div class="app-container">

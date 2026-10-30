@@ -166,13 +166,20 @@
   }
 }
 
+// button_to wraps its button in a form; keep it in the flow like the link it replaced
+.button_to {
+  display: inline;
+}
+
+// A button (e.g. a button_to POST) that looks like the links around it
 .ncce-link-button {
   background: none;
   border: 0;
-  color: $deep-cerulean;
+  color: $hyper-link-blue;
   cursor: pointer;
   font-family: inherit;
   font-size: 100%;
+  line-height: inherit;
   padding: 0;
   text-decoration: underline;
 

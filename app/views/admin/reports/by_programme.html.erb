@@ -6,7 +6,8 @@
 </header>
 
 <section class="main-content__body">
-  <%= form_with(url: report_results_admin_reports_path(programme_id: @programme.id), local: true) do |form| %>
+  <%# report_results renders (rather than redirects) after a POST, which Turbo won't accept %>
+  <%= form_with(url: report_results_admin_reports_path(programme_id: @programme.id), data: { turbo: false }) do |form| %>
     <%= fields_for :query do |qform| %>
       <div>
         <%= qform.label :enrolled %>

@@ -28,7 +28,7 @@ RSpec.describe("pages/enrolment/subject_knowledge", type: :view) do
     end
 
     it "has Enrol button" do
-      expect(rendered).to have_link("Enrol on this certificate")
+      expect(rendered).to have_button("Enrol on this certificate")
     end
   end
 
@@ -43,7 +43,7 @@ RSpec.describe("pages/enrolment/subject_knowledge", type: :view) do
     end
 
     it "has a button to log in" do
-      expect(rendered).to have_link("Log in", href: "/auth/stem")
+      expect(rendered).to have_css("form[action='/auth/stem'] button", text: "Log in")
     end
   end
 

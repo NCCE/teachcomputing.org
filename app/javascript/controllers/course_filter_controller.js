@@ -1,5 +1,4 @@
 import ApplicationController from "controllers/application_controller";
-import Rails from "@rails/ujs";
 
 export default class extends ApplicationController {
   static targets = [
@@ -46,13 +45,13 @@ export default class extends ApplicationController {
     }, 500);
   }
 
-  filter(ev) {
+  async filter(ev) {
     this.toggleLoadingBar();
 
     try {
       this.scrollToTop();
       Object.values(this.formTarget).find(field => field.name == 'js_enabled').value = true;
-      Rails.fire(this.formTarget, 'submit');
+      this.handleResults(await this.fetchResults());
     } catch (err) {
       clearInterval(this.intervalId);
       this.loadingBarTarget.innerText = "An error has occurred, please refresh the page and try again.";
@@ -187,13 +186,21 @@ export default class extends ApplicationController {
     }, 750);
   }
 
-  handleResults(ev) {
-    const [, , xhr] = ev.detail;
+  async fetchResults() {
+    const url = new URL(this.formTarget.action);
+    url.search = new URLSearchParams(new FormData(this.formTarget)).toString();
 
+    const response = await fetch(url, { headers: { Accept: 'application/json' } });
+    if (!response.ok) throw new Error(`Course filter request failed with status ${response.status}`);
+
+    return response.json();
+  }
+
+  handleResults(res) {
     this.toggleLoadingBar();
 
-    let res = JSON.parse(xhr.response)
     this.resultsTarget.innerHTML = res.results;
+    window.dispatchEvent(new Event('content:updated'));
 
     // Set the count on the view results button on mobile
     this.viewResultsCountTarget.innerText =

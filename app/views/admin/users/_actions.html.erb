@@ -1,18 +1,18 @@
 <fieldset>
   <dt class="attribute-label actions" id="actions"><%= t(".title") %></dt>
   <dd class="attribute-data attribute-data--sync actions">
-    <%= link_to(
+    <%= button_to(
       t(".sync.label"),
       perform_sync_admin_user_path(resource),
       class: "button"
     ) if accessible_action?(resource, :perform_sync) %>
-    <br/><br/>
-    <%= link_to(
+    <br/>
+    <%= button_to(
       t(".reset.label"),
       perform_reset_tests_admin_user_path(resource),
       class: "button"
     ) if accessible_action?(resource, :perform_reset_tests) %>
-    <br/><br/>
+    <br/>
     <%= link_to(
       'Generate Assessment Attempt',
       generate_assessment_attempt_admin_user_path(resource),

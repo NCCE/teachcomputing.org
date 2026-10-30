@@ -130,6 +130,17 @@
 /// links
 .govuk-header__link {
   color: $white;
+
+  // Log in/Create an account are button_to POSTs; drop the browser's button styles
+  @at-root button#{&} {
+    background: none;
+    border: 0;
+    cursor: pointer;
+    font-size: inherit;
+    line-height: inherit;
+    padding: 0;
+  }
+
   font-weight: normal !important;
   font-family: $govuk-font-family;
   -webkit-font-smoothing: antialiased;
