@@ -9,20 +9,20 @@ RSpec.describe Admin::UsersController do
     allow_any_instance_of(Admin::ApplicationController).to receive(:authenticate_admin).and_return("admin@example.com")
   end
 
-  describe "GET #perform_sync" do
+  describe "POST #perform_sync" do
     before do
       allow(Support::UserUtilities).to receive(:sync).and_return("success")
     end
 
     it "calls the sync service and redirects back with a notice" do
-      get perform_sync_admin_user_path(user)
+      post perform_sync_admin_user_path(user)
 
       expect(response).to redirect_to(admin_users_path(user_id: user.id))
       expect(flash[:notice]).to eq("Sync complete")
     end
   end
 
-  describe "GET #perform_reset_tests" do
+  describe "POST #perform_reset_tests" do
     before do
       allow(User).to receive(:find_by_email).and_return(admin_user)
       allow(Support::UserUtilities).to receive(:reset_tests).and_return([])
@@ -30,7 +30,7 @@ RSpec.describe Admin::UsersController do
 
     context "when reset tests result is empty" do
       it "calls the reset service and redirects back with a notice" do
-        get perform_reset_tests_admin_user_path(user)
+        post perform_reset_tests_admin_user_path(user)
 
         expect(response).to redirect_to(admin_user_path(user))
         expect(flash[:notice]).to eq("Nothing to do!")
@@ -46,7 +46,7 @@ RSpec.describe Admin::UsersController do
       end
 
       it "calls the reset service and redirects to edit the last support audit" do
-        get perform_reset_tests_admin_user_path(user)
+        post perform_reset_tests_admin_user_path(user)
 
         expect(response).to redirect_to(edit_admin_support_audit_path(id: support_audit.id))
       end
