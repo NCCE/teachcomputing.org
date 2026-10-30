@@ -25,7 +25,7 @@ RSpec.describe "User reset tests" do
     def click_remove_attempts
       visit admin_users_path(user.id)
       click_link user.email
-      click_link "Remove Assessment Attempts"
+      click_button "Remove Assessment Attempts"
       expect(page).to have_text("Edit SupportAudit")
     end
   end
