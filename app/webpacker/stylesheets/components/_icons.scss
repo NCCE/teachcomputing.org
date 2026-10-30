@@ -26,41 +26,41 @@
 }
 
 .icon-person {
-  @include icon('../images/icons/person.svg');
+  @include icon('../../assets/images/icons/person.svg');
 }
 
 .icon-online {
-  @include icon('../images/icons/laptop.svg');
+  @include icon('../../assets/images/icons/laptop.svg');
 }
 
 .icon-calendar {
-  @include icon('../images/icons/calendar.svg');
+  @include icon('../../assets/images/icons/calendar.svg');
 }
 
 .icon-clock {
-  @include icon('../images/icons/clock.svg');
+  @include icon('../../assets/images/icons/clock.svg');
 }
 
 .icon-blank-circle {
-  @include icon('../images/icons/circle.svg');
+  @include icon('../../assets/images/icons/circle.svg');
   background-size: 32px;
   padding: 0;
 }
 
 .icon-pending-circle {
-  @include icon('../images/icons/icon-pending-circle.svg');
+  @include icon('../../assets/images/icons/icon-pending-circle.svg');
   background-size: 32px;
   padding: 0;
 }
 
 .icon-ticked-circle {
-  @include icon('../images/icons/complete-icon.svg');
+  @include icon('../../assets/images/icons/complete-icon.svg');
   background-size: 32px;
   padding-left: 40px;
 }
 
 .icon-arrow-left {
-  @include icon('../images/icons/arrow_left.svg');
+  @include icon('../../assets/images/icons/arrow_left.svg');
   padding-left: 30px;
   background-size: 25px;
   display: block;
@@ -68,7 +68,7 @@
 }
 
 .icon-arrow-right {
-  @include icon('../images/icons/arrow_right.svg');
+  @include icon('../../assets/images/icons/arrow_right.svg');
   padding-left: 30px;
   background-size: 25px;
   display: block;
@@ -76,13 +76,13 @@
 }
 
 .icon-dotted-line {
-  @include icon('../images/icons/vertical_dotted_line.svg');
+  @include icon('../../assets/images/icons/vertical_dotted_line.svg');
   height: 32px;
   background-size: 3.5px;
   margin-left: 13px;
 
   @include govuk-media-query($from: tablet) {
-    @include icon('../images/icons/progress_bar_line.svg');
+    @include icon('../../assets/images/icons/progress_bar_line.svg');
     background-size: 60px;
     width: 60px;
     height: 32px;
@@ -94,49 +94,49 @@
 }
 
 .icon-map-pin {
-  @include icon('../images/icons/map-pin.svg');
+  @include icon('../../assets/images/icons/map-pin.svg');
 }
 
 .icon-remote {
-  @include icon('../images/icons/icon-remote.svg');
+  @include icon('../../assets/images/icons/icon-remote.svg');
 }
 
 .icon-resources {
-  @include icon('../images/icons/resources-purple.svg', left top, 30px, 30px, 10px);
+  @include icon('../../assets/images/icons/resources-purple.svg', left top, 30px, 30px, 10px);
   min-height: 30px;
 }
 
 .icon-star {
-  @include icon('../images/icons/star.svg');
+  @include icon('../../assets/images/icons/star.svg');
 }
 
 .icon-star-black {
-  @include icon('../images/icons/star-black.svg');
+  @include icon('../../assets/images/icons/star-black.svg');
 }
 
 .icon-close {
-  @include icon('../images/icons/close.svg');
+  @include icon('../../assets/images/icons/close.svg');
 
   background-size: 24px 24px;
 }
 
 .icon-chart {
-  @include icon('../images/icons/chart.svg');
+  @include icon('../../assets/images/icons/chart.svg');
 
   background-size: 22px 22px;
 }
 
 .icon-feedback {
-  @include icon('../images/icons/feedback.svg');
+  @include icon('../../assets/images/icons/feedback.svg');
 }
 
 .icon-link-external {
-  @include icon('../images/icons/link-external.svg');
+  @include icon('../../assets/images/icons/link-external.svg');
 }
 
 .icon-button-external {
   @include icon(
-    '../images/icons/external-button.svg',
+    '../../assets/images/icons/external-button.svg',
     $position: right 0.75rem center,
     $width: 24px,
     $height: 24px

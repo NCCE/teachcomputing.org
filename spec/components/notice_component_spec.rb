@@ -5,7 +5,7 @@ RSpec.describe NoticeComponent, type: :component do
     {
       class_name: "lime-green-bg",
       icon: {
-        url: "media/images/icons/raspberry-pi.svg",
+        url: "icons/raspberry-pi.svg",
         title: "Image title"
       },
       title: "Test title",

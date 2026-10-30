@@ -1,6 +1,6 @@
 .expander__button {
   background-color: $white;
-  background-image: url('../images/icons/expander_down.svg');
+  background-image: url('../../assets/images/icons/expander_down.svg');
   background-position: right center;
   background-repeat: no-repeat;
   border: none;
@@ -17,11 +17,11 @@
 }
 
 .expander__button[aria-expanded='true'] {
-  background-image: url('../images/icons/expander_up.svg');
+  background-image: url('../../assets/images/icons/expander_up.svg');
 }
 
 .expander__button-round {
-  background-image: url('../images/icons/expander_round_down.svg');
+  background-image: url('../../assets/images/icons/expander_round_down.svg');
   background-color: transparent;
   background-position: left center;
   background-repeat: no-repeat;
@@ -39,5 +39,5 @@
 }
 
 .expander__button-round[aria-expanded='true'] {
-  background-image: url('../images/icons/expander_round_up.svg');
+  background-image: url('../../assets/images/icons/expander_round_up.svg');
 }

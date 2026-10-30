@@ -54,7 +54,7 @@
   background_color: 'orange-bg',
   image_side: :right,
   image: {
-    url: "media/images/pages/secondary-toolkit/i_belong_students.jpeg",
+    url: "pages/secondary-toolkit/i_belong_students.jpeg",
     alt: "i belong",
     class: "i-belong"
   },
@@ -76,13 +76,13 @@
   testimonials: [
     {
       text: t(".testimonials.pete.text"),
-      image: "media/images/pages/secondary-toolkit/pete.png",
+      image: "pages/secondary-toolkit/pete.png",
       name: t(".testimonials.pete.name"),
       bio: t(".testimonials.pete.bio"),
     },
     {
       text: t(".testimonials.tori.text"),
-      image: "media/images/pages/secondary-toolkit/tori.png",
+      image: "pages/secondary-toolkit/tori.png",
       name: t(".testimonials.tori.name"),
       bio: t(".testimonials.tori.bio"),
     }
@@ -113,7 +113,7 @@
   course_link: courses_path(params: { certificate: 'secondary-certificate' }),
   courses: [
     {
-      image: "media/images/pages/secondary-toolkit/python_programming.jpeg",
+      image: "pages/secondary-toolkit/python_programming.jpeg",
       image_alt: "STEM course",
       title: "Python programming constructs for OCR specification",
       url: "/courses/CP423A/python-programming-constructs-sequencing-selection-iteration-for-ocr-specification",
@@ -124,7 +124,7 @@
       event_label: "CP423A"
     },
     {
-      image: "media/images/pages/secondary-toolkit/supporting_gcse.png",
+      image: "pages/secondary-toolkit/supporting_gcse.png",
       image_alt: "STEM course",
       title: "Supporting GCSE computer science students at grades 1 to 3",
       url: "/courses/CP478/supporting-gcse-computer-science-students-at-grades-1-3",
@@ -135,7 +135,7 @@
       event_label: "CP478"
     },
     {
-      image: "media/images/pages/secondary-toolkit/impact_of_tech.png",
+      image: "pages/secondary-toolkit/impact_of_tech.png",
       image_alt: "STEM course",
       title: "Impact of Technology: How To Lead Classroom Discussions",
       url: "/courses/CO215/impact-of-technology-how-to-lead-classroom-discussions",
@@ -255,7 +255,7 @@
             <%= component.with_heading do %>
               <p class="govuk-body-m with-icon-coloured-right">
                 <%= t(".further_learning.aside.title") %>
-                <%= image_pack_tag "media/images/icons/ambassador_orange.svg" %>
+                <%= image_tag "icons/ambassador_orange.svg" %>
               </p>
             <% end %>
             <%= component.with_body do %>
@@ -275,7 +275,7 @@
   text: t('.career_banner.content'),
   background_color: 'purple-bg',
   image: {
-    url: "media/images/pages/secondary-toolkit/secondary_careers.jpeg",
+    url: "pages/secondary-toolkit/secondary_careers.jpeg",
     alt: "teach computing secondary careers"
   },
   link: link_to("Find out more", '')) %>

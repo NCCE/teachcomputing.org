@@ -40,7 +40,7 @@ RSpec.describe HeroMediaComponent, type: :component do
   describe "when an image is passed" do
     before do
       data[:image] = {
-        url: "media/images/landing-pages/pri-hero.png",
+        url: "landing-pages/pri-hero.png",
         title: "Image title"
       }
       render_inline(described_class.new(**data))

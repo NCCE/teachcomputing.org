@@ -2,7 +2,7 @@
   <div class='govuk-body-s provider-logos-component__copy'><%= t(".provider_text.#{@provider}") %></div>
   <div class='govuk-body-s provider-logos-component__logo-wrapper'>
     <% @logos.each do | logo | %>
-      <div class='provider-logos-component__logo'><%= image_pack_tag "media/images/logos/#{logo[:filename]}", alt: logo[:alt] %></div>
+      <div class='provider-logos-component__logo'><%= image_tag "logos/#{logo[:filename]}", alt: logo[:alt] %></div>
     <% end %>
   </div>
 <% end %>

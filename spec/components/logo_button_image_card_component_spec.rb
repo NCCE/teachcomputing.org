@@ -4,9 +4,9 @@ require "faker"
 RSpec.describe LogoButtonImageCardComponent, type: :component do
   let(:params) do
     {
-      logo: {path: "media/images/logos/isaac-logo.svg", alt: Faker::Lorem.unique.sentence},
+      logo: {path: "logos/isaac-logo.svg", alt: Faker::Lorem.unique.sentence},
       image: {
-        path: "media/images/pages/secondary-senior-leaders/teaching.png",
+        path: "pages/secondary-senior-leaders/teaching.png",
         alt: Faker::Lorem.unique.sentence
       },
       title: Faker::Lorem.unique.sentence,

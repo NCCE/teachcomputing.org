@@ -7,7 +7,7 @@ RSpec.describe BannerComponent, type: :component do
         title: "Banner title",
         text: "Some random text",
         image: {
-          url: "media/images/test/image.png",
+          url: "test/image.png",
           alt: ""
         },
         background_color: "purple",
@@ -56,7 +56,7 @@ RSpec.describe BannerComponent, type: :component do
         text: "Some random text",
         media_column_size: :half,
         image: {
-          url: "media/images/test/image.png",
+          url: "test/image.png",
           alt: ""
         },
         background_color: "purple",
@@ -92,7 +92,7 @@ RSpec.describe BannerComponent, type: :component do
         text: "Some random text",
         media_side: :right,
         image: {
-          url: "media/images/test/image.png",
+          url: "test/image.png",
           alt: ""
         },
         background_color: "purple",
@@ -125,7 +125,7 @@ RSpec.describe BannerComponent, type: :component do
         text: "Some random text",
         media_column_size: :half,
         image: {
-          url: "media/images/test/image.png",
+          url: "test/image.png",
           alt: ""
         },
         background_color: "purple",

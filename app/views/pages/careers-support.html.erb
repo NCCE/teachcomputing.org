@@ -7,7 +7,7 @@
           <p class="govuk-body-m govuk-!-margin-bottom-0"><%= t(".hero.subtitle") %></p>
         </div>
         <div class="careers-support-hero__block--photo">
-          <%= image_pack_tag 'media/images/pages/careers-support/computer_science_careers.jpeg', alt: '' %>
+          <%= image_tag 'pages/careers-support/computer_science_careers.jpeg', alt: '' %>
         </div>
       </div>
     </div>
@@ -30,9 +30,9 @@
 <% end %>
 
 <%= render BenchmarkBannerComponent.new(icons: [
-  "media/images/pages/careers-support/benchmark_4.svg",
-  "media/images/pages/careers-support/benchmark_5.svg",
-  "media/images/pages/careers-support/benchmark_7.svg",
+  "pages/careers-support/benchmark_4.svg",
+  "pages/careers-support/benchmark_5.svg",
+  "pages/careers-support/benchmark_7.svg",
 ], class_name: "benchmark-banner--width-float two-headings")%>
 
 <%= render GovGridRowComponent.new(padding: {bottom: 0}) do |row| %>
@@ -65,9 +65,9 @@
 ) %>
 
 <%= render BenchmarkBannerComponent.new(icons: [
-  "media/images/pages/careers-support/benchmark_5.svg",
-  "media/images/pages/careers-support/benchmark_6.svg",
-  "media/images/pages/careers-support/benchmark_7.svg",
+  "pages/careers-support/benchmark_5.svg",
+  "pages/careers-support/benchmark_6.svg",
+  "pages/careers-support/benchmark_7.svg",
 ], class_name: "benchmark-banner--width-float")%>
 
 <%= render GovGridRowComponent.new do |row| %>
@@ -79,7 +79,7 @@
   <% end %>
   <%= row.with_column("one-third") do %>
     <div class="govuk-!-margin-top-9">
-      <%= image_pack_tag "media/images/logos/isaac-logo.svg" %>
+      <%= image_tag "logos/isaac-logo.svg" %>
     </div>
   <% end %>
 <% end %>
@@ -96,8 +96,8 @@
 <% end %>
 
 <%= render BenchmarkBannerComponent.new(icons: [
-  "media/images/pages/careers-support/benchmark_2.svg",
-  "media/images/pages/careers-support/benchmark_3.svg",
+  "pages/careers-support/benchmark_2.svg",
+  "pages/careers-support/benchmark_3.svg",
 ], class_name: "benchmark-banner--width-float")%>
 
 <%= render GovGridRowComponent.new do |row| %>

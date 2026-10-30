@@ -14,7 +14,7 @@
 }
 
 .hero--glyph-2:after {
-  background-image: url(../images/hero/glyph-2.svg);
+  background-image: url(../../assets/images/hero/glyph-2.svg);
   height: 75px;
   width: 105px;
   @include govuk-media-query($from: desktop) {
@@ -24,7 +24,7 @@
 }
 
 .hero--glyph-3:after {
-  background-image: url(../images/hero/glyph-3.svg);
+  background-image: url(../../assets/images/hero/glyph-3.svg);
   height: 75px;
   transform: rotate(180deg);
   width: 60px;
@@ -35,7 +35,7 @@
 }
 
 .hero--glyph-4:after {
-  background-image: url(../images/hero/glyph-4.svg);
+  background-image: url(../../assets/images/hero/glyph-4.svg);
   height: 92px;
   width: 90px;
   @include govuk-media-query($from: desktop) {

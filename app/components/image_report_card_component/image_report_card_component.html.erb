@@ -1,6 +1,6 @@
 <%= content_tag :div, class: ['image-report-card-component__wrapper', { "#{@class_name}": @class_name.present? } ], data: { show_border: @show_border } do %>
   <div class='image-report-card-component__image-wrapper'>
-    <%= image_pack_tag @image[:path], class: 'image-report-card-component__image', alt: @image[:alt] %>
+    <%= image_tag @image[:path], class: 'image-report-card-component__image', alt: @image[:alt] %>
   </div>
   <div class='image-report-card-component__text-wrapper'>
     <h2 class="govuk-heading-m image-report-card-component__title"><%= @title %></h2>

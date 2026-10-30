@@ -64,7 +64,7 @@ RSpec.describe("curriculum/key_stages/index", type: :view) do
 
     OpenStruct.new({
       name: "Journey progress test file",
-      file: "media/images/test/example.#{extension}",
+      file: "test/example.#{extension}",
       slug: slug
     })
   end

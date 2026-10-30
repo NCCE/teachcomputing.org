@@ -14,7 +14,6 @@ default: &default
     - "app/webpacker/javascript"
     - "app/webpacker/stylesheets"
     - "app/webpacker/pdf"
-    - "app/webpacker/images"
     - "app/components"
     - "app/views/fields"
 

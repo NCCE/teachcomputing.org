@@ -31,8 +31,8 @@
       content: '';
       display: block;
       height: 40px;
-      -webkit-mask-image: url(../images/card/glyph-2.svg);
-      mask-image: url(../images/card/glyph-2.svg);
+      -webkit-mask-image: url(../../assets/images/card/glyph-2.svg);
+      mask-image: url(../../assets/images/card/glyph-2.svg);
       position: absolute;
       right: 0;
       width: 40px;
@@ -211,7 +211,7 @@
     border: solid 2px black;
     font-size: 1em;
 
-    background-image: url('../images/icons/tick-plain.svg');
+    background-image: url('../../assets/images/icons/tick-plain.svg');
     background-repeat: no-repeat;
     background-size: 1.3rem;
     background-position: 0.4rem 0.15rem;
@@ -242,7 +242,7 @@
 }
 
 .status-block__icon {
-  background-image: url('../images/icons/tick-plain.svg');
+  background-image: url('../../assets/images/icons/tick-plain.svg');
   background-position: left 0.5rem center;
   background-repeat: no-repeat;
   background-size: 1.25rem;

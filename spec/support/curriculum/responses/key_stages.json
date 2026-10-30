@@ -12,7 +12,7 @@
         "curriculumMaps": [],
         "journey_progress_pdf": {
           "name": "Primary journey progress pdf",
-          "file": "media/images/test/example.pdf",
+          "file": "test/example.pdf",
           "type": "PDF",
           "size": "1 KB",
           "created": "2024-04-15 12:23:53 UTC",
@@ -20,7 +20,7 @@
         },
         "journey_progress_icon": {
           "name": "Primary journey progress icon",
-          "file": "media/images/test/example.png",
+          "file": "test/example.png",
           "slug": "primary-journey-progress-icon"
         },
         "lessonCount": "16",
@@ -98,12 +98,12 @@
         "curriculumMaps": [],
         "journey_progress_pdf": {
           "name": "Primary journey progress pdf",
-          "file": "media/images/test/example.pdf",
+          "file": "test/example.pdf",
           "slug": "primary-journey-progress-pdf"
         },
         "journey_progress_icon": {
           "name": "Primary journey progress icon",
-          "file": "media/images/test/example.png",
+          "file": "test/example.png",
           "slug": "primary-journey-progress-icon"
         },
         "lessonCount": "16",

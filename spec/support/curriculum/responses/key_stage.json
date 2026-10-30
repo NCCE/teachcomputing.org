@@ -11,12 +11,12 @@
       "curriculumMaps": [],
       "journey_progress_pdf": {
         "name": "Primary journey progress pdf",
-        "file": "media/images/test/example.pdf",
+        "file": "test/example.pdf",
         "slug": "primary-journey-progress-pdf"
       },
       "journey_progress_icon": {
         "name": "Primary journey progress icon",
-        "file": "media/images/test/example.png",
+        "file": "test/example.png",
         "slug": "primary-journey-progress-icon"
       },
       "yearGroups": [

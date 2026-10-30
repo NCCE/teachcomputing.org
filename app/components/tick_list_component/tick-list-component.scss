@@ -37,7 +37,7 @@
   }
 
   li {
-    background-image: url('../images/icons/tick-plain.svg');
+    background-image: url('../../assets/images/icons/tick-plain.svg');
     background-repeat: no-repeat;
     background-size: 1.3rem;
     padding: 0 0 0.5em 1.7em;
@@ -55,7 +55,7 @@
 
   &.solid-tick {
     li {
-      background-image: url('../images/icons/tick-green-circle.svg');
+      background-image: url('../../assets/images/icons/tick-green-circle.svg');
       background-repeat: no-repeat;
       background-size:2rem;
       padding: 0.25em 0 0.25em 2em;

@@ -69,7 +69,7 @@ RSpec.describe NonBorderedCardsComponent, type: :component do
 
   context "with an image" do
     before do
-      test_data[:cards][0][:image_url] = "media/images/logos/isaac-logo-with-bg.svg"
+      test_data[:cards][0][:image_url] = "logos/isaac-logo-with-bg.svg"
       render_inline(described_class.new(**test_data))
     end
 

@@ -11,7 +11,7 @@ class ImageReportCardComponentPreview < ViewComponent::Preview
         button_url: "/"
       },
       image: {
-        path: "media/images/pages/impact/impact_report.png",
+        path: "pages/impact/impact_report.png",
         alt: "Image"
       }
     }
@@ -30,7 +30,7 @@ class ImageReportCardComponentPreview < ViewComponent::Preview
         button_url: "/"
       },
       image: {
-        path: "media/images/pages/impact/impact_report.png",
+        path: "pages/impact/impact_report.png",
         alt: "Image"
       }
     }

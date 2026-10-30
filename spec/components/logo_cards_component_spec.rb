@@ -7,21 +7,21 @@ RSpec.describe LogoCardsComponent, type: :component do
       cards_per_row: 3,
       cards: [
         {
-          image_url: "media/images/logos/stem-logo-with-bg.svg",
+          image_url: "logos/stem-logo-with-bg.svg",
           title_link: {
             title: "Impact and evaluation",
             title_url: "https://www.stem.org.uk/impact-and-evaluation"
           }
         },
         {
-          image_url: "media/images/logos/rpf-logo-with-bg.svg",
+          image_url: "logos/rpf-logo-with-bg.svg",
           title_link: {
             title: "Computing education research seminars",
             title_url: "https://www.raspberrypi.org/computing-education-research-online-seminars/"
           }
         },
         {
-          image_url: "media/images/logos/bcs-logo-with-bg.svg",
+          image_url: "logos/bcs-logo-with-bg.svg",
           title_link: {
             title: "Academic publications",
             title_url: "https://www.bcs.org/more/learned-publishing/"

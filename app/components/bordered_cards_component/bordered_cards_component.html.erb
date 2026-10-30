@@ -3,7 +3,7 @@
     <%= content_tag :div, class: ['bordered-card', { "#{card[:class_name]}": card[:class_name].present? }], style: custom_card_properties(card) do %>
       <% if card[:image_url].present? %>
         <div class="bordered-card__image-wrapper">
-          <%= image_pack_tag card[:image_url], alt: card[:title], class: 'bordered-card__image' %>
+          <%= image_tag card[:image_url], alt: card[:title], class: 'bordered-card__image' %>
         </div>
       <% end %>
       <% if card[:title].present? %>
@@ -23,7 +23,7 @@
 
       <% if card[:clickable_i_belong].present? %>
         <%= link_to card[:clickable_i_belong], class: "bordered-card__clickable-i-belong-flag" do %>
-          <%= image_pack_tag "media/images/logos/i_belong_flag.svg" %>
+          <%= image_tag "logos/i_belong_flag.svg" %>
         <% end %>
       <% end %>
     <% end %>

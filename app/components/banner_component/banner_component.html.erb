@@ -48,7 +48,7 @@
 
         <div class="<%= media_column_class %>">
           <% if @image %>
-            <%= image_pack_tag @image[:url], alt: @image[:alt] %>
+            <%= image_tag @image[:url], alt: @image[:alt] %>
           <% end %>
           <% if @video %>
             <% if @video_type == :youtube %>

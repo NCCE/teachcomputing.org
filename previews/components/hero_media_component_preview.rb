@@ -7,7 +7,7 @@ class HeroMediaComponentPreview < ViewComponent::Preview
       title: "About us",
       text: "This is an example of a hero image component. It's a hero and it has an image, it also has some text.",
       image: {
-        url: "media/images/landing-pages/pri-hero.png",
+        url: "landing-pages/pri-hero.png",
         title: "Image title"
       }
     }

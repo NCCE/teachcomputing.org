@@ -10,7 +10,7 @@ RSpec.describe BenchmarkBorderedCardsComponent, type: :component do
               title: "Testing",
               text: "Pellentesque commodo eros a enim. Sed fringilla mauris sit amet nibh.",
               benchmark_icons: [
-                "media/images/pages/careers-support/benchmark_1.svg"
+                "pages/careers-support/benchmark_1.svg"
               ]
             }
           ]
@@ -41,7 +41,7 @@ RSpec.describe BenchmarkBorderedCardsComponent, type: :component do
               title_link: "/courses",
               text: "Pellentesque commodo eros a enim. Sed fringilla mauris sit amet nibh.",
               benchmark_icons: [
-                "media/images/pages/careers-support/benchmark_1.svg"
+                "pages/careers-support/benchmark_1.svg"
               ]
             }
           ]
