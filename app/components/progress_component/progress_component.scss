@@ -27,7 +27,7 @@
   }
 
   .progress-component__continue {
-    @include icon('../../assets/images/icons/arrow_right.svg');
+    @include icon('/icons/arrow_right.svg');
     padding-right: 30px;
     background-size: 25px;
     display: block;

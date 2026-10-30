@@ -82,24 +82,9 @@ jobs:
           # One database per rspec process (ncce_test, ncce_test2, ...). Not parallel:setup, as that also runs the seeds
           command: bin/rails parallel:create parallel:load_schema
       - run:
-          name: Checksum Webpacker inputs
-          # Includes the Babel/PostCSS/Browserslist/Webpacker config that Webpacker's own freshness check ignores
-          command: find app/webpacker app/components app/views/fields config/webpack config/webpacker.yml babel.config.js postcss.config.js .browserslistrc yarn.lock package.json -type f | sort | xargs sha1sum > /tmp/webpacker-checksum
-      - restore_cache:
-          name: Restore Webpacker Cache
-          # Exact match only: a fallback would restore older packs that Webpacker can wrongly treat as up to date
-          keys:
-            - webpacker-test-v2-{{ checksum "/tmp/webpacker-checksum" }}
-      - run:
-          name: Compile test assets
-          # Matches the NODE_ENV bin/webpack defaults to when rails_helper compiles; skipped if the restored cache is fresh
-          command: NODE_ENV=development bin/rails webpacker:compile
-      - save_cache:
-          name: Save Webpacker Cache
-          key: webpacker-test-v2-{{ checksum "/tmp/webpacker-checksum" }}
-          paths:
-            - public/packs-test
-            - tmp/cache/webpacker
+          name: Build CSS
+          # cssbundling-rails: compiles app/assets/stylesheets into app/assets/builds, which Propshaft serves
+          command: yarn build:css
       - restore_cache:
           name: Restore spec runtimes
           keys:

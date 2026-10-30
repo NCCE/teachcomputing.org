@@ -10,7 +10,7 @@
   > h5 {
     margin: 0;
 
-    background-image: url('../../assets/images/icons/expander_down.svg');
+    background-image: url('/icons/expander_down.svg');
     background-repeat: no-repeat;
     background-position: center right;
     width: fit-content;
@@ -23,7 +23,7 @@
 
 
     &.community-activity-list--toggle-down {
-      background-image: url('../../assets/images/icons/expander_up.svg');
+      background-image: url('/icons/expander_up.svg');
     }
   }
 }

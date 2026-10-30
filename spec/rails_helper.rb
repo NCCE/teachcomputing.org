@@ -85,10 +85,6 @@ RSpec.configure do |config|
     end
   end
 
-  config.before(:suite) do
-    Webpacker.compile if Webpacker.instance.compiler.stale?
-  end
-
   config.before(:each) { stub_cloudflare_ip_lookup }
 
   config.around(:each, type: :system) do |example|
