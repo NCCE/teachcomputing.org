@@ -6,22 +6,38 @@
 </div>
 
 <div class="govuk-body ncce-csa-dash__section ncce-csa-dash__section-padded">
-  <p class="govuk-body">
-    Ready to take your test?
-  </p>
-
   <% if user_programme_assessment.currently_taking_test? %>
-    <p class="govuk-body govuk-!-margin-0">
-      You are currently taking the test. If you have recently failed, please come back in 2 hours.
-    </p>
+    <%= render 'certificates/assessment_attempt_status', attempt: user_programme_assessment.latest_attempt %>
   <% elsif user_programme_assessment.can_take_test_at != 0 %>
-    <p class="govuk-body">
-      Your <%= to_word_ordinal(user_programme_assessment.failed_num_attempts + 1) %> attempt at the test can be done <strong>after <%= "#{(Time.zone.now + user_programme_assessment.can_take_test_at.seconds).in_time_zone('London').strftime('%-l%P on %A')}" %></strong>.
-    </p>
+    <div class="ncce-assessment-info">
+      <%= image_pack_tag 'media/images/icons/info.svg', alt: '' %>
+      <p class="govuk-body">
+        You've taken the test <%= attempt_count_in_words(user_programme_assessment.failed_num_attempts) %> without passing. You can take it again after <strong><%= assessment_time(Time.zone.now + user_programme_assessment.can_take_test_at.seconds) %></strong>.
+      </p>
+    </div>
     <p class="govuk-body govuk-!-margin-0">
       You may want to consider completing additional courses before your next attempt. You can find full details of areas for improvement on your results email, and course recommendations in the <%= link_to 'CSA Handbook', 'https://ncce.io/csa-handbook', class: 'ncce-link', data: tracking_data('CSA Handbook') %>.
     </p>
   <% else %>
+    <%= render 'certificates/assessment_attempt_status', attempt: user_programme_assessment.latest_attempt %>
+    <p class="govuk-body">
+      Ready to take your test?
+    </p>
+    <% if user_programme_assessment.failed_num_attempts == 1 %>
+      <div class="ncce-assessment-info">
+        <%= image_pack_tag 'media/images/icons/info.svg', alt: '' %>
+        <p class="govuk-body">
+          You've taken the test once without passing. You have one more attempt now. If you don't pass, you'll need to wait 48 hours before trying again.
+        </p>
+      </div>
+    <% elsif user_programme_assessment.failed_num_attempts > 1 %>
+      <div class="ncce-assessment-info">
+        <%= image_pack_tag 'media/images/icons/info.svg', alt: '' %>
+        <p class="govuk-body">
+          You've taken the test <%= attempt_count_in_words(user_programme_assessment.failed_num_attempts) %> without passing. If you don't pass this attempt, you'll need to wait 48 hours before trying again.
+        </p>
+      </div>
+    <% end %>
     <div class="ncce-csa-dash__sub-section govuk-!-margin-bottom-5">
       <ul class='govuk-list govuk-list--bullet govuk-body-s' role='list'>
         <li>You'll have 30 minutes to answer 25 multiple-choice questions and you must complete the test in one sitting.</li>
@@ -30,6 +46,7 @@
         <li>If you have a disability, impairment or sensory loss, or an additional need such as a dyslexia or a requirement for assistive technology to enable you to complete the test, we can extend the test time to 45 minutes. To request this, please <%= mail_to 'certificationqueries@bcs.uk', 'email us', class: 'ncce-link' %> and we'd be happy to help.</li>
         <li>Once you start the test, you'll be required to provide the email address of a Senior Leader or course leader in your school who can confirm you have completed the test under exam conditions.</li>
         <li>The pass mark is 65%. You're allowed two initial attempts at the test before a 48 hour cool off period between each subsequent attempt.</li>
+        <li>When you've finished the test on ClassMarker, use the button at the end to come back here and see your result.</li>
       </ul>
     </div>
 

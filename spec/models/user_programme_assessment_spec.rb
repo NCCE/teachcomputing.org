@@ -128,6 +128,10 @@ RSpec.describe UserProgrammeAssessment do
       it "assigns the number of attempts at test correctly" do
         expect(user_programme_asessment.total_num_attempts).to eq(0)
       end
+
+      it "has no latest attempt" do
+        expect(user_programme_asessment.latest_attempt).to be_nil
+      end
     end
 
     context "when user started the test" do
@@ -149,6 +153,10 @@ RSpec.describe UserProgrammeAssessment do
 
       it "assigns the number of attempts at test correctly" do
         expect(user_programme_asessment.total_num_attempts).to eq(1)
+      end
+
+      it "returns the commenced attempt as the latest attempt" do
+        expect(user_programme_asessment.latest_attempt).to eq(one_commenced_test_attempt)
       end
     end
 

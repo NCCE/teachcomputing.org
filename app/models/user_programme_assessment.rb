@@ -31,6 +31,10 @@ class UserProgrammeAssessment
     [@failed_attempts.last.last_transition.created_at.to_i - 48.hours.ago.to_i, 0].max
   end
 
+  def latest_attempt
+    @attempts&.last
+  end
+
   def currently_taking_test?
     return false if @attempts.nil? || @attempts.last.nil?
 
