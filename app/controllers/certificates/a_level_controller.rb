@@ -14,6 +14,7 @@ module Certificates
       @cpd_courses = @professional_development_groups.flat_map(&:programme_activities)
 
       @assessment = Assessment.find_by(programme: @programme)
+      @latest_attempt = @assessment.latest_attempt_for(user: current_user)
 
       render :show
     end
