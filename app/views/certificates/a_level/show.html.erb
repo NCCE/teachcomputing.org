@@ -11,7 +11,8 @@
             <p class="govuk-body"><%= t('.introduction') %></p>
 
             <%= render ModalComponent.new(
-              title: 'Ready to take your test?',
+              title: @latest_attempt&.in_state?(:commenced) ? "You're taking the test" : 'Ready to take your test?',
+              expanded: @latest_attempt&.in_state?(:commenced),
               reopen_button_text: 'Complete the test',
               show_corner_decoration: false
             ) do |component| %>

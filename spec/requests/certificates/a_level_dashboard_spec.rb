@@ -37,8 +37,27 @@ RSpec.describe Certificates::ALevelController do
         expect(response).to render_template("show")
       end
 
+      it "assigns no latest attempt" do
+        expect(assigns(:latest_attempt)).to be_nil
+      end
+
       it "asks client not to cache a private page" do
         expect(response.headers["cache-control"]).to eq("no-store")
+      end
+    end
+
+    describe "while enrolled with assessment attempts" do
+      let!(:older_attempt) { create(:timed_out_assessment_attempt, user:, assessment:, created_at: 1.day.ago) }
+      let!(:newer_attempt) { create(:assessment_attempt, user:, assessment:) }
+
+      before do
+        enrolment
+        allow_any_instance_of(AuthenticationHelper).to receive(:current_user).and_return(user)
+        get "/certificate/a-level-certificate"
+      end
+
+      it "assigns the latest attempt" do
+        expect(assigns(:latest_attempt)).to eq(newer_attempt)
       end
     end
 
