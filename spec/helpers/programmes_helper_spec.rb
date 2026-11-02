@@ -51,6 +51,26 @@ describe ProgrammesHelper, type: :helper do
     end
   end
 
+  describe("#assessment_time") do
+    it "formats the time in London with the full date" do
+      expect(assessment_time(Time.utc(2026, 7, 6, 13, 5))).to eq("2:05pm on Monday 6 July 2026")
+    end
+  end
+
+  describe("#attempt_count_in_words") do
+    it "returns once for one attempt" do
+      expect(attempt_count_in_words(1)).to eq("once")
+    end
+
+    it "returns twice for two attempts" do
+      expect(attempt_count_in_words(2)).to eq("twice")
+    end
+
+    it "returns a count for more attempts" do
+      expect(attempt_count_in_words(3)).to eq("3 times")
+    end
+  end
+
   describe("#index_to_word_ordinal") do
     it 'returns "0th" when argument is -1' do
       expect(index_to_word_ordinal(-1)).to eq("0th")
