@@ -15,6 +15,14 @@ module ProgrammesHelper
     ActiveSupport::Inflector.ordinalize(index)
   end
 
+  def assessment_time(time)
+    time.in_time_zone("London").strftime("%-l:%M%P on %A %-d %B %Y")
+  end
+
+  def attempt_count_in_words(count)
+    {1 => "once", 2 => "twice"}.fetch(count) { "#{count} times" }
+  end
+
   def eligible_for_secondary?(user)
     Programme.secondary_certificate.user_is_eligible?(user)
   end
