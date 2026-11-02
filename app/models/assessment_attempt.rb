@@ -6,6 +6,8 @@ class AssessmentAttempt < ApplicationRecord
     initial_state: StateMachines::AssessmentAttemptStateMachine.initial_state
   ]
 
+  EXPIRES_AFTER = 2.hours
+
   validates :accepted_conditions, presence: true
 
   belongs_to :user
@@ -22,6 +24,10 @@ class AssessmentAttempt < ApplicationRecord
 
   def state_machine
     @state_machine ||= StateMachines::AssessmentAttemptStateMachine.new(self, transition_class: AssessmentAttemptTransition)
+  end
+
+  def expires_at
+    created_at + EXPIRES_AFTER
   end
 
   def self.transition_class

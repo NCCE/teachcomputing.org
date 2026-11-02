@@ -52,6 +52,13 @@ RSpec.describe AssessmentAttempt do
     it { is_expected.to delegate_method(:in_state?).to(:state_machine).as(:in_state?) }
   end
 
+  describe "#expires_at" do
+    it "is two hours after the attempt was created" do
+      attempt = create(:assessment_attempt, assessment:, created_at: Time.zone.parse("2026-10-10 14:14"))
+      expect(attempt.expires_at).to eq(Time.zone.parse("2026-10-10 16:14"))
+    end
+  end
+
   describe "#for_user" do
     it "when user has attempted the assessment" do
       user
