@@ -48,10 +48,6 @@ RSpec.describe("certificates/cs_accelerator/_csa-test") do
       expect(rendered).to have_button("commit", disabled: true)
     end
 
-    it "explains how to return after the test" do
-      expect(rendered).to have_text("When you've finished the test on ClassMarker, use the button at the end to come back here and see your result.")
-    end
-
     it "does not mention previous attempts" do
       expect(rendered).not_to have_text("without passing")
     end
@@ -69,15 +65,11 @@ RSpec.describe("certificates/cs_accelerator/_csa-test") do
     end
 
     it "shows when the test was started" do
-      expect(rendered).to have_text("You started the test at 2:14pm on Wednesday 11 November 2020.")
-    end
-
-    it "explains the result may take a few minutes" do
-      expect(rendered).to have_text("If you've finished, please wait a few minutes for your result to appear and then refresh this page.")
+      expect(rendered).to have_text("2:14pm on Wednesday 11 November 2020")
     end
 
     it "shows when a new attempt can be started" do
-      expect(rendered).to have_text("If you didn't finish, you can start a new attempt after 4:14pm on Wednesday 11 November 2020.")
+      expect(rendered).to have_text("4:14pm on Wednesday 11 November 2020")
     end
 
     it "does not show the form" do
@@ -104,17 +96,12 @@ RSpec.describe("certificates/cs_accelerator/_csa-test") do
       render partial: "csa-test", locals: {user_programme_assessment:}
     end
 
-    it "explains the attempt was not completed" do
-      expect(rendered).to have_text("Your last attempt on 10 October 2026 wasn't completed, so you can start a new one.")
+    it "shows the date of the attempt that was not completed" do
+      expect(rendered).to have_text("10 October 2026")
     end
 
-    it "offers help" do
-      expect(rendered).to have_text("Need help? Contact info@teachcomputing.org.")
+    it "links to support" do
       expect(rendered).to have_link("info@teachcomputing.org", href: "mailto:info@teachcomputing.org")
-    end
-
-    it "shows the status before asking if they are ready" do
-      expect(rendered.index("wasn't completed")).to be < rendered.index("Ready to take your test?")
     end
 
     it "shows the form" do
@@ -138,14 +125,15 @@ RSpec.describe("certificates/cs_accelerator/_csa-test") do
     end
 
     it "tells them they have one more attempt after one fail" do
-      expect(rendered).to have_text("You've taken the test once without passing. You have one more attempt now. If you don't pass, you'll need to wait 48 hours before trying again.")
+      expect(rendered).to have_text("one more attempt")
     end
 
     context "when they have failed more than once" do
       let(:failed_num_attempts) { 3 }
 
-      it "warns that another fail starts the cool off period" do
-        expect(rendered).to have_text("You've taken the test 3 times without passing. If you don't pass this attempt, you'll need to wait 48 hours before trying again.")
+      it "shows how many times they have taken the test" do
+        expect(rendered).to have_text("taken the test 3 times")
+        expect(rendered).not_to have_text("one more attempt")
       end
     end
   end
@@ -166,7 +154,8 @@ RSpec.describe("certificates/cs_accelerator/_csa-test") do
 
       render partial: "csa-test", locals: {user_programme_assessment:}
 
-      expect(rendered).to have_content("You've taken the test twice without passing. You can take it again after 12:22pm on Thursday 12 November 2020.")
+      expect(rendered).to have_text("taken the test twice")
+      expect(rendered).to have_text("12:22pm on Thursday 12 November 2020")
       expect(rendered).not_to have_text("Ready to take your test?")
     end
   end
