@@ -36,9 +36,7 @@ class UserProgrammeAssessment
   end
 
   def currently_taking_test?
-    return false if latest_attempt.nil?
-
-    latest_attempt.current_state == StateMachines::AssessmentAttemptStateMachine::STATE_COMMENCED.to_s
+    latest_attempt.present? && latest_attempt.in_state?(:commenced)
   end
 
   private
