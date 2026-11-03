@@ -77,7 +77,7 @@ RSpec.describe("certificates/cs_accelerator/_csa-test") do
     end
 
     it "shows when a new attempt can be started" do
-      expect(rendered).to have_text("You can start a new attempt after 4:14pm on Wednesday 11 November 2020.")
+      expect(rendered).to have_text("If you didn't finish, you can start a new attempt after 4:14pm on Wednesday 11 November 2020.")
     end
 
     it "does not show the form" do
