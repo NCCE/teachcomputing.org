@@ -32,13 +32,13 @@ class UserProgrammeAssessment
   end
 
   def latest_attempt
-    @attempts&.last
+    @latest_attempt ||= @attempts&.last
   end
 
   def currently_taking_test?
-    return false if @attempts.nil? || @attempts.last.nil?
+    return false if latest_attempt.nil?
 
-    @attempts.last.current_state == StateMachines::AssessmentAttemptStateMachine::STATE_COMMENCED.to_s
+    latest_attempt.current_state == StateMachines::AssessmentAttemptStateMachine::STATE_COMMENCED.to_s
   end
 
   private
