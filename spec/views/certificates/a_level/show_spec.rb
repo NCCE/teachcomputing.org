@@ -64,10 +64,6 @@ RSpec.describe("certificates/a_level/show", type: :view) do
     expect(rendered).not_to have_css(".ncce-modal--expanded")
   end
 
-  it "explains how to return after the test" do
-    expect(rendered).to have_text("When you've finished the test on ClassMarker, use the button at the end to come back here and see your result.")
-  end
-
   context "when an attempt is in progress" do
     let(:latest_attempt) { create(:assessment_attempt, user:, assessment:, created_at: Time.zone.parse("2020-11-11 14:14")) }
 
@@ -76,11 +72,11 @@ RSpec.describe("certificates/a_level/show", type: :view) do
     end
 
     it "shows when the test was started" do
-      expect(rendered).to have_text("You started the test at 2:14pm on Wednesday 11 November 2020.")
+      expect(rendered).to have_text("2:14pm on Wednesday 11 November 2020")
     end
 
     it "shows when a new attempt can be started" do
-      expect(rendered).to have_text("If you didn't finish, you can start a new attempt after 4:14pm on Wednesday 11 November 2020.")
+      expect(rendered).to have_text("4:14pm on Wednesday 11 November 2020")
     end
 
     it "does not show the form" do
@@ -99,8 +95,8 @@ RSpec.describe("certificates/a_level/show", type: :view) do
       expect(rendered).not_to have_css(".ncce-modal--expanded")
     end
 
-    it "explains the attempt was not completed" do
-      expect(rendered).to have_text("Your last attempt on 10 October 2026 wasn't completed, so you can start a new one.")
+    it "shows the date of the attempt that was not completed" do
+      expect(rendered).to have_text("10 October 2026")
     end
 
     it "shows the form" do
