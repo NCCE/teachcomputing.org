@@ -19,6 +19,10 @@ module ProgrammesHelper
     time.in_time_zone("London").strftime("%-l:%M%P on %A %-d %B %Y")
   end
 
+  def assessment_date(time)
+    time.in_time_zone("London").strftime("%-d %B %Y")
+  end
+
   def attempt_count_in_words(count)
     {1 => "once", 2 => "twice"}.fetch(count) { "#{count} times" }
   end

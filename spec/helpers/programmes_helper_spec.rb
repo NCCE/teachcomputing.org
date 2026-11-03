@@ -57,6 +57,12 @@ describe ProgrammesHelper, type: :helper do
     end
   end
 
+  describe("#assessment_date") do
+    it "formats the date in London" do
+      expect(assessment_date(Time.utc(2026, 7, 6, 23, 30))).to eq("7 July 2026")
+    end
+  end
+
   describe("#attempt_count_in_words") do
     it "returns once for one attempt" do
       expect(attempt_count_in_words(1)).to eq("once")
