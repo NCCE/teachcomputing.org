@@ -10,15 +10,21 @@ RSpec.describe UpdateUserAssessmentAttemptFromClassMarkerJob, type: :job do
     create(:assessment, class_marker_test_id: "100", activity_id: activity.id, programme_id: programme.id)
   end
   let(:assessment_attempt) { create(:assessment_attempt, user_id: user.id, assessment_id: assessment.id) }
-  let(:programme_complete_counter) { create(:programme_complete_counter, programme_id: programme.id) }
   let(:passing_json_body) { File.read("spec/support/class_marker/passing_webhook.json") }
   let(:failed_json_body) { File.read("spec/support/class_marker/failed_webhook.json") }
   let(:passing_result) { JSON.parse(passing_json_body, symbolize_names: true) }
 
+  def perform_passing_job
+    UpdateUserAssessmentAttemptFromClassMarkerJob.perform_now(passing_result[:test][:test_id], user.id,
+      passing_result[:result][:percentage])
+  end
+
   describe "#perform" do
     context "when the user has passed the test" do
+      let!(:user_programme_enrolment) { create(:user_programme_enrolment, user:, programme:) }
+
       before do
-        [user, activity, achievement, assessment, assessment_attempt, programme_complete_counter]
+        [user, activity, achievement, assessment, assessment_attempt]
       end
 
       it "transitions assessment_attempt to complete" do
@@ -40,6 +46,28 @@ RSpec.describe UpdateUserAssessmentAttemptFromClassMarkerJob, type: :job do
           passing_result[:result][:percentage])
       end
 
+      it "uses one certificate number when run twice" do
+        perform_passing_job
+        perform_passing_job
+
+        expect(user_programme_enrolment.in_state?(:complete)).to be true
+        expect(programme.programme_complete_counter.reload.counter).to eq 1
+      end
+
+      it "raises an error when the attempt has timed out" do
+        assessment_attempt.transition_to(:timed_out)
+
+        expect { perform_passing_job }.to raise_error(Statesman::TransitionFailedError)
+      end
+
+      it "retries when the database is temporarily unavailable" do
+        allow(Assessment).to receive(:find_by!).and_raise(ActiveRecord::ConnectionNotEstablished)
+
+        perform_passing_job
+
+        expect(UpdateUserAssessmentAttemptFromClassMarkerJob).to have_been_enqueued
+      end
+
       context "when the programme is not csa" do
         let(:programme) { create(:programme) }
 
@@ -54,7 +82,6 @@ RSpec.describe UpdateUserAssessmentAttemptFromClassMarkerJob, type: :job do
       context "when the programme is a level" do
         let!(:programme) { create(:a_level) }
         let!(:cs_accelerator) { create(:cs_accelerator) }
-        let!(:user_programme_enrolment) { create(:user_programme_enrolment, user:, programme:) }
 
         it "calls CertificatePendingTransitionJob job" do
           expect(CertificatePendingTransitionJob).to receive(:perform_now)
@@ -100,41 +127,27 @@ RSpec.describe UpdateUserAssessmentAttemptFromClassMarkerJob, type: :job do
     end
 
     context "when the user is invalid" do
-      before do
-        allow(Sentry).to receive(:capture_exception)
-        UpdateUserAssessmentAttemptFromClassMarkerJob.perform_now(passing_result[:test][:test_id], user.id,
-          passing_result[:result][:percentage])
-      end
-
       it "raises an error" do
-        expect(Sentry).to have_received(:capture_exception).with(an_instance_of(ActiveRecord::RecordNotFound))
+        expect {
+          UpdateUserAssessmentAttemptFromClassMarkerJob.perform_now(passing_result[:test][:test_id], "missing-user-id",
+            passing_result[:result][:percentage])
+        }.to raise_error(ActiveRecord::RecordNotFound)
       end
     end
 
     context "when the assessment is invalid" do
-      before do
-        user
-        allow(Sentry).to receive(:capture_exception)
-        UpdateUserAssessmentAttemptFromClassMarkerJob.perform_now(passing_result[:test][:test_id], user.id,
-          passing_result[:result][:percentage])
-      end
-
       it "raises an error" do
-        expect(Sentry).to have_received(:capture_exception).with(an_instance_of(ActiveRecord::RecordNotFound))
+        expect { perform_passing_job }.to raise_error(ActiveRecord::RecordNotFound)
       end
     end
 
     context "when the assessment_attempt is invalid" do
       before do
-        user
         assessment
-        allow(Sentry).to receive(:capture_exception)
-        UpdateUserAssessmentAttemptFromClassMarkerJob.perform_now(passing_result[:test][:test_id], user.id,
-          passing_result[:result][:percentage])
       end
 
       it "raises an error" do
-        expect(Sentry).to have_received(:capture_exception).with(an_instance_of(NoMethodError))
+        expect { perform_passing_job }.to raise_error(NoMethodError)
       end
     end
   end
