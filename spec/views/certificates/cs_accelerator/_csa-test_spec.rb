@@ -17,6 +17,7 @@ RSpec.describe("certificates/cs_accelerator/_csa-test") do
       allow(user_programme_assessment).to receive(:currently_taking_test?).and_return(false)
       allow(user_programme_assessment).to receive(:can_take_test_at).and_return(0)
       allow(user_programme_assessment).to receive(:failed_num_attempts).and_return(0)
+      allow(user_programme_assessment).to receive(:latest_attempt).and_return(nil)
 
       assign(:programme, programme)
 
@@ -46,16 +47,109 @@ RSpec.describe("certificates/cs_accelerator/_csa-test") do
     it "has a submit button" do
       expect(rendered).to have_button("commit", disabled: true)
     end
+
+    it "does not mention previous attempts" do
+      expect(rendered).not_to have_text("without passing")
+    end
   end
 
   describe "whilst an assessment is being attempted" do
-    it "renders the expected text" do
+    let(:attempt) { create(:assessment_attempt, user:, assessment:, created_at: Time.zone.parse("2020-11-11 14:14")) }
+    let(:now) { Time.zone.parse("2020-11-11 14:30") }
+
+    around { |example| travel_to(now) { example.run } }
+
+    before do
       user_programme_assessment = instance_double(UserProgrammeAssessment)
       allow(user_programme_assessment).to receive(:currently_taking_test?).and_return(true)
+      allow(user_programme_assessment).to receive(:latest_attempt).and_return(attempt)
 
       render partial: "csa-test", locals: {user_programme_assessment:}
+    end
 
-      expect(rendered).to have_content("You are currently taking the test. If you have recently failed, please come back in 2 hours.")
+    context "when the expiry time has passed" do
+      let(:now) { Time.zone.parse("2020-11-11 16:30") }
+
+      it "does not show a time that has already passed" do
+        expect(rendered).not_to have_text("4:14pm on Wednesday 11 November 2020")
+      end
+
+      it "does not show the form" do
+        expect(rendered).not_to have_button("commit")
+      end
+    end
+
+    it "shows when the test was started" do
+      expect(rendered).to have_text("2:14pm on Wednesday 11 November 2020")
+    end
+
+    it "shows when a new attempt can be started" do
+      expect(rendered).to have_text("4:14pm on Wednesday 11 November 2020")
+    end
+
+    it "does not show the form" do
+      expect(rendered).not_to have_button("commit")
+    end
+
+    it "does not ask if they are ready to take the test" do
+      expect(rendered).not_to have_text("Ready to take your test?")
+    end
+  end
+
+  describe "when the latest attempt timed out" do
+    let(:attempt) { create(:timed_out_assessment_attempt, user:, assessment:, created_at: Time.zone.parse("2026-10-10 14:14")) }
+
+    before do
+      user_programme_assessment = instance_double(UserProgrammeAssessment)
+      allow(user_programme_assessment).to receive(:currently_taking_test?).and_return(false)
+      allow(user_programme_assessment).to receive(:can_take_test_at).and_return(0)
+      allow(user_programme_assessment).to receive(:failed_num_attempts).and_return(0)
+      allow(user_programme_assessment).to receive(:latest_attempt).and_return(attempt)
+
+      assign(:programme, programme)
+
+      render partial: "csa-test", locals: {user_programme_assessment:}
+    end
+
+    it "shows the date of the attempt that was not completed" do
+      expect(rendered).to have_text("10 October 2026")
+    end
+
+    it "links to support" do
+      expect(rendered).to have_link("info@teachcomputing.org", href: "mailto:info@teachcomputing.org")
+    end
+
+    it "shows the form" do
+      expect(rendered).to have_button("commit", disabled: true)
+    end
+  end
+
+  describe "when the user can retry after failing" do
+    let(:failed_num_attempts) { 1 }
+
+    before do
+      user_programme_assessment = instance_double(UserProgrammeAssessment)
+      allow(user_programme_assessment).to receive(:currently_taking_test?).and_return(false)
+      allow(user_programme_assessment).to receive(:can_take_test_at).and_return(0)
+      allow(user_programme_assessment).to receive(:failed_num_attempts).and_return(failed_num_attempts)
+      allow(user_programme_assessment).to receive(:latest_attempt).and_return(nil)
+
+      assign(:programme, programme)
+
+      render partial: "csa-test", locals: {user_programme_assessment:}
+    end
+
+    it "tells them they have one more attempt after one fail" do
+      expect(rendered).to have_text("one more attempt")
+    end
+
+    context "when they have failed more than once" do
+      let(:failed_num_attempts) { 3 }
+
+      it "shows how many times they have taken the test" do
+        expect(rendered).to have_text("taken the test 3 times")
+        expect(rendered).not_to have_text("one more attempt")
+      end
     end
   end
 
@@ -71,11 +165,13 @@ RSpec.describe("certificates/cs_accelerator/_csa-test") do
 
       allow(user_programme_assessment).to receive(:currently_taking_test?).and_return(false)
       allow(user_programme_assessment).to receive(:can_take_test_at).and_return(1.day.to_i)
-      allow(user_programme_assessment).to receive(:failed_num_attempts).and_return(1)
+      allow(user_programme_assessment).to receive(:failed_num_attempts).and_return(2)
 
       render partial: "csa-test", locals: {user_programme_assessment:}
 
-      expect(rendered).to have_content("Your second attempt at the test can be done after 12pm on Thursday.")
+      expect(rendered).to have_text("taken the test twice")
+      expect(rendered).to have_text("12:22pm on Thursday 12 November 2020")
+      expect(rendered).not_to have_text("Ready to take your test?")
     end
   end
 end

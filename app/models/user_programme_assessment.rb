@@ -31,10 +31,12 @@ class UserProgrammeAssessment
     [@failed_attempts.last.last_transition.created_at.to_i - 48.hours.ago.to_i, 0].max
   end
 
-  def currently_taking_test?
-    return false if @attempts.nil? || @attempts.last.nil?
+  def latest_attempt
+    @latest_attempt ||= @attempts&.last
+  end
 
-    @attempts.last.current_state == StateMachines::AssessmentAttemptStateMachine::STATE_COMMENCED.to_s
+  def currently_taking_test?
+    latest_attempt.present? && latest_attempt.in_state?(:commenced)
   end
 
   private

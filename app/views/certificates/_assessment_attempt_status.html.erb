@@ -1,0 +1,26 @@
+<% if attempt&.in_state?(:commenced) %>
+  <%= render layout: 'certificates/assessment_info' do %>
+    <p class="govuk-body">
+      You started the test at <%= assessment_time(attempt.created_at) %>.
+    </p>
+    <p class="govuk-body">
+      If you've finished, please wait a few minutes for your result to appear and then refresh this page.
+    </p>
+    <% if attempt.expires_at.past? %>
+      <p class="govuk-body govuk-!-margin-0">
+        If you didn't finish, you'll be able to start a new attempt shortly. Refresh this page in a few minutes, or contact <%= mail_to 'info@teachcomputing.org', 'info@teachcomputing.org', class: 'ncce-link' %> if you still can't start one.
+      </p>
+    <% else %>
+      <p class="govuk-body govuk-!-margin-0">
+        If you didn't finish, you can start a new attempt after <%= assessment_time(attempt.expires_at) %>.
+      </p>
+    <% end %>
+  <% end %>
+<% elsif attempt&.in_state?(:timed_out) %>
+  <%= render layout: 'certificates/assessment_info' do %>
+    <p class="govuk-body">
+      We didn't receive a result for your attempt on <%= assessment_date(attempt.created_at) %>, so you can start a new one.
+      Need help? Contact <%= mail_to 'info@teachcomputing.org', 'info@teachcomputing.org', class: 'ncce-link' %>.
+    </p>
+  <% end %>
+<% end %>

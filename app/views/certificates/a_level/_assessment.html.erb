@@ -1,8 +1,8 @@
-<% if @assessment.latest_attempt_for(user: current_user)&.in_state?(:commenced) %>
-  <p class="govuk-body govuk-!-margin-0">
-    You are currently taking the test. If you have recently failed, please come back in 2 hours.
+<%= render 'certificates/assessment_attempt_status', attempt: @latest_attempt %>
+<% unless @latest_attempt&.in_state?(:commenced) %>
+  <p class="govuk-body-s">
+    When you've finished the test on ClassMarker, use the button at the end to come back here and see your result.
   </p>
-<% else %>
   <%= form_for(current_user, method: :post, url: assessment_attempts_path) do |f| %>
     <p class="govuk-body-s govuk-!-margin-bottom-2">
       <strong>Teacher reference number (TRN)</strong> <%= link_to "what's this?", 'https://www.gov.uk/guidance/individual-teacher-records-information-for-teachers#your-teacher-reference-number-trn', class: 'govuk-body-s ncce-link ', target: '_blank' %>

@@ -5,6 +5,7 @@ RSpec.describe("certificates/a_level/show", type: :view) do
   let(:a_level) { create(:a_level) }
   let(:professional_development_groups) { create_list(:programme_activity_grouping, 1, :with_activities, sort_key: 2, programme: a_level) }
   let(:assessment) { create(:assessment, programme: a_level) }
+  let(:latest_attempt) { nil }
 
   before do
     stub_course_templates
@@ -12,6 +13,7 @@ RSpec.describe("certificates/a_level/show", type: :view) do
 
     assign(:programme, a_level)
     assign(:assessment, assessment)
+    assign(:latest_attempt, latest_attempt)
 
     assign(:current_user, user)
 
@@ -56,5 +58,52 @@ RSpec.describe("certificates/a_level/show", type: :view) do
 
   it "has feedback form" do
     expect(rendered).to have_css(".feedback-component__heading", text: "What can we do better?")
+  end
+
+  it "does not open the test modal" do
+    expect(rendered).not_to have_css(".ncce-modal--expanded")
+  end
+
+  context "when an attempt is in progress" do
+    let(:latest_attempt) { create(:assessment_attempt, user:, assessment:, created_at: Time.zone.parse("2020-11-11 14:14")) }
+
+    # The outer before renders the page, so freeze time around it
+    around { |example| travel_to(Time.zone.parse("2020-11-11 14:30")) { example.run } }
+
+    it "opens the test modal" do
+      expect(rendered).to have_css(".ncce-modal--expanded")
+    end
+
+    it "shows when the test was started" do
+      expect(rendered).to have_text("2:14pm on Wednesday 11 November 2020")
+    end
+
+    it "shows when a new attempt can be started" do
+      expect(rendered).to have_text("4:14pm on Wednesday 11 November 2020")
+    end
+
+    it "does not show the form" do
+      expect(rendered).not_to have_button("Take the test")
+    end
+
+    it "titles the modal for a test in progress" do
+      expect(rendered).to have_css(".ncce-modal--header h2", text: "You're taking the test")
+    end
+  end
+
+  context "when the latest attempt timed out" do
+    let(:latest_attempt) { create(:timed_out_assessment_attempt, user:, assessment:, created_at: Time.zone.parse("2026-10-10 14:14")) }
+
+    it "does not open the test modal" do
+      expect(rendered).not_to have_css(".ncce-modal--expanded")
+    end
+
+    it "shows the date of the attempt that was not completed" do
+      expect(rendered).to have_text("10 October 2026")
+    end
+
+    it "shows the form" do
+      expect(rendered).to have_button("Take the test", disabled: true)
+    end
   end
 end
