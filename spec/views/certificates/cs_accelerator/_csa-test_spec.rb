@@ -55,6 +55,9 @@ RSpec.describe("certificates/cs_accelerator/_csa-test") do
 
   describe "whilst an assessment is being attempted" do
     let(:attempt) { create(:assessment_attempt, user:, assessment:, created_at: Time.zone.parse("2020-11-11 14:14")) }
+    let(:now) { Time.zone.parse("2020-11-11 14:30") }
+
+    around { |example| travel_to(now) { example.run } }
 
     before do
       user_programme_assessment = instance_double(UserProgrammeAssessment)
@@ -62,6 +65,18 @@ RSpec.describe("certificates/cs_accelerator/_csa-test") do
       allow(user_programme_assessment).to receive(:latest_attempt).and_return(attempt)
 
       render partial: "csa-test", locals: {user_programme_assessment:}
+    end
+
+    context "when the expiry time has passed" do
+      let(:now) { Time.zone.parse("2020-11-11 16:30") }
+
+      it "does not show a time that has already passed" do
+        expect(rendered).not_to have_text("4:14pm on Wednesday 11 November 2020")
+      end
+
+      it "does not show the form" do
+        expect(rendered).not_to have_button("commit")
+      end
     end
 
     it "shows when the test was started" do
