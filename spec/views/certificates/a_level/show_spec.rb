@@ -67,6 +67,9 @@ RSpec.describe("certificates/a_level/show", type: :view) do
   context "when an attempt is in progress" do
     let(:latest_attempt) { create(:assessment_attempt, user:, assessment:, created_at: Time.zone.parse("2020-11-11 14:14")) }
 
+    # The outer before renders the page, so freeze time around it
+    around { |example| travel_to(Time.zone.parse("2020-11-11 14:30")) { example.run } }
+
     it "opens the test modal" do
       expect(rendered).to have_css(".ncce-modal--expanded")
     end
