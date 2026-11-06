@@ -131,20 +131,20 @@ RSpec.describe UpdateUserAssessmentAttemptFromClassMarkerJob, type: :job do
     end
 
     context "when the user is invalid" do
-      it "raises a MissingRecordError caused by the missing user" do
+      it "raises a MissingRecordError for the missing user that Sentry will report" do
         expect {
           UpdateUserAssessmentAttemptFromClassMarkerJob.perform_now(passing_result[:test][:test_id], "missing-user-id",
             passing_result[:result][:percentage])
         }.to raise_error(described_class::MissingRecordError) { |error|
-          expect(error.cause).to be_a(ActiveRecord::RecordNotFound)
+          expect(Sentry.configuration.exception_class_allowed?(error)).to be true
         }
       end
     end
 
     context "when the assessment is invalid" do
-      it "raises a MissingRecordError caused by the missing assessment" do
+      it "raises a MissingRecordError for the missing assessment that Sentry will report" do
         expect { perform_passing_job }.to raise_error(described_class::MissingRecordError) { |error|
-          expect(error.cause).to be_a(ActiveRecord::RecordNotFound)
+          expect(Sentry.configuration.exception_class_allowed?(error)).to be true
         }
       end
     end
@@ -154,9 +154,9 @@ RSpec.describe UpdateUserAssessmentAttemptFromClassMarkerJob, type: :job do
         assessment_attempt
       end
 
-      it "raises a MissingRecordError caused by the missing achievement" do
+      it "raises a MissingRecordError for the missing achievement that Sentry will report" do
         expect { perform_passing_job }.to raise_error(described_class::MissingRecordError) { |error|
-          expect(error.cause).to be_a(ActiveRecord::RecordNotFound)
+          expect(Sentry.configuration.exception_class_allowed?(error)).to be true
         }
       end
     end

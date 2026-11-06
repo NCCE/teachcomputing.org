@@ -1,6 +1,6 @@
 class UpdateUserAssessmentAttemptFromClassMarkerJob < ApplicationJob
-  # Sentry excludes ActiveRecord::RecordNotFound by default, so it is re-raised as this
-  # (with the original as its cause) to make sure missing records are reported
+  # Sentry excludes ActiveRecord::RecordNotFound by default, including when it is the cause
+  # of another error, so it is re-raised as this without a cause to make sure it's reported
   class MissingRecordError < StandardError; end
 
   queue_as :default
@@ -26,7 +26,7 @@ class UpdateUserAssessmentAttemptFromClassMarkerJob < ApplicationJob
       CertificatePendingTransitionJob.perform_now(user, {source: "UpdateUserAssessmentAttemptFromClassMarkerJob#perform"})
     end
   rescue ActiveRecord::RecordNotFound => e
-    raise MissingRecordError, e.message
+    raise MissingRecordError, e.message, e.backtrace, cause: nil
   end
 
   private
