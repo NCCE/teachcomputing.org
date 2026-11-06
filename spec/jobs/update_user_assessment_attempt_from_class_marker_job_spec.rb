@@ -63,9 +63,13 @@ RSpec.describe UpdateUserAssessmentAttemptFromClassMarkerJob, type: :job do
       it "retries when the database is temporarily unavailable" do
         allow(Assessment).to receive(:find_by!).and_raise(ActiveRecord::ConnectionNotEstablished)
 
-        perform_passing_job
+        expect { perform_passing_job }.to have_enqueued_job(described_class)
+      end
 
-        expect(UpdateUserAssessmentAttemptFromClassMarkerJob).to have_been_enqueued
+      it "retries when the database connection drops mid-query" do
+        allow(Assessment).to receive(:find_by!).and_raise(ActiveRecord::ConnectionFailed)
+
+        expect { perform_passing_job }.to have_enqueued_job(described_class)
       end
 
       context "when the programme is not csa" do
@@ -127,17 +131,33 @@ RSpec.describe UpdateUserAssessmentAttemptFromClassMarkerJob, type: :job do
     end
 
     context "when the user is invalid" do
-      it "raises an error" do
+      it "raises a MissingRecordError caused by the missing user" do
         expect {
           UpdateUserAssessmentAttemptFromClassMarkerJob.perform_now(passing_result[:test][:test_id], "missing-user-id",
             passing_result[:result][:percentage])
-        }.to raise_error(ActiveRecord::RecordNotFound)
+        }.to raise_error(described_class::MissingRecordError) { |error|
+          expect(error.cause).to be_a(ActiveRecord::RecordNotFound)
+        }
       end
     end
 
     context "when the assessment is invalid" do
-      it "raises an error" do
-        expect { perform_passing_job }.to raise_error(ActiveRecord::RecordNotFound)
+      it "raises a MissingRecordError caused by the missing assessment" do
+        expect { perform_passing_job }.to raise_error(described_class::MissingRecordError) { |error|
+          expect(error.cause).to be_a(ActiveRecord::RecordNotFound)
+        }
+      end
+    end
+
+    context "when the achievement is missing" do
+      before do
+        assessment_attempt
+      end
+
+      it "raises a MissingRecordError caused by the missing achievement" do
+        expect { perform_passing_job }.to raise_error(described_class::MissingRecordError) { |error|
+          expect(error.cause).to be_a(ActiveRecord::RecordNotFound)
+        }
       end
     end
 
