@@ -1,7 +1,12 @@
 class UpdateUserAssessmentAttemptFromClassMarkerJob < ApplicationJob
+  # Sentry excludes ActiveRecord::RecordNotFound by default, so it is re-raised as this
+  # (with the original as its cause) to make sure missing records are reported
+  class MissingRecordError < StandardError; end
+
   queue_as :default
 
-  retry_on ActiveRecord::Deadlocked, ActiveRecord::ConnectionNotEstablished, wait: :polynomially_longer
+  retry_on ActiveRecord::Deadlocked, ActiveRecord::ConnectionNotEstablished, ActiveRecord::ConnectionFailed,
+    wait: :polynomially_longer
 
   def perform(test_id, user_id, percentage)
     user = User.find(user_id)
@@ -20,6 +25,8 @@ class UpdateUserAssessmentAttemptFromClassMarkerJob < ApplicationJob
     else
       CertificatePendingTransitionJob.perform_now(user, {source: "UpdateUserAssessmentAttemptFromClassMarkerJob#perform"})
     end
+  rescue ActiveRecord::RecordNotFound => e
+    raise MissingRecordError, e.message
   end
 
   private
