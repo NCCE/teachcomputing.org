@@ -15,7 +15,7 @@
       </p>
     <% end %>
     <p class="govuk-body govuk-!-margin-0">
-      You may want to consider completing additional courses before your next attempt. You can find full details of areas for improvement in your results email, and course recommendations in the <%= link_to 'CSA Handbook', 'https://ncce.io/csa-handbook', class: 'ncce-link', data: tracking_data('CSA Handbook') %>.
+      You may want to consider completing additional courses before your next attempt. You can find full details of areas for improvement in your results email, and course recommendations in the <%= link_to 'KS3 and GCSE subject knowledge handbook', 'https://ncce.io/csa-handbook', class: 'ncce-link', data: tracking_data('CSA Handbook') %>.
     </p>
   <% else %>
     <%= render 'certificates/assessment_attempt_status', attempt: user_programme_assessment.latest_attempt %>
