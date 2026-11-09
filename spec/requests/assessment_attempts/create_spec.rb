@@ -77,6 +77,92 @@ RSpec.describe AssessmentAttemptsController do
       end
     end
 
+    context "when the attempt rules don't allow a new attempt" do
+      let(:a_level) { create(:a_level) }
+      let!(:assessment) { create(:assessment, programme: a_level) }
+
+      before do
+        create(:user_programme_enrolment, user:, programme: a_level)
+      end
+
+      def post_attempt
+        post assessment_attempts_path(
+          assessment_attempt: {assessment_id: assessment.id, user_id: user.id, accepted_conditions: true}
+        ), params: {user: {teacher_reference_number: "abc123"}}
+      end
+
+      context "with an attempt in progress" do
+        before do
+          travel_to(Time.zone.parse("2026-11-11 14:30"))
+          create(:assessment_attempt, user:, assessment:, created_at: Time.zone.parse("2026-11-11 14:14"))
+        end
+
+        after { travel_back }
+
+        it "does not create an attempt" do
+          expect { post_attempt }.not_to change(AssessmentAttempt, :count)
+        end
+
+        it "redirects back to the dashboard" do
+          post_attempt
+          expect(response).to redirect_to(a_level.path)
+        end
+
+        it "says when they can start a new attempt" do
+          post_attempt
+          expect(flash[:error]).to eq("You've already started the test. If you didn't finish, you can start a new attempt after 4:14pm on Wednesday 11 November 2026.")
+        end
+
+        it "does not save the TRN" do
+          post_attempt
+          expect(user.reload.teacher_reference_number).to be_nil
+        end
+      end
+
+      context "in the cool-off after two fails" do
+        before do
+          create_list(:failed_assessment_attempt, 2, user:, assessment:)
+        end
+
+        it "does not create an attempt" do
+          expect { post_attempt }.not_to change(AssessmentAttempt, :count)
+        end
+
+        it "does not queue the expiry job" do
+          expect { post_attempt }.not_to have_enqueued_job(ExpireAssessmentAttemptJob)
+        end
+
+        it "says when they can take the test again" do
+          post_attempt
+          expect(flash[:error]).to start_with("You can take the test again after")
+        end
+      end
+
+      context "after one fail" do
+        before do
+          create(:failed_assessment_attempt, user:, assessment:)
+        end
+
+        it "creates an attempt" do
+          expect { post_attempt }.to change(AssessmentAttempt, :count).by(1)
+        end
+      end
+
+      context "without enough credits for the KS3 test" do
+        let(:cs_accelerator) { create(:cs_accelerator) }
+        let!(:assessment) { create(:assessment, programme: cs_accelerator) }
+
+        it "does not create an attempt" do
+          expect { post_attempt }.not_to change(AssessmentAttempt, :count)
+        end
+
+        it "tells them to complete more courses" do
+          post_attempt
+          expect(flash[:error]).to eq("You need to complete more courses before you can take the test.")
+        end
+      end
+    end
+
     context "with invalid params" do
       it "raises ActiveRecord::RecordNotFound exception" do
         expect do

@@ -1,6 +1,7 @@
 class AssessmentAttemptsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_assessment
+  before_action :check_attempt_allowed, only: [:create]
   before_action :teacher_reference_number, only: [:create]
 
   def create
@@ -35,6 +36,28 @@ class AssessmentAttemptsController < ApplicationController
 
   def set_assessment
     @assessment = Assessment.find_by!(id: params[:assessment_attempt][:assessment_id])
+  end
+
+  # The dashboards hide the form when an attempt isn't allowed, but an old tab
+  # or a direct POST can still reach here
+  def check_attempt_allowed
+    user_programme_assessment = UserProgrammeAssessment.new(@assessment.programme, current_user)
+    return if user_programme_assessment.can_start_attempt?
+
+    flash[:error] = attempt_not_allowed_message(user_programme_assessment)
+    redirect_back fallback_location: @assessment.programme.path
+  end
+
+  def attempt_not_allowed_message(user_programme_assessment)
+    if user_programme_assessment.currently_taking_test?
+      expires_at = helpers.assessment_time(user_programme_assessment.latest_attempt.expires_at)
+      "You've already started the test. If you didn't finish, you can start a new attempt after #{expires_at}."
+    elsif user_programme_assessment.in_cool_off?
+      retry_at = helpers.assessment_time(Time.zone.now + user_programme_assessment.can_take_test_at.seconds)
+      "You can take the test again after #{retry_at}."
+    else
+      "You need to complete more courses before you can take the test."
+    end
   end
 
   def assessment_attempts_params
