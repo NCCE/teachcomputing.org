@@ -13,7 +13,8 @@ RSpec.describe("certificates/a_level/show", type: :view) do
 
     assign(:programme, a_level)
     assign(:assessment, assessment)
-    assign(:latest_attempt, latest_attempt)
+    latest_attempt
+    assign(:user_programme_assessment, UserProgrammeAssessment.new(a_level, user))
 
     assign(:current_user, user)
 
@@ -65,7 +66,7 @@ RSpec.describe("certificates/a_level/show", type: :view) do
   end
 
   it "shows the test details on the page" do
-    expect(rendered).to have_css("#a-level-test", text: "Ready to take your test?")
+    expect(rendered).to have_text("Ready to take your test?")
     expect(rendered).to have_text("You'll have 60 minutes to answer 40 multiple-choice questions")
     expect(rendered).to have_text("we can extend the test time to 90 minutes")
     expect(rendered).to have_link("email us", href: "mailto:certificationqueries@bcs.uk")
@@ -114,6 +115,34 @@ RSpec.describe("certificates/a_level/show", type: :view) do
 
     it "shows the form" do
       expect(rendered).to have_button("Take the test", disabled: true)
+    end
+  end
+
+  context "after one fail" do
+    let(:latest_attempt) { create(:failed_assessment_attempt, user:, assessment:) }
+
+    it "says they can take it again straight away" do
+      expect(rendered).to have_text("You've taken the test once without passing. You can take it again straight away.")
+    end
+
+    it "shows the form" do
+      expect(rendered).to have_button("Take the test", disabled: true)
+    end
+  end
+
+  context "in the cool-off after two fails" do
+    let(:latest_attempt) { create_list(:failed_assessment_attempt, 2, user:, assessment:).last }
+
+    it "says when they can take it again" do
+      expect(rendered).to have_text("You've taken the test twice without passing. You can take it again after")
+    end
+
+    it "does not show the form" do
+      expect(rendered).not_to have_button("Take the test")
+    end
+
+    it "does not show the KS3 handbook advice" do
+      expect(rendered).not_to have_text("subject knowledge handbook")
     end
   end
 end
