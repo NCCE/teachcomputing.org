@@ -37,8 +37,8 @@ RSpec.describe Certificates::ALevelController do
         expect(response).to render_template("show")
       end
 
-      it "assigns no latest attempt" do
-        expect(assigns(:latest_attempt)).to be_nil
+      it "has no latest attempt" do
+        expect(assigns(:user_programme_assessment).latest_attempt).to be_nil
       end
 
       it "asks client not to cache a private page" do
@@ -56,8 +56,8 @@ RSpec.describe Certificates::ALevelController do
         get "/certificate/a-level-certificate"
       end
 
-      it "assigns the latest attempt" do
-        expect(assigns(:latest_attempt)).to eq(newer_attempt)
+      it "finds the latest attempt" do
+        expect(assigns(:user_programme_assessment).latest_attempt).to eq(newer_attempt)
       end
     end
 
