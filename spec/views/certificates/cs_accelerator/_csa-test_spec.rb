@@ -139,8 +139,8 @@ RSpec.describe("certificates/cs_accelerator/_csa-test") do
       render partial: "csa-test", locals: {user_programme_assessment:}
     end
 
-    it "tells them they have one more attempt after one fail" do
-      expect(rendered).to have_text("one more attempt")
+    it "tells them they can take it again straight away after one fail" do
+      expect(rendered).to have_text("take it again straight away")
     end
 
     context "when they have failed more than once" do
@@ -148,7 +148,7 @@ RSpec.describe("certificates/cs_accelerator/_csa-test") do
 
       it "shows how many times they have taken the test" do
         expect(rendered).to have_text("taken the test 3 times")
-        expect(rendered).not_to have_text("one more attempt")
+        expect(rendered).not_to have_text("take it again straight away")
       end
     end
   end
