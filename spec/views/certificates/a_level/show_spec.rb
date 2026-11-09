@@ -60,8 +60,24 @@ RSpec.describe("certificates/a_level/show", type: :view) do
     expect(rendered).to have_css(".feedback-component__heading", text: "What can we do better?")
   end
 
-  it "does not open the test modal" do
-    expect(rendered).not_to have_css(".ncce-modal--expanded")
+  it "does not use a modal for the test" do
+    expect(rendered).not_to have_css(".ncce-modal")
+  end
+
+  it "shows the test details on the page" do
+    expect(rendered).to have_css("#a-level-test", text: "Ready to take your test?")
+    expect(rendered).to have_text("You'll have 60 minutes to answer 40 multiple-choice questions")
+    expect(rendered).to have_text("we can extend the test time to 90 minutes")
+    expect(rendered).to have_link("email us", href: "mailto:certificationqueries@bcs.uk")
+    expect(rendered).to have_link("full details of exam conditions", href: "https://static.teachcomputing.org/alevel-test-conditions.pdf")
+    expect(rendered).to have_text("You can take the test twice straight away")
+    expect(rendered).to have_text("use the button at the end to come back here")
+  end
+
+  it "shows the form" do
+    expect(rendered).to have_field("user_teacher_reference_number")
+    expect(rendered).to have_unchecked_field("assessment_attempt_accepted_conditions")
+    expect(rendered).to have_button("Take the test", disabled: true)
   end
 
   context "when an attempt is in progress" do
@@ -69,10 +85,6 @@ RSpec.describe("certificates/a_level/show", type: :view) do
 
     # The outer before renders the page, so freeze time around it
     around { |example| travel_to(Time.zone.parse("2020-11-11 14:30")) { example.run } }
-
-    it "opens the test modal" do
-      expect(rendered).to have_css(".ncce-modal--expanded")
-    end
 
     it "shows when the test was started" do
       expect(rendered).to have_text("2:14pm on Wednesday 11 November 2020")
@@ -86,17 +98,14 @@ RSpec.describe("certificates/a_level/show", type: :view) do
       expect(rendered).not_to have_button("Take the test")
     end
 
-    it "titles the modal for a test in progress" do
-      expect(rendered).to have_css(".ncce-modal--header h2", text: "You're taking the test")
+    it "does not show the test details" do
+      expect(rendered).not_to have_text("Ready to take your test?")
+      expect(rendered).not_to have_text("You'll have 60 minutes")
     end
   end
 
   context "when the latest attempt timed out" do
     let(:latest_attempt) { create(:timed_out_assessment_attempt, user:, assessment:, created_at: Time.zone.parse("2026-10-10 14:14")) }
-
-    it "does not open the test modal" do
-      expect(rendered).not_to have_css(".ncce-modal--expanded")
-    end
 
     it "shows the date of the attempt that was not completed" do
       expect(rendered).to have_text("10 October 2026")
