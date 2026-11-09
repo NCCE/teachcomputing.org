@@ -19,7 +19,7 @@
 <% elsif attempt&.in_state?(:timed_out) %>
   <%= render layout: 'certificates/assessment_info' do %>
     <p class="govuk-body">
-      We didn't receive a result for your attempt on <%= assessment_date(attempt.created_at) %>, so you can start a new one.
+      Your last attempt on <%= assessment_date(attempt.created_at) %> wasn't completed. You can start a new one now.
       Need help? Contact <%= mail_to 'info@teachcomputing.org', 'info@teachcomputing.org', class: 'ncce-link' %>.
     </p>
   <% end %>
