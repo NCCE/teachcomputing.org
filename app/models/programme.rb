@@ -65,6 +65,12 @@ class Programme < ApplicationRecord
     false
   end
 
+  # Programmes with no credit requirement, such as A level, let teachers take
+  # the test as soon as they're enrolled. CSAccelerator overrides this.
+  def enough_credits_for_test?(_user)
+    true
+  end
+
   def show_notification_for_test?(user)
     false
   end
