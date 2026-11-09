@@ -3,7 +3,7 @@
 </p>
 <%= notice %>
 <div class="ncce-csa-dash__sub-section govuk-!-margin-bottom-5">
-  <ul class='govuk-list govuk-list--bullet govuk-body-s' role='list'>
+  <ul class='govuk-list govuk-list--bullet govuk-body-s'>
     <li>You'll have <%= @duration %> minutes to answer <%= @question_count %> multiple-choice questions and you must complete the test in one sitting.</li>
     <li>Your test attempt will begin as soon as you click 'Take the test' below.</li>
     <li>The test must be taken under exam conditions (i.e: no notes or text books, in isolation without communicating with others, no other open tabs on any internet enabled device(s), and all answers must be your own). See <%= link_to 'full details of exam conditions', @conditions_url, class: 'ncce-link', data: helpers.tracking_data('Exam conditions doc') %>.</li>
