@@ -315,4 +315,75 @@ RSpec.describe UserProgrammeAssessment do
       end
     end
   end
+
+  describe "#can_start_attempt?" do
+    it "is false without enough credits" do
+      setup_achievements_for_programme
+      expect(user_programme_asessment.can_start_attempt?).to be(false)
+    end
+
+    it "is true with enough credits and no attempts" do
+      setup_achievements_for_taking_test
+      expect(user_programme_asessment.can_start_attempt?).to be(true)
+    end
+
+    it "is false while an attempt is in progress" do
+      one_commenced_test_attempt
+      expect(user_programme_asessment.can_start_attempt?).to be(false)
+    end
+
+    it "is true after a timed out attempt" do
+      one_timed_out_test_attempt
+      expect(user_programme_asessment.can_start_attempt?).to be(true)
+    end
+
+    it "is true after one fail" do
+      one_failed_test_attempt
+      expect(user_programme_asessment.can_start_attempt?).to be(true)
+    end
+
+    it "is false in the cool-off after two fails" do
+      two_failed_test_attempts
+      expect(user_programme_asessment.in_cool_off?).to be(true)
+      expect(user_programme_asessment.can_start_attempt?).to be(false)
+    end
+
+    it "is true once the cool-off has ended" do
+      two_old_failed_test_attempts
+      expect(user_programme_asessment.in_cool_off?).to be(false)
+      expect(user_programme_asessment.can_start_attempt?).to be(true)
+    end
+  end
+
+  describe "for the A level certificate" do
+    let(:a_level) { create(:a_level) }
+    let(:a_level_assessment) { create(:assessment, programme: a_level) }
+    let(:user_programme_asessment) { described_class.new(a_level, user) }
+
+    before do
+      create(:user_programme_enrolment, user:, programme: a_level)
+    end
+
+    it "lets the teacher take the test without any credits" do
+      a_level_assessment
+      expect(user_programme_asessment.enough_credits_for_test?).to be(true)
+      expect(user_programme_asessment.can_start_attempt?).to be(true)
+    end
+
+    it "is false while an attempt is in progress" do
+      create(:assessment_attempt, user:, assessment: a_level_assessment)
+      expect(user_programme_asessment.can_start_attempt?).to be(false)
+    end
+
+    it "is true after one fail" do
+      create(:failed_assessment_attempt, user:, assessment: a_level_assessment)
+      expect(user_programme_asessment.can_start_attempt?).to be(true)
+    end
+
+    it "applies the cool-off after two fails" do
+      create_list(:failed_assessment_attempt, 2, user:, assessment: a_level_assessment)
+      expect(user_programme_asessment.failed_num_attempts).to eq(2)
+      expect(user_programme_asessment.can_start_attempt?).to be(false)
+    end
+  end
 end
