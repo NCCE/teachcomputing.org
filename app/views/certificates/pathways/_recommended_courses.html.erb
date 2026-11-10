@@ -1,30 +1,64 @@
-<div class='recommended-courses-wrapper'>
+<%
+  start_expanded = local_assigns.fetch(:start_expanded, true)
+  visible_count = local_assigns.fetch(:visible_count, 2)
+  activities = Array(recommended_activities)
+  visible_activities = activities.first(visible_count)
+  extra_activities = activities.drop(visible_count)
+  expandable = extra_activities.any?
+  courses_id = "recommended-courses-#{pathway&.id}"
+  all_courses_link = link_to t('.all_courses_button'),
+    courses_path(certificate: @programme.slug),
+    class: 'govuk-button button--inverted button govuk-!-margin-bottom-0',
+    data: { event_action: 'click', event_category: event_category, event_label: 'View all certificate courses' }
+  expander_data = if expandable
+    {
+      controller: 'expander',
+      expander_expand_value: t('.expand_button', count: activities.size),
+      expander_collapse_value: t('.collapse_button')
+    }
+  end
+%>
+<%= tag.div class: 'recommended-courses-wrapper', data: expander_data do %>
   <% if pathway.present? %>
-    <div data-controller='expander'>
-      <p class="govuk-!-margin-top-0">
-          <button data-action="expander#toggleAll"
-                  data-expander-target="expanderButton"
-                  start-expanded="<%= defined?(start_expanded) ? start_expanded : true %>"
-                  aria-expanded="<%= defined?(start_expanded) ? start_expanded : true %>"
-                  class="govuk-body expander__button recommended-courses-wrapper_expander-button"
-                  data-event-action="click"
-                  data-event-label="Show additional courses"
-                  data-event-category="CSA enrolled">
-              <strong><%= defined?(title) ? title : t('.courses_intro.html') %></strong>
-          </button>
+    <div class="govuk-body ncce-pathway-courses__header">
+      <p class="govuk-body govuk-!-margin-0">
+        <strong><%= local_assigns.fetch(:title, t('.courses_intro.html')) %></strong>
       </p>
 
-      <div data-expander-target="expander" class="expander">
-        <% recommended_activities.each do |pa| %>
-          <%= render CpdCourseComponent.new(current_user: @current_user, activity: pa.activity) %>
-        <% end %>
-      </div>
+      <% if expandable %>
+        <button type="button"
+                data-action="expander#toggleAll"
+                data-expander-target="expanderButton"
+                start-expanded="<%= start_expanded %>"
+                aria-expanded="<%= start_expanded %>"
+                aria-controls="<%= courses_id %>"
+                class="govuk-button button govuk-!-margin-bottom-0"
+                data-event-action="click"
+                data-event-label="Show all recommended courses"
+                data-event-category="<%= event_category %>">
+          <span data-expander-target="expanderButtonText"><%= start_expanded ? t('.collapse_button') : t('.expand_button', count: activities.size) %></span>
+        </button>
+      <% end %>
     </div>
+
+    <% visible_activities.each do |pa| %>
+      <%= render CpdCourseComponent.new(current_user: @current_user, activity: pa.activity) %>
+    <% end %>
   <% end %>
 
-  <div class="ncce-pathway-courses__buttons">
-    <%= link_to t('.all_courses_button'),
-      courses_path(certificate: @programme.slug), class: 'govuk-button button--inverted button govuk-!-margin-bottom-0',
-      data: { event_action: 'click', event_category: event_category, event_label: 'View all certificate courses' } %>
-  </div>
-</div>
+  <% if expandable %>
+    <div data-expander-target="expander" class="expander" id="<%= courses_id %>">
+      <% extra_activities.each do |pa| %>
+        <%= render CpdCourseComponent.new(current_user: @current_user, activity: pa.activity) %>
+      <% end %>
+
+      <div class="ncce-pathway-courses__buttons">
+        <%= all_courses_link %>
+      </div>
+    </div>
+  <% else %>
+    <div class="ncce-pathway-courses__buttons">
+      <%= all_courses_link %>
+    </div>
+  <% end %>
+<% end %>
