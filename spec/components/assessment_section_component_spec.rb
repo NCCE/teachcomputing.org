@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe AssessmentDetailsComponent, type: :component do
+RSpec.describe AssessmentSectionComponent, type: :component do
   let(:user) { create(:user, teacher_reference_number: "1234567") }
   let(:assessment) { create(:assessment) }
   let(:leader_confirmation) { false }
@@ -108,7 +108,7 @@ RSpec.describe AssessmentDetailsComponent, type: :component do
     let(:failed_num_attempts) { 1 }
 
     it "says they can take it again straight away" do
-      expect(page).to have_text("You've taken the test once without passing. You can take it again straight away. If you don't pass, you'll need to wait 48 hours")
+      expect(page).to have_text("You've taken the test once without passing. You can take it again straight away. If you don't pass, you'll need to wait 48 hours", normalize_ws: true)
     end
 
     it "shows the form" do
@@ -120,7 +120,7 @@ RSpec.describe AssessmentDetailsComponent, type: :component do
     let(:failed_num_attempts) { 3 }
 
     it "says how many times they've taken the test" do
-      expect(page).to have_text("You've taken the test 3 times without passing. If you don't pass your next attempt, you'll need to wait 48 hours")
+      expect(page).to have_text("You've taken the test 3 times without passing. If you don't pass your next attempt, you'll need to wait 48 hours", normalize_ws: true)
     end
 
     it "shows the form" do

@@ -35,7 +35,12 @@ class UserProgrammeAssessment
   def retry_at
     return @retry_at if defined?(@retry_at)
 
-    @retry_at = (@failed_attempts.last.last_transition.created_at + COOL_OFF_PERIOD unless less_than_two_failed_attempts?)
+    @retry_at =
+      if before_cool_off_threshold?
+        nil
+      else
+        @failed_attempts.last.last_transition.created_at + COOL_OFF_PERIOD
+      end
   end
 
   # Seconds until the teacher can take the test again, or 0 if they can now
@@ -63,7 +68,7 @@ class UserProgrammeAssessment
 
   private
 
-  def less_than_two_failed_attempts?
+  def before_cool_off_threshold?
     failed_num_attempts < FAILS_BEFORE_COOL_OFF
   end
 

@@ -13,16 +13,15 @@
     <p class="govuk-body">
       Ready to take your test?
     </p>
-    <% if failed_num_attempts == 1 %>
+    <% if failed_num_attempts.positive? %>
       <%= render layout: 'certificates/assessment_info' do %>
         <p class="govuk-body">
-          You've taken the test once without passing. You can take it again straight away. If you don't pass, you'll need to wait <%= cool_off_hours %> hours before trying again.
-        </p>
-      <% end %>
-    <% elsif failed_num_attempts > 1 %>
-      <%= render layout: 'certificates/assessment_info' do %>
-        <p class="govuk-body">
-          You've taken the test <%= attempt_count_in_words(failed_num_attempts) %> without passing. If you don't pass your next attempt, you'll need to wait <%= cool_off_hours %> hours before trying again.
+          You've taken the test <%= attempt_count_in_words(failed_num_attempts) %> without passing.
+          <% if failed_num_attempts == 1 %>
+            You can take it again straight away. If you don't pass, you'll need to wait <%= cool_off_hours %> hours before trying again.
+          <% else %>
+            If you don't pass your next attempt, you'll need to wait <%= cool_off_hours %> hours before trying again.
+          <% end %>
         </p>
       <% end %>
     <% end %>
@@ -30,7 +29,7 @@
       <ul class='govuk-list govuk-list--bullet govuk-body-s'>
         <li>You'll have <%= @duration %> minutes to answer <%= @question_count %> multiple-choice questions and you must complete the test in one sitting.</li>
         <li>Your test attempt will begin as soon as you click 'Take the test' below.</li>
-        <li>The test must be taken under exam conditions (i.e: no notes or text books, in isolation without communicating with others, no other open tabs on any internet enabled device(s), and all answers must be your own). See <%= link_to 'full details of exam conditions', @conditions_url, class: 'ncce-link', data: helpers.tracking_data('Exam conditions doc') %>.</li>
+        <li>The test must be taken under exam conditions (i.e: no notes or text books, in isolation without communicating with others, no other open tabs on any internet enabled device(s), and all answers must be your own). See <%= link_to 'full details of exam conditions', @conditions_url, class: 'ncce-link', data: tracking_data('Exam conditions doc') %>.</li>
         <li>If you have a disability, impairment or sensory loss, or an additional need such as a dyslexia or a requirement for assistive technology to enable you to complete the test, we can extend the test time to <%= @extended_duration %> minutes. To request this, please <%= mail_to 'certificationqueries@bcs.uk', 'email us', class: 'ncce-link' %> and we'd be happy to help.</li>
         <% if @leader_confirmation %>
           <li>Once you start the test, you'll be required to provide the email address of a Senior Leader or course leader in your school who can confirm you have completed the test under exam conditions.</li>
@@ -65,7 +64,7 @@
               }
             }, '1', '0' %>
             <%= sf.label :accepted_conditions, class: 'govuk-checkboxes__label ncce-label ncce-checkboxes__label ncce-checkboxes__label--multiline' do %>
-              I have read and accept <%= link_to 'the full exam conditions', @conditions_url, class: 'ncce-link', data: helpers.tracking_data('Exam conditions doc') %>.
+              I have read and accept <%= link_to 'the full exam conditions', @conditions_url, class: 'ncce-link', data: tracking_data('Exam conditions doc') %>.
             <% end %>
           </div>
           <% if @leader_confirmation %>

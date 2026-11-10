@@ -13,7 +13,7 @@ module Certificates
       @professional_development_groups = @programme.programme_activity_groupings.not_community.order(:sort_key).includes(programme_activities: :activity)
       @cpd_courses = @professional_development_groups.flat_map(&:programme_activities)
 
-      @assessment = Assessment.find_by(programme: @programme)
+      @assessment = @programme.assessment
       @user_programme_assessment = UserProgrammeAssessment.new(@programme, current_user)
 
       render :show

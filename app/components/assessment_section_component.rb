@@ -3,8 +3,10 @@
 # The ClassMarker test section of a certificate dashboard. Depending on the
 # teacher's attempts it shows the attempt in progress, the cool-off, or what
 # the test involves and the form that starts an attempt.
-class AssessmentDetailsComponent < ViewComponent::Base
+class AssessmentSectionComponent < ViewComponent::Base
   include ProgrammesHelper
+
+  delegate :tracking_data, to: :helpers
 
   # Shown under the cool-off message, e.g. where to find help before trying again
   renders_one :cool_off_advice
