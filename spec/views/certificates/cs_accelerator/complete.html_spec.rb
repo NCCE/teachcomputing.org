@@ -42,7 +42,7 @@ RSpec.describe("certificates/cs_accelerator/complete") do
     end
 
     it "has a button to find out more about the secondary certificate" do
-      expect(rendered).to have_link("Find out more")
+      expect(rendered).to have_link("Find out more", href: "/secondary-certificate")
     end
 
     it "has two further activity cards" do
