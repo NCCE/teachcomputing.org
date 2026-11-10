@@ -51,7 +51,7 @@ RSpec.describe("certificates/secondary_certificate/show", type: :view) do
   end
 
   it "has view all courses button" do
-    expect(rendered).to have_link("View more courses")
+    expect(rendered).to have_link("Browse all certificate courses")
   end
 
   it "shows all activities" do

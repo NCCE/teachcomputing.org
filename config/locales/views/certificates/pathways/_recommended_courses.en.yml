@@ -4,4 +4,6 @@ en:
       recommended_courses:
         courses_intro:
           html: "Courses based on your pathway"
-        all_courses_button: "View more courses"
+        expand_button: "Show all %{count} courses"
+        collapse_button: "Show fewer courses"
+        all_courses_button: "Browse all certificate courses"

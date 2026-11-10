@@ -31,6 +31,14 @@
   text-align: center;
 }
 
+.ncce-pathway-courses__header {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem 1rem;
+  justify-content: space-between;
+}
+
 .ncce-pathway-courses__location {
   font-size: 0.9375rem;
   font-weight: 700;
