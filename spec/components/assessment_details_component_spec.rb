@@ -3,7 +3,7 @@ require "rails_helper"
 RSpec.describe AssessmentDetailsComponent, type: :component do
   let(:user) { create(:user, teacher_reference_number: "1234567") }
   let(:assessment) { create(:assessment) }
-  let(:confirm_ready) { false }
+  let(:leader_confirmation) { false }
 
   before do
     render_inline(
@@ -14,7 +14,7 @@ RSpec.describe AssessmentDetailsComponent, type: :component do
         question_count: 40,
         extended_duration: 90,
         conditions_url: "https://example.com/conditions.pdf",
-        confirm_ready:
+        leader_confirmation:
       )
     )
   end
@@ -59,12 +59,17 @@ RSpec.describe AssessmentDetailsComponent, type: :component do
     expect(page).to have_button("Take the test", disabled: true)
   end
 
-  it "does not ask them to confirm they're ready" do
+  it "does not mention a school leader" do
+    expect(page).not_to have_text("Senior Leader")
     expect(page).not_to have_field("ready_to_test")
   end
 
-  context "when confirm_ready is set" do
-    let(:confirm_ready) { true }
+  context "when leader_confirmation is set" do
+    let(:leader_confirmation) { true }
+
+    it "says a school leader will need to confirm the exam conditions" do
+      expect(page).to have_text("you'll be required to provide the email address of a Senior Leader or course leader")
+    end
 
     it "asks them to confirm they're ready" do
       expect(page).to have_unchecked_field("ready_to_test")
