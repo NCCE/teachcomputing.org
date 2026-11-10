@@ -77,7 +77,7 @@ RSpec.describe AssessmentAttemptsController do
       end
     end
 
-    context "when the attempt rules don't allow a new attempt" do
+    context "with the attempt rules" do
       let(:a_level) { create(:a_level) }
       let!(:assessment) { create(:assessment, programme: a_level) }
 
@@ -92,12 +92,11 @@ RSpec.describe AssessmentAttemptsController do
       end
 
       context "with an attempt in progress" do
+        around { |example| travel_to(Time.zone.parse("2026-11-11 14:30")) { example.run } }
+
         before do
-          travel_to(Time.zone.parse("2026-11-11 14:30"))
           create(:assessment_attempt, user:, assessment:, created_at: Time.zone.parse("2026-11-11 14:14"))
         end
-
-        after { travel_back }
 
         it "does not create an attempt" do
           expect { post_attempt }.not_to change(AssessmentAttempt, :count)
@@ -119,7 +118,29 @@ RSpec.describe AssessmentAttemptsController do
         end
       end
 
+      context "when the latest attempt timed out" do
+        before do
+          create(:timed_out_assessment_attempt, user:, assessment:)
+        end
+
+        it "creates an attempt" do
+          expect { post_attempt }.to change(AssessmentAttempt, :count).by(1)
+        end
+      end
+
+      context "after one fail" do
+        before do
+          create(:failed_assessment_attempt, user:, assessment:)
+        end
+
+        it "creates an attempt" do
+          expect { post_attempt }.to change(AssessmentAttempt, :count).by(1)
+        end
+      end
+
       context "in the cool-off after two fails" do
+        around { |example| travel_to(Time.zone.parse("2026-11-11 14:14")) { example.run } }
+
         before do
           create_list(:failed_assessment_attempt, 2, user:, assessment:)
         end
@@ -134,13 +155,13 @@ RSpec.describe AssessmentAttemptsController do
 
         it "says when they can take the test again" do
           post_attempt
-          expect(flash[:error]).to start_with("You can take the test again after")
+          expect(flash[:error]).to eq("You can take the test again after 2:14pm on Friday 13 November 2026.")
         end
       end
 
-      context "after one fail" do
+      context "once the cool-off has ended" do
         before do
-          create(:failed_assessment_attempt, user:, assessment:)
+          create_list(:failed_assessment_attempt_from_before, 2, user:, assessment:)
         end
 
         it "creates an attempt" do
