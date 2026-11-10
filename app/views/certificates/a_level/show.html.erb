@@ -10,7 +10,15 @@
             <h2 class="govuk-heading-m"><%= t('.page_title') %></h2>
             <p class="govuk-body"><%= t('.introduction') %></p>
 
-            <%= render partial: 'assessment' %>
+            <%= render AssessmentSectionComponent.new(
+              user: current_user,
+              assessment: @assessment,
+              user_programme_assessment: @user_programme_assessment,
+              duration: 60,
+              question_count: 40,
+              extended_duration: 90,
+              conditions_url: a_level_test_conditions_url
+            ) %>
           </section>
           <%= render 'achievement_list' %>
           <section class="ncce-section">

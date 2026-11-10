@@ -122,7 +122,7 @@ RSpec.describe("certificates/a_level/show", type: :view) do
     let(:latest_attempt) { create(:failed_assessment_attempt, user:, assessment:) }
 
     it "says they can take it again straight away" do
-      expect(rendered).to have_text("You've taken the test once without passing. You can take it again straight away.")
+      expect(rendered).to have_text("You've taken the test once without passing. You can take it again straight away.", normalize_ws: true)
     end
 
     it "shows the form" do
