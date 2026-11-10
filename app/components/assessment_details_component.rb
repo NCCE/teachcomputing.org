@@ -29,8 +29,8 @@ class AssessmentDetailsComponent < ViewComponent::Base
     @user_programme_assessment.failed_num_attempts
   end
 
-  def retry_at
-    assessment_time(Time.zone.now + @user_programme_assessment.can_take_test_at.seconds)
+  def retry_time
+    assessment_time(@user_programme_assessment.retry_at)
   end
 
   def cool_off_hours

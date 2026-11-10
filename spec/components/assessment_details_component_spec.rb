@@ -5,8 +5,7 @@ RSpec.describe AssessmentDetailsComponent, type: :component do
   let(:assessment) { create(:assessment) }
   let(:leader_confirmation) { false }
   let(:currently_taking_test) { false }
-  let(:in_cool_off) { false }
-  let(:can_take_test_at) { 0 }
+  let(:retry_at) { nil }
   let(:failed_num_attempts) { 0 }
   let(:latest_attempt) { nil }
 
@@ -14,8 +13,8 @@ RSpec.describe AssessmentDetailsComponent, type: :component do
     instance_double(
       UserProgrammeAssessment,
       currently_taking_test?: currently_taking_test,
-      in_cool_off?: in_cool_off,
-      can_take_test_at:,
+      in_cool_off?: retry_at.present? && retry_at.future?,
+      retry_at:,
       failed_num_attempts:,
       latest_attempt:
     )
@@ -130,8 +129,7 @@ RSpec.describe AssessmentDetailsComponent, type: :component do
   end
 
   context "in the cool-off" do
-    let(:in_cool_off) { true }
-    let(:can_take_test_at) { 1.day.to_i }
+    let(:retry_at) { Time.zone.parse("2026-11-12 14:14") }
     let(:failed_num_attempts) { 2 }
 
     around { |example| travel_to(Time.zone.parse("2026-11-11 14:14")) { example.run } }

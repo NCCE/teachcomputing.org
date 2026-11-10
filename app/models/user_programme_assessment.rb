@@ -30,10 +30,19 @@ class UserProgrammeAssessment
     @failed_num_attempts ||= @failed_attempts.count
   end
 
-  def can_take_test_at
-    return 0 if @failed_attempts.nil? || @failed_attempts.last.nil? || less_than_two_failed_attempts?
+  # When the cool-off after the most recent fail ends, or nil if the teacher
+  # hasn't failed enough times for a cool-off to apply
+  def retry_at
+    return @retry_at if defined?(@retry_at)
 
-    [@failed_attempts.last.last_transition.created_at.to_i - COOL_OFF_PERIOD.ago.to_i, 0].max
+    @retry_at = (@failed_attempts.last.last_transition.created_at + COOL_OFF_PERIOD unless less_than_two_failed_attempts?)
+  end
+
+  # Seconds until the teacher can take the test again, or 0 if they can now
+  def can_take_test_at
+    return 0 unless in_cool_off?
+
+    (retry_at - Time.zone.now).to_i
   end
 
   def latest_attempt
@@ -45,7 +54,7 @@ class UserProgrammeAssessment
   end
 
   def in_cool_off?
-    can_take_test_at != 0
+    retry_at.present? && retry_at.future?
   end
 
   def can_start_attempt?

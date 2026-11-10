@@ -4,7 +4,7 @@
   <% elsif @user_programme_assessment.in_cool_off? %>
     <%= render layout: 'certificates/assessment_info' do %>
       <p class="govuk-body">
-        You've taken the test <%= attempt_count_in_words(failed_num_attempts) %> without passing. You can take it again after <strong><%= retry_at %></strong>.
+        You've taken the test <%= attempt_count_in_words(failed_num_attempts) %> without passing. You can take it again after <strong><%= retry_time %></strong>.
       </p>
     <% end %>
     <%= cool_off_advice %>
