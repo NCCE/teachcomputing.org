@@ -72,6 +72,7 @@ RSpec.describe("certificates/a_level/show", type: :view) do
     expect(rendered).to have_link("full details of exam conditions", href: "https://static.teachcomputing.org/alevel-test-conditions.pdf")
     expect(rendered).to have_text("You can take the test twice straight away")
     expect(rendered).to have_text("use the button at the end to come back here")
+    expect(rendered).not_to have_text("Senior Leader")
   end
 
   it "shows the form" do

@@ -26,7 +26,7 @@
       question_count: 25,
       extended_duration: 45,
       conditions_url: 'https://static.teachcomputing.org/CSA-Exam-Conditions.pdf',
-      confirm_ready: true
+      leader_confirmation: true
     ) do |component| %>
       <% if user_programme_assessment.failed_num_attempts == 1 %>
         <% component.with_notice do %>
