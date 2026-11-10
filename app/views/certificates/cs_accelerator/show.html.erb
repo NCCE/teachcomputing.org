@@ -29,7 +29,8 @@
         <%= render partial: 'certificates/pathways/recommended_courses', locals: {
           event_category: 'CSA enrolled',
           pathway: @csa_dash.user_programme_pathway,
-          recommended_activities: @csa_dash.recommended_activities_for_user
+          recommended_activities: @csa_dash.recommended_activities_for_user,
+          start_expanded: false
         } %>
       </div>
     </div>
