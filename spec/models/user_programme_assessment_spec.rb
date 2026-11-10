@@ -316,6 +316,29 @@ RSpec.describe UserProgrammeAssessment do
     end
   end
 
+  describe "#retry_at" do
+    it "is nil after one fail" do
+      one_failed_test_attempt
+      expect(user_programme_asessment.retry_at).to be_nil
+      expect(user_programme_asessment.in_cool_off?).to be(false)
+    end
+
+    it "is 48 hours after the most recent fail once there are two" do
+      travel_to(Time.zone.parse("2026-11-11 14:14")) do
+        two_failed_test_attempts
+        expect(user_programme_asessment.retry_at).to eq(Time.zone.parse("2026-11-13 14:14"))
+        expect(user_programme_asessment.in_cool_off?).to be(true)
+        expect(user_programme_asessment.can_take_test_at).to eq(48.hours.to_i)
+      end
+    end
+
+    it "is in the past once the cool-off has ended" do
+      two_old_failed_test_attempts
+      expect(user_programme_asessment.retry_at).to be_past
+      expect(user_programme_asessment.in_cool_off?).to be(false)
+    end
+  end
+
   describe "#can_start_attempt?" do
     it "is false without enough credits" do
       setup_achievements_for_programme

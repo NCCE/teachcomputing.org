@@ -53,8 +53,7 @@ class AssessmentAttemptsController < ApplicationController
       expires_at = helpers.assessment_time(user_programme_assessment.latest_attempt.expires_at)
       "You've already started the test. If you didn't finish, you can start a new attempt after #{expires_at}."
     elsif user_programme_assessment.in_cool_off?
-      retry_at = helpers.assessment_time(Time.zone.now + user_programme_assessment.can_take_test_at.seconds)
-      "You can take the test again after #{retry_at}."
+      "You can take the test again after #{helpers.assessment_time(user_programme_assessment.retry_at)}."
     else
       "You need to complete more courses before you can take the test."
     end
