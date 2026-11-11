@@ -76,9 +76,12 @@ RSpec.describe AssessmentSectionComponent, type: :component do
       expect(page).to have_field("user_teacher_reference_number", with: "1234567")
     end
 
-    it "submits the user and assessment" do
-      expect(page).to have_field("assessment_attempt[user_id]", type: :hidden, with: user.id)
+    it "submits the assessment" do
       expect(page).to have_field("assessment_attempt[assessment_id]", type: :hidden, with: assessment.id)
+    end
+
+    it "does not submit a user id" do
+      expect(page).not_to have_field("assessment_attempt[user_id]", type: :hidden)
     end
 
     it "disables the button until the conditions are accepted" do

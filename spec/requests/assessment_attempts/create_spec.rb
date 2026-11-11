@@ -12,14 +12,14 @@ RSpec.describe AssessmentAttemptsController do
     context "with valid params" do
       it "creates an assessment attempt record" do
         post assessment_attempts_path(
-          assessment_attempt: {assessment_id: assessment.id, user_id: user.id, accepted_conditions: true}
+          assessment_attempt: {assessment_id: assessment.id, accepted_conditions: true}
         )
         expect(AssessmentAttempt.where(assessment_id: assessment.id, user_id: user.id).exists?).to be true
       end
 
       it "redirects to the assessment link path" do
         post assessment_attempts_path(
-          assessment_attempt: {assessment_id: assessment.id, user_id: user.id, accepted_conditions: true}
+          assessment_attempt: {assessment_id: assessment.id, accepted_conditions: true}
         )
         expect(response).to redirect_to("#{assessment.link}&cm_e=#{user.email}&cm_user_id=#{user.id}")
       end
@@ -27,21 +27,21 @@ RSpec.describe AssessmentAttemptsController do
       it "queues ExpireAssessmentAttemptJob job" do
         expect do
           post assessment_attempts_path(
-            assessment_attempt: {assessment_id: assessment.id, user_id: user.id, accepted_conditions: true}
+            assessment_attempt: {assessment_id: assessment.id, accepted_conditions: true}
           )
         end.to have_enqueued_job(ExpireAssessmentAttemptJob)
       end
 
       it "doesn't store trn if not present" do
         post assessment_attempts_path(
-          assessment_attempt: {assessment_id: assessment.id, user_id: user.id, accepted_conditions: true}
+          assessment_attempt: {assessment_id: assessment.id, accepted_conditions: true}
         )
         expect(user.teacher_reference_number).to be_nil
       end
 
       it "stores the trn if it is present" do
         path = assessment_attempts_path(
-          assessment_attempt: {assessment_id: assessment.id, user_id: user.id, accepted_conditions: true}
+          assessment_attempt: {assessment_id: assessment.id, accepted_conditions: true}
         )
         post path, params: {
           user: {teacher_reference_number: "abc123"},
@@ -50,13 +50,34 @@ RSpec.describe AssessmentAttemptsController do
         expect(user.teacher_reference_number).to eq("abc123")
       end
 
+      context "when the params name another user" do
+        let(:other_user) { create(:user) }
+
+        def post_for_other_user
+          post assessment_attempts_path(
+            assessment_attempt: {assessment_id: assessment.id, user_id: other_user.id, accepted_conditions: true}
+          )
+        end
+
+        it "creates the attempt for the signed-in user" do
+          post_for_other_user
+          expect(AssessmentAttempt.where(user: user).count).to eq(1)
+          expect(AssessmentAttempt.where(user: other_user)).to be_empty
+        end
+
+        it "redirects with the signed-in user's details" do
+          post_for_other_user
+          expect(response).to redirect_to("#{assessment.link}&cm_e=#{user.email}&cm_user_id=#{user.id}")
+        end
+      end
+
       context "if the achievement fails to save" do
         it "should add a flash error" do
           allow_any_instance_of(Achievement).to receive(:save).and_return(false)
           allow_any_instance_of(Programme).to receive(:path).and_return(a_level_path)
 
           post assessment_attempts_path(
-            assessment_attempt: {assessment_id: assessment.id, user_id: user.id, accepted_conditions: true}
+            assessment_attempt: {assessment_id: assessment.id, accepted_conditions: true}
           )
 
           expect(flash[:error]).to be_present
@@ -69,7 +90,7 @@ RSpec.describe AssessmentAttemptsController do
           allow_any_instance_of(Programme).to receive(:path).and_return(a_level_path)
 
           post assessment_attempts_path(
-            assessment_attempt: {assessment_id: assessment.id, user_id: user.id, accepted_conditions: true}
+            assessment_attempt: {assessment_id: assessment.id, accepted_conditions: true}
           )
 
           expect(flash[:error]).to be_present
@@ -87,7 +108,7 @@ RSpec.describe AssessmentAttemptsController do
 
       def post_attempt
         post assessment_attempts_path(
-          assessment_attempt: {assessment_id: assessment.id, user_id: user.id, accepted_conditions: true}
+          assessment_attempt: {assessment_id: assessment.id, accepted_conditions: true}
         ), params: {user: {teacher_reference_number: "abc123"}}
       end
 
@@ -187,7 +208,7 @@ RSpec.describe AssessmentAttemptsController do
     context "with invalid params" do
       it "raises ActiveRecord::RecordNotFound exception" do
         expect do
-          post assessment_attempts_path(assessment_attempt: {assessment_id: nil, user_id: nil})
+          post assessment_attempts_path(assessment_attempt: {assessment_id: nil})
         end.to raise_error(ActiveRecord::RecordNotFound)
       end
     end
