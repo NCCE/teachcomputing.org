@@ -6,7 +6,7 @@ class AssessmentAttemptsController < ApplicationController
 
   def create
     if @assessment.activity
-      achievement = @assessment.activity.achievements.find_or_initialize_by(user_id: params[:assessment_attempt][:user_id])
+      achievement = @assessment.activity.achievements.find_or_initialize_by(user: current_user)
 
       unless achievement.save
         flash[:error] = "Failed to create achievement"
@@ -15,7 +15,7 @@ class AssessmentAttemptsController < ApplicationController
       end
     end
 
-    assessment_attempt = AssessmentAttempt.new(assessment_attempts_params)
+    assessment_attempt = AssessmentAttempt.new(assessment_attempts_params.merge(user: current_user))
 
     if assessment_attempt.save
       ExpireAssessmentAttemptJob.set(wait: AssessmentAttempt::EXPIRES_AFTER).perform_later(assessment_attempt)
@@ -60,7 +60,7 @@ class AssessmentAttemptsController < ApplicationController
   end
 
   def assessment_attempts_params
-    params.require(:assessment_attempt).permit(:assessment_id, :user_id, :accepted_conditions)
+    params.require(:assessment_attempt).permit(:assessment_id, :accepted_conditions)
   end
 
   def assessment_url(user)
