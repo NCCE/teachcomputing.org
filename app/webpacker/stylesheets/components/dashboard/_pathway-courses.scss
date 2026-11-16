@@ -39,6 +39,17 @@
   justify-content: space-between;
 }
 
+// Without JS the toggle can't work, so show every course and hide the button
+body:not(.js-enabled) {
+  .ncce-pathway-courses__toggle {
+    display: none;
+  }
+
+  .recommended-courses-wrapper .expander.hidden {
+    display: block;
+  }
+}
+
 .ncce-pathway-courses__location {
   font-size: 0.9375rem;
   font-weight: 700;
