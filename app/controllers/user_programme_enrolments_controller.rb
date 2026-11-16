@@ -1,10 +1,11 @@
 class UserProgrammeEnrolmentsController < ApplicationController
   before_action :authenticate_user!, only: [:create]
+  before_action :authenticate_user_and_return!, only: [:destroy]
   before_action :user_has_existing_enrolment?, only: [:create]
 
   def create
     enroller = Programmes::UserEnroller.new(
-      user_id: user_programme_enrolment_params[:user_id],
+      user_id: current_user.id,
       programme_id: user_programme_enrolment_params[:programme_id],
       pathway_slug: user_programme_enrolment_params[:pathway_slug]
     )
@@ -32,9 +33,9 @@ class UserProgrammeEnrolmentsController < ApplicationController
   end
 
   def destroy
-    enrolment = UserProgrammeEnrolment.find_by!(id: params[:id])
+    enrolment = current_user.user_programme_enrolments.find(params[:id])
 
-    if enrolment.present?
+    if enrolment.can_transition_to?(:unenrolled)
       enrolment.transition_to(:unenrolled)
       flash[:notice] = "You have successfully opted out of the #{enrolment.programme.title}"
     end
@@ -57,15 +58,20 @@ class UserProgrammeEnrolmentsController < ApplicationController
   private
 
   def user_programme_enrolment_params
-    params.require(:user_programme_enrolment).permit(:user_id, :programme_id, :pathway_slug)
+    params.require(:user_programme_enrolment).permit(:programme_id, :pathway_slug)
   end
 
   def user_programme_enrolment_update_params
     params.require(:user_programme_enrolment).permit(:certificate_name)
   end
 
+  # The unenrol link is sent by email, so bring the user back to it once they have logged in
+  def authenticate_user_and_return!
+    redirect_to login_path(source_uri: request.original_url) unless current_user
+  end
+
   def user_has_existing_enrolment?
-    enrolment = UserProgrammeEnrolment.find_by(user_id: user_programme_enrolment_params[:user_id], programme_id: user_programme_enrolment_params[:programme_id])
+    enrolment = current_user.user_programme_enrolments.find_by(programme_id: user_programme_enrolment_params[:programme_id])
     return unless enrolment
 
     if enrolment.in_state?(:unenrolled)
