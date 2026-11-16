@@ -30,6 +30,8 @@ RSpec.describe("certificates/cs_accelerator/show", type: :view) do
 
   context "when the user is on a pathway" do
     let(:pathway) { create(:pathway, programme:) }
+    let(:assessment_unlocked) { false }
+    let!(:assessment) { create(:assessment, programme:) }
 
     before do
       stub_course_templates
@@ -37,11 +39,22 @@ RSpec.describe("certificates/cs_accelerator/show", type: :view) do
       create_list(:pathway_activity, 4, pathway:)
       create(:user_programme_enrolment, user:, programme:, pathway:)
       @csa_dash = CSADash.new(user: user)
+      allow(@csa_dash).to receive(:has_enough_activities_for_test).and_return(assessment_unlocked)
       render
     end
 
-    it "starts with the recommended courses collapsed" do
-      expect(rendered).to have_css(".recommended-courses-wrapper button[aria-expanded='false']", text: "Show all 4 courses")
+    context "when the assessment is locked" do
+      it "starts with the recommended courses expanded" do
+        expect(rendered).to have_css(".recommended-courses-wrapper button[aria-expanded='true']", text: "Show fewer courses")
+      end
+    end
+
+    context "when the assessment is unlocked" do
+      let(:assessment_unlocked) { true }
+
+      it "starts with the recommended courses collapsed" do
+        expect(rendered).to have_css(".recommended-courses-wrapper button[aria-expanded='false']", text: "Show all 4 courses")
+      end
     end
   end
 end
