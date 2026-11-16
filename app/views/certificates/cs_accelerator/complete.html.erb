@@ -42,14 +42,16 @@
           <div class="govuk-body ncce-csa-dash__section-unpadded">
             <% if @user_pathway&.present? %>
               <div class="ncce-csa-dash__section ncce-csa-dash__section-padded govuk-!-margin-bottom-3">
-                <%= render partial: 'certificates/pathways/recommended_courses', locals: {
+                <%= render RecommendedCoursesComponent.new(
+                  current_user:,
+                  programme: @programme,
                   event_category: 'CSA enrolled',
                   pathway: @user_pathway,
-                  recommended_activities: @user_pathway&.recommended_activities,
+                  recommended_activities: @user_pathway.recommended_activities,
                   title: t('.recommended_courses.courses_intro.html',
-                    pathway_pdf_link: link_to(t('.recommended_courses.pathway_pdf_link_title'), @user_pathway&.pdf_link, class: 'ncce-link', data: tracking_data('current path pdf'))
+                    pathway_pdf_link: link_to(t('.recommended_courses.pathway_pdf_link_title'), @user_pathway.pdf_link, class: 'ncce-link', data: tracking_data('current path pdf'))
                   )
-                } %>
+                ) %>
               </div>
             <% else %>
               <%= link_to t('.all_courses_button'),
