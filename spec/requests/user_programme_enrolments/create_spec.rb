@@ -73,6 +73,39 @@ RSpec.describe UserProgrammeEnrolmentsController do
       end
     end
 
+    context "when a different user_id is submitted" do
+      let(:other_user) { create(:user) }
+
+      subject(:enrol) do
+        post enrol_cs_accelerator_certificate_path(user_programme_enrolment: {programme_id: programme.id,
+                                                                              user_id: other_user.id})
+      end
+
+      it "enrols the signed-in user" do
+        enrol
+        expect(user.user_programme_enrolments.where(programme_id: programme.id).exists?).to eq true
+      end
+
+      it "does not enrol the other user" do
+        enrol
+        expect(other_user.user_programme_enrolments.where(programme_id: programme.id).exists?).to eq false
+      end
+
+      context "when the other user has unenrolled" do
+        let!(:other_enrolment) do
+          UserProgrammeEnrolment.create(user: other_user, programme: programme, auto_enrolled: true).tap do |enrolment|
+            enrolment.transition_to(:unenrolled)
+          end
+        end
+
+        it "does not re-enrol the other user" do
+          enrol
+          expect(other_enrolment.reload.in_state?(:unenrolled)).to eq true
+          expect(other_enrolment.auto_enrolled).to eq true
+        end
+      end
+    end
+
     context "with invalid params" do
       it "raises ActiveRecord::RecordNotFound exception" do
         expect do
