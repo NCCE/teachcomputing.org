@@ -4,6 +4,9 @@ en:
       hero:
         title: "Isaac Computer Science"
         intro_text: "Discover the free online textbook for A level and GCSE computer science teachers and students."
+      transition:
+        text_html: "From the end of the 2026/27 academic year, government-funded online student learning support will be provided through Ada Computer Science. For more information about the planned transition to Ada Computer Science, you can read %{link}."
+        link_text: "this blog"
       description:
         intro: "Access a huge range of time-saving learning materials that cover the full A level and GCSE Computer Science curricula for the AQA, OCR, Edexcel, and Eduqas exam specifications — all for free!"
         text: "Set questions for your students and the system will mark them and give you a detailed breakdown of their progress. Isaac Computer Science is great for supporting remote teaching, homework and revision sessions, and helps you to quickly identify areas where students can improve."

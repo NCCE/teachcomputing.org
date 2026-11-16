@@ -211,6 +211,10 @@ module ExternalLinkHelper
     "https://isaaccomputerscience.org/careers_in_computer_science"
   end
 
+  def isaac_ada_transition_blog_url
+    "https://isaaccomputerscience.org/pages/2026_08_planned_transition"
+  end
+
   def i_am_computer_scientist_url
     "https://imacomputerscientist.uk/signup/t/"
   end
