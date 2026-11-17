@@ -3,15 +3,18 @@
 class RecommendedCoursesComponent < ViewComponent::Base
   VISIBLE_COUNT = 2
 
+  # Shown to the right of the title, e.g. a link to the pathway PDF. Links
+  # can't go in the title, because the title is the toggle button.
+  renders_one :description
+
   attr_reader :current_user, :programme, :pathway, :event_category
 
-  def initialize(current_user:, programme:, pathway:, recommended_activities:, event_category:, title: nil, start_expanded: true)
+  def initialize(current_user:, programme:, pathway:, recommended_activities:, event_category:, start_expanded: true)
     @current_user = current_user
     @programme = programme
     @pathway = pathway
     @activities = Array(recommended_activities)
     @event_category = event_category
-    @title = title
     @start_expanded = start_expanded
   end
 
@@ -20,7 +23,11 @@ class RecommendedCoursesComponent < ViewComponent::Base
   end
 
   def title
-    @title || "Courses based on your pathway"
+    "#{course_count} #{"course".pluralize(course_count)} based on your pathway"
+  end
+
+  def course_count
+    @activities.size
   end
 
   def visible_activities
@@ -43,26 +50,8 @@ class RecommendedCoursesComponent < ViewComponent::Base
     "recommended-courses-#{pathway.id}"
   end
 
-  def expand_label
-    "Show all #{@activities.size} courses"
-  end
-
-  def collapse_label
-    "Show fewer courses"
-  end
-
-  def toggle_label
-    start_expanded? ? collapse_label : expand_label
-  end
-
   def wrapper_data
-    return {} unless expandable?
-
-    {
-      controller: "expander",
-      expander_expand_value: expand_label,
-      expander_collapse_value: collapse_label
-    }
+    expandable? ? {controller: "expander"} : {}
   end
 
   def toggle_button_data

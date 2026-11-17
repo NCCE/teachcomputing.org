@@ -9,8 +9,10 @@ class RecommendedCoursesComponentPreview < ViewComponent::Preview
     render component(pathway:, start_expanded: false)
   end
 
-  def with_custom_title
-    render component(pathway:, title: "Courses picked for your pathway")
+  def with_description
+    render component(pathway:) do |c|
+      c.with_description { "Your pathway (PDF)" }
+    end
   end
 
   def with_two_courses

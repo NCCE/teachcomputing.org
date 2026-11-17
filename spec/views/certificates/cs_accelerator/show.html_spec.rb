@@ -45,7 +45,7 @@ RSpec.describe("certificates/cs_accelerator/show", type: :view) do
 
     context "when the assessment is locked" do
       it "starts with the recommended courses expanded" do
-        expect(rendered).to have_css(".recommended-courses-wrapper button[aria-expanded='true']", text: "Show fewer courses")
+        expect(rendered).to have_css(".recommended-courses-wrapper button[aria-expanded='true']", text: "4 courses based on your pathway")
       end
     end
 
@@ -53,7 +53,7 @@ RSpec.describe("certificates/cs_accelerator/show", type: :view) do
       let(:assessment_unlocked) { true }
 
       it "starts with the recommended courses collapsed" do
-        expect(rendered).to have_css(".recommended-courses-wrapper button[aria-expanded='false']", text: "Show all 4 courses")
+        expect(rendered).to have_css(".recommended-courses-wrapper button[aria-expanded='false']", text: "4 courses based on your pathway")
       end
     end
   end

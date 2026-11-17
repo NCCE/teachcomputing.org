@@ -31,18 +31,31 @@
   text-align: center;
 }
 
+// The title on the left and any description, e.g. the pathway PDF link, on
+// the right, wrapping underneath on narrow screens
 .ncce-pathway-courses__header {
-  align-items: center;
+  align-items: baseline;
   display: flex;
   flex-wrap: wrap;
   gap: 0.25rem 1rem;
   justify-content: space-between;
 }
 
-// Without JS the toggle can't work, so show every course and hide the button
+// The title is the toggle button, with the arrow straight after the text
+.expander__button.ncce-pathway-courses__toggle {
+  background-color: transparent;
+  color: inherit;
+  font-family: inherit;
+  font-size: inherit;
+}
+
+// Without JS the toggle can't work, so show every course and make the title
+// look like plain text
 body:not(.js-enabled) {
   .ncce-pathway-courses__toggle {
-    display: none;
+    background-image: none;
+    cursor: default;
+    padding-right: 0;
   }
 
   .recommended-courses-wrapper .expander.hidden {
