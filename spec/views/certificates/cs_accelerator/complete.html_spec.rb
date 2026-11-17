@@ -107,8 +107,12 @@ RSpec.describe("certificates/cs_accelerator/complete") do
       render
     end
 
-    it "links to the pdf in the pathway title" do
-      expect(rendered).to have_link("your pathway", href: "http://example.com")
+    it "shows the number of courses in the pathway title" do
+      expect(rendered).to have_css(".recommended-courses-wrapper strong", text: "1 course based on your pathway")
+    end
+
+    it "links to the pathway pdf next to the title" do
+      expect(rendered).to have_css(".ncce-pathway-courses__header p a[href='http://example.com']", text: "Your pathway (PDF)")
     end
 
     it "does show the recommended pathways" do

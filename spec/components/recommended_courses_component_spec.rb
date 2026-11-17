@@ -53,30 +53,22 @@ RSpec.describe RecommendedCoursesComponent, type: :component do
   end
 
   describe "#title" do
-    it "defaults to the pathway title" do
-      expect(component.title).to eq("Courses based on your pathway")
+    it "is the number of courses based on the pathway" do
+      expect(component.title).to eq("5 courses based on your pathway")
     end
 
-    it "uses a custom title" do
-      expect(component(title: "Your pathway courses").title).to eq("Your pathway courses")
-    end
-  end
+    context "with one course" do
+      let(:recommended_activities) { create_list(:pathway_activity, 1, pathway:) }
 
-  describe "#toggle_label" do
-    it "offers to show fewer courses when starting expanded" do
-      expect(component.toggle_label).to eq("Show fewer courses")
-    end
-
-    it "offers to show all the courses when starting collapsed" do
-      expect(component(start_expanded: false).toggle_label).to eq("Show all 5 courses")
+      it { expect(component.title).to eq("1 course based on your pathway") }
     end
   end
 
   context "when rendered starting expanded" do
     before { render_inline(component) }
 
-    it "shows the title" do
-      expect(page).to have_css("p strong", text: "Courses based on your pathway")
+    it "makes the title the toggle button" do
+      expect(page).to have_css("button.expander__button[aria-expanded='true'][start-expanded='true'][aria-controls='#{courses_id}'] strong", text: "5 courses based on your pathway")
     end
 
     it "shows the first two courses outside the expander" do
@@ -96,17 +88,12 @@ RSpec.describe RecommendedCoursesComponent, type: :component do
       expect(page).to have_css("#{extra_courses}.expander:not(.hidden)")
     end
 
-    it "has a green toggle button to show fewer courses" do
-      expect(page).to have_css("button.govuk-button.button:not(.button--inverted)[aria-expanded='true'][start-expanded='true'][aria-controls='#{courses_id}']", text: "Show fewer courses")
+    it "wires the toggle button to the expander" do
+      expect(page).to have_css("[data-controller='expander'] .ncce-pathway-courses__header button[data-action='expander#toggleAll'][data-expander-target='expanderButton'][data-event-category='CSA enrolled']")
     end
 
-    it "puts the toggle button next to the title" do
-      expect(page).to have_css(".ncce-pathway-courses__header strong", text: "Courses based on your pathway")
-      expect(page).to have_css(".ncce-pathway-courses__header button[data-action='expander#toggleAll'][data-event-category='CSA enrolled']")
-    end
-
-    it "has the button text for both states" do
-      expect(page).to have_css("[data-controller='expander'][data-expander-expand-value='Show all 5 courses'][data-expander-collapse-value='Show fewer courses']")
+    it "has only the title in the toggle button" do
+      expect(page).to have_button(exact_text: "5 courses based on your pathway", normalize_ws: true, count: 1)
     end
 
     it "puts the browse all courses link at the bottom of the expander" do
@@ -118,8 +105,8 @@ RSpec.describe RecommendedCoursesComponent, type: :component do
   context "when rendered starting collapsed" do
     before { render_inline(component(start_expanded: false)) }
 
-    it "has a toggle button to show all the courses" do
-      expect(page).to have_css("button[aria-expanded='false'][start-expanded='false']", text: "Show all 5 courses")
+    it "has the title as a collapsed toggle button" do
+      expect(page).to have_css("button[aria-expanded='false'][start-expanded='false']", text: "5 courses based on your pathway")
     end
 
     it "hides the expander before the JavaScript runs" do
@@ -127,11 +114,24 @@ RSpec.describe RecommendedCoursesComponent, type: :component do
     end
   end
 
-  context "when rendered with a custom title" do
-    before { render_inline(component(title: "Your pathway courses")) }
+  context "when rendered with a description" do
+    before do
+      render_inline(component) do |c|
+        c.with_description { "Your pathway (PDF)" }
+      end
+    end
 
-    it "shows the custom title" do
-      expect(page).to have_css("p strong", text: "Your pathway courses")
+    it "shows the description after the title, outside the toggle button" do
+      expect(page).to have_css(".ncce-pathway-courses__header button + p", text: "Your pathway (PDF)")
+      expect(page).not_to have_css("button", text: "Your pathway (PDF)")
+    end
+  end
+
+  context "when rendered without a description" do
+    before { render_inline(component) }
+
+    it "does not leave an empty paragraph in the header" do
+      expect(page).not_to have_css(".ncce-pathway-courses__header p")
     end
   end
 
@@ -142,6 +142,10 @@ RSpec.describe RecommendedCoursesComponent, type: :component do
 
     it "shows all the courses" do
       visible_titles.each { expect(page).to have_link(_1) }
+    end
+
+    it "shows the title as text" do
+      expect(page).to have_css(".ncce-pathway-courses__header p strong", text: "2 courses based on your pathway")
     end
 
     it "does not have a toggle button" do
