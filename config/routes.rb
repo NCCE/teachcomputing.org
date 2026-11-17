@@ -79,7 +79,6 @@ Rails.application.routes.draw do
       get "/view-certificate", action: :show, controller: "certificate", as: :certificate,
         defaults: {slug: "primary-certificate"}
       post "/enrol", action: :create, controller: "/user_programme_enrolments", as: :enrol
-      put "/pathway", action: :update, controller: "primary_certificate/user_programme_pathway", as: :update_user_pathway
     end
 
     resource "secondary_certificate", controller: "secondary_certificate", path: "secondary-certificate",
@@ -95,7 +94,6 @@ Rails.application.routes.draw do
     resource "cs_accelerator", controller: "cs_accelerator", path: "subject-knowledge", only: %i[show],
       as: :cs_accelerator_certificate do
       get "/complete", action: :complete, as: :complete
-      get "/pending", action: :pending, as: :pending
       get "/questionnaire/:id", to: "/diagnostics/cs_accelerator#show", as: :diagnostic
       put "/questionnaire/:id", to: "/diagnostics/cs_accelerator#update", as: :update_diagnostic
       get "/class_marker_diagnostic/:id", to: "/diagnostics/class_marker/cs_accelerator#show",
