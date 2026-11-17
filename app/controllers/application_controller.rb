@@ -47,6 +47,11 @@ class ApplicationController < ActionController::Base
     redirect_to(helpers.create_account_url) unless current_user
   end
 
+  # For links sent by email: send the user to log in, then bring them back to the link
+  def authenticate_user_and_return!
+    redirect_to login_path(source_uri: request.original_url) unless current_user
+  end
+
   def redirect_to_dashboard
     redirect_to dashboard_path if current_user
   end
