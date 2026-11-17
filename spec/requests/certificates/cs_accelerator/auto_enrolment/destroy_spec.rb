@@ -39,6 +39,53 @@ RSpec.describe Certificates::CSAccelerator::AutoEnrolmentsController do
       end
     end
 
+    context "when user has already unenrolled" do
+      let!(:enrolment) do
+        create(:user_programme_enrolment, user: user, programme: programme).tap do |enrolment|
+          enrolment.transition_to(:unenrolled)
+        end
+      end
+
+      it "leaves the enrolment unenrolled and redirects to the dashboard without a notice" do
+        unenroll
+
+        expect(enrolment.reload.current_state).to eq "unenrolled"
+        expect(response).to redirect_to(dashboard_path)
+        expect(flash[:notice]).to be_nil
+      end
+    end
+
+    context "when user's enrolment is pending" do
+      let!(:enrolment) do
+        create(:user_programme_enrolment, user: user, programme: programme).tap do |enrolment|
+          enrolment.transition_to(:pending)
+        end
+      end
+
+      it "leaves the enrolment pending and redirects to the dashboard without a notice" do
+        unenroll
+
+        expect(enrolment.reload.current_state).to eq "pending"
+        expect(response).to redirect_to(dashboard_path)
+        expect(flash[:notice]).to be_nil
+      end
+    end
+
+    context "when signed out" do
+      let!(:enrolment) { create(:user_programme_enrolment, user: user, programme: programme) }
+
+      before do
+        allow_any_instance_of(AuthenticationHelper).to receive(:current_user).and_return(nil)
+      end
+
+      it "redirects to login, returning to the unenrol link afterwards, without unenrolling" do
+        unenroll
+
+        expect(response).to redirect_to(login_path(source_uri: unenroll__cs_accelerator_auto_enrolment_url))
+        expect(enrolment.reload.current_state).to eq "enrolled"
+      end
+    end
+
     context "when user is not enrolled" do
       it "redirects to dashboard" do
         unenroll

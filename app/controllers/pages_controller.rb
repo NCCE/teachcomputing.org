@@ -17,7 +17,7 @@ class PagesController < ApplicationController
     if current_user
       programme = Programme.i_belong
       session_state = programme.user_enrolled?(current_user) ? :enrolled : :unenrolled
-      enrol_path = programme.enrol_path(user_programme_enrolment: {user_id: current_user.id, programme_id: programme.id})
+      enrol_path = programme.enrol_path(user_programme_enrolment: {programme_id: programme.id})
     else
       session_state = :guest
       enrol_path = ""
