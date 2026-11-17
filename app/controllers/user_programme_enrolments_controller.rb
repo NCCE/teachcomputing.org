@@ -65,11 +65,6 @@ class UserProgrammeEnrolmentsController < ApplicationController
     params.require(:user_programme_enrolment).permit(:certificate_name)
   end
 
-  # The unenrol link is sent by email, so bring the user back to it once they have logged in
-  def authenticate_user_and_return!
-    redirect_to login_path(source_uri: request.original_url) unless current_user
-  end
-
   def user_has_existing_enrolment?
     enrolment = current_user.user_programme_enrolments.find_by(programme_id: user_programme_enrolment_params[:programme_id])
     return unless enrolment
