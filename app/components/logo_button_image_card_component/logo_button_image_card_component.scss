@@ -1,0 +1,29 @@
+.logo-button-image-card-component__image {
+  width: 100%;
+  display: none;
+
+  @include govuk-media-query($from: desktop) {
+    height: 100%;
+  }
+
+  @include govuk-media-query($from: tablet) {
+    display: block;
+  }
+
+  @include govuk-media-query($until: tablet) {
+    padding-bottom: 2rem;
+  }
+}
+
+.logo-button-image-card-component__logo {
+  height: 3.25rem;
+  width: auto;
+}
+
+.logo-button-image-card-component__title {
+  margin-top: 2rem;
+}
+
+.logo-button-image-card-component__button{
+  margin-top: 2rem;
+}

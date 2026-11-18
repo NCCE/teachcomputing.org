@@ -1,0 +1,11 @@
+.image-link-cards-component {
+  display: grid;
+  grid-row-gap: 30px;
+  grid-template-rows: auto auto;
+
+  @include govuk-media-query($from: tablet) {
+    grid-column-gap: 30px;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto;
+  }
+}

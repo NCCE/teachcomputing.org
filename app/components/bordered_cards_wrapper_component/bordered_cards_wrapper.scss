@@ -1,0 +1,30 @@
+.bordered-cards-wrapper-component-grid {
+  display: grid;
+  grid-template-columns: auto;
+  gap: 24px;
+
+
+  @include govuk-media-query($from: tablet) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include govuk-media-query($from: desktop) {
+    grid-template-columns: repeat(var(--cards-per-row, 3), 1fr);
+  }
+
+  &.single-card {
+    grid-template-columns: repeat(1, 1fr);
+  }
+
+  .bordered-cards-wrapper-component-grid__item {
+    display: flex;
+    flex-direction: column;
+    background-color: $white;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+    border-top: solid 9px $primary-cert-color;
+
+    > *:last-child {
+      margin-bottom: 0;
+    }
+  }
+}

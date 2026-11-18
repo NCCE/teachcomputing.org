@@ -1,0 +1,21 @@
+.careers-video-card {
+  &__content {
+    padding: $component-padding;
+  }
+
+  &__title {
+    color: $hyper-link-blue;
+  }
+
+  &__image {
+    padding-right: 10px;
+  }
+
+  &__image-container {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+  }
+}
