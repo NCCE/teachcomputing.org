@@ -44,8 +44,4 @@ export default class extends Controller {
       this.expand()
     }
   }
-
-  stopEventBubbling(ev) {
-    ev.stopPropagation()
-  }
 }

@@ -42,7 +42,7 @@ RSpec.describe("certificates/i_belong/show", type: :view) do
     end
 
     it "has no recommendation list" do
-      expect(rendered).not_to have_css(".recommended-courses-wrapper", text: "Courses based on your pathway")
+      expect(rendered).not_to have_css(".recommended-courses-wrapper", text: "courses based on your pathway")
     end
 
     it "renders CpdCourseListComponent" do

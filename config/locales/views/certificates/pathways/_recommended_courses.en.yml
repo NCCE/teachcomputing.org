@@ -1,7 +1,0 @@
-en:
-  certificates:
-    pathways:
-      recommended_courses:
-        courses_intro:
-          html: "Courses based on your pathway"
-        all_courses_button: "View more courses"

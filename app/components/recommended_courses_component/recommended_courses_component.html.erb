@@ -1,0 +1,39 @@
+<%= tag.div class: 'recommended-courses-wrapper', data: wrapper_data do %>
+  <% if show_courses? %>
+    <div class="govuk-body ncce-pathway-courses__header">
+      <% if expandable? %>
+        <%= tag.button type: 'button',
+              class: 'expander__button ncce-pathway-courses__toggle',
+              aria: { expanded: start_expanded?, controls: courses_id },
+              'start-expanded': start_expanded?,
+              data: toggle_button_data do %>
+          <strong><%= title %></strong>
+        <% end %>
+      <% else %>
+        <p class="govuk-body govuk-!-margin-0">
+          <strong><%= title %></strong>
+        </p>
+      <% end %>
+
+      <% if description? %>
+        <p class="govuk-body-s govuk-!-margin-0"><%= description %></p>
+      <% end %>
+    </div>
+
+    <% visible_activities.each do |pa| %>
+      <%= render CpdCourseComponent.new(current_user:, activity: pa.activity) %>
+    <% end %>
+  <% end %>
+
+  <% if expandable? %>
+    <%= tag.div id: courses_id, class: ['expander', { hidden: !start_expanded? }], data: { expander_target: 'expander' } do %>
+      <% extra_activities.each do |pa| %>
+        <%= render CpdCourseComponent.new(current_user:, activity: pa.activity) %>
+      <% end %>
+
+      <div class="ncce-pathway-courses__buttons"><%= all_courses_link %></div>
+    <% end %>
+  <% else %>
+    <div class="ncce-pathway-courses__buttons"><%= all_courses_link %></div>
+  <% end %>
+<% end %>

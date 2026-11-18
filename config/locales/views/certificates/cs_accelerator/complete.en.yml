@@ -32,9 +32,7 @@ en:
           certificate_link_title: "Secondary computing certificate"
           button_text: "Find out more"
         recommended_courses:
-          courses_intro:
-            html: "Courses based on %{pathway_pdf_link} (PDF)"
-          pathway_pdf_link_title: "your pathway"
+          pathway_pdf_link_title: "Your pathway (PDF)"
         what_else:
           cards:
             after_school:

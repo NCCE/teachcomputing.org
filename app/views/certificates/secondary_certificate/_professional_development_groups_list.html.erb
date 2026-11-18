@@ -11,12 +11,14 @@
   <% if @user_pathway.present? %>
     <li class="ncce-activity-list__item">
       <div class="ncce-activity-list__item-content">
-        <%= render partial: 'certificates/pathways/recommended_courses', locals: {
+        <%= render RecommendedCoursesComponent.new(
+          current_user:,
+          programme: @programme,
           event_category: 'primary enrolled',
           pathway: @user_pathway,
           recommended_activities: @recommended_activities,
           start_expanded: false
-        } %>
+        ) %>
       </div>
     </li>
   <% else %>
