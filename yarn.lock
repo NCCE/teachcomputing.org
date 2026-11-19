@@ -6512,13 +6512,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"flatpickr@npm:^4.6.9":
-  version: 4.6.13
-  resolution: "flatpickr@npm:4.6.13"
-  checksum: 2cca1b8dc974e7673b51174ee3f0679ae3a6b79525a0c53bf49b87455ef358354e64acfd60b312e44cef208aab9750a1a48df32a0914046a53de6d9403742304
-  languageName: node
-  linkType: hard
-
 "flatted@npm:^3.1.0, flatted@npm:^3.2.2, flatted@npm:^3.3.2":
   version: 3.4.2
   resolution: "flatted@npm:3.4.2"
@@ -9160,7 +9153,6 @@ __metadata:
     eslint: ^7.25
     eslint-config-prettier: ^10.1.1
     eslint-plugin-prettier: ^3.4
-    flatpickr: ^4.6.9
     govuk-frontend: 5.4.0
     install: ^0.13.0
     lint-staged: ^15.2.10
