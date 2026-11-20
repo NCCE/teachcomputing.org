@@ -165,24 +165,6 @@ module AchieverStubs
       .to_return(body: json_response)
   end
 
-  def stub_valid_contact_details
-    json_response = File.new("spec/support/achiever/courses/contact_valid.json")
-    uri_template = Addressable::Template.new "https://stemraspberrypiapi.dev3.smartmembership.net/smartconnector.smartconnector.svc/JSON/Get?CONTACTNO=ca432eb9-9b34-46db-afbb-fbd1efa89e6b&Page=1&RecordCount=1000&cmd=ContactDetails"
-    stub_request(:get, uri_template).to_return(body: json_response)
-  end
-
-  def stub_invalid_contact_details
-    json_response = File.new("spec/support/achiever/courses/contact_invalid.json")
-    uri_template = Addressable::Template.new "https://stemraspberrypiapi.dev3.smartmembership.net/smartconnector.smartconnector.svc/JSON/Get?CONTACTNO=ca432eb9-9b34-46db-afbb-fbd1efa89e6c&Page=1&RecordCount=1000&cmd=ContactDetails"
-    stub_request(:get, uri_template).to_return(body: json_response)
-  end
-
-  def stub_contact_no_org_details
-    json_response = File.new("spec/support/achiever/courses/contact_no_org.json")
-    uri_template = Addressable::Template.new "https://stemraspberrypiapi.dev3.smartmembership.net/smartconnector.smartconnector.svc/JSON/Get?CONTACTNO=ca432eb9-9b34-46db-afbb-fbd1efa89e6c&Page=1&RecordCount=1000&cmd=ContactDetails"
-    stub_request(:get, uri_template).to_return(body: json_response)
-  end
-
   def stub_attendance_sets
     json_response = File.new("spec/support/achiever/courses/attendance.json")
     stub_request(:get,
