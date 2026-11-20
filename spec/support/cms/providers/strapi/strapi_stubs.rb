@@ -65,14 +65,6 @@ module StrapiStubs
     stub_request(:get, /^https:\/\/strapi.teachcomputing.org\/api\/upload\/files/).to_return_json(body: [Cms::Mocks::Images::Image.generate_raw_data])
   end
 
-  def stub_strapi_update(resource_key)
-    stub_request(:put, /^https:\/\/strapi.teachcomputing.org\/api\/#{resource_key}/).to_return_json(body: {})
-  end
-
-  def stub_strapi_create(resource_key)
-    stub_request(:post, /^https:\/\/strapi.teachcomputing.org\/api\/#{resource_key}/).to_return_json(body: {})
-  end
-
   def stub_featured_posts
     stub_strapi_blog_collection
   end
