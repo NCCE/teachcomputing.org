@@ -19,18 +19,6 @@ describe ApplicationHelper do
     end
   end
 
-  describe("#news_url") do
-    it "returns the correct url" do
-      expect(helper.news_url).to eq(cms_posts_url(tag: :news))
-    end
-  end
-
-  describe("#press_url") do
-    it "returns the correct url" do
-      expect(helper.press_url).to eq(cms_posts_url(tag: :press))
-    end
-  end
-
   describe("#safe_redirect_url") do
     it "allows teachcomputing url" do
       url = "https://teachcomputing.org/courses/"

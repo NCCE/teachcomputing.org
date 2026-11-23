@@ -19,14 +19,6 @@ module ApplicationHelper
     "/auth/stem"
   end
 
-  def news_url
-    cms_posts_url(tag: :news)
-  end
-
-  def press_url
-    cms_posts_url(tag: :press)
-  end
-
   def static_asset_url(filename)
     "#{Rails.application.config.static_asset_url}/#{filename}"
   end
