@@ -3,18 +3,6 @@ module ProgrammesHelper
     "#{passed_date.strftime("%Y%m")}-#{format("%03d", certificate_number || 0)}"
   end
 
-  def index_to_word_ordinal(index = 0)
-    to_word_ordinal((index || 0) + 1)
-  end
-
-  def to_word_ordinal(number)
-    index = number || 0
-    ordinals = %w[none first second third fourth fifth sixth seventh eighth ninth tenth]
-    return ordinals[index] if index <= ordinals.length && index.positive?
-
-    ActiveSupport::Inflector.ordinalize(index)
-  end
-
   def assessment_time(time)
     time.in_time_zone("London").strftime("%-l:%M%P on %A %-d %B %Y")
   end
@@ -25,14 +13,6 @@ module ProgrammesHelper
 
   def attempt_count_in_words(count)
     {1 => "once", 2 => "twice"}.fetch(count) { "#{count} times" }
-  end
-
-  def eligible_for_secondary?(user)
-    Programme.secondary_certificate.user_is_eligible?(user)
-  end
-
-  def csa_programme_title
-    "KS3 and GCSE Computer Science subject knowledge"
   end
 
   def display_programme_tag(programme_slug)
