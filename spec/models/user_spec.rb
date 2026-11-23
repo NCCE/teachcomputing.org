@@ -223,25 +223,6 @@ RSpec.describe User do
     end
   end
 
-  describe "#on_programme_pathway?" do
-    let(:programme) { create(:cs_accelerator) }
-
-    it "returns false when user not enrolled" do
-      expect(user.on_programme_pathway?(programme)).to be false
-    end
-
-    it "returns false when user is not on a pathway for that programme" do
-      create(:user_programme_enrolment, user_id: user.id, programme_id: programme.id)
-      expect(user.on_programme_pathway?(programme)).to be false
-    end
-
-    it "returns true when user is on a pathway for that programme" do
-      pathway = create(:pathway, programme:)
-      create(:user_programme_enrolment, user_id: user.id, programme_id: programme.id, pathway_id: pathway.id)
-      expect(user.on_programme_pathway?(programme)).to be true
-    end
-  end
-
   describe "#programme_pathway" do
     let(:programme) { create(:cs_accelerator) }
 
