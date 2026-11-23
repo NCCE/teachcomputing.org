@@ -49,14 +49,6 @@ class Programme < ApplicationRecord
   def pending_delay
   end
 
-  def cpd_badge
-    badges.cpd.active.first
-  end
-
-  def completion_badge
-    badges.completion.active.first
-  end
-
   def mailer
     raise NotImplementedError
   end
@@ -84,15 +76,6 @@ class Programme < ApplicationRecord
 
   def user_meets_completion_requirement?(user)
     programme_objectives.all? { |group| group.user_complete?(user) }
-  end
-
-  def user_has_f2f_achievement?(user)
-    user
-      .achievements
-      .in_state(:complete)
-      .with_category(Activity::FACE_TO_FACE_CATEGORY)
-      .belonging_to_programme(self)
-      .count >= 1
   end
 
   def user_enrolled?(user)
@@ -170,17 +153,9 @@ class Programme < ApplicationRecord
     programme_objectives.select { _1.objective_displayed_in_progress_bar? }
   end
 
-  def programme_objectives_displayed_in_body
-    programme_objectives.select { _1.objective_displayed_in_body? }
-  end
-
   def set_user_programme_enrolment_complete_data(enrolment)
     enrolment.certificate_name = enrolment.user.full_name
     enrolment.save!
-  end
-
-  def user_qualifies_for_credly_cpd_badge?(user)
-    user_enrolled?(user) && user_has_f2f_achievement?(user)
   end
 
   def auto_enrollable?

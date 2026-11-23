@@ -11,12 +11,9 @@ RSpec.describe Programme, type: :model do
   let(:a_level) { create(:a_level) }
   let(:non_enrollable_programme) { create(:programme, enrollable: false) }
   let(:user) { create(:user) }
-  let(:cpd_badge) { create(:badge, :active, programme_id: programme.id) }
-  let(:completion_badge) { create(:badge, :completion, :active, programme_id: programme.id) }
 
   let(:user_programme_enrolment) { create(:user_programme_enrolment, user_id: user.id, programme_id: programme.id) }
   let(:exam_activity) { create(:activity, :cs_accelerator_exam) }
-  let(:programme_activity) { create(:programme_activity, programme_id: programme.id, activity_id: exam_activity.id) }
   let(:passed_exam) { create(:completed_achievement, user_id: user.id, activity_id: exam_activity.id) }
 
   describe "associations" do
@@ -139,54 +136,6 @@ RSpec.describe Programme, type: :model do
 
     it "returns the correct type" do
       expect(described_class.a_level).to be_a(Programmes::ALevel)
-    end
-  end
-
-  describe "#cpd_badge" do
-    before do
-      programme
-    end
-
-    context "with a programme but without a badge" do
-      it "returns false" do
-        expect(programme.cpd_badge).to be nil
-      end
-    end
-
-    context "with a programme that has a badge" do
-      it "returns true when active" do
-        cpd_badge
-        expect(programme.cpd_badge).to eq cpd_badge
-      end
-
-      it "returns false when active is false" do
-        cpd_badge.update(active: false)
-        expect(programme.cpd_badge).to be nil
-      end
-    end
-  end
-
-  describe "#completion_badge" do
-    before do
-      programme
-    end
-
-    context "with a programme but without a badge" do
-      it "returns false" do
-        expect(programme.completion_badge).to be nil
-      end
-    end
-
-    context "with a programme that has a badge" do
-      it "returns true when active" do
-        completion_badge
-        expect(programme.completion_badge).to eq completion_badge
-      end
-
-      it "returns false when active is false" do
-        completion_badge.update(active: false)
-        expect(programme.completion_badge).to be nil
-      end
     end
   end
 
@@ -438,45 +387,6 @@ RSpec.describe Programme, type: :model do
   describe "#achivement_type" do
     it "should return not implemented error" do
       expect { generic_programme.achievement_type }.to raise_error(NotImplementedError)
-    end
-  end
-
-  describe "#user_qualifies_for_credly_cpd_badge?" do
-    it "should return true if the user has compelted a f2f achievement" do
-      programme = create(:primary_certificate)
-      create(:programme_activity_grouping, programme:, required_for_completion: 1)
-      activity = create(:activity) # is face to face
-      user = create(:user)
-      create(:programme_activity, programme:, activity:)
-
-      create(:user_programme_enrolment, user:, programme:)
-      create(:completed_achievement, user:, activity:)
-
-      expect(programme.user_qualifies_for_credly_cpd_badge?(user)).to be true
-    end
-
-    it "should return false if the user is not enrolled" do
-      programme = create(:primary_certificate)
-      create(:programme_activity_grouping, programme:, required_for_completion: 1)
-      activity = create(:activity) # is face to face
-      user = create(:user)
-      create(:programme_activity, programme:, activity:)
-
-      create(:completed_achievement, user:, activity:)
-
-      expect(programme.user_qualifies_for_credly_cpd_badge?(user)).to be false
-    end
-
-    it "should return false if the compeleted a f2f achievement doesn't belong to the programme" do
-      programme = create(:primary_certificate)
-      create(:programme_activity_grouping, programme:, required_for_completion: 1)
-      activity = create(:activity) # is face to face
-      user = create(:user)
-
-      create(:user_programme_enrolment, user:, programme:)
-      create(:completed_achievement, user:, activity:)
-
-      expect(programme.user_qualifies_for_credly_cpd_badge?(user)).to be false
     end
   end
 
