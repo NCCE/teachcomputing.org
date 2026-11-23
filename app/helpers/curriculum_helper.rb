@@ -1,8 +1,4 @@
 module CurriculumHelper
-  def get_feedback_string
-    Curriculum::Rateable::EXISTING_FEEDBACK
-  end
-
   def key_stage_list_color(level)
     %w[1 2].include?(level) ? "curriculum__list--item-green" : "curriculum__list--item-green"
   end
