@@ -28,9 +28,6 @@ class User < ApplicationRecord
 
   after_create :schedule_fetching_of_course_bookings
 
-  scope :without_forgotten, -> { where(forgotten: false) }
-  scope :enrolled_in_programme, ->(programme) { joins(:user_programme_enrollment).where(user_programme_enrollment: {programme:}) }
-
   audited only: %i[first_name last_name stem_achiever_contact_no stem_user_id], on: :update, comment_required: false
   alias_method :support_audits, :audits
 
@@ -90,10 +87,6 @@ class User < ApplicationRecord
     return "Not enrolled" unless enrolment
 
     enrolment.current_state
-  end
-
-  def on_programme_pathway?(programme)
-    programme_pathway(programme).present?
   end
 
   def programme_pathway(programme)
