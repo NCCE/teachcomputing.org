@@ -103,12 +103,6 @@
     },
     "DYNAMICS_WEBHOOK_TOKEN": {
       "required": true
-    },
-    "CREDLY_AUTH_TOKEN": {
-      "required": true
-    },
-    "CREDLY_ORGANISATION_ID": {
-      "required": true
     }
   },
   "formation": {
