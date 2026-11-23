@@ -48,11 +48,6 @@ module TeachComputing
     config.strapi_graphql_url = ENV["STRAPI_GRAPHQL_URL"]
     config.strapi_connection_type = ENV["STRAPI_CONNECTION_TYPE"]
 
-    # Credly settings
-    config.credly_url = ENV["CREDLY_URL"]
-    config.credly_auth_token = ENV["CREDLY_AUTH_TOKEN"]
-    config.credly_org_id = ENV["CREDLY_ORGANISATION_ID"]
-
     # Auth Settings
     config.bypass_oauth = ENV["BYPASS_OAUTH"] == "true"
     config.stem_account_site = ENV["STEM_ACCOUNT_SITE"]
