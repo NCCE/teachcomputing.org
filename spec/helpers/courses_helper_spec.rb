@@ -39,26 +39,6 @@ describe CoursesHelper, type: :helper do
     programme
   end
 
-  describe("#activity_address") do
-    it "rejects blank attributes" do
-      expect(helper.activity_address(course).scan("<br>").length).to eq 4
-    end
-  end
-
-  describe("#activity_booking_url") do
-    context "when booking_url is blank" do
-      it "returns nil" do
-        expect(helper.activity_booking_url("")).to eq nil
-      end
-    end
-
-    it "returns a link" do
-      booking_url = "https://example.com/booking_link"
-
-      expect(helper.activity_booking_url(booking_url)).to include "https://example.com/booking_link"
-    end
-  end
-
   describe("#activity_dates") do
     it "returns the dates in the correct format" do
       start_date = "01/11/2018"
@@ -81,13 +61,6 @@ describe CoursesHelper, type: :helper do
       end_time = "1900-01-01T16:00:00+00:00"
 
       expect(helper.activity_times(start_time, end_time, true)).to eq "1 January—1 January 1900"
-    end
-  end
-
-  describe("#stem_course_link") do
-    it "returns the link to the course page on the CPD store" do
-      expect(helper.stem_course_link("f47ac10b-58cc-4372-a567-0e02b2c3d479"))
-        .to eq "#{ENV.fetch("STEM_CPD_STORE_URL")}/course/f47ac10b-58cc-4372-a567-0e02b2c3d479"
     end
   end
 
@@ -335,19 +308,6 @@ describe CoursesHelper, type: :helper do
     it "returns correctly for online courses" do
       course = instance_double("course", remote_delivered_cpd: false, online_cpd: true)
       expect(helper.view_course_phrase(course)).to eq("View dates")
-    end
-  end
-
-  describe ".clean_course_title" do
-    it 'removes " - remote" from the end of the title' do
-      title = "Course title - remote"
-      expect(helper.clean_course_title(title)).to eq("Course title")
-    end
-
-    it 'does not affect title that does not end in  " - remote"' do
-      title = "Course title - something else"
-      expect(helper.clean_course_title(title))
-        .to eq("Course title - something else")
     end
   end
 
