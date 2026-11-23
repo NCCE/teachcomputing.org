@@ -18,12 +18,6 @@ class UserProgrammeAssessment
     @enough_credits_for_test
   end
 
-  def total_num_attempts
-    return 0 if @attempts.nil?
-
-    @attempts.count
-  end
-
   def failed_num_attempts
     return 0 if @failed_attempts.nil?
 
