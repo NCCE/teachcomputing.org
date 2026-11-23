@@ -10,12 +10,10 @@ RSpec.describe Achievement, type: :model do
 
   let(:achievement) { create(:achievement, activity_id: activity.id) }
   let(:achievement2) { create(:achievement, activity_id: face_to_face_activity.id) }
-  let(:future_learn_achievement) { create(:achievement, :future_learn) }
   let(:completed_achievement) { create(:completed_achievement) }
   let(:diagnostic_activity) { create(:activity, :cs_accelerator_diagnostic_tool) }
   let(:diagnostic_achievement) { create(:achievement, activity: diagnostic_activity) }
   let(:community_activity) { create(:activity, :community) }
-  let(:community_achievement) { create(:achievement, activity: community_activity) }
 
   let(:cs_accelerator) { create(:cs_accelerator) }
   let(:primary_certificate) { create(:primary_certificate) }
@@ -108,21 +106,6 @@ RSpec.describe Achievement, type: :model do
     end
   end
 
-  describe "#with_credit" do
-    before do
-      diagnostic_achievement
-      community_achievement
-    end
-
-    it "returns the achievements which match the credit" do
-      expect(Achievement.with_credit(10)).to include(community_achievement)
-    end
-
-    it "omits the achievements which don't match the credit" do
-      expect(Achievement.with_credit(10)).not_to include(diagnostic_achievement)
-    end
-  end
-
   describe "#without_category" do
     before do
       diagnostic_achievement
@@ -135,43 +118,6 @@ RSpec.describe Achievement, type: :model do
 
     it "omits the achievements which don't match the category" do
       expect(Achievement.without_category(diagnostic_achievement.activity.category)).not_to include(diagnostic_achievement)
-    end
-  end
-
-  describe "#with_provider" do
-    before do
-      achievement2
-      future_learn_achievement
-    end
-
-    it "returns the achievements which match the provider" do
-      expect(Achievement.with_provider("stem-learning")).to include(achievement2)
-    end
-
-    it "omits the achievements which don't match the provider" do
-      expect(Achievement.with_provider("stem-learning")).not_to include(future_learn_achievement)
-    end
-  end
-
-  describe "#belonging_to_programme?" do
-    context "when programme is nil" do
-      it "returns false" do
-        expect(achievement.belonging_to_programme?(nil)).to be false
-      end
-    end
-
-    context "when programme is provided" do
-      before do
-        programme_activity
-      end
-
-      it "returns true if the activity belongs to the programme" do
-        expect(achievement.belonging_to_programme?(programme)).to be true
-      end
-
-      it "returns false if the activity does not belong to the programme" do
-        expect(achievement2.belonging_to_programme?(programme)).to be false
-      end
     end
   end
 
@@ -202,7 +148,7 @@ RSpec.describe Achievement, type: :model do
   describe "#drop!" do
     it "sets state to dropped" do
       expect { achievement.drop! }
-        .to change(achievement, :dropped?)
+        .to change { achievement.in_state?(:dropped) }
         .from(false).to(true)
     end
 
@@ -220,17 +166,6 @@ RSpec.describe Achievement, type: :model do
 
     it "when state is complete" do
       expect(completed_achievement.complete?).to be true
-    end
-  end
-
-  describe "#dropped?" do
-    it "returns false if not dropped" do
-      expect(achievement.dropped?).to be false
-    end
-
-    it "returns true if dropped" do
-      dropped_achievement = create(:dropped_achievement)
-      expect(dropped_achievement.dropped?).to be true
     end
   end
 
@@ -268,118 +203,6 @@ RSpec.describe Achievement, type: :model do
 
     it "deletes transitions" do
       expect { achievement.destroy }.to change(AchievementTransition, :count).by(-1)
-    end
-  end
-
-  describe "#update_progress_and_state" do
-    let(:achievement) { create(:achievement) }
-
-    context "when left_at is present" do
-      it "sets to dropped" do
-        left_at = DateTime.now.to_s
-        expect { achievement.update_progress_and_state(0, left_at) }
-          .to change(achievement, :dropped?).to(true)
-      end
-
-      it "does not set dropped if progress is 60 or over" do
-        left_at = DateTime.now.to_s
-        achievement.update_progress_and_state(60, left_at)
-        expect(achievement.dropped?).to be(false)
-      end
-    end
-
-    context "when progress is 0" do
-      it "sets to enrolled" do
-        achievement.update_progress_and_state(0, nil)
-        expect(achievement.in_state?(:enrolled)).to be(true)
-      end
-
-      it "sets progress to 0" do
-        achievement.update_progress_and_state(0, nil)
-        expect(achievement.progress).to eq(0)
-      end
-
-      it "will enrol if achievement was previously dropped" do
-        achievement.transition_to(:dropped)
-        expect(achievement.dropped?).to be(true)
-        achievement.update_progress_and_state(0, nil)
-        expect(achievement.in_state?(:enrolled)).to be(true)
-        expect(achievement.progress).to eq(0)
-      end
-    end
-
-    context "when progress between 1 and 59" do
-      it "sets to in progress and updates stored progress when progress is 1" do
-        achievement.update_progress_and_state(1, nil)
-        expect(achievement.in_state?(:in_progress)).to be(true)
-        expect(achievement.progress).to eq(1)
-      end
-
-      it "sets to in progress and updates stored progress when progress is 59" do
-        achievement.update_progress_and_state(59, nil)
-        expect(achievement.in_state?(:in_progress)).to be(true)
-        expect(achievement.progress).to eq(59)
-      end
-
-      it "sets progress to match value provided" do
-        achievement.update_progress_and_state(49, nil)
-        expect(achievement.progress).to eq(49)
-      end
-
-      it "will set progress if achievement was previously dropped" do
-        achievement.transition_to(:dropped)
-        expect(achievement.dropped?).to be(true)
-        achievement.update_progress_and_state(49, nil)
-        expect(achievement.in_state?(:in_progress)).to be(true)
-      end
-    end
-
-    context "when progress between 60 and 100" do
-      let(:achievement) { create(:achievement, activity: create(:activity, credit: 99)) }
-
-      it "sets to complete when progress is 60" do
-        achievement.update_progress_and_state(60, nil)
-        expect(achievement.complete?).to be(true)
-        expect(achievement.last_transition.metadata)
-          .to eq({"credit" => 99.0})
-        expect(achievement.progress).to eq(60)
-      end
-
-      it "sets to complete when progress is 100" do
-        achievement.update_progress_and_state(100, nil)
-        expect(achievement.complete?).to be(true)
-        expect(achievement.last_transition.metadata)
-          .to eq({"credit" => 99.0})
-        expect(achievement.progress).to eq(100)
-      end
-    end
-
-    context "when progress is lower than saved progress" do
-      let(:achievement) { create(:achievement, progress: 70) }
-
-      it "does not change saved progress value" do
-        achievement.update_progress_and_state(60, nil)
-        expect(achievement.progress).to eq(70)
-      end
-    end
-
-    context "when achievement is complete" do
-      let(:achievement) { create(:completed_achievement, progress: 70) }
-
-      it "does not change state to dropped" do
-        achievement.update_progress_and_state(80, DateTime.now.to_s)
-        expect(achievement.complete?).to be(true)
-      end
-
-      it "does not revert to in progress" do
-        achievement.update_progress_and_state(50, nil)
-        expect(achievement.complete?).to be(true)
-      end
-
-      it "does update progress" do
-        achievement.update_progress_and_state(75, nil)
-        expect(achievement.progress).to eq(75)
-      end
     end
   end
 
