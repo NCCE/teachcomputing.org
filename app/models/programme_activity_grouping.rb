@@ -6,7 +6,6 @@ class ProgrammeActivityGrouping < ApplicationRecord
   has_many :activities, through: :programme_activities
   belongs_to :programme
 
-  scope :progress_bar_groupings, -> { where.not(progress_bar_title: nil) }
   scope :community, -> { where(community: true) }
   scope :not_community, -> { where(community: false) }
 
