@@ -36,7 +36,7 @@ RSpec.describe AchievementsController do
         end
 
         it "creates an achievement with status drafted" do
-          expect(user.achievements.first.drafted?).to be true
+          expect(user.achievements.first.in_state?(:drafted)).to be true
         end
       end
 

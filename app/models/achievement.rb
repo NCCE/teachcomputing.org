@@ -23,17 +23,9 @@ class Achievement < ApplicationRecord
     joins(:activity).where(activities: {category:})
   }
 
-  scope :with_provider, lambda { |provider|
-    joins(:activity).where(activities: {provider:})
-  }
-
   scope :with_courses, lambda {
                          joins(:activity).where(activities: {category: [Activity::FACE_TO_FACE_CATEGORY, Activity::ONLINE_CATEGORY]})
                        }
-
-  scope :with_credit, lambda { |credit|
-    joins(:activity).where(activities: {credit:})
-  }
 
   scope :without_category, lambda { |category|
     joins(:activity).where.not(activities: {category:})
@@ -50,7 +42,6 @@ class Achievement < ApplicationRecord
   }
 
   scope :belonging_to_programme, ->(programme) { joins(activity: {programme_activities: :programme}).where(activities: {programme_activities: {programme:}}) }
-  scope :belonging_to_pathway, ->(pathway) { joins(activity: {pathway_activities: :pathway}).where(activities: {pathway_activities: {pathway:}}) }
   scope :belonging_to_programme_activity_grouping, ->(programme_activity_grouping) { joins(activity: {programme_activities: :programme_activity_grouping}).where(activities: {programme_activities: {programme_activity_grouping:}}) }
 
   def state_machine
@@ -70,24 +61,8 @@ class Achievement < ApplicationRecord
     transition_to(:dropped, metadata)
   end
 
-  def update_progress_and_state(progress = 0, left_at = nil)
-    update_progress(progress.floor)
-
-    return drop!(left_at:) if left_at.present? && (progress < 60)
-
-    update_state_from_progress(progress.floor) unless complete?
-  end
-
   def complete?
     in_state?(:complete)
-  end
-
-  def dropped?
-    in_state?(:dropped)
-  end
-
-  def drafted?
-    in_state?(:drafted)
   end
 
   def rejected?
@@ -128,32 +103,9 @@ class Achievement < ApplicationRecord
   delegate :allowed_transitions, :can_transition_to?, :current_state, :transition_to, :last_transition, :in_state?, to: :state_machine
   delegate :provider, :title, :stem_activity_code, :slug, :active_course?, to: :activity
 
-  def belonging_to_programme?(programme)
-    return false unless programme
-
-    activity.programme_activities.exists?(programme:)
-  end
-
   private
 
   def queue_auto_enrolment
     AutoEnrolJob.perform_later(achievement: self)
-  end
-
-  def update_state_from_progress(updated_progress)
-    case updated_progress
-    when 0
-      transition_to(:enrolled) if can_transition_to?(:enrolled)
-    when 1..59
-      transition_to(:in_progress) if can_transition_to?(:in_progress)
-    when 60..100
-      complete!
-    end
-  end
-
-  def update_progress(updated_progress)
-    return if updated_progress < progress
-
-    update(progress: updated_progress)
   end
 end
