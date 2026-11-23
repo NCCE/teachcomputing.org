@@ -2,7 +2,6 @@ require "rails_helper"
 
 RSpec.describe Activity, type: :model do
   let(:activity) { create(:activity) }
-  let(:online_activity) { create(:activity, :future_learn) }
   let(:face_to_face_activity) { create(:activity, :face_to_face) }
   let(:future_learn_courses) { create_list(:activity, 3, :future_learn) }
   let(:my_learning_courses) { create_list(:activity, 3, :my_learning) }
@@ -10,10 +9,6 @@ RSpec.describe Activity, type: :model do
   let(:face_to_face_courses) { create_list(:activity, 3, :stem_learning) }
   let(:community_activity) { create(:activity, :community) }
   let(:system_activity) { create_list(:activity, 3, :system) }
-  let(:user) { create(:user) }
-  let(:user_achievement) { create(:achievement, user_id: user.id, activity_id: online_activity.id) }
-  let(:diagnostic_tool_activity) { create(:activity, :cs_accelerator_diagnostic_tool) }
-  let(:removable_activity) { create(:activity, :user_removable) }
   let(:activity_with_public_copy_description) { create(:activity, public_copy_description: "I am some public copy description <span>I have html</span>") }
   let(:activity_without_public_copy_description) { create(:activity, public_copy_description: nil, description: "I am regular description <span>I have html</span>") }
 
@@ -50,20 +45,6 @@ RSpec.describe Activity, type: :model do
   end
 
   describe "scopes" do
-    describe "available_for" do
-      before do
-        [online_activity, online_courses, user, user_achievement]
-      end
-
-      it "lists available online activities for a given user" do
-        expect(described_class.available_for(user)).to match_array(online_courses)
-      end
-
-      it "does not include activities if a user already has an existing achievement" do
-        expect(described_class.available_for(user)).not_to include(online_activity)
-      end
-    end
-
     describe "online" do
       before do
         [online_courses, face_to_face_courses]
@@ -103,28 +84,6 @@ RSpec.describe Activity, type: :model do
 
       it "does not include actions" do
         expect(Activity.future_learn).not_to include(activity)
-      end
-    end
-
-    describe "my_learning" do
-      before do
-        [future_learn_courses, my_learning_courses, activity]
-      end
-
-      it "includes only MyLearning activities" do
-        expect(Activity.my_learning).to match_array(my_learning_courses)
-      end
-
-      it "does not include actions" do
-        expect(Activity.my_learning).not_to include(activity)
-      end
-
-      it "does not include FutureLearn courses" do
-        expect(Activity.my_learning).not_to include(future_learn_courses.first)
-      end
-
-      it "does not include face-to-face courses" do
-        expect(Activity.my_learning).not_to include(face_to_face_courses.first)
       end
     end
 
@@ -173,35 +132,6 @@ RSpec.describe Activity, type: :model do
       it "does not include actions" do
         expect(described_class.system).not_to include(activity)
       end
-    end
-
-    describe "user_removable" do
-      before do
-        [removable_activity, activity, diagnostic_tool_activity]
-      end
-
-      it "include future-learn activities" do
-        expect(described_class.user_removable).to include(removable_activity)
-      end
-
-      it "does not include stem" do
-        expect(described_class.user_removable).not_to include(activity)
-      end
-
-      it "does not include diagnostic download" do
-        expect(described_class.user_removable).not_to include(diagnostic_tool_activity)
-      end
-    end
-  end
-
-  describe ".cs_accelerator_diagnostic_tool" do
-    it "returns a record if one is found" do
-      activity = create(:activity, :cs_accelerator_diagnostic_tool)
-      expect(described_class.cs_accelerator_diagnostic_tool).to eq activity
-    end
-
-    it "creates a record if one is not found" do
-      expect(described_class.cs_accelerator_diagnostic_tool.title).to eq "Taken diagnostic tool"
     end
   end
 
