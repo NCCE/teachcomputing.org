@@ -121,17 +121,12 @@ Rails.application.routes.draw do
       post "/enrol", action: :create, controller: "/user_programme_enrolments", as: :enrol
     end
 
-    namespace "cs_accelerator" do
-      resource "auto_enrolment", only: [] do
-        get "/unenroll", to: "auto_enrolments#confirm_destroy"
-        post "/unenroll", to: "auto_enrolments#destroy"
-      end
-    end
-
-    namespace "i_belong" do
-      resource "auto_enrolment", only: [] do
-        get "/unenroll", to: "auto_enrolments#confirm_destroy"
-        post "/unenroll", to: "auto_enrolments#destroy"
+    %w[cs_accelerator i_belong].each do |programme|
+      namespace programme do
+        resource "auto_enrolment", only: [] do
+          get "/unenroll", to: "auto_enrolments#confirm_destroy"
+          post "/unenroll", to: "auto_enrolments#destroy"
+        end
       end
     end
 
