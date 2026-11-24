@@ -101,8 +101,8 @@ Rails.application.routes.draw do
       get "/view-certificate", action: :show, controller: "certificate", as: :certificate,
         defaults: {slug: "subject-knowledge"}
       post "/enrol", action: :create, controller: "/user_programme_enrolments", as: :enrol
-      get "/unenrol/:id", action: :confirm_destroy, controller: "/user_programme_enrolments", as: :unenrol
-      post "/unenrol/:id", action: :destroy, controller: "/user_programme_enrolments"
+      get "/unenrol/:id", to: "/user_programme_enrolments#confirm_destroy", as: :unenrol
+      post "/unenrol/:id", to: "/user_programme_enrolments#destroy"
       put "/pathway", action: :update, controller: "cs_accelerator/user_programme_pathway", as: :update_user_pathway
     end
 
@@ -123,15 +123,15 @@ Rails.application.routes.draw do
 
     namespace "cs_accelerator" do
       resource "auto_enrolment", only: [] do
-        get "/unenroll", action: :confirm_destroy
-        post "/unenroll", action: :destroy
+        get "/unenroll", to: "auto_enrolments#confirm_destroy"
+        post "/unenroll", to: "auto_enrolments#destroy"
       end
     end
 
     namespace "i_belong" do
       resource "auto_enrolment", only: [] do
-        get "/unenroll", action: :confirm_destroy
-        post "/unenroll", action: :destroy
+        get "/unenroll", to: "auto_enrolments#confirm_destroy"
+        post "/unenroll", to: "auto_enrolments#destroy"
       end
     end
 
