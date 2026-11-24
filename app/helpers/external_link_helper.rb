@@ -11,8 +11,24 @@ module ExternalLinkHelper
     "https://static.teachcomputing.org/IBelong_InfoPack.pdf"
   end
 
+  def primary_evidence_stem_community_url
+    "https://community.stem.org.uk/discussion/completing-your-primary-certificate-evidence-thread#bma5b58f93-b6b8-4787-9791-cf22c53e3427"
+  end
+
   def stem_community_url
     "https://community.stem.org.uk/home"
+  end
+
+  def stem_community_points_help_url
+    "https://community.stem.org.uk/helpfaqs/points"
+  end
+
+  def i_belong_poster_request_url
+    "https://forms.office.com/e/x1FMMzjxhg"
+  end
+
+  def stem_request_ambassador_url
+    "https://www.stem.org.uk/stem-ambassadors/request-stem-ambassador"
   end
 
   def a_level_test_conditions_url
@@ -39,12 +55,32 @@ module ExternalLinkHelper
     "https://www.stem.org.uk/stem-ambassadors/computing-ambassadors"
   end
 
+  def stem_secondary_ambassadors_url
+    "https://www.stem.org.uk/secondary/ambassadors"
+  end
+
   def computing_quality_framework_url
     "https://computingqualityframework.org"
   end
 
+  def computing_quality_mark_url
+    "https://computingqualityframework.org/accreditation/ncce-computing-quality-mark/"
+  end
+
   def i_belong_student_survey_url
     "https://ncce.io/student-survey"
+  end
+
+  def impact_toolkit_url
+    "https://www.stem.org.uk/about-us/impact-and-evaluation/impact-toolkit"
+  end
+
+  def leading_professional_development_url
+    "https://www.stem.org.uk/secondary/cpd/leading-professional-development"
+  end
+
+  def cas_communities_url
+    "https://www.computingatschool.org.uk/cas-communities"
   end
 
   def social_media_card_templates_url
@@ -63,8 +99,28 @@ module ExternalLinkHelper
     "https://www.isaaccomputerscience.org/"
   end
 
+  def isaac_journey_gallery_url
+    "https://isaaccomputerscience.org/pages/computer_science_journeys_gallery"
+  end
+
+  def isaac_journey_careers_url
+    "https://isaaccomputerscience.org/careers_in_computer_science"
+  end
+
   def isaac_ada_transition_blog_url
     "https://isaaccomputerscience.org/pages/2026_08_planned_transition"
+  end
+
+  def i_am_computer_scientist_url
+    "https://imacomputerscientist.uk/signup/t/"
+  end
+
+  def ncce_eventbrite_url
+    "https://www.eventbrite.co.uk/o/national-centre-for-computing-education-72809895383"
+  end
+
+  def local_hub_professional_development_form_url
+    "https://forms.office.com/pages/responsepage.aspx?id=8MSlGfdLSE2oGxZmua5L9VL53rMMyRtKnHXwxiNRaSRUMDcwVElaTFBFWlY0QkI2M1lZVzNBQktYUCQlQCN0PWcu"
   end
 
   def secondary_certificate_evidence_guide_url
