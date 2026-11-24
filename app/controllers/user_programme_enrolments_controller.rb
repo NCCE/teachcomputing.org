@@ -1,6 +1,7 @@
 class UserProgrammeEnrolmentsController < ApplicationController
+  include ConfirmsUnenrolment
+
   before_action :authenticate_user!, only: [:create]
-  before_action :authenticate_user_and_return!, only: [:destroy]
   before_action :user_has_existing_enrolment?, only: [:create]
 
   def create
@@ -32,17 +33,6 @@ class UserProgrammeEnrolmentsController < ApplicationController
     redirect_to helpers.safe_redirect_url(request.referrer) || dashboard_path
   end
 
-  def destroy
-    enrolment = current_user.user_programme_enrolments.find(params[:id])
-
-    if enrolment.can_transition_to?(:unenrolled)
-      enrolment.transition_to(:unenrolled)
-      flash[:notice] = "You have successfully opted out of the #{enrolment.programme.title}"
-    end
-
-    redirect_to dashboard_path
-  end
-
   def destroy_message_flags_primary_pathway_migrated
     enrolment = current_user
       .user_programme_enrolments
@@ -56,6 +46,14 @@ class UserProgrammeEnrolmentsController < ApplicationController
   end
 
   private
+
+  def find_enrolment
+    current_user.user_programme_enrolments.find(params[:id])
+  end
+
+  def unenrol_programme_name
+    "the #{@enrolment.programme.title}"
+  end
 
   def user_programme_enrolment_params
     params.require(:user_programme_enrolment).permit(:programme_id, :pathway_slug)

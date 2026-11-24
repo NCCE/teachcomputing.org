@@ -101,7 +101,8 @@ Rails.application.routes.draw do
       get "/view-certificate", action: :show, controller: "certificate", as: :certificate,
         defaults: {slug: "subject-knowledge"}
       post "/enrol", action: :create, controller: "/user_programme_enrolments", as: :enrol
-      get "/unenrol/:id", action: :destroy, controller: "/user_programme_enrolments", as: :unenrol
+      get "/unenrol/:id", action: :confirm_destroy, controller: "/user_programme_enrolments", as: :unenrol
+      post "/unenrol/:id", action: :destroy, controller: "/user_programme_enrolments"
       put "/pathway", action: :update, controller: "cs_accelerator/user_programme_pathway", as: :update_user_pathway
     end
 

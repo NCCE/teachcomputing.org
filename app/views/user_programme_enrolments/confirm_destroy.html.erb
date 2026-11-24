@@ -1,0 +1,22 @@
+<% meta_tag :title, "Unenrol from #{programme_name} - Teach Computing" %>
+<%= render 'components/hero', hero_title: "Are you sure you want to unenrol?", small_title: true %>
+<div class="govuk-width-container">
+  <div class="govuk-main-wrapper govuk-main-wrapper--l">
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+        <p class="govuk-body">You're about to leave <strong><%= programme_name %></strong>.</p>
+        <ul class="govuk-list govuk-list--bullet">
+          <li>It will no longer show as one of your certificates on your dashboard.</li>
+          <li>Your courses and activities won't be deleted.</li>
+          <li>You can enrol again at any time from the certificate page, and your progress will still be there.</li>
+        </ul>
+        <%= form_with url: form_path, method: :post, local: true do %>
+          <div class="govuk-button-group">
+            <%= button_tag "Yes, unenrol me", type: "submit", class: "govuk-button button" %>
+            <%= link_to "No, go back to the certificate", programme.path, class: "govuk-link ncce-link" %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
