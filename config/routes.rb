@@ -123,13 +123,15 @@ Rails.application.routes.draw do
 
     namespace "cs_accelerator" do
       resource "auto_enrolment", only: [] do
-        get "/unenroll", action: :destroy
+        get "/unenroll", action: :confirm_destroy
+        post "/unenroll", action: :destroy
       end
     end
 
     namespace "i_belong" do
       resource "auto_enrolment", only: [] do
-        get "/unenroll", action: :destroy
+        get "/unenroll", action: :confirm_destroy
+        post "/unenroll", action: :destroy
       end
     end
 

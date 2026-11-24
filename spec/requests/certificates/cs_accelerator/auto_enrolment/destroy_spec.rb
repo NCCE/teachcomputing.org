@@ -2,56 +2,40 @@ require "rails_helper"
 
 RSpec.describe Certificates::CSAccelerator::AutoEnrolmentsController do
   let(:user) { create(:user) }
-  let(:programme) { create(:cs_accelerator) }
+  let!(:programme) { create(:cs_accelerator) }
+  let(:path) { unenroll__cs_accelerator_auto_enrolment_path }
 
-  describe "GET #destroy" do
-    subject(:unenroll) { get unenroll__cs_accelerator_auto_enrolment_path }
+  before do
+    allow_any_instance_of(AuthenticationHelper).to receive(:current_user).and_return(user)
+  end
 
-    before do
-      allow_any_instance_of(AuthenticationHelper).to receive(:current_user).and_return(user)
-    end
+  describe "GET #confirm_destroy" do
+    subject(:confirm) { get path }
 
-    context "when user is enrolled on cs_accelerator" do
+    context "when user is enrolled" do
       let!(:enrolment) { create(:user_programme_enrolment, user: user, programme: programme) }
 
-      it "redirects to the dashboard path" do
-        unenroll
-        expect(response).to redirect_to(dashboard_path)
-      end
+      it "shows the confirmation page without unenrolling" do
+        confirm
 
-      it "sets the users enrolment to :unenrolled" do
-        user_enrolment = user.user_programme_enrolments.find_by(programme: programme)
-
-        expect { unenroll }
-          .to change { user_enrolment.reload.current_state }
-          .from("enrolled")
-          .to("unenrolled")
-      end
-
-      it "shows a flash notice" do
-        unenroll
-        expect(flash[:notice]).to be_present
-      end
-
-      it "flash notice has correct info" do
-        unenroll
-        expect(flash[:notice]).to match(/You have successfully opted out of the KS3 and GCSE subject knowledge programme/)
+        expect(response).to have_http_status(:ok)
+        expect(response.body).to include("You're about to leave <strong>the KS3 and GCSE subject knowledge programme</strong>")
+        expect(response.body).to include(%(href="#{programme.path}"))
+        expect(response.body).to include(%(action="#{path}"))
+        expect(enrolment.reload.current_state).to eq "enrolled"
       end
     end
 
     context "when user has already unenrolled" do
-      let!(:enrolment) do
-        create(:user_programme_enrolment, user: user, programme: programme).tap do |enrolment|
-          enrolment.transition_to(:unenrolled)
-        end
+      before do
+        create(:user_programme_enrolment, user: user, programme: programme).transition_to(:unenrolled)
       end
 
-      it "leaves the enrolment unenrolled and redirects to the dashboard without a notice" do
-        unenroll
+      it "redirects to the dashboard with a notice" do
+        confirm
 
-        expect(enrolment.reload.current_state).to eq "unenrolled"
         expect(response).to redirect_to(dashboard_path)
-        expect(flash[:notice]).to be_nil
+        expect(flash[:notice]).to eq "You are not enrolled on the KS3 and GCSE subject knowledge programme"
       end
     end
 
@@ -62,12 +46,21 @@ RSpec.describe Certificates::CSAccelerator::AutoEnrolmentsController do
         end
       end
 
-      it "leaves the enrolment pending and redirects to the dashboard without a notice" do
-        unenroll
+      it "redirects to the dashboard with a notice, leaving the enrolment pending" do
+        confirm
 
         expect(enrolment.reload.current_state).to eq "pending"
         expect(response).to redirect_to(dashboard_path)
-        expect(flash[:notice]).to be_nil
+        expect(flash[:notice]).to eq "Your enrolment on the KS3 and GCSE subject knowledge programme can't be withdrawn at this stage"
+      end
+    end
+
+    context "when user is not enrolled" do
+      it "redirects to the dashboard with a notice" do
+        confirm
+
+        expect(response).to redirect_to(dashboard_path)
+        expect(flash[:notice]).to eq "You are not enrolled on the KS3 and GCSE subject knowledge programme"
       end
     end
 
@@ -78,23 +71,80 @@ RSpec.describe Certificates::CSAccelerator::AutoEnrolmentsController do
         allow_any_instance_of(AuthenticationHelper).to receive(:current_user).and_return(nil)
       end
 
-      it "redirects to login, returning to the unenrol link afterwards, without unenrolling" do
-        unenroll
+      it "redirects to login, returning to the confirmation page afterwards, without unenrolling" do
+        confirm
 
         expect(response).to redirect_to(login_path(source_uri: unenroll__cs_accelerator_auto_enrolment_url))
         expect(enrolment.reload.current_state).to eq "enrolled"
       end
     end
+  end
+
+  describe "POST #destroy" do
+    subject(:unenroll) { post path }
+
+    context "when user is enrolled" do
+      let!(:enrolment) { create(:user_programme_enrolment, user: user, programme: programme) }
+
+      it "unenrols the user and redirects to the dashboard with a notice" do
+        expect { unenroll }
+          .to change { enrolment.reload.current_state }
+          .from("enrolled")
+          .to("unenrolled")
+
+        expect(response).to redirect_to(dashboard_path)
+        expect(flash[:notice]).to eq "You have successfully opted out of the KS3 and GCSE subject knowledge programme"
+      end
+
+      context "with forgery protection on" do
+        around do |example|
+          ActionController::Base.allow_forgery_protection = true
+          example.run
+        ensure
+          ActionController::Base.allow_forgery_protection = false
+        end
+
+        it "rejects a request without an authenticity token" do
+          expect { unenroll }.to raise_error(ActionController::InvalidAuthenticityToken)
+          expect(enrolment.reload.current_state).to eq "enrolled"
+        end
+      end
+    end
+
+    context "when user's enrolment is pending" do
+      let!(:enrolment) do
+        create(:user_programme_enrolment, user: user, programme: programme).tap do |enrolment|
+          enrolment.transition_to(:pending)
+        end
+      end
+
+      it "leaves the enrolment pending and redirects to the dashboard" do
+        unenroll
+
+        expect(enrolment.reload.current_state).to eq "pending"
+        expect(response).to redirect_to(dashboard_path)
+      end
+    end
 
     context "when user is not enrolled" do
-      it "redirects to dashboard" do
+      it "redirects to the dashboard" do
         unenroll
         expect(response).to redirect_to(dashboard_path)
       end
+    end
 
-      it "does not show flash message" do
+    context "when signed out" do
+      let!(:enrolment) { create(:user_programme_enrolment, user: user, programme: programme) }
+
+      before do
+        allow_any_instance_of(AuthenticationHelper).to receive(:current_user).and_return(nil)
+      end
+
+      it "redirects to login without unenrolling" do
         unenroll
-        expect(flash[:notice]).not_to be_present
+
+        expect(response).to redirect_to(login_path(source_uri: unenroll__cs_accelerator_auto_enrolment_url))
+        expect(enrolment.reload.current_state).to eq "enrolled"
       end
     end
   end

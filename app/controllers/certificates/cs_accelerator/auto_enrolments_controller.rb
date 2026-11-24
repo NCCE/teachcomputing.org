@@ -1,20 +1,16 @@
 module Certificates
   module CSAccelerator
     class AutoEnrolmentsController < ApplicationController
-      before_action :authenticate_user_and_return!, only: %i[destroy]
+      include ConfirmsUnenrolment
 
-      def destroy
-        enrolment = UserProgrammeEnrolment.find_by(
-          programme: Programme.cs_accelerator,
-          user: current_user
-        )
+      private
 
-        if enrolment&.can_transition_to?(:unenrolled)
-          enrolment.transition_to(:unenrolled)
-          flash[:notice] = "You have successfully opted out of the KS3 and GCSE subject knowledge programme"
-        end
+      def find_enrolment
+        current_user.user_programme_enrolments.find_by(programme: Programme.cs_accelerator)
+      end
 
-        redirect_to dashboard_path
+      def unenrol_programme_name
+        "the KS3 and GCSE subject knowledge programme"
       end
     end
   end
