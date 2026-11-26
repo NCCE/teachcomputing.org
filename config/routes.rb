@@ -202,7 +202,6 @@ Rails.application.routes.draw do
   get "/external/assets/ncce.css", to: "asset_endpoint#css_endpoint", as: :css_endpoint
 
   get "/computing-teaching-schools-support", to: redirect("/gcse-cs-support")
-  get "/isaac-computer-science", to: "pages#isaac_computer_science", as: :about_isaac_computer_science, defaults: {page_slug: "isaac-computer-science"}
   get "/powerupthedigitalgeneration", to: redirect("/supporting-partners")
   get "/impact-and-evaluation", to: "pages#page", as: :impact, defaults: {page_slug: "impact-and-evaluation"}
   get "/a-level-computer-science", to: redirect("/isaac-computer-science")
@@ -238,6 +237,8 @@ Rails.application.routes.draw do
 
   get "/i-belong", to: "cms#web_page_resource", as: :about_i_belong, defaults: {page_slug: "i-belong"}
   get "/gender-balance", to: "cms#web_page_resource", as: :gender_balance, defaults: {page_slug: "gender-balance"}
+  get "/isaac-computer-science", to: "cms#web_page_resource", as: :about_isaac_computer_science,
+    defaults: {page_slug: "isaac-computer-science"}
   get "/secondary-senior-leaders", to: "cms#web_page_resource", as: :secondary_senior_leaders,
     defaults: {page_slug: "secondary-senior-leaders"}
 
