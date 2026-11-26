@@ -28,7 +28,6 @@ RSpec.describe ExternalLinkHelper do
     isaac_url
     isaac_journey_gallery_url
     isaac_journey_careers_url
-    isaac_ada_transition_blog_url
     i_am_computer_scientist_url
     ncce_eventbrite_url
     local_hub_professional_development_form_url
