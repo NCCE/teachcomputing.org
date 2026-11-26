@@ -13,9 +13,6 @@ class PagesController < ApplicationController
     end
   end
 
-  def isaac_computer_science
-  end
-
   def login
     auth_uri = "/auth/stem"
     auth_uri += "?source_uri=#{params[:source_uri]}" if params[:source_uri].present?
